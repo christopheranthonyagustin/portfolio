@@ -1,12 +1,42 @@
-# Professional Certifications Portfolio
+# Professional Certifications & Digital Credentials Portfolio
 
-Welcome to my professional certifications portfolio.
+## Christopher Anthony Agustin
+
+Project Manager | Product Owner | Systems Integration Specialist
+
+Experienced in API integrations, e-commerce platforms, logistics systems, healthcare technology, cloud solutions, and enterprise software delivery.
 
 This repository contains certificates earned through professional training programs and industry-recognized courses related to Project Management, Product Ownership, API Design, Systems Integration, Software Development, E-commerce, Logistics, and Healthcare Technology.
 
-## Professional Background
+## Digital Badge Verification
 
-I have experience leading and delivering projects involving:
+Credly: [View Digital Badges](https://www.credly.com/users/christopher-anthony-agustin)
+
+LinkedIn: [Christopher Anthony Agustin](https://www.linkedin.com/in/christopher-anthony-agustin-35a8084a)
+
+Email: [christopheranthonyagustin@gmail.com](mailto:christopheranthonyagustin@gmail.com)
+
+## Certification Summary
+
+Highlights include certifications in:
+
+- API Design & Product Management
+- Project Management
+- Scrum & Agile
+- Quality Management (ISO 9001)
+- Information Security (ISO 27001)
+- IT Service Management (ISO 20000)
+- Lean & Six Sigma
+- Cloud & Infrastructure
+- Cybersecurity
+- Software Architecture
+- Healthcare Technology
+
+Total Certifications and Credentials: 25+
+
+## Project Portfolio
+
+In addition to these certifications, I have experience delivering projects involving:
 
 * Order Management Systems (OMS)
 * Warehouse Management Systems (WMS)
@@ -16,7 +46,9 @@ I have experience leading and delivering projects involving:
 * Healthcare Technology and Medical Software
 * Cloud-Based Applications and Middleware Solutions
 
-## Featured Certifications
+Project case studies and portfolio repositories are available on my GitHub profile.
+
+## Professional Certifications
 
 ### API Academy (2021)
 
@@ -28,7 +60,7 @@ I have experience leading and delivering projects involving:
 
 ### GreyCampus (2021)
 
-* [A foundation program inn full stack](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/GreyCampus/Grey%20Campus%20-%20A%20foundation%20in%20full%20stack%20program.pdf)
+* [A Foundation Program in Full Stack Development](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/GreyCampus/Grey%20Campus%20-%20A%20foundation%20in%20full%20stack%20program.pdf)
 
 ### JPMorgan Chase & Co. (2021)
 
@@ -40,7 +72,7 @@ I have experience leading and delivering projects involving:
 
 ### Coursera (2021-2023)
 
-* [AWS Fundamentals](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/JPMorgan%20Chase%20%26%20Co/J.P.%20Morgan%20Chase%20%26%20Co%20-%20Software%20Engineering%20Virtual%20Experience.pdf)
+* [AWS Fundamentals](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Coursera/AWS%20Fundamentals/Coursera%20-%20AWS%20Fundamentals.pdf)
 * [Google IT Support](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Coursera/Google%20IT%20Support/Coursera%20-%20Google%20IT%20Support.pdf)
 * [Google IT Automation with Python](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Coursera/Google%20IT%20Automation%20with%20Python/Coursera%20-%20Google%20IT%20Automation%20with%20Python.pdf)
 * [Google Project Management](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Coursera/Google%20Project%20Management/Coursera%20-%20Google%20Project%20Management.pdf)
@@ -78,7 +110,7 @@ I have experience leading and delivering projects involving:
 
 ### Cognitive Class (2021)
 
-* [Cybersecurity Essentials](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Cognitive%20Class/Cognitive%20class%20-%20Data%20Analysis%20with%20Python.PNG)
+* [Data Analysis with Python](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Cognitive%20Class/Cognitive%20class%20-%20Data%20Analysis%20with%20Python.PNG)
 
 ### FORTINET (2023)
 
@@ -96,14 +128,10 @@ I have experience leading and delivering projects involving:
 
 * [Generative AI Overview for Project Managers](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/PMI/Generative%20AI%20Overview%20for%20Project%20Managers.pdf)
 
-## Certificate and Digital Badge Verification
+## Continuous Professional Development
+
+These certifications reflect ongoing professional development across project management, systems integration, software engineering, cybersecurity, cloud technologies, and healthcare technology.
+
+## Certificate Verification
 
 The original API Academy training portal used for several certifications is no longer publicly available. Copies of the original certificates are provided in this repository as evidence of successful course completion.
-
-Creadly: [https://www.credly.com/users/christopher-anthony-agustin]
-
-## Contact
-
-LinkedIn: [https://www.linkedin.com/in/christopher-anthony-agustin-35a8084a]
-
-Email: [christopheranthonyagustin@gmail.com]
