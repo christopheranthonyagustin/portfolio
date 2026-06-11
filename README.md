@@ -53,6 +53,37 @@ I have experience leading and delivering projects involving:
 
 * [Android Development](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Knowledge%20Hut/Knowlege%20Hut%20-%20Android%20Development.pdf)
 
+### SkillFront (2021)
+
+* [ISO 9001 Quality Management Systems Associate](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/SkillFront/SkillFront%20-ISO%209001%20Quality%20Management%20Systems%20Associate.pdf)
+* [ISO/IEC 27001 Information Security Associate](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/SkillFront/SkillFront%20-%20ISO%20IE%2027001%20Information%20Security%20Associate.pdf)
+* [ISO/IEC 20000 IT Service Management Associate](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/SkillFront/Skill%20Front%20-%20ISO_IEC%2020000%20IT%20Service%20Management%20Associate.pdf)
+* [Certified Associate in Scrum Fundamentals](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/SkillFront/SkillFront%20-%20Certified%20Associate%20In%20Scrum%20Fundamentals.pdf)
+* [Foundations of Business and Entrepreneurship](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/SkillFront/SkillFront%20-%20Foundations%20of%20Business%20and%20Entrepneurship.pdf)
+* [Lean Foundations Professional Certification](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/SkillFront/SkillFront%20-%20Lean%20Foundations%20Professional%20Certification.pdf)
+
+### VMEdu Inc. (2021)
+
+* [Scrum Fundamentals Certified](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Vmedu/Scrum%20Study%20-%20Scrum%20Fundamentals%20Certified.pdf)
+* [Six Sigma Yellow Belt](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Vmedu/6%20Sigma%20Study%20-%20Six%20Sigma%20Yellow%20Belt.pdf)
+
+### Six Sigma Online (2021)
+
+* [White Belt Certification](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Six%20Sigma%20Online/Six%20Sigma%20Online%20-%20White%20Belt%20Certification.pdf)
+* [Letter of Acknowledgement](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Six%20Sigma%20Online/Six%20Sigma%20Online%20-%20White%20Belt%20Certification%20Letter%20of%20Acknowledgement.pdf)
+
+### Cisco (2021)
+
+* [Cybersecurity Essentials](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Cisco/Cisco%20-%20Cybersecurity%20Essentials.pdf)
+
+### Cognitive Class (2021)
+
+* [Cybersecurity Essentials](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Cognitive%20Class/Cognitive%20class%20-%20Data%20Analysis%20with%20Python.PNG)
+
+### FORTINET (2023)
+
+* [NSE3 Network Security Associate](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Fortinet/Fortinet%20-%20NSE%203%20Network%20Security%20Associate.pdf)
+
 ### cPanel University (2024)
 
 * [cPanel Professional Certification](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/cPanel/certification-cPanel-Professional-Certification-Exam-CPP-christopheranthonyagustin%40gmail.com.pdf)
@@ -61,21 +92,9 @@ I have experience leading and delivering projects involving:
 
 * [Scrum Foundation Professional Certificate](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Certiprof/Certiprof%20-%20Scrum%20Foundation%20Professional%20Cerfication%202024.pdf)
 
-### SkillFront (2021)
-
-* [Certified Associate in Scrum Fundamentals](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/SkillFront/SkillFront%20-%20Certified%20Associate%20In%20Scrum%20Fundamentals.pdf)
-
 ### PMI (2024)
 
 * [Generative AI Overview for Project Managers](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/PMI/Generative%20AI%20Overview%20for%20Project%20Managers.pdf)
-
-### FORTINET (2023)
-
-* [NSE3 Network Security Associate](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Fortinet/Fortinet%20-%20NSE%203%20Network%20Security%20Associate.pdf)
-
-### Cisco (2024)
-
-* [Cybersecurity Essentials](https://github.com/christopheranthonyagustin/certifications/blob/main/Certifications/Cisco/Cisco%20-%20Cybersecurity%20Essentials.pdf)
 
 ## Certificate and Digital Badge Verification
 
