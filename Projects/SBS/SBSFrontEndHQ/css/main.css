@@ -1,0 +1,81 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+    background-color: #EEEEEE;
+}
+
+
+.jumbotron {
+    padding: 0;
+}
+
+.blue {
+    background-color: #004184;
+    width: 100%;
+    height: 30px;
+    margin-top: 80px;
+}
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.m-t-25 {
+    margin-top: 25px;
+}
+
+.m-b-25 {
+    margin-top: 25px;
+}
+
+.form-container {
+    background-color: #fff;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.40);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.40);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.40);
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    padding: 45px;
+}
+
+.blue-line {
+    background-color: #004184;
+    height: 5px;
+}
+
+.orange-line {
+    background-color: #E33E28;
+    height: 5px;
+}
+
+.footer {
+    width:100%;
+    min-height:50px;    
+    background-color: #eee; /* This color gets inverted color or you can add navbar inverse class in html */
+}
+
+.hr-footer {
+    height: 10px;
+    background-color: #E33E28;
+}
+
+.bg {
+    background-color: #fff;
+}
+
+.container-round {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.30);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.30);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.30);
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+}
+
+
+

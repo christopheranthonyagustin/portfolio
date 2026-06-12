@@ -1,0 +1,2073 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FmsWcf" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://66.96.208.81/sbswcfapi/FmsWcf.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://66.96.208.81/sbswcfapi/FmsWcf.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://66.96.208.81/sbswcfapi/FmsWcf.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WlocateWeb" />
+      <xsd:import schemaLocation="http://66.96.208.81/sbswcfapi/FmsWcf.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFmsWcf_GetRFID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRFID" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetRFID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRFIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteRFID_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRFID" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteRFID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRFIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveRFID_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRFID" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveRFID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRFIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetRFIDDriver_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRFIDDriver" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetRFIDDriver_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRFIDDriverResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetDrivers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDrivers" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetDrivers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDriversResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveDriver_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDriver" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveDriver_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDriverResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteDriver_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDriver" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteDriver_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDriverResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveDrivers_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDrivers" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveDrivers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDriversResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetDriverLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDriverLogin" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetDriverLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDriverLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetDriverLogins_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDriverLogins" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetDriverLogins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDriverLoginsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_CheckLicense_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckLicense" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_CheckLicense_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckLicenseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAppKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppKey" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAppKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetServerTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerTime" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetServerTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetFeatures_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFeatures" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetFeatures_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFeaturesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNames" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetStrings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStrings" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetStrings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStringsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetApiKeys_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApiKeys" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetApiKeys_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApiKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetServerNoticeMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerNoticeMessage" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetServerNoticeMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerNoticeMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UpdateMileageReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMileageReport" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UpdateMileageReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMileageReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAllCompanies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompanies" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAllCompanies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetCompanies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanies" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetCompanies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCompany" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompany" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUser" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_LogInUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogInUser" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_LogInUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogInUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_ResetPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPassword" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_ResetPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UnlockUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnlockUser" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UnlockUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnlockUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetUserActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserActivity" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetUserActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveUserActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUserActivity" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveUserActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUserActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_Geocode_InputMessage">
+    <wsdl:part name="parameters" element="tns:Geocode" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_Geocode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GeocodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_ReverseGeocode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReverseGeocode" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_ReverseGeocode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReverseGeocodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UpdateNoAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNoAddress" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UpdateNoAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNoAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UpdateAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAddress" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UpdateAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetZones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetZones" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetZones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetZonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetActiveZones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveZones" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetActiveZones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveZonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveZone_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveZone" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveZone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveZoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteZone_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteZone" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteZone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteZoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTags" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTag" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTag" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTag" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAsset_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAsset" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAsset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssets" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssetsEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsEx" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssetsEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveAsset_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAsset" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveAsset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAssetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteAsset_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAsset" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteAsset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAssetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssetZones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetZones" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssetZones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetZonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssetsAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsAll" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssetsAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetDownAssets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDownAssets" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetDownAssets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDownAssetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UpdateNotifiedDownAssets_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNotifiedDownAssets" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UpdateNotifiedDownAssets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNotifiedDownAssetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssetsApi_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsApi" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssetsApi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsApiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPositionsApi_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPositionsApi" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPositionsApi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPositionsApiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_FindAssets_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAssets" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_FindAssets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAssetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_FindAsset_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAsset" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_FindAsset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAssetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_FindAssetByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAssetByName" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_FindAssetByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAssetByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetActivities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivities" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetActivities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveActivity" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveActivities_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveActivities" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveActivities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveActivitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UpdateActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateActivity" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UpdateActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActivity" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteActivities_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActivities" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteActivities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActivitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPlans_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlans" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPlans_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SavePlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlan" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SavePlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SavePlans_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlans" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SavePlans_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeletePlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePlan" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeletePlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetTrips_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrips" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetTrips_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTripsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteTrip_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTrip" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteTrip_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTripResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_RegenTrips_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegenTrips" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_RegenTrips_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegenTripsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPresenceInZone_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPresenceInZone" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPresenceInZone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPresenceInZoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetEntryTimeOriginZone_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntryTimeOriginZone" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetEntryTimeOriginZone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntryTimeOriginZoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetEntryTimeDestinationZone_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntryTimeDestinationZone" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetEntryTimeDestinationZone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntryTimeDestinationZoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPosInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPosInfo" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPosInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPosInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_RegenGetPlans_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegenGetPlans" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_RegenGetPlans_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegenGetPlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetTripsZone_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTripsZone" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetTripsZone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTripsZoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEvents" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveEvent" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_CancelEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelEvent" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_CancelEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_FlagEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlagEvent" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_FlagEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlagEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPositions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPositions" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPositions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPositionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SavePosition_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePosition" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SavePosition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SavePositionUDP_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePositionUDP" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SavePositionUDP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePositionUDPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssetLastPos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetLastPos" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetAssetLastPos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetLastPosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetLastestAssetInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastestAssetInfo" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetLastestAssetInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastestAssetInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetZoneReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetZoneReport" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetZoneReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetZoneReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetSpeedReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpeedReport" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetSpeedReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpeedReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetUtilizeReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilizeReport" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetUtilizeReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilizeReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetMileageReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMileageReport" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetMileageReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMileageReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetMixerReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMixerReport" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetMixerReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMixerReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPhones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhones" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetPhones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessages" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetMessagesEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesEx" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetMessagesEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_FlagMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlagMessages" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_FlagMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlagMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveMessage" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMessage" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_DeleteMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetRawData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRawData" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetRawData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRawDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_ProcessRawData_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessRawData" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_ProcessRawData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessRawDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UploadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_UploadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFile" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_LocateCellID_InputMessage">
+    <wsdl:part name="parameters" element="tns:LocateCellID" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_LocateCellID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LocateCellIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetCellIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCellIds" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetCellIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCellIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetZoneCellIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetZoneCellIds" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetZoneCellIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetZoneCellIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetCidParams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCidParams" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetCidParams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCidParamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveCellIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCellIds" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_SaveCellIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCellIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_CheckOTAReply_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckOTAReply" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_CheckOTAReply_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckOTAReplyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetOTACommands_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOTACommands" />
+  </wsdl:message>
+  <wsdl:message name="IFmsWcf_GetOTACommands_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOTACommandsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFmsWcf">
+    <wsdl:operation name="GetRFID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetRFID" message="tns:IFmsWcf_GetRFID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetRFIDResponse" message="tns:IFmsWcf_GetRFID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRFID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteRFID" message="tns:IFmsWcf_DeleteRFID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteRFIDResponse" message="tns:IFmsWcf_DeleteRFID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRFID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveRFID" message="tns:IFmsWcf_SaveRFID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveRFIDResponse" message="tns:IFmsWcf_SaveRFID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRFIDDriver">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetRFIDDriver" message="tns:IFmsWcf_GetRFIDDriver_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetRFIDDriverResponse" message="tns:IFmsWcf_GetRFIDDriver_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDrivers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetDrivers" message="tns:IFmsWcf_GetDrivers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetDriversResponse" message="tns:IFmsWcf_GetDrivers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDriver">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveDriver" message="tns:IFmsWcf_SaveDriver_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveDriverResponse" message="tns:IFmsWcf_SaveDriver_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDriver">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteDriver" message="tns:IFmsWcf_DeleteDriver_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteDriverResponse" message="tns:IFmsWcf_DeleteDriver_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDrivers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveDrivers" message="tns:IFmsWcf_SaveDrivers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveDriversResponse" message="tns:IFmsWcf_SaveDrivers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDriverLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetDriverLogin" message="tns:IFmsWcf_GetDriverLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetDriverLoginResponse" message="tns:IFmsWcf_GetDriverLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDriverLogins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetDriverLogins" message="tns:IFmsWcf_GetDriverLogins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetDriverLoginsResponse" message="tns:IFmsWcf_GetDriverLogins_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckLicense">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/CheckLicense" message="tns:IFmsWcf_CheckLicense_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/CheckLicenseResponse" message="tns:IFmsWcf_CheckLicense_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppKey">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetAppKey" message="tns:IFmsWcf_GetAppKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetAppKeyResponse" message="tns:IFmsWcf_GetAppKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetServerTime" message="tns:IFmsWcf_GetServerTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetServerTimeResponse" message="tns:IFmsWcf_GetServerTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFeatures">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetFeatures" message="tns:IFmsWcf_GetFeatures_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetFeaturesResponse" message="tns:IFmsWcf_GetFeatures_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetNames" message="tns:IFmsWcf_GetNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetNamesResponse" message="tns:IFmsWcf_GetNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStrings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetStrings" message="tns:IFmsWcf_GetStrings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetStringsResponse" message="tns:IFmsWcf_GetStrings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApiKeys">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetApiKeys" message="tns:IFmsWcf_GetApiKeys_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetApiKeysResponse" message="tns:IFmsWcf_GetApiKeys_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerNoticeMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetServerNoticeMessage" message="tns:IFmsWcf_GetServerNoticeMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetServerNoticeMessageResponse" message="tns:IFmsWcf_GetServerNoticeMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMileageReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/UpdateMileageReport" message="tns:IFmsWcf_UpdateMileageReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/UpdateMileageReportResponse" message="tns:IFmsWcf_UpdateMileageReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompanies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetAllCompanies" message="tns:IFmsWcf_GetAllCompanies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetAllCompaniesResponse" message="tns:IFmsWcf_GetAllCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetCompanies" message="tns:IFmsWcf_GetCompanies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetCompaniesResponse" message="tns:IFmsWcf_GetCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveCompany" message="tns:IFmsWcf_SaveCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveCompanyResponse" message="tns:IFmsWcf_SaveCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteCompany" message="tns:IFmsWcf_DeleteCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteCompanyResponse" message="tns:IFmsWcf_DeleteCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetUsers" message="tns:IFmsWcf_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetUsersResponse" message="tns:IFmsWcf_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveUser" message="tns:IFmsWcf_SaveUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveUserResponse" message="tns:IFmsWcf_SaveUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteUser" message="tns:IFmsWcf_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteUserResponse" message="tns:IFmsWcf_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogInUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/LogInUser" message="tns:IFmsWcf_LogInUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/LogInUserResponse" message="tns:IFmsWcf_LogInUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetUser" message="tns:IFmsWcf_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetUserResponse" message="tns:IFmsWcf_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/ResetPassword" message="tns:IFmsWcf_ResetPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/ResetPasswordResponse" message="tns:IFmsWcf_ResetPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/UnlockUser" message="tns:IFmsWcf_UnlockUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/UnlockUserResponse" message="tns:IFmsWcf_UnlockUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetUserActivity" message="tns:IFmsWcf_GetUserActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetUserActivityResponse" message="tns:IFmsWcf_GetUserActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUserActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveUserActivity" message="tns:IFmsWcf_SaveUserActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveUserActivityResponse" message="tns:IFmsWcf_SaveUserActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Geocode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/Geocode" message="tns:IFmsWcf_Geocode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GeocodeResponse" message="tns:IFmsWcf_Geocode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReverseGeocode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/ReverseGeocode" message="tns:IFmsWcf_ReverseGeocode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/ReverseGeocodeResponse" message="tns:IFmsWcf_ReverseGeocode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/UpdateNoAddress" message="tns:IFmsWcf_UpdateNoAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/UpdateNoAddressResponse" message="tns:IFmsWcf_UpdateNoAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/UpdateAddress" message="tns:IFmsWcf_UpdateAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/UpdateAddressResponse" message="tns:IFmsWcf_UpdateAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetZones" message="tns:IFmsWcf_GetZones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetZonesResponse" message="tns:IFmsWcf_GetZones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveZones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetActiveZones" message="tns:IFmsWcf_GetActiveZones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetActiveZonesResponse" message="tns:IFmsWcf_GetActiveZones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveZone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveZone" message="tns:IFmsWcf_SaveZone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveZoneResponse" message="tns:IFmsWcf_SaveZone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteZone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteZone" message="tns:IFmsWcf_DeleteZone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteZoneResponse" message="tns:IFmsWcf_DeleteZone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTags">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetTags" message="tns:IFmsWcf_GetTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetTagsResponse" message="tns:IFmsWcf_GetTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTag">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetTag" message="tns:IFmsWcf_GetTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetTagResponse" message="tns:IFmsWcf_GetTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTag">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveTag" message="tns:IFmsWcf_SaveTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveTagResponse" message="tns:IFmsWcf_SaveTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTag">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteTag" message="tns:IFmsWcf_DeleteTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteTagResponse" message="tns:IFmsWcf_DeleteTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAsset">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetAsset" message="tns:IFmsWcf_GetAsset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetResponse" message="tns:IFmsWcf_GetAsset_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetAssets" message="tns:IFmsWcf_GetAssets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetsResponse" message="tns:IFmsWcf_GetAssets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsEx">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetsEx" message="tns:IFmsWcf_GetAssetsEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetsExResponse" message="tns:IFmsWcf_GetAssetsEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAsset">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveAsset" message="tns:IFmsWcf_SaveAsset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveAssetResponse" message="tns:IFmsWcf_SaveAsset_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAsset">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteAsset" message="tns:IFmsWcf_DeleteAsset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteAssetResponse" message="tns:IFmsWcf_DeleteAsset_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetZones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetZones" message="tns:IFmsWcf_GetAssetZones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetZonesResponse" message="tns:IFmsWcf_GetAssetZones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetsAll" message="tns:IFmsWcf_GetAssetsAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetsAllResponse" message="tns:IFmsWcf_GetAssetsAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDownAssets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetDownAssets" message="tns:IFmsWcf_GetDownAssets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetDownAssetsResponse" message="tns:IFmsWcf_GetDownAssets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNotifiedDownAssets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/UpdateNotifiedDownAssets" message="tns:IFmsWcf_UpdateNotifiedDownAssets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/UpdateNotifiedDownAssetsResponse" message="tns:IFmsWcf_UpdateNotifiedDownAssets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsApi">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetsApi" message="tns:IFmsWcf_GetAssetsApi_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetsApiResponse" message="tns:IFmsWcf_GetAssetsApi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPositionsApi">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetPositionsApi" message="tns:IFmsWcf_GetPositionsApi_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetPositionsApiResponse" message="tns:IFmsWcf_GetPositionsApi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAssets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/FindAssets" message="tns:IFmsWcf_FindAssets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/FindAssetsResponse" message="tns:IFmsWcf_FindAssets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAsset">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/FindAsset" message="tns:IFmsWcf_FindAsset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/FindAssetResponse" message="tns:IFmsWcf_FindAsset_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAssetByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/FindAssetByName" message="tns:IFmsWcf_FindAssetByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/FindAssetByNameResponse" message="tns:IFmsWcf_FindAssetByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetActivities" message="tns:IFmsWcf_GetActivities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetActivitiesResponse" message="tns:IFmsWcf_GetActivities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveActivity" message="tns:IFmsWcf_SaveActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveActivityResponse" message="tns:IFmsWcf_SaveActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveActivities" message="tns:IFmsWcf_SaveActivities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveActivitiesResponse" message="tns:IFmsWcf_SaveActivities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/UpdateActivity" message="tns:IFmsWcf_UpdateActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/UpdateActivityResponse" message="tns:IFmsWcf_UpdateActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteActivity" message="tns:IFmsWcf_DeleteActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteActivityResponse" message="tns:IFmsWcf_DeleteActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteActivities" message="tns:IFmsWcf_DeleteActivities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteActivitiesResponse" message="tns:IFmsWcf_DeleteActivities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlans">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetPlans" message="tns:IFmsWcf_GetPlans_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetPlansResponse" message="tns:IFmsWcf_GetPlans_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SavePlan" message="tns:IFmsWcf_SavePlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SavePlanResponse" message="tns:IFmsWcf_SavePlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePlans">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SavePlans" message="tns:IFmsWcf_SavePlans_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SavePlansResponse" message="tns:IFmsWcf_SavePlans_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeletePlan" message="tns:IFmsWcf_DeletePlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeletePlanResponse" message="tns:IFmsWcf_DeletePlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrips">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetTrips" message="tns:IFmsWcf_GetTrips_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetTripsResponse" message="tns:IFmsWcf_GetTrips_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTrip">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteTrip" message="tns:IFmsWcf_DeleteTrip_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteTripResponse" message="tns:IFmsWcf_DeleteTrip_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegenTrips">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/RegenTrips" message="tns:IFmsWcf_RegenTrips_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/RegenTripsResponse" message="tns:IFmsWcf_RegenTrips_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPresenceInZone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetPresenceInZone" message="tns:IFmsWcf_GetPresenceInZone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetPresenceInZoneResponse" message="tns:IFmsWcf_GetPresenceInZone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEntryTimeOriginZone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetEntryTimeOriginZone" message="tns:IFmsWcf_GetEntryTimeOriginZone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetEntryTimeOriginZoneResponse" message="tns:IFmsWcf_GetEntryTimeOriginZone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEntryTimeDestinationZone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetEntryTimeDestinationZone" message="tns:IFmsWcf_GetEntryTimeDestinationZone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetEntryTimeDestinationZoneResponse" message="tns:IFmsWcf_GetEntryTimeDestinationZone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPosInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetPosInfo" message="tns:IFmsWcf_GetPosInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetPosInfoResponse" message="tns:IFmsWcf_GetPosInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegenGetPlans">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/RegenGetPlans" message="tns:IFmsWcf_RegenGetPlans_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/RegenGetPlansResponse" message="tns:IFmsWcf_RegenGetPlans_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTripsZone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetTripsZone" message="tns:IFmsWcf_GetTripsZone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetTripsZoneResponse" message="tns:IFmsWcf_GetTripsZone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetEvents" message="tns:IFmsWcf_GetEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetEventsResponse" message="tns:IFmsWcf_GetEvents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveEvent" message="tns:IFmsWcf_SaveEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveEventResponse" message="tns:IFmsWcf_SaveEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/CancelEvent" message="tns:IFmsWcf_CancelEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/CancelEventResponse" message="tns:IFmsWcf_CancelEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlagEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/FlagEvent" message="tns:IFmsWcf_FlagEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/FlagEventResponse" message="tns:IFmsWcf_FlagEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPositions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetPositions" message="tns:IFmsWcf_GetPositions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetPositionsResponse" message="tns:IFmsWcf_GetPositions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePosition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SavePosition" message="tns:IFmsWcf_SavePosition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SavePositionResponse" message="tns:IFmsWcf_SavePosition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePositionUDP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SavePositionUDP" message="tns:IFmsWcf_SavePositionUDP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SavePositionUDPResponse" message="tns:IFmsWcf_SavePositionUDP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetLastPos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetLastPos" message="tns:IFmsWcf_GetAssetLastPos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetAssetLastPosResponse" message="tns:IFmsWcf_GetAssetLastPos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastestAssetInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetLastestAssetInfo" message="tns:IFmsWcf_GetLastestAssetInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetLastestAssetInfoResponse" message="tns:IFmsWcf_GetLastestAssetInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZoneReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetZoneReport" message="tns:IFmsWcf_GetZoneReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetZoneReportResponse" message="tns:IFmsWcf_GetZoneReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpeedReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetSpeedReport" message="tns:IFmsWcf_GetSpeedReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetSpeedReportResponse" message="tns:IFmsWcf_GetSpeedReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUtilizeReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetUtilizeReport" message="tns:IFmsWcf_GetUtilizeReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetUtilizeReportResponse" message="tns:IFmsWcf_GetUtilizeReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMileageReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetMileageReport" message="tns:IFmsWcf_GetMileageReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetMileageReportResponse" message="tns:IFmsWcf_GetMileageReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMixerReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetMixerReport" message="tns:IFmsWcf_GetMixerReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetMixerReportResponse" message="tns:IFmsWcf_GetMixerReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPhones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetPhones" message="tns:IFmsWcf_GetPhones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetPhonesResponse" message="tns:IFmsWcf_GetPhones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetMessages" message="tns:IFmsWcf_GetMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetMessagesResponse" message="tns:IFmsWcf_GetMessages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesEx">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetMessagesEx" message="tns:IFmsWcf_GetMessagesEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetMessagesExResponse" message="tns:IFmsWcf_GetMessagesEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlagMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/FlagMessages" message="tns:IFmsWcf_FlagMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/FlagMessagesResponse" message="tns:IFmsWcf_FlagMessages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveMessage" message="tns:IFmsWcf_SaveMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveMessageResponse" message="tns:IFmsWcf_SaveMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/DeleteMessage" message="tns:IFmsWcf_DeleteMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/DeleteMessageResponse" message="tns:IFmsWcf_DeleteMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRawData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetRawData" message="tns:IFmsWcf_GetRawData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetRawDataResponse" message="tns:IFmsWcf_GetRawData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessRawData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/ProcessRawData" message="tns:IFmsWcf_ProcessRawData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/ProcessRawDataResponse" message="tns:IFmsWcf_ProcessRawData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/UploadFile" message="tns:IFmsWcf_UploadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/UploadFileResponse" message="tns:IFmsWcf_UploadFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetFile" message="tns:IFmsWcf_GetFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetFileResponse" message="tns:IFmsWcf_GetFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LocateCellID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/LocateCellID" message="tns:IFmsWcf_LocateCellID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/LocateCellIDResponse" message="tns:IFmsWcf_LocateCellID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCellIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetCellIds" message="tns:IFmsWcf_GetCellIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetCellIdsResponse" message="tns:IFmsWcf_GetCellIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZoneCellIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetZoneCellIds" message="tns:IFmsWcf_GetZoneCellIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetZoneCellIdsResponse" message="tns:IFmsWcf_GetZoneCellIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCidParams">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetCidParams" message="tns:IFmsWcf_GetCidParams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetCidParamsResponse" message="tns:IFmsWcf_GetCidParams_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCellIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/SaveCellIds" message="tns:IFmsWcf_SaveCellIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/SaveCellIdsResponse" message="tns:IFmsWcf_SaveCellIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckOTAReply">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/CheckOTAReply" message="tns:IFmsWcf_CheckOTAReply_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/CheckOTAReplyResponse" message="tns:IFmsWcf_CheckOTAReply_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOTACommands">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFmsWcf/GetOTACommands" message="tns:IFmsWcf_GetOTACommands_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFmsWcf/GetOTACommandsResponse" message="tns:IFmsWcf_GetOTACommands_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFmsWcf" type="tns:IFmsWcf">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRFID">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetRFID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRFID">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteRFID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRFID">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveRFID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRFIDDriver">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetRFIDDriver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrivers">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetDrivers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDriver">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveDriver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDriver">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteDriver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDrivers">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveDrivers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDriverLogin">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetDriverLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDriverLogins">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetDriverLogins" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLicense">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/CheckLicense" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppKey">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetAppKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetServerTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFeatures">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetFeatures" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNames">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStrings">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetStrings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApiKeys">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetApiKeys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerNoticeMessage">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetServerNoticeMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMileageReport">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/UpdateMileageReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompanies">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetAllCompanies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetCompanies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCompany">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogInUser">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/LogInUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockUser">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/UnlockUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserActivity">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetUserActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUserActivity">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveUserActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Geocode">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/Geocode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReverseGeocode">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/ReverseGeocode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoAddress">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/UpdateNoAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAddress">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/UpdateAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZones">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetZones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveZones">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetActiveZones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveZone">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteZone">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTags">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTag">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTag">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTag">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAsset">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssets">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsEx">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetAssetsEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAsset">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAsset">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetZones">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetAssetZones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsAll">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetAssetsAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDownAssets">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetDownAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNotifiedDownAssets">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/UpdateNotifiedDownAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsApi">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetAssetsApi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPositionsApi">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetPositionsApi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAssets">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/FindAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAsset">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/FindAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAssetByName">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/FindAssetByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivities">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetActivities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivity">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivities">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveActivities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActivity">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/UpdateActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivity">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivities">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteActivities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlans">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetPlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePlan">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SavePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePlans">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SavePlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePlan">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeletePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrips">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetTrips" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTrip">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteTrip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegenTrips">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/RegenTrips" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPresenceInZone">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetPresenceInZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntryTimeOriginZone">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetEntryTimeOriginZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntryTimeDestinationZone">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetEntryTimeDestinationZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPosInfo">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetPosInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegenGetPlans">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/RegenGetPlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTripsZone">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetTripsZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEvent">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelEvent">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/CancelEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlagEvent">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/FlagEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPositions">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetPositions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePosition">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SavePosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePositionUDP">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SavePositionUDP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetLastPos">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetAssetLastPos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastestAssetInfo">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetLastestAssetInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZoneReport">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetZoneReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpeedReport">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetSpeedReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUtilizeReport">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetUtilizeReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMileageReport">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetMileageReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMixerReport">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetMixerReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPhones">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetPhones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesEx">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetMessagesEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlagMessages">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/FlagMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveMessage">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/DeleteMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRawData">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetRawData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessRawData">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/ProcessRawData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LocateCellID">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/LocateCellID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCellIds">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetCellIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZoneCellIds">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetZoneCellIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCidParams">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetCidParams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCellIds">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/SaveCellIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOTAReply">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/CheckOTAReply" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOTACommands">
+      <soap:operation soapAction="http://tempuri.org/IFmsWcf/GetOTACommands" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FmsWcf">
+    <wsdl:port name="BasicHttpBinding_IFmsWcf" binding="tns:BasicHttpBinding_IFmsWcf">
+      <soap:address location="http://66.96.208.81/sbswcfapi/FmsWcf.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

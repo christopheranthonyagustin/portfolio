@@ -1,0 +1,457 @@
+﻿
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>Driver Average</title>
+    <meta content="" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 0px;
+            padding-bottom: 20px;
+        }
+
+        #chartdivPie {
+            height: 100%;
+            margin-top: 0px;
+            margin-left: -30px;
+        }
+
+
+        #styles, #add-tab {
+            float: left;
+            margin-top: 10px;
+            width: 400px;
+        }
+
+            #styles label,
+            #add-tab label {
+                display: inline-block;
+                width: 130px;
+            }
+
+        .phoney {
+            background: -webkit-gradient(linear,left top,left bottom,color-stop(0, rgb(112,112,112)),color-stop(0.51, rgb(94,94,94)),color-stop(0.52, rgb(57,57,57)));
+            background: -moz-linear-gradient(center top,rgb(112,112,112) 0%,rgb(94,94,94) 51%,rgb(57,57,57) 52%);
+        }
+
+        .phoneytext {
+            text-shadow: 0 -1px 0 #000;
+            color: #fff;
+            font-family: Helvetica Neue, Helvetica, arial;
+            font-size: 16px;
+            line-height: 25px;
+            padding: 4px 45px 4px 15px;
+            font-weight: bold;
+            background: url(../images/arrow.png) 95% 50% no-repeat;
+        }
+
+        .phoneytab {
+            text-shadow: 0 -1px 0 #000;
+            color: #fff;
+            font-family: Helvetica Neue, Helvetica, arial;
+            font-size: 18px;
+            background: rgb(112,112,112) !important;
+        }
+
+		        /*.fht-cell .filterControl {
+            display: none;
+        }
+
+        th:hover .filterControl {
+            display: block;
+        }*/
+
+        .triggerDataClass {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .floatRight {
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+
+    </style>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+	    <!--Data Table-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+    <link href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!--Responsive-->
+    <link href="https://nightly.datatables.net/responsive/css/responsive.dataTables.css" rel="stylesheet" type="text/css" />
+    <!--Re-Order-Column-->
+    <link href="https://nightly.datatables.net/colreorder/css/colReorder.bootstrap.css" rel="stylesheet" type="text/css" />
+    <!--Key-->
+    <link href="https://nightly.datatables.net/keytable/css/keyTable.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!--Re-Order-Row-->
+    <link href="https://nightly.datatables.net/rowreorder/css/rowReorder.bootstrap.css" rel="stylesheet" type="text/css" />
+    <!--Select-->
+    <link href="https://nightly.datatables.net/select/css/select.bootstrap.css" rel="stylesheet" type="text/css" />
+
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="plugins/ui-sidebar/sidebar.css" rel="stylesheet">
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+    <link href="plugins/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
+	<!--Datetime Picker [ OPTIONAL ]-->
+    <link href="plugins/datetimepicker/jquery.datetimepicker.css" rel="stylesheet">
+    
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+   
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+         
+            <div style="margin-top: 50px;">
+
+                <p>&nbsp;</p>
+                
+                <select class="width-form-sidebar selectpicker pull-left SelectVehicleFilter" data-live-search="true" data-style="btn-dropdown" id="eventlog">
+                    <option value="">--</option>
+                </select>
+
+                <small class="width-form-sidebar">Select Vehicle</small>
+
+                <p>&nbsp;</p>
+
+                <select class="width-form-sidebar selectpicker pull-left SelectDriverFilter" data-live-search="true" data-style="btn-dropdown" id="driverlog">
+                    <option value="" selected="selected">--</option>
+                    <option value="" selected="selected">Driver DEMO</option>
+                </select>
+
+                <small class="width-form-sidebar">Select Driver</small>
+
+                <p>&nbsp;</p>
+
+                <input id="dateFrom" type="text" class="form-control width-form-sidebar" placeholder="DD-MMM-YYYY" name="dateFrom">
+
+                <small class="width-form-sidebar">Date From</small>
+
+                <p>&nbsp;</p>
+
+                <input id="dateTo" type="text" class="form-control width-form-sidebar" placeholder="DD-MMM-YYYY" name="dateTo">
+
+                <small class="width-form-sidebar">Date To</small>
+
+                <p>&nbsp;</p>
+
+                <button id="submitReport" class="pull-right btn btn-add fa fa-check btn-lg" title="Submit" style="margin-right:5px; color:white;">&nbsp;<span class="btn-text">Submit</span></button>
+
+            </div>
+
+                
+        </div>
+        <!-- /#sidebar-wrapper -->  
+        
+        <!-- Site content !-->
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!--<h5 class="welcome hidden-xs hidden-sm">
+            <b>
+                Welcome,
+                Administrator! <a href="index.html">Logout</a>
+            </b>
+        </h5>
+        <h5><b class="time hidden-xs hidden-sm" id="clockbox"></b></h5>-->
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" id="menu-toggle">
+                        <span class="sr-only">
+                            Toggle navigation
+                        </span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a style="margin-left: -100px;" class="navbar-brand logo" href="#">
+                        <img class="hidden-sm hidden-xs" src="img/logo-2.png" height="91" width="200">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav pull-right">
+
+     					<li class="hidden-xs hidden-sm">
+                            <a href="dashboard.html">
+                                <i class="fa fa-home fa-lg">&nbsp;</i>Dashboard
+                            </a>
+                        </li>
+                        <li class="hidden-xs hidden-sm">
+                            <a href="vehicle.html">
+                            <i class="fa fa-bus fa-md">&nbsp;</i>Vehicle</a>
+                        </li>
+                        <li class="hidden-xs hidden-sm">
+                            <a href="reports.html">
+                                <i class="fa fa-briefcase fa-md">&nbsp;</i>Operational and Fault<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="dropdown active hidden-xs hidden-sm">
+                            <!--<a href="reports-driver.html">Driver Behaviour Monitoring<span class="sr-only caret">(current)</span></a>-->
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-users fa-md">&nbsp;</i>Driver Behaviour Monitoring
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:220px;">
+                                <li><a href="trigger-data.html">Trigger Data</a></li>
+                                <li><a href="reports-driver.html">Trip Data</a></li>
+                                <li><a href="driver-average.html">Driver Average</a></li>
+                                <li><a href="reports-summary.html">Summary</a></li>
+                                <li class="hidden-xs hidden-sm hidden-md hidden-lg"><a href="reports-analysis.html">Performance Analysis</a></li>
+                            </ul>
+                        </li>
+                        <li class="hidden-xs hidden-sm">
+                            <a href="software.html"><i class="fa fa-cog fa-md">&nbsp;</i>Software and Configuration</a>
+                        </li>
+                        <li>
+                            <a href="http://track.asiacom.co.th/sbs/">
+                                    <i class="fa fa-sign-out fa-md">&nbsp;</i>Logout
+                                </a>
+                        </li>
+                        <!--<li>
+                        <a href="#">Help</a>
+                    </li>-->
+                    </ul>
+
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav><!-- Main content -->   
+
+        <!--content-->
+
+    <div id="page-content-wrapper" style="margin-bottom:40px;">
+
+       
+        <div class="container">
+            <div style="margin-bottom: 40px !important; margin-top: 40px !important;">
+                <ol class="breadcrumb hidden-xs" style="background-color:#51025B">
+                    <li style="color:white;">
+                        Driver Behaviour Monitoring
+                    </li>
+                    <li style="color: pink;">Driver Average</li>
+                </ol>
+
+                <div id="chartdivPie" class="col-md-6 hidden-xs"></div>
+                <div id="chartdivPieAve" class="col-md-6 pull-right hidden-xs"></div>
+
+            </div>
+
+            <table id="driverAverage" class="display triggerDataClass" width="100%" cellspacing="0" style="width:100%">
+
+                <!--<tfoot id="tableFooter">
+            <tr>
+                <th>Date</th>
+                <th>BC No.</th>
+                <th>Svc. No.</th>
+                <th>FCW</th>
+                <th>PCW</th>
+                <th>HMW</th>
+                <th>LDW</th>
+                <th>Total ex LDW</th>
+                <th>Total</th>
+                <th>Ave FCW</th>
+                <th>Ave PCW</th>
+                <th>Ave HMW</th>
+                <th>Ave LDW</th>
+                <th>Ave Total less LDW</th>
+                <th>Ave Total</th>
+            </tr>
+        </tfoot>-->
+            </table>
+
+                <div id="timeIntervalTripData"></div>
+
+            </div><!-- /container -->
+
+        </div>
+
+        <footer class="footer hidden-xs hidden-sm" id="fixFooter">
+            <div class="container">
+                <hr class="hr-footer">
+                <p class="text-muted">ADVANCE DRIVER ASSISTANCE SYSTEM © 2016</p>
+                <!--<div class="show-fixed pull-right pad-rgt hidden-xs" id="clockbox" title="Current Time"><i class="fa fa-clock-o hidden-xs">&nbsp;</i></div>-->
+            </div>
+        </footer>
+
+    </div>
+
+	
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <script src="js/servertime.js"></script>
+        <script src="js/load-driver-average.js"></script>
+		 <!--Data Tables-->
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <!--<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>-->
+        <!--Export-->
+        <script src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.0/js/buttons.flash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+        <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.colVis.min.js"></script>
+
+        <!--Re-Order Columns-->
+        <script src="https://cdn.datatables.net/colreorder/1.3.2/js/dataTables.colReorder.min.js"></script>
+        <!--Responsive-->
+        <script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+        <!--Key-->
+        <script src="https://cdn.datatables.net/keytable/2.1.2/js/dataTables.keyTable.min.js"></script>
+        <!--Re-Order Row-->
+        <script src="https://cdn.datatables.net/rowreorder/1.1.2/js/dataTables.rowReorder.min.js"></script>
+        <!--Select-->
+        <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+
+        
+        <!--Date Format-->
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/moment-timezone/moment-timezone.js"></script>
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+        <!--Marker Cluster [ OPTIONAL ]-->
+        <script src="plugins/markercluster/src/markerclusterer.js"></script>
+
+        <!--Infobuble [ OPTIONAL ]-->
+        <script src="plugins/infobubble/src/infobubble.js"></script>
+
+		<!--Datetime Picker [ OPTIONAL ]-->
+        <script src="plugins/datetimepicker/jquery.datetimepicker.js"></script>
+        <script src="plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+        <!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
+        <script src="plugins/highchart/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+       
+
+
+        <script>
+            var dateFormat = "D-MMM-YYYY HH:mm A";
+            var d1 = new Date();
+            d1.setHours(0);
+            d1.setMinutes(0);
+            var dateFrom = moment(d1).format(dateFormat);
+
+            var d2 = new Date();
+            d2.setDate(d2.getDate() + 1);
+            d2.setHours(0);
+            d2.setMinutes(0);
+            var dateTo = moment(d2).format(dateFormat);
+
+
+            jQuery('#dateFrom').datetimepicker({
+                format: 'd-M-Y H:i A',
+                timepicker: true,
+                value: dateFrom
+            });
+
+            jQuery('#dateTo').datetimepicker({
+                format: 'd-M-Y H:i A',
+                timepicker: true,
+                value: dateTo
+            });
+
+        </script>
+
+   
+        <script>
+
+
+            //callback function
+            function drawChart() {
+
+                //Then retrieve
+                var localObj = JSON.parse(sessionStorage.getItem("setSessionstorageValueEvent"));
+
+                if (localObj != null) {
+
+                    var ldw = localObj.LDW;
+                    var hw = localObj.HW;
+                    var fcw = localObj.FCW;
+                    var pcw = localObj.PCW;
+
+
+                    $('#chartdivPie').highcharts({
+                        chart: {
+                            type: 'pie',
+                            options3d: {
+                                enabled: true,
+                                alpha: 45,
+                                beta: 0
+                            }
+                        },
+                        title: {
+                            text: 'Safety Events Distribution'
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                depth: 35,
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.name}'
+                                },
+                                showInLegend: true
+                            }
+                        },
+                        series: [{
+                            type: 'pie',
+                            name: 'Event',
+                            data: [
+                                 ['LDW', ldw],
+                                 ['HW', hw],
+                                 ['FCW', fcw],
+                                 ['PCW', pcw]
+                            ]
+                        }]
+                    });
+               }
+            }
+
+
+        </script>
+
+
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+
+</body>
+</html>

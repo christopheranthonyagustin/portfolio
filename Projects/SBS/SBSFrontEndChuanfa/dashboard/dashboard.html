@@ -1,0 +1,379 @@
+﻿
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>Dashboard</title>
+    <meta content="" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 0px;
+            padding-bottom: 20px;
+            background-image: url("img/dashboard.png");
+            background-position:top;
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        #chartdivPie {
+            height: 100%;
+
+        }
+
+        #map {
+            height: 400px;
+            width: 560px;
+        }
+
+        #styles, #add-tab {
+            float: left;
+            margin-top: 10px;
+            width: 400px;
+        }
+
+            #styles label,
+            #add-tab label {
+                display: inline-block;
+                width: 130px;
+            }
+
+        .phoney {
+            background: -webkit-gradient(linear,left top,left bottom,color-stop(0, rgb(112,112,112)),color-stop(0.51, rgb(94,94,94)),color-stop(0.52, rgb(57,57,57)));
+            background: -moz-linear-gradient(center top,rgb(112,112,112) 0%,rgb(94,94,94) 51%,rgb(57,57,57) 52%);
+        }
+
+        .phoneytext {
+            text-shadow: 0 -1px 0 #000;
+            color: #fff;
+            font-family: Helvetica Neue, Helvetica, arial;
+            font-size: 16px;
+            line-height: 25px;
+            padding: 4px 45px 4px 15px;
+            font-weight: bold;
+            background: url(../images/arrow.png) 95% 50% no-repeat;
+        }
+
+        .phoneytab {
+            text-shadow: 0 -1px 0 #000;
+            color: #fff;
+            font-family: Helvetica Neue, Helvetica, arial;
+            font-size: 18px;
+            background: rgb(112,112,112) !important;
+        }
+
+    </style>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/bootstrap-table.css" rel="stylesheet">
+    <link href="css/bootstrap-table-filter.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="plugins/ui-sidebar/sidebar.css" rel="stylesheet">
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+    <!--<link href="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">-->
+    <link href="plugins/datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLur5AuI1VPdx8JAtANJHKZ4G_ZU7_iMw&callback=initMap" async defer></script>-->
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+                        <span class="sr-only">
+                            Toggle navigation
+                        </span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a style="margin-left: -100px;" class="navbar-brand logo" href="#">
+                        <img class="hidden-sm hidden-xs" src="img/logo-2.png" height="91" width="200">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav pull-right">
+
+                        <li class="hidden-xs hidden-sm">
+                            <a href="http://66.96.208.81/sbs/">
+                                <i class="fa fa-sign-out fa-md">&nbsp;</i>Logout
+                            </a>
+                        </li>
+                        <!--<li>
+                        <a href="#">Help</a>
+                    </li>-->
+                    </ul>
+
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav><!-- Main content -->   
+
+        <!--content-->
+   
+    </div>
+
+    <div class="contentDashboard">
+        <div class="col-md-12 text-center">
+            <div class="col-md-3 col-md-offset-3">
+                <a href="vehicle.html"><img src="img/menu-sbs/1.jpg" height="180" width="180"><br><h4 class="orange-text">Vehicle</h4></a>
+
+            </div>
+
+            <div class="col-md-3">
+                <a href="trigger-data.html"><img src="img/menu-sbs/2.jpg" height="180" width="180"><br><h4 class="orange-text">Driver Behaviour Monitoring</h4></a>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-md-12 text-center">
+            <div class="col-md-3 col-md-offset-3 oaf">
+                <a href="reports.html"><img src="img/menu-sbs/3.jpg" height="180" width="180"><br><h4 class="orange-text">Operational and Fault</h4></a>
+            </div>
+
+            <div class="col-md-3 software">
+                <a href="software.html"><img src="img/menu-sbs/4.jpg" height="180" width="180"><br><h4 class="orange-text">Software and Configuration</h4></a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <footer class="footerDashboard">
+        <div class="container">
+            <hr class="hr-footer">
+            <span id="ver" class="text-muted"></span>
+            <div class="show-fixed pull-right text-muted" id="clockbox" title="Clock"></div>
+            <span id="user" style="margin-right:20px" class="text-muted pull-right"></span>
+
+        </div>
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+    </script>
+        <script>
+            window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+        </script>
+        <script src="js/bootstrap.min.js">
+        </script>
+        <script src="js/bootstrap-table.js">
+        </script>
+        <script src="js/Table-Export/bootstrap-table-export.js">
+        </script>
+        <script src="js/Table-Export/tableExport.js">
+        </script>
+        <script src="js/Table-Export/FileSaver.min.js">
+        </script>
+        <script src="js/Table-Export/html2canvas.min.js">
+        </script>
+        <script src="js/Table-Export/jspdf.min.js">
+        </script>
+        <script src="js/Table-Export/jspdf.plugin.autotable.js">
+        </script>
+        <!-- Check src: https://github.com/lukaskral/bootstrap-table-filter/issues/2 -->
+        <script src="js/role.js"></script>
+        <script src="js/version.js"></script>
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-1.js">
+        </script><!--BS Table Filter 1-->
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-2.js">
+        </script><!--BS Table Filter 2-->
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-3.js">
+        </script><!--BS Table Filter 3-->
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-control.js">
+        </script>
+        <script src="js/servertime.js"></script>
+        <!--<script src="js/main.js"></script>-->
+        <!--<script src="js/function.js"></script>-->
+        <!--<script src="js/load-trigger-data.js"></script>-->
+        <!--Date Format-->
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/moment-timezone/moment-timezone.js"></script>
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+        <!--Marker Cluster [ OPTIONAL ]-->
+        <script src="plugins/markercluster/src/markerclusterer.js"></script>
+
+        <!--Infobuble [ OPTIONAL ]-->
+        <script src="plugins/infobubble/src/infobubble.js"></script>
+
+        <!--<script src="plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>-->
+        <script src="plugins/datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script>
+            $('#dateFrom').datepicker({
+                format: 'dd-M-yyyy'
+            });
+
+            $('#dateTo').datepicker({
+                format: 'dd-M-yyyy'
+            });
+
+        </script>
+        <script src="vehicles/SBS3114L.json"></script>
+        <script>
+
+            google.load('visualization', '1', { packages: ['corechart'] });
+            google.setOnLoadCallback(drawChart);
+
+
+            //callback function
+            function drawChart() {
+
+                //Then retrieve
+                var localObj = JSON.parse(sessionStorage.getItem("setSessionstorageValueEvent"));
+
+                if (localObj != null) {
+
+                    var speed = localObj.Speed;
+                    var ldw = localObj.LDW;
+                    var interval = localObj.Interval;
+                    var hw = localObj.HW;
+                    var fcw = localObj.FCW;
+
+                    var data = google.visualization.arrayToDataTable([
+                          ['Safety Events Distribution', 'Percentage'],
+                          ['Speed', speed],
+                          ['LDW', ldw],
+                          ['Interval', interval],
+                          ['HW', hw],
+                          ['FCW', fcw],
+                    ]);
+
+
+                    var options = {
+                        title: 'Safety Events Distribution',
+                        width: 560,
+                        height: 400,
+                        is3D: true,
+                        legend: { position: 'labeled', textStyle: { color: '#004185', fontSize: 12 } },
+                        pieSliceText: 'label',
+                        slices: {
+                            1: { offset: 0.2 },
+                            4: { offset: 0.3 },
+                            7: { offset: 0.4 },
+                            9: { offset: 0.5 },
+                        },
+                    };
+
+                    chart = new google.visualization.PieChart(document.getElementById('chartdivPie'));
+                    chart.draw(data, options);
+                }
+            }
+        </script>
+
+        <script>
+            var markers = [];
+            var infoBoxList = [];
+            var imageUrl = 'http://chart.apis.google.com/chart?cht=mm&chs=24x32&' + 'chco=FFFFFF,008CFF,000000&ext=.png';
+            var markerImage = new google.maps.MarkerImage(imageUrl, new google.maps.Size(24, 32));
+            var contentString;
+            var url = '/vehicles/SBS3114L.json';
+
+            function initialize() {
+                var center = new google.maps.LatLng(1.3000, 103.8000);
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 10,
+                    center: center,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+
+
+                for (var i = 0; i < 57; i++) {
+                    var asset = data.assets[i];
+                    var warning = asset.warning;
+                    var latLng = new google.maps.LatLng(asset.latitude,
+                        asset.longitude);
+                    var marker = new google.maps.Marker({
+                        position: latLng,
+                        icon: markerImage,
+                        title: asset.Address
+                    });
+
+                    markers.push(marker);
+
+                    contentString = '<div id="content">' +
+                                    '<h5 class="text-primary"><strong>' + 'SBS3114L' + '</strong></h5>' +
+                                    '<strong>Warning: </strong>' + warning +
+                                    '<br />' +
+                                    '<strong>Address: </strong>' + asset.Address +
+                                    '<br />' +
+                                    '<strong>Speed: </strong>' + asset.Speed + ' km/h' +
+                                    '<br />' +
+                                    '<strong>Timestamp: </strong>' + asset.Timestamp +
+                                    '</p>' +
+                                    '</div>';
+
+                    setInfoBubble(marker, asset);
+
+                }
+
+                var markerCluster = new MarkerClusterer(map, markers);
+
+            }
+            //google.maps.event.addDomListener(window, 'load', initialize);
+
+
+            function setInfoBubble(marker, asset) {
+
+                var infoBubble = new InfoBubble({
+                    minWidth: 225,
+                    minHeight: 115,
+                    map: map,
+                    content: contentString,
+                    shadowStyle: 1,
+                    borderRadius: 4,
+                    arrowSize: 15,
+                    borderWidth: 1,
+                    disableAutoPan: false,
+                    hideCloseButton: false,
+                    arrowPosition: 30,
+                    arrowStyle: 2,
+                });
+
+                infoBoxList.push(infoBubble);
+
+                marker.addListener('click', function () {
+                    infoBubble.open(marker.get('map'), marker);
+                });
+            }
+
+        </script>
+
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+
+
+</body>
+</html>

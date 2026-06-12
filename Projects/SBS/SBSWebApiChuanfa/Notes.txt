@@ -1,0 +1,13 @@
+﻿http://localhost/fms/Dashboard
+http://localhost/phpmyadmin
+http://localhost/trackdemowebapi/api/assetinfo
+http://localhost/trackdemowebapi/api/zoneinfo/
+http://localhost/trackdemowebapi/api/companyinfo
+http://localhost/trackdemowebapi/api/userinfo
+http://localhost/trackdemowebapi/api/deviceinfo
+http://localhost/trackdemowebapi/api/zonetypeinfo
+http://localhost/trackdemowebapi/api/categoryinfo
+http://localhost/trackdemowebapi/api/reportinfo
+http://localhost/trackdemowebapi/api/roleinfo
+http://localhost/trackdemowebapi/api/languageinfo
+http://localhost/trackdemowebapi/api/eventinfo

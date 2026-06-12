@@ -1,0 +1,37 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FMSWinSvc.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MasterKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">w46Ei61OlkaFiF9Sf58yTg</Value>
+    </Setting>
+    <Setting Name="LogPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\inetpub\wwwroot\WinServices\_LiveSites\RawData</Value>
+    </Setting>
+    <Setting Name="DataPort" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">18050</Value>
+    </Setting>
+    <Setting Name="ProjectName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SBS</Value>
+    </Setting>
+    <Setting Name="IP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">66.96.208.81</Value>
+    </Setting>
+    <Setting Name="DeviceID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">9999</Value>
+    </Setting>
+    <Setting Name="SourceFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\inetpub\wwwroot\WinServices\_LiveSites</Value>
+    </Setting>
+    <Setting Name="mConnStr" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=localhost;uid=root;pwd=$B$Transit888;database=adas;charset=utf8;default command timeout=99999999;&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=localhost;uid=root;pwd=$B$Transit888;database=adas;charset=utf8;default command timeout=99999999;</Value>
+    </Setting>
+    <Setting Name="OTAFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\data</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

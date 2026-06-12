@@ -1,0 +1,259 @@
+﻿
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>Map</title>
+    <meta content="" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+
+    <!--MAPS-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLur5AuI1VPdx8JAtANJHKZ4G_ZU7_iMw"></script>
+
+    <!--Date Format-->
+    <script src="plugins/moment/moment.js"></script>
+    <script src="plugins/moment-timezone/moment-timezone.js"></script>
+
+    <!--Infobuble [ OPTIONAL ]-->
+    <script src="plugins/infobubble/src/infobubble.js"></script>
+
+    <!--Marker Cluster [ OPTIONAL ]-->
+    <script src="plugins/markercluster/src/markerclusterer.js"></script>
+
+    <style type="text/css">
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            margin: 0 auto 0;
+            padding: 0px 0px 0;
+            overflow: hidden;
+            max-width: none !important;
+            box-shadow: none !important;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+
+    <!--<span>Test</span>-->
+    <div id="map"></div>
+
+    <script>
+
+        obj = localStorage.setLocalstorageValueWebAPI;
+
+        var map;
+        var markers = new Array();
+        var marker;
+        var infoBoxList = [];
+        var assets = [];
+
+        var contentString;
+
+        function initialize() {
+            var center = new google.maps.LatLng(1.3000, 103.8000);
+            var mapTypeIds = ["SEA"];
+            for (var type in google.maps.MapTypeId) {
+                mapTypeIds.push(google.maps.MapTypeId[type]);
+            }
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: center,
+                mapTypeControl: false,
+                mapTypeId: "SEA",
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    mapTypeIds: mapTypeIds,
+                    position: google.maps.ControlPosition.TOP_LEFT
+                },
+            });
+
+            Layers();
+
+            setMarkers(obj, handleAssets);
+
+        }
+
+
+        function setMarkers(obj, callback) {
+
+            $.getJSON(obj, function (assets) {
+
+                callback(assets);
+            });
+        }
+
+        function handleAssets(assets) {
+
+            for (var i = 0; i < assets.length; i++) {
+                var asset = assets[i];
+                if (assets.indexOf(i) !== -1) continue;
+                if (assets.PosX == 0) continue;
+                if (assets.PosY == 0) continue;
+
+                var getEvent = eventFormatter(asset.Event);
+
+                var myLatLng = new google.maps.LatLng(parseFloat(asset.PosY), parseFloat(asset.PosX));
+
+                var imageUrl = 'img/markers/' + getEvent + '.png';
+                var markerImage = new google.maps.MarkerImage(imageUrl, new google.maps.Size(24, 32));
+
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    icon: markerImage,
+                    title: asset.Asset
+                });
+
+                markers.push(marker);
+
+                var assetTimestamp = asset.Timestamp;
+
+                //Convert Timezone
+                var Asia = moment.tz.add('Asia/Singapore|SMT MALT MALST MALT MALT JST SGT SGT|-6T.p -70 -7k -7k -7u -90 -7u -80|012345467|-2Bg6T.p 17anT.p 7hXE dM00 17bO 8Fyu Mspu DTA0');
+                var Singapore = moment.tz(assetTimestamp, Asia);
+                var timestamp = moment.utc(Singapore.format()).add('hours', 8).format('D-MMM-YYYY, hh:mm:ss A');
+
+                contentString = '<div id="content">' +
+                                '<h5 class="text-primary"><strong>' + asset.Asset + '</strong></h5>' +
+                                '<strong>Event: </strong>' + getEvent +
+                                '<br />' +
+                                '<strong>Speed: </strong>' + asset.Speed + ' km/h' +
+                                '<br />' +
+                                '<strong>Timestamp: </strong>' + timestamp +
+                                '</p>' +
+                                '</div>';
+
+                setInfoBubble(marker, asset);
+
+            }
+
+            var markerCluster = new MarkerClusterer(map, markers, {
+                maxZoom: 13,
+                zoomOnClick: true
+            });
+
+
+        }
+
+        function setInfoBubble(marker, asset) {
+
+            var infoBubble = new InfoBubble({
+                minWidth: 225,
+                minHeight: 115,
+                map: map,
+                content: contentString,
+                shadowStyle: 1,
+                borderRadius: 4,
+                arrowSize: 15,
+                borderWidth: 1,
+                disableAutoPan: false,
+                hideCloseButton: false,
+                arrowPosition: 30,
+                arrowStyle: 2,
+            });
+
+            infoBoxList.push(infoBubble);
+
+            marker.addListener('click', function () {
+                infoBubble.open(marker.get('map'), marker);
+            });
+        }
+
+        function AutoRefresh() {
+
+
+            // Loop through markers and set map to null for each
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+
+            // Reset the markers array
+            markers = [];
+
+            for (var i = 0; i < infoBoxList.length; i++) {
+
+                infoBoxList[i].close();
+            }
+
+            // Reset the markers array
+            infoBoxList = [];
+
+
+        }
+
+        function Layers() {
+
+            //SEA Layer - On
+            /*=================================================*/
+            //Start
+
+            map.mapTypes.set("SEA", new google.maps.ImageMapType({
+                getTileUrl: function (coord, zoom) {
+                    return "http://a.tile.osm-tools.org/osm_then/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+                },
+                tileSize: new google.maps.Size(256, 256),
+                name: "Multilanguage", //Multilanguage
+                alt: "Multilanguage",
+                maxZoom: 20
+
+            }));
+
+            //End
+            /*=================================================*/
+
+        }
+
+        function eventFormatter(value) {
+
+            var text;
+            if (value == 83) {
+                text = "Speeding";
+            } else if (value == 76) {
+                text = "LDW";
+            } else if (value == 73) {
+                text = "Interval";
+            } else if (value == 72) {
+                text = "HMW";
+            } else if (value == 70) {
+                text = "FCW";
+            } else if (value == 68) {
+                text = "PDZ";
+            } else if (value == 80) {
+                text = "PCW";
+            } else if (value == 77) {
+                text = "Maintenance";
+            } else if (value == 84) {
+                text = "Tamper Alert";
+            }
+
+            else {
+                text = value;
+            }
+
+            return text;
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+</body>
+</html>

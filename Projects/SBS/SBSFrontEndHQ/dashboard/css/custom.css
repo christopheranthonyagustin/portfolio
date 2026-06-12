@@ -1,0 +1,270 @@
+th {
+    background-color: #51025B;
+    color: white;
+} 
+
+
+/*body { font-size: 140%; }*/
+
+div.DTTT { margin-bottom: 0.5em; float: right; }
+
+div.dataTables_wrapper { clear: both; }
+
+.form-inline .form-control {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    font-weight: normal;
+}
+ 
+.bg-move{
+	background-color:#5cb000;
+}
+
+.bg-move,.bg-move a{
+	color:#fff;
+}
+
+
+.bg-idle{
+	background-color:#ce8110;
+}
+
+.bg-idle,.bg-idle a{
+	color:#fff;
+}
+
+.bg-stop{
+	/*background-color:#255acc;*/
+    background-color:#A20C0C;
+}
+
+.bg-stop,.bg-stop a{
+	color:#fff;
+}
+
+.bg-danger{
+	background-color:#A20C0C;
+}
+
+.bg-danger,.bg-danger a{
+	color:#fff;
+}
+
+
+.badge-move{
+	background-color:#5cb000;
+}
+
+.badge-idle{
+	background-color:#ce8110;
+}
+
+.badge-stop{
+	background-color:#A20C0C;
+}
+
+
+.btn-move{
+	background-color:#5cb000;
+}
+
+.btn-idle{
+	background-color:#ce8110;
+}
+
+.btn-stop{
+	background-color:#A20C0C;
+}
+
+
+.dark{
+	background-color:#060D11;
+}
+
+
+.icon-move {
+  color: #5cb000;
+}
+
+.icon-stop {
+  color: #A20C0C;
+}
+
+.btn-add{
+	background-color:#51025B;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px !important;
+}
+
+.btn-text{
+	/*background-color:#51025B;*/
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px !important;
+}
+
+.btn-edit{
+	background-color:#ce8110;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.btn-delete{
+	background-color:#A20C0C;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.btn-sbs{
+	background-color:#51025B;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px !important;
+}
+
+.btn-dropdown{
+	background-color:#51025B;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: white;
+}
+
+.btn-dropdown.active,.btn-dropdown:active,.btn-dropdown:focus,.btn-dropdown:hover,.open>.dropdown-toggle.btn-dropdown{
+    background-color:#6C077A;
+	border-color:#000000;
+	color:#fff/*To Change Active Font Color*/
+	/*color:#fff*/
+}
+
+.input_width{
+   width: 200px;
+}
+
+
+footer{
+    width:100%;
+    min-height:100px;    
+    background-color: #FFFFFF; /* This color gets inverted color or you can add navbar inverse class in html */
+}
+
+
+.modal{
+	text-align:center
+}
+
+.modal:before{
+	content:'';
+	display:inline-block;
+	height:100%;
+	width:0;
+	margin-left:-1em;
+	vertical-align:middle
+}
+
+.modal.fade:not(.animated) .modal-dialog{
+	opacity:0;
+	-webkit-transform:translateY(-150%);
+	-ms-transform:translateY(-150%);
+	transform:translateY(-150%);
+	-webkit-transition:all .5s linear .5s;
+	transition:all .5s linear .5s
+}
+
+.modal.fade.in:not(.animated) .modal-dialog{
+	opacity:1;
+	-webkit-transform:translateY(0);
+	-ms-transform:translateY(0);
+	transform:translateY(0);
+	-webkit-transition:all .5s;
+	transition:all .5s
+}
+
+.bootbox.modal.in:not(.fade){
+	opacity:1;
+	-webkit-transition:opacity .5s;
+	transition:opacity .5s
+}
+
+.bootbox.modal:not(.fade){
+	opacity:0;
+	-webkit-transition:opacity .5s linear .5s;
+	transition:opacity .5s linear .5s
+}
+
+.modal-dialog{
+	display:inline-block;
+	vertical-align:middle;
+	text-align:left;
+	margin-top:-1%;
+	min-width:90%
+}
+
+.modal-dialog.animated{
+	-webkit-animation-duration:.7s;
+	animation-duration:.7s
+}
+
+.modal-header{
+	padding:15px;
+	position:relative;
+	border:0
+}
+
+.modal-header:after{
+	content:'';
+	position:absolute;
+	bottom:0;
+	left:15px;
+	right:15px;
+	height:1px;
+	border-bottom:1px solid rgba(0,0,0,.1)
+}
+
+.modal-footer{
+	background-color:rgba(0,0,0,.025);
+	color:#5c7174;
+	border-color:rgba(0,0,0,.04);
+	border-top-left-radius:2px;
+	border-top-right-radius:2px
+}
+
+.modal-title{
+	font-size:18px;
+	font-weight:300
+}
+
+.modal-body{
+	min-height:90px
+}
+
+.modal-body .close,.modal-header .close{
+	top:auto;
+	right:auto;
+	background-color:transparent!important
+}
+
+.modal-content{
+	box-shadow:none;
+	border-radius:2px
+}
+
+.modal-footer{
+	padding:10px 15px;
+	border-bottom-left-radius:2px;
+	border-bottom-right-radius:2px
+}
+
+.modal-backdrop.in{
+	opacity:.75
+}
+
+@media(min-width:768px){
+	.modal-dialog{
+		min-width:0
+	}
+
+}
+
+
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}

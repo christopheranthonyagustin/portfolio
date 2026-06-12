@@ -1,0 +1,403 @@
+﻿
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>Driver Management</title>
+    <meta content="" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 0px;
+            padding-bottom: 20px;
+        }
+
+        #chartdivPie {
+            height: 100%;
+            margin-top: 50px;
+            margin-left: -30px;
+        }
+
+        #map {
+            height: 350px;
+            width: 500px;
+            margin-top: 50px;
+        }
+
+        #styles, #add-tab {
+            float: left;
+            margin-top: 10px;
+            width: 400px;
+        }
+
+            #styles label,
+            #add-tab label {
+                display: inline-block;
+                width: 130px;
+            }
+
+        .phoney {
+            background: -webkit-gradient(linear,left top,left bottom,color-stop(0, rgb(112,112,112)),color-stop(0.51, rgb(94,94,94)),color-stop(0.52, rgb(57,57,57)));
+            background: -moz-linear-gradient(center top,rgb(112,112,112) 0%,rgb(94,94,94) 51%,rgb(57,57,57) 52%);
+        }
+
+        .phoneytext {
+            text-shadow: 0 -1px 0 #000;
+            color: #fff;
+            font-family: Helvetica Neue, Helvetica, arial;
+            font-size: 16px;
+            line-height: 25px;
+            padding: 4px 45px 4px 15px;
+            font-weight: bold;
+            background: url(../images/arrow.png) 95% 50% no-repeat;
+        }
+
+        .phoneytab {
+            text-shadow: 0 -1px 0 #000;
+            color: #fff;
+            font-family: Helvetica Neue, Helvetica, arial;
+            font-size: 18px;
+            background: rgb(112,112,112) !important;
+        }
+
+    </style>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/bootstrap-table.css" rel="stylesheet">
+    <link href="css/bootstrap-table-filter.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="plugins/ui-sidebar/sidebar.css" rel="stylesheet">
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+    <!--Datetime Picker [ OPTIONAL ]-->
+    <link href="plugins/datetimepicker/jquery.datetimepicker.css" rel="stylesheet">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+	<!--Lightbox [ OPTIONAL ]-->
+    <link href="plugins/lightbox/dist/ekko-lightbox.min.css" rel="stylesheet">
+
+    <!--Validation-->
+    <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css" />
+
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+         
+            <div>
+                
+                <ul class="sidebar-nav nav-pills nav-stacked" id="menu" style="margin-top: 70px;">
+
+                    <li>
+                        <a href="vehicle.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-bus fa-stack-1x "></i></span> Vehicle</a>
+                    </li>
+                    <li class="active">
+                        <a href="driver.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-male fa-stack-1x "></i></span> Driver</a>
+                    </li>
+                    <li>
+                        <a href="user.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>User</a>
+                    </li>
+                </ul>
+
+            </div>
+
+                
+        </div>
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+                        <span class="sr-only">
+                            Toggle navigation
+                        </span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a style="margin-left: -100px;" class="navbar-brand logo" href="#">
+                        <img class="hidden-sm hidden-xs" src="img/logo-2.png" height="91" width="200">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav pull-right">
+
+                        <li class="hidden-xs hidden-sm">
+                            <a href="dashboard.html">
+                                <i class="fa fa-home fa-lg">&nbsp;</i>Dashboard
+                            </a>
+                        </li>
+                        <li class="active hidden-xs hidden-sm">
+                            <a href="vehicle.html"><i class="fa fa-bus fa-md">&nbsp;</i>Vehicle</a>
+                        </li>
+                        <li class="hidden-xs hidden-sm">
+                            <a href="reports.html"><i class="fa fa-briefcase fa-md">&nbsp;</i>Operational and Fault<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="dropdown hidden-xs hidden-sm">
+                            <!--<a href="reports-driver.html">Driver Behaviour Monitoring<span class="sr-only caret">(current)</span></a>-->
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-users fa-md">&nbsp;</i>Driver Behaviour Monitoring
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:220px;">
+                                <li><a href="trigger-data.html">Trigger Data</a></li>
+                                <li><a href="reports-driver.html">Trip Data</a></li>
+                                <li><a href="driver-average.html">Driver Average</a></li>
+                                <li><a href="reports-summary.html">Summary</a></li>
+                                <li class="hidden-xs hidden-sm hidden-md hidden-lg"><a href="reports-analysis.html">Performance Analysis</a></li>
+                            </ul>
+                        </li>
+                        <li class="hidden-xs hidden-sm">
+                            <a href="software.html"><i class="fa fa-cog fa-md">&nbsp;</i>Software and Configuration</a>
+                        </li>
+                        <li class="hidden-xs hidden-sm">
+                            <a href="http://track.asiacom.co.th/sbs/">
+                                <i class="fa fa-sign-out fa-md">&nbsp;</i>Logout
+                            </a>
+                        </li>
+                        <!--<li>
+                        <a href="#">Help</a>
+                    </li>-->
+                    </ul>
+
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav><!-- Main content -->   
+
+        <!--content-->
+
+    <div id="page-content-wrapper">
+
+       
+        <div class="container">
+            <!--<div id="custom-vehicles">
+            </div>-->
+            <div style="margin-bottom: 40px !important; margin-top: 40px !important;">
+                <ol class="breadcrumb hidden-xs" style="background-color:#51025B">
+                    <li style="color:white;">
+                        Driver Management
+                    </li>
+                    <li style="color:pink;">Drivers</li>
+                </ol>
+
+                <div id="custom-drivers">
+                    <button id="driver-confirm-deleteEN" class="btn btn-delete fa fa-times btn-lg pull-right" title="Delete Record" style="color:white;">&nbsp;<span class="btn-text">Delete</span></button>
+                    <button id="buttonNew" class="btn btn-add fa fa-bus btn-lg pull-right" title="Add Record" style="color:white;">&nbsp;<span class="btn-text">Add</span></button>
+
+                </div>
+
+                <table id="drivers-editable"
+                       data-flat="false"
+                       data-height="460"
+                       class="searchable table-striped"
+                       data-click-to-select="false"
+                       data-single-select="true"
+                       data-toolbar="#custom-drivers"
+                       data-show-header="true"
+                       data-show-export="false"
+                       data-show-filter="false"
+                       data-search="true"
+                       data-show-refresh="false"
+                       data-show-toggle="true"
+                       data-show-columns="true"
+                       data-page-list="[10, 25, 50, 100, All]"
+                       data-page-size="10"
+                       data-pagination="true" data-show-pagination-switch="false"></table>
+
+            </div>
+
+        </div><!-- /container -->
+
+        </div>
+
+        <footer class="footer" id="fixFooter">
+            <div class="container">
+                <hr class="hr-footer">
+                <p class="text-muted">ADVANCE DRIVER ASSISTANCE SYSTEM © 2016</p>
+
+            </div>
+        </footer>
+        <div class="modal fade darker" id="TableFormNew" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="addform" class="modal-title">Add Driver</h4>
+                        <h4 id="editform" style="display: none;" class="modal-title">Edit Driver</h4>
+                    </div>
+                    <div class="modal-body m-l-20 m-r-20">
+                        <div id="formnew" class="row form-columned">
+                            <div id="driverform">
+                            <div class="data">
+                                <div class="col-md-6 m-b-10 p-t-15 hidden-xs hidden-sm hidden-md hidden-lg" style="margin-top:5px;" id="modal-deviceID">
+                                    <label for="driverID">Driver ID:</label>
+                                    <input data-l11n type="text" class="form-control" placeholder="Driver ID" name="driverID" id="driverID" data-by-field="driverID">
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-driverNameEN">
+                                    <label for="driverNameEN">Driver's Name:</label>
+                                    <input type="text" data-errormessage-value-missing="Driver's name is required!" class="validate[required] form-control" placeholder="Enter Driver's Name" id="driverNameEN" name="driverNameEN">
+                                </div>
+
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="driverCompanyEN">Company:</label>
+                                    <select class="selectpicker MobileSelectCompanyFilter" data-live-search="true" data-width="100%" data-style="btn-dropdown" id="driverCompanyEN" name="driverCompanyEN" disabled="disabled"></select>
+                                </div>
+                                <div class="col-md-12"><small>&nbsp;</small></div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-driverEmailEN">
+                                    <label for="driverEmailEN">Driver's Email:</label>
+                                    <input data-l11n="" type="text" class="form-control" placeholder="Email" id="driverEmailEN" name="driverEmailEN">
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-driverPhoneEN">
+                                    <label for="driverPhoneEN">Driver's Phone Number:</label>
+                                    <input data-l11n="" type="text" class="form-control" placeholder="Phone Number" id="driverPhoneEN" name="driverPhoneEN">
+                                </div>
+                                <div class="col-md-12"><small>&nbsp;</small></div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-driverAddressEN">
+                                    <label for="driverAddressEN">Address:</label>
+                                    <input data-l11n="" type="text" class="form-control" placeholder="Address" id="driverAddressEN" name="driverAddressEN">
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-driverDateOfBirth">
+                                    <label for="driverDateOfBirthEN">Date:</label>
+                                    <input id="driverDateOfBirthEN" type="text" class="form-control" placeholder="DD-MMM-YYYY" name="driverDateOfBirthEN">
+                                </div>
+                                <div class="col-md-12"><small>&nbsp;</small></div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-driverRemarksEN">
+                                    <label for="driverRemarksEN">Remarks:</label>
+                                    <textarea data-l11n="" rows="7" class="form-control" placeholder="Remarks" name="driverRemarksEN" id="driverRemarksEN" data-by-field="driverRemarksEN"></textarea>
+                                </div>
+                                <!--Photo-->
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-driverRemarksEN">
+                              
+                                    <div class="form-group" id="driverImage">
+                                        <label for="driverRemarksEN">Upload:</label>
+                                        <a href="#" class="thumbnail" data-style="btn-success">
+                                            <img src="img/av1.png" class="img-responsive" alt="" width="110" height="110" id="showImage">
+                                        </a>
+
+                                        <input type="file" name="UploadFile" onchange="readURL(this);" id="uploadDriverEN">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12"><small>&nbsp;</small></div>
+                                <div class="pull-right m-t-20" style="margin-right:7px;">
+                                    <button type="submit" data-backdrop="static" class="create btn btn-sm btn-dropdown" id="submit-driverEN"><i class="fa fa-check fa-fw"></i>Save</button>
+                                    <button data-dismiss="modal" class="btn btn-sm btn-danger"><i class="fa fa-times fa-fw"></i>Close</button>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/jquery/jquery-2.1.3.min.js"></script>
+
+        <script src="js/bootstrap/bootstrap.min.js">
+        </script>
+
+    <!--Validation-->
+    <script src="js/validation/jquery.validationEngine-en.js" type="text/javascript"></script>
+    <script src="js/validation/jquery.validationEngine.js" type="text/javascript"></script>
+
+        <script src="js/bootstrap-table.js">
+        </script>
+        <script src="js/Table-Export/bootstrap-table-export.js">
+        </script>
+        <script src="js/Table-Export/tableExport.js">
+        </script>
+        <script src="js/Table-Export/FileSaver.min.js">
+        </script>
+        <script src="js/Table-Export/html2canvas.min.js">
+        </script>
+        <script src="js/Table-Export/jspdf.min.js">
+        </script>
+        <script src="js/Table-Export/jspdf.plugin.autotable.js">
+        </script>
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-1.js">
+        </script><!--BS Table Filter 1-->
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-2.js">
+        </script><!--BS Table Filter 2-->
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-3.js">
+        </script><!--BS Table Filter 3-->
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-control.js">
+        </script>
+        <script src="js/servertime.js"></script>
+
+        <!--Date Format-->
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/moment-timezone/moment-timezone.js"></script>
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+        <!--Datetime Picker [ OPTIONAL ]-->
+        <script src="plugins/datetimepicker/jquery.datetimepicker.js"></script>
+
+		<script src="js/load-drivers.js"></script>
+        
+        <!--Lightbox [ OPTIONAL ]-->
+        <script src="plugins/lightbox/dist/ekko-lightbox.min.js"></script>
+
+        <script src="js/modal-forms.js"></script>
+
+        <!--Bootbox Modals [ OPTIONAL ]-->
+        <script src="js/nifty.min.js"></script>
+        <script src="plugins/bootbox/bootbox.js"></script>
+        <script src="js/ui-modals.js"></script>
+
+
+
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+
+    <script>
+
+        //Date.parseDate = function (input, format) {
+        //    return moment(input, format).toDate();
+        //};
+        //Date.prototype.dateFormat = function (format) {
+        //    return moment(this).format(format);
+        //};
+
+
+        jQuery('#driverDateOfBirthEN').datetimepicker({
+            format: 'd-M-Y',
+            lang: 'en',
+            timepicker: false
+        });
+
+
+
+    </script>
+
+    <!--Validation-->
+    <script>
+        $(document).ready(function () {
+            $("#driverform").validationEngine()
+        });
+    </script>
+
+</body>
+</html>

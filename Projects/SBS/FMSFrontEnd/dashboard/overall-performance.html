@@ -1,0 +1,890 @@
+﻿
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>Overall Performance</title>
+    <meta content="" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 0px;
+            padding-bottom: 20px;
+        }
+
+        #chartdivOverall {
+            height: 100%;
+            margin-top: 10px;
+            margin-left: -30px;
+        }
+
+
+        #map {
+            height: 350px;
+            width: 500px;
+            margin-top: 10px;
+        }
+
+        #styles, #add-tab {
+            float: left;
+            margin-top: 10px;
+            width: 400px;
+        }
+
+            #styles label,
+            #add-tab label {
+                display: inline-block;
+                width: 130px;
+            }
+
+        .phoney {
+            background: -webkit-gradient(linear,left top,left bottom,color-stop(0, rgb(112,112,112)),color-stop(0.51, rgb(94,94,94)),color-stop(0.52, rgb(57,57,57)));
+            background: -moz-linear-gradient(center top,rgb(112,112,112) 0%,rgb(94,94,94) 51%,rgb(57,57,57) 52%);
+        }
+
+        .phoneytext {
+            text-shadow: 0 -1px 0 #000;
+            color: #fff;
+            font-family: Helvetica Neue, Helvetica, arial;
+            font-size: 16px;
+            line-height: 25px;
+            padding: 4px 45px 4px 15px;
+            font-weight: bold;
+            background: url(../images/arrow.png) 95% 50% no-repeat;
+        }
+
+        .phoneytab {
+            text-shadow: 0 -1px 0 #000;
+            color: #fff;
+            font-family: Helvetica Neue, Helvetica, arial;
+            font-size: 18px;
+            background: rgb(112,112,112) !important;
+        }
+
+        .triggerDataClass {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }       
+
+        .floatRight {
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        /*==========================================================================*/
+        /*Enlarge Button Start*/
+        .gmap-control-container {
+            margin: 5.3px;
+            margin-left: -6px;
+            margin-top: 10px;
+        }
+
+        .gmap-control {
+            cursor: pointer;
+            background-color: -moz-linear-gradient(center top, #FEFEFE, #F3F3F3);
+            background-color: #FEFEFE;
+            border: 1px solid #A9BBDF;
+            border-radius: 2px;
+            padding: 0 6px;
+            line-height: 160%;
+            font-size: 11px;
+            font-family: Arial,sans-serif;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+       .gmap-control:hover {
+            border: 1px solid #678AC7;
+        }
+
+        .gmap-control-active {
+            background-color: -moz-linear-gradient(center top, #6D8ACC, #7B98D9);
+            background-color: #6D8ACC;
+            color: #fff;
+            font-weight: bold;
+            border: 1px solid #678AC7;
+        }
+
+        .gmap-control-legend {
+            position: absolute;
+            text-align: left;
+            z-index: -1;
+            top: 20px;
+            left: 0;
+            width: 150px;
+            height: 86px;
+            font-size: 10px;
+            background: #FEFEFE;
+            border: 1px solid #A9BBDF;
+            padding: 10px;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+        }
+
+            .gmap-control-legend ul {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            }
+
+            .gmap-control-legend li {
+                line-height: 160%;
+            }
+        /*Enlarge Button End*/
+        /*==========================================================================*/
+
+        .hourglass {
+            display: block;
+            background: #fff;
+            margin: 3em auto;
+            width: 2em;
+            height: 4em;
+            box-shadow: inset #dad8d2 0 0 0 0, inset #00b7c6 0 2em 0 0, inset #dad8d2 0 0 4em 0;
+            -webkit-animation: hourglass 1s linear infinite;
+            animation: hourglass 1s linear infinite;
+        }
+
+        .outer {
+            fill: #51025B;
+        }
+
+        .middle {
+            fill: #fff;
+        }
+
+        @-webkit-keyframes hourglass {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+                box-shadow: inset #dad8d2 0 0 0 0, inset #51025B 0 2em 0 0, inset #dad8d2 0 4em 0 0, inset #51025B 0 4em 0 0;
+            }
+
+            80% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+                box-shadow: inset #dad8d2 0 2em 0 0, inset #51025B 0 2em 0 0, inset #dad8d2 0 2em 0 0, inset #51025B 0 4em 0 0;
+            }
+
+            100% {
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
+                box-shadow: inset #dad8d2 0 2em 0 0, inset #51025B 0 2em 0 0, inset #dad8d2 0 2em 0 0, inset #51025B 0 4em 0 0;
+            }
+        }
+
+        @keyframes hourglass {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+                box-shadow: inset #dad8d2 0 0 0 0, inset #51025B 0 2em 0 0, inset #dad8d2 0 4em 0 0, inset #51025B 0 4em 0 0;
+            }
+
+            80% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+                box-shadow: inset #dad8d2 0 2em 0 0, inset #51025B 0 2em 0 0, inset #dad8d2 0 2em 0 0, inset #51025B 0 4em 0 0;
+            }
+
+            100% {
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
+                box-shadow: inset #dad8d2 0 2em 0 0, inset #51025B 0 2em 0 0, inset #dad8d2 0 2em 0 0, inset #51025B 0 4em 0 0;
+            }
+        }
+
+        /*==========================================================================*/
+
+        .sidebar-form-margin {
+            margin-bottom: 10px;
+        }
+
+        .label1-success {
+            background: green;
+        }
+
+
+
+    </style>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:900,400' rel='stylesheet' type='text/css'>
+
+    <!--Data Table-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+    <link href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!--Responsive-->
+    <link href="https://nightly.datatables.net/responsive/css/responsive.dataTables.css" rel="stylesheet" type="text/css" />
+    <!--Key-->
+    <link href="https://nightly.datatables.net/keytable/css/keyTable.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!--Re-Order-Row-->
+    <link href="https://nightly.datatables.net/rowreorder/css/rowReorder.bootstrap.css" rel="stylesheet" type="text/css" />
+    <!--Select-->
+    <link href="https://nightly.datatables.net/select/css/select.bootstrap.css" rel="stylesheet" type="text/css" />
+    <!--Fixed Header-->
+    <link href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="plugins/ui-sidebar/sidebar.css" rel="stylesheet">
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <!--<link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">-->
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css" rel="stylesheet" />-->
+    <link href="plugins/bootstrap-select/bootstrap-select.css" rel="stylesheet">
+    <link href="plugins/bootstrap-multiselect/bootstrap-multiselect.css" rel="stylesheet">
+    <link href="plugins/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
+
+    <!--Datetime Picker [ OPTIONAL ]-->
+    <link href="plugins/datetimepicker/jquery.datetimepicker.css" rel="stylesheet">
+
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+
+    <!--Re-Order Columns-->
+    <link rel="stylesheet" href="https://rawgit.com/akottr/dragtable/master/dragtable.css">
+
+    <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+
+
+    <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLur5AuI1VPdx8JAtANJHKZ4G_ZU7_iMw&callback=initMap" async defer></script>-->
+
+    <!--Switchery [ OPTIONAL ]-->
+    <link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+
+            
+            <div style="margin-top: 60px;">
+
+                <div class="width-form-sidebar hidden-lg hidden-md hidden-sm hidden-xs" style="margin-bottom: 15px;">
+                    <span data-l11n><i class="fa fa-filter fa-lg">&nbsp;</i>Filter Off/On&nbsp;&nbsp;</span>
+                    <span class="form-group" style="margin-left:30px;">
+                        <input data-switchery="true" type="checkbox" id="posFilter" name="posFilter" class="pull-right js-check-change-filter" data-by-field="muteAlert">
+                    </span>
+                </div>
+
+                <div class="sidebar-form-margin">
+                    <input id="dateFrom" type="text" class="form-control width-form-sidebar" placeholder="DD-MMM-YYYY" name="dateFrom">
+                    <small class="width-form-sidebar">Date From</small>
+                </div>
+
+                <div class="sidebar-form-margin">
+                    <input id="dateTo" type="text" class="form-control width-form-sidebar" placeholder="DD-MMM-YYYY" name="dateTo">
+                    <small class="width-form-sidebar">Date To</small>
+                </div>
+
+                <div class="sidebar-form-margin">
+                    <select class="width-form-sidebar selectpicker pull-left SelectDepotFilter show-tick" multiple data-actions-box="true" data-live-search="true" data-selected-text-format="count" data-style="btn-dropdown" id="depot" data-dropup-auto="false" data-header="Select a Depot"></select>
+                    <small class="width-form-sidebar">Depot</small>
+                </div>
+                <div class="sidebar-form-margin">
+                    <select class="width-form-sidebar selectpicker pull-left SelectInterchangeFilter show-tick" multiple data-actions-box="true" data-live-search="true" data-selected-text-format="count" data-style="btn-dropdown" id="interchange" data-dropup-auto="false" data-header="Select an Interchange"></select>
+                    <small class="width-form-sidebar">Interchange</small>
+                </div>
+                <div class="sidebar-form-margin">
+                    <select class="width-form-sidebar selectpicker pull-left SelectSvcFilter show-tick" multiple data-actions-box="true" data-live-search="true" data-selected-text-format="count" data-style="btn-dropdown" id="svc" data-dropup-auto="false" data-header="Select a SVC"></select>
+                    <small class="width-form-sidebar">Svc No.</small>
+                </div>
+                <div class="sidebar-form-margin">
+                    <select class="width-form-sidebar selectpicker pull-left SelectBCFilter show-tick" multiple data-actions-box="true" data-live-search="true" data-selected-text-format="count" data-style="btn-dropdown" id="driver" data-dropup-auto="true" data-header="Select a BC" data-size="8"></select>
+                    <small class="width-form-sidebar">Driver</small>
+                </div>
+
+                <button id="submitReport" class="pull-right btn btn-add fa fa-check btn-lg" title="Submit" style="margin-right:5px; color:white;">&nbsp;<span class="btn-text">Submit</span></button>
+
+            </div>
+
+                
+        </div>
+        <!-- /#sidebar-wrapper -->  
+        
+        <!-- Site content !-->
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!--<h5 class="welcome hidden-xs hidden-sm">
+            <b>
+                Welcome,
+                Administrator! <a href="index.html">Logout</a>
+            </b>
+        </h5>
+        <h5><b class="time hidden-xs hidden-sm" id="clockbox"></b></h5>-->
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" id="menu-toggle">
+                        <span class="sr-only">
+                            Toggle navigation
+                        </span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a style="margin-left: -100px;" class="navbar-brand logo" href="#">
+                        <img class="hidden-sm hidden-xs" src="img/logo-2.png" height="91" width="200">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav pull-right">
+
+                        <li class="hidden-xs hidden-sm">
+                            <a href="dashboard.html">
+                                <i class="fa fa-home fa-lg">&nbsp;</i>Dashboard
+                            </a>
+                        </li>
+                        <li class="hidden-xs hidden-sm">
+                            <a href="vehicle.html">
+                            <i class="fa fa-bus fa-md">&nbsp;</i>Vehicle</a>
+                        </li>
+                        <li class="hidden-xs hidden-sm">
+                            <a href="reports.html">
+                                <i class="fa fa-briefcase fa-md">&nbsp;</i>Operational and Fault<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="dropdown active hidden-xs hidden-sm">
+                            <!--<a href="reports-driver.html">Driver Behaviour Monitoring<span class="sr-only caret">(current)</span></a>-->
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-users fa-md">&nbsp;</i>Driver Behaviour Monitoring
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:220px;">
+                                <li><a href="trigger-data.html">Trigger Data</a></li>
+                                <li><a href="daily-performance.html">Daily Performance</a></li>
+                                <li><a href="overall-performance.html">Overall Performance</a></li>
+                                <li><a href="bc-ranking.html">BC's Ranking</a></li>
+                                <li><a href="bc-performance.html">BC Performance</a></li>
+                                <li class="hidden-xs hidden-sm hidden-md hidden-lg"><a href="reports-driver.html">Trip Data</a></li>
+                                <li class="hidden-xs hidden-sm hidden-md hidden-lg"><a href="driver-average.html">Driver Average</a></li>
+                                <li class="hidden-xs hidden-sm hidden-md hidden-lg"><a href="reports-summary.html">Summary</a></li>
+                                <li class="hidden-xs hidden-sm hidden-md hidden-lg"><a href="reports-analysis.html">Performance Analysis</a></li>
+                            </ul>
+                        </li>
+                        <li class="hidden-xs hidden-sm">
+                            <a href="software.html"><i class="fa fa-cog fa-md">&nbsp;</i>Software and Configuration</a>
+                        </li>
+                        <li>
+                            <a href="http://track.asiacom.co.th/sbs/">
+                                    <i class="fa fa-sign-out fa-md">&nbsp;</i>Logout
+                                </a>
+                        </li>
+                        <!--<li>
+                        <a href="#">Help</a>
+                    </li>-->
+                    </ul>
+
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav><!-- Main content -->   
+
+        <!--content-->
+
+    <div id="page-content-wrapper" style="margin-bottom:40px;">
+
+       
+        <div class="container">
+
+            <div style="margin-bottom: 40px !important; margin-top: 40px !important;">
+                <ol class="breadcrumb hidden-xs" style="background-color:#51025B">
+                    <li style="color:white;">
+                        Driver Behaviour Monitoring
+                    </li>
+                    <li style="color: pink;">Overall Performance</li>
+                </ol>
+
+                <div class="col-lg-12">
+                    <div class="loader">
+                        <div class="wrapper">
+                            <svg class="hourglass" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 206" preserveAspectRatio="none">
+                                <path class="middle" d="M120 0H0v206h120V0zM77.1 133.2C87.5 140.9 92 145 92 152.6V178H28v-25.4c0-7.6 4.5-11.7 14.9-19.4 6-4.5 13-9.6 17.1-17 4.1 7.4 11.1 12.6 17.1 17zM60 89.7c-4.1-7.3-11.1-12.5-17.1-17C32.5 65.1 28 61 28 53.4V28h64v25.4c0 7.6-4.5 11.7-14.9 19.4-6 4.4-13 9.6-17.1 16.9z" />
+                                <path class="outer" d="M93.7 95.3c10.5-7.7 26.3-19.4 26.3-41.9V0H0v53.4c0 22.5 15.8 34.2 26.3 41.9 3 2.2 7.9 5.8 9 7.7-1.1 1.9-6 5.5-9 7.7C15.8 118.4 0 130.1 0 152.6V206h120v-53.4c0-22.5-15.8-34.2-26.3-41.9-3-2.2-7.9-5.8-9-7.7 1.1-2 6-5.5 9-7.7zM70.6 103c0 18 35.4 21.8 35.4 49.6V192H14v-39.4c0-27.9 35.4-31.6 35.4-49.6S14 81.2 14 53.4V14h92v39.4C106 81.2 70.6 85 70.6 103z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="loading" style="font-size: 1.5em; margin: 20px; font-family: Georgia; text-align: center; color: #51025B;">Loading</div>
+                </div>
+
+                <div class="chartMap">
+                    <div id="chartdivOverall" class="col-md-12 hidden-xs" style="min-width: 310px; height: 460px; margin: 0 auto"></div>
+                </div>
+
+            </div>
+
+            <div class="tableClass">
+                <table id="triggerData" class="display triggerDataClass" cellspacing="0" style="width:100%"></table>
+
+                <div id="timeIntervalTriggerData"></div>
+            </div>
+
+            </div><!-- /container -->
+
+        </div>
+
+        <footer class="footer hidden-xs hidden-sm" id="fixFooter">
+            <div class="container">
+                <hr class="hr-footer">
+                <p class="text-muted">ADVANCE DRIVER ASSISTANCE SYSTEM © 2016</p>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <!--<script src="js/servertime.js"></script>-->
+        <script src="js/load-overall-performance.js"></script>
+
+        <!--Data Tables-->
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <!--<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>-->
+        <!--Export-->
+        <script src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.0/js/buttons.flash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+        <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.colVis.min.js"></script>
+
+        <!--Responsive-->
+        <script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+        <!--Key-->
+        <script src="https://cdn.datatables.net/keytable/2.1.2/js/dataTables.keyTable.min.js"></script>
+        <!--Re-Order Row-->
+        <script src="https://cdn.datatables.net/rowreorder/1.1.2/js/dataTables.rowReorder.min.js"></script>
+        <!--Select-->
+        <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+        <!--Fixed Header-->
+        <script src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js"></script>
+
+        <!--Date Format-->
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/moment-timezone/moment-timezone.js"></script>
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <!--<script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>-->
+        <script src="plugins/bootstrap-select/bootstrap-select.js"></script>
+        <script src="plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+
+        <!--Marker Cluster [ OPTIONAL ]-->
+        <script src="plugins/markercluster/src/markerclusterer.js"></script>
+
+        <!--Infobuble [ OPTIONAL ]-->
+        <script src="plugins/infobubble/src/infobubble.js"></script>
+
+        <!--Datetime Picker [ OPTIONAL ]-->
+        <script src="plugins/datetimepicker/jquery.datetimepicker.js"></script>
+        <script src="plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+        <!-- Switchery [ OPTIONAL ]-->
+        <script src="plugins/switchery/switchery.min.js"></script>
+
+        <!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
+        <!--<script src="plugins/highchart/highcharts.js"></script>-->
+        <!--<script src="https://code.highcharts.com/highcharts-3d.js"></script>-->
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+
+        <script>
+
+            var dateFormat = "D-MMM-YYYY HH:mm A";
+            var d1 = new Date();
+            d1.setHours(0);
+            d1.setMinutes(0);
+            var dateFrom = moment(d1).format(dateFormat);
+
+            var d2 = new Date();
+            d2.setDate(d2.getDate() + 1);
+            d2.setHours(0);
+            d2.setMinutes(0);
+            var dateTo = moment(d2).format(dateFormat);
+
+
+            jQuery('#dateFrom').datetimepicker({
+                format: 'd-M-Y H:i A',
+                timepicker: true,
+                value: dateFrom,
+                autoclose: true,
+                mask: false,
+                onChangeDateTime: function (dp, $input) {
+                    $(this).hide();
+                }
+            });
+
+
+            jQuery('#dateTo').datetimepicker({
+                format: 'd-M-Y H:i A',
+                timepicker: true,
+                value: dateTo,
+                autoclose: true,
+                mask: false,
+                onChangeDateTime: function (dp, $input) {
+                    $(this).hide();
+                }
+            });
+
+        </script>
+
+        <script>
+
+            //callback function
+            function drawChart(localObj) {
+
+                var xDriver = [];
+                var xLDW = [];
+                var xHW = [];
+                var xFCW = [];
+                var xPCW = [];
+                var xTOTAL_LDW = [];
+                var xTOTAL_EVENTS = [];
+
+                var getFrom = $('#dateFrom').val();
+                var getTo = $('#dateTo').val();
+
+
+                if (localObj != null) {
+
+                    var amd = 0, bnd = 0, hgd = 0, sld = 0, bbd = 0;
+                    var ami = 0, bsi = 0, tpi = 0, yci = 0, bdi = 0, pri = 0, tmi = 0, hci = 0, ski = 0, sgi = 0, bli = 0, jki = 0, jei = 0, bmi = 0, cli = 0;
+
+                    for (var i = 0; i < localObj.length; ++i) {
+
+                        var strDepot = localObj[i].DepotID;
+                        var tempDepot = new Array();
+                        tempDepot = strDepot.split(",");
+
+                        for (var d = 0; d < tempDepot.length; ++d)
+                        {
+                            if (tempDepot[d] == "1") amd++;
+                            else if (tempDepot[d] == "2") bnd++;
+                            else if (tempDepot[d] == "3") hgd++;
+                            else if (tempDepot[d] == "4") sld++;
+                            else if (tempDepot[d] == "5") bbd++;
+                        }
+                       
+                        var strInterchange = localObj[i].InterchangeID;
+                        var tempInterchange = new Array();
+                        tempInterchange = strInterchange.split(",");
+
+                        for (var k = 0; k < tempInterchange.length; ++k)
+                        {
+                            if (tempInterchange[k] == "1") ami++;
+                            else if (tempInterchange[k] == "2") bsi++;
+                            else if (tempInterchange[k] == "3") tpi++;
+                            else if (tempInterchange[k] == "4") yci++;
+                            else if (tempInterchange[k] == "5") bdi++;
+                            else if (tempInterchange[k] == "6") bnd++;
+                            else if (tempInterchange[k] == "7") hgd++;
+                            else if (tempInterchange[k] == "8") sld++;
+                            else if (tempInterchange[k] == "9") bbd++;
+                            else if (tempInterchange[k] == "10") bnd++;
+                            else if (tempInterchange[k] == "11") hgd++;
+                            else if (tempInterchange[k] == "12") sld++;
+                            else if (tempInterchange[k] == "13") bbd++;
+                            else if (tempInterchange[k] == "14") sld++;
+                            else if (tempInterchange[k] == "15") bbd++;
+                        }
+                  
+
+                        xDriver.push(localObj[i].DrvID);
+                        xLDW.push(localObj[i].LDW);
+                        xHW.push(localObj[i].HW);
+                        xFCW.push(localObj[i].FCW);
+                        xPCW.push(localObj[i].PCW);
+                        xTOTAL_LDW.push(localObj[i].TotalLDW);
+                        xTOTAL_EVENTS.push(localObj[i].TotalEvents);
+
+                    }
+
+                    $('#chartdivOverall').highcharts({
+                        chart: {
+                            renderTo: 'chartdivBcRanking',
+                            defaultSeriesType: 'column',
+                            zoomType: 'xy'
+                        },
+                        rangeSelector: {
+                            selected: 1
+                        },
+                        title: {
+                            text: "Overall Performance"
+                        },
+                        subtitle: {
+                            text: getFrom + " - " + getTo
+                        },
+                        credits: {
+                            enabled: true,
+                            position: {
+                                align: 'right',
+                                x: -10,
+                                verticalAlign: 'bottom',
+                                y: -5
+                            },
+                            href: "https://www.sbstransit.com.sg/",
+                            text: "SBS Transit Ltd"
+                        },
+                        xAxis: {
+                            categories: xDriver,
+                            min: 5,
+                            crosshair: true
+
+                        },
+                        labels: {
+                            items: [{
+                                html: 'Depot & Interchange',
+                                style: {
+                                    left: '65px',
+                                    top: '0px',
+                                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                                }
+                            }]
+                        },
+                        scrollbar: {
+                            enabled: true
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: 'Safety Events'
+                            }
+                        },
+                        legend: {
+                            shadow: true
+                        },
+                        tooltip: {
+                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>',
+                            footerFormat: '</table>',
+                            shared: true,
+                            useHTML: true
+                        },
+                        plotOptions: {
+                            column: {
+                                pointPadding: 0.2,
+                                borderWidth: 0.5
+                            }
+                        },
+                        series: [{
+                            type: 'column',
+                            name: 'LDW',
+                            data: xLDW,
+                            color: '#EC989A',
+
+                        }, {
+                            type: 'column',
+                            name: 'HW',
+                            data: xHW,
+                            color: '#F7A35C',
+
+                        }, {
+                            type: 'column',
+                            name: 'FCW',
+                            data: xFCW,
+                            color: '#FFFF01',
+
+                        }, {
+                            type: 'column',
+                            name: 'PCW',
+                            data: xPCW,
+                            color: '#FF020A',
+
+                        }, {
+                            type: 'column',
+                            name: 'Total Less LDW',
+                            data: xTOTAL_LDW
+
+                        }, {
+                            type: 'column',
+                            name: 'Total Events',
+                            data: xTOTAL_EVENTS
+
+                        }, {
+                            type: 'pie',
+                            name: 'Depot',
+                            data: [{
+                                name: 'AMD',
+                                y: amd,
+                                color: Highcharts.getOptions().colors[10]
+                            }, {
+                                name: 'BND',
+                                y: bnd,
+                                color: Highcharts.getOptions().colors[11] 
+                            }, {
+                                name: 'HGD',
+                                y: hgd,
+                                color: Highcharts.getOptions().colors[12] 
+                            }, {
+                                name: 'SLD',
+                                y: sld,
+                                color: Highcharts.getOptions().colors[13] 
+                            }, {
+                                name: 'BBD',
+                                y: bbd,
+                                color: Highcharts.getOptions().colors[14] 
+                            }],
+                            tooltip: {
+                                pointFormat: '{name}: <b>{point.percentage:.0f}%</b>'
+                            },
+                            center: [50, 50],
+                            size: 100,
+                            showInLegend: false,
+                            dataLabels: {
+                                enabled: false,
+                            }
+                        }, {
+                            type: 'pie',
+                            name: 'Interchange',
+                            data: [{
+                                name: 'AMI',
+                                y: ami,
+                                color: Highcharts.getOptions().colors[15]
+                            }, {
+                                name: 'BSI',
+                                y: bsi,
+                                color: Highcharts.getOptions().colors[16]
+                            }, {
+                                name: 'TPI',
+                                y: tpi,
+                                color: Highcharts.getOptions().colors[17]
+                            }, {
+                                name: 'YCI',
+                                y: yci,
+                                color: Highcharts.getOptions().colors[18]
+                            }, {
+                                name: 'BDI',
+                                y: bdi,
+                                color: Highcharts.getOptions().colors[19]
+                            }, {
+                                name: 'PRI',
+                                y: pri,
+                                color: Highcharts.getOptions().colors[15]
+                            }, {
+                                name: 'TMI',
+                                y: tmi,
+                                color: Highcharts.getOptions().colors[16]
+                            }, {
+                                name: 'HCI',
+                                y: hci,
+                                color: Highcharts.getOptions().colors[17]
+                            }, {
+                                name: 'SKI',
+                                y: ski,
+                                color: Highcharts.getOptions().colors[18]
+                            }, {
+                                name: 'SGI',
+                                y: sgi,
+                                color: Highcharts.getOptions().colors[19]
+                            }, {
+                                name: 'BLI',
+                                y: bli,
+                                color: Highcharts.getOptions().colors[15]
+                            }, {
+                                name: 'JKI',
+                                y: jki,
+                                color: Highcharts.getOptions().colors[16]
+                            }, {
+                                name: 'JEI',
+                                y: jei,
+                                color: Highcharts.getOptions().colors[17]
+                            }, {
+                                name: 'BMI',
+                                y: bmi,
+                                color: Highcharts.getOptions().colors[18]
+                            }, {
+                                name: 'CLI',
+                                y: cli,
+                                color: Highcharts.getOptions().colors[19]
+                            }],
+                            tooltip: {
+                                pointFormat: '{name}: <b>{point.percentage:.0f}%</b>'
+                            },
+                            center: [160, 50],
+                            size: 100,
+                            showInLegend: false,
+                            dataLabels: {
+                                enabled: false,
+                            }
+                        }],
+                        scrollbar: {
+                            enabled: true,
+                            barBackgroundColor: '#51025B',
+                            barBorderRadius: 7,
+                            barBorderWidth: 0,
+                            buttonBackgroundColor: 'gray',
+                            buttonBorderWidth: 0,
+                            buttonArrowColor: 'yellow',
+                            buttonBorderRadius: 7,
+                            rifleColor: 'yellow',
+                            trackBackgroundColor: 'white',
+                            trackBorderWidth: 1,
+                            trackBorderColor: 'silver',
+                            trackBorderRadius: 7
+                        }
+
+                    });
+
+               }
+            }
+
+
+
+        </script>
+
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+
+    <script>
+
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-check-change-filter'));
+
+        elems.forEach(function (html) {
+            //var switchery = new Switchery(html);
+
+            var switchery = new Switchery(html, { color: '#6C077A', jackColor: '#9decff' });
+
+        });
+    </script>
+
+    <script>
+
+        i = 0;
+        setInterval(function () {
+            i = ++i % 4;
+            $(".loading").text("Loading " + Array(i + 1).join("."));
+
+        }, 400);
+
+    </script>
+
+</body>
+</html>

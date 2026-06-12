@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="18c03d00-58af-4b4c-ae9e-08bc4e20e3fc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://track.w-locate.com/WlocateWeb/Wlocate.svc/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="a7a22eea-9d2e-4b00-8096-f24514e38504" SourceId="1" SourceUrl="http://track.w-locate.com/WlocateWeb/Wlocate.svc/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="9ab8d074-4dfd-46f3-a0bb-5b526e31e405" SourceId="1" SourceUrl="http://track.w-locate.com/WlocateWeb/Wlocate.svc/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="3b4aaec4-7d4e-45c0-972a-04f207b97cef" SourceId="1" SourceUrl="http://track.w-locate.com/WlocateWeb/Wlocate.svc/mex" />
+    <MetadataFile FileName="WlocateWeb.xsd" MetadataType="Schema" ID="627d4451-7f51-465b-a137-1bc7b0af7e1e" SourceId="1" SourceUrl="http://track.w-locate.com/WlocateWeb/Wlocate.svc/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="a91e7f55-0d88-422b-bf36-b4fc1add1ed1" SourceId="1" SourceUrl="http://track.w-locate.com/WlocateWeb/Wlocate.svc/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

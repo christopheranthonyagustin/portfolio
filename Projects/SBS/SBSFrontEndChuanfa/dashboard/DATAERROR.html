@@ -1,0 +1,450 @@
+﻿
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>Data Error</title>
+    <meta content="" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 0px;
+            padding-bottom: 20px;
+        }
+
+        #chartdivPie {
+            height: 100%;
+            margin-top: 50px;
+            margin-left: -30px;
+        }
+
+        #map {
+            height: 350px;
+            width: 500px;
+            margin-top: 50px;
+        }
+
+        #styles, #add-tab {
+            float: left;
+            margin-top: 10px;
+            width: 400px;
+        }
+
+            #styles label,
+            #add-tab label {
+                display: inline-block;
+                width: 130px;
+            }
+
+        .phoney {
+            background: -webkit-gradient(linear,left top,left bottom,color-stop(0, rgb(112,112,112)),color-stop(0.51, rgb(94,94,94)),color-stop(0.52, rgb(57,57,57)));
+            background: -moz-linear-gradient(center top,rgb(112,112,112) 0%,rgb(94,94,94) 51%,rgb(57,57,57) 52%);
+        }
+
+        .phoneytext {
+            text-shadow: 0 -1px 0 #000;
+            color: #fff;
+            font-family: Helvetica Neue, Helvetica, arial;
+            font-size: 16px;
+            line-height: 25px;
+            padding: 4px 45px 4px 15px;
+            font-weight: bold;
+            background: url(../images/arrow.png) 95% 50% no-repeat;
+        }
+
+        .phoneytab {
+            text-shadow: 0 -1px 0 #000;
+            color: #fff;
+            font-family: Helvetica Neue, Helvetica, arial;
+            font-size: 18px;
+            background: rgb(112,112,112) !important;
+        }
+
+    </style>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/bootstrap-table.css" rel="stylesheet">
+    <link href="css/bootstrap-table-filter.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="plugins/ui-sidebar/sidebar.css" rel="stylesheet">
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+    <!--<link href="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">-->
+    <link href="plugins/datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLur5AuI1VPdx8JAtANJHKZ4G_ZU7_iMw&callback=initMap" async defer></script>-->
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+
+            
+
+            <div style="margin-top: 80px;">
+
+                <select class="width-form-sidebar selectpicker pull-left SelectEventFilter operational-dropdown" data-live-search="true" data-style="btn-dropdown" id="Selecteventlog">
+                    <option value="" selected="selected">--</option>
+                    <option value="DataError">Data Error</option>
+                    <!--<option value="BusSpeed">Bus Speed</option>-->
+                    <option value="FootbrakeUsage">Footbrake Usage</option>
+                    <option value="DirectionLightUsage">Direction Light Usage</option>
+                    <!--<option value="HeadwayMonitoringDistance">Headway Monitoring Distance</option>-->
+                    <!--<option value="ForwardCollision">Forward Collision</option>-->
+                    <!--<option value="PedestrianCyclistCollision">Pedestrian/Cyclist Collision</option>-->
+                    <!--<option value="AbruptLaneChangeDeparture">Abrupt Lane Change/Departure</option>-->
+                    <!--<option value="HashBraking">Hash Braking</option>-->
+                </select>
+                <small class="width-form-sidebar">Select Event</small>
+
+                <p>&nbsp;</p>
+
+                <select class="width-form-sidebar selectpicker pull-left SelectVehicleFilter" data-live-search="true" data-style="btn-dropdown" id="eventlog">
+                    <option value="">--</option>
+                    <!--<option value="SBS3114L" selected="selected">SBS3114L</option>
+                        <option value="SBS3276C">SBS3276C</option>
+                        <option value="SBS6048A">SBS6048A</option>-->
+                </select>
+
+                <small class="width-form-sidebar">Select Vehicle</small>
+
+                <p>&nbsp;</p>
+
+                <input id="dateFrom" type="text" class="form-control width-form-sidebar" placeholder="DD-MMM-YYYY" name="dateFrom">
+
+                <small class="width-form-sidebar">Date From</small>
+
+                <p>&nbsp;</p>
+
+                <input id="dateTo" type="text" class="form-control width-form-sidebar" placeholder="DD-MMM-YYYY" name="dateTo">
+
+                <small class="width-form-sidebar">Date To</small>
+
+                <p>&nbsp;</p>
+
+                <button id="submitEvent" class="pull-right btn btn-add fa fa-check btn-lg" title="Submit" style="margin-right:5px; color:white;">&nbsp;<span class="btn-text">Submit</span></button>
+
+            </div>
+
+                
+        </div>
+        <!-- /#sidebar-wrapper -->  
+        
+        <!-- Site content !-->
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!--<h5 class="welcome hidden-xs hidden-sm">
+            <b>
+                Welcome,
+                Administrator! <a href="index.html">Logout</a>
+            </b>
+        </h5>
+        <h5><b class="time hidden-xs hidden-sm" id="clockbox"></b></h5>-->
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+                        <span class="sr-only">
+                            Toggle navigation
+                        </span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a style="margin-left: -100px;" class="navbar-brand logo" href="#">
+                        <img class="hidden-sm hidden-xs" src="img/logo-2.png" height="91" width="200">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav pull-right">
+
+                        <li>
+
+                            <a href="#menu-toggle" class="hidden-lg hidden-md" id="menu-toggle">Toggle sidebar</a>
+
+                        </li>
+
+                        <li>
+                            <a href="dashboard.html">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="vehicle.html">Vehicle</a>
+                        </li>
+                        <li class="active">
+                            <a href="reports.html">Operational and Fault<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="dropdown">
+                            <!--<a href="reports-driver.html">Driver Behaviour Monitoring<span class="sr-only caret">(current)</span></a>-->
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Driver Behaviour Monitoring
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:220px;">
+                                <li><a href="trigger-data.html">Trigger Data</a></li>
+                                <li><a href="reports-driver.html">Trip Data</a></li>
+                                <li><a href="reports-summary.html">Summary</a></li>
+                                <li class="hidden-xs hidden-sm hidden-md hidden-lg"><a href="reports-analysis.html">Performance Analysis</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="software.html">Software and Configuration</a>
+                        </li>
+                        <li>
+                            <a href="http://66.96.208.81/sbs/">
+                                Logout
+                            </a>
+                        </li>
+                        <!--<li>
+                        <a href="#">Help</a>
+                    </li>-->
+                    </ul>
+
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav><!-- Main content -->   
+
+        <!--content-->
+
+    <div id="page-content-wrapper">
+
+       
+        <div class="container">
+
+            <!--<div id="custom-vehicles">
+            </div>-->
+            <div style="margin-bottom: 40px !important; margin-top: 40px !important;">
+           
+            </div>
+
+            <table id="Mobile Eye"
+                   class="table-striped"
+                   data-sort-name="dateFrom"
+                   data-sort-order="desc"
+                   data-click-to-select="true"
+                   data-export-types="['excel', 'pdf']"
+                   data-page-list="[10, 20, 50, 100, All]"
+                   data-page-size="10" data-pagination="true"
+                   data-search="true"
+                   data-show-columns="true"
+                   data-show-export="true"
+                   data-show-filter="true"
+                   data-show-header="true"
+                   data-show-pagination-switch="true"
+                   data-show-refresh="false"
+                   data-show-toggle="true"
+                   data-single-select="false"
+                   data-toggle="table"
+                   data-toolbar="#custom-vehicles">
+                <thead>
+                    <tr>
+                        <th data-field="license" data-sortable="true">License Plate</th>
+                        <th data-field="dateFrom" data-sortable="true" data-formatter="">Driver</th>
+                        <th data-field="startSpeed" data-sortable="true" data-formatter="">Date</th>
+                        <th data-field="endSpeed" data-sortable="true" data-formatter="">Time</th>
+                        <th data-field="topSpeed" data-sortable="true" data-formatter="">Remarks</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Mobile Eye</td><td>74015</td><td>25/10/2015</td><td>9:39:51</td><td>No Data Receive</td></tr>
+                    <tr><td>Mobile Eye</td><td>74015</td><td>25/10/2015</td><td>8:17:04</td><td>Incomplete Data</td></tr>
+                    <tr><td>Mobile Eye</td><td>74015</td><td>25/10/2015</td><td>18:23:55</td><td>No Data Receive</td></tr>
+                    <tr><td>Mobile Eye</td><td>74015</td><td>25/10/2015</td><td>17:37:18</td><td>Incomplete Data</td></tr>
+                    <tr><td>Mobile Eye</td><td>74015</td><td>25/10/2015</td><td>15:52:34</td><td>Incomplete Data</td></tr>
+                    <tr><td>Mobile Eye</td><td>74015</td><td>25/10/2015</td><td>10:29:27</td><td>Incomplete Data</td></tr>
+                    <tr><td>Mobile Eye</td><td>74043</td><td>24/10/2015</td><td>9:15:57</td><td>Call for Corrective Maintenance</td></tr>
+                    <tr><td>Mobile Eye</td><td>74043</td><td>24/10/2015</td><td>18:23:51</td><td>Call for Corrective Maintenance</td></tr>
+                    <tr><td>Mobile Eye</td><td>72722</td><td>23/10/2015</td><td>19:33:49</td><td>Incomplete Data</td></tr>
+                    <tr><td>Mobile Eye</td><td>72722</td><td>23/10/2015</td><td>17:58:58</td><td>Incomplete Data</td></tr>
+                    <tr><td>Mobile Eye</td><td>72722</td><td>22/10/2015</td><td>10:27:37</td><td>Incomplete Data</td></tr>
+                    <tr><td>Mobile Eye</td><td>72722</td><td>22/10/2015</td><td>10:24:04</td><td>Incomplete Data</td></tr>
+
+
+                </tbody>
+            </table>
+
+        </div><!-- /container -->
+
+        </div>
+
+        <footer class="footer" id="fixFooter">
+            <div class="container">
+                <hr class="hr-footer">
+                <p class="text-muted">ADVANCE DRIVER ASSISTANCE SYSTEM © 2016</p>
+
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+    </script>
+        <script>
+            window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+        </script>
+        <script src="js/bootstrap.min.js">
+        </script>
+        <script src="js/bootstrap-table.js">
+        </script>
+        <script src="js/Table-Export/bootstrap-table-export.js">
+        </script>
+        <script src="js/Table-Export/tableExport.js">
+        </script>
+        <script src="js/Table-Export/FileSaver.min.js">
+        </script>
+        <script src="js/Table-Export/html2canvas.min.js">
+        </script>
+        <script src="js/Table-Export/jspdf.min.js">
+        </script>
+        <script src="js/Table-Export/jspdf.plugin.autotable.js">
+        </script>
+        <!-- Check src: https://github.com/lukaskral/bootstrap-table-filter/issues/2 -->
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-1.js">
+        </script><!--BS Table Filter 1-->
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-2.js">
+        </script><!--BS Table Filter 2-->
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-3.js">
+        </script><!--BS Table Filter 3-->
+
+        <script src="js/Bootstrap-Table-Filter/bootstrap-table-filter-control.js">
+        </script>
+        <script src="js/servertime.js"></script>
+        <!--<script src="js/main.js"></script>-->
+        <script src="js/function.js"></script>
+        <script src="js/load-report-data.js"></script>
+        <!--Date Format-->
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/moment-timezone/moment-timezone.js"></script>
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+        <!--Marker Cluster [ OPTIONAL ]-->
+        <script src="plugins/markercluster/src/markerclusterer.js"></script>
+
+        <!--Infobuble [ OPTIONAL ]-->
+        <script src="plugins/infobubble/src/infobubble.js"></script>
+
+        <!--<script src="plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>-->
+        <script src="plugins/datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script>
+            $('#dateFrom').datepicker({
+                format: 'dd-M-yyyy'
+            });
+
+            $('#dateTo').datepicker({
+                format: 'dd-M-yyyy'
+            });
+
+        </script>
+
+    <!--Hide Show Dropdown-->
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".operational-dropdown").change(function () {
+
+                $(this).find("option:selected").each(function () {
+
+                    if ($(this).attr("value") == "DataError") {
+
+                        $("#vehicles-data-error").show();
+                        $("#vehicles-footbrake-usage").hide();
+                        $("#vehicles-direction").hide();
+
+                    }
+
+                    else if ($(this).attr("value") == "FootbrakeUsage") {
+
+                        $("#vehicles-data-error").hide();
+                        $("#vehicles-direction").hide();
+                        $("#vehicles-footbrake-usage").show();
+
+                    }
+
+                    else if ($(this).attr("value") == "DirectionLightUsage") {
+
+
+                        $("#vehicles-direction").show();
+                        $("#vehicles-data-error").hide();
+                        $("#vehicles-footbrake-usage").hide();
+
+                    }
+
+                    else {
+
+                        $("#vehicles-data-error").hide();
+                        $("#vehicles-footbrake-usage").hide();
+                        $("#vehicles-direction").hide();
+
+                    }
+
+                });
+
+            }).change();
+
+        });
+
+    </script>
+
+    <!--Submit button-->
+    <script>
+        $('#submitEvent').click(function () {
+
+
+            var vehiclesdataerror = $('#Selecteventlog').val();
+
+            if (vehiclesdataerror == "DataError")
+            {
+                window.location.href = 'DATAERROR.html';
+            }
+            else if (vehiclesdataerror == "FootbrakeUsage")
+            {
+                window.location.href = 'FOOTBRAKEUSAGE.html';
+            }
+            else if (vehiclesdataerror == "DirectionLightUsage") {
+                window.location.href = 'DIRECTION.html';
+            }
+            else
+            {
+                window.location.href = 'reports.html';
+            }
+
+        });
+
+    </script>
+
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+
+
+</body>
+</html>

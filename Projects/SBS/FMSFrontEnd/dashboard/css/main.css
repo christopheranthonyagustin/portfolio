@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.hr-footer {
+    height: 10px;
+    margin-bottom: 0px !important;
+    background-color: #51025B;
+}
+
+.footer {
+    position: fixed;
+    padding-right: 210px !important;
+    height: 50px;
+    bottom: -38px;
+    width: 100%;
+    z-index: 1;
+}
+
+
+.m-t-30 {
+    margin-top: 30px;
+}
+
+.logo {
+    position: absolute;
+    left: 90px;
+    top: -8px;
+    z-index: 9999;
+}
+
+.welcome {
+    position: absolute;
+    right: 90px;
+    top: 7px;
+    z-index: 9999;
+}
+
+.time {
+    position: absolute;
+    right: 90px;
+    top: 35px;
+    z-index: 9999;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+}
+
+/*Navbar custom color*/
+.navbar-default {
+    background-color: #D1321F;
+    border-color: #004185;
+}
+
+.navbar-default .navbar-brand {
+    color: #000;
+}
+
+.navbar-default .navbar-brand:hover,.navbar-default .navbar-brand:focus {
+    color: #fff;
+}
+
+.navbar-default .navbar-text {
+    color: #000;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover,.navbar-default .navbar-nav > li > a:focus {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > .active > a,.navbar-default .navbar-nav > .active > a:hover,.navbar-default .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #51025B;
+}
+
+.navbar-default .navbar-nav > .open > a,.navbar-default .navbar-nav > .open > a:hover,.navbar-default .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #51025B;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #004185;
+}
+
+.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus {
+    background-color: #004185;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #000;
+}
+
+.navbar-default .navbar-collapse,.navbar-default .navbar-form {
+    border-color: #000;
+}
+
+.navbar-default .navbar-link {
+    color: #000;
+}
+
+.navbar-default .navbar-link:hover {
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #000;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #fff;
+    background-color: #004185;
+}
+}
+
+
+/*Navbar custom color*/
+
+.orange-text {
+    color: #E33E28;
+
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+ 
+#wrapper.toggled {
+    padding-left: 250px;
+    overflow: scroll;
+}
+ 
+#sidebar-wrapper {
+    z-index: 1000;
+    position: absolute; 
+    left: 250px;
+    top: 40px;
+    width: 0;
+    /*height: 100%;*/
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    /*background: #004185;*/
+    background: #51025B;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+ 
+#page-content-wrapper {
+    position: absolute;
+    padding: 15px;
+    width: 100%;  
+    overflow-x: hidden; 
+}
+.xyz{
+    min-width: 360px;
+}
+#wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0px; 
+}
+.fixed-brand{
+    width: auto;
+}
+/* Sidebar Styles */
+ 
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-top: 2px;
+}
+ 
+.sidebar-nav li {
+    text-indent: 15px;
+    line-height: 40px;
+}
+ 
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+ 
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+    border-left: red 2px solid;
+}
+ 
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+ 
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+ 
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+ 
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+.no-margin{
+    margin:0;
+}
+ 
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+    .fixed-brand{
+        width: 250px;
+    }
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+ 
+    #sidebar-wrapper {
+        width: 250px;
+    }
+ 
+    #wrapper.toggled #sidebar-wrapper {
+        width: 250px;
+    }
+    #wrapper.toggled-2 #sidebar-wrapper {
+        width: 50px;
+    }
+    #wrapper.toggled-2 #sidebar-wrapper:hover {
+        width: 250px;
+    }
+ 
+ 
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+ 
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+        padding-left: 250px;
+    }
+    #wrapper.toggled-2 #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+        margin-left: -200px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        width: auto;
+ 
+    }
+}
+
+
+
+.container {
+    width: 100%;
+}
+
+.width-form-sidebar {
+    width: 180px !important;
+    margin-left: 10px;
+}
+
+.bootstrap-select {
+    margin-bottom: 0px !important;
+}
+
+.footerDashboard {
+    position: fixed;
+    height: 30px;
+    bottom: -38px;
+    width: 100%;
+    z-index: 1;
+}
+
+.contentDashboard{
+    position: absolute;
+    width: 100% !important;
+    margin-top: 150px !important;
+    margin-left: 0%;
+}
+
+
+.softwareConfiguration{
+    position: absolute;
+    width: 100% !important;
+    margin-top: 110px !important;
+    margin-left: 35%;
+}
