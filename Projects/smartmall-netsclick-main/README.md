@@ -1,42 +1,189 @@
-# NETS Click Sample App baseline
-Stand-alone NETS Click Function
+# NETS Click Employee Benefits & Digital Commerce Platform (SmartMall)
 
-## Latest NOFSDK versions (As at 15 Oct 2023):
-Android: 1.9.0
+## Overview
 
-IOS: 1.12.0
+This project is a Flutter-based integration of the NETS Click payment platform, developed as part of the SmartMall digital commerce ecosystem. The application enables secure payment processing through NETS Click while integrating with backend merchant and organization management services.
 
-Current flutter version: 3.13.7
+The solution leverages the NETS Online Framework SDK (NOFSDK) and supports both Android and iOS platforms.
 
-## To Get Started
-1. Refactor rename.bundle.name to the desired bundle id (use ctrl+shirt+r for your convenience)
-2. Replace Android vKeys in .../android/app/src/release & .../debug folders
-3. Replace IOS vKeys in .../ios/Runner/Asset folder
-4. Place keystore in .../android/app folder and reconfigure the name & password in .../android/app/build.gradle and local.properties
-5. Adjust .../android/app/src/main/kotlin/[rename/bundle/name]/CommonFunction.kt to the correct NOFSDK credentials
-6. Adjust .../ios/Runner/AppDelegate.swift to the correct NOFSDK credentials
-7. Adjust constants.dart according to the project credentials.
-8. Adjust secret.dart according to the project project id and api-key
+---
 
+## Technology Stack
 
-## Files/Details needed from merchant
-- Bundle Id
-- .keystore/.jks file, with keystore alias name & password
+### Mobile Application
 
-## Files/Details needed from NETS
-- Android vKeys
-- IOS vKeys
-- HPP_ISSUER_ID, HPP_ISSUER_ID_UOB, HPP_ISSUER_ID_OCBC
-- APPLICATION_ID
-- APP_SECRET
-- MAP_PUBLIC_KEY_ID, MAP_PUBLIC_KEY_EXPONENT, MAP_PUBLIC_KEY_MODULUS
-- HPP_PUBLIC_KEY_ID, HPP_PUBLIC_KEY_EXPONENT, HPP_PUBLIC_KEY_MODULUS
-- ca.crt (in .../android/app/src/main/res/raw/)
+* Flutter 3.13.7
+* Android
+* iOS
 
-## Files/Details needed from BevEat backend
-- Api key (in beveat entity_project table, project_key_value)
-- Project id (in beveat entity_project table, project_id)
-- Org Id (in beveat entity_organisation table, org_id)
-- Merchant id (in beveat entity_merchant table, merchant_id)
-- MID & TID (in beveat entity_merchant table, merchant_mid_nets_click & merchant_tid_nets_click)
-- MUID (or Consumer Id, in merchant dB)
+### NETS SDK Versions
+
+| Platform | Version |
+| -------- | ------- |
+| Android  | 1.9.0   |
+| iOS      | 1.12.0  |
+
+SDK versions current as of 15 October 2023.
+
+---
+
+## Key Features
+
+* NETS Click payment integration
+* Secure payment tokenization
+* Merchant onboarding support
+* Mobile payment processing
+* Backend API integration
+* Android and iOS support
+* Secure certificate and key management
+
+---
+
+## Project Configuration
+
+Before deployment, the following project-specific configurations must be updated:
+
+### Application Configuration
+
+1. Update the application bundle identifier.
+2. Configure Android signing credentials.
+3. Configure iOS signing credentials.
+4. Update NETS SDK configuration parameters.
+5. Configure backend API credentials.
+6. Configure merchant and organization identifiers.
+
+### Android Configuration
+
+Required updates:
+
+```text
+android/app/build.gradle
+android/app/local.properties
+android/app/src/release/
+android/app/src/debug/
+android/app/src/main/kotlin/.../CommonFunction.kt
+```
+
+Required assets:
+
+* Android vKeys
+* Application keystore (.keystore/.jks)
+* CA certificate
+
+### iOS Configuration
+
+Required updates:
+
+```text
+ios/Runner/AppDelegate.swift
+ios/Runner/Assets/
+```
+
+Required assets:
+
+* iOS vKeys
+
+### Application Secrets
+
+Update:
+
+```text
+lib/constants.dart
+lib/secret.dart
+```
+
+Required values:
+
+* Project ID
+* API Key
+* Organization ID
+* Merchant ID
+* NETS Credentials
+
+---
+
+## Required Merchant Information
+
+The following information is required from the merchant:
+
+* Bundle Identifier
+* Android Keystore (.keystore or .jks)
+* Keystore Alias
+* Keystore Password
+
+---
+
+## Required NETS Configuration
+
+The following credentials and assets must be provided by NETS:
+
+### SDK Keys
+
+* Android vKeys
+* iOS vKeys
+
+### NETS Identifiers
+
+* HPP_ISSUER_ID
+* HPP_ISSUER_ID_UOB
+* HPP_ISSUER_ID_OCBC
+* APPLICATION_ID
+* APP_SECRET
+
+### Public Keys
+
+* MAP_PUBLIC_KEY_ID
+
+* MAP_PUBLIC_KEY_EXPONENT
+
+* MAP_PUBLIC_KEY_MODULUS
+
+* HPP_PUBLIC_KEY_ID
+
+* HPP_PUBLIC_KEY_EXPONENT
+
+* HPP_PUBLIC_KEY_MODULUS
+
+### Certificates
+
+* ca.crt
+
+Location:
+
+```text
+android/app/src/main/res/raw/
+```
+
+---
+
+## Required Backend Configuration
+
+The following values are required from the backend system:
+
+### Project Information
+
+* Project ID
+* API Key
+
+### Organization Information
+
+* Organization ID
+
+### Merchant Information
+
+* Merchant ID
+* MID
+* TID
+* MUID (Consumer ID)
+
+---
+
+## Business Context
+
+This application was developed as part of the SmartMall employee benefits and digital commerce ecosystem supporting NETS Click. The platform integrates digital commerce, payment processing, merchant management, and backend services to provide a seamless purchasing experience across multiple sales channels.
+
+---
+
+## Disclaimer
+
+Sensitive credentials, certificates, API keys, merchant identifiers, and NETS-issued security assets are not included in this repository and must be provisioned separately through authorized channels.
