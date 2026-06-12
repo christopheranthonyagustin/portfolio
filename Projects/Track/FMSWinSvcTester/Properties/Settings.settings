@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FMSWinSvcTester.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FMSWinSvcTester_WebReference_SAPtoiWMS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://58.185.151.123/iLOGON_Webservice/SAPtoiWMS.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

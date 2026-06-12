@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Report Map</title>
+    <meta charset=" utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
+
+
+
+        .labels {
+            color: red;
+            background-color: white;
+            font-family: "Lucida Grande", "Arial", sans-serif;
+            font-size: 10px;
+            font-weight: bold;
+            pointer-events: none;
+            text-align: center;
+            width: auto;
+            padding-left: 2px;
+            padding-right: 2px;
+            border: 2px solid black;
+            white-space: nowrap;
+        }
+
+        #panel {
+            width: 200px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            float: right;
+            margin: 10px;
+            padding-left: 10px;
+            padding-right: 8px;
+            padding-top: 8px;
+            padding-bottom: 10px;
+            background-color: #404040;
+            width: auto;
+        }
+
+        #color-palette {
+            clear: both;
+        }
+
+        .color-button {
+            width: 14px;
+            height: 14px;
+            font-size: 0;
+            margin: 2px;
+            float: left;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <!--MAPS-->
+    <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLur5AuI1VPdx8JAtANJHKZ4G_ZU7_iMw"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?client=gme-acecomtechnologies&v=3.36&libraries=places,drawing&language=en"></script>
+
+</head>
+<body>
+    <div id="map"></div>
+
+    <!-- Custom -->
+    <script src="plugins/infobubble/infobubble.js"></script>
+    <script src="plugins/marker-with-label/markerwithlabel.js"></script>
+    <script src="js/map-view-zone.js"></script>
+	<script src="js/ssl.js"></script>
+
+
+</body>
+</html>
+

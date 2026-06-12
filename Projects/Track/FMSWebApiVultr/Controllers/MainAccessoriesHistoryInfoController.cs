@@ -1,0 +1,33 @@
+﻿using FMSWebApi.Models;
+using FMSWebApi.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+
+namespace FMSWebApi.Controllers
+{
+   // [RequireHttps]
+    //[Authorize] // Require authenticated requests.
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class MainAccessoriesHistoryInfoController : ApiController
+    {
+        private static readonly IMainInventoryHistoryRepository repository = new MainInventoryHistoryRepository();
+
+        public IEnumerable<MainInventoryHistoryInfo> GetByCategory([FromUri]MainInventoryHistoryInfo param)
+        {
+            if ((param.Timestamp != DateTime.MinValue && param.RxTime != DateTime.MinValue) && param.CompanyID > 0)                            
+            {
+                return repository.GetByCategory(param);
+            }
+            else
+            {
+                return repository.GetAll();
+            }
+        }
+
+    }
+}

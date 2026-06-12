@@ -1,0 +1,1444 @@
+﻿$(document).ready(function () {
+
+   
+
+    //Then retrieve
+    var getLocalstorageValueAsset = localStorage.getItem('setLocalstorageValueAsset');
+    var getLocalstorageValueCompany = localStorage.getItem('setLocalstorageValueCompany');
+    var getLocalstorageValueDateFrom = localStorage.getItem('setLocalstorageValueDateFrom');
+    var getLocalstorageValueDateTo = localStorage.getItem('setLocalstorageValueDateTo');
+
+
+    //Set
+    var localObjAsset = document.getElementById('load-assets').value = getLocalstorageValueAsset;
+    var localObjCompany = document.getElementById('load-company').value = getLocalstorageValueCompany;
+    var localObjDateFrom = document.getElementById('dateFrom').value = getLocalstorageValueDateFrom;
+    var localObjDateTo = document.getElementById('dateTo').value = getLocalstorageValueDateTo;
+   
+
+    //Change
+    $('#load-assets').append($('<option></option>').val(getLocalstorageValueAsset).html(getLocalstorageValueAsset));
+    $('#load-company').append($('<option></option>').val(getLocalstorageValueCompany).html(getLocalstorageValueCompany));
+
+
+
+    //Onload
+    //document.getElementById("marker").checked = true;
+    //document.getElementById("direction").checked = true;
+    //document.getElementById("line").checked = true;
+
+
+    var geocoder;
+    var map;
+    var markers = new Array();
+    var marker;
+    var direction;
+    var directions = new Array();
+    var MarkerDirection = [];
+    var assets = [];
+
+
+    var polyline;
+    var pathCoordinates = new google.maps.MVCArray();
+    var lines = [];
+
+
+    var interval;
+    var getSpeedAnimation;
+
+ 
+
+    //Marker Checkbox
+    var changeCheckbox = document.querySelector('.js-check-change-marker');
+
+    //Line Checkbox
+    var changeCheckboxLines = document.querySelector('.js-check-change-line');
+
+
+
+    function initialize() {
+
+
+        geocoder = new google.maps.Geocoder();
+
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), {
+            zoom: 12,
+            center: new google.maps.LatLng(1.3000, 103.8000),
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true,
+            zoomControl: true
+        });
+
+        resize('map-canvas', 32);
+
+        // handle window resize
+        function resize(element, offset) {
+            // get window height
+            var height = 0;
+            if (typeof (window.innerWidth) == 'number') height = window.innerHeight;
+            else if (document.documentElement && document.documentElement.clientHeight)
+                height = document.documentElement.clientHeight;
+            else if (document.body && document.bodyclientHeight)
+                height = document.body.clientHeight;
+            else if (screen.availheight)
+                height = screen.availheight;
+            else return;
+            // update window size
+            height = height - offset;
+            if (height > 0)
+                document.getElementById(element).style.height = height + "px";
+        }
+
+
+
+        //Click Refresh
+        document.getElementById("clickGenerate").onclick = Generate;
+        document.getElementById("clickGenerateEN").onclick = GenerateEN;
+        document.getElementById("clickReset").onclick = Reset;
+        document.getElementById("clickResetEN").onclick = ResetEN;
+
+
+
+
+        google.maps.event.addListener(map, 'mousemove', function (event) {
+            document.getElementById('panel').innerHTML =
+               event.latLng.lat() + ', ' + event.latLng.lng();
+        });
+
+    }
+
+
+    function setMarkers(map, assets) {
+
+        var image = {
+            url: 'http://track.asiacom.co.th/sg/Dashboard/img/bk-marker/stop-bk.png',
+            // This marker is 20 pixels wide by 32 pixels tall.
+            size: new google.maps.Size(28, 32),
+            // The origin for this image is 0,0.
+            origin: new google.maps.Point(0, 0),
+            // The anchor for this image is the base of the flagpole at 0,32.
+            //anchor: new google.maps.Point(0, 32)
+        };
+        // Shapes define the clickable region of the icon.
+        // The type defines an HTML &lt;area&gt; element 'poly' which
+        // traces out a polygon as a series of X,Y points. The final
+        // coordinate closes the poly by connecting to the first
+        // coordinate.
+        var shape = {
+            coords: [1, 1, 1, 20, 18, 20, 18, 1],
+            type: 'poly'
+        };
+
+
+        $("#load-assets :selected").text(); //the text content of the selected option
+        var getAsset = $("#load-assets").val(); //the value of the selected option
+
+        var getTimestamp = $("#dateFrom").val();
+        var getRxTime = $("#dateTo").val();
+        var dateFormat = "D-MMM-YYYY, hh:mm:ss A";
+
+
+        var convertTmestamp = moment(getTimestamp, dateFormat);
+        var convertRxtime = moment(getRxTime, dateFormat);
+
+        var timestamp = moment(convertTmestamp).subtract('hours', 8).format(dateFormat);
+        var rxtime = moment(convertRxtime).subtract('hours', 8).format(dateFormat);
+
+        var validateTimestamp = moment(getTimestamp, dateFormat).isValid();
+        var validateRxTime = moment(getRxTime, dateFormat).isValid();
+
+
+        var url = "http://103.237.168.119/tracksgwebapi/api/posinfo/?Asset=" + getAsset + "&Timestamp=" + timestamp + "&RxTime=" + rxtime;
+
+        if (validateTimestamp == true && validateRxTime == true) { 
+
+        $.getJSON(url, function (assets) {
+
+
+            for (var i = 0; i < assets.length; i++) {
+
+                var asset = assets[i];
+                var vechs = asset.Asset;
+                var engine = asset.Engine;
+
+
+                var myLatLng = new google.maps.LatLng(asset.PosY, asset.PosX);
+
+
+                //Background marker
+
+                var icon = "";
+                switch (asset.Engine) {
+                    case "MOVE":
+                        icon = "move";
+                        break;
+                    case "IDLE":
+                        icon = "idle";
+                        break;
+                    case "STOP":
+                        icon = "stop";
+                        break;
+                }
+
+
+                icon = "http://track.asiacom.co.th/sg/Dashboard/img/bk-marker/" + icon + ".png";
+
+
+
+                marker = new google.maps.Marker({ //Default Google Maps
+
+                    position: myLatLng,
+                    map: map,
+                    icon: new google.maps.MarkerImage(icon, new google.maps.Size(28, 28), new google.maps.Point(0, 0), new google.maps.Point(14, 14)),
+                    shape: shape,
+                    vechs: vechs,
+                    engine: engine,
+                    title: asset.Asset,
+                    zIndex: asset.PosZ
+
+                });
+
+                markers.push(marker);              
+
+                
+                /**
+                   * Function to filter markers by Vehicles
+                   */
+                $(function () {
+
+                    $('.SelectVechsFilter').on('change', function () {
+                        var selected = $(this).find("option:selected").val();
+
+
+                        for (i = 0; i < assets.length; i++) {
+                            marker = markers[i];
+                            // If is same engine or engine  not picked
+                            if (marker.vechs == selected || selected.length === 0) {
+                                marker.setVisible(true);
+
+                            }
+                                //Engine Status don't match 
+                            else {
+                                marker.setVisible(false);
+
+                            }
+                        }
+
+                        for (i = 0; i < MarkerDirection.length; i++) {
+                            direction = directions[i];
+                            // If is same engine or engine  not picked
+                            if (direction.vechicle == selected || selected.length === 0) {
+
+                                direction.setVisible(true);
+
+                            }
+                                //Engine Status don't match 
+                            else {
+                                direction.setVisible(false);
+
+                            }
+
+                        }
+
+                    });
+
+                });
+
+
+
+                //InfoBox Content
+                var assetTag = asset.Tag;
+                var assetAddress = asset.Location;
+                var assetSpeed = asset.Speed;
+                var assetMileage = asset.Mileage;
+                var assetFix = asset.Fix;
+                var assetTimestamp = asset.Timestamp;
+                var assetLat = asset.PosY;
+                var assetLong = asset.PosX;
+                var assetBattery = asset.Battery;
+
+
+                //Date InfoBox
+
+                //Convert Timezone
+                var Asia = moment.tz.add('Asia/Singapore|BMT ICT|-6G.4 -70|01|-218SG.4');
+
+                var Singapore = moment.tz(assetTimestamp, Asia);
+
+                //Format UTC
+                //var timestamp = moment(Singapore.format()).format("D-MMM-YYYY, hh:mm:ss A");
+                var timestamp = moment.utc(Singapore.format()).add('hours', 8).format('D-MMM-YYYY, hh:mm:ss A');
+
+                //  Format for Asset Status Infobox Color
+                // =================================================================
+                var assetColor;
+
+                if (asset.Engine == 'MOVE')
+                    assetColor = "success";
+                if (asset.Engine == 'IDLE')
+                    assetColor = "warning";
+                if (asset.Engine == 'STOP')
+                    assetColor = "danger";
+
+
+
+                // InfoBox
+                var assetContent = "<div id='infobox'><h4 id='firstHeading' class='firstHeading'>" + vechs + "</h4>" + "<p class='text-default text-justify bg-" + assetColor + " pad-all' style='height:auto'>"
+                                + assetAddress + "</p>" + "<table visibly='vehicle:status' class='table table-bordered table-vcenter'>" + "<tbody>" + "<tr>" + "<td>" + "<span data-l11n='th' class='text-bold'>" + "เครื่อง:&nbsp;" + assetTag + "</span>" + "<span data-l11n class='text-bold'>" + "Device:&nbsp;" + assetTag + "</span>" + "</td>" + "</tr>" + "<td>" + "<span data-l11n='th' class='text-bold'>สถานะ:&nbsp;" + engine + "</span>" + "<span data-l11n class='text-bold'>Status:&nbsp;" + engine + "</span>" + "<br />" + "<span data-l11n='th' class='text-bold'>ความเร็ว:&nbsp;" + assetSpeed + "</span>" + "<span data-l11n class='text-bold'>Speed:&nbsp;" + assetSpeed + "</span>" + " </td>" + "</tr>" + "<tr>" + "<td>" + "<span data-l11n='th' class='text-bold'>การสะสมไมล์:&nbsp" + assetMileage + "</span>" + "<span data-l11n class='text-bold'>Mileage:&nbsp" + assetMileage + "</span>" + "<br />" + "<span data-l11n='th' class='text-bold'>แบตเตอรี่:&nbsp;" + assetBattery + "</span>" + "<span data-l11n class='text-bold'>Battery:&nbsp;" + assetBattery + "</span>" + "</td>" + "</tr>" + "<tr>" + "<td>" + "<span class='text-bold'>" + assetFix + "</span>" + "<br />" + " <span class='text-normal'>" + timestamp + "</span>" + "</td>" + "</tr>" + "</tbody>" + "</table>" + "</div>";
+
+
+
+                //Marker Details - Info Window
+                /*=================================================*/
+                //Start
+
+                var infoboxOptions = {
+                    //content: document.getElementById("infobox"),
+                    content: assetContent,
+                    disableAutoPan: false,
+                    maxWidth: 150,
+                    pixelOffset: new google.maps.Size(-140, 14),
+                    zIndex: null,
+                    boxStyle: {
+                        background: "url('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/examples/tipbox.gif') no-repeat",
+                        opacity: 1,
+                        width: "280px"
+                    },
+                    closeBoxMargin: "12px 4px 2px 2px",
+                    closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
+                    infoBoxClearance: new google.maps.Size(1, 1),
+                    isHidden: false,
+                    enableEventPropagation: false
+                };
+
+
+
+                //Define the infobox
+                assets[i].infobox = new InfoBox(infoboxOptions);
+
+                //Open box when page is loaded
+                assets[i].infobox.close(map, marker);
+
+
+
+
+                // Click Marker
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+
+                    return function () {
+
+                        assets[i].infobox.open(map, this);
+                        map.panTo(this.position);
+                        //setTimeout(function () { AutoRefresh(); }, '10000'); //Refresh
+                        //setTimeout(function () { assets[i].infobox.close(map, marker); }, '60000'); //Auto close infobox
+
+
+                    }
+
+                })(marker, i));
+
+            }
+
+            return assets;
+        }
+
+                //End
+                /*=================================================*/
+
+
+                 )
+        }
+
+        else {
+
+            alert('Invalid Date');
+
+        }
+
+
+    }
+
+
+    function setDirection(map, MarkerDirection) {
+
+
+        // Marker sizes are expressed as a Size of X,Y
+        // where the origin of the image (0,0) is located
+        // in the top left of the image.
+
+        // Origins, anchor positions and coordinates of the marker
+        // increase in the X direction to the right and in
+        // the Y direction down.
+        var image = {
+            url: 'img/arrow.png',
+            // This marker is 20 pixels wide by 32 pixels tall.
+            size: new google.maps.Size(32, 32),
+            // The origin for this image is 0,0.
+            origin: new google.maps.Point(0, 0),
+            // The anchor for this image is the base of the flagpole at 0,32.
+            //anchor: new google.maps.Point(0, 32)
+        };
+
+
+        //var shape = {
+        //    coord: [16, 0, 18, 1, 21, 2, 24, 3, 26, 4, 27, 5, 28, 6, 29, 7, 29, 8, 29, 9, 29, 10, 29, 11, 29, 12, 29, 13, 29, 14, 29, 15, 29, 16, 29, 17, 29, 18, 29, 19, 29, 20, 29, 21, 29, 22, 29, 23, 29, 24, 29, 25, 29, 26, 29, 27, 29, 28, 28, 29, 3, 29, 2, 28, 2, 27, 1, 26, 1, 25, 1, 24, 0, 23, 0, 22, 0, 21, 0, 20, 0, 19, 0, 18, 0, 17, 0, 16, 0, 15, 0, 14, 0, 13, 0, 12, 0, 11, 0, 10, 0, 9, 0, 8, 0, 7, 1, 6, 2, 5, 2, 4, 3, 3, 5, 2, 6, 1, 8, 0, 16, 0],
+        //    type: 'poly'
+        //};
+
+
+        $("#load-assets :selected").text(); //the text content of the selected option
+        var getAsset = $("#load-assets").val(); //the value of the selected option
+
+        var getTimestamp = $("#dateFrom").val();
+        var getRxTime = $("#dateTo").val();
+        var dateFormat = "D-MMM-YYYY, hh:mm:ss A";
+
+
+        var convertTmestamp = moment(getTimestamp, dateFormat);
+        var convertRxtime = moment(getRxTime, dateFormat);
+
+        var timestamp = moment(convertTmestamp).subtract('hours', 8).format(dateFormat);
+        var rxtime = moment(convertRxtime).subtract('hours', 8).format(dateFormat);
+
+        var validateTimestamp = moment(getTimestamp, dateFormat).isValid();
+        var validateRxTime = moment(getRxTime, dateFormat).isValid();
+
+
+        var url = "http://103.237.168.119/tracksgwebapi/api/posinfo/?Asset=" + getAsset + "&Timestamp=" + timestamp + "&RxTime=" + rxtime;
+
+        if (validateTimestamp == true && validateRxTime == true) {
+
+
+            $.getJSON(url, function (MarkerDirection) {
+
+
+                for (var i = 0; i < MarkerDirection.length; i++) {
+
+                    var arrow = MarkerDirection[i];
+                    var engine = arrow.Engine;
+                    var vechicle = arrow.Asset;
+                    var speed = arrow.Speed;
+
+                    if (MarkerDirection.indexOf(i) !== -1) continue;
+
+
+                    var myLatLng = new google.maps.LatLng(parseFloat(arrow.PosY), parseFloat(arrow.PosX));
+
+
+                    direction = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+
+                        icon: {
+                            //path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                            scale: 4,
+                            strokeColor: 'green',
+                            strokeWeight: 1,
+                            fillOpacity: 0.8,
+                            fillColor: 'green',
+                            offset: '100%',
+                            rotation: arrow.Course,
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(0, 7)
+
+                        },
+                        //shape: shape,
+                        engine: engine,
+                        vechicle: vechicle,
+                        speed: speed,
+                        title: arrow.Asset,
+                        zIndex: arrow.PosZ
+
+                    });
+
+                    directions.push(direction);
+
+
+
+                    //Speed
+
+                    if (speed > 0) {
+                        direction.setVisible(true);
+                    }
+                    else {
+                        direction.setVisible(false);
+                    }
+
+                    //Direction Checkbox
+                    var changeCheckboxDirection = document.querySelector('.js-check-change-direction');
+
+                    changeCheckboxDirection.onchange = function () {
+
+                        // Sets the map on all markers in the array.
+                        function setAllMap(map) {
+                            for (var i = 0; i < directions.length; i++) {
+                                directions[i].setMap(map);
+                            }
+                        }
+
+                        if (changeCheckbox.checked) {
+                            setAllMap(map);
+
+                        } else {
+                            setAllMap(null);
+                        }
+
+
+                    };
+
+                    /**
+                    * Function to filter markers by Vehicles
+                    */
+                    $(function () {
+
+                        $('.SelectVechsFilter').on('change', function () {
+                            var selected = $(this).find("option:selected").val();
+
+                            for (i = 0; i < MarkerDirection.length; i++) {
+                                direction = directions[i];
+                                // If is same engine or engine  not picked
+                                if (direction.vechicle == selected || selected.length === 0) {
+
+                                    direction.setVisible(true);
+
+                                }
+                                    //Engine Status don't match 
+                                else {
+                                    direction.setVisible(false);
+
+                                }
+
+                            }
+
+                        });
+
+                    });
+
+
+                    // Click Marker
+                    google.maps.event.addListener(direction, 'click', (function (direction, i) {
+
+                        return function () {
+
+                            map.panTo(this.position);
+
+                        }
+
+                    })(direction, i));
+
+                }
+
+                return MarkerDirection;
+
+            }
+
+                    )
+        }
+
+        else {
+
+            alert('Invalid Date');
+
+        }
+
+    }
+
+
+    function setLines(map, lines) {
+
+
+        $("#load-assets :selected").text(); //the text content of the selected option
+        var getAsset = $("#load-assets").val(); //the value of the selected option
+
+        var getTimestamp = $("#dateFrom").val();
+        var getRxTime = $("#dateTo").val();
+        var dateFormat = "D-MMM-YYYY, hh:mm:ss A";
+
+
+        var convertTmestamp = moment(getTimestamp, dateFormat);
+        var convertRxtime = moment(getRxTime, dateFormat);
+
+        var timestamp = moment(convertTmestamp).subtract('hours', 8).format(dateFormat);
+        var rxtime = moment(convertRxtime).subtract('hours', 8).format(dateFormat);
+
+        var validateTimestamp = moment(getTimestamp, dateFormat).isValid();
+        var validateRxTime = moment(getRxTime, dateFormat).isValid();
+
+
+        var url = "http://103.237.168.119/tracksgwebapi/api/posinfo/?Asset=" + getAsset + "&Timestamp=" + timestamp + "&RxTime=" + rxtime;
+
+        if (validateTimestamp == true && validateRxTime == true) {
+
+
+
+            $.getJSON(url, function (lines) {
+
+
+                for (var i = 0; i < lines.length; i++) {
+
+                    var line = lines[i];
+                    var asset = line.Asset;
+                    var location = line.Location;
+
+                    var myLatLng = new google.maps.LatLng(parseFloat(line.PosY), parseFloat(line.PosX));
+                  
+
+                    // Construct the polyline.
+                    polyline = new google.maps.Polyline({
+                        path: pathCoordinates,
+                        asset: asset,
+                        location: location,
+                        geodesic: true,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2
+                    });
+
+                    pathCoordinates.push(myLatLng);
+
+                    polyline.setMap(map);
+
+
+                    /**
+                   * Function to filter markers by Vehicles
+                   */
+                    $(function () {
+
+                        $('.SelectVechsFilter').on('change', function () {
+                            var selected = $(this).find("option:selected").val();
+
+                        
+                                // If is same engine or engine  not picked
+                                if (asset == selected || selected.length === 0) {
+                                    polyline.setMap(map);
+
+                                }
+
+                                else {
+
+                                    // you probably then want to empty out your array as well
+                                    lines = [];
+
+                                    // not sure you'll require this at this point, but if you want to also clear out your array of coordinates...
+                                    pathCoordinates.clear();
+                                }
+                     
+
+                        });
+
+                    });
+
+                    
+
+                    // Add a listener for the click event.
+                    google.maps.event.addListener(polyline, 'click', showArrays);
+
+                    infoWindow = new google.maps.InfoWindow();
+
+
+
+
+                    // Click Lines
+                    google.maps.event.addListener(polyline, 'click', (function (polyline, i) {
+
+                        return function () {
+
+                            map.panTo(this.position);
+
+                        }
+
+                    })(polyline, i));
+
+                }
+
+                return lines;
+
+            }
+
+                    )
+        }
+
+        else {
+
+            alert('Invalid Date');
+
+        }
+    }
+
+    //Marker
+    changeCheckbox.onchange = function () {
+
+
+         //Sets the map on all markers in the array.
+        function setAllMap(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+
+            for (var i = 0; i < directions.length; i++) {
+                directions[i].setMap(map);
+            }
+
+        }
+
+        if (changeCheckbox.checked) {
+
+            setMarkers(map, assets);
+            setDirection(map, MarkerDirection);
+            //setAllMap(map);
+
+        } else {
+            setAllMap(null);
+
+        }
+    
+
+
+    };
+
+    //Lines
+    changeCheckboxLines.onchange = function () {
+
+
+        //for (var i = 0; i < lines.length; i++) {
+        //    lines[i].setMap(null);
+        //}
+
+        if (changeCheckboxLines.checked) {
+
+            setLines(map, lines);
+
+        } else {
+
+
+            // you probably then want to empty out your array as well
+            lines = [];
+
+            // not sure you'll require this at this point, but if you want to also clear out your array of coordinates...
+            pathCoordinates.clear();
+
+        }
+
+    };
+
+
+    function RemoveMarker() {
+
+
+        // Loop through markers and set map to null for each
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+
+        // Reset the markers array
+        markers = [];
+
+
+        // Loop through markers and set map to null for each
+        for (var i = 0; i < directions.length; i++) {
+
+            directions[i].setMap(null);
+        }
+
+        // Reset the markers array
+        directions = [];
+
+
+        for (var i = 0; i < lines.length; i++) {
+            lines[i].setMap(null);
+        }
+
+        // you probably then want to empty out your array as well
+        lines = [];
+
+        // not sure you'll require this at this point, but if you want to also clear out your array of coordinates...
+        pathCoordinates.clear();
+
+
+    }
+
+    /**
+     * Animating...
+     */
+    function playAnimate() {
+ 
+
+        RemoveMarker();
+
+        
+        var shape = {
+            coords: [1, 1, 1, 20, 18, 20, 18, 1],
+            type: 'poly'
+        };
+
+        //var infoWindow = new google.maps.InfoWindow();
+        var infoWindow;
+        var i = 0;
+
+        $("#load-assets :selected").text(); //the text content of the selected option
+        var getAsset = $("#load-assets").val(); //the value of the selected option
+
+        $("#load-speed :selected").text(); //the text content of the selected option
+        getSpeedAnimation = $("#load-speed").val(); //the value of the selected option
+
+
+        var getTimestamp = $("#dateFrom").val();
+        var getRxTime = $("#dateTo").val();
+        var dateFormat = "D-MMM-YYYY, hh:mm:ss A";
+
+
+        var convertTmestamp = moment(getTimestamp, dateFormat);
+        var convertRxtime = moment(getRxTime, dateFormat);
+
+        var timestamp = moment(convertTmestamp).subtract('hours', 8).format(dateFormat);
+        var rxtime = moment(convertRxtime).subtract('hours', 8).format(dateFormat);
+
+        var validateTimestamp = moment(getTimestamp, dateFormat).isValid();
+        var validateRxTime = moment(getRxTime, dateFormat).isValid();
+
+
+        var url = "http://103.237.168.119/tracksgwebapi/api/posinfo/?Asset=" + getAsset + "&Timestamp=" + timestamp + "&RxTime=" + rxtime;
+
+        if (validateTimestamp == true && validateRxTime == true) {
+
+            jQuery.support.cors = true;
+
+            function createCORSRequest(method, url) {
+                var xhr = new XMLHttpRequest();
+                if ("withCredentials" in xhr) {
+
+                    // Check if the XMLHttpRequest object has a "withCredentials" property.
+                    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+                    xhr.open(method, url, true);
+
+                } else if (typeof XDomainRequest != "undefined") {
+
+                    // Otherwise, check if XDomainRequest.
+                    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+                    xhr = new XDomainRequest();
+                    xhr.open(method, url);
+
+                } else {
+
+                    // Otherwise, CORS is not supported by the browser.
+                    xhr = null;
+
+                }
+                return xhr;
+            }
+
+
+            var xhr = createCORSRequest('GET', url);
+            xhr.send();
+            if (!xhr) {
+                throw new Error('CORS not supported');
+            }
+
+
+
+
+            interval = setInterval(function () {
+
+
+                $.getJSON(url, function (assets) {
+
+                    var asset = assets[i];
+                    var myLatLng = new google.maps.LatLng(parseFloat(asset.PosY), parseFloat(asset.PosX));
+
+                    var icon = "";
+                    switch (asset.Engine) {
+                        case "MOVE":
+                            icon = "move";
+                            break;
+                        case "IDLE":
+                            icon = "idle";
+                            break;
+                        case "STOP":
+                            icon = "stop";
+                            break;
+                    }
+
+                    icon = "http://track.asiacom.co.th/sg/Dashboard/img/bk-marker/" + icon + ".png";
+
+
+                    if (changeCheckbox.checked) {
+
+                        marker = new google.maps.Marker({
+                            position: myLatLng,
+                            //zoom: 17,
+                            map: map,
+                            icon: new google.maps.MarkerImage(icon, new google.maps.Size(28, 28), new google.maps.Point(0, 0), new google.maps.Point(14, 14)),
+                            shape: shape,
+                            title: asset.Asset
+                        });
+
+                        var bounds = new google.maps.LatLngBounds();
+                        var point = [];
+
+                        point = new google.maps.LatLng(parseFloat(asset.PosY), parseFloat(asset.PosX));
+                        bounds.extend(point);
+
+                        map.fitBounds(bounds);
+                        map.setZoom(15);
+
+
+                        markers.push(marker);
+                    }
+                    else {
+
+                        console.log('Marker not selected');
+                    }
+
+                    if (changeCheckboxLines.checked) {
+
+                            pathCoordinates.push(new google.maps.LatLng(parseFloat(asset.PosY), parseFloat(asset.PosX)));
+
+
+                            // Construct the polyline.
+                            polyline = new google.maps.Polyline({
+                                path: pathCoordinates,
+                                geodesic: true,
+                                strokeColor: '#FF0000',
+                                strokeOpacity: 1.0,
+                                strokeWeight: 2
+                            });
+
+                            polyline.setMap(map);
+
+                    }
+
+                    else {
+
+                        console.log('Lines not selected');
+                    }
+
+                    var assetName = asset.Asset;
+                    var engine = asset.Engine;
+                    var speed = asset.Speed;
+                    var mileage = asset.Mileage;
+                    var battery = asset.Battery;
+                    var assetTimestamp = asset.Timestamp;
+
+
+                    //Convert Timezone
+                    var Asia = moment.tz.add('Asia/Singapore|BMT ICT|-6G.4 -70|01|-218SG.4');
+
+                    var Singapore = moment.tz(assetTimestamp, Asia);
+
+                    //Format UTC
+                    //var timestamp = moment(Singapore.format()).format("D-MMM-YYYY, hh:mm:ss A");
+                    var timestamp = moment.utc(Singapore.format()).add('hours', 8).format('D-MMM-YYYY, hh:mm:ss A');
+
+                    var contentString = '<div id="content">' +
+                          '<div id="siteNotice">' +
+                          '</div>' +
+                          '<h4 id="firstHeading" class="firstHeading">' + assetName + '</h4>' +
+                          '<div id="bodyContent">' +
+                          '<p><b>Status: </b>' + engine +
+                          '<br /><b>Speed: </b>' + speed + '</p>' +
+                          '<p><b>Mileage: </b>' + mileage +
+                          '<br /><b>Battery: </b>' + battery + '</p>' +
+                          '<p><b>Timestamp: </b>' + timestamp + '</p>' +
+                          '</div>' +
+                          '</div>';
+
+
+                    infoWindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+
+
+
+                    (function (marker, i) {
+                        google.maps.event.addListener(marker, "click", function (e) {
+                            //infoWindow.setContent(asset.Asset);
+                            infoWindow.open(map, marker, i);
+                            map.panTo(this.position);
+
+                           
+                        });
+                    })(marker, i);
+
+                    i++;
+                    if (i == assets.length) {
+                        clearInterval(interval);
+                    }
+                }
+               )
+
+            }, getSpeedAnimation);
+
+        }
+
+        else {
+
+            alert('Invalid Date');
+        }
+      
+
+    }
+
+    function playAnimateEN() {
+
+        RemoveMarker();
+
+
+        var shape = {
+            coords: [1, 1, 1, 20, 18, 20, 18, 1],
+            type: 'poly'
+        };
+
+        //var infoWindow = new google.maps.InfoWindow();
+        var infoWindow;
+        var i = 0;
+
+        $("#load-assets :selected").text(); //the text content of the selected option
+        var getAsset = $("#load-assets").val(); //the value of the selected option
+
+        $("#load-speed :selected").text(); //the text content of the selected option
+        getSpeedAnimation = $("#load-speed").val(); //the value of the selected option
+
+        var getTimestamp = $("#dateFrom").val();
+        var getRxTime = $("#dateTo").val();
+        var dateFormat = "D-MMM-YYYY, hh:mm:ss A";
+
+
+        var convertTmestamp = moment(getTimestamp, dateFormat);
+        var convertRxtime = moment(getRxTime, dateFormat);
+
+        var timestamp = moment(convertTmestamp).subtract('hours', 8).format(dateFormat);
+        var rxtime = moment(convertRxtime).subtract('hours', 8).format(dateFormat);
+
+        var validateTimestamp = moment(getTimestamp, dateFormat).isValid();
+        var validateRxTime = moment(getRxTime, dateFormat).isValid();
+
+        var duration = moment.duration(convertRxtime - convertTmestamp).humanize();
+
+
+        if (duration < '4 days' | duration == 'a day' | duration == 'an hour') {
+
+
+            $.niftyNoty({
+                type: 'success',
+                icon: 'fa fa-play',
+                message: 'Playing',
+                container: 'floating',
+                timer: 3000
+            });
+
+            var url = "http://103.237.168.119/tracksgwebapi/api/posinfo/?Asset=" + getAsset + "&Timestamp=" + timestamp + "&RxTime=" + rxtime;
+
+            if (validateTimestamp == true && validateRxTime == true) {
+
+
+                jQuery.support.cors = true;
+
+                function createCORSRequest(method, url) {
+                    var xhr = new XMLHttpRequest();
+                    if ("withCredentials" in xhr) {
+
+                        // Check if the XMLHttpRequest object has a "withCredentials" property.
+                        // "withCredentials" only exists on XMLHTTPRequest2 objects.
+                        xhr.open(method, url, true);
+
+                    } else if (typeof XDomainRequest != "undefined") {
+
+                        // Otherwise, check if XDomainRequest.
+                        // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+                        xhr = new XDomainRequest();
+                        xhr.open(method, url);
+
+                    } else {
+
+                        // Otherwise, CORS is not supported by the browser.
+                        xhr = null;
+
+                    }
+                    return xhr;
+                }
+
+
+                var xhr = createCORSRequest('GET', url);
+                xhr.send();
+                if (!xhr) {
+                    throw new Error('CORS not supported');
+                }
+
+
+                interval = setInterval(function () {
+
+
+                    $.getJSON(url, function (assets) {
+
+                        var asset = assets[i];
+                        var myLatLng = new google.maps.LatLng(parseFloat(asset.PosY), parseFloat(asset.PosX));
+
+                        var icon = "";
+                        switch (asset.Engine) {
+                            case "MOVE":
+                                icon = "move";
+                                break;
+                            case "IDLE":
+                                icon = "idle";
+                                break;
+                            case "STOP":
+                                icon = "stop";
+                                break;
+                        }
+
+                        icon = "http://track.asiacom.co.th/track/Dashboard/img/bk-marker/" + icon + ".png";
+                        if (changeCheckbox.checked) {
+                            marker = new google.maps.Marker({
+                                position: myLatLng,
+                                zoom: 17,
+                                map: map,
+                                icon: new google.maps.MarkerImage(icon, new google.maps.Size(28, 28), new google.maps.Point(0, 0), new google.maps.Point(14, 14)),
+                                shape: shape,
+                                title: asset.Asset
+                            });
+
+
+                            var bounds = new google.maps.LatLngBounds();
+                            var point = [];
+
+                            point = new google.maps.LatLng(parseFloat(asset.PosY), parseFloat(asset.PosX));
+                            bounds.extend(point);
+
+                            map.fitBounds(bounds);
+                            map.setZoom(15);
+
+
+                            markers.push(marker);
+                        }
+                        else {
+
+                            console.log('Marker not selected');
+                        }
+
+                        if (changeCheckboxLines.checked) {
+
+                            pathCoordinates.push(new google.maps.LatLng(parseFloat(asset.PosY), parseFloat(asset.PosX)));
+
+
+                            // Construct the polyline.
+                            polyline = new google.maps.Polyline({
+                                path: pathCoordinates,
+                                geodesic: true,
+                                strokeColor: '#FF0000',
+                                strokeOpacity: 1.0,
+                                strokeWeight: 2
+                            });
+
+                            polyline.setMap(map);
+
+                        }
+
+                        else {
+
+                            console.log('Lines not selected');
+                        }
+
+                        var assetName = asset.Asset;
+                        var engine = asset.Engine;
+                        var speed = asset.Speed;
+                        var mileage = asset.Mileage;
+                        var battery = asset.Battery;
+                        var assetTimestamp = asset.Timestamp;
+
+
+                        //Convert Timezone
+                        var Asia = moment.tz.add('Asia/Singapore|BMT ICT|-6G.4 -70|01|-218SG.4');
+
+                        var Singapore = moment.tz(assetTimestamp, Asia);
+
+                        //Format UTC
+                        //var timestamp = moment(Singapore.format()).format("D-MMM-YYYY, hh:mm:ss A");
+                        var timestamp = moment.utc(Singapore.format()).add('hours', 8).format('D-MMM-YYYY, hh:mm:ss A');
+
+                        var contentString = '<div id="content">' +
+                              '<div id="siteNotice">' +
+                              '</div>' +
+                              '<h4 id="firstHeading" class="firstHeading">' + assetName + '</h4>' +
+                              '<div id="bodyContent">' +
+                              '<p><b>Status: </b>' + engine +
+                              '<br /><b>Speed: </b>' + speed + '</p>' +
+                              '<p><b>Mileage: </b>' + mileage +
+                              '<br /><b>Battery: </b>' + battery + '</p>' +
+                              '<p><b>Timestamp: </b>' + timestamp + '</p>' +
+                              '</div>' +
+                              '</div>';
+
+
+                        infoWindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
+
+
+
+                        (function (marker, i) {
+                            google.maps.event.addListener(marker, "click", function (e) {
+                                //infoWindow.setContent(asset.Asset);
+                                infoWindow.open(map, marker);
+                                map.panTo(this.position);
+                            });
+                        })(marker, i);
+
+                        i++;
+                        if (i == assets.length) {
+                            clearInterval(interval);
+                        }
+                    }
+                   )
+
+                }, getSpeedAnimation);
+
+            }
+
+            else {
+
+                alert('Invalid Date');
+            }
+
+        }
+
+
+        else {
+
+            alert('Playback not allowed');
+
+        }
+
+
+    }
+
+
+
+    /**
+    * Pausing...
+     */
+    function pauseAnimate() {
+
+        window.clearTimeout(interval);
+
+    }
+
+    function pauseAnimateEN() {
+
+        window.clearTimeout(interval);
+
+    }
+
+
+
+
+    /** @this {google.maps.Polyline} */
+    function showArrays(event) {
+
+
+        // Since this polygon has only one path, we can call getPath()
+        // to return the MVCArray of LatLngs.
+        var vertices = this.getPath();
+
+        var contentString = '<b>' + this.location + '</b><br>' +
+            'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
+            '<br>';
+
+        // Iterate over the vertices.
+        //for (var i = 0; i < vertices.getLength() ; i++) {
+        //    var xy = vertices.getAt(i);
+        //    contentString += '<br>' + 'Coordinate ' + i + ':&nbsp;' + location + '<br>' + xy.lat() + ',' +
+        //        xy.lng();
+        //}
+
+        // Replace the info window's content and position.
+        infoWindow.setContent(contentString);
+        infoWindow.setPosition(event.latLng);
+
+        infoWindow.open(map);
+
+    }
+
+
+
+    function Generate() {
+
+        RemoveMarker();
+
+        if (changeCheckbox.checked) {
+
+            setMarkers(map, assets);
+            setDirection(map, MarkerDirection);
+
+        }
+
+        else {
+
+            alert('Marker not selected');
+        }
+
+
+        if (changeCheckboxLines.checked) {
+
+            setLines(map, lines);
+        }
+
+        else {
+
+            alert('Line not selected');
+        }
+
+     
+
+
+    }
+
+
+    function GenerateEN() {
+
+        RemoveMarker();
+
+        if (changeCheckbox.checked) {
+
+            setMarkers(map, assets);
+            setDirection(map, MarkerDirection);
+
+        }
+
+        else {
+
+            alert('Marker not selected');
+        }
+
+        if (changeCheckboxLines.checked) {
+
+            setLines(map, lines);
+        }
+
+        else {
+
+            alert('Line not selected');
+        }
+
+    }
+
+
+    function Reset() {
+
+        //window.location.reload(true);
+        clearInterval(interval);
+
+        // Loop through markers and set map to null for each
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+
+        // Reset the markers array
+        markers = [];
+
+
+        // Loop through markers and set map to null for each
+        for (var i = 0; i < directions.length; i++) {
+
+            directions[i].setMap(null);
+        }
+
+        // Reset the markers array
+        directions = [];
+
+
+        for (var i = 0; i < lines.length; i++) {
+            lines[i].setMap(null);
+        }
+
+        // you probably then want to empty out your array as well
+        lines = [];
+
+        // not sure you'll require this at this point, but if you want to also clear out your array of coordinates...
+        pathCoordinates.clear();
+
+       
+    }
+
+
+    function ResetEN() {
+
+        //window.location.reload(true);
+        clearInterval(interval);
+
+        // Loop through markers and set map to null for each
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+
+        // Reset the markers array
+        markers = [];
+
+
+        // Loop through markers and set map to null for each
+        for (var i = 0; i < directions.length; i++) {
+
+            directions[i].setMap(null);
+        }
+
+        // Reset the markers array
+        directions = [];
+
+
+        for (var i = 0; i < lines.length; i++) {
+            lines[i].setMap(null);
+        }
+
+        // you probably then want to empty out your array as well
+        lines = [];
+
+        // not sure you'll require this at this point, but if you want to also clear out your array of coordinates...
+        pathCoordinates.clear();
+
+       
+    
+    }
+
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+    //=====================================================
+
+
+    // Click events
+    $('#startAnimate').click(function () {
+        playAnimate();
+    });
+
+    $('#startAnimateEN').click(function () {
+        playAnimateEN();
+    });
+
+
+    $('#pauseAnimate').click(function () {
+        pauseAnimate();
+    });
+
+    $('#pauseAnimateEN').click(function () {
+        pauseAnimateEN();
+    });
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,119 @@
+D:\My Work\GPSL\W.locate\Source\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+D:\My Work\GPSL\W.locate\Source\WlocateMsg\bin\Debug\WlocateMsg.exe
+D:\My Work\GPSL\W.locate\Source\WlocateMsg\bin\Debug\WlocateMsg.pdb
+D:\My Work\GPSL\W.locate\Source\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+D:\My Work\GPSL\W.locate\Source\WlocateMsg\obj\Debug\WlocateMsg.exe
+D:\My Work\GPSL\W.locate\Source\WlocateMsg\obj\Debug\WlocateMsg.pdb
+S:\WORK\W-Locate\W.locate\Source\Find\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+S:\WORK\W-Locate\W.locate\Source\Find\WlocateMsg\bin\Debug\WlocateMsg.exe
+S:\WORK\W-Locate\W.locate\Source\Find\WlocateMsg\bin\Debug\WlocateMsg.pdb
+S:\WORK\W-Locate\W.locate\Source\Find\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+S:\WORK\W-Locate\W.locate\Source\Find\WlocateMsg\obj\Debug\WlocateMsg.exe
+S:\WORK\W-Locate\W.locate\Source\Find\WlocateMsg\obj\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\WlocateSrc_1.0.1\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\WlocateSrc_1.0.1\WlocateMsg\bin\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\WlocateSrc_1.0.1\WlocateMsg\bin\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\WlocateSrc_1.0.1\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\WlocateSrc_1.0.1\WlocateMsg\obj\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\WlocateSrc_1.0.1\WlocateMsg\obj\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\2.0.7\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\2.0.7\WlocateMsg\bin\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\2.0.7\WlocateMsg\bin\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\2.0.7\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\2.0.7\WlocateMsg\obj\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\2.0.7\WlocateMsg\obj\Debug\WlocateMsg.pdb
+S:\WORK\W-Locate\W.locate\Source\Starhub\Backup\2.1.0\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+S:\WORK\W-Locate\W.locate\Source\Starhub\Backup\2.1.0\WlocateMsg\bin\Debug\WlocateMsg.exe
+S:\WORK\W-Locate\W.locate\Source\Starhub\Backup\2.1.0\WlocateMsg\bin\Debug\WlocateMsg.pdb
+S:\WORK\W-Locate\W.locate\Source\Starhub\Backup\2.1.0\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+S:\WORK\W-Locate\W.locate\Source\Starhub\Backup\2.1.0\WlocateMsg\obj\Debug\WlocateMsg.exe
+S:\WORK\W-Locate\W.locate\Source\Starhub\Backup\2.1.0\WlocateMsg\obj\Debug\WlocateMsg.pdb
+D:\My Work\GPSL\W.locate\3.0.0\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+D:\My Work\GPSL\W.locate\3.0.0\WlocateMsg\bin\Debug\WlocateMsg.exe
+D:\My Work\GPSL\W.locate\3.0.0\WlocateMsg\bin\Debug\WlocateMsg.pdb
+D:\My Work\GPSL\W.locate\3.0.0\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+D:\My Work\GPSL\W.locate\3.0.0\WlocateMsg\obj\Debug\WlocateMsg.exe
+D:\My Work\GPSL\W.locate\3.0.0\WlocateMsg\obj\Debug\WlocateMsg.pdb
+D:\My Work\GPSL\W.locate\3.0.2\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+D:\My Work\GPSL\W.locate\3.0.2\WlocateMsg\bin\Debug\WlocateMsg.exe
+D:\My Work\GPSL\W.locate\3.0.2\WlocateMsg\bin\Debug\WlocateMsg.pdb
+D:\My Work\GPSL\W.locate\3.0.2\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+D:\My Work\GPSL\W.locate\3.0.2\WlocateMsg\obj\Debug\WlocateMsg.exe
+D:\My Work\GPSL\W.locate\3.0.2\WlocateMsg\obj\Debug\WlocateMsg.pdb
+D:\My Work\GPSL\W.locate\3.0.3\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+D:\My Work\GPSL\W.locate\3.0.3\WlocateMsg\bin\Debug\WlocateMsg.exe
+D:\My Work\GPSL\W.locate\3.0.3\WlocateMsg\bin\Debug\WlocateMsg.pdb
+D:\My Work\GPSL\W.locate\3.0.3\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+D:\My Work\GPSL\W.locate\3.0.3\WlocateMsg\obj\Debug\WlocateMsg.exe
+D:\My Work\GPSL\W.locate\3.0.3\WlocateMsg\obj\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.1.5\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.1.5\WlocateMsg\bin\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.1.5\WlocateMsg\bin\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.1.5\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.1.5\WlocateMsg\obj\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.1.5\WlocateMsg\obj\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.5\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.5\WlocateMsg\bin\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.5\WlocateMsg\bin\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.5\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.5\WlocateMsg\obj\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.5\WlocateMsg\obj\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.6\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.6\WlocateMsg\bin\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.6\WlocateMsg\bin\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.6\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.6\WlocateMsg\obj\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.6\WlocateMsg\obj\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.7\WlocateMsg\bin\Debug\WlocateMsg.exe.config
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.7\WlocateMsg\bin\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.7\WlocateMsg\bin\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.7\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.7\WlocateMsg\obj\Debug\WlocateMsg.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.2.7\WlocateMsg\obj\Debug\WlocateMsg.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3\WlocateMsg\bin\Debug\FindMsgService.exe.config
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3\WlocateMsg\bin\Debug\FindMsgService.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3\WlocateMsg\bin\Debug\FindMsgService.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3\WlocateMsg\obj\Debug\FindMsgService.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3\WlocateMsg\obj\Debug\FindMsgService.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_MSP\WlocateMsg\bin\Debug\FindMsgService.exe.config
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_MSP\WlocateMsg\bin\Debug\FindMsgService.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_MSP\WlocateMsg\bin\Debug\FindMsgService.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_MSP\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_MSP\WlocateMsg\obj\Debug\FindMsgService.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_MSP\WlocateMsg\obj\Debug\FindMsgService.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_CA\WlocateMsg\bin\Debug\FindMsgService.exe.config
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_CA\WlocateMsg\bin\Debug\FindMsgService.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_CA\WlocateMsg\bin\Debug\FindMsgService.pdb
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_CA\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_CA\WlocateMsg\obj\Debug\FindMsgService.exe
+C:\Users\Public\Documents\W-Locate Projects\W.locate\Source\3.3.3_CA\WlocateMsg\obj\Debug\FindMsgService.pdb
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.3.3_CA\WlocateMsg\bin\Debug\FindMsgService.exe.config
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.3.3_CA\WlocateMsg\bin\Debug\FindMsgService.exe
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.3.3_CA\WlocateMsg\bin\Debug\FindMsgService.pdb
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.3.3_CA\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.3.3_CA\WlocateMsg\obj\Debug\FindMsgService.exe
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.3.3_CA\WlocateMsg\obj\Debug\FindMsgService.pdb
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.exe.config
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.exe
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.pdb
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.4.0_CA\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.4.0_CA\WlocateMsg\obj\Debug\FindMsgService.exe
+C:\Users\Administrator\Downloads\+INBOX\Dropbox\FIND\3.4.0_CA\WlocateMsg\obj\Debug\FindMsgService.pdb
+C:\Users\Alrey\Dropbox\FIND\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.exe.config
+C:\Users\Alrey\Dropbox\FIND\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.exe
+C:\Users\Alrey\Dropbox\FIND\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.pdb
+C:\Users\Alrey\Dropbox\FIND\3.4.0_CA\WlocateMsg\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Alrey\Dropbox\FIND\3.4.0_CA\WlocateMsg\obj\Debug\FindMsgService.exe
+C:\Users\Alrey\Dropbox\FIND\3.4.0_CA\WlocateMsg\obj\Debug\FindMsgService.pdb
+C:\Users\Dantz\Google Drive\FIND\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.exe.config
+C:\Users\Dantz\Google Drive\FIND\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.exe
+C:\Users\Dantz\Google Drive\FIND\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.pdb
+C:\Users\Dantz\Google Drive\FIND\3.4.0_CA\WlocateMsg\obj\Debug\WlocateMsg.csprojResolveAssemblyReference.cache
+C:\Users\Dantz\Google Drive\FIND\3.4.0_CA\WlocateMsg\obj\Debug\FindMsgService.exe
+C:\Users\Dantz\Google Drive\FIND\3.4.0_CA\WlocateMsg\obj\Debug\FindMsgService.pdb
+C:\Users\Marlo\Desktop\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.exe.config
+C:\Users\Marlo\Desktop\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.exe
+C:\Users\Marlo\Desktop\3.4.0_CA\WlocateMsg\bin\Debug\FindMsgService.pdb
+C:\Users\Marlo\Desktop\3.4.0_CA\WlocateMsg\obj\Debug\FindMsgService.exe
+C:\Users\Marlo\Desktop\3.4.0_CA\WlocateMsg\obj\Debug\FindMsgService.pdb

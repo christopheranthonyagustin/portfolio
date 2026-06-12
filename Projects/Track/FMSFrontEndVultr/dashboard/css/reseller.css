@@ -1,0 +1,53 @@
+
+#languageTH {
+    display: none;
+}
+
+#languageEN {
+    display: none;
+}
+
+.language {
+    display: none;
+}
+
+.devices {
+    display: none;
+}
+
+/*.reseller {
+    display: none;
+}*/
+
+.userFormReseller {
+    display: none;
+}
+
+
+.userResellerColumn {
+    display: none;
+}
+
+.companyResellerColumn{
+    display: none;
+}
+
+.companyReseller {
+    display: none;
+}
+
+.assetDevices {
+    display: none;
+}
+
+.markerVideoEN {
+    display: none;
+}
+
+.routes {
+    display: none;
+}
+
+.jobs {
+    display: none;
+}

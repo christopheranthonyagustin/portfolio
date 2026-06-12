@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9ae1bd5e-7dba-4950-8953-e7ee0514913f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://103.237.168.119/fmswcfapi/FmsWcf.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FmsWcf.wsdl" MetadataType="Wsdl" ID="f9deaf40-5fac-4d94-929d-62fa5ccd0255" SourceId="1" SourceUrl="http://103.237.168.119/fmswcfapi/FmsWcf.svc?wsdl" />
+    <MetadataFile FileName="FmsWcf.xsd" MetadataType="Schema" ID="794c952a-947c-412f-81d7-d6faf9755ab4" SourceId="1" SourceUrl="http://103.237.168.119/fmswcfapi/FmsWcf.svc?xsd=xsd0" />
+    <MetadataFile FileName="FmsWcf1.xsd" MetadataType="Schema" ID="c9d96635-2797-406b-bd79-7ca63518bea9" SourceId="1" SourceUrl="http://103.237.168.119/fmswcfapi/FmsWcf.svc?xsd=xsd3" />
+    <MetadataFile FileName="FmsWcf2.xsd" MetadataType="Schema" ID="29f28701-57be-4688-9038-ac08e94ca3fd" SourceId="1" SourceUrl="http://103.237.168.119/fmswcfapi/FmsWcf.svc?xsd=xsd1" />
+    <MetadataFile FileName="FmsWcf3.xsd" MetadataType="Schema" ID="bb8e993e-5e51-4807-ae80-b913c86af990" SourceId="1" SourceUrl="http://103.237.168.119/fmswcfapi/FmsWcf.svc?xsd=xsd2" />
+    <MetadataFile FileName="FmsWcf.disco" MetadataType="Disco" ID="232c18fb-0745-48fc-9916-686d6b0fc54b" SourceId="1" SourceUrl="http://103.237.168.119/fmswcfapi/FmsWcf.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

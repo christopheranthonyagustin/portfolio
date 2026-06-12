@@ -1,0 +1,66 @@
+
+.btn-asiacomDropdown{
+	background-color:#696969;
+	border-color:#000000;
+	color:#fff /*To Change Font Color*/
+}
+
+.btn-asiacomDropdown.text-dark{
+	color:#659234
+}
+
+.btn-asiacomDropdown.active,.btn-asiacomDropdown:active,.btn-asiacomDropdown:focus,.btn-asiacomDropdown:hover,.open>.dropdown-toggle.btn-asiacomDropdown{
+	background-color:#808080;
+	border-color:#000000;
+	color:#fff/*To Change Active Font Color*/
+	/*color:#fff*/
+}
+
+
+.btn-asiacomButton{
+	background-color:#696969;
+	border-color:#696969;
+	color:#fff /*To Change Font Color*/
+}
+
+.btn-asiacomButton.text-dark{
+	color:#659234
+}
+
+.btn-asiacomButton.active,.btn-asiacomButton:active,.btn-asiacomButton:focus,.btn-asiacomButton:hover,.open>.dropdown-toggle.btn-asiacomButton{
+	background-color:#808080;
+	border-color:#696969;
+	color:#fff/*To Change Active Font Color*/
+	/*color:#fff*/
+}
+
+
+.btn-asiacomDateFilter{
+	background-color:#DAA520;
+	border-color:#fea525;
+	color:#fff
+}
+
+.btn-asiacomDateFilter.text-dark{
+	color:#e48701
+}
+
+.btn-asiacomDateFilter.active,.btn-asiacomDateFilter:active,.btn-asiacomDateFilter:focus,.btn-asiacomDateFilter:hover,.open>.dropdown-toggle.btn-asiacomDateFilter{
+	background-color:#fea01b;
+	border-color:#fe9c10;
+	color:#fff
+	/*color:#fff*/
+}
+
+
+.stripe{
+	background-color:#4A4B43
+}
+
+
+
+.assetSelectedRow{
+	background-color:#696969;
+	border-color:#000000;
+	color:#fff /*To Change Font Color*/
+}

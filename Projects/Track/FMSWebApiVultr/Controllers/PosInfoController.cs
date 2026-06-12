@@ -1,0 +1,74 @@
+﻿using FMSWebApi.Models;
+using FMSWebApi.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+
+namespace FMSWebApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class PosInfoController : ApiController
+    {
+        private static readonly IPosRepository repository = new PosInfoRepository();
+
+        // GET: api/PosInfo
+        public IEnumerable<PosInfo> GetPosFiltered([FromUri]PosInfo param)
+        {
+            if ((param.Timestamp != DateTime.MinValue && param.RxTime != DateTime.MinValue) &&
+                (param.AssetID > 0 || !string.IsNullOrEmpty(param.Asset)))
+            {
+                return repository.Get(param);
+            }
+            else
+            {
+                Logger.LogEvent(string.Format("PARAM IS null"), System.Diagnostics.EventLogEntryType.Information);
+                return repository.GetAll();
+            }
+        }
+
+        // GET: api/PosInfo/5
+        public PosInfo Get(long id)
+        {
+            PosInfo currPos = repository.Get(id);
+            if (currPos == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return currPos;
+        }
+        
+
+        // POST: api/PosInfo
+        public PosInfo Post([FromBody]PosInfo value)
+        {
+            //if (value.Tag == "0863835025666855") Logger.LogEvent(string.Format("Timestamp: {0} RxTime: {1} Remarks: {2}", value.Timestamp, value.RxTime, value.Remarks), System.Diagnostics.EventLogEntryType.Information);
+            value = repository.Add(value);
+            return value;
+        }
+
+        // PUT: api/PosInfo/5
+        public void Put(long id, [FromBody]PosInfo value)
+        {
+            value.PosID = id;
+            if (!repository.Update(value))
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+        }
+
+        // DELETE: api/PosInfo/5
+        public void Delete(long id)
+        {
+            PosInfo currAsset = repository.Get(id);
+            if (currAsset == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            repository.Remove(id);
+        }
+    }
+}

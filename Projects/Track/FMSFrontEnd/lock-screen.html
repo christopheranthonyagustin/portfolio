@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="A clean login and registration template based on Bootstrap framework">
+
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>TRACK - Fleet Management System</title>
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Validation -->
+    <link href="css/bootstrapValidator.min.css" rel="stylesheet">
+
+    <!--Localization-->
+    <link rel="stylesheet" href="css/jquery.localizationTool.css">
+
+    <!--Carousel Background-->
+    <link rel="stylesheet" type="text/css" href="css/backgroundcarousel.css" />
+    <script type="text/javascript" src="js/backgroundcarousel.js"></script>
+
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link media="screen" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,300italic">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body>
+
+    <div id="mainWrap">
+
+        <!--Background Image Carousel-->
+
+        <ul style="list-style-type: none;" class="cb-slideshow">
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+        </ul>
+
+        <!--End of Background Image Carousel-->
+
+
+        <div id="loggit">
+            <!--<h1><i class="fa fa-compass"></i> TRACK</h1>-->
+
+
+
+            <h1><img src="img/logo.png" alt="Track Logo" class="center-block img-responsive"></h1>
+
+
+
+            <!--<form action="Dashboard" id="logForm" method="get" class="form-horizontal">-->
+            <!--<form action="Dashboard" id="logForm" class="form-horizontal">-->
+            <div id="logForm" class="form-horizontal">
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                            <input type="text" class="form-control input-md" placeholder="ชื่อผู้ใช้" autocomplete="off" name="usernameLock" id="usernameLock" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                            <input type="password" class="form-control input-md" placeholder="รหัสผ่าน" autocomplete="off" name="passwordLock" id="passwordLock">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group formSubmit pull-right">
+                
+                    <div class="col-sm-5 submitWrap">
+                        <button id="submit-user" type="submit" class="loginbtnLock btn btn-primary btn-mini" style="padding: 8px 18px; border-radius: 2px;">เข้าสู่ระบบ</button>
+                    </div>
+                </div>
+
+                <table style="width:100%">
+                    <tr>
+                        <td width="60%"><a href="forgotpassword.html"><div class="forgotpassLock">ลืมรหัสผ่าน?</div></a></td>
+                        <!--<td width="20%"><a href="forgotpassword.html"><span class="clickpass">&nbsp; คลิกที่นี่</span></a></td>-->
+                        <td width="60%"><div id="lockScreen" class="localizationTool pull-right"></div></td>
+                    </tr>
+
+                </table>
+            </div>
+            <!--</form>-->
+
+
+
+        </div>
+
+    </div>
+    <footer class="clearfix">
+        <table style="width:100%">
+            <tr>
+                <td><p id="footer">ลิขสิทธิ์© 2015 ระบบการจัดการ กองทัพเรือ สงวนลิขสิทธิ์</p></td>
+            </tr>
+            <tr>
+                <td><span id="software"></span>&nbsp;<span id="verNum"></span></td>     
+            </tr>
+        </table>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+    <!--jQuery [ REQUIRED ]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+    <!--Localization-->
+    <script src="js/jquery.localizationTool.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrapValidator.min.js"></script>
+    <script src="js/form-validation.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/version.js"></script>
+
+
+</body>
+</html>

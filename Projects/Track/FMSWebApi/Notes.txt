@@ -1,0 +1,13 @@
+﻿http://103.237.168.119/fms/Dashboard
+http://103.237.168.119/phpmyadmin
+http://103.237.168.119/tracksgwebapi/api/assetinfo
+http://103.237.168.119/tracksgwebapi/api/zoneinfo/
+http://103.237.168.119/tracksgwebapi/api/companyinfo
+http://103.237.168.119/tracksgwebapi/api/userinfo
+http://103.237.168.119/tracksgwebapi/api/deviceinfo
+http://103.237.168.119/tracksgwebapi/api/zonetypeinfo
+http://103.237.168.119/tracksgwebapi/api/categoryinfo
+http://103.237.168.119/tracksgwebapi/api/reportinfo
+http://103.237.168.119/tracksgwebapi/api/roleinfo
+http://103.237.168.119/tracksgwebapi/api/languageinfo
+http://103.237.168.119/tracksgwebapi/api/eventinfo

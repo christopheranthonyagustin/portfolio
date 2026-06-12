@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AAv1903151CH">
+        <s:complexType />
+      </s:element>
+      <s:element name="AAv1903151CHResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="POInterface">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="POHead" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POItem" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POItemText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POSubCon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="POInterfaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="POInterfaceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DOInterface">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DOHead" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DOItem" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DOSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DOInterfaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DOInterfaceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IMInterface">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IMInterfaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IMInterfaceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ROInterface">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ROInterfaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ROInterfaceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RCInterface">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RCHead" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RCSDetl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RCInterfaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RCInterfaceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SKUCreate_TEST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SKUCreate_TESTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SKUCreate_TESTResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountInterface">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountInterfaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountInterfaceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VehicleInterface">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VehicleInterfaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VehicleInterfaceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GIInterface">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Header" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Items" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GIInterfaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GIInterfaceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AAv1903151CHSoapIn">
+    <wsdl:part name="parameters" element="tns:AAv1903151CH" />
+  </wsdl:message>
+  <wsdl:message name="AAv1903151CHSoapOut">
+    <wsdl:part name="parameters" element="tns:AAv1903151CHResponse" />
+  </wsdl:message>
+  <wsdl:message name="POInterfaceSoapIn">
+    <wsdl:part name="parameters" element="tns:POInterface" />
+  </wsdl:message>
+  <wsdl:message name="POInterfaceSoapOut">
+    <wsdl:part name="parameters" element="tns:POInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DOInterfaceSoapIn">
+    <wsdl:part name="parameters" element="tns:DOInterface" />
+  </wsdl:message>
+  <wsdl:message name="DOInterfaceSoapOut">
+    <wsdl:part name="parameters" element="tns:DOInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMInterfaceSoapIn">
+    <wsdl:part name="parameters" element="tns:IMInterface" />
+  </wsdl:message>
+  <wsdl:message name="IMInterfaceSoapOut">
+    <wsdl:part name="parameters" element="tns:IMInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ROInterfaceSoapIn">
+    <wsdl:part name="parameters" element="tns:ROInterface" />
+  </wsdl:message>
+  <wsdl:message name="ROInterfaceSoapOut">
+    <wsdl:part name="parameters" element="tns:ROInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="RCInterfaceSoapIn">
+    <wsdl:part name="parameters" element="tns:RCInterface" />
+  </wsdl:message>
+  <wsdl:message name="RCInterfaceSoapOut">
+    <wsdl:part name="parameters" element="tns:RCInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SKUCreate_TESTSoapIn">
+    <wsdl:part name="parameters" element="tns:SKUCreate_TEST" />
+  </wsdl:message>
+  <wsdl:message name="SKUCreate_TESTSoapOut">
+    <wsdl:part name="parameters" element="tns:SKUCreate_TESTResponse" />
+  </wsdl:message>
+  <wsdl:message name="AccountInterfaceSoapIn">
+    <wsdl:part name="parameters" element="tns:AccountInterface" />
+  </wsdl:message>
+  <wsdl:message name="AccountInterfaceSoapOut">
+    <wsdl:part name="parameters" element="tns:AccountInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="VehicleInterfaceSoapIn">
+    <wsdl:part name="parameters" element="tns:VehicleInterface" />
+  </wsdl:message>
+  <wsdl:message name="VehicleInterfaceSoapOut">
+    <wsdl:part name="parameters" element="tns:VehicleInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GIInterfaceSoapIn">
+    <wsdl:part name="parameters" element="tns:GIInterface" />
+  </wsdl:message>
+  <wsdl:message name="GIInterfaceSoapOut">
+    <wsdl:part name="parameters" element="tns:GIInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="AAv1903151CHHttpGetIn" />
+  <wsdl:message name="AAv1903151CHHttpGetOut" />
+  <wsdl:message name="POInterfaceHttpGetIn">
+    <wsdl:part name="POHead" type="s:string" />
+    <wsdl:part name="POItem" type="s:string" />
+    <wsdl:part name="POItemText" type="s:string" />
+    <wsdl:part name="POSubCon" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="POInterfaceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DOInterfaceHttpGetIn">
+    <wsdl:part name="DOHead" type="s:string" />
+    <wsdl:part name="DOItem" type="s:string" />
+    <wsdl:part name="DOSerialNo" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DOInterfaceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IMInterfaceHttpGetIn">
+    <wsdl:part name="IM" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IMInterfaceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ROInterfaceHttpGetIn">
+    <wsdl:part name="RO" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ROInterfaceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RCInterfaceHttpGetIn">
+    <wsdl:part name="RCHead" type="s:string" />
+    <wsdl:part name="RCSDetl" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RCInterfaceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SKUCreate_TESTHttpGetIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="code2" type="s:string" />
+    <wsdl:part name="descr" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SKUCreate_TESTHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AccountInterfaceHttpGetIn">
+    <wsdl:part name="IM" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AccountInterfaceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="VehicleInterfaceHttpGetIn">
+    <wsdl:part name="IM" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VehicleInterfaceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GIInterfaceHttpGetIn">
+    <wsdl:part name="Header" type="s:string" />
+    <wsdl:part name="Items" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GIInterfaceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AAv1903151CHHttpPostIn" />
+  <wsdl:message name="AAv1903151CHHttpPostOut" />
+  <wsdl:message name="POInterfaceHttpPostIn">
+    <wsdl:part name="POHead" type="s:string" />
+    <wsdl:part name="POItem" type="s:string" />
+    <wsdl:part name="POItemText" type="s:string" />
+    <wsdl:part name="POSubCon" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="POInterfaceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DOInterfaceHttpPostIn">
+    <wsdl:part name="DOHead" type="s:string" />
+    <wsdl:part name="DOItem" type="s:string" />
+    <wsdl:part name="DOSerialNo" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DOInterfaceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IMInterfaceHttpPostIn">
+    <wsdl:part name="IM" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IMInterfaceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ROInterfaceHttpPostIn">
+    <wsdl:part name="RO" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ROInterfaceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RCInterfaceHttpPostIn">
+    <wsdl:part name="RCHead" type="s:string" />
+    <wsdl:part name="RCSDetl" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RCInterfaceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SKUCreate_TESTHttpPostIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="code2" type="s:string" />
+    <wsdl:part name="descr" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SKUCreate_TESTHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AccountInterfaceHttpPostIn">
+    <wsdl:part name="IM" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AccountInterfaceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="VehicleInterfaceHttpPostIn">
+    <wsdl:part name="IM" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VehicleInterfaceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GIInterfaceHttpPostIn">
+    <wsdl:part name="Header" type="s:string" />
+    <wsdl:part name="Items" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GIInterfaceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="SAPtoiWMSSoap">
+    <wsdl:operation name="AAv1903151CH">
+      <wsdl:input message="tns:AAv1903151CHSoapIn" />
+      <wsdl:output message="tns:AAv1903151CHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="POInterface">
+      <wsdl:input message="tns:POInterfaceSoapIn" />
+      <wsdl:output message="tns:POInterfaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DOInterface">
+      <wsdl:input message="tns:DOInterfaceSoapIn" />
+      <wsdl:output message="tns:DOInterfaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IMInterface">
+      <wsdl:input message="tns:IMInterfaceSoapIn" />
+      <wsdl:output message="tns:IMInterfaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ROInterface">
+      <wsdl:input message="tns:ROInterfaceSoapIn" />
+      <wsdl:output message="tns:ROInterfaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RCInterface">
+      <wsdl:input message="tns:RCInterfaceSoapIn" />
+      <wsdl:output message="tns:RCInterfaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SKUCreate_TEST">
+      <wsdl:input message="tns:SKUCreate_TESTSoapIn" />
+      <wsdl:output message="tns:SKUCreate_TESTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountInterface">
+      <wsdl:input message="tns:AccountInterfaceSoapIn" />
+      <wsdl:output message="tns:AccountInterfaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VehicleInterface">
+      <wsdl:input message="tns:VehicleInterfaceSoapIn" />
+      <wsdl:output message="tns:VehicleInterfaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GIInterface">
+      <wsdl:input message="tns:GIInterfaceSoapIn" />
+      <wsdl:output message="tns:GIInterfaceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SAPtoiWMSHttpGet">
+    <wsdl:operation name="AAv1903151CH">
+      <wsdl:input message="tns:AAv1903151CHHttpGetIn" />
+      <wsdl:output message="tns:AAv1903151CHHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="POInterface">
+      <wsdl:input message="tns:POInterfaceHttpGetIn" />
+      <wsdl:output message="tns:POInterfaceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DOInterface">
+      <wsdl:input message="tns:DOInterfaceHttpGetIn" />
+      <wsdl:output message="tns:DOInterfaceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IMInterface">
+      <wsdl:input message="tns:IMInterfaceHttpGetIn" />
+      <wsdl:output message="tns:IMInterfaceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ROInterface">
+      <wsdl:input message="tns:ROInterfaceHttpGetIn" />
+      <wsdl:output message="tns:ROInterfaceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RCInterface">
+      <wsdl:input message="tns:RCInterfaceHttpGetIn" />
+      <wsdl:output message="tns:RCInterfaceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SKUCreate_TEST">
+      <wsdl:input message="tns:SKUCreate_TESTHttpGetIn" />
+      <wsdl:output message="tns:SKUCreate_TESTHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountInterface">
+      <wsdl:input message="tns:AccountInterfaceHttpGetIn" />
+      <wsdl:output message="tns:AccountInterfaceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VehicleInterface">
+      <wsdl:input message="tns:VehicleInterfaceHttpGetIn" />
+      <wsdl:output message="tns:VehicleInterfaceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GIInterface">
+      <wsdl:input message="tns:GIInterfaceHttpGetIn" />
+      <wsdl:output message="tns:GIInterfaceHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SAPtoiWMSHttpPost">
+    <wsdl:operation name="AAv1903151CH">
+      <wsdl:input message="tns:AAv1903151CHHttpPostIn" />
+      <wsdl:output message="tns:AAv1903151CHHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="POInterface">
+      <wsdl:input message="tns:POInterfaceHttpPostIn" />
+      <wsdl:output message="tns:POInterfaceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DOInterface">
+      <wsdl:input message="tns:DOInterfaceHttpPostIn" />
+      <wsdl:output message="tns:DOInterfaceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IMInterface">
+      <wsdl:input message="tns:IMInterfaceHttpPostIn" />
+      <wsdl:output message="tns:IMInterfaceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ROInterface">
+      <wsdl:input message="tns:ROInterfaceHttpPostIn" />
+      <wsdl:output message="tns:ROInterfaceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RCInterface">
+      <wsdl:input message="tns:RCInterfaceHttpPostIn" />
+      <wsdl:output message="tns:RCInterfaceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SKUCreate_TEST">
+      <wsdl:input message="tns:SKUCreate_TESTHttpPostIn" />
+      <wsdl:output message="tns:SKUCreate_TESTHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountInterface">
+      <wsdl:input message="tns:AccountInterfaceHttpPostIn" />
+      <wsdl:output message="tns:AccountInterfaceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VehicleInterface">
+      <wsdl:input message="tns:VehicleInterfaceHttpPostIn" />
+      <wsdl:output message="tns:VehicleInterfaceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GIInterface">
+      <wsdl:input message="tns:GIInterfaceHttpPostIn" />
+      <wsdl:output message="tns:GIInterfaceHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SAPtoiWMSSoap" type="tns:SAPtoiWMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AAv1903151CH">
+      <soap:operation soapAction="http://tempuri.org/AAv1903151CH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POInterface">
+      <soap:operation soapAction="http://tempuri.org/POInterface" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DOInterface">
+      <soap:operation soapAction="http://tempuri.org/DOInterface" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IMInterface">
+      <soap:operation soapAction="http://tempuri.org/IMInterface" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ROInterface">
+      <soap:operation soapAction="http://tempuri.org/ROInterface" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RCInterface">
+      <soap:operation soapAction="http://tempuri.org/RCInterface" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SKUCreate_TEST">
+      <soap:operation soapAction="http://tempuri.org/SKUCreate_TEST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountInterface">
+      <soap:operation soapAction="http://tempuri.org/AccountInterface" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehicleInterface">
+      <soap:operation soapAction="http://tempuri.org/VehicleInterface" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GIInterface">
+      <soap:operation soapAction="http://tempuri.org/GIInterface" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SAPtoiWMSSoap12" type="tns:SAPtoiWMSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AAv1903151CH">
+      <soap12:operation soapAction="http://tempuri.org/AAv1903151CH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POInterface">
+      <soap12:operation soapAction="http://tempuri.org/POInterface" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DOInterface">
+      <soap12:operation soapAction="http://tempuri.org/DOInterface" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IMInterface">
+      <soap12:operation soapAction="http://tempuri.org/IMInterface" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ROInterface">
+      <soap12:operation soapAction="http://tempuri.org/ROInterface" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RCInterface">
+      <soap12:operation soapAction="http://tempuri.org/RCInterface" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SKUCreate_TEST">
+      <soap12:operation soapAction="http://tempuri.org/SKUCreate_TEST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountInterface">
+      <soap12:operation soapAction="http://tempuri.org/AccountInterface" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehicleInterface">
+      <soap12:operation soapAction="http://tempuri.org/VehicleInterface" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GIInterface">
+      <soap12:operation soapAction="http://tempuri.org/GIInterface" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SAPtoiWMSHttpGet" type="tns:SAPtoiWMSHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AAv1903151CH">
+      <http:operation location="/AAv1903151CH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="POInterface">
+      <http:operation location="/POInterface" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DOInterface">
+      <http:operation location="/DOInterface" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IMInterface">
+      <http:operation location="/IMInterface" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ROInterface">
+      <http:operation location="/ROInterface" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RCInterface">
+      <http:operation location="/RCInterface" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SKUCreate_TEST">
+      <http:operation location="/SKUCreate_TEST" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountInterface">
+      <http:operation location="/AccountInterface" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehicleInterface">
+      <http:operation location="/VehicleInterface" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GIInterface">
+      <http:operation location="/GIInterface" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SAPtoiWMSHttpPost" type="tns:SAPtoiWMSHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AAv1903151CH">
+      <http:operation location="/AAv1903151CH" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="POInterface">
+      <http:operation location="/POInterface" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DOInterface">
+      <http:operation location="/DOInterface" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IMInterface">
+      <http:operation location="/IMInterface" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ROInterface">
+      <http:operation location="/ROInterface" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RCInterface">
+      <http:operation location="/RCInterface" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SKUCreate_TEST">
+      <http:operation location="/SKUCreate_TEST" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountInterface">
+      <http:operation location="/AccountInterface" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehicleInterface">
+      <http:operation location="/VehicleInterface" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GIInterface">
+      <http:operation location="/GIInterface" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SAPtoiWMS">
+    <wsdl:port name="SAPtoiWMSSoap" binding="tns:SAPtoiWMSSoap">
+      <soap:address location="http://58.185.151.123/iLOGON_Webservice/SAPtoiWMS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SAPtoiWMSSoap12" binding="tns:SAPtoiWMSSoap12">
+      <soap12:address location="http://58.185.151.123/iLOGON_Webservice/SAPtoiWMS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SAPtoiWMSHttpGet" binding="tns:SAPtoiWMSHttpGet">
+      <http:address location="http://58.185.151.123/iLOGON_Webservice/SAPtoiWMS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SAPtoiWMSHttpPost" binding="tns:SAPtoiWMSHttpPost">
+      <http:address location="http://58.185.151.123/iLOGON_Webservice/SAPtoiWMS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,23 @@
+Updates 6.2.3(14-November-2016)
+
+- Remove reload in add,edit, delete drivers
+- Remove reload in add,edit, delete vehicles
+- Remove reload in add,edit, delete zones
+- Remove reload in add,edit, delete jobs
+- Remove reload in add,edit, delete companies
+- Remove reload in add,edit, delete users
+- Remove reload in add,edit, delete devices
+- Remove reload in add,edit, delete reseller
+
+Updates 6.2.2(23-September-2016)
+
+- Improved AutoRefresh
+
+Updates 6.2.1(23-September-2016)
+
+- Bug Fix in adding and editing zones
+
+Updates 6.2.0(9-September-2016)
+
+- Bug Fix in Changing of Company
+- AutoReferesh set to 20 secs

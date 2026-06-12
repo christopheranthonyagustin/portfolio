@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\inetpub\wwwroot\WlocateWeb" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/WlocateWeb.pdb" publishTime="04/29/2014 15:43:47" />
+    <file relUrl="bin/ICSharpCode.SharpZipLib.dll" publishTime="03/30/2014 08:51:56" />
+    <file relUrl="Web.config" publishTime="04/23/2014 23:42:15" />
+    <file relUrl="files/HelpFile.pdf" publishTime="03/30/2014 08:52:18" />
+    <file relUrl="Wlocate.svc" publishTime="03/30/2014 08:51:44" />
+    <file relUrl="bin/WlocateWeb.dll" publishTime="04/29/2014 15:43:47" />
+  </publishProfile>
+</publishData>

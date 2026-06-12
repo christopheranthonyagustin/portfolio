@@ -1,0 +1,13 @@
+﻿https://track-asia.com/fms/Dashboard
+https://track-asia.com/phpmyadmin
+https://track-asia.com/tracksgwebapi/api/assetinfo
+https://track-asia.com/tracksgwebapi/api/zoneinfo/
+https://track-asia.com/tracksgwebapi/api/companyinfo
+https://track-asia.com/tracksgwebapi/api/userinfo
+https://track-asia.com/tracksgwebapi/api/deviceinfo
+https://track-asia.com/tracksgwebapi/api/zonetypeinfo
+https://track-asia.com/tracksgwebapi/api/categoryinfo
+https://track-asia.com/tracksgwebapi/api/reportinfo
+https://track-asia.com/tracksgwebapi/api/roleinfo
+https://track-asia.com/tracksgwebapi/api/languageinfo
+https://track-asia.com/tracksgwebapi/api/eventinfo
