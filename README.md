@@ -40,11 +40,11 @@ In addition to these certifications, I have experience delivering projects invol
 
 * Order Management Systems (OMS)
 * Warehouse Management Systems (WMS)
-* API and Webhook Integrations
+* [API and Webhook Integrations](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/smartmall-netsclick-main)
 * E-commerce Platforms (Shopify)
-* Logistics and Shipment Tracking Solutions
-* Healthcare Technology and Medical Software
-* Cloud-Based Applications and Middleware Solutions
+* [Logistics and Shipment Tracking Solutions](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Track)
+* [Healthcare Technology and Medical Software](https://github.com/christopheranthonyagustin/portfolio/blob/main/Projects/VSynC%20App/medsol-software-vsync_web_app-da4e4eceadf3/README.md)
+* [Cloud-Based Applications](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/System%20Pest) and Middleware Solutions
 
 Project case studies and portfolio repositories are available on my GitHub profile.
 
