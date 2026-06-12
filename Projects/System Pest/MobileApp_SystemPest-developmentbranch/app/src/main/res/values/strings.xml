@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">System Pest</string>
+    <string name="qc_code_close">Close</string>
+    <string name="qr_code_select_picture">Image</string>
+    <string name="qr_code_open_flash_light">Turn on Flash</string>
+    <string name="qr_code_close_flash_light">Turn off Flash</string>
+    <string name="qr_code_auto_scan_notification">Place QR Code here</string>
+    <string name="qr_code_notification">notifacation</string>
+    <string name="qr_code_camera_not_open">Turn on Camera</string>
+    <string name="qr_code_positive_button_know">I know</string>
+    <string name="qr_code_positive_button_confirm">Confirm</string>
+    <string name="qr_code_could_not_read_qr_code_from_picture">Qr Code cannot be read, Please try again with another Qr Code~</string>
+    <string name="qr_code_could_not_read_qr_code_from_scanner">Sorry, No information found</string>
+    <string name="qr_code_camera_not_found">Camera Not Found</string>
+
+    <string name="payment_cash">Cash</string>
+    <string name="payment_cheque">Cheque</string>
+
+    <string name="done_search">Done Search</string>
+    <string name="start_search">Start search</string>
+    <string name="search">Search...</string>
+    <string name="empty_list">No Items Found</string>
+</resources>

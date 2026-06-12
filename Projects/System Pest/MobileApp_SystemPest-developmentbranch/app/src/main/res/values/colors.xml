@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#e53935</color>
+    <color name="colorPrimaryDark">#b71c1c</color>
+    <color name="colorAccent">#ff5252</color>
+    <color name="qr_code_white">#FFFFFFFF</color>
+    <color name="qr_code_flashlight_bg">#66000000</color>
+    <color name="qr_code_finder_mask">#80000000</color>
+    <color name="qr_code_flash_light_text_color">#66FFFFFF</color>
+    <color name="qr_code_finder_frame">#FFFFFFFF</color>
+    <color name="qr_code_finder_laser">#ef8394</color>
+    <color name="button_color">#b71c1c</color>
+    <color name="button_text_color">#82b1ff</color>
+    <color name="bg_login">#e53935</color>
+    <color name="bg_register">#2e3237</color>
+    <color name="bg_main">#428bca</color>
+    <color name="white">#ffffff</color>
+    <color name="input_login">#222222</color>
+    <color name="title_hint">#c4c4c4</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="input_register">#888888</color>
+    <color name="input_register_bg">#3b4148</color>
+    <color name="input_register_hint">#5e6266</color>
+    <color name="btn_login">#26ae90</color>
+    <color name="btn_login_bg">#eceef1</color>
+    <color name="lbl_name">#333333</color>
+    <color name="btn_logut_bg">#ff6861</color>
+
+    <color name="job_status_new">#448aff</color>
+    <color name="job_status_inprogress">#ffab40</color>
+    <color name="job_status_completed">#00c853</color>
+    <color name="job_status_scheduled">#448aff</color>
+
+    <color name ="job_status_grey">#aaa</color>
+</resources>
