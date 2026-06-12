@@ -1,0 +1,169 @@
+<%@ Page Language="c#" CodeBehind="ReleaseOrderDetlList.aspx.cs" AutoEventWireup="True"
+    Inherits="iWMS.Web.Outbound.ReleaseOrder.ReleaseOrderDetlList" %>
+
+<%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<html>
+<head id="Head1" runat="server">
+    <title>ReleaseOrderDetlList</title>
+    <style type="text/css">
+        .popupHeaderR {
+            font-family: tahoma;
+            font-weight: bold;
+            height: 25px;
+            background: #859DD4;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            border-top: 2px solid GREY;
+            border-right: 2px solid GREY;
+            border-left: 2px solid GREY;
+        }
+
+            .popupHeaderR span {
+                color: #fff;
+                text-decoration: none;
+                line-height: 15px;
+                text-decoration: none;
+                float: left;
+                margin-left: 10px;
+                margin-top: 5px;
+            }
+
+            .popupHeaderR a {
+                color: #fff !important;
+                text-decoration: none !important;
+                line-height: 15px;
+                text-decoration: none;
+                float: right;
+                margin-right: 10px;
+            }
+    </style>
+    <script src="../../js/NewBusyBox.js" language="javascript"></script>
+    <link href="../../css/style.css" type="text/css" rel="stylesheet">
+    <link href="../../css/iWMS.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../../js/Script.js" language="javascript"></script>
+     <script type="text/javascript">
+        function OnClientClose(sender, args) {
+            document.location.href = document.location.href;
+        }
+       </script>
+</head>
+<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">
+    <form id="Form1" method="post" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <%--Release Order Detl popup area start--%>
+        <asp:Button runat="server" ID="btnStatusButton" Style="display: none;" />
+        <ajaxToolkit:ModalPopupExtender ID="mpeReleaseOrderDetlPopup" runat="server" PopupControlID="pnlStstusBox"
+            TargetControlID="btnStatusButton" RepositionMode="RepositionOnWindowScroll">
+        </ajaxToolkit:ModalPopupExtender>
+        <asp:Panel runat="server" ID="pnlStstusBox" BackColor="LAVENDER" Style="display: none;">
+            <div class="popupHeaderR">
+                <asp:Label ID="Label2" Text="Release Order Detail" runat="server" Style="size: 15px"></asp:Label>
+                <asp:LinkButton ID="btnPopupCancel" runat="server" OnClick="btnPopupCancel_Click" Style="float: right; margin-right: 10px; margin-top: 5px;">X</asp:LinkButton>
+            </div>
+            <div style="border-right: 2px solid GREY; border-bottom: 2px solid GREY; clear: both;">
+                <iframe id="ReleaseOrderDetlIFrame" scrolling="no" width="342px" height="279px" runat="server"></iframe>
+            </div>
+        </asp:Panel>
+        <%--Release Order Detl popup area end--%>
+        <asp:Label ID="Label1" runat="server">Account</asp:Label>
+        <telerik:RadDropDownList ID="AccountList" AutoPostBack="true" DataTextField="code" DataValueField="acid" runat="server" Width="155px" Skin="Sunset" OnSelectedIndexChanged="AccountList_SelectedIndexChanged">
+        </telerik:RadDropDownList>
+        &nbsp;&nbsp;
+  <%--  <asp:ImageButton ID="homeBtn" runat="server" ImageUrl="../../Image/add.png"
+        BackColor="Transparent" BorderWidth="0" ImageAlign="AbsMiddle" OnClick="homeBtn_Click" OnClientClick="busyBox.Show();"
+        ToolTip="AddOrderItem" Width="25" Height="25" />--%>
+        <asp:Button ID="homeBtn" runat="server" Text="Add" OnClick="homeBtn_Click"
+          OnClientClick="busyBox.Show();"  CssClass="white" ToolTip="AddOrderItem" />
+        <br />
+        <br />
+        <telerik:RadGrid ID="ResultRadGrid" runat="server" Skin="Office2007" AllowPaging="True" OnPreRender="ResultRadGrid_PreRender"
+            AllowMultiRowSelection="true" OnNeedDataSource="ResultRadGrid_NeedDataSource" OnItemDataBound="ResultRadGrid_ItemDataBound"
+            AllowSorting="true" OnDeleteCommand="ResultRadGrid_DeleteCommand" AllowFilteringByColumn="false">
+            <PagerStyle Mode="NumericPages"></PagerStyle>
+            <GroupingSettings CaseSensitive="false"></GroupingSettings>
+            <MasterTableView AutoGenerateColumns="False" DataKeyNames="id" Width="100%" CommandItemDisplay="Top"
+                PageSize="20">
+                <Columns>
+                    <telerik:GridClientSelectColumn UniqueName="SelectCB" Display="false">
+                    </telerik:GridClientSelectColumn>
+                    <telerik:GridBoundColumn UniqueName="id" DataField="id" Display="false">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="acid" DataField="acid" Display="false">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="status" DataField="status" Display="false">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="statuscolor" DataField="statuscolor" Display="false">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="skuid" HeaderText="skuid" DataField="skuid"
+                        Display="false">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="skudescr2" HeaderText="Descr" DataField="skudescr2" Display="false">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="accode" HeaderText="Account" DataField="accode">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="skucode3" HeaderText="SKU/CustomsLot" DataField="skucode3">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="statusdescr" HeaderText="Status" DataField="statusdescr">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="lot4" HeaderText="CustomsLot" DataField="lot4">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="Lot5" HeaderText="Lot5" DataField="Lot5">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="Lot6" HeaderText="Lot6" DataField="Lot6">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="uomqty" HeaderText="Qty" DataField="uomqty"
+                        DataFormatString="{0:#,0.##}">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="uomdescr" HeaderText="UOM" DataField="uomdescr">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="SpecialInstruction" HeaderText="SpecialInstruction"
+                        DataField="SpecialInstruction">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="Remarks" HeaderText="Remarks" DataField="Remarks">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="adddate" HeaderText="AddDate" DataField="adddate"
+                        DataFormatString="{0:dd/MMM/yyyy HH:mm:ss}">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="editdate" HeaderText="EditDate" DataField="editdate"
+                        DataFormatString="{0:dd/MMM/yyyy HH:mm:ss}">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridTemplateColumn UniqueName="TemplateEditColumn" AllowFiltering="false">
+                        <ItemTemplate>
+                            <a href="#" id="EditCart" runat="server" onserverclick="EditCart_ServerClick">Edit </a>
+                        </ItemTemplate>
+                    </telerik:GridTemplateColumn>
+                    <telerik:GridButtonColumn ButtonType="LinkButton" CommandName="Delete" Text="Remove"
+                        UniqueName="DeleteColumn" Resizable="false" ConfirmText="Delete Order?">
+                    </telerik:GridButtonColumn>
+                </Columns>
+                <CommandItemTemplate>
+                </CommandItemTemplate>
+            </MasterTableView>
+            <ClientSettings>
+                <Selecting AllowRowSelect="true" UseClientSelectColumnOnly="true"></Selecting>
+            </ClientSettings>
+        </telerik:RadGrid>
+        <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true">
+            <Windows>
+                <telerik:RadWindow ID="UserListDialog" runat="server" Title="AddItem" Height="350px"
+                    CenterIfModal="false" Width="550px" Left="200px" ReloadOnShow="true" ShowContentDuringLoad="false"
+                    VisibleStatusbar="false" Modal="true">
+                </telerik:RadWindow>
+            </Windows>
+        </telerik:RadWindowManager>
+        <iframe id="BusyBoxIFrame" ondrop="return false;" frameborder="0" name="BusyBoxIFrame"
+            scrolling="no"></iframe>
+        <script>
+            // Instantiate our BusyBox object
+            var busyBox = new BusyBox("BusyBoxIFrame", "busyBox", 4, "../../image/gears_ani_", ".gif", 125, 308, 172, "../../NewBusyBox.html");
+        </script>
+
+        <telerik:RadWindow ID="RadWindow" runat="server" VisibleOnPageLoad="true" Width="1000px" Height="600px"
+            Modal="true" VisibleStatusbar="false" OnClientClose="OnClientClose" Visible="false" Behaviors="Move, Close">
+        </telerik:RadWindow>
+    </form>
+</body>
+</html>

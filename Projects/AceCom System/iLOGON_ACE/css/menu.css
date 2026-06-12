@@ -1,0 +1,12 @@
+html, body {height:100%; margin: 0; padding: 0; }
+
+body {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	background: #fffafa;
+	color: #333;
+}
+
+a img { border: none; }
+
+a { color: #333; }

@@ -1,0 +1,539 @@
+﻿.file-upload-label {
+    font-size: 17px;
+    color: #777;
+    cursor: pointer;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.file-upload-container {
+    max-width: 450px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    text-align: center;
+    height: 450px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 20px;
+    padding: 20px;
+    float: left;
+}
+
+.file-upload {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    cursor: pointer;
+    height: 405px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.file-upload-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: #ccc;
+    cursor: pointer;
+    padding-top: 35% !important;
+    font-family: Arial, sans-serif;
+}
+
+.fileInputhidden {
+    display: none;
+}
+
+.browse-link {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+/* End-Region : Styling for the file upload */
+
+/* Start-Region :  Styling for selected file count And Image */
+.selected-file-count {
+    font-size: 16px;
+}
+
+.image-container {
+    width: 100px;
+    height: 60px;
+    overflow: hidden;
+}
+
+    .image-container img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+.selected-image-item {
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+    font-family: Arial, sans-serif;
+    max-width: 100%; /* Allow it to expand to fit content */
+}
+
+    .selected-image-item img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+/* End-Region : Styling for selected file count And Image */
+
+/* Start-Region : Styling for the upload-popup */
+.upload-popup {
+    position: absolute;
+    width: 800px;
+    min-height: 450px;
+    max-height: auto !important;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 0;
+    border-radius: 4px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.upload-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    max-width: 800px;
+    height: 40px !important;
+    border-bottom: solid 1px #ccc;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+.upload-popup-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: flex-start; /* Align items to the top */
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    padding: 10px;
+    min-height: 400px !important;
+    max-height: auto !important;
+    border-bottom: solid 1px #ccc;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+.upload-popup-footer {
+    min-height: 50px !important;
+    max-height: auto !important;
+    font-family: Arial, sans-serif;
+}
+
+/* End-Region : Styling for the upload-popup */
+
+/* Start-Region : Styling for Button */
+.upload-popup-cancel-btn {
+    font-size: 13px;
+    color: red;
+    font-weight:bold;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+.upload-popup-add-btn {
+    font-size: 14px;
+    color: #0066ff;
+    text-decoration: none;
+    text-align: right;
+    font-family: Arial, sans-serif;
+}
+
+.upload-button {
+    white-space: normal !important;
+    min-width: 87px;
+    max-width: 150px;
+    height: 30px;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 0px;
+    font-family: Arial, sans-serif;
+    background-color: #0066ff;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid #999999;
+    box-shadow: 0px 0px 1px #007bff;
+    outline: none;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+}
+
+    .upload-button:hover {
+        background: #0044ff;
+    }
+
+    .upload-button:disabled {
+        background: #dbdbdb;
+        font-size: 10px;
+        color: #969696;
+    }
+
+.cancel-img-button {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+.edit-popup-cancel-btn {
+    font-size: 14px;
+    color: red;
+    text-decoration: none;
+    text-align: right;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.edit-img-button {
+    margin-right: 10px;
+    margin-top: 3px;
+    font-family: Arial, sans-serif;
+    width: 15px;
+    height: 15px;
+    font-size: 13px;
+}
+
+/* Change Button */
+.save-image-btn {
+    white-space: normal !important;
+    width: 87px;
+    height: 30px;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial;
+    background-color: #0066ff;
+    border-radius: 5px;
+    text-decoration: none;
+    border: solid #999999 1px;
+    box-shadow: 0px 0px 1px #666666;
+    outline: none;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 10px;
+}
+
+    .save-image-btn:hover {
+        background: #0066ff;
+        color: white;
+        font-weight: bold;
+    }
+
+    .save-image-btn:disabled {
+        background: #dbdbdb;
+        color: #969696;
+        font-size: 10px;
+    }
+
+/* Normal Button */
+.white {
+    width: 87px;
+    height: 30px;
+    color: #000000;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: Arial;
+    background: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    border: solid #999999 1px;
+    box-shadow: 0px 0px 1px #666666;
+    outline: none;
+    margin-left: 3px;
+}
+
+    .white:hover {
+        background: #b3b3b3;
+        text-decoration: none;
+    }
+
+    .white:disabled {
+        background: #dbdbdb;
+        color: #969696;
+        font-size: 10px;
+    }
+
+/* Delete Button */
+.delete-image-btn {
+    white-space: normal !important;
+    width: 87px;
+    height: 30px;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: Arial;
+    background-color: red;
+    border-radius: 5px;
+    text-decoration: none;
+    border: solid #999999 1px;
+    box-shadow: 0px 0px 1px #666666;
+    outline: none;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 10px;
+}
+
+    .delete-image-btn:hover {
+        background: #de0a26;
+        color: white;
+        font-weight: bold;
+    }
+
+    .delete-image-btn:disabled {
+        background: #dbdbdb;
+        color: #969696;
+        font-size: 10px;
+    }
+/* End-Region : Styling for Button */
+
+/* Start-Region : Styling for the edit-popup */
+.edit-popup {
+    position: absolute;
+    width: 800px;
+    height: 450px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 0;
+    border-radius: 4px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.edit-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    max-width: 800px;
+    height: 40px !important;
+    border-bottom: solid 1px #ccc;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+.edit-popup-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: flex-start; /* Align items to the top */
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    padding: 10px;
+    height: 355px !important;
+    border-bottom: solid 1px #ccc;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+.edit-popup-footer {
+    max-height: 50px !important;
+    font-family: Arial, sans-serif;
+}
+
+.edit-header-label {
+    font-size: 13px;
+    color: blue;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+/* End-Region : Styling for  edit-popup */
+
+/* Start-Region : Styling for Uploaded Image Container */
+.uploaded-image-container {
+    min-width: 845px !important;
+    max-width: 845px !important;
+    background-color: whitesmoke;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    min-height: 450px;
+    max-height: auto !important;
+    cursor: pointer;
+    float: left;
+    margin-left: 10px;
+    margin-top: 20px;
+    position:relative;
+}
+
+.imageinfo {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+/* End-Region : Styling for  Uploaded Image Container */
+
+/* CSS for the card */
+.card {
+    border-radius: 5px;
+    margin-left: 5px;
+    padding-bottom: 10px !important;
+    padding-top: 3px !important;
+    width: 250px; /* Set your desired width here */
+    height: 360px; /* Set your desired height here */
+    display: flex; /* Enable flex layout to center content */
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: none;
+    top: 0 !important;
+    box-sizing: content-box; /* Add this property */
+    /*    position: relative;
+*/
+}
+
+/* CSS for the image div */
+.card-image {
+    position: absolute;
+    max-width: 100%;
+    max-height: 25%;
+    overflow: hidden;
+    border-radius: 5px;
+    top: 7px;
+}
+
+/* CSS for the image div */
+.card-icon {
+    position: absolute;
+    max-width: 100%;
+    max-height: 25%;
+    overflow: hidden;
+    border-radius: 5px;
+    top: 25px;
+}
+
+/* CSS for the image info div */
+.card-info {
+    position: absolute;
+    text-align: left;
+/*    padding: 10px;
+*/    padding-bottom: 17%;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    max-width: 245px !important;
+}
+
+.card-text {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    white-space: normal !important;
+    word-wrap: break-word !important; /* Add this property */
+    text-align:left;
+}
+
+.card-disable {
+    margin-top: 16px;
+    background-color: #cfcfcf;
+}
+
+/*#imageModal .modal-dialog {
+    max-width: 70vw;
+}
+
+#imageModal .modal-content {
+    max-height: 120vh;
+    overflow: hidden;
+    justify-content: center !important;
+}
+*/
+#imageModal .modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: auto; /* Allow scrolling within the modal body */
+}
+
+.button-container {
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/*.notes-container {
+    position: absolute;
+    bottom: 40px;*/
+/*    margin-left: -10px !important;
+*//*}*/
+
+.noimageavailable {
+    position: absolute;
+    top: 50%; /* Move the image 50% down from the top */
+    left: 50%; /* Move the image 50% from the left */
+    transform: translate(-50%, -50%); /* Center the image */
+}
+
+.disable-browse-link {
+    color: #777;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+.type-ddl-container {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    display: flex; /* Use flexbox to display items side by side */
+    position: absolute;
+    bottom: 28%;
+    margin-left: -33px !important;
+    text-align: left;
+}
+
+.type-ddl-label {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    padding-right: 5px;
+    text-align: left;
+}
+
+.notes-txt-label {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    padding-right: 5px;
+    text-align: left;
+}
+
+.notes-txt-container {
+    position: absolute;
+    bottom: 40px;
+    font-size: 12px;
+    display: flex; /* Use flexbox to display items side by side */
+    margin-left: -37px !important;
+    text-align:left;
+}
+
+.drag-over {
+    border: 2px dashed #ccc;
+}

@@ -1,0 +1,52 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TMSBookingOrderLorryCrane.aspx.cs" Inherits="iWMS.Web.Job.TMSBookingOrder.TMSBookingOrderLorryCrane" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Register TagPrefix="iWMS" TagName="iForm" Src="../../Control/iFormCtl.ascx" %>
+<%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<html>
+<head runat="server">
+    <title>LorryCrane @ TMS Booking Order</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+    <meta name="CODE_LANGUAGE" content="C#">
+    <meta name="vs_defaultClientScript" content="JavaScript">
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+    <link href="../../css/iWMS.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <script src="../../js/row.js" type="text/javascript"></script>
+    <script src="../../js/Script.js" type="text/javascript"></script>
+</head>
+<body bottommargin="0" leftmargin="0" topmargin="0" rightmargin="0" onload='displayRow("table1");'>
+    <form id="Form1" method="post" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <table>
+            <tr>
+                <td>&nbsp;<asp:Button ID="AddBtn" runat="server" Text="Add" class="white" OnClick="AddBtn_Click"
+                    OnClientClick="disableBtn(this.id, true)" UseSubmitBehavior="false" />
+                </td>
+            </tr>
+        </table>
+        <telerik:RadTabStrip runat="server" ID="RadTabStrip1" MultiPageID="RadMultiPage1"
+            CausesValidation="False" RenderMode="Lightweight" SelectedIndex="0" Skin="Office2007"
+            AutoPostBack="True">
+            <Tabs>
+                <telerik:RadTab Text="Main" Value="0" readonly="readonly" runat="server" Selected="True">
+                </telerik:RadTab>
+            </Tabs>
+        </telerik:RadTabStrip>
+        <telerik:RadMultiPage runat="server" ID="RadMultiPage1" SelectedIndex="0" CssClass="outerMultiPage"
+            RenderSelectedPageOnly="true">
+            <telerik:RadPageView runat="server" Height="700px" ID="RadPageView1">
+                <asp:UpdatePanel ID="UpdatePanel" runat="server">
+                    <ContentTemplate>
+                        <iWMS:iForm ID="formCtl_JBHead" runat="server" />
+                        <iWMS:iForm ID="formCtl_JBCtnr" runat="server" />
+                        <iWMS:iForm ID="formCtl_JBCtnrTrip" runat="server" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </telerik:RadPageView>
+        </telerik:RadMultiPage>
+    </form>
+</body>
+</html>

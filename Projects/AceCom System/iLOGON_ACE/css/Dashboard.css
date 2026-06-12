@@ -1,0 +1,365 @@
+﻿/*---------------------------------------*/
+/*For  Tile */
+.Tile {
+    height: 70px;
+    width: 200px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 7px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #808080;
+    transition: all 0.3s linear;
+    display: table;
+}
+
+    .Tile:hover {
+        transform: scale(1.05, 1.05);
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .Tile:hover::after {
+            opacity: 0.5;
+        }
+
+.TileLarge {
+    width: 210px;
+}
+
+/*---------------------------------------*/
+/*For  TileText */
+.TileText {
+    color: black;
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+.ParentTile {
+    float: left;
+    height: auto;
+    display: table;
+}
+
+/*---------------------------------------*/
+/*For  Big Textbox Text */
+.TxtBoxText {
+    font-size: 20px;
+    text-align: center;
+}
+
+.Panel {
+    padding: 5px;
+    width: 100%;
+    float: left;
+}
+
+.ChildTileText {
+    float: right;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    margin-top: 20%;
+}
+
+/*---------------------------------------*/
+/*For  ParentScanParkDashboard */
+.ScanParkDashboard {
+    width: 316px;
+    height: 155px;
+    border: thin;
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 7px;
+    box-shadow: 3px 3px 3px #666666;
+    float: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+    .ScanParkDashboard:hover {
+        transform: scale(1.05, 1.05);
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .ScanParkDashboard:hover::after {
+            opacity: 0.5;
+        }
+
+/*---------------------------------------*/
+/*For ScanParkChildDashboard in ParentScanParkDashboard */
+.ScanParkChildDashboard {
+    width: 316px;
+    height: 100px;
+    float: left;
+}
+
+.ScanParkChildDashboardLbl {
+    display: table-cell;
+    float: right;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 20%;
+}
+
+/*---------------------------------------*/
+/*For Center Text*/
+.CenterDashboardLbl {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/*---------------------------------------*/
+/*For App/Profie/Dashboard*/
+.ReadyToExport {
+    width: 300px;
+    height: 150px;
+    border: thin;
+    background-color: white;
+    margin-top: 15px;
+    margin-left: 25px;
+    font-weight: bold;
+    font-size: large;
+    font-family: Arial;
+    border-radius: 7px;
+    padding-left: 15px;
+    padding-top: 10px;
+    box-shadow: 3px 3px 3px #666666;
+}
+
+.ReadyToImport {
+    width: 300px;
+    height: 150px;
+    border: thin;
+    background-color: white;
+    margin-left: 25px;
+    font-weight: bold;
+    font-size: large;
+    font-family: Arial;
+    border-radius: 7px;
+    padding-left: 15px;
+    padding-top: 10px;
+    box-shadow: 3px 3px 3px #666666;
+}
+
+.ReadyToCollect {
+    width: 300px;
+    height: 150px;
+    border: thin;
+    background-color: #990000;
+    color: white;
+    margin-left: 25px;
+    font-weight: bold;
+    font-size: large;
+    font-family: Arial;
+    border-radius: 7px;
+    padding-left: 15px;
+    padding-top: 10px;
+    box-shadow: 3px 3px 3px #666666;
+}
+
+.ReadyToReturn {
+    width: 300px;
+    height: 150px;
+    border: thin;
+    background-color: orangered;
+    color: white;
+    margin-top: 15px;
+    margin-left: 25px;
+    font-weight: bold;
+    font-size: large;
+    font-family: Arial;
+    border-radius: 7px;
+    padding-left: 15px;
+    padding-top: 10px;
+    box-shadow: 3px 3px 3px #666666;
+}
+
+.ParentContainerLbl {
+    float: right;
+    margin-top: 35px;
+    margin-right: 10px;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: right;
+}
+
+.ContainerLbl {
+    font-size: large;
+    text-align: right;
+    margin-left: 200px;
+}
+
+/*-------------- Standard Dashboard CSS ----------------*/
+.STDDashboard {
+    width: 300px;
+    height: 150px;
+    border: thin;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    margin-left: 5px !important;
+    margin-right: 10px !important;
+    padding: 5px;
+    border-radius: 7px;
+    box-shadow: 3px 3px 3px #666666;
+    float: left;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.STDDashboard:hover
+{   transform: scale(1.01, 1.01);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.STDDashboard:hover::after
+{
+    opacity: 0.1;
+}
+
+.STDDashboardTitle {
+    width: 300px;
+    height: 40px;
+    margin-top: 5px !important;
+    margin-left: 7px !important;
+    margin-right: 7px !important;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    float: left;
+}
+
+.STDDashboardCandidateCount {
+    width: 300px;
+    margin-top: 5px !important;
+    margin-left: 7px !important;
+    margin-right: 7px !important;
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+    float: right;
+    text-align: right;
+}
+
+.STDDashboardCandidateType {
+    width: 300px;
+    margin-top: 5px !important;
+    margin-left: 7px !important;
+    margin-right: 7px !important;
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+    float: left;
+}
+
+/*-------------- Old Dashboard CSS ---------------------*/
+.Dashboard {
+    width: 300px;
+    height: 155px;
+    border: thin;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 5px;
+    margin-left: 15px !important;
+    border-radius: 7px;
+    box-shadow: 3px 3px 3px #666666;
+    float: left;
+}
+
+
+.DashBoardLbl {
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    float: left;
+}
+
+.CandicateCountLbl {
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+    float: right;
+    margin-right: 10% !important;
+    margin-top: 8% !important;
+    text-align: right;
+}
+
+.EntCodeLbl {
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+    float: left;
+    margin-left: 5px;
+    margin-top: 21% !important;
+    text-align: right;
+    left: 0;
+    right: 0;
+}
+
+.ChildDashboard {
+    width: 300px;
+    height: 111px;
+    margin-top: 15px;
+    float: left;
+}
+
+.DashBoardlbl {
+    float: left;
+    margin-left: 1px;
+    margin-top: 5px;
+    margin-right: 80px;
+    font-size: small;
+    font-weight: bold;
+    text-align: right;
+    color: white;
+}
+
+
+.CandidateCount {
+    float: right;
+    margin-right: 12px;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 1px;
+}
+
+.WPWDashboard {
+    width: 316px;
+    height: 155px;
+    border: thin;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 5px;
+    margin-left: 15px !important;
+    border-radius: 7px;
+    box-shadow: 3px 3px 3px #666666;
+    float: left;
+}
+
+
+.DashBoardlb {
+    float: left;
+    margin-left: 1px;
+    margin-top: 5px;
+    margin-right: 50px; /* Changed 80px to 50px to adjust dashboardlabel*/
+    font-size: large;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}

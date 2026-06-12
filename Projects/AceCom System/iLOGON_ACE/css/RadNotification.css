@@ -1,0 +1,27 @@
+﻿div.RadNotification {
+    font-size: 18px;
+    margin-top: 0.5%;
+    border-color: #d3d3d3;
+    background-color: white;
+    min-width: 230px; /*minimum width for notifaction popup*/
+}
+
+.RadNotification .rnTitleBar {
+    background-color: #05538c !important;
+    color: white;
+}
+
+.RadNotification .rnTitleBarIcon {
+    color: white;
+}
+
+.rnTitleBarTitle {
+    font-weight: bold;
+    color: white;
+    font-size: small;
+}
+
+.NotificationContent {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 15px;
+}

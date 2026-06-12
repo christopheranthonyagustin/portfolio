@@ -1,0 +1,174 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FabricationUsageDetail.aspx.cs" Inherits="iWMS.Web.Distribution.DistributionFabricationUsage.FabricationUsageDetail" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<%@ Register TagPrefix="iWMS" TagName="iForm" Src="../../Control/iFormCtl.ascx" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<html>
+<head id="Head1" runat="server">
+    <title>ListDetl</title>
+    <meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
+    <meta content="C#" name="CODE_LANGUAGE">
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <link href="../../css/iWMS.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <script src="../../js/Script.js" type="text/javascript"></script>
+</head>
+<body bottommargin="0" leftmargin="0" topmargin="0" rightmargin="0">
+
+    <form id="Form1" method="post" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tr>
+                <td>
+                    <div class="pagetitle">
+                        <asp:Label ID="AjIdLbl" runat="server" Visible="false"></asp:Label>
+                    </div>
+                </td>
+               
+                <td align="left">
+                    <br />
+                    <asp:Button ID="RefreshBtn" runat="server" CssClass="white" Text="Refresh"
+                      OnClick="RefreshBtn_Click" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                    <asp:Button ID="AddDetailBtn" runat="server" Text="NewLine" Visible="True" CssClass="White" OnClick="AddDetailBtn_Click" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false"></asp:Button>&nbsp;&nbsp;                  
+                </td>
+            </tr>
+        </table>
+        <br>
+        <div id="div-datagrid">
+            <telerik:RadGrid ID="ResultDG" runat="server" AutoGenerateColumns="false" GridLines="None"
+                OnNeedDataSource="ResultDG_NeedDataSource" Skin="Metro" OnItemDataBound="ResultDG_ItemDataBound"
+                OnUpdateCommand="ResultDG_Update" OnEditCommand="ResultDG_Edit" OnCancelCommand="ResultDG_Cancel">
+                <ClientSettings AllowColumnsReorder="true" ReorderColumnsOnClient="true">
+                    <Selecting AllowRowSelect="true" />
+                </ClientSettings>
+                <SortingSettings EnableSkinSortStyles="false" />
+                <AlternatingItemStyle Wrap="false"></AlternatingItemStyle>
+                <ItemStyle Wrap="false"></ItemStyle>
+                <HeaderStyle Wrap="false" CssClass="RGridHeader_CUSTOM" ForeColor="White"></HeaderStyle>
+                <PagerStyle Mode="NextPrevAndNumeric" />
+                <MasterTableView AllowMultiColumnSorting="true" PageSize="50" DataKeyNames="FabricationUsageItemId" EditMode="InPlace">
+                    <Columns>
+                        <telerik:GridTemplateColumn>
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" Visible="True" ID="Edit" ImageUrl="..\..\image\pencil.gif" Width="15"
+                                    Height="15" AlternateText="Edit" CommandName="Edit" BackColor="Transparent" BorderWidth="0"></asp:ImageButton>
+                                <asp:Label ID="DetailLbl" runat="server"></asp:Label>
+                                <a id="InkDelete" href='<%#DataBinder.Eval(Container,"DataItem.FabricationUsageItemId")%>' onclick="return confirm('Confirm delete?')" onserverclick="ResultDG_Delete" runat="server" visible="false">
+                                    <img id="delImg" src="..\..\image\bin.gif" width="15" height="15" border="0" alt="Delete"
+                                        runat="server"></a>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:ImageButton runat="server" Visible="True" ID="ResultDG_Update" ImageUrl="..\..\image\floppy.gif"
+                                    Width="15" Height="15" AlternateText="Update" CommandName="Update" BackColor="Transparent" BorderWidth="0"></asp:ImageButton>
+                                <asp:ImageButton runat="server" Visible="True" ID="ResultDG_Cancel" ImageUrl="..\..\image\arrow6.gif"
+                                    Width="15" Height="15" AlternateText="Cancel" CommandName="Cancel" BackColor="Transparent" BorderWidth="0"
+                                    CausesValidation="False"></asp:ImageButton>
+                            </EditItemTemplate>
+                            <ItemStyle Wrap="False" HorizontalAlign="Center"></ItemStyle>
+                        </telerik:GridTemplateColumn>
+                        <telerik:GridTemplateColumn>
+                            <HeaderTemplate>
+                                No
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <%#Container.ItemIndex+1%>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+                        <telerik:GridBoundColumn DataField="line" SortExpression="line" HeaderText="Line#" ReadOnly="True">
+                            <HeaderStyle Wrap="False"></HeaderStyle>
+                            <ItemStyle Wrap="False"></ItemStyle>
+                        </telerik:GridBoundColumn>
+
+                        <telerik:GridBoundColumn DataField="ItemCode" SortExpression="ItemCode" HeaderText="ItemCode" AllowFiltering="false" ReadOnly="True">
+                        </telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="ItemDescription" SortExpression="ItemDescription" HeaderText="ItemDescription" AllowFiltering="false" ReadOnly="True">
+                        </telerik:GridBoundColumn>
+
+                        <telerik:GridBoundColumn DataField="FromLocationBinCode" SortExpression="FromLocationBinCode" HeaderText="FromLocationBinCode" AllowFiltering="false" ReadOnly="True">
+                        </telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="ToLocationBinCode" SortExpression="ToLocationBinCode" HeaderText="ToLocationBinCode" AllowFiltering="false" ReadOnly="True">
+                        </telerik:GridBoundColumn>
+
+                        <telerik:GridBoundColumn DataField="FromWarehouseCode" SortExpression="FromWarehouseCode" HeaderText="FromWarehouseCode" AllowFiltering="false" ReadOnly="True">
+                        </telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="ToWarehouseCode" SortExpression="ToWarehouseCode" HeaderText="ToWarehouseCode" AllowFiltering="false" ReadOnly="True">
+                        </telerik:GridBoundColumn>
+
+                        <telerik:GridBoundColumn DataField="StorageLocationCode" SortExpression="StorageLocationCode" HeaderText="StorageLocationCode" AllowFiltering="false" ReadOnly="True">
+                        </telerik:GridBoundColumn>
+
+                        <telerik:GridBoundColumn DataField="GoodsReceiveDate" SortExpression="GoodsReceiveDate" HeaderText="GoodsReceiveDate" DataFormatString="{0:dd/MMM/yyyy}" ReadOnly="True">
+                            <HeaderStyle Wrap="False"></HeaderStyle>
+                            <ItemStyle Wrap="False"></ItemStyle>
+                        </telerik:GridBoundColumn>
+
+
+                        <telerik:GridTemplateColumn DataField="ItemQty" SortExpression="ItemQty" UniqueName="ItemQty" HeaderText="ItemQty">
+                            <ItemTemplate>
+                                <%# DataBinder.Eval(Container.DataItem, "ItemQty")%>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="ItemQtyTxt" runat="server" Width="80" Text='<%# DataBinder.Eval(Container.DataItem, "ItemQty")%>'></asp:TextBox>
+
+                                <asp:CompareValidator ID="UpcVal" runat="server" ControlToValidate="ItemQtyTxt" EnableClientScript="True"
+                                    ErrorMessage="#" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
+                                <asp:CompareValidator ID="UpcZeroVal" runat="server" ControlToValidate="ItemQtyTxt" EnableClientScript="True"
+                                    ErrorMessage="#" Operator="NotEqual" ValueToCompare="0"></asp:CompareValidator>
+
+                            </EditItemTemplate>
+                        </telerik:GridTemplateColumn>
+
+                        <telerik:GridBoundColumn DataField="ItemUOM" SortExpression="ItemUOM" HeaderText="UOM" ReadOnly="True">
+                            <HeaderStyle Wrap="False"></HeaderStyle>
+                            <ItemStyle Wrap="False"></ItemStyle>
+                        </telerik:GridBoundColumn>
+
+                        <%-- <telerik:GridTemplateColumn ItemStyle-Wrap="False" HeaderText="Reason">
+                            <EditItemTemplate>
+                                <asp:DropDownList ID="ReasonList" Enabled="True" DataTextField="Descr" DataValueField="Item" runat="server" SelectedIndex='<%#iWMS.BusinessFacade.ListingSystem.GetSelectedIndex(reasonListDS,DataBinder.Eval(Container.DataItem, "reason").ToString())%>'
+                                    DataSource='<%# reasonListDS%>' /><asp:RequiredFieldValidator ID="ReasonListReqVal" runat="server" ControlToValidate="ReasonList" ErrorMessage="*" />
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <%# DataBinder.Eval(Container.DataItem, "reasondescr")%>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>--%>
+
+                        <telerik:GridBoundColumn DataField="Remarks" SortExpression="Remarks" HeaderText="Remarks" ReadOnly="True">
+                            <HeaderStyle Wrap="False"></HeaderStyle>
+                            <ItemStyle Wrap="False"></ItemStyle>
+                        </telerik:GridBoundColumn>
+
+                        <telerik:GridBoundColumn DataField="FabricationUsageItemstatus" Display="false">
+                            <HeaderStyle Wrap="False"></HeaderStyle>
+                            <ItemStyle Wrap="False"></ItemStyle>
+                        </telerik:GridBoundColumn>
+
+                        <telerik:GridBoundColumn DataField="FabricationUsageItemstatusDescr" SortExpression="FabricationUsageItemstatusDescr" HeaderText="Status" ReadOnly="True">
+                            <HeaderStyle Wrap="False"></HeaderStyle>
+                            <ItemStyle Wrap="False"></ItemStyle>
+                        </telerik:GridBoundColumn>
+
+                        <telerik:GridBoundColumn DataField="FabricationUsageItemId" Display="false">
+                            <HeaderStyle Wrap="False"></HeaderStyle>
+                            <ItemStyle Wrap="False"></ItemStyle>
+                        </telerik:GridBoundColumn>
+
+                        <telerik:GridBoundColumn DataField="adddate" SortExpression="adddate" HeaderText="Add Date" ReadOnly="True" DataFormatString="{0:dd/MMM/yyyy HH:mm:ss}">
+                        </telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="adduser" SortExpression="adduser" HeaderText="Add User" ReadOnly="True">
+                        </telerik:GridBoundColumn>
+
+                        <telerik:GridBoundColumn DataField="editdate" SortExpression="editdate" HeaderText="Edit Date" ReadOnly="True" DataFormatString="{0:dd/MMM/yyyy HH:mm:ss}">
+                        </telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="edituser" SortExpression="edituser" HeaderText="Edit User" ReadOnly="True">
+                        </telerik:GridBoundColumn>
+
+                    </Columns>
+                </MasterTableView>
+            </telerik:RadGrid>
+        </div>
+    </form>
+</body>
+</html>

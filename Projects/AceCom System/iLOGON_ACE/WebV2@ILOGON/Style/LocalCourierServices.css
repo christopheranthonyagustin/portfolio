@@ -1,0 +1,532 @@
+﻿body {
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/*-----------------------------------------------------*/
+/* TO OVERRIDE CSS FOR BOOTSTRAP*/
+
+.btn-primary {
+    color: #fff !important;
+    display: inline-block !important;
+    background-color: #4172a9 !important;
+    border-color: #4172a9 !important;
+    margin-top: 5px !important;
+    margin-left: 10px !important;
+}
+
+    .btn-primary:hover {
+        color: #fff !important;
+        background-color: #4172a9 !important;
+        border-color: #4172a9 !important;
+    }
+
+
+
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: block !important;
+}
+
+.btn {
+    display: inline-block !important;
+}
+
+/*-----------------------------------------------------*/
+
+img.logoposition {
+    display: block;
+    /* width: 50%; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dropbtn {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    margin: 0px 0px 0px -20px;
+    position: absolute;
+    background-color: #fafcff;
+    min-height: 125px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-width: 90px;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 20%);
+    z-index: 99999;
+}
+
+    .dropdown-content a {
+        color: #32387d !important;
+        height: auto !important;
+        font-size: 15px !important;
+        padding-left: initial !important;
+        padding: 10px !important;
+        text-decoration: none !important;
+        display: block;
+        letter-spacing: initial !important;
+        font-family: Arial !important;
+        text-align: center;
+        font-weight: inherit !important;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #e7ecef;
+            color: #32387d;
+            font-weight: bold;
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    /*font-weight: bold;*/
+}
+
+/*-----------------------------------------------------*/
+.rbVerticalList button.RadButton.rbRadioButton {
+    display: inline-block;
+    padding-left: 25px;
+    margin-left: -12px;
+    padding-top: 10px;
+    margin-right: 55px;
+}
+/*-----------------------------------------------------*/
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 100%;
+    border: 0.5px solid #827d7d;
+    border-right: none;
+    font-size: 16px;
+    height: 36px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: white;
+}
+
+    .searchTerm:focus {
+        color: black;
+        border: 0.5px solid #827d7d;
+    }
+
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 0.5px solid #827d7d;
+    background: white;
+    text-align: center;
+    color: #827d7d;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+    width: 30%;
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.blue {
+    width: 140px;
+    height: 40px;
+    background-color: #0051a4;
+    font-size: 15px;
+    font-family: Arial;
+    color: white;
+    margin: 40px 0px 0px 0px;
+    font-weight: bold;
+    opacity: 80%;
+    padding: 0px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid black;
+}
+
+.EditProfilePanel {
+    margin-left: 22%;
+    float: left;
+    margin-top: -1%;
+}
+
+.ChangePwdPanel {
+    margin-left: 22%;
+    float: left;
+    margin-top: -3%;
+}
+
+.Grid {
+    margin-top: 7%;
+    font-family: Arial;
+}
+
+/*-----------------------------------------------------*/
+.btn-group button {
+    background-color: #eef2f5;
+    border: 3px #9a9a9a;
+    opacity: 85%;
+    font-weight: bold;
+    color: #32387d;
+    padding: 10px 24px;
+    cursor: pointer;
+    font-family: Arial;
+    height: 45px;
+    width: 13%;
+    font-size: 14px;
+    display: block !important;
+}
+
+    .btn-group button:not(:last-child) {
+        border-bottom: none; /* Prevent double borders */
+    }
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+        background-color: #f4f6ff;
+    }
+/*-----------------------------------------------------*/
+.License {
+    color: white;
+    font-family: cursive;
+    padding-top: 11px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 17px;
+    float: left;
+    padding-left: 45px;
+}
+
+/*-----------------------------------------------------*/
+
+/* Main */
+.menu {
+    width: 100%;
+    height: 8%;
+    padding-top: 5px;
+    list-style: none;
+    background-color: #f7fafc;
+    margin-left: auto;
+    font-family: Arial;
+    margin-bottom: 0;
+}
+
+    .menu li {
+        float: left;
+        padding: 8px 0 10px 0;
+        position: relative;
+    }
+
+
+    .menu a {
+        color: #32387d !important;
+        font-family: Arial;
+        font-size: 18px;
+        letter-spacing: 1px;
+        padding-left: 50px;
+        text-decoration: none;
+        font-weight: bold !important;
+    }
+
+    .menu li:hover > a {
+        color: #32387d;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    * html .menu li a:hover { /* IE6 */
+        color: #32387d;
+    }
+
+    .menu li:hover > ul {
+        display: block;
+    }
+
+    /* Sub-menu */
+    .menu ul {
+        list-style: none;
+        margin: -2px 0px 0px 38px;
+        width: 240px !important;
+        padding: 0;
+        display: none;
+        position: absolute;
+        top: 46px;
+        border-radius: 0px 0px 4px 4px;
+        box-shadow: 0px 0px 4px 0px darkgrey;
+        z-index: 99999;
+        background-color: #f4f9ff;
+        border-radius: 0px 1px 5px 0px rgb(0 0 0 / 20%);
+        font-family: Arial;
+    }
+
+        .menu ul li {
+            float: none;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+
+            .menu ul li:last-child {
+                box-shadow: none;
+            }
+
+        .menu ul a {
+            padding: 13px 0px 13px 0px;
+            height: auto;
+            color: #32387d;
+            text-align: center;
+            line-height: 1;
+            display: block;
+            letter-spacing: 0px;
+            white-space: nowrap;
+            font-weight: initial;
+            font-size: 17px;
+            float: none;
+            text-transform: none;
+            font-family: Arial;
+        }
+
+        * html .menu ul a { /* IE6 */
+            height: 10px;
+            width: 150px;
+        }
+
+        *:first-child + html .menu ul a { /* IE7 */
+            height: 10px;
+            width: 150px;
+        }
+
+            .menu ul a:hover {
+                background-color: #e7ecef;
+                color: #32387d;
+            }
+
+        .menu ul li:first-child a {
+            border-radius: 5px 5px 0 0;
+        }
+
+    /*.menu ul li:first-child a:after {
+                content: '';
+                position: absolute;
+                left: 30px;
+                top: -8px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 8px solid #f1f1f1;
+            }
+
+            .menu ul li:first-child a:hover:after {
+                border-bottom-color: #32387d;
+            }
+
+        .menu ul li:last-child a {
+            border-radius: 0 0 5px 5px;
+        }*/
+
+    /* Clear floated elements */
+    .menu:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+    }
+
+* html .menu {
+    zoom: 1;
+}
+
+*:first-child + html .menu {
+    zoom: 1;
+}
+
+/*-----------------------------------------------------*/
+.spinner {
+    display: inline-block;
+    opacity: 0;
+    max-width: 0;
+    -webkit-transition: opacity 0.25s, max-width 0.45s;
+    -moz-transition: opacity 0.25s, max-width 0.45s;
+    -o-transition: opacity 0.25s, max-width 0.45s;
+    transition: opacity 0.25s, max-width 0.45s;
+    /* Duration fixed since we animate additional hidden width */
+}
+
+.has-spinner.active {
+    cursor: progress;
+}
+
+    .has-spinner.active .spinner {
+        opacity: 1;
+        max-width: 50px;
+        /* More than it will ever come, notice that this affects on animation duration */
+    }
+
+/*-----------------------------------------------------*/
+
+.submenu {
+    padding-top: 6px;
+    width: 90%;
+    font-size: 16px;
+    margin-left: 5%;
+    margin-top: 35px;
+    padding-bottom: 30px;
+    height: 35px;
+    background-color: #f0f2f7 /*#d4dde985*/;
+    border-radius: 5px 5px 0px 0px;
+}
+
+    .submenu a {
+        text-decoration: none !important;
+        text-transform: initial !important;
+        font-weight: bold;
+        color: #2e6186; /*#8b92a7a8;*/
+        margin-left: 40px;
+    }
+
+        .submenu a:hover {
+            color: #40709a;
+        }
+
+#SubMenuDiv a:active, #SubMenuDiv a.active {
+    color: #2e6186;
+    border-bottom: 3px solid #2e6186 /*#80878e*/;
+    padding-bottom: 2.5px;
+}
+
+
+/*-----------------------------------------------------*/
+.ParentDashboard {
+    width: 345px;
+    height: 190px;
+    background-color: white;
+    color: #32387d;
+    margin: 46px 31px 31px 31px;
+    font-weight: bold;
+    font-size: large;
+    font-family: Arial;
+    border-radius: 5px;
+    padding-left: 14px;
+    padding-top: 0px;
+    box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+}
+
+.ChildDashboard {
+    border: thin;
+    margin-top: 21px;
+    border-radius: 3px;
+    padding-left: 5px;
+}
+
+.ParentDashboardLbl {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+
+.ChildDashboardLbl {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.ContainerLbl {
+    font-size: 18px;
+    text-align: right;
+    margin-left: 230px;
+}
+
+/*-----------------------------------------------------*/
+
+
+.Login {
+    color: white;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 14px;
+    padding-right: 15px;
+}
+
+
+
+.logout {
+    padding-top: 30px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+
+
+.logoutbtn {
+    font-family: sans-serif;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+    font-size: 15px;
+    letter-spacing: .15px;
+    text-align: center;
+    padding: 10px 4px;
+}
+
+    .logoutbtn:hover {
+        color: #f5f5f5;
+        text-decoration: none;
+    }
+/*-----------------------------------------------------*/
+.RadioButtonList input[type="radio"] {
+    width: auto;
+    float: left;
+    margin-left: 20px;
+}
+
+.RadioButtonList label {
+    width: auto;
+    display: inline;
+    float: left;
+    padding-left: 8px;
+    margin-right: 28px;
+}
+
+.DropZone {
+    width: 380px;
+    margin-top: 28px;
+    height: 150px;
+    background-color: white;
+    border: 1px dashed darkblue;
+    border-radius: 5px;
+    /*color: #767676;
+    text-align: center;
+    font-size: 16px;*/
+    color: black;
+    position: relative;
+}
+
+
+html div.RadAsyncUpload .ruButton.ruBrowse {
+    font-size: 11px;
+    height: 24px;
+    font-family: Arial;
+}

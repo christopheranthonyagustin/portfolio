@@ -1,0 +1,14 @@
+<Locations>
+  <Aisle code="1">
+    <code>1</code>
+    <remarks>Total[1] Occupied[1] Occupancy[100%] </remarks>
+    <level code="1">
+      <bay code="1">
+        <loc>
+          <code>12F-A1</code>
+          <status>Occupied</status>
+        </loc>
+      </bay>
+    </level>
+  </Aisle>
+</Locations>

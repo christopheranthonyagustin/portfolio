@@ -1,0 +1,249 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StoringOrderDetl.aspx.cs"
+    Inherits="iWMS.Web.Inbound.StoringOrder.StoringOrderDetl" %>
+
+<%@ Register TagPrefix="iWMS" TagName="iForm" Src="../../Control/iFormCtl.ascx" %>
+<%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Register TagPrefix="iWMS" TagName="MsgPopup" Src="../../Control/UserMsgModalPopup.ascx" %>
+<!DOCTYPE HTML>
+<html>
+<head runat="server">
+    <title>StoringOrderDetail</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+    <meta name="CODE_LANGUAGE" content="C#">
+    <meta name="vs_defaultClientScript" content="JavaScript">
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+    <link rel="stylesheet" type="text/css" href="../../css/iWMS.css">
+    <script type="text/javascript" src="../../js/Script.js"></script>
+    <script type="text/javascript" src="../../js/row.js"></script>
+    <script type="text/javascript">
+        function selectAll(invoker) {
+            var inputElements = document.getElementsByTagName('input');
+            for (var i = 0; i < inputElements.length; i++) {
+                var myElement = inputElements[i];
+                if (myElement.type === "checkbox") {
+                    myElement.checked = invoker.checked;
+                }
+                else {
+                    myElement.checked = invoker.UnChecked
+
+                }
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <form id="form1" method="post" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tr>
+                <td>
+                    <asp:Panel ID="CtrlPanel" runat="server">
+                        <asp:Button ID="AddDetailBtn" runat="server" CssClass="white" Text="NewLine"
+                            OnClick="AddDetailBtn_Click" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                        &nbsp;
+                    <asp:ImageButton ID="MassDeleteBtn" runat="server" ImageUrl="../../Image/delete.png"
+                        OnClick="MassDeleteBtn_Click" Visible="false" BackColor="Transparent" BorderWidth="0"
+                        ImageAlign="AbsMiddle" ToolTip="Delete Container(s)" OnClientClick="return confirm('Confirm to delete the selected Container(s)?')" />
+                        &nbsp;
+                    <asp:ImageButton ID="MassConfirmBtn" runat="server" ImageUrl="../../Image/Confirm.png"
+                        OnClick="MassConfirmBtn_Click" Visible="false" BackColor="Transparent" BorderWidth="0"
+                        ImageAlign="AbsMiddle" ToolTip="Release Container(s)" OnClientClick="return confirm('Confirm to store the selected Container(s)?')" />
+                        &nbsp;
+                    <asp:ImageButton ID="MassReOpenBtn" runat="server" ImageUrl="../../Image/Reopen.png"
+                        OnClick="MassReopenBtn_Click" Visible="false" BackColor="Transparent" BorderWidth="0"
+                        ImageAlign="AbsMiddle" ToolTip="Re-Open Container(s)" OnClientClick="return confirm('Confirm to re-open the selected Container(s)?')" />
+                        <br />
+                    </asp:Panel>
+                </td>
+                <td align="right">
+                    <asp:Label ID="STOIdLbl" runat="server" CssClass="pagetitle" Visible="false"></asp:Label>
+                    <a id="ExportExcelLnk" runat="server" onserverclick="ExcelBtn_Click">
+                        <img id="excelImg" border="0" alt="Export to Excel" align="absMiddle" src="../../Image/excel.gif"
+                            height="20" runat="server"></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Panel ID="AddPanel" runat="server" Visible="False">
+                        <table border="0" cellspacing="1" cellpadding="1" width="100%">
+                            <tr>
+                                <td>&nbsp;
+                                    <asp:Button ID="SaveBtn" runat="server" CssClass="white" Text="Save"
+                                        OnClick="SaveBtn_Click" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                                    &nbsp;
+                                    <asp:Button ID="SaveNextBtn" runat="server" CssClass="white" Text="Save &amp; Next"
+                                        OnClick="SaveNextBtn_Click" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                                    &nbsp;
+                                    <asp:Button ID="ClosePanelBtn" runat="server" CssClass="blue" Text="- Hide"
+                                        OnClick="ClosePanelBtn_Click" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <iWMS:iForm ID="formCtl" runat="server"></iWMS:iForm>
+                                </td>
+                            </tr>
+                        </table>
+                    </asp:Panel>
+                    <br />
+                </td>
+            </tr>
+        </table>
+        <telerik:RadGrid ID="ResultDG" runat="server" AutoGenerateColumns="false" GridLines="None"
+            OnNeedDataSource="ResultDG_NeedDataSource" BorderStyle="Solid" Skin="Office2007"
+            OnGridExporting="ResultDG_GridExporting" AllowSorting="true" AllowFilteringByColumn="true"
+            OnItemDataBound="ResultDG_ItemDataBound">
+            <ClientSettings AllowColumnsReorder="true" ReorderColumnsOnClient="true">
+                <Scrolling ScrollHeight="400px" AllowScroll="true" />
+            </ClientSettings>
+            <SortingSettings EnableSkinSortStyles="false" />
+            <ExportSettings ExportOnlyData="true" IgnorePaging="true">
+            </ExportSettings>
+            <AlternatingItemStyle Wrap="false"></AlternatingItemStyle>
+            <ItemStyle Wrap="false"></ItemStyle>
+            <HeaderStyle Wrap="false"></HeaderStyle>
+            <MasterTableView AllowMultiColumnSorting="true" DataKeyNames="rcdtid">
+                <Columns>
+                    <telerik:GridTemplateColumn Reorderable="false" UniqueName="icon" AllowFiltering="false">
+                        <ItemStyle Wrap="False" HorizontalAlign="Center"></ItemStyle>
+                        <HeaderTemplate>
+                            <input id="cbSelectAll" name="cbSelectAll" type="checkbox" onclick="selectAll(this)">
+                        </HeaderTemplate>
+                        <ItemStyle Wrap="false" />
+                        <ItemTemplate>
+                            <asp:CheckBox ID="lineChkbx" runat="server" />
+                            <a id="lnkEdit" href='<%#DataBinder.Eval(Container,"DataItem.id")%>' runat="server"
+                                onserverclick="RCDetail_Edit">
+                                <img id="editImg" border="0" alt="Edit" title="Edit" src="..\..\image\pencil.gif"
+                                    width="15" height="15" runat="server" /></a> <a id="lnkDelete" onclick="return confirm('Confirm delete?')"
+                                        href='<%#DataBinder.Eval(Container,"DataItem.rcdtid")%>' runat="server" onserverclick="RCDetail_Delete">
+                                        <img id="delImg" border="0" alt="Delete Receipt Detail" src="..\..\image\bin.gif"
+                                            width="15" height="15" runat="server" /></a>
+                        </ItemTemplate>
+                    </telerik:GridTemplateColumn>
+                    <telerik:GridTemplateColumn Reorderable="false" UniqueName="icon" AllowFiltering="false">
+                        <ItemStyle Wrap="False" HorizontalAlign="Center"></ItemStyle>
+                        <HeaderTemplate>
+                            No
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <%# (Container.ItemIndex + (ResultDG.CurrentPageIndex * ResultDG.PageSize) + 1).ToString()%>
+                        </ItemTemplate>
+                    </telerik:GridTemplateColumn>
+                    <telerik:GridBoundColumn HeaderText="ContainerNo" DataField="skucode" AllowFiltering="true"
+                        SortExpression="skucode" UniqueName="skucode" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="ContainerType" DataField="skusizetype" AllowFiltering="true"
+                        SortExpression="skusizetype" UniqueName="skusizetype" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="CommodityDescr" DataField="lot5" AllowFiltering="true"
+                        SortExpression="lot5" UniqueName="lot5" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="StoringDate" DataField="lot1" AllowFiltering="true"
+                        SortExpression="lot1" UniqueName="lot1" Reorderable="true" DataFormatString="{0:dd/MMM/yyyy}">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="Condition" DataField="lot6" AllowFiltering="true"
+                        SortExpression="lot6" UniqueName="lot6" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="Vessel" DataField="lot12" AllowFiltering="true"
+                        SortExpression="lot12" UniqueName="lot12" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="Voyage" DataField="lot13" AllowFiltering="true"
+                        SortExpression="lot13" UniqueName="lot13" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="ETA@POD" DataField="lot2" AllowFiltering="true"
+                        SortExpression="lot2" UniqueName="lot2" Reorderable="true" DataFormatString="{0:dd/MMM/yyyy}">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="FreeDays" DataField="lot14" AllowFiltering="true"
+                        SortExpression="lot14" UniqueName="lot14" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="RentalRate" DataField="lot7" AllowFiltering="true"
+                        SortExpression="lot7" UniqueName="lot7" Reorderable="true" DataFormatString="{0:#,0.00}">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="Currency" DataField="lot9" AllowFiltering="true"
+                        SortExpression="lot9" UniqueName="lot9" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="TaxType" DataField="lot10" AllowFiltering="true"
+                        SortExpression="lot10" UniqueName="lot10" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="BillPeriod" DataField="lot11" AllowFiltering="true"
+                        SortExpression="lot11" UniqueName="lot11" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="LeaseFreeDays" DataField="lot15" AllowFiltering="true"
+                        SortExpression="lot15" UniqueName="lot15" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="Status" DataField="statusdescr" AllowFiltering="true"
+                        SortExpression="statusdescr" UniqueName="statusdescr" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="AddDate" DataField="adddate" AllowFiltering="true"
+                        SortExpression="adddate" UniqueName="adddate" Reorderable="true" DataFormatString="{0:dd/MMM/yyyy HH:mm:ss}">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="AddUser" DataField="adduser" AllowFiltering="true"
+                        SortExpression="adduser" UniqueName="adduser" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="EditDate" DataField="editdate" AllowFiltering="true"
+                        SortExpression="editdate" UniqueName="editdate" Reorderable="true" DataFormatString="{0:dd/MMM/yyyy HH:mm:ss}">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="EditUser" DataField="edituser" AllowFiltering="true"
+                        SortExpression="edituser" UniqueName="edituser" Reorderable="true">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn Display="False" DataField="id" />
+                    <telerik:GridBoundColumn Display="False" DataField="status" />
+                    <telerik:GridBoundColumn Display="False" DataField="rcdstatus" />
+                    <telerik:GridBoundColumn Display="False" DataField="rcid" />
+                    <telerik:GridBoundColumn Display="False" DataField="rcdtid" />
+                    <telerik:GridBoundColumn Display="False" DataField="statuscolor" />
+                    <telerik:GridBoundColumn Display="False" DataField="skuid" />
+                    <telerik:GridBoundColumn Display="False" DataField="skustatus" />
+                </Columns>
+            </MasterTableView>
+        </telerik:RadGrid>
+        <iWMS:MsgPopup ID="MsgPopup" runat="server"></iWMS:MsgPopup>
+        <%--Message popup area start--%>
+        <%--<asp:Button runat="server" ID="btnMessagePopupTargetButton" Style="display: none;" />
+        <ajaxToolkit:ModalPopupExtender ID="mpeMessagePopup" runat="server" PopupControlID="pnlMessageBox"
+            TargetControlID="btnMessagePopupTargetButton" OkControlID="btnOk" CancelControlID="btnCancel"
+            BackgroundCssClass="MessageBoxPopupBackground" Y="200">
+        </ajaxToolkit:ModalPopupExtender>
+        <asp:Panel runat="server" ID="pnlMessageBox" BackColor="White" Width="420" Style="display: none; border: 2px solid #780606;"
+            DefaultButton="btnOk">
+            <div class="popupHeader" style="width: 420px;">
+                <asp:Label ID="lblMessagePopupHeading" Text="Information" runat="server" Style="size: 15px"></asp:Label>
+                <asp:LinkButton ID="btnCancel" runat="server" Style="float: right; margin-right: 15px;">X</asp:LinkButton>
+            </div>
+            <div style="max-height: 500px; width: 420px; overflow: hidden;">
+                <div style="float: left; width: 380px; margin: 20px;">
+                    <table style="padding: 0; border-spacing: 0; border-collapse: collapse; width: 100%;">
+                        <tr>
+                            <td style="text-align: left; vertical-align: top; width: 11%;">
+                                <asp:Literal runat="server" ID="ltrMessagePopupImage"></asp:Literal>
+                            </td>
+                            <td style="width: 2%;"></td>
+                            <td style="text-align: left; vertical-align: top; width: 87%;">
+                                <p style="margin: 0px; padding: 0px; color: #5F0202;">
+                                    <asp:Label runat="server" ID="lblMessagePopupText"></asp:Label>
+                                    </br>
+                                <asp:Label runat="server" ID="lblMessagePopupText2"></asp:Label>
+                                    </br>
+                                <asp:Label runat="server" ID="lblMessagePopupText3"></asp:Label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; vertical-align: top;" colspan="3">
+                                <div style="margin-right: 0px; float: right; width: auto;">
+                                    <asp:Button ID="btnOk" runat="server" Style="text-decoration: none;" Text="OK" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </asp:Panel>--%>
+        <%--Message popup area end--%>
+    </form>
+</body>
+</html>

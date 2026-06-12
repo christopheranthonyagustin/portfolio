@@ -1,0 +1,301 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RoutePlanningWorkbenchUnplanned.aspx.cs" Inherits="iWMS.Web.Job.RoutePlanningWorkbench.RoutePlanningWorkbenchUnplanned" %>
+
+<%@ Register TagPrefix="iWMS" TagName="MsgPopup" Src="../../Control/UserMsgModalPopup.ascx" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<%@ Register TagPrefix="iWMS" TagName="iForm" Src="../../Control/iFormCtl.ascx" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
+<html>
+<head id="Head1" runat="server">
+    <title>RoutePlanningWorkbench</title>
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+    <link href="../../css/iWMStelerik.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/iWMS.css" />
+    <script type="text/javascript" src="../../js/Script.js"></script>
+    <meta runat="server" id="RefreshMeta" http-equiv="Refresh" />
+    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+        <script type="text/javascript">
+            function ShowHideBtn_Click() {
+                var Grid = $find("<%= ResultDG.ClientID %>");
+                var MasterTable = Grid.get_masterTableView();
+
+                for (var i = 0; i < MasterTable.get_dataItems().length; i++) {
+                    var row = MasterTable.get_dataItems()[i];
+                    if (row.get_expanded() == false) {
+                        row.set_expanded(true);
+                    }
+                    else
+                        row.set_expanded(false);
+                }
+            }
+
+            function ResultDG_selectAll(id) {
+                var masterTable = $find("<%= ResultDG.ClientID %>").get_masterTableView();
+                var row = masterTable.get_dataItems();
+                if (id.checked == true) {
+                    for (var i = 0; i < row.length; i++) {
+                        masterTable.get_dataItems()[i].findElement("SelectCB").checked = true;
+                    }
+                }
+                else {
+                    for (var i = 0; i < row.length; i++) {
+                        masterTable.get_dataItems()[i].findElement("SelectCB").checked = false;
+                    }
+                }
+            }
+        </script>
+    </telerik:RadCodeBlock>
+    <style type="text/css">
+        .popupHeader {
+            padding: 5px 0px 0px 0px;
+            width: 420px;
+            font-family: tahoma;
+            font-weight: bold;
+            height: 25px;
+            text-decoration: none;
+            background-color: #859DD4;
+        }
+
+            .popupHeader span {
+                color: #fff;
+                text-decoration: none;
+                line-height: 15px;
+                text-decoration: none;
+                float: left;
+                margin-left: 10px;
+            }
+
+            .popupHeader a {
+                color: #fff !important;
+                text-decoration: none !important;
+                line-height: 15px;
+                text-decoration: none;
+                float: right;
+                margin-right: 10px;
+            }
+
+        .MessageBoxPopupBackground {
+            background-color: black;
+            opacity: 0.001;
+        }
+    </style>
+</head>
+<body style="border-spacing: 0px;">
+    <form id="Form1" method="post" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <telerik:RadTabStrip runat="server" ID="RadTabStrip1" MultiPageID="RadMultiPage1" OnTabClick="RadTabStrip1_TabClick"
+            CausesValidation="false" AutoPostBack="true" SelectedIndex="5" Skin="Windows7">
+            <Tabs>
+                <telerik:RadTab Text="Workbench" Value="0" runat="server">
+                </telerik:RadTab>
+                <telerik:RadTab Text="Workbench2" Value="200" runat="server">
+                </telerik:RadTab>
+                <telerik:RadTab Text="Map" Value="50" runat="server">
+                </telerik:RadTab>
+                <telerik:RadTab Text="TripInfo" Value="100" runat="server">
+                </telerik:RadTab>
+                <telerik:RadTab Text="Attc" Value="150" runat="server">
+                </telerik:RadTab>
+                <telerik:RadTab Text="Unplanned" Value="250" runat="server">
+                </telerik:RadTab>
+            </Tabs>
+        </telerik:RadTabStrip>
+        <br />
+        <table id="FormTable" border="0" cellspacing="0" cellpadding="0" width="100%" runat="server">
+            <tr>
+                <td valign="top">
+                    <asp:Label ID="tripsunplannedLbl" runat="server" CssClass="pagetitle" Text="Trips Unplanned"></asp:Label>
+                    <br />
+                    <br />
+                    <table>
+                        <tr>
+                            <td>
+                                <iWMS:iForm ID="formCtl" runat="server"></iWMS:iForm>
+                            </td>
+                            <td>
+                                <br />
+                                <asp:Button ID="RoutePlanBtn" runat="server" CssClass="white" OnClick="RoutePlanBtn_Click"
+                                    Text="RoutePlan" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />&nbsp;   
+                            </td>
+                            <td>
+                                <asp:Label ID="PlanStrategyLbl" runat="server" Text="PlanStrategy"></asp:Label><br />
+                                <telerik:RadDropDownList ID="PlanStrategyDDL" runat="server" Enabled="True" Skin="WebBlue" DataTextField="Descr" OnSelectedIndexChanged="RefreshList_SelectedIndexChanged" AutoPostBack="true"
+                                    DataValueField="Item" Width="150px">
+                                </telerik:RadDropDownList>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <iWMS:iForm ID="formCtl2" runat="server"></iWMS:iForm>
+                            </td>
+                            <td>
+                                <br />
+                                <asp:Button ID="RefreshBtn" runat="server" CssClass="white" OnClick="RefreshBtn_Click"
+                                    Text="Refresh" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                                &nbsp;
+                            </td>
+                            <td>
+                                <asp:Label ID="IntervalLbl" runat="server" Text="Interval"></asp:Label><br />
+                                <telerik:RadDropDownList ID="RefreshList" runat="server" Enabled="True" Skin="WebBlue" DataTextField="Descr" OnSelectedIndexChanged="RefreshList_SelectedIndexChanged" AutoPostBack="true"
+                                    DataValueField="Item" Width="150px">
+                                </telerik:RadDropDownList>
+                            </td>
+                            <td>
+                                <br />
+                                <br />
+                                &nbsp;&nbsp;<asp:Label ID="LastRefreshLbl" runat="server" Text="Last Refreshed :" Font-Bold="true"></asp:Label>
+                                <asp:Label ID="LastTimeLbl" runat="server" Font-Bold="true"></asp:Label><br />
+                            </td>
+                        </tr>
+                    </table>
+                    &nbsp;<asp:Label ID="lblProcessID" runat="server" Visible="False" />
+                    <br />
+                    <br />
+                    <telerik:RadGrid ID="ResultDG" runat="server" EnableLinqExpressions="False" Skin="Metro"
+                        OnNeedDataSource="ResultDG_NeedDataSource" OnItemDataBound="ResultDG_ItemDataBound" AllowMultiRowSelection="true"
+                        ExportSettings-UseItemStyles="true" AutoGenerateColumns="false" GroupPanelPosition="Top"
+                        AllowPaging="false" AllowSorting="true" AllowFilteringByColumn="true" UseAccessibleHeader="True" Width="1400px">
+                        <AlternatingItemStyle Wrap="true"></AlternatingItemStyle>
+                        <ItemStyle></ItemStyle>
+                        <ClientSettings AllowRowsDragDrop="false" AllowAutoScrollOnDragDrop="false">
+                            <Selecting AllowRowSelect="true" />
+                        </ClientSettings>
+                        <SortingSettings EnableSkinSortStyles="false" />
+                        <MasterTableView AllowMultiColumnSorting="true" DataKeyNames="id" PageSize="50" Name="TripsUnplannedGrid" HeaderStyle-CssClass="RGridHeader_CUSTOM" HeaderStyle-ForeColor="White">
+                            <PagerStyle Mode="NextPrevNumericAndAdvanced" />
+                            <Columns>
+                                <telerik:GridTemplateColumn Reorderable="false" UniqueName="icon" AllowFiltering="false">
+                                    <ItemStyle Wrap="true" HorizontalAlign="Center"></ItemStyle>
+                                    <HeaderTemplate>
+                                        <label id="completelbl">
+                                        </label>
+                                        &nbsp;<input id="SelectALLCB" name="SelectALLCB" type="checkbox" onclick="ResultDG_selectAll(this)">
+                                    </HeaderTemplate>
+                                    <HeaderStyle Wrap="false" HorizontalAlign="Center" Width="50px" />
+                                    <ItemStyle Wrap="False" HorizontalAlign="Center" Width="50px" />
+                                    <ItemTemplate>
+                                        <asp:CheckBox ID="SelectCB" runat="server" />
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                    </EditItemTemplate>
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridBoundColumn HeaderText="Account" DataField="accode" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="accode" SortExpression="accode" UniqueName="accode"
+                                    Reorderable="true" ItemStyle-Width="150px" ItemStyle-Wrap="false">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="CustRef" DataField="custref" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="custref" SortExpression="custref" UniqueName="custref"
+                                    Reorderable="true" ItemStyle-Width="150px" ItemStyle-Wrap="false">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="ExpectedDate" DataField="frexpdate" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="frexpdate" SortExpression="frexpdate" UniqueName="frexpdate"
+                                    Reorderable="true" DataFormatString="{0:dd/MMM/yyyy HH:mm}" ItemStyle-Width="100px">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="PickDrop" DataField="trippickdrop" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="trippickdrop" SortExpression="trippickdrop" UniqueName="trippickdrop"
+                                    Reorderable="true" ItemStyle-Width="50px">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="FrAddr" DataField="FrAddr" AllowFiltering="true"
+                                    ReadOnly="True" SortExpression="FrAddr" UniqueName="FrAddr"
+                                    Reorderable="true">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="FrPostalCode" DataField="FrPostalCode" AllowFiltering="true"
+                                    ReadOnly="True" SortExpression="FrPostalCode" UniqueName="FrPostalCode"
+                                    Reorderable="true">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="FrRoute" DataField="FrRoute" AllowFiltering="true"
+                                    ReadOnly="True" SortExpression="FrRoute" UniqueName="FrRoute"
+                                    Reorderable="true">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="ToAddr" DataField="ToAddr" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="ToAddr" SortExpression="ToAddr" UniqueName="TripAddr"
+                                    Reorderable="true">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="PostalCode" DataField="ToPostalCode" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="ToPostalCode" SortExpression="ToPostalCode" UniqueName="TripPostalCode"
+                                    Reorderable="true" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50px">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="ToRoute" DataField="ToRoute" AllowFiltering="true"
+                                    ReadOnly="True" SortExpression="ToRoute" UniqueName="ToRoute"
+                                    Reorderable="true">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="Route" DataField="TripRoute" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="TripRoute" SortExpression="TripRoute" UniqueName="TripRoute"
+                                    Reorderable="true" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="60px" Display="false">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="Packages" DataField="actpkg" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="actpkg" SortExpression="actpkg" UniqueName="actpkg" FilterControlWidth="50%"
+                                    Reorderable="true" DataFormatString="{0:#.####}" ItemStyle-HorizontalAlign="Right" ItemStyle-Width="60px">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="Volume" DataField="actvol" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="actvol" SortExpression="actvol" UniqueName="actvol"
+                                    Reorderable="true" DataFormatString="{0:#,0.000}"
+                                    FilterControlWidth="50%" ItemStyle-HorizontalAlign="Right" ItemStyle-Width="60px">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="WT" DataField="actwt" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="actwt" SortExpression="actwt" UniqueName="actwt"
+                                    Reorderable="true" DataFormatString="{0:#,0.000}" FilterControlWidth="50%" ItemStyle-HorizontalAlign="Right" ItemStyle-Width="60px">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="BillSizeType" DataField="billsizetypedescr" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="billsizetypedescr" SortExpression="billsizetypedescr" UniqueName="billsizetypedescr"
+                                    Reorderable="true" ItemStyle-Width="150px" ItemStyle-Wrap="false">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="TimeBuffer" DataField="TripTimeBuffer" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="TripTimeBuffer " SortExpression="TripTimeBuffer" UniqueName="TripTimeBuffer"
+                                    Reorderable="true" HeaderStyle-Width="75px" FilterControlWidth="50%" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50px">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="Remarks" DataField="Remarks" AllowFiltering="true"
+                                    ReadOnly="True" ColumnGroupName="Remarks " SortExpression="Remarks" UniqueName="Remarks"
+                                    Reorderable="true" HeaderStyle-Width="75px" FilterControlWidth="50%" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50px">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="id" Display="false"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="vehno" Display="false"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="routeplansequence" Display="false"></telerik:GridBoundColumn>
+                            </Columns>
+                        </MasterTableView>
+                    </telerik:RadGrid>
+                </td>
+            </tr>
+        </table>
+        <%--Show Message popup area Start--%>
+        <asp:Button runat="server" ID="btnMessagePopupTargetButton" Style="display: none;" />
+        <ajaxToolkit:ModalPopupExtender ID="mpeMessagePopup" runat="server" PopupControlID="pnlMessageBox"
+            TargetControlID="btnMessagePopupTargetButton" OkControlID="btnOk"
+            BackgroundCssClass="MessageBoxPopupBackground">
+        </ajaxToolkit:ModalPopupExtender>
+        <asp:Panel runat="server" ID="pnlMessageBox" BackColor="White" Width="420" Style="display: none; border: 2px solid #780606;"
+            DefaultButton="btnOk">
+            <div class="popupHeader" style="width: 420px;">
+                <asp:Label ID="lblMessagePopupHeading" Text="Information" runat="server" Style="size: 15px"></asp:Label>
+            </div>
+            <div style="max-height: 500px; width: 420px; overflow: hidden;">
+                <div style="float: left; width: 380px; margin: 20px;">
+                    <table style="padding: 0; border-spacing: 0; border-collapse: collapse; width: 100%;">
+                        <tr>
+                            <td style="text-align: left; vertical-align: top; width: 11%;">
+                                <asp:Literal runat="server" ID="ltrMessagePopupImage"></asp:Literal>
+                            </td>
+                            <td style="width: 2%;"></td>
+                            <td style="text-align: left; vertical-align: top; width: 87%;">
+                                <p style="margin: 0px; padding: 0px; color: #5F0202;">
+                                    <asp:Label runat="server" ID="lblMessagePopupText"></asp:Label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; vertical-align: top;" colspan="3">
+                                <div style="margin-right: 0px; float: right; width: auto;">
+                                    <asp:Button ID="btnOk" CssClass="white" runat="server" Text="OK" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </asp:Panel>
+        <%--Show Message popup area End--%>
+    </form>
+</body>
+</html>

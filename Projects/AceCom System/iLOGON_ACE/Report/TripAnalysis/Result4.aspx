@@ -1,0 +1,46 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Result4.aspx.cs" Inherits="iWMS.Web.Report.TripAnalysis.Result4" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>TripAnalysis</title>
+    <link href="../../css/iWMStelerik.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/iWMS.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/Script.js" language="javascript"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <table>
+            <tr>
+                <td>
+                    <asp:Label ID="LicenseNameLbl" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="TitleLabel" runat="server" CssClass="Graytitle" Text="Trip Analysis -"></asp:Label>
+                    <asp:Label ID="TitleLbl" runat="server" CssClass="Graytitle"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="AccountLabel" runat="server" class="graytitle" Text="Account :" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="AccountLbl" class="graytitle" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <asp:Button ID="excelImgBtn" runat="server" class="green" Text="Excel" OnClick="ButtonExcel_Click"
+                        UseSubmitBehavior="false" />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <asp:Panel ID="PanelResult" runat="server">
+        </asp:Panel>
+    </form>
+</body>
+</html>

@@ -1,0 +1,101 @@
+CPU ID  			BFEBFBFF00000F33
+Company Name  			KEYfields Pte Ltd
+Expiry Date  			31/DEC/2014
+No of Users  			400
+  
+ Z+n2U9eBWbH/3pJJtp+ldoPf9yW/N7WDlWMcj7pSQ2pWC32ldEXmXRcpY6GCfjEwWuxTVQ8fxz48g7XBPQSYBw== 
+
+Prem 
+
+CPU ID 				BFEBFBFF000306F2
+Expirty Date 			30/June/2017
+USER				40
+
+BFEBFBFF000306F2
+18/Jul/2017
+USER 40
+MiR0TFQP6gilESdBl/ZFpdeqrZZ1vh4E0MjczwK2Jt6F8kNO1oCMO0oDOoNHLmEwPAuU+DPypU+aDszHnCA5Kg==
+
+CPU ID 				BFEBFBFF000306F2
+Name 				Premium Logistics Pte Ltd 
+Expirty Date 			06/DEC/2017
+USER				40
+
+MiR0TFQP6gilESdBl/ZFpdeqrZZ1vh4E0MjczwK2Jt7/gw/24WX1dm3x9G6C9QdVGnLX3hyN3NABIfsCw9M1WQ==
+
+By BR on 07/Dec/2017
+CPU ID 				BFEBFBFF000306F2
+Name 				Premium Logistics Pte Ltd 
+Expirty Date 			12/FEB/2018
+USER				40
+
+MiR0TFQP6gilESdBl/ZFpdeqrZZ1vh4E0MjczwK2Jt7LMYEoec51TCMK8xMbQ8aQEpxyzMhRTsKtWJpNnW/qpw==
+
+
+By KY on 02/Feb/2018
+
+CPU ID 				BFEBFBFF000306F2
+Name 				Premium Logistics Pte Ltd 
+Expirty Date 			04/Apr/2018
+USER				40
+
+
+By BR on 28/Mar/2018 -Requested by RT
+
+CPU ID 				BFEBFBFF000306F2
+Name 				Premium Logistics Pte Ltd 
+Expirty Date 			28/Sep/2018
+USER				40
+
+MiR0TFQP6gilESdBl/ZFpdeqrZZ1vh4E0MjczwK2Jt4ObNzGJZVLsj0Wgus/G8rIMk8gYDhcvFmzK5hThea3ug==
+
+
+
+By BR on 24/July/2018 -Requested by RC
+
+CPU ID 				BFEBFBFF000306F2
+Name 				Premium Logistics Pte Ltd 
+Expirty Date 			28/Sep/2018
+USER				100
+
+MiR0TFQP6gilESdBl/ZFpdeqrZZ1vh4E0MjczwK2Jt4ObNzGJZVLsj0Wgus/G8rIiEfymMJHGH34DQiCyzNYRqryRxljBlWA0TDL9Sx2Kp4=
+
+By BR on 24/July/2018 -Requested by RC
+
+CPU ID 				BFEBFBFF000306F2
+Name 				Premium Logistics Pte Ltd 
+Expirty Date 			28/Sep/2018
+USER				200
+
+MiR0TFQP6gilESdBl/ZFpdeqrZZ1vh4E0MjczwK2Jt6aZl8ewm3H/g6Lm4Hfb2GK/64Fm1Ffol7KXudbjMggJw==
+
+By CH on 07/August/2018 - Requested by FL
+
+
+CPU ID 				BFEBFBFF000306F2
+Name 				Premium Logistics Pte Ltd 
+Expirty Date 			30/Jul/2019
+USER				200
+MiR0TFQP6gilESdBl/ZFpdeqrZZ1vh4E0MjczwK2Jt6UOtFLwxKvT657UaoWogB78J9dSmEJ5Mn9+EbjJqg8LkxyU7JlzGuw4kcTyuQ/okQ=
+==============================================================================================================
+Understand from KT, we will not prompt such expiration date for their company.
+By BR on 31/May/2019 - Requested by LH
+For both UAT and LIVE
+Also used to do testing for SaaS@LETO key generation by BT on 07-Aug-2019
+
+
+CPU ID 				BFEBFBFF000306F2
+Name 				Premium Logistics Pte Ltd 
+Expirty Date 			30/Jul/2025
+USER				200
+MiR0TFQP6gilESdBl/ZFpdeqrZZ1vh4E0MjczwK2Jt5fMI3cNK+Yri7LygRSG1JfLlZJIpA/CcBoB/OB07o3Qw==
+
+==============================================================================================================
+Instructed by LH to change the expiry date so that they will pay up.
+Key changed by KL on 08/Apr/2020
+
+CPU ID 				BFEBFBFF000306F2
+Name 				Premium Logistics Pte Ltd 
+Expirty Date 			05/May/2020
+USER				200
+MiR0TFQP6gilESdBl/ZFpdeqrZZ1vh4E0MjczwK2Jt7KJF7d2yG0isV7XpiUfDfbXTizFpyZ9kKDWcLbkGZ74A==

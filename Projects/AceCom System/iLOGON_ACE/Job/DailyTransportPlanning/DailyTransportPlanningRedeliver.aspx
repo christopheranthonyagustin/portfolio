@@ -1,0 +1,61 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DailyTransportPlanningRedeliver.aspx.cs" Inherits="iWMS.Web.Job.DailyTransportPlanning.DailyTransportPlanningRedeliver" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Register TagPrefix="iWMS" TagName="iForm" Src="../../Control/iFormCtl.ascx" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Redeliver @ Daily Transport Planning</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+    <meta name="CODE_LANGUAGE" content="C#">
+    <meta name="vs_defaultClientScript" content="JavaScript">
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/iWMS.css">
+    <script type="text/javascript" src="../../js/Script.js"></script>
+
+    <script type="text/javascript">
+        function GetRadWindow() {
+            var oWindow = null; if (window.radWindow)
+                oWindow = window.radWindow; else if (window.frameElement.radWindow)
+                    oWindow = window.frameElement.radWindow; return oWindow;
+        }
+
+        function Close() {
+            GetRadWindow().close();
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <table>
+            <tr>
+                <td>
+                    <asp:Label ID="MessageLbl" runat="server" Font-Size="Medium" Font-Bold="true"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <iWMS:iForm ID="formCtl" runat="server"></iWMS:iForm>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td>
+                    <br />
+                    <asp:Button ID="RedeliverBtn" CssClass="white" Text="Redeliver" runat="server" OnClick="RedeliverBtn_Click" OnClientClick="disableBtn(this.id,true)" UseSubmitBehavior="false" />
+                    &nbsp;
+                    <asp:Button ID="CloseWindowBtn" runat="server" CssClass="LongLabelWhite" Text="Close Window" OnClick="CloseWindowBtn_Click" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

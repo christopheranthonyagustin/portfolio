@@ -1,0 +1,79 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Result31.aspx.cs" Inherits="iWMS.Web.Graphlet.PersonnelAnalysis.Result31" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Personnel Analysis</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+    <meta name="CODE_LANGUAGE" content="C#">
+    <meta name="vs_defaultClientScript" content="JavaScript">
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+    <link rel="stylesheet" type="text/css" href="../../css/iWMS.css" />
+    <script language="javascript" src="../../js/fullscreen.js" type="text/javascript"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <table width="100%">
+            <tr>
+                <td colspan="2">
+                    <asp:Label ID="LicenseNameLbl" runat="server" class="graytitle"></asp:Label>
+                    <asp:HiddenField ID="HiddenField1" runat="server" />
+                </td>
+            </tr>
+            <tr class="graytitle">
+                <td colspan="2">
+                    <asp:Label ID="TitleLbl" runat="server">Personnel Analysis - </asp:Label>
+                    <asp:Label ID="FormatDescr" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr class="graytitle">
+                <td colspan="2">
+                    <asp:Label ID="Label1" runat="server" class="graytitle" Text="HR Department :" />
+                    <asp:Label ID="DeptLbl" runat="server" class="graytitle" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <asp:Label ID="Label2" runat="server" class="graytitle" Text="Document Type :" />
+                    <asp:Label ID="DocLbl" runat="server" class="graytitle"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <asp:Label ID="frmat" runat="server" class="graytitle"></asp:Label>
+                </td>
+            </tr>
+            <tr class="graytitle">
+                <td colspan="2">
+                    <asp:Label ID="Label3" runat="server" class="graytitle" Text="Months to Expiry:" />
+                    <asp:Label ID="MonthstoExpiryLbl" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <asp:Button ID="ButtonExcel" Class="green" runat="server" OnClick="ButtonExcel_Click" Text="Excel"/>
+                </td>
+            </tr>
+        </table> 
+        <br />       
+        <div>
+            <telerik:RadGrid ID="ResultDG" runat="server" EnableLinqExpressions="False" Skin="Office2007"
+                AutoGenerateColumns="true" OnGridExporting="ResultDG_GridExporting" OnItemDataBound="ResultDG_ItemDataBound"
+                AllowPaging="false" AllowSorting="true" AllowFilteringByColumn="false" CellPadding="2" UseAccessibleHeader="True"
+                ItemStyle-Wrap="False" GridLines="Both">
+                <AlternatingItemStyle CssClass="DGAlternateItem" Wrap="False"></AlternatingItemStyle>
+                <ItemStyle CssClass="DGItem" Wrap="False"></ItemStyle>
+                <ClientSettings>
+                    <Selecting AllowRowSelect="true" />
+                </ClientSettings>
+                <MasterTableView AllowMultiColumnSorting="true">
+                    <Columns>
+                    </Columns>
+                </MasterTableView>
+            </telerik:RadGrid>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<Locations>
+  <aisle code="B11-PW">
+    <code>B11-PW</code>
+    <remarks>Total[1] Occupied[0] Occupancy[0%] </remarks>
+    <level code="1">
+      <bay code="1">
+        <loc>
+          <code>B11-PW</code>
+          <status>Empty</status>
+        </loc>
+      </bay>
+    </level>
+  </aisle>
+</Locations>

@@ -1,0 +1,86 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PersonnelDocketDetl.aspx.cs" Inherits="iWMS.Web.Master.Personnel.PersonnelDocketDetlSearch" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head id="Head1" runat="server">
+    <title>PersonnelDocketDetl</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+    <meta name="CODE_LANGUAGE" content="C#">
+    <meta name="vs_defaultClientScript" content="JavaScript">
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+    <link href="../../css/iWMS.css" type="text/css" rel="stylesheet"> 
+    
+     <style type="text/css">
+        .div-radgrid
+        {
+            height: 120%;
+            width: 89%;
+            overflow: auto;
+            position: relative;
+            vertical-align: top;
+        }
+    </style>    
+</head>
+<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">
+    <form id="Form1" method="post" runat="server" style="z-index: 0">
+    <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" /> 
+    <br />
+    <br />
+    <br />
+    <div id="div-radgrid">        
+        <telerik:RadGrid ID="ResultDG" runat="server" AutoGenerateColumns="false"
+            AllowSorting="True" Skin="Office2007" OnItemDataBound="ResultDG_ItemDataBound">
+        <ClientSettings AllowColumnsReorder="true" ReorderColumnsOnClient="true">
+            <Selecting AllowRowSelect="True" />
+        </ClientSettings>
+        <SortingSettings EnableSkinSortStyles="false" />
+        <AlternatingItemStyle Wrap="false"></AlternatingItemStyle>
+        <ItemStyle Wrap="false"></ItemStyle>
+        <HeaderStyle Wrap="false"></HeaderStyle>
+        <MasterTableView AllowMultiColumnSorting="true" DataKeyNames="id" EditMode="InPlace">
+            <CommandItemSettings ShowRefreshButton="false" />            
+                <Columns> 
+                    <telerik:GridTemplateColumn Reorderable="false" UniqueName="icon" AllowFiltering="false">
+                     <ItemStyle Wrap="False" HorizontalAlign="Center"></ItemStyle>
+                         <ItemTemplate> 
+                            <asp:Label ID="DetailLbl" runat="server"></asp:Label> 
+                         </ItemTemplate>                     
+                    </telerik:GridTemplateColumn>
+                    <telerik:GridTemplateColumn Reorderable="false" UniqueName="icon" AllowFiltering="false">
+                        <HeaderTemplate>
+                            S/N
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <%#Container.ItemIndex+1%>
+                        </ItemTemplate>
+                        <ItemStyle Wrap="False" HorizontalAlign="Center"></ItemStyle>
+                    </telerik:GridTemplateColumn>                     
+                    <telerik:GridBoundColumn DataField="code" SortExpression="code" HeaderText="Code">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="name" SortExpression="name" HeaderText="Name">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="deptdescr" SortExpression="deptdescr" HeaderText="Department">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="typedescr" SortExpression="typedescr" HeaderText="DocketType">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="manpowerTypedescr" SortExpression="manpowerTypedescr" HeaderText="ManpowerType">
+                    </telerik:GridBoundColumn>
+                     <telerik:GridBoundColumn DataField="frdate" SortExpression="frdate" HeaderText="FrDate"
+                        DataFormatString="{0:dd/MMM/yyyy}">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="todate" SortExpression="todate" HeaderText="Todate"
+                        DataFormatString="{0:dd/MMM/yyyy}">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="statusdescr" SortExpression="statusdescr" HeaderText="Status">
+                    </telerik:GridBoundColumn>
+                </Columns>
+            </MasterTableView>
+        </telerik:RadGrid>           
+    </div>
+    &nbsp;
+    <asp:Label Style="z-index: 0" ID="MessageLbl" runat="server" CssClass="errorLabel"
+        Visible="False"></asp:Label>
+    </form>
+</body>
+</html>

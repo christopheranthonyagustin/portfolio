@@ -1,0 +1,84 @@
+﻿html
+{
+	background: url("../Image/login/background.png") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height:100%;
+    /*opacity: 0.85;*/
+	margin:0;
+	padding:0;
+}
+
+body
+{
+    overflow: hidden;
+	height:100%;
+	margin:0;
+	padding:0;
+}
+
+.container 
+{
+	position:relative;
+	min-height:100%;
+}
+
+.footer
+{
+    position: absolute;
+    min-width: 360px;
+    width: 100%;
+    height: 45px;
+    line-height: 18px;
+    background-color: Black;
+    color: White;
+    font-family: Helvetica;
+    text-align: center;
+    opacity: 0.7;
+    bottom: 0px;
+}
+
+td.loginBox
+{
+	border-top: 5px solid blue;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	background: white;
+	padding: 5px;
+}
+
+td.titleBox
+{
+	font-family: Helvetica;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.buttonText
+{
+	font-family: Helvetica;
+	font-size: 16px;
+	font-weight: bold;
+	color: White;
+	background: LightCoral;
+	background-position: center;
+	border: 2px solid LightCoral;
+}
+
+.labelText
+{
+	font-family: Helvetica;
+	font-size: 16px;
+	color: Gray;
+}
+
+.error {
+	color: red;
+	font-size: 12px;
+	font-family: Helvetica;
+	text-align: left;
+	display: block;
+}

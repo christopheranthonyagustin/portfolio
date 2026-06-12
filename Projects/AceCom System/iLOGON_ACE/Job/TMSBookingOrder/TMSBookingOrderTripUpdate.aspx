@@ -1,0 +1,235 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TMSBookingOrderTripUpdate.aspx.cs" Inherits="iWMS.Web.Job.TMSBookingOrder.TMSBookingOrderTripUpdate" %>
+
+<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
+<%@ Register TagPrefix="iWMS" TagName="iForm" Src="../../Control/iFormCtl.ascx" %>
+<%@ Register TagPrefix="iWMS" TagName="MsgPopup" Src="../../Control/UserMsgModalPopup.ascx" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Containerized Trip @ TMS Booking Order</title>
+    <base target="_self" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <link href="../../css/iWMStelerik.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../../css/iWMS.css" />
+    <script type="text/javascript" src="../../js/Script.js"></script>
+    <base target="_self" />
+    <script type="text/javascript">
+        function GetRadWindow() {
+            var oWindow = null; if (window.radWindow)
+                oWindow = window.radWindow; else if (window.frameElement.radWindow)
+                    oWindow = window.frameElement.radWindow; return oWindow;
+        }
+
+        function close() {
+            GetRadWindow().close();
+        }
+    </script>
+</head>
+<body onload="javascript:window.focus();">
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <table style="z-index: 0" border="0" cellspacing="2" cellpadding="2"
+            width="100%">
+            <tr>
+                <td>&nbsp;
+                    <asp:Button ID="UpdateBtn" CssClass="white" runat="server" OnClick="UpdateBtn_Click" Text="Update"
+                        OnClientClick="disableBtn(this.id,true)" UseSubmitBehavior="false" />
+                    &nbsp;
+                    <asp:Button ID="CancelBtn" CssClass="LongLabelWhite" runat="server" OnClick="CancelBtn_Click" Text="Close Window" CausesValidation="false"
+                        OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:CheckBox ID="CrossDayJobChkBox" runat="server" Enabled="false" />
+                    <asp:Label ID="CrossDayJobLbl" runat="server" Font-Bold="true" Width="15px" Font-Size="Small" Text="CrossDayJob" ForeColor="Black"></asp:Label>
+                </td>
+            </tr>
+        </table>
+        <table style="z-index: 0" id="Table1" border="0" cellspacing="2" cellpadding="2"
+            width="100%">
+            <tr>
+                <td>
+                    <asp:UpdatePanel runat="server" ID="UpdatePanel">
+                        <ContentTemplate>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <iWMS:iForm ID="formCtl" runat="server"></iWMS:iForm>
+                                        <iWMS:iForm ID="formCtl_JBCtnr" runat="server"></iWMS:iForm>
+                                        <iWMS:iForm ID="formCtl_JBCtnrTrip" runat="server"></iWMS:iForm>
+                                    </td>
+                                </tr>
+                                <br />
+                                <br />
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="Countlbl" runat="server" Style="color: red; font-size: medium; font-weight: bold"></asp:Label>
+                                        <asp:Label ID="TripNoLbl" runat="server" Font-Bold="true" ForeColor="Red" Font-Size="Large" CssClass="Pagetitle" Visible="false"></asp:Label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <telerik:RadGrid ID="IncentiveResultDG" runat="server" AutoGenerateColumns="false" GridLines="None"
+                                AllowSorting="true" AllowFilteringByColumn="false" EnableLinqExpressions="false"
+                                AllowPaging="false" Skin="Office2007" OnNeedDataSource="IncentiveResultDG_NeedDataSource" Width="50%">
+                                <ClientSettings AllowColumnsReorder="true" ReorderColumnsOnClient="true">
+                                    <Selecting AllowRowSelect="true" />
+                                </ClientSettings>
+                                <SortingSettings EnableSkinSortStyles="false" />
+                                <AlternatingItemStyle Wrap="true"></AlternatingItemStyle>
+                                <ItemStyle Wrap="true"></ItemStyle>
+                                <HeaderStyle Wrap="false"></HeaderStyle>
+                                <MasterTableView AllowMultiColumnSorting="true" PageSize="50" DataKeyNames="id">
+                                    <PagerStyle Mode="NextPrevNumericAndAdvanced" />
+                                    <Columns>
+                                        <telerik:GridTemplateColumn HeaderText="Type" Visible="false">
+                                            <ItemTemplate>
+                                                <asp:Label ID="TypeLbl" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "IncentiveType") %>'></asp:Label>
+                                                <asp:Label ID="INCTDTIdLbl" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "INCTDTId") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </telerik:GridTemplateColumn>
+                                        <telerik:GridTemplateColumn HeaderText="Type" AllowFiltering="false" HeaderStyle-HorizontalAlign="Center">
+                                            <ItemTemplate>
+                                                <asp:Label ID="TypeDescrLbl" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "IncentiveTypeDescr") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </telerik:GridTemplateColumn>
+                                        <telerik:GridTemplateColumn HeaderText="Amount" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" AllowFiltering="false">
+                                            <ItemTemplate>
+                                                <telerik:RadTextBox ID="AmtTxt" runat="server" Width="150px" Skin="WebBlue"></telerik:RadTextBox>
+                                                <asp:CompareValidator ID="AmtTxtCompVal" runat="server" ControlToValidate="AmtTxt"
+                                                    EnableClientScript="True" ErrorMessage="#" ForeColor="Red" Operator="DataTypeCheck" Type="Double" />
+                                            </ItemTemplate>
+                                        </telerik:GridTemplateColumn>
+                                        <telerik:GridTemplateColumn HeaderText="Remarks" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" AllowFiltering="false">
+                                            <ItemTemplate>
+                                                <telerik:RadTextBox ID="RemarksTxt" runat="server" Width="150px" Skin="WebBlue" TextMode="MultiLine">
+                                                </telerik:RadTextBox>
+                                            </ItemTemplate>
+                                        </telerik:GridTemplateColumn>
+                                    </Columns>
+                                </MasterTableView>
+                            </telerik:RadGrid>
+                            <br />
+                            <br />
+                            <telerik:RadGrid ID="ResultDG" runat="server" AutoGenerateColumns="false" Width="700px"
+                                OnNeedDataSource="ResultDG_NeedDataSource" AllowSorting="true" Skin="Office2007" OnItemCommand="ResultDG_ItemCommand"
+                                OnUpdateCommand="ResultDG_Update" OnEditCommand="ResultDG_Edit" OnItemDataBound="ResultDG_ItemDataBound" GroupPanelPosition="Top">
+                                <ClientSettings AllowColumnsReorder="false" ReorderColumnsOnClient="false">
+                                    <Selecting AllowRowSelect="True" />
+                                </ClientSettings>
+                                <SortingSettings EnableSkinSortStyles="false" />
+                                <AlternatingItemStyle Wrap="false"></AlternatingItemStyle>
+                                <ItemStyle Wrap="false"></ItemStyle>
+                                <HeaderStyle Wrap="false"></HeaderStyle>
+                                <MasterTableView AllowMultiColumnSorting="true" DataKeyNames="id" CommandItemDisplay="Top" Name="IncentiveAdd" EditMode="InPlace">
+                                    <CommandItemSettings ShowRefreshButton="false" />
+                                    <Columns>
+                                        <telerik:GridTemplateColumn UniqueName="icon">
+                                            <HeaderStyle Wrap="false" HorizontalAlign="Center" />
+                                            <ItemStyle Wrap="False" HorizontalAlign="Center"></ItemStyle>
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="chkObjective" runat="server" />
+                                                <asp:ImageButton runat="server" Visible="True" ID="Edit" ImageUrl="../../image/pencil.gif"
+                                                    Width="15" Height="15" AlternateText="Edit" CommandName="Edit" BackColor="Transparent"
+                                                    BorderWidth="0"></asp:ImageButton>
+                                                <a id="InkDelete" href='<%#DataBinder.Eval(Container,"DataItem.id")%>' onclick="return confirm('Confirm delete?')"
+                                                    onserverclick="ResultDG_Delete" runat="server">
+                                                    <img id="delImg" src="../../image/bin.gif" width="15" height="15" border="0" alt="Delete"
+                                                        title="Delete" runat="server" /></a>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:ImageButton runat="server" Visible="True" ID="ResultDG_Update" ImageUrl="../../image/floppy.gif"
+                                                    Width="15" Height="15" AlternateText="Update" CommandName="Update" BackColor="Transparent"
+                                                    BorderWidth="0"></asp:ImageButton>
+                                                <asp:ImageButton runat="server" Visible="True" ID="ResultDG_Cancel" ImageUrl="../../image/arrow6.gif"
+                                                    Width="15" Height="15" AlternateText="Cancel" CommandName="Cancel" BackColor="Transparent"
+                                                    BorderWidth="0" CausesValidation="False"></asp:ImageButton>
+                                                <asp:TextBox ID="IDTxt" runat="server" Visible="false" />
+                                            </EditItemTemplate>
+                                        </telerik:GridTemplateColumn>
+                                        <telerik:GridBoundColumn DataField="INCTMethodDescr" SortExpression="INCTMethodDescr" ItemStyle-Wrap="false"
+                                            HeaderText="Method" ReadOnly="true">
+                                        </telerik:GridBoundColumn>
+
+                                        <telerik:GridTemplateColumn HeaderText="Type" UniqueName="type">
+                                            <ItemStyle Wrap="true" VerticalAlign="Middle"></ItemStyle>
+                                            <HeaderStyle Wrap="false" HorizontalAlign="Center" />
+                                            <ItemTemplate>
+                                                <%# DataBinder.Eval(Container.DataItem, "INCTTypeDescr")  %>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <telerik:RadDropDownList ID="IncentiveTypeList" runat="server" Width="120px" DropDownHeight="150px" Skin="Sunset"
+                                                    SelectedIndex='<%#iWMS.BusinessFacade.ListingSystem.GetSelectedIndex(INCTTypeListDS,DataBinder.Eval(Container.DataItem, "INCTType").ToString())%>'
+                                                    DataSource='<%# INCTTypeListDS%>' DataTextField="IncentiveTypedescr" DataValueField="IncentiveType" OnSelectedIndexChanged="IncentiveTypeIndex_Changed" AutoPostBack="true">
+                                                </telerik:RadDropDownList>
+                                                <telerik:RadDropDownList ID="EditINCTDTIdList" runat="server" Width="120px" DropDownHeight="150px" Skin="Sunset" Visible="false"
+                                                    SelectedIndex='<%#iWMS.BusinessFacade.ListingSystem.GetSelectedIndex(INCTTypeListDS,DataBinder.Eval(Container.DataItem, "INCTDTId").ToString())%>'
+                                                    DataSource='<%# INCTTypeListDS%>' DataTextField="INCTDTId" DataValueField="INCTDTId" AutoPostBack="true">
+                                                </telerik:RadDropDownList>
+                                                <asp:RequiredFieldValidator ID="TaxTypeReqVal" runat="server" ControlToValidate="IncentiveTypeList"
+                                                    ErrorMessage="*" ForeColor="Red" />
+                                            </EditItemTemplate>
+                                        </telerik:GridTemplateColumn>
+
+                                        <telerik:GridTemplateColumn HeaderText="Amount" UniqueName="Amt">
+                                            <ItemStyle Wrap="true" VerticalAlign="Middle"></ItemStyle>
+                                            <HeaderStyle Wrap="false" HorizontalAlign="Center" />
+                                            <ItemTemplate>
+                                                <%# DataBinder.Eval(Container.DataItem, "INCTAmt")  %>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <telerik:RadTextBox runat="server" ID="amt" Text='<%# DataBinder.Eval(Container.DataItem, "INCTAmt") %>'
+                                                    TextMode="MultiLine" Rows="1" Width="150px">
+                                                </telerik:RadTextBox>
+                                                <asp:CompareValidator ID="amtCompVal" runat="server" ControlToValidate="amt"
+                                                    EnableClientScript="true" ErrorMessage="*" ForeColor="Red" Operator="DataTypeCheck" Type="Double" />
+                                            </EditItemTemplate>
+                                        </telerik:GridTemplateColumn>
+
+                                        <telerik:GridTemplateColumn HeaderText="Remarks" UniqueName="REM">
+                                            <ItemStyle Wrap="true" VerticalAlign="Middle"></ItemStyle>
+                                            <HeaderStyle Wrap="false" HorizontalAlign="Center" />
+                                            <ItemTemplate>
+                                                <%# DataBinder.Eval(Container.DataItem, "INCTRemarks")  %>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <telerik:RadTextBox runat="server" ID="Rem" Text='<%# DataBinder.Eval(Container.DataItem, "INCTRemarks") %>'
+                                                    TextMode="MultiLine" Rows="2" Width="150px">
+                                                </telerik:RadTextBox>
+                                            </EditItemTemplate>
+                                        </telerik:GridTemplateColumn>
+                                        <telerik:GridTemplateColumn UniqueName="sno" HeaderText="AddUser <br/> AddDate" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="150px" HeaderStyle-Width="100px">
+                                            <ItemTemplate>
+                                                <%# string.Format("{0:} <br/> {1:dd/MMM/yyyy hh:mm:ss}", Eval("adduser"), Eval("adddate")) %>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <%# string.Format("{0:} <br/> {1:dd/MMM/yyyy hh:mm:ss}", Eval("adduser"), Eval("adddate")) %>
+                                            </EditItemTemplate>
+                                        </telerik:GridTemplateColumn>
+                                        <telerik:GridTemplateColumn UniqueName="sno" HeaderText="EditUser <br/> EditDate" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="150px" HeaderStyle-Width="100px">
+                                            <ItemTemplate>
+                                                <%# string.Format("{0:} <br/> {1:dd/MMM/yyyy hh:mm:ss}", Eval("edituser"), Eval("editdate")) %>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <%# string.Format("{0:} <br/> {1:dd/MMM/yyyy hh:mm:ss}", Eval("edituser"), Eval("editdate")) %>
+                                            </EditItemTemplate>
+                                        </telerik:GridTemplateColumn>
+                                    </Columns>
+                                </MasterTableView>
+                            </telerik:RadGrid>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+            <tr align="right" style="padding-top: 24%">
+                <td style="padding-top: 24%"></td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="MessageLbl" runat="server" CssClass="errorLabel" Style="z-index: 0"
+                        Visible="False"></asp:Label>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

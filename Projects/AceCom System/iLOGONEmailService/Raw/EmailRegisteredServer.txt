@@ -1,0 +1,1 @@
+﻿ACE-PROD|server=192.168.1.9,1433;User ID=sa;Password=45`NGnZ>s9d\hN]v;database=iWMS_ACE_PROFILE;Connection Reset=FALSE

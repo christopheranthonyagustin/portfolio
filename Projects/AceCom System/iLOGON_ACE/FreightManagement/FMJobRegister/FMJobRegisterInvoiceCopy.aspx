@@ -1,0 +1,54 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FMJobRegisterInvoiceCopy.aspx.cs" Inherits="iWMS.Web.FreightManagement.FMJobRegister.FMJobRegisterInvoiceCopy" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Register TagPrefix="iWMS" TagName="iForm" Src="../../Control/iFormCtl.ascx" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head id="Head1" runat="server">
+    <title>Copy @ Sales Invoice</title>
+    <base target="_self" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+    <meta name="CODE_LANGUAGE" content="C#">
+    <meta name="vs_defaultClientScript" content="JavaScript">
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+    <link href="../../css/iWMS.css" type="text/css" rel="stylesheet">
+    <script src="../../js/row.js" type="text/javascript"></script>
+    <script src="../../js/Script.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function GetRadWindow() {
+            var oWindow = null; if (window.radWindow)
+                oWindow = window.radWindow; else if (window.frameElement.radWindow)
+                    oWindow = window.frameElement.radWindow; return oWindow;
+        }
+
+        function close() {
+            GetRadWindow().close();
+        }
+    </script>
+</head>
+<body bottommargin="0" leftmargin="0" rightmargin="0" topmargin="0">
+    <form id="form1" runat="server" method="post">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <table width="100%">
+            <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                <ContentTemplate>
+                    <table cellspacing="2" cellpadding="2" width="100%">
+                        <tr style="height: 5px">
+                        </tr>
+                        <tr>
+                            <td style="width: 5px"></td>
+                            <td>
+                                <iWMS:iForm ID="formCtl" runat="server"></iWMS:iForm>
+                                <br />
+                                &nbsp;<asp:Button ID="CopyBtn" CssClass="white" runat="server" OnClick="CopyBtn_Click" Text="Copy"
+                                    OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,172 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="IssueItemline.aspx.cs" Inherits="iWMS.Web.Outbound.Issue.IssueItemline" %>
+
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Register TagPrefix="iWMS" TagName="iForm" Src="../../Control/iFormCtl.ascx" %>
+<%@ Register TagPrefix="iWMS" TagName="MsgPopup" Src="../../Control/UserMsgModalPopup.ascx" %>
+<%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="icon" sizes="190x130" href="../../Image/URLLogo.png" />
+    <meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1" />
+    <meta name="CODE_LANGUAGE" content="C#" />
+    <meta name="vs_defaultClientScript" content="JavaScript" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <script type="text/javascript" src="../../js/row.js"></script>
+    <script type="text/javascript" src="../../js/Script.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/iWMS.css" type="text/css" />
+    <telerik:RadCodeBlock runat="server">
+        <script type="text/javascript">
+            function selectAll(invoker) {
+                var inputElements = document.getElementsByTagName('input');
+                for (var i = 0; i < inputElements.length; i++) {
+                    var myElement = inputElements[i];
+                    if (myElement.type === "checkbox") {
+                        myElement.checked = invoker.checked;
+                    }
+                    else {
+                        myElement.checked = invoker.UnChecked
+                    }
+                }
+            }
+            let JsonArr = [];            function BatchEditClosed(sender, args) {                var PrintCount = "", PLU="";                var IssueId = sender.get_masterTableView()._getCellByColumnUniqueNameFromTableRowElement(args.get_row(), "BatchIssueId").innerText;                var SKUCode = sender.get_masterTableView()._getCellByColumnUniqueNameFromTableRowElement(args.get_row(), "BatchSKUCode").innerText;                var ISDTID = sender.get_masterTableView()._getCellByColumnUniqueNameFromTableRowElement(args.get_row(), "ISDTID").innerText;                var PrintCountTxt = sender.get_masterTableView()._getCellByColumnUniqueNameFromTableRowElement(args.get_row(), "PrintCount");                if (PrintCountTxt != null) {                    PrintCount = PrintCountTxt.innerText;                }                var PLUTxt = sender.get_masterTableView()._getCellByColumnUniqueNameFromTableRowElement(args.get_row(), "PLU");                if (PLUTxt != null) {                    PLU = PLUTxt.innerText;                }                // Check if ISDTID already exists in JsonArr
+                var isISDTIDExist = JsonArr.some(function (item) {
+                    return item.ISDTID === ISDTID;
+                });
+
+                // Remove the first occurrence of ISDTID from JsonArr
+                if (isISDTIDExist) {
+                    JsonArr = JsonArr.filter(function (item) {
+                        return item.ISDTID !== ISDTID;
+                    });
+                }
+
+                // Add the latest values to JsonArr
+                JsonArr.push({
+                    "IssueId": IssueId,
+                    "ISDTID": ISDTID,
+                    "SKUCode": SKUCode,
+                    "PrintCount": PrintCount,
+                    "PLU": PLU
+                });
+                var JsonArrString = JSON.stringify(JsonArr);
+                document.getElementById('<%= Hidden2.ClientID %>').value = JsonArrString;
+            }
+
+        </script>
+    </telerik:RadCodeBlock>
+</head>
+<body bottommargin="0" leftmargin="0" topmargin="0" rightmargin="0">
+    <form id="Form1" method="post" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" />
+        <telerik:RadWindowManager ID="RadWindowManager1" runat="server"></telerik:RadWindowManager>
+        <telerik:RadTabStrip runat="server" ID="RadTabStrip1" MultiPageID="RadMultiPage1"
+            AutoPostBack="true" CausesValidation="false" SelectedIndex="0" Skin="Windows7" OnTabClick="RadTabStrip1_TabClick">
+            <Tabs>
+                <telerik:RadTab Id="OrderLineTab" Text="Order Line" Value="0" runat="server">
+                </telerik:RadTab>
+
+            </Tabs>
+            <Tabs>
+                <telerik:RadTab Id="PickLineTab" Text="Pick Line" Value="50" runat="server">
+                </telerik:RadTab>
+
+            </Tabs>
+        </telerik:RadTabStrip>
+
+
+        <telerik:RadMultiPage runat="server" ID="RadMultiPage1" SelectedIndex="0" CssClass="outerMultiPage">
+
+            <telerik:RadPageView runat="server" Height="580px" ID="CartonSummaryRadPageView">
+                <br />
+                <table>
+                    <tr>
+                        <td>
+                            <asp:Label ID="NumberLbl" runat="server" CssClass="pagetitle"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <table>
+                    <tr>
+                        <td>
+                            <asp:Button ID="RefreshBtn" runat="server" CssClass="white" Text="Refresh" CausesValidation="false" OnClick="RefreshBtn_Click" OnClientClick="disableBtn(this.id,false)" UseSubmitBehavior="false" />
+                        </td>
+                        <td>
+                            <asp:Button ID="ProceedOnPickedBtn" runat="server" CssClass="LongLabelWhite" Text="Proceed On Picked" CausesValidation="false" OnClick="ProceedOnPickedBtn_Click" OnClientClick="disableBtn(this.id,false)" UseSubmitBehavior="false" />
+                        </td>
+                        <td>
+                            <asp:Button ID="SKUA_Btn" runat="server" CssClass="LongLabelBlue" Text="SKU Label A" CausesValidation="false" OnClick="SKUA_Btn_Click" OnClientClick="disableBtn(this.id,false)" UseSubmitBehavior="false" />
+                        </td>
+                        <td>
+                            <asp:Button ID="SKUB_Btn" runat="server" CssClass="LongLabelBlue" Text="SKU Label B" CausesValidation="false" OnClick="SKUB_Btn_Click" OnClientClick="disableBtn(this.id,false)" UseSubmitBehavior="false" />
+                        </td>
+                        <td>
+                            <asp:Button ID="PrevItemBtn" CssClass="white" runat="server" BackColor="Pink" OnClick="PrevItemBtn_Click" Visible="True" Text="Prev" CausesValidation="false" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                        </td>
+                        <td>
+                            <asp:Button ID="NextItemBtn" CssClass="white" runat="server" BackColor="Pink" OnClick="NextItemBtn_Click" Visible="True" Text="Next" CausesValidation="false" OnClientClick="disableBtn(this.id)" UseSubmitBehavior="false" />
+                        </td>
+                        <td>
+                            <asp:Label ID="GridLineLbl" runat="server" Font-Bold="true" ForeColor="Red" CssClass="Pagetitle"></asp:Label>
+                        </td>
+                        <td align="right">
+                            <iWMS:MsgPopup ID="MsgPopup" runat="server"></iWMS:MsgPopup>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>
+                            <asp:Button ID="ConfirmProceedOnPickeBtn" Text="" Style="display: none;" OnClick="ConfirmProceedOnPickeBtn_Click" runat="server" />
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <asp:HiddenField ID="Hidden1" runat="server" />
+                <asp:HiddenField ID="Hidden2" runat="server" />
+
+                <telerik:RadGrid ID="ResultDG" runat="server" AutoGenerateColumns="true" GridLines="None" AllowSorting="true"
+                    EnableLinqExpressions="false" AllowPaging="true" Skin="Metro" OnNeedDataSource="ResultDG_NeedDataSource"
+                    OnColumnCreated="ResultDG_ColumnCreated">
+                    <ClientSettings AllowColumnsReorder="true" ReorderColumnsOnClient="true">
+                        <Selecting AllowRowSelect="true" />
+                        <Scrolling UseStaticHeaders="true" ScrollHeight="500px" AllowScroll="true" />
+                        <ClientEvents OnBatchEditClosed="BatchEditClosed" />
+                    </ClientSettings>
+                    <SortingSettings EnableSkinSortStyles="false" />
+                    <AlternatingItemStyle Wrap="true"></AlternatingItemStyle>
+                    <ItemStyle Wrap="true"></ItemStyle>
+                    <HeaderStyle Wrap="false"></HeaderStyle>
+                    <MasterTableView AllowMultiColumnSorting="true" PageSize="50" HeaderStyle-CssClass="RGridHeader_CUSTOM" HeaderStyle-ForeColor="White" DataKeyNames="IssueId"
+                        EditMode="Batch" CommandItemDisplay="None">
+                        <BatchEditingSettings EditType="Row" OpenEditingEvent="Click" SaveAllHierarchyLevels="true" HighlightDeletedRows="true" />
+                        <PagerStyle Mode="NextPrevNumericAndAdvanced" />
+                        <Columns>
+                            <telerik:GridTemplateColumn Reorderable="false" UniqueName="icon" AllowFiltering="false" ReadOnly="true">
+                                <HeaderTemplate>
+                                    <input id="cbSelectAll" name="cbSelectAll" type="checkbox" onclick="selectAll(this)">
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="chkObjective" runat="server" AutoPostBack="false" />
+                                </ItemTemplate>
+                            </telerik:GridTemplateColumn>
+                            <telerik:GridBoundColumn UniqueName="BatchIssueId" DataField="IssueId" Display="false"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn UniqueName="BatchSKUCode" DataField="SKUCode" Display="false"></telerik:GridBoundColumn>
+                        </Columns>
+                    </MasterTableView>
+                </telerik:RadGrid>
+
+            </telerik:RadPageView>
+
+            <telerik:RadPageView runat="server" Height="700px" ID="PickLineRadPageView" />
+
+        </telerik:RadMultiPage>
+    </form>
+
+</body>
+</html>
