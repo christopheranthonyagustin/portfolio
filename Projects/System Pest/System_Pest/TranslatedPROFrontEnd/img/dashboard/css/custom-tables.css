@@ -1,0 +1,21 @@
+
+
+thead th {
+    background-color: #A9A9A9;
+    color: black;
+}
+
+tbody td {
+    background-color: #EEEEEE;
+}
+
+#aside {
+    color: #000;
+}
+
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+background-color: #C0C0C0;
+}
+
+

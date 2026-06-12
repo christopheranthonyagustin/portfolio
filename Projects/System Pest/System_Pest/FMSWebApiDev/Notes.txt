@@ -1,0 +1,13 @@
+﻿http://103.237.168.119/fms/Dashboard
+http://103.237.168.119/phpmyadmin
+http://103.237.168.119/trackliteprodevwebapi/api/assetinfo
+http://103.237.168.119/trackliteprodevwebapi/api/zoneinfo/
+http://103.237.168.119/trackliteprodevwebapi/api/companyinfo
+http://103.237.168.119/trackliteprodevwebapi/api/userinfo
+http://103.237.168.119/trackliteprodevwebapi/api/deviceinfo
+http://103.237.168.119/trackliteprodevwebapi/api/zonetypeinfo
+http://103.237.168.119/trackliteprodevwebapi/api/categoryinfo
+http://103.237.168.119/trackliteprodevwebapi/api/reportinfo
+http://103.237.168.119/trackliteprodevwebapi/api/roleinfo
+http://103.237.168.119/trackliteprodevwebapi/api/languageinfo
+http://103.237.168.119/trackliteprodevwebapi/api/eventinfo

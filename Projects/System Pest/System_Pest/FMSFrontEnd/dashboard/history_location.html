@@ -1,0 +1,1235 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>History Location - Pest Control Management System</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <!--Roboto Font [ OPTIONAL ]-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
+
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+
+
+    <!--Home Page Stylesheet [ REQUIRED ]-->
+    <link href="css/home.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <!--<link href="css/custom-tables.css" rel="stylesheet">-->
+
+
+    <!--Map [ REQUIRED ]-->
+    <link rel="stylesheet" type="text/css" href="css/map.css" />
+
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+    <!--Switchery [ OPTIONAL ]-->
+    <link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+
+
+    <!--Demo [ DEMONSTRATION ]-->
+    <!--<link href="css/demo/nifty-demo.min.css" rel="stylesheet">-->
+    <!--Localization-->
+    <link rel="stylesheet" href="css/localization.css">
+
+
+
+    <!--=================================================-->
+    <!-- loading jQuery UI css -->
+       <!--<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/flick/jquery-ui.css" />-->
+
+
+    <!--JS Panel [ OPTIONAL ]-->
+     <!--<link href="plugins/jsPanel-bootstrap/jspanel/jquery.jspanel.min.css" rel="stylesheet">-->
+    <!--SCRIPT-->
+    <!--=================================================-->
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <link href="plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="plugins/pace/pace.min.js"></script>
+
+
+    <!-- Needs images, font... therefore can not be part of main.css -->
+    <link rel="stylesheet" href="fonts/themify-icons/themify-icons.min.css">
+    <link rel="stylesheet" href="fonts/weather-icons/css/weather-icons.min.css">
+    <!-- end Needs images -->
+    <!--MAPS-->
+    <script src="https://maps.googleapis.com/maps/api/js?client=gme-acecomtechnologies&v=3.22&libraries=places"></script>
+    <!--=================================================-->
+    <!--
+
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+
+    <!--<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>-->
+    <script src="plugins/infobox/infobox.js"></script>
+
+
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+
+<body>
+
+    <!-- START OF CONTAINER -->
+    <div id="container" class="effect mainnav-sm navbar-fixed footer-fixed aside-in">
+
+        <!--NAVBAR-->
+        <!--===================================================-->
+        <header id="navbar">
+            <div id="navbar-container" class="boxed">
+
+                <!--Brand logo & name-->
+                <!--================================-->
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand">
+                        <!--Logo-->
+                        <img src="img/logo.png" alt="Track Logo" class="brand-icon" id="showProfileCompany">
+
+                        <div class="brand-title">
+                            <span class="brand-text" id="titleCompany"></span>
+                        </div>
+                    </a>
+                </div>
+
+
+                <!--================================-->
+                <!--End brand logo & name-->
+                <!--Navbar Dropdown-->
+                <!--================================-->
+                <div class="navbar-content clearfix">
+
+
+
+                    <ul class="nav navbar-top-links pull-left">
+
+                        <!--Navigation toogle button-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="tgl-menu-btn">
+                            <a class="mainnav-toggle" href="#" title="Toggle Navigation Menu">
+                                <i class="fa fa-navicon fa-lg"></i>
+                            </a>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End Navigation toogle button-->
+                        <!--Language-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="dropdown hidden-xs">
+                            <label class="localize localization">
+                                <select id="load-lang" class="icon-menu" onchange="document.documentElement.lang=this.value">
+                                    <option style="background-image:url(img/flags/united-kingdom.png);" value="en" selected="selected">English</option>
+                                    <option style="background-image:url(img/flags/thailand.png);" value="th">Thai</option>
+                                    <option style="background-image:url(img/flags/vietnam.png);" value="vn">Vietnam</option>
+                                    <option style="background-image:url(img/flags/indonesia.png);" value="id">Indonesia</option>
+                                </select>
+                            </label>
+                        </li>
+
+
+                        <!--Language-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+                        <li class="dropdown hidden-sm hidden-md hidden-lg">
+                            <label class="localize localization">
+                                <!--<select class="selectpicker dropup SelectVechsFilter" data-live-search="true" data-width="100%" data-style="btn-default" id="load-assets" name="load-assets"></select>-->
+                                <select class="SelectVechsFilter" id="load-assets" name="load-assets"></select>
+                            </label>
+                        </li>
+
+                        <!--History-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--Start History-->
+
+                        <li class="history">
+                            <a id="historyReport" href="history.html" title="History">
+                                <i class="fa fa-calendar-o fa-lg"></i>
+                                <span class="menu-title">
+                                    &nbsp;
+                                    <!--Notifications-->
+                                    <span data-l11n="id" class="pull-right badge badge-primary" title="sejarah Laporan">Warta Historis</span>
+                                    <span data-l11n="vn" class="pull-right badge badge-primary" title="Bảng điều khiển">Lịch Sử Báo Cáo</span>
+                                    <span data-l11n="th" class="pull-right badge badge-primary">ประวัติศาสตร์ รายงาน</span>
+                                    <span data-l11n="" class="pull-right badge badge-primary">History Report</span>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li id="playback" class="">
+                            <a href="playback.html" title="Playback" target="_blank">
+                                <i class="fa fa-map-marker fa-lg"></i>
+                                <span class="menu-title">
+                                    &nbsp;
+                                    <!--Notifications-->
+                                    <span data-l11n="vn" class="pull-right badge badge-primary">Phát Lại</span>
+                                    <span data-l11n="id" class="pull-right badge badge-primary">Pemutaran Peta</span>
+                                    <span data-l11n="th" class="pull-right badge badge-primary">การเล่น</span>
+                                    <span data-l11n class="pull-right badge badge-primary">Playback</span>
+
+
+                                </span>
+                            </a>
+                        </li>
+
+                        <!--End History-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="hidden-xs hidden-sm hidden-md">
+                            <a href="#" title="Coordinates">
+
+                                <span class="menu-title">
+                                    &nbsp;
+                                    <!--Coordinates-->
+                                    <span id="panel" class="pull-right text-dark"></span>
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+
+
+
+                    <!--Vehicle List-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <ul class="nav navbar-top-links pull-right">
+
+                        <li class="hidden-xs" data-content="Vehicle List">
+
+                            <a id="toggle-aside" class="lang-selector dropdown-toggle hidden-xs" href="#" data-toggle="dropdown" title="View Report">
+                                <span class="lang-selected hidden-xs">
+                                    <!--<img class="lang-flag" src="img/vechlist.png" alt="Vehicle Lists">-->
+                                    <span data-l11n="vn" class="lang-name hidden-xs"><i class="fa fa-table fa-lg"></i>&nbsp;&nbsp;Xem Báo Cáo</span>
+                                    <span data-l11n="id" class="lang-name hidden-xs"><i class="fa fa-table fa-lg"></i>&nbsp;&nbsp;Lihai Laporan</span>
+                                    <span data-l11n="th" class="lang-name hidden-xs"><i class="fa fa-table fa-lg"></i>&nbsp;&nbsp;ดู รายงาน</span>
+                                    <span data-l11n class="lang-name hidden-xs"><i class="fa fa-table fa-lg"></i>&nbsp;&nbsp;View Report</span>
+
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--Vehicle List-->
+                        <!--User dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li id="dropdown-user" class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right" title="Profile">
+                                <span class="pull-right">
+                                    <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture" id="showProfile">
+                                </span>
+                                <div class="username hidden-xs" id="load-username"></div>
+                            </a>
+
+
+                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+                                <!-- Dropdown heading  -->
+                                <div class="pad-all bord-btm">
+                                    <p class="text-lg text-muted text-thin mar-btm" id="load-email"></p>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar" style="width: 100%;">
+                                            <span class="sr-only"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- User dropdown menu -->
+                                <ul class="head-list">
+                                    <li data-l11n="th">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> ข้อมูลส่วนตัว
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n="vn">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> Tiểu Sử
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n="id">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> Profil
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n>
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> Profile
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n="th" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> ช่วย
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n="vn" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Trợ Giúp
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n="id" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Pembantuan
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Help
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+                                <!-- Dropdown footer -->
+                                <!--<div class="pad-all text-right">
+                                    <span data-l11n="th" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ
+                                    </span>
+
+                                    <span data-l11n class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> Logout
+                                    </span>
+                                </div>-->
+                            </div>
+
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End user dropdown-->
+                        <li data-content="Logout">
+
+                            <a class="lang-selector dropdown-toggle hidden-xs" href="#" data-target="#sm-modal" data-toggle="modal">
+                                <span class="lang-selected hidden-xs">
+                                    <span data-l11n="id" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="Keluar"></i></span>
+                                    <span data-l11n="vn" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="Đăng xuất"></i></span>
+                                    <span data-l11n="th" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="ออกจากระบบ"></i></span>
+                                    <span data-l11n class="lang-name hidden-xs"><i class="fa fa-sign-out  fa-lg" title="Logout"></i></span>
+
+                                </span>
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+
+
+
+
+                </div>
+                <!--================================-->
+                <!--End Navbar Dropdown-->
+            </div>
+        </header>
+        <!--===================================================-->
+        <!--END NAVBAR-->
+
+        <div class="boxed">
+
+            <!--CONTENT CONTAINER-->
+            <!--===================================================-->
+            <div id="content-container">
+
+
+                <!--Page Title-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--<div id="page-title">-->
+                <!--Page content-->
+                <!--===================================================-->
+                <!--MAP-->
+
+
+                <div id="page-content">
+
+
+
+                    <div id="map-canvas"></div>
+
+                    <!--<div id="assetDropdown">
+                        <select id="vehicle" class="selectpicker" data-width="100%" data-style="btn-default" data-dropup-auto="false">
+                            <option value="status">Status</option>
+                            <option value="photo">Photo</option>
+                        </select>
+                    </div>-->
+                    <!--MAP-->
+                </div>
+                <!--===================================================-->
+
+
+
+            </div>
+
+            <!--MAIN NAVIGATION-->
+            <!--===================================================-->
+            <nav id="mainnav-container">
+                <div id="mainnav">
+
+                    <!--Menu-->
+                    <!--================================-->
+                    <div id="mainnav-menu-wrap">
+                        <div class="nano">
+                            <div class="nano-content">
+
+                                <ul id="mainnav-menu" class="list-group">
+
+                                    <!--Version-->
+                                    <li data-l11n="id" class="list-header">Versi&nbsp;<span id="verNumID" class="text-muted"></span></li>
+                                    <li data-l11n="vn" class="list-header">Phiên bản&nbsp;<span id="verNumVN" class="text-muted"></span></li>
+                                    <li data-l11n="th" class="list-header">รุ่น&nbsp;<span id="verNum" class="text-muted"></span></li>
+                                    <li data-l11n class="list-header">Version&nbsp;<span id="verNumEN" class="text-muted"></span></li>
+
+
+
+                                    <!--Dashboard-->
+                                    <li class="active-link">
+                                        <a href="index.html">
+                                            <i class="fa fa-dashboard fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Dasbor">Dasbor</strong>
+                                                <strong data-l11n="vn" title="Bảng Diều Khiển">Bảng Theo Dõi</strong>
+                                                <strong data-l11n="th">หน้าปัด</strong>
+                                                <strong data-l11n>Dashboard</strong>
+                                                <!--Notifications-->
+                                                <span data-l11n="id" class="label label-primary pull-right">Peta</span>
+                                                <span data-l11n="vn" class="label label-primary pull-right">bản đồ</span>
+                                                <span data-l11n="th" class="label label-primary pull-right">แผนที่</span>
+                                                <span data-l11n class="label label-primary pull-right">Map</span>
+
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="callcenter">
+                                        <a href="call_center.html">
+                                            <i class="fa fa-phone fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id">Call Center</strong>
+                                                <strong data-l11n="vn">Trung Tâm Cuộc Gọi</strong>
+                                                <strong data-l11n="th">ศูนย์รับแจ้ง</strong>
+                                                <strong data-l11n>Call Center</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="maintenance">
+                                        <a href="maintenance.html">
+                                            <i class="fa fa-cog fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id">pemeliharaan</strong>
+                                                <strong data-l11n="vn">bảo trì</strong>
+                                                <strong data-l11n="th">ซ่อมบำรุง</strong>
+                                                <strong data-l11n>Maintenance</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="inventory">
+                                        <a href="inventory.html">
+                                            <i class="fa fa-archive fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong>Inventory</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="drivers">
+                                        <a href="drivers.html">
+                                            <i class="fa fa-user-plus fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Pengguna Telepon">Pengguna Telepon</strong>
+                                                <strong data-l11n="vn" title="Người Sử Dụng Diện Thoại">ĐT Người Dùng</strong>
+                                                <strong data-l11n="th">ไดร์เวอร์</strong>
+                                                <strong data-l11n>Phone Users</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <!--Vehicles-->
+                                    <li class="vehicles">
+                                        <a href="vehicles.html">
+                                            <i class="fa fa-mobile-phone fa-2x"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Ponsel">Ponsel</strong>
+                                                <strong data-l11n="vn" title="Điện thoại">Điện Thoại</strong>
+                                                <strong data-l11n="th">ยานพาหนะ</strong>
+                                                <strong data-l11n>Phones</strong>
+                                            </span>
+
+
+                                        </a>
+                                    </li>
+
+                                    <!--Zones-->
+                                    <li class="zones">
+                                        <a href="zones.html">
+                                            <i class="fa fa-globe fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Zona">Zona</strong>
+                                                <strong data-l11n="vn" title="Vùng trang">Vùng</strong>
+                                                <strong data-l11n="th">โซน</strong>
+                                                <strong data-l11n>Zones</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="jobs">
+                                        <a href="jobs.html">
+                                            <i class="fa fa-exchange fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id">Tugas</strong>
+                                                <strong data-l11n="vn">Lịch Trình Công Việc</strong>
+                                                <strong data-l11n="th">โซน</strong>
+                                                <strong data-l11n>Jobs</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+
+                                    <!--Settings-->
+                                    <!--<li class="list-header">Settings</li>-->
+
+
+                                    <li class="list-divider"></li>
+
+                                    <li data-l11n="th" class="settings">
+                                        <a href="#" title="การตั้งค่า">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="th" class="menu-title">การตั้งค่า</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Companies Page">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">บริษัท</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Users Page">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">ผู้ใช้</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Devices Page">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">อุปกรณ์</span>
+
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Reseller Page">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">ผู้ค้าปลีก</span>
+
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li data-l11n class="settings">
+                                        <a href="#" title="Settings">
+                                            <i class="fa fa-gears fa-lg"></i>
+
+                                            <span data-l11n class="menu-title">Settings</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Companies Page">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Companies</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Users Page">
+                                                    <i class="fa fa-users fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Users</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Devices Page">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Devices</span>
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Reseller Page">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Reseller</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li data-l11n="vn" class="settings">
+                                        <a href="#" title="Cài đặt">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="vn" class="menu-title">Cài đặt</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="công ty trang">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Công Ty</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="người dùng trang">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Người Sử Dụng</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="trang thiết bị">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Thiết Bị</span>
+
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Đại lý bán lẻ trang">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Người Bán Lại</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+
+                                    <li data-l11n="id" class="settings">
+                                        <a href="#" title="Pengaturan">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="id" class="menu-title">Pengaturan</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Perusahaan">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Perusahaan</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Pengguna">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Pengguna</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Perangkat">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Perangkat</span>
+
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Pengecer">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Pengecer</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+
+                                <br />
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <!--================================-->
+                    <!--End menu-->
+
+                </div>
+            </nav>
+            <!--===================================================-->
+            <!--END MAIN NAVIGATION-->
+            <!--ASIDE-->
+            <!--===================================================-->
+            <aside id="aside-container">
+                <div id="aside">
+                    <div class="nano">
+                        <div class="nano-content">
+
+                            <!--Navigation Tabs Turnoff-->
+                            <!--Nav tabs-->
+                            <!--================================-->
+                            <!--<ul class="nav nav-tabs nav-justified">
+                                <li class="active">
+                                    <a href="#vehicle-list" data-toggle="tab">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                </li>	-->
+                            <!--================================-->
+
+                            
+                            <!--================================-->
+                            <!--End nav tabs-->
+                            <!-- Tabs Content -->
+                            <!--================================-->
+                            <div class="tab-content">
+
+                                <!--First tab (Contact list)-->
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <div class="tab-pane fade in active" id="vehicle-list">
+
+
+
+                                    <!--First tab (Vehicle list)-->
+                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                    <div class="tab-pane fade in active" id="asd-tab-1">
+
+
+                                        <!--Status-->
+
+                                        <div style="margin: 0px; padding: 0px 3px; height: 535px; overflow: auto">
+
+                                            <table id="Reports"
+                                                   class="table table-condensed table-vcenter searchable"
+                                                   data-flat="true"
+                                                   data-click-to-select="true"
+                                                   data-show-header="true"
+                                                   data-search="false"
+                                                   data-show-refresh="false"
+                                                   data-show-toggle="false"
+                                                   data-show-columns="false"
+                                                   data-sort-name="id"
+                                                   data-page-list="[10, 20, 50, 100]"
+                                                   data-page-size="5"
+                                                   data-pagination="false" data-show-pagination-switch="false"></table>
+
+                                        </div>
+                                        <br />
+                                       
+									<div class=".text-normal" style="color:white">
+                                            <span data-l11n="vn"><!--Enable/Disable-->Bật/Tắt TẤT CẢ</span>
+                                            <span data-l11n="id"><!--Enable/Disable-->Aktifkan/Nonaktifkan Lihai Semua</span>
+                                            <span data-l11n="th"><!--Enable/Disable-->เปิดใช้งาน/ปิดการใช้งาน</span>
+                                            <span data-l11n>Enable/Disable View ALL</span>
+                                            <span class="form-group pull-right">
+                                                <!--<small class="text-muted">Enable/Disable </small>-->
+                                                <input data-switchery="true" class="js-check-change-viewALL" type="checkbox" name="viewALL" id="viewALL" data-by-field="viewALL" autocomplete="off">
+
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                    <!--End first tab (Vehicle list)-->
+
+
+
+                                </div>
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--End first tab (Contact list)-->
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!--===================================================-->
+            <!--END ASIDE-->
+
+        </div>
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer" class="hidden-xs hidden-sm">
+
+
+            <!--Test List-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <div class="show-fixed pull-right">
+                <ul class="footer-list list-inline">
+
+                    <li data-content="Company List">
+
+                        <span class="lang-selector dropdown-toggle hidden-md hidden-lg" data-toggle="dropdown">
+                            <span class="lang-selected">
+                                <span class="lang-id">
+
+                                    <!--Company-->
+                                    <!--===================================================-->
+                                    <!--<select class="selectpicker dropup SelectCompanyFilter" data-live-search="true" data-width="100%" data-style="btn-success" id="load-company2" name="load-company2"></select>-->
+                                    <!--===================================================-->
+                                    <!--<select class="SelectCompanyFilter" id="load-company2" name="load-company2"></select>-->
+                                </span>
+                            </span>
+                        </span>
+
+                    </li>
+
+
+                    <li data-content="Vehicle List">
+                        <span class="lang-selector dropdown-toggle hidden-sm hidden-lg" data-toggle="dropdown">
+                            <span class="lang-selected">
+                                <span class="lang-id">
+
+                                    <!--Vehicle-->
+                                    <!--===================================================-->
+                                    <!--<select class="selectpicker dropup SelectVechsFilter" data-live-search="true" data-width="100%" data-style="btn-success" id="load-assets" name="load-assets"></select>-->
+                                    <!--===================================================-->
+
+
+                                </span>
+                            </span>
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!-- Visible when footer positions are fixed -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right">
+                <ul class="footer-list list-inline">
+
+
+                    <!--===================================================-->
+                    <!-- Engine Status Start-->
+
+                    <li class="hidden-xs hidden-sm hidden-md">
+                        <span class="lang-selected">
+
+
+                            <span id="moveTitle" class="lang-name" title="Status Color When Phone is Moving">
+                                <button class="btn btn-sm btn-success"><strong id="move">Move</strong>&nbsp; <span id="getMove"></span></button>
+                            </span>
+                        </span>
+                    </li>
+
+
+                    <li class="hidden-xs hidden-sm hidden-md">
+                        <span class="lang-selected">
+
+
+                            <span id="idleTitle" class="lang-name" title="Status Color When Phone is Idle">
+                                <button class="btn btn-sm btn-warning">&nbsp;&nbsp;<strong id="idle">Idle</strong>&nbsp;&nbsp;<span id="getIdle"></span></button>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li class="hidden-xs hidden-sm hidden-md">
+                        <span class="lang-selected">
+                            <span id="stopTitle" class="lang-name" title="Status Color When Phone is Stop">
+                                <button class="btn btn-sm btn-danger">&nbsp;<strong id="stop">Stop</strong>&nbsp;<span id="getStop"></span></button>
+                            </span>
+
+                        </span>
+                    </li>
+
+                    <!-- Engine Status End -->
+                    <!--===================================================-->
+                    <!--===================================================-->
+                    <!-- Traffic Legend Start-->
+                    <li>
+                        <span class="lang-selected">
+                            <span class="lang-name">
+                                <p data-l11n="id" class="text-sm" title="Lalu lintas lancar">Lalu lintas lancar</p>
+                                <p data-l11n="vn" class="text-sm" title="Đường Thông Thoáng">Đường Thông Thoáng</p>
+                                <p data-l11n="th" class="text-sm" title="การจราจร ได้อย่างราบรื่น">การจราจรได้อย่างราบรื่น</p>
+                                <p data-l11n class="text-sm" title="Smooth Traffic">Smooth Traffic</p>
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-success"></div>
+                                </div>
+                            </span>
+
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected">
+                            <span class="lang-name">
+                                <p data-l11n="id" class="text-sm" title="Lalu lintas langsam">Lalu lintas langsam</p>
+                                <p data-l11n="vn" class="text-sm" title="Xe Đông Di Chuyển Chậm">Xe Đông Di Chuyển Chậm</p>
+                                <p data-l11n="th" class="text-sm" title="การจราจร ย้าย ช้า">การจราจรย้ายช้า</p>
+                                <p data-l11n class="text-sm" title="Slow Moving Traffic">Slow Moving Traffic</p>
+
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-warning"></div>
+
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected">
+                            <span class="lang-name">
+                                <p data-l11n="id" class="text-sm" title="Lalu lintas pampat">Lalu lintas pampat</p>
+                                <p data-l11n="vn" class="text-sm" title="Kẹt Xe, Ùn Tắc">Kẹt Xe, Ùn Tắc</p>
+                                <p data-l11n="th" class="text-sm" title="จราจรหนาแน่น">จราจรหนาแน่น</p>
+                                <p data-l11n class="text-sm" title="Heavy Traffic">Heavy Traffic</p>
+
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-danger"></div>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <!-- Traffic Legend End -->
+                    <!--===================================================-->
+                    <!--===================================================-->
+                    <!-- Server Clock Start-->
+
+                    <li>
+
+                        <i class="fa fa-clock-o hidden-xs">&nbsp;</i> <div class="show-fixed pull-right pad-rgt hidden-xs" id="clockbox" title=""></div>
+
+                    </li>
+                    <!-- Server Clock End -->
+                    <!--===================================================-->
+                </ul>
+
+            </div>
+
+
+
+
+            <!-- Visible when footer positions are static -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right pad-rgt"></div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+            <span data-l11n="vn" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - Hệ Thống Quản Lý Phương Tiện</span>
+            <span data-l11n="id" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - Sistem Manajemen Armada</span>
+            <span data-l11n="th" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - ระบบการจัดการ กองทัพเรือ</span>
+            <span data-l11n class="pad-lft hidden-xs hidden-md"><span id="softwareEN"></span>&nbsp;&#0169; 2017 - Pest Control Management System</span>
+
+            <!--<div id="panel" class="hidden-xs"><p class="pad-lft"></p></div>-->
+        </footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+        <!-- SCROLL TOP BUTTON -->
+        <!--===================================================-->
+        <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+        <!--===================================================-->
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+    <!-- BOOTSTRAP MODALS-->
+    <!--====================================================-->
+    <!--Default Bootstrap Modal-->
+    <!--===================================================-->
+    <div class="modal fade" id="default-modal" role="dialog" tabindex="-1" aria-labelledby="default-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Modal Heading</h4>
+                </div>
+
+                <!--Modal body-->
+                <div class="modal-body">
+                    <h4 class="text-thin">Bootstrap Modal Vertical Alignment Center</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                    <hr>
+                    <h4 class="text-thin">Popover in a modal</h4>
+                    <p>
+                        This
+                        <button class="btn btn-sm btn-warning modal-popover add-popover" data-toggle="popover" data-trigger="focus" data-content="And here\'s some amazing content. It\'s very engaging. right?" data-original-title="Popover Title">button</button>
+                        should trigger a popover on click.
+                    </p>
+                    <hr>
+                    <h4 class="text-thin">Tooltips in a modal</h4>
+                    <p>
+                        <a class="btn-link add-tooltip" href="#" data-original-title="Tooltip">This link</a> and
+                        <a class="btn-link add-tooltip" href="#" data-original-title="Tooltip">that link</a> should have tooltips on hover.
+                    </p>
+                </div>
+
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                    <button class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--===================================================-->
+    <!--End Default Bootstrap Modal-->
+    <!--Logout Small Bootstrap Modal-->
+    <!--===================================================-->
+    <div id="sm-modal" class="modal fade" tabindex="-1" style="color: #2F343B;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <div data-l11n="th" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;ระบบการจัดการ กองทัพเรือ</i></div>
+                    <div data-l11n="vn" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Hệ Thống Quản Lý Dội Tàu</i></div>
+                    <div data-l11n="id" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Sistem Manajemen Armada</i></div>
+                    <div data-l11n class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Pest Control Management System</i></div>
+                </div>
+                <div class="modal-body">
+                    <p data-l11n="th" class=".text-normal">ดำเนินการ ออกจากระบบ ?</p>
+                    <p data-l11n="id" class=".text-normal">Lanjutkan Keluar?</p>
+                    <p data-l11n="vn" class=".text-normal">Tiếp Tục Đăng Xuất ?</p>
+                    <p data-l11n class=".text-normal">Proceed to Logout?</p>
+
+                    <button class="btn btn-success btn-labeled fa fa-check fa-lg pull-right" title="Submit" onclick="LogoutEN();" id="clickLogoutEN">Ok</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--===================================================-->
+    <!-- Logout End Small Bootstrap Modal-->
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+    <!--jQuery [ REQUIRED ]-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+    <script src="js/jquery/jquery-2.1.3.min.js"></script>
+
+
+    <!--Map [REQUIRED] -->
+    <script type="text/javascript" src="js/view-location.js"></script>
+
+
+    <!--custom Javascript by King-->
+    <script src="js/load-historylocation.js"></script>
+    <script src="js/logout.js"></script>
+	<script src="js/security.js"></script>
+    <script src="js/profile.js"></script>
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!-- Plugins [ OPTIONAL ]-->
+    <script src="js/plugins.min.js"></script>
+
+
+    <!--Demo script [ DEMONSTRATION ]-->
+    <script src="js/demo/nifty-demo.min.js"></script>
+
+
+    <!--Server Time Clock [ OPTIONAL ]-->
+    <script src="js/servertime.js"></script>
+
+
+
+    <!--Bulletin Script [ OPTIONAL ]-->
+    <!--<script src="js/bulletin.js"></script>-->
+    <!--Hide Elements-->
+    <script src="plugins/jquery-visibly/jquery-visibly.min.js"></script>
+
+
+    <!--Flat JSON-->
+    <script src="plugins/flatJSON/bootstrap-table-flatJSON.min.js"></script>
+
+
+    <!--Marker with label-->
+    <script type="text/javascript" src="plugins/marker-with-label/markerwithlabel.js"></script>
+
+
+    <!--Date Format-->
+    <script src="plugins/moment/moment.js"></script>
+    <script src="plugins/moment-timezone/moment-timezone.js"></script>
+      <!--<script src="plugins/moment-timezone/moment-timezone-with-data.js"></script>-->
+
+    <!--Panel-->
+    <script src="plugins/jsPanel-bootstrap/jspanel/jquery.jspanel.min.js"></script>
+
+    <!-- loading jQuery UI javascript -->
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
+    <script src="plugins/mobile-detect/mobile-detect.js"></script>
+    <!--
+
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+
+    <script>
+
+        $(document).ready(function () {
+            $('#showColumnChart').click(function () {
+
+
+                var panel1 = $.jsPanel({
+                    iframe: {
+                        src: "report_live.html",
+                        id: "myFrame",
+                        style: { "display": "none", "border": "10px solid transparent" },
+                        width: '100%',
+                        height: '100%'
+                    },
+
+                    callback: function () {
+                        document.getElementById("myFrame").onload = function () {
+                            $("#myFrame").fadeIn(1000);
+                        }
+                    },
+                    size: { width: 620, height: 530 },
+                    position: { left: "center", top: 30 },
+                    title: 'สด แผนภูมิ',
+                    theme: "black"
+                });
+
+                window.setTimeout(function () {
+                    // call .title() on the variable representing the jsPanel (delayed in order to see the title change)
+                    panel1.title('สด แผนภูมิ<small id="latlng"></small>');
+                }, 3000);
+
+
+
+            });
+        });
+
+    </script>
+
+	 <script>
+
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-check-change-viewALL'));
+
+        elems.forEach(function (html) {
+            //var switchery = new Switchery(html);
+
+            var switchery = new Switchery(html, { color: '#DAA520', jackColor: '#fff' });
+        });
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

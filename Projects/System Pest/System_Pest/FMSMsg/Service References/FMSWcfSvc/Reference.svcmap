@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c77b3253-663b-4eac-b916-ec7f6ad5b0ee" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://103.237.168.119/adswcfapi/FmsWcf.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FmsWcf.xsd" MetadataType="Schema" ID="95aeaf28-1b3e-49a2-8610-7b9cc90d8a38" SourceId="1" SourceUrl="http://103.237.168.119/adswcfapi/FmsWcf.svc?xsd=xsd0" />
+    <MetadataFile FileName="FmsWcf.disco" MetadataType="Disco" ID="46e72d1a-bf22-49b0-bd94-4d6b7f792f45" SourceId="1" SourceUrl="http://103.237.168.119/adswcfapi/FmsWcf.svc?disco" />
+    <MetadataFile FileName="FmsWcf1.xsd" MetadataType="Schema" ID="9dfa3389-8b12-4f0d-82f9-a1d613f055c4" SourceId="1" SourceUrl="http://103.237.168.119/adswcfapi/FmsWcf.svc?xsd=xsd2" />
+    <MetadataFile FileName="FmsWcf2.xsd" MetadataType="Schema" ID="5a64baca-05a3-41c8-ac2d-044a94b09b6c" SourceId="1" SourceUrl="http://103.237.168.119/adswcfapi/FmsWcf.svc?xsd=xsd1" />
+    <MetadataFile FileName="FmsWcf.wsdl" MetadataType="Wsdl" ID="de3b8c8d-6a6c-4401-b97a-df7db0023327" SourceId="1" SourceUrl="http://103.237.168.119/adswcfapi/FmsWcf.svc?wsdl" />
+    <MetadataFile FileName="FmsWcf3.xsd" MetadataType="Schema" ID="699b60ed-7d5a-4255-ba66-085ba107e667" SourceId="1" SourceUrl="http://103.237.168.119/adswcfapi/FmsWcf.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

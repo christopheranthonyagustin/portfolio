@@ -1,0 +1,16 @@
+Updates 1.0.5(01-June-2017)
+
+- Add validation in Scheduled Jobs
+
+Updates 1.0.4(26-May-2017)
+
+- Translation Fix
+
+Updates 1.0.3(18-May-2017)
+
+- Activation Key Generator
+- Devices bind to Company
+
+Updates 1.0.1(02-February-2017)
+
+- Remove date filter in Scheduled jobs

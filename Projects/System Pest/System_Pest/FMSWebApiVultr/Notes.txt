@@ -1,0 +1,13 @@
+﻿http://127.0.0.1/fms/Dashboard
+http://127.0.0.1/phpmyadmin
+http://127.0.0.1/trackliteprowebapi/api/assetinfo
+http://127.0.0.1/trackliteprowebapi/api/zoneinfo/
+http://127.0.0.1/trackliteprowebapi/api/companyinfo
+http://127.0.0.1/trackliteprowebapi/api/userinfo
+http://127.0.0.1/trackliteprowebapi/api/deviceinfo
+http://127.0.0.1/trackliteprowebapi/api/zonetypeinfo
+http://127.0.0.1/trackliteprowebapi/api/categoryinfo
+http://127.0.0.1/trackliteprowebapi/api/reportinfo
+http://127.0.0.1/trackliteprowebapi/api/roleinfo
+http://127.0.0.1/trackliteprowebapi/api/languageinfo
+http://127.0.0.1/trackliteprowebapi/api/eventinfo

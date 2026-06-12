@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+
+    <meta charset=" utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Report Utilization</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+	<!--Roboto Font [ OPTIONAL ]-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+
+
+    <!--Home Page Stylesheet [ REQUIRED ]-->
+    <link href="css/home.min.css" rel="stylesheet">
+
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!--Animate.css [ OPTIONAL ]-->
+    <link href="plugins/animate-css/animate.min.css" rel="stylesheet">
+
+
+    <!--Switchery [ OPTIONAL ]-->
+    <link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Tags Input [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+
+    <!--Chosen [ OPTIONAL ]-->
+    <link href="plugins/chosen/chosen.min.css" rel="stylesheet">
+
+
+    <!--noUiSlider [ OPTIONAL ]-->
+    <link href="plugins/noUiSlider/jquery.nouislider.min.css" rel="stylesheet">
+    <link href="plugins/noUiSlider/jquery.nouislider.pips.min.css" rel="stylesheet">
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+
+
+    <!--=================================================-->
+    <!--SCRIPT-->
+    <!--=================================================-->
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <!--<link href="plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="plugins/pace/pace.min.js"></script>-->
+
+
+    <!-- Needs images, font... therefore can not be part of main.css -->
+    <link rel="stylesheet" href="fonts/themify-icons/themify-icons.min.css">
+    <link rel="stylesheet" href="fonts/weather-icons/css/weather-icons.min.css">
+    <!-- end Needs images -->
+    <!--JQuery [ REQUIRED ]-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+
+
+    <!--
+
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+
+
+   
+
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #chartdiv {
+            height: 100%;
+        }
+
+
+    </style>
+
+</head>
+<body>
+  
+    <div id="chartdiv"></div>
+
+
+
+
+    <script type="text/javascript">
+        google.load('visualization', '1', { packages: ['corechart'] });
+        google.setOnLoadCallback(drawChart);
+
+
+        //callback function
+        function drawChart(dataValues) {
+
+            $("#load-assets :selected").text(); //the text content of the selected option
+            var getAsset = $("#load-assets").val(); //the value of the selected option
+
+            var getTimestamp = $("#dateFrom").val();
+
+            var getRxTime = $("#dateTo").val();
+
+            var url = "http://103.237.168.119/WebApi/TestSite/api/posinfo/?Asset=" + getAsset + "&Timestamp=" + getTimestamp + "&RxTime=" + getRxTime;
+
+            $.getJSON(url, function (dataValues) {
+
+
+                var data = new google.visualization.DataTable();
+
+                data.addColumn('string', 'Engine');
+                data.addColumn('number', 'Speed');
+
+
+                // Populate series
+                for (i = 0; i < dataValues.length; i++) {
+
+                    var utilizationReport = dataValues[i];
+
+
+                    
+
+
+                    data.addRows([[utilizationReport.Engine, utilizationReport.Speed]]);
+
+                }
+
+
+               
+
+                // Instantiate and draw our chart, passing in some options
+                var chart = new google.visualization.PieChart(document.getElementById('chartdiv'));
+
+
+                //define options for visualization
+                var options = {
+                    title: "Utilization Report",
+                    width: 720,
+                    height: 480,
+                    //region: 'TH',
+                    //displayMode: 'markers',
+                    //backgroundColor: '#FFF',
+                    //colorAxis: { colors: ['green', 'blue'] }
+
+
+                };
+
+
+
+
+                //draw our chart
+                chart.draw(data, options);
+
+
+
+            });
+        }
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+    <!--jQuery [ REQUIRED ]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!--Fast Click [ OPTIONAL ]-->
+    <script src="plugins/fast-click/fastclick.min.js"></script>
+
+
+    <!--Demo script [ DEMONSTRATION ]-->
+    <script src="js/demo/nifty-demo.min.js"></script>
+
+
+    <!-- Plugins [ OPTIONAL ]-->
+    <script src="js/nifty.min.js"></script>
+
+
+    <!-- Switchery [ OPTIONAL ]-->
+    <script src="plugins/switchery/switchery.min.js"></script>
+
+
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+
+    <!--Bootstrap Tags Input [ OPTIONAL ]-->
+    <script src="plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+
+
+    <!--Chosen [ OPTIONAL ]-->
+    <script src="plugins/chosen/chosen.jquery.min.js"></script>
+
+
+    <!--noUiSlider [ OPTIONAL ]-->
+    <script src="plugins/noUiSlider/jquery.nouislider.all.min.js"></script>
+
+
+    <!--Hide Elements-->
+    <script src="plugins/jquery-visibly/jquery-visibly.min.js"></script>
+
+
+	<!--Flat JSON-->
+    <script src="plugins/flatJSON/bootstrap-table-flatJSON.min.js"></script>
+
+
+    <!--Date Format-->
+    <script src="plugins/moment/moment.js"></script>
+    <script src="plugins/moment-timezone/moment-timezone.js"></script>
+    <script src="plugins/moment-timezone/moment-timezone-with-data.js"></script>
+
+
+    <!--Modernizr  [ OPTIONAL ]-->
+    <script src="plugins/modernizr/modernizr.custom.js"></script>
+
+
+
+    <!--
+
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+
+
+</body>
+</html>
+

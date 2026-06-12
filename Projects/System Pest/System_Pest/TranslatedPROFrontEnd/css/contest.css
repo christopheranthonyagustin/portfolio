@@ -1,0 +1,39 @@
+.contest_tab {
+	background: #f25454;
+	border-radius: 3px 3px 0 0;
+	bottom: 0;
+	color: #ffffff;
+	cursor: pointer;
+	font-family: 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	padding: 6px 12px;
+	position: fixed;
+	right: 30px;
+	text-decoration: none;
+	z-index: 10000;
+	transition: all 0.25s ease 0s;
+}
+.contest_tab:hover,
+.contest_tab:focus {
+	background: #d64a4a;
+}
+.contest_tab i {
+	margin-right: 5px;
+}
+#contest_modal .modal-content {
+	background: none;
+	border: 0 none;
+	border-radius: 0;
+	box-shadow: none;
+}
+#contest_modal .modal-body {
+	background: #ffffff;
+    border: 8px solid #cccccc;
+    max-width: 540px;
+    padding: 0;
+}
+#contest_modal .modal-body iframe,
+#contest_modal .modal-body div {
+	box-shadow: none !important;
+	margin: 0 !important;
+}

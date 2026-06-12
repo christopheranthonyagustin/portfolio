@@ -1,0 +1,1234 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Alerts - Pest Control Management System</title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!--STYLESHEET-->
+	<!--=================================================-->
+
+	<!--Roboto Font [ OPTIONAL ]-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
+
+
+	<!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	
+	<!--Content Page Stylesheet [ REQUIRED ]-->
+	<link href="css/content.min.css" rel="stylesheet">
+	
+	
+	<!--Font Awesome [ OPTIONAL ]-->
+	<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+	<!--Switchery [ OPTIONAL ]-->
+	<link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Select [ OPTIONAL ]-->
+	<link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
+	<link href="plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
+	<link href="plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+
+	<!--Bootstrap Table [ OPTIONAL ]-->
+	<link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+
+	<!--X-editable [ OPTIONAL ]-->
+	<link href="plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
+
+
+	<!--Demo [ DEMONSTRATION ]-->
+	<link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+
+	<!--Localization-->
+    <link rel="stylesheet" href="css/localization.css">
+
+
+	<!--SCRIPT-->
+	<!--=================================================-->
+
+	<!--Page Load Progress Bar [ OPTIONAL ]-->
+	<link href="plugins/pace/pace.min.css" rel="stylesheet">
+	<script src="plugins/pace/pace.min.js"></script>
+
+
+    <!-- Needs images, font... therefore can not be part of main.css -->
+    <link rel="stylesheet" href="fonts/themify-icons/themify-icons.min.css">
+    <link rel="stylesheet" href="fonts/weather-icons/css/weather-icons.min.css">
+    <!-- end Needs images -->
+
+	
+	<!--
+
+	REQUIRED
+	You must include this in your project.
+
+	RECOMMENDED
+	This category must be included but you may modify which plugins or components which should be included in your project.
+
+	OPTIONAL
+	Optional plugins. You may choose whether to include it in your project or not.
+
+	DEMONSTRATION
+	This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+	SAMPLE
+	Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+	Detailed information and more samples can be found in the document.
+
+	-->
+	
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+
+<body>
+	<div id="container" class="effect mainnav-lg navbar-fixed footer-fixed">
+		
+		<!--NAVBAR-->
+		<!--===================================================-->
+		<header id="navbar">
+			<div id="navbar-container" class="boxed">
+
+				<!--Brand logo & name-->
+				<!--================================-->
+				<div class="navbar-header">
+					<a href="index.html" class="navbar-brand">
+                        <!--Logo-->
+						<img src="img/logo.png" alt="Track Logo" class="brand-icon" id="showProfileCompany">
+                            <div class="brand-title">
+							<span class="brand-text">TRACK</span>
+						</div>
+					</a>
+				</div>
+				<!--================================-->
+				<!--End brand logo & name-->
+
+
+				<!--Navbar Dropdown-->
+				<!--================================-->
+				<div class="navbar-content clearfix">
+					<ul class="nav navbar-top-links pull-left">
+
+						<!--Navigation toogle button-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<li class="tgl-menu-btn">
+							<a class="mainnav-toggle" href="#" title="Toggle Navigation Menu">
+								<i class="fa fa-navicon fa-lg"></i>
+							</a>
+						</li>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--End Navigation toogle button-->
+
+						<!--Language-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="dropdown">
+                            <label class="localize localization">
+                                <select class="icon-menu" onchange="document.documentElement.lang=this.value" id="i18n">
+                                    <option style="background-image:url(img/flags/thailand.png);" value="th" selected="selected">Thai</option>
+                                    <option style="background-image:url(img/flags/united-kingdom.png);" value="en">English</option>
+
+                                </select>
+                            </label>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--Language-->
+
+
+                        <!--History-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--Start History-->
+
+                        <li>
+                            <a href="history.html" title="History">
+                                <i class="fa fa-calendar-o fa-lg"></i>
+                                <span class="menu-title">
+                                    &nbsp;
+                                    <!--Notifications-->
+                                    <span data-l11n="th" class="pull-right badge badge-primary">ประวัติศาสตร์</span>
+                                    <span data-l11n class="pull-right badge badge-primary">History</span>
+                                </span>
+                            </a>
+                        </li>
+
+                        <!--End History-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+
+
+
+
+
+
+					</ul>
+					<ul class="nav navbar-top-links pull-right">
+
+
+						<!--Vehicle List-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+						<li data-content="Vehicle List">
+                                                       
+                            <a id="toggle-aside" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+								<span class="lang-selected">
+									<!--<img class="lang-flag" src="img/vechlist.png" alt="Vehicle Lists">-->
+                                    <i class="fa fa-warning fa-lg"></i>
+									<span class="lang-id">LIST</span>
+									<span data-l11n="th" class="lang-name">เพิ่มการแจ้งเตือน</span>
+									<span data-l11n class="lang-name">Add Alert</span>
+								</span>
+							</a>
+
+
+						</li>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--Vehicle List-->
+
+
+
+						<!--User dropdown-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<li id="dropdown-user" class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right" title="Profile">
+                                <span class="pull-right">
+                                    <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture">
+                                </span>
+                                <div class="username hidden-xs">Username</div>
+                            </a>
+
+
+                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+                                <!-- Dropdown heading  -->
+                                <div class="pad-all bord-btm">
+                                    <p class="text-lg text-muted text-thin mar-btm">DEMO</p>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar" style="width: 100%;">
+                                            <span class="sr-only">70%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- User dropdown menu -->
+                                <ul class="head-list">
+                                    <li data-l11n="th">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> ข้อมูลส่วนตัว
+                                        </a>
+
+                                    </li>
+
+                                            <li data-l11n>
+                                                <a href="profile.html">
+                                                    <i class="fa fa-user fa-fw fa-lg"></i> Profile
+                                                </a>
+
+                                            </li>
+
+                                    <li data-l11n="th">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> ช่วย
+                                        </a>
+                                    </li>
+
+                                            <li data-l11n>
+                                                <a href="faq.html">
+                                                    <i class="fa fa-question-circle fa-fw fa-lg"></i> Help
+                                                </a>
+                                            </li>
+
+                                    <li data-l11n="th">
+                                        <a href="http://117.120.7.120/litepro/lock-screen.html">
+                                            <i class="fa fa-lock fa-fw fa-lg"></i> ล็อคหน้าจอ
+                                        </a>
+                                    </li>
+
+                                            <li data-l11n>
+                                                <a href="http://117.120.7.120/litepro/lock-screen.html">
+                                                    <i class="fa fa-lock fa-fw fa-lg"></i> Lock screen
+                                                </a>
+                                            </li>
+						
+                                </ul>
+
+                                <!-- Dropdown footer -->
+                                <div class="pad-all text-right">
+                                    <span data-l11n="th" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ
+                                    </span>
+
+                                            <span data-l11n class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                                <i class="fa fa-sign-out fa-fw"></i> Logout
+                                            </span>
+                                </div>
+
+
+
+                            </div>
+                        </li>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--End user dropdown-->
+
+					</ul>
+				</div>
+				<!--================================-->
+				<!--End Navbar Dropdown-->
+
+			</div>
+		</header>
+		<!--===================================================-->
+		<!--END NAVBAR-->
+
+		<div class="boxed">
+
+			<!--CONTENT CONTAINER-->
+			<!--===================================================-->
+            <div id="content-container">
+
+                <!--Page Title-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--<div id="page-title">-->
+                <!--Page content-->
+                <!--===================================================-->
+                <div id="page-content">
+
+
+                    <div class="panel-body-full">
+
+                        <div class="panel panel-bordered panel-primary">
+                            <div class="panel-heading">
+                                <h4 data-l11n="th" class="panel-title"><i class="fa fa-warning"></i>&nbsp;การแจ้งเตือน</h4>
+                                <h4 data-l11n class="panel-title"><i class="fa fa-warning"></i>&nbsp;Alerts</h4>
+
+
+                            </div>
+
+                            <div class="panel-body">
+
+                                <div id="custom-alert">
+                                    <div class="form-inline" role="form">
+
+                                        <!--<select class="selectpicker select-company-filter" data-live-search="true" data-width="100%" data-style="btn-success" id="load-company-custom-table-header" name="load-company-custom-table-header" data-table="searchable"></select>-->
+
+                                    </div>
+                                </div>
+
+                                <table id="alert-editable"
+                                       class="searchable"
+                                       data-click-to-select="true"
+                                       data-toolbar="#custom-alert"
+                                       data-show-header="true"
+                                       data-show-export="false"
+                                       data-search="true"
+                                       data-show-refresh="true"
+                                       data-show-toggle="true"
+                                       data-show-columns="true"
+                                       data-page-list="[5, 10, 20, 50, 100]"
+                                       data-page-size="5"
+                                       data-pagination="true" data-show-pagination-switch="true">
+
+                               
+
+                                      </table>
+
+                                <button class="btn btn-mint btn-labeled fa fa-check pull-right hidden-xs" title="Submit">Ok</button>
+
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!--===================================================-->
+                    <!--End page content-->
+                    <!--===================================================-->
+                    <!--END CONTENT CONTAINER-->
+                </div>
+            </div>
+
+			
+			<!--MAIN NAVIGATION-->
+			<!--===================================================-->
+			<nav id="mainnav-container">
+				<div id="mainnav">
+
+
+
+
+					<!--Menu-->
+                    <!--================================-->
+                    <div id="mainnav-menu-wrap">
+                        <div class="nano">
+                            <div class="nano-content">
+                                <ul id="mainnav-menu" class="list-group">
+
+                                    <!--Navigation name-->
+                                    <li data-l11n="th" class="list-header">การเดินเรือ</li>
+
+                                    <li data-l11n class="list-header">Navigation</li>
+                                    
+
+                                    <!--Dashboard-->
+                                    <li>
+                                        <a href="index.html">
+                                            <i class="fa fa-dashboard fa-lg"></i>
+                                            <span data-l11n="th" class="menu-title">
+                                                <strong>หน้าปัด</strong>
+                                                <!--Notifications-->
+                                                <span class="label label-primary pull-right">แผนที่</span>
+                                            </span>
+
+                                            <span data-l11n class="menu-title">
+                                                <strong>Dashboard</strong>
+                                                <!--Notifications-->
+                                                <span class="label label-primary pull-right">Map</span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+
+                                    <!--Vehicles-->
+                                    <li>
+                                        <a href="vehicles.html">
+                                            <i class="fa fa-mobile-phone fa-2x"></i>
+                                            <span data-l11n="th" class="menu-title">
+                                                <strong>ยานพาหนะ</strong>
+                                            </span>
+
+                                            <span data-l11n class="menu-title">
+                                                <strong>Vehicles</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <!--Zones-->
+                                    <li>
+                                        <a href="zones.html">
+                                            <i class="fa fa-globe fa-lg"></i>
+                                            <span data-l11n="th" class="menu-title">
+                                                <strong>โซน</strong>
+                                            </span>
+
+                                            <span data-l11n class="menu-title">
+                                                <strong>Zones</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+						
+						
+                                    <li class="list-divider"></li>
+
+									<li>
+                                        <a href="#" title="การตั้งค่า">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="th" class="menu-title">การตั้งค่า</span>
+
+                                            <span data-l11n class="menu-title">Settings</span>
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li>
+                                                <a href="companies.html" title="Companies Page">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">บริษัท</span>
+
+                                                    <span data-l11n class="menu-title">Companies</span>
+                                                    
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li>
+                                                <a href="users.html" title="Users Page">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">ผู้ใช้</span>
+
+                                                    <span data-l11n class="menu-title">Users</span>
+                                                    
+                                                </a>
+                                            </li>
+						
+									<!--Device-->
+									<!--<li>
+										<a href="devices.html" title="Devices Page">
+											<i class="fa fa-tablet fa-lg"></i>
+											<span class="menu-title">Devices</span>
+										</a>
+									</li>-->
+						
+									<!--Menu list item-->
+									<li class="active-link">
+										<a href="alerts.html" title="Alerts Page">
+											<i class="fa fa-warning fa-lg"></i>
+											<span span data-l11n="th" class="menu-title">การแจ้งเตือน</span>
+											<span span data-l11n class="menu-title">Alerts</span>
+										</a>
+									</li>
+
+
+
+
+                                    </ul>
+									
+                                    </li>
+									</ul>							
+							</div>
+						</div>
+					</div>
+					<!--================================-->
+					<!--End menu-->
+
+				</div>
+			</nav>
+			<!--===================================================-->
+			<!--END MAIN NAVIGATION-->
+			
+			<!--ASIDE-->
+			<!--===================================================-->
+			<aside id="aside-container">
+				<div id="aside">
+					<div class="nano">
+						<div class="nano-content">
+							
+							<!--Nav tabs-->
+							<!--================================-->
+
+                            <ul class="nav nav-tabs nav-justified">
+								<li class="active">
+									<a href="#demo-asd-tab-1" data-toggle="tab">
+										<i class="fa fa-warning"></i>
+									</a>
+								</li>
+                             </ul>	
+                            <!--================================-->
+
+							<!--================================-->
+							<!--End nav tabs-->
+
+                           
+
+							<!-- Tabs Content -->
+							<!--================================-->
+							<div class="tab-content">
+
+								<!--Add Vehicle tab (Contact list)-->
+								<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+								<div class="tab-pane fade in active" id="demo-asd-tab-1">
+
+
+                                 <!--Forms-->
+                                  <form role="form">
+
+
+
+                                <!--Event Type-->
+                                <!-- Bootstrap Select with Search Input -->
+								<!--===================================================-->
+                                            <div class="form-group">
+                                                <div data-l11n="th" class=".text-normal">ชนิดเหตุการณ์</div>
+                                                <div data-l11n class=".text-normal">Event Type</div>   
+												<select class="selectpicker" multiple title="เลือกอย่างใดอย่างหนึ่งดังต่อไปนี้ ..."  data-live-search="true" data-width="100%" data-style="btn-success">
+                                                    <option>Battery Status</option>
+													<option>Battery Temperature</option>
+													<option>Board Temperature</option>
+                                                    <option>Curfew Violated</option>
+                                                    <option>Debug REport</option>
+                                                    <option>Device Tampered</option>
+                                                    <option>Emergency</option>
+                                                    <option>Excessive Idling</option>
+                                                    <option>Ignition</option>
+                                                    <option>Mileage Report</option>
+                                                    <option>Panic Button</option>
+                                                    <option>Power Lost</option>
+                                                    <option>Power Restored</option>
+                                                    <option>Power Status</option>
+                                                    <option>Restricted Zone</option>
+                                                    <option>RFID</option>
+                                                    <option>RFID Alert</option>
+                                                    <option>Speeding</option>
+                                                    <option>Speeding Kbox</option>
+                                                    <option>User Login</option>
+                                                    <option>User Logout</option>
+                                                    <option>Water Sensor</option>
+                                                    <option>Zone Enter</option>
+                                                    <option>Zone Exit</option>
+												</select>
+                                                </div>
+								<!--===================================================-->
+
+
+                                <!--===================================================-->
+
+                               <!--Email Alert-->
+                                               <div class="form-group">
+                                               <div data-l11n="th" class=".text-normal">อีเมล์แจ้งเตือน</div>
+                                               <div data-l11n class=".text-normal">Email Alert</div>                                                                                   
+                                               <select class="selectpicker" data-width="100%" data-style="btn-success">
+                                                   <option>เปิดใช้งาน</option>
+                                                   <option>ปิดการใช้งาน</option>
+												</select> 
+                                                </div>
+
+                               <!--===================================================-->
+
+
+
+                              <!--===================================================-->
+
+                               <!--SMS Alert-->
+                                               <div class="form-group">
+                                               <div data-l11n="th" class=".text-normal">SMS แจ้งเตือน</div>
+                                               <div data-l11n class=".text-normal">SMS Alert</div>                                                                                   
+                                               <select class="selectpicker" data-width="100%" data-style="btn-success">
+                                                   <option>เปิดใช้งาน</option>
+                                                   <option>ปิดการใช้งาน</option>
+												</select> 
+                                                </div>
+
+                                <!--===================================================-->
+
+
+
+                               <!--===================================================-->
+
+                               <!--UI Alert-->
+                                               <div class="form-group">
+                                               <div data-l11n="th" class=".text-normal">UI การแจ้งเตือน</div>  
+                                               <div data-l11n class=".text-normal">UI Alert</div>                                                                                 
+                                               <select class="selectpicker" data-width="100%" data-style="btn-success">
+                                                   <option>เปิดใช้งาน</option>
+                                                   <option>ปิดการใช้งาน</option>
+												</select> 
+                                                </div>
+
+                                <!--===================================================-->
+                              
+
+                                <hr>
+
+                                <!--Submit-->
+                                <span data-l11n="th" class="pull-right"><button type="submit" class="btn btn-success">เพิ่ม</button></span>
+
+                                <span data-l11n class="pull-right"><button type="submit" class="btn btn-success">Add</button></span>
+
+              				
+						
+		                        </form>
+                                <!--End Form-->
+                               
+                                
+							</div>
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--End Add Vehicle tab (Contact list)-->
+
+
+
+                                <!--Second tab Information (Custom layout)-->
+								<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+								<div class="tab-pane fade" id="demo-asd-tab-2">
+
+
+                                <!--===================================================-->
+
+                                <!--Email Address-->
+                                 <div class="form-group">
+                                            <div class=".text-normal">Email Address</div> 
+                                            <input type="text" id="Text1" class="form-control" placeholder="">
+                                        </div>
+
+
+                                 <!--===================================================-->
+
+
+                                 <!--===================================================-->
+
+                                <!--Phone Number-->
+                                 <div class="form-group">
+                                            <div class=".text-normal">Phone Number</div> 
+                                            <input type="text" id="Text2" class="form-control" placeholder="">
+                                        </div>
+
+
+                                 <!--===================================================-->
+
+
+                                <!--Alert Notifications-->
+                                <!--===================================================-->
+                                
+                                <div class=".text-normal">&nbsp;</div>    
+                                <button class="btn btn-block btn-warning">ALERT NOTIFICATIONS<label for="alerts">&nbsp;0</label></button>
+                                
+                                    
+								<!--===================================================-->
+
+
+                               
+                                <hr>             				
+						
+                               </div>
+
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--End Second tab Information (Custom layout)-->
+
+
+                                <!--Third tab Settings Vehicle tab (Contact list)-->
+								<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+								<div class="tab-pane fade" id="demo-asd-tab-3">
+
+
+
+                                 <!--===================================================-->
+
+                                                                               
+                                <!--===================================================-->
+
+                               <!--Assign Vehicle-->
+                                               <div class="form-group">
+                                               <div class=".text-normal">Assign Vehicle</div>                                                                                   
+                                               <select class="selectpicker" multiple title="Choose one of the following..." data-live-search="true" data-width="100%" data-style="btn-success">
+                                                    <option>XD543</option>
+                                                    <option>XD876</option>
+                                                    <option>XD654</option>
+                                                    <option>GB088</option>
+                                                    <option>TP435</option>
+												</select> 
+                                                </div>
+                         
+
+                                <!--===================================================-->
+
+
+                                 <!--===================================================-->
+
+                                 <!--Panel Enable Reports-->
+
+                                               <div id="demo-panel-ref" class="panel panel-colorful panel-dark">
+					
+								                <!--Panel heading-->
+								                <div class="panel-heading">
+									                <div class="panel-control">
+										                <button class="demo-panel-ref-btn btn btn-default" data-target="#demo-panel-ref" data-toggle="panel-overlay">
+											                <i class="fa fa-rotate-right fa-fw"></i> Refresh
+										                </button>
+										                <div class="btn-group">
+											                <button aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle btn btn-info">
+												                <i class="fa fa-gear fa-lg"></i>
+											                </button>
+											                <ul class="dropdown-menu dropdown-menu-right">
+												                <li><a href="#">Action</a></li>
+												                <li><a href="#">Another action</a></li>
+												                <li><a href="#">Something else here</a></li>
+												                <li class="divider"></li>
+												                <li><a href="#">Separated link</a></li>
+											                </ul>
+										                </div>
+									                </div>
+									               <!-- <h3 class="panel-title">CELL IDS</h3>-->
+								                </div>
+					
+								                <!--Panel body-->
+								                <div class="panel-body">
+									                <p>Test</p>
+								                </div>
+							                </div>
+
+                               
+                                 <!--===================================================-->
+
+							</div>
+
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--End Settings Vehicle tab (Contact list)-->
+
+
+						</div>
+					</div>
+				</div>
+			</aside>
+			<!--===================================================-->
+			<!--END ASIDE-->
+
+		</div>	
+
+		<!-- FOOTER -->
+		<!--===================================================-->
+  <footer id="footer">
+
+            <!-- Visible when footer positions are fixed -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right">
+                <ul class="footer-list list-inline">
+
+                    
+                    <!--===================================================-->
+                    <!-- Engine Status Start-->
+
+                            <li>
+                                <span class="lang-selected" title="Engine Status Color When Vehicle is Moving">
+                                    <span data-l11n="th" class="lang-name">
+                                        <button class="btn btn-sm btn-success">ย้าย</button>
+                                    </span>
+
+                                <span data-l11n class="lang-name">
+                                        <button class="btn btn-sm btn-success">Move</button>
+                                    </span>
+                                </span>
+                            </li>
+
+
+                            <li>
+                                <span class="lang-selected" title="Engine Status Color When Vehicle is Idle">
+                                    <span data-l11n="th" class="lang-name">
+                                        <button class="btn btn-sm btn-warning">&nbsp;&nbsp;ว่าง&nbsp;&nbsp;</button>
+                                    </span>
+
+                                <span data-l11n class="lang-name">
+                                        <button class="btn btn-sm btn-warning">&nbsp;&nbsp;Idle&nbsp;&nbsp;</button>
+                                    </span>
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="lang-selected" title="Engine Status Color When Vehicle is Stop">
+                                    <span data-l11n="th" class="lang-name">
+                                        <button class="btn btn-sm btn-danger">&nbsp;หยุด&nbsp;</button>
+                                    </span>
+
+                                <span data-l11n class="lang-name">
+                                        <button class="btn btn-sm btn-danger">&nbsp;Stop&nbsp;</button>
+                                    </span>
+                                </span>
+                            </li>
+
+                            <!-- Engine Status End -->
+                            <!--===================================================-->
+                            <!--===================================================-->
+                            <!-- Traffic Legend Start-->
+                            <li>
+                                <span class="lang-selected" title="Smooth Traffic">
+                                    <span class="lang-name">
+                                        <p data-l11n="th" class="text-sm">การจราจรได้อย่างราบรื่น</p>
+                                    	<p data-l11n class="text-sm">Smooth Traffic</p>
+                                        
+                                        <div class="progress progress-sm progress-light-base">
+                                            <div style="width: 100%" class="progress-bar progress-bar-success"></div>
+                                        </div>
+                                    </span>
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="lang-selected" title="Slow Moving Traffic">
+                                    <span class="lang-name">
+                                        <p data-l11n="th" class="text-sm">การจราจรย้ายช้า</p>
+                                    	<p data-l11n class="text-sm">Slow Moving Traffic</p>
+                                        <div class="progress progress-sm progress-light-base">
+                                            <div style="width: 100%" class="progress-bar progress-bar-warning"></div>
+                                        </div>
+                                    </span>
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="lang-selected" title="Heavy Traffic">
+                                    <span class="lang-name">
+                                        <p data-l11n="th" class="text-sm">จราจรหนาแน่น</p>
+                                    	<p data-l11n class="text-sm">Heavy Traffic</p>
+                                        
+                                        <div class="progress progress-sm progress-light-base">
+                                            <div style="width: 100%" class="progress-bar progress-bar-danger"></div>
+                                        </div>
+                                    </span>
+                                </span>
+                            </li>
+
+                            <!-- Traffic Legend End -->
+                    <!--===================================================-->
+
+                    
+                    <!--===================================================-->
+                    <!-- Server Clock Start-->
+
+                        <li>
+                            <i class="fa fa-clock-o">&nbsp;</i> <div class="show-fixed pull-right pad-rgt" id="clockbox" title="Current Time"></div>                       
+                        </li>
+                    <!-- Server Clock End -->
+                    <!--===================================================-->
+
+
+                </ul>
+                
+            </div>
+
+        
+
+
+            <!-- Visible when footer positions are static -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right pad-rgt" id="clockbox"></div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+            <p data-l11n="th" class="pad-lft hidden-xs hidden-md">&#0169; 2015 ติดตาม - ระบบการจัดการ กองทัพเรือ</p>
+            <p data-l11n class="pad-lft hidden-xs hidden-md">&#0169; 2015 Track - Pest Control Management System</p>
+          
+
+
+
+        </footer>	
+		<!--===================================================-->
+		<!-- END FOOTER -->
+
+
+		<!-- SCROLL TOP BUTTON -->
+		<!--===================================================-->
+		<button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+		<!--===================================================-->
+
+
+
+	</div>
+	<!--===================================================-->
+	<!-- END OF CONTAINER -->
+
+
+	
+	
+	<!-- SETTINGS -->
+	<!--===================================================-->
+		<!--<div id="demo-set" class="demo-set">
+		<div class="demo-set-body bg-dark">
+			<div id="demo-set-alert"></div>
+			<div class="demo-set-content clearfix">
+				<div class="col-xs-6 col-lg-5">
+					<h4 class="mar-btm text-thin">Animations</h4>
+					<div id="demo-anim" class="mar-btm">
+						<label class="form-checkbox form-icon active">
+							<input type="checkbox" checked=""> Enable Animations
+						</label>
+					</div>
+					<p>Transition effects</p>
+					<select id="demo-ease">
+						<option value="effect" selected>ease (Default)</option>
+						<option value="easeInQuart">easeInQuart</option>
+						<option value="easeOutQuart">easeOutQuart</option>
+						<option value="easeInBack">easeInBack</option>
+						<option value="easeOutBack">easeOutBack</option>
+						<option value="easeInOutBack">easeInOutBack</option>
+						<option value="steps">Steps</option>
+						<option value="jumping">Jumping</option>
+						<option value="rubber">Rubber</option>
+					</select>
+					<hr>
+					<h4 class="mar-btm text-thin">Navigation</h4>
+					<div class="mar-btm">
+						<label id="demo-nav-fixed" class="form-checkbox form-icon">
+							<input type="checkbox"> Fixed Position
+						</label>
+					</div>
+					<label id="demo-nav-coll" class="form-checkbox form-icon">
+						<input type="checkbox"> Collapsed
+					</label>
+					<hr>
+					<h4 class="mar-btm text-thin">Off Canvas Navigation</h4>
+					<select id="demo-nav-offcanvas">
+						<option value="none" selected disabled="disabled">-- Select Mode --</option>
+						<option value="push">Push</option>
+						<option value="slide">Slide in on top</option>
+						<option value="reveal">Reveal</option>
+					</select>
+				</div>
+				<div class="col-xs-6 col-lg-4">
+					<h4 class="mar-btm text-thin">Aside</h4>
+					<div class="form-block">
+						<label id="demo-asd-vis" class="form-checkbox form-icon">
+							<input type="checkbox"> Visible
+						</label>
+						<label id="demo-asd-fixed" class="form-checkbox form-icon">
+							<input type="checkbox"> Fixed Position
+						</label>
+						<label id="demo-asd-align" class="form-checkbox form-icon">
+							<input type="checkbox"> Aside on the left side
+						</label>
+						<label id="demo-asd-themes" class="form-checkbox form-icon">
+							<input type="checkbox"> Bright Theme
+						</label>
+					</div>
+					<hr>
+					<h4 class="mar-btm text-thin">Header / Navbar</h4>
+					<label id="demo-navbar-fixed" class="form-checkbox form-icon">
+						<input type="checkbox"> Fixed Position
+					</label>
+					<hr>
+					<h4 class="mar-btm text-thin">Footer</h4>
+					<label id="demo-footer-fixed" class="form-checkbox form-icon">
+						<input type="checkbox"> Fixed Position
+					</label>
+				</div>
+				<div class="col-xs-12 col-lg-3">
+					<div id="demo-theme">
+						<div class="demo-theme-btn">
+							<h4 class="mar-btm text-thin">Color Themes</h4>
+							<a href="#" class="demo-theme demo-a-light" data-theme="theme-light" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-navy" data-theme="theme-navy" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-ocean" data-theme="theme-ocean" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-lime" data-theme="theme-lime" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-purple" data-theme="theme-purple" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-dust" data-theme="theme-dust" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-mint" data-theme="theme-mint" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-coffee" data-theme="theme-coffee" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-dark" data-theme="theme-dark" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+						</div>
+						<div class="demo-theme-btn">
+							<a href="#" class="demo-theme demo-b-light" data-theme="theme-light" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-navy" data-theme="theme-navy" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-ocean" data-theme="theme-ocean" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-lime" data-theme="theme-lime" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-purple" data-theme="theme-purple" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-dust" data-theme="theme-dust" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-mint" data-theme="theme-mint" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-coffee" data-theme="theme-coffee" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-dark" data-theme="theme-dark" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+						</div>
+						<div class="demo-theme-btn">
+							<a href="#" class="demo-theme demo-c-light" data-theme="theme-light" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-navy" data-theme="theme-navy" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-ocean" data-theme="theme-ocean" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-lime" data-theme="theme-lime" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-purple" data-theme="theme-purple" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-dust" data-theme="theme-dust" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-mint" data-theme="theme-mint" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-coffee" data-theme="theme-coffee" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-dark" data-theme="theme-dark" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pad-all text-left">
+				<p class="demo-set-save-text">* All settings will be saved automatically.</p>
+				<hr class="hr-sm">
+				<button id="demo-reset-settings" class="btn btn-primary">Restore Default Settings</button>
+			</div>
+		</div>
+		<button id="demo-set-btn" class="btn btn-sm"><i class="fa fa-cog fa-2x"></i></button>
+	</div>-->
+	<!--===================================================-->
+	<!-- END SETTINGS -->
+
+	
+	<!--JAVASCRIPT-->
+	<!--=================================================-->
+
+	<!--jQuery [ REQUIRED ]-->
+	<script src="js/jquery/jquery-2.1.3.min.js"></script>
+
+
+	<!--BootstrapJS [ RECOMMENDED ]-->
+	<script src="js/bootstrap.min.js"></script>
+
+
+    <!--Fast Click [ OPTIONAL ]-->
+	<script src="plugins/fast-click/fastclick.min.js"></script>
+
+
+    <!--Demo script [ DEMONSTRATION ]-->
+	<script src="js/demo/nifty-demo.min.js"></script>
+	
+
+	<!-- Plugins [ OPTIONAL ]-->
+	<script src="js/plugins.min.js"></script>
+
+
+	<!--Bootstrap Select [ OPTIONAL ]-->
+	<script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+
+	<!--X-editable [ OPTIONAL ]-->
+	<script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
+
+
+	<!--Bootstrap Table [ OPTIONAL ]-->
+	<script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
+
+	<!--Bootstrap Table Extension [ OPTIONAL ]-->
+	<script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+
+
+    <!--DataTables [ OPTIONAL ]-->
+	<script src="plugins/datatables/media/js/jquery.dataTables.js"></script>
+	<script src="plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+	<script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+
+    <!--Bootstrap Table Sample [ SAMPLE ]-->
+	<script src="js/demo/tables-bs-table.js"></script>
+    <script src="js/demo/tables-datatables.js"></script>
+
+
+    <!--Panel [ SAMPLE ]-->
+	<script src="js/demo/ui-panels.js"></script>
+	
+	
+	<!--Server Time Clock [ OPTIONAL ]-->
+    <script src="js/servertime.js"></script>
+
+	
+	<!--
+
+	REQUIRED
+	You must include this in your project.
+
+	RECOMMENDED
+	This category must be included but you may modify which plugins or components which should be included in your project.
+
+	OPTIONAL
+	Optional plugins. You may choose whether to include it in your project or not.
+
+	DEMONSTRATION
+	This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+	SAMPLE
+	Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+	Detailed information and more samples can be found in the document.
+
+	-->
+
+</body>
+</html>
+

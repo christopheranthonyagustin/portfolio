@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="th">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Playback</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+        <!--Bootstrap Stylesheet [ REQUIRED ]-->
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+	     <!--Font Awesome [ OPTIONAL ]-->
+        <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	    <!--Bootstrap Select [ OPTIONAL ]-->
+        <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+        <link href="css/history.css" rel="stylesheet">
+        <!--<script src="https://maps.googleapis.com/maps/api/js?client=gme-acecomtechnologies&v=3.22&libraries=places"></script>-->
+        <script src="js/map-language.js"></script>
+
+	</head>
+	<body>
+
+		<div id="map">Loading Map ...</div>
+		
+		<div class="control">
+            <button id="play" class="btn btn-md btn-primary"><i class="fa fa-play fa-fw"></i></button>
+            <button id="pause" class="btn btn-md btn-primary"><i class="fa fa-pause fa-fw"></i></button>
+		</div>
+
+
+        <div class="controlSlider">
+            <input id="forwind" type="range" min="1" max="0" value="1" style="color:black;" />
+        </div>
+
+        <div class="controlClose" id="close" title="">
+            <i class="fa fa-times-circle fa-lg"></i><span class="hidden-xs" id="close1">&nbsp;Close</span>
+        </div>
+		
+	<script src="js/jquery/jquery-2.1.3.min.js"></script>
+	<!--custom Javascript by King-->
+    <script src="js/security.js"></script>
+
+ 	<!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="js/bootstrap.min.js"></script>
+	 <!--Bootstrap Select [ OPTIONAL ]-->
+    <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="js/playback.js"></script>
+        <!--Date Format-->
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/moment-timezone/moment-timezone.js"></script>
+
+
+        <!--Modernizr  [ OPTIONAL ]-->
+        <script src="plugins/modernizr/modernizr.custom.js"></script>
+        <script src="plugins/infobubble/infobubble.js"></script>
+        <script src="plugins/mobile-detect/mobile-detect.js"></script>
+
+	</body>
+</html>
+		

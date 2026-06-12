@@ -1,0 +1,1927 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Companies - Fleet Management System</title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!--STYLESHEET-->
+	<!--=================================================-->
+
+	<!--Roboto Font [ OPTIONAL ]-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
+
+
+	<!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	
+	<!--Content Page Stylesheet [ REQUIRED ]-->
+	<link href="css/content.min.css" rel="stylesheet">
+	
+	
+	<!--Font Awesome [ OPTIONAL ]-->
+	<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+	<!--Switchery [ OPTIONAL ]-->
+	<link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Select [ OPTIONAL ]-->
+	<link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
+	<link href="plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
+	<link href="plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+
+	<!--Bootstrap Table [ OPTIONAL ]-->
+	<link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+
+	<!--X-editable [ OPTIONAL ]-->
+	<link href="plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
+
+
+	<!--Demo [ DEMONSTRATION ]-->
+	<link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+
+
+	<!--SCRIPT-->
+	<!--=================================================-->
+
+	<!--Page Load Progress Bar [ OPTIONAL ]-->
+	<link href="plugins/pace/pace.min.css" rel="stylesheet">
+	<script src="plugins/pace/pace.min.js"></script>
+
+
+    <!-- Needs images, font... therefore can not be part of main.css -->
+    <link rel="stylesheet" href="fonts/themify-icons/themify-icons.min.css">
+    <link rel="stylesheet" href="fonts/weather-icons/css/weather-icons.min.css">
+    <!-- end Needs images -->
+
+	
+	<!--
+
+	REQUIRED
+	You must include this in your project.
+
+	RECOMMENDED
+	This category must be included but you may modify which plugins or components which should be included in your project.
+
+	OPTIONAL
+	Optional plugins. You may choose whether to include it in your project or not.
+
+	DEMONSTRATION
+	This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+	SAMPLE
+	Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+	Detailed information and more samples can be found in the document.
+
+	-->
+	
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+
+<body>
+	<div id="container" class="effect mainnav-lg navbar-fixed footer-fixed">
+		
+		<!--NAVBAR-->
+		<!--===================================================-->
+		<header id="navbar">
+			<div id="navbar-container" class="boxed">
+
+				<!--Brand logo & name-->
+				<!--================================-->
+				<div class="navbar-header">
+					<a href="index.html" class="navbar-brand">
+                        <!--Logo-->
+						<img src="img/logo.png" alt="FMS Logo" class="brand-icon">
+                            <div class="brand-title">
+							<span class="brand-text">FMS</span>
+						</div>
+					</a>
+				</div>
+				<!--================================-->
+				<!--End brand logo & name-->
+
+
+				<!--Navbar Dropdown-->
+				<!--================================-->
+				<div class="navbar-content clearfix">
+					<ul class="nav navbar-top-links pull-left">
+
+						<!--Navigation toogle button-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<li class="tgl-menu-btn">
+							<a class="mainnav-toggle" href="#" title="Toggle Navigation Menu">
+								<i class="fa fa-navicon fa-lg"></i>
+							</a>
+						</li>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--End Navigation toogle button-->
+
+
+						<!--Messages Dropdown-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<li class="dropdown">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle" title="Messages">
+								<i class="fa fa-envelope fa-lg"></i>
+								<span class="badge badge-header badge-warning">9</span>
+							</a>
+
+							<!--Message dropdown menu-->
+							<div class="dropdown-menu dropdown-menu-md with-arrow">
+								<div class="pad-all bord-btm">
+									<p class="text-lg text-muted text-thin mar-no">You have 3 messages.</p>
+								</div>
+								<div class="nano scrollable">
+									<div class="nano-content">
+										<ul class="head-list">
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<img src="img/av2.png" alt="Profile Picture" class="img-circle img-sm">
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">Andy sent you a message</div>
+														<small class="text-muted">15 minutes ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<img src="img/av4.png" alt="Profile Picture" class="img-circle img-sm">
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">Lucy sent you a message</div>
+														<small class="text-muted">30 minutes ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<img src="img/av3.png" alt="Profile Picture" class="img-circle img-sm">
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">Jackson sent you a message</div>
+														<small class="text-muted">40 minutes ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<img src="img/av6.png" alt="Profile Picture" class="img-circle img-sm">
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">Donna sent you a message</div>
+														<small class="text-muted">5 hours ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<img src="img/av4.png" alt="Profile Picture" class="img-circle img-sm">
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">Lucy sent you a message</div>
+														<small class="text-muted">Yesterday</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<img src="img/av3.png" alt="Profile Picture" class="img-circle img-sm">
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">Jackson sent you a message</div>
+														<small class="text-muted">Yesterday</small>
+													</div>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<!--Dropdown footer-->
+								<div class="pad-all bord-top">
+									<a href="#" class="btn-link text-dark box-block">
+										<i class="fa fa-angle-right fa-lg pull-right"></i>Show All Messages
+									</a>
+								</div>
+							</div>
+						</li>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--End message dropdown-->
+
+
+
+
+						<!--Notification dropdown-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<li class="dropdown">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle" title="Alerts">
+								<i class="fa fa-bell fa-lg"></i>
+								<span class="badge badge-header badge-danger">5</span>
+							</a>
+
+							<!--Notification dropdown menu-->
+							<div class="dropdown-menu dropdown-menu-md with-arrow">
+								<div class="pad-all bord-btm">
+									<p class="text-lg text-muted text-thin mar-no">You have 3 messages.</p>
+								</div>
+								<div class="nano scrollable">
+									<div class="nano-content">
+										<ul class="head-list">
+
+											<!-- Dropdown list-->
+											<li>
+												<a href="#">
+													<div class="clearfix">
+														<p class="pull-left">Database Repair</p>
+														<p class="pull-right">70%</p>
+													</div>
+													<div class="progress progress-sm">
+														<div style="width: 70%;" class="progress-bar">
+															<span class="sr-only">70% Complete</span>
+														</div>
+													</div>
+												</a>
+											</li>
+
+											<!-- Dropdown list-->
+											<li>
+												<a href="#">
+													<div class="clearfix">
+														<p class="pull-left">Upgrade Progress</p>
+														<p class="pull-right">10%</p>
+													</div>
+													<div class="progress progress-sm">
+														<div style="width: 10%;" class="progress-bar progress-bar-warning">
+															<span class="sr-only">10% Complete</span>
+														</div>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<span class="icon-wrap icon-circle bg-primary">
+															<i class="fa fa-comment fa-lg"></i>
+														</span>
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">New comments waiting approval</div>
+														<small class="text-muted">15 minutes ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+											<span class="badge badge-success pull-right">90%</span>
+													<div class="media-left">
+														<span class="icon-wrap icon-circle bg-danger">
+															<i class="fa fa-hdd-o fa-lg"></i>
+														</span>
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">HDD is full</div>
+														<small class="text-muted">50 minutes ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<span class="icon-wrap bg-info">
+															<i class="fa fa-file-word-o fa-lg"></i>
+														</span>
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">Write a news article</div>
+														<small class="text-muted">Last Update 8 hours ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+											<span class="label label-danger pull-right">New</span>
+													<div class="media-left">
+														<span class="icon-wrap bg-purple">
+															<i class="fa fa-comment fa-lg"></i>
+														</span>
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">Comment Sorting</div>
+														<small class="text-muted">Last Update 8 hours ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<span class="icon-wrap bg-success">
+															<i class="fa fa-user fa-lg"></i>
+														</span>
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">New User Registered</div>
+														<small class="text-muted">4 minutes ago</small>
+													</div>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<!--Dropdown footer-->
+								<div class="pad-all bord-top">
+									<a href="#" class="btn-link text-dark box-block">
+										<i class="fa fa-angle-right fa-lg pull-right"></i>Show All Notifications
+									</a>
+								</div>
+							</div>
+						</li>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--End notifications dropdown-->
+
+
+
+
+
+					</ul>
+					<ul class="nav navbar-top-links pull-right">
+
+
+						<!--Vehicle List-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+						<li data-content="Vehicle List">
+                                                       
+                            <a id="demo-toggle-aside" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+								<span class="lang-selected">
+									<!--<img class="lang-flag" src="img/vechlist.png" alt="Vehicle Lists">-->
+                                    <i class="fa fa-building-o fa-lg"></i>
+									<span class="lang-id">LIST</span>
+									<span class="lang-name">Add Company</span>
+								</span>
+							</a>
+
+
+						</li>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--Vehicle List-->
+
+
+
+						<!--User dropdown-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<li id="dropdown-user" class="dropdown">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle text-right" title="Profile">
+								<span class="pull-right">
+									<img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture">
+								</span>
+								<div class="username hidden-xs">Anthony Agustin</div>
+							</a>
+
+
+							<div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+								<!-- Dropdown heading  -->
+								<div class="pad-all bord-btm">
+									<p class="text-lg text-muted text-thin mar-btm">750Gb of 1,000Gb Used</p>
+									<div class="progress progress-sm">
+										<div class="progress-bar" style="width: 70%;">
+											<span class="sr-only">70%</span>
+										</div>
+									</div>
+								</div>
+
+
+								<!-- User dropdown menu -->
+								<ul class="head-list">
+									<li>
+										<a href="profile.html">
+											<i class="fa fa-user fa-fw fa-lg"></i> Profile
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="badge badge-danger pull-right">9</span>
+											<i class="fa fa-envelope fa-fw fa-lg"></i> Messages
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="label label-success pull-right">New</span>
+											<i class="fa fa-gear fa-fw fa-lg"></i> Settings
+										</a>
+									</li>
+									<li>
+										<a href="faq.html">
+											<i class="fa fa-question-circle fa-fw fa-lg"></i> Help
+										</a>
+									</li>
+									<li>
+                                        <a href="http://103.237.168.119/fms/lock-screen.html">
+                                            <i class="fa fa-lock fa-fw fa-lg"></i> Lock screen
+                                        </a>
+									</li>
+								</ul>
+
+								<!-- Dropdown footer -->
+								<div class="pad-all text-right">
+									<a href="http://103.237.168.119/fms/" class="btn btn-primary">
+										<i class="fa fa-sign-out fa-fw"></i> Logout
+									</a>
+								</div>
+							</div>
+						</li>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--End user dropdown-->
+
+					</ul>
+				</div>
+				<!--================================-->
+				<!--End Navbar Dropdown-->
+
+			</div>
+		</header>
+		<!--===================================================-->
+		<!--END NAVBAR-->
+
+		<div class="boxed">
+
+			<!--CONTENT CONTAINER-->
+			<!--===================================================-->
+			<div id="content-container">
+				
+
+				<!--Page Title-->
+				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+				<!--<div id="page-title">-->
+
+
+				<!--Page content-->
+				<!--===================================================-->
+                 <div id="page-content">
+
+                   
+                        
+                            <div class="panel-body-full">
+                        
+                           <div class="panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">Companies</h3>
+						</div>
+						<div class="panel-body">
+							<table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Position</th>
+										<th class="min-tablet">Office</th>
+										<th class="min-tablet">Extn.</th>
+										<th class="min-desktop">Start date</th>
+										<th class="min-desktop">Salary</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Tiger Nixon</td>
+										<td>System Architect</td>
+										<td>Edinburgh</td>
+										<td>61</td>
+										<td>2011/04/25</td>
+										<td>$320,800</td>
+									</tr>
+									<tr>
+										<td>Garrett Winters</td>
+										<td>Accountant</td>
+										<td>Tokyo</td>
+										<td>63</td>
+										<td>2011/07/25</td>
+										<td>$170,750</td>
+									</tr>
+									<tr>
+										<td>Ashton Cox</td>
+										<td>Junior Technical Author</td>
+										<td>San Francisco</td>
+										<td>66</td>
+										<td>2009/01/12</td>
+										<td>$86,000</td>
+									</tr>
+									<tr>
+										<td>Cedric Kelly</td>
+										<td>Senior Javascript Developer</td>
+										<td>Edinburgh</td>
+										<td>22</td>
+										<td>2012/03/29</td>
+										<td>$433,060</td>
+									</tr>
+									<tr>
+										<td>Airi Satou</td>
+										<td>Accountant</td>
+										<td>Tokyo</td>
+										<td>33</td>
+										<td>2008/11/28</td>
+										<td>$162,700</td>
+									</tr>
+									<tr>
+										<td>Brielle Williamson</td>
+										<td>Integration Specialist</td>
+										<td>New York</td>
+										<td>61</td>
+										<td>2012/12/02</td>
+										<td>$372,000</td>
+									</tr>
+									<tr>
+										<td>Herrod Chandler</td>
+										<td>Sales Assistant</td>
+										<td>San Francisco</td>
+										<td>59</td>
+										<td>2012/08/06</td>
+										<td>$137,500</td>
+									</tr>
+									<tr>
+										<td>Rhona Davidson</td>
+										<td>Integration Specialist</td>
+										<td>Tokyo</td>
+										<td>55</td>
+										<td>2010/10/14</td>
+										<td>$327,900</td>
+									</tr>
+									<tr>
+										<td>Colleen Hurst</td>
+										<td>Javascript Developer</td>
+										<td>San Francisco</td>
+										<td>39</td>
+										<td>2009/09/15</td>
+										<td>$205,500</td>
+									</tr>
+									<tr>
+										<td>Sonya Frost</td>
+										<td>Software Engineer</td>
+										<td>Edinburgh</td>
+										<td>23</td>
+										<td>2008/12/13</td>
+										<td>$103,600</td>
+									</tr>
+									<tr>
+										<td>Jena Gaines</td>
+										<td>Office Manager</td>
+										<td>London</td>
+										<td>30</td>
+										<td>2008/12/19</td>
+										<td>$90,560</td>
+									</tr>
+									<tr>
+										<td>Quinn Flynn</td>
+										<td>Support Lead</td>
+										<td>Edinburgh</td>
+										<td>22</td>
+										<td>2013/03/03</td>
+										<td>$342,000</td>
+									</tr>
+									<tr>
+										<td>Charde Marshall</td>
+										<td>Regional Director</td>
+										<td>San Francisco</td>
+										<td>36</td>
+										<td>2008/10/16</td>
+										<td>$470,600</td>
+									</tr>
+									<tr>
+										<td>Haley Kennedy</td>
+										<td>Senior Marketing Designer</td>
+										<td>London</td>
+										<td>43</td>
+										<td>2012/12/18</td>
+										<td>$313,500</td>
+									</tr>
+									<tr>
+										<td>Tatyana Fitzpatrick</td>
+										<td>Regional Director</td>
+										<td>London</td>
+										<td>19</td>
+										<td>2010/03/17</td>
+										<td>$385,750</td>
+									</tr>
+									<tr>
+										<td>Michael Silva</td>
+										<td>Marketing Designer</td>
+										<td>London</td>
+										<td>66</td>
+										<td>2012/11/27</td>
+										<td>$198,500</td>
+									</tr>
+									<tr>
+										<td>Paul Byrd</td>
+										<td>Chief Financial Officer (CFO)</td>
+										<td>New York</td>
+										<td>64</td>
+										<td>2010/06/09</td>
+										<td>$725,000</td>
+									</tr>
+									<tr>
+										<td>Gloria Little</td>
+										<td>Systems Administrator</td>
+										<td>New York</td>
+										<td>59</td>
+										<td>2009/04/10</td>
+										<td>$237,500</td>
+									</tr>
+									<tr>
+										<td>Bradley Greer</td>
+										<td>Software Engineer</td>
+										<td>London</td>
+										<td>41</td>
+										<td>2012/10/13</td>
+										<td>$132,000</td>
+									</tr>
+									<tr>
+										<td>Dai Rios</td>
+										<td>Personnel Lead</td>
+										<td>Edinburgh</td>
+										<td>35</td>
+										<td>2012/09/26</td>
+										<td>$217,500</td>
+									</tr>
+									<tr>
+										<td>Jenette Caldwell</td>
+										<td>Development Lead</td>
+										<td>New York</td>
+										<td>30</td>
+										<td>2011/09/03</td>
+										<td>$345,000</td>
+									</tr>
+									<tr>
+										<td>Yuri Berry</td>
+										<td>Chief Marketing Officer (CMO)</td>
+										<td>New York</td>
+										<td>40</td>
+										<td>2009/06/25</td>
+										<td>$675,000</td>
+									</tr>
+									<tr>
+										<td>Caesar Vance</td>
+										<td>Pre-Sales Support</td>
+										<td>New York</td>
+										<td>21</td>
+										<td>2011/12/12</td>
+										<td>$106,450</td>
+									</tr>
+									<tr>
+										<td>Doris Wilder</td>
+										<td>Sales Assistant</td>
+										<td>Sidney</td>
+										<td>23</td>
+										<td>2010/09/20</td>
+										<td>$85,600</td>
+									</tr>
+									<tr>
+										<td>Angelica Ramos</td>
+										<td>Chief Executive Officer (CEO)</td>
+										<td>London</td>
+										<td>47</td>
+										<td>2009/10/09</td>
+										<td>$1,200,000</td>
+									</tr>
+									<tr>
+										<td>Gavin Joyce</td>
+										<td>Developer</td>
+										<td>Edinburgh</td>
+										<td>42</td>
+										<td>2010/12/22</td>
+										<td>$92,575</td>
+									</tr>
+									<tr>
+										<td>Jennifer Chang</td>
+										<td>Regional Director</td>
+										<td>Singapore</td>
+										<td>28</td>
+										<td>2010/11/14</td>
+										<td>$357,650</td>
+									</tr>
+									<tr>
+										<td>Brenden Wagner</td>
+										<td>Software Engineer</td>
+										<td>San Francisco</td>
+										<td>28</td>
+										<td>2011/06/07</td>
+										<td>$206,850</td>
+									</tr>
+									<tr>
+										<td>Fiona Green</td>
+										<td>Chief Operating Officer (COO)</td>
+										<td>San Francisco</td>
+										<td>48</td>
+										<td>2010/03/11</td>
+										<td>$850,000</td>
+									</tr>
+									<tr>
+										<td>Shou Itou</td>
+										<td>Regional Marketing</td>
+										<td>Tokyo</td>
+										<td>20</td>
+										<td>2011/08/14</td>
+										<td>$163,000</td>
+									</tr>
+									<tr>
+										<td>Michelle House</td>
+										<td>Integration Specialist</td>
+										<td>Sidney</td>
+										<td>37</td>
+										<td>2011/06/02</td>
+										<td>$95,400</td>
+									</tr>
+									<tr>
+										<td>Suki Burks</td>
+										<td>Developer</td>
+										<td>London</td>
+										<td>53</td>
+										<td>2009/10/22</td>
+										<td>$114,500</td>
+									</tr>
+									<tr>
+										<td>Prescott Bartlett</td>
+										<td>Technical Author</td>
+										<td>London</td>
+										<td>27</td>
+										<td>2011/05/07</td>
+										<td>$145,000</td>
+									</tr>
+									<tr>
+										<td>Gavin Cortez</td>
+										<td>Team Leader</td>
+										<td>San Francisco</td>
+										<td>22</td>
+										<td>2008/10/26</td>
+										<td>$235,500</td>
+									</tr>
+									<tr>
+										<td>Martena Mccray</td>
+										<td>Post-Sales support</td>
+										<td>Edinburgh</td>
+										<td>46</td>
+										<td>2011/03/09</td>
+										<td>$324,050</td>
+									</tr>
+									<tr>
+										<td>Unity Butler</td>
+										<td>Marketing Designer</td>
+										<td>San Francisco</td>
+										<td>47</td>
+										<td>2009/12/09</td>
+										<td>$85,675</td>
+									</tr>
+									<tr>
+										<td>Howard Hatfield</td>
+										<td>Office Manager</td>
+										<td>San Francisco</td>
+										<td>51</td>
+										<td>2008/12/16</td>
+										<td>$164,500</td>
+									</tr>
+									<tr>
+										<td>Hope Fuentes</td>
+										<td>Secretary</td>
+										<td>San Francisco</td>
+										<td>41</td>
+										<td>2010/02/12</td>
+										<td>$109,850</td>
+									</tr>
+									<tr>
+										<td>Vivian Harrell</td>
+										<td>Financial Controller</td>
+										<td>San Francisco</td>
+										<td>62</td>
+										<td>2009/02/14</td>
+										<td>$452,500</td>
+									</tr>
+									<tr>
+										<td>Timothy Mooney</td>
+										<td>Office Manager</td>
+										<td>London</td>
+										<td>37</td>
+										<td>2008/12/11</td>
+										<td>$136,200</td>
+									</tr>
+									<tr>
+										<td>Jackson Bradshaw</td>
+										<td>Director</td>
+										<td>New York</td>
+										<td>65</td>
+										<td>2008/09/26</td>
+										<td>$645,750</td>
+									</tr>
+									<tr>
+										<td>Olivia Liang</td>
+										<td>Support Engineer</td>
+										<td>Singapore</td>
+										<td>64</td>
+										<td>2011/02/03</td>
+										<td>$234,500</td>
+									</tr>
+									<tr>
+										<td>Bruno Nash</td>
+										<td>Software Engineer</td>
+										<td>London</td>
+										<td>38</td>
+										<td>2011/05/03</td>
+										<td>$163,500</td>
+									</tr>
+									<tr>
+										<td>Sakura Yamamoto</td>
+										<td>Support Engineer</td>
+										<td>Tokyo</td>
+										<td>37</td>
+										<td>2009/08/19</td>
+										<td>$139,575</td>
+									</tr>
+									<tr>
+										<td>Thor Walton</td>
+										<td>Developer</td>
+										<td>New York</td>
+										<td>61</td>
+										<td>2013/08/11</td>
+										<td>$98,540</td>
+									</tr>
+									<tr>
+										<td>Finn Camacho</td>
+										<td>Support Engineer</td>
+										<td>San Francisco</td>
+										<td>47</td>
+										<td>2009/07/07</td>
+										<td>$87,500</td>
+									</tr>
+									<tr>
+										<td>Serge Baldwin</td>
+										<td>Data Coordinator</td>
+										<td>Singapore</td>
+										<td>64</td>
+										<td>2012/04/09</td>
+										<td>$138,575</td>
+									</tr>
+									<tr>
+										<td>Zenaida Frank</td>
+										<td>Software Engineer</td>
+										<td>New York</td>
+										<td>63</td>
+										<td>2010/01/04</td>
+										<td>$125,250</td>
+									</tr>
+									<tr>
+										<td>Zorita Serrano</td>
+										<td>Software Engineer</td>
+										<td>San Francisco</td>
+										<td>56</td>
+										<td>2012/06/01</td>
+										<td>$115,000</td>
+									</tr>
+									<tr>
+										<td>Jennifer Acosta</td>
+										<td>Junior Javascript Developer</td>
+										<td>Edinburgh</td>
+										<td>43</td>
+										<td>2013/02/01</td>
+										<td>$75,650</td>
+									</tr>
+									<tr>
+										<td>Cara Stevens</td>
+										<td>Sales Assistant</td>
+										<td>New York</td>
+										<td>46</td>
+										<td>2011/12/06</td>
+										<td>$145,600</td>
+									</tr>
+									<tr>
+										<td>Hermione Butler</td>
+										<td>Regional Director</td>
+										<td>London</td>
+										<td>47</td>
+										<td>2011/03/21</td>
+										<td>$356,250</td>
+									</tr>
+									<tr>
+										<td>Lael Greer</td>
+										<td>Systems Administrator</td>
+										<td>London</td>
+										<td>21</td>
+										<td>2009/02/27</td>
+										<td>$103,500</td>
+									</tr>
+									<tr>
+										<td>Jonas Alexander</td>
+										<td>Developer</td>
+										<td>San Francisco</td>
+										<td>30</td>
+										<td>2010/07/14</td>
+										<td>$86,500</td>
+									</tr>
+									<tr>
+										<td>Shad Decker</td>
+										<td>Regional Director</td>
+										<td>Edinburgh</td>
+										<td>51</td>
+										<td>2008/11/13</td>
+										<td>$183,000</td>
+									</tr>
+									<tr>
+										<td>Michael Bruce</td>
+										<td>Javascript Developer</td>
+										<td>Singapore</td>
+										<td>29</td>
+										<td>2011/06/27</td>
+										<td>$183,000</td>
+									</tr>
+									<tr>
+										<td>Donna Snider</td>
+										<td>Customer Support</td>
+										<td>New York</td>
+										<td>27</td>
+										<td>2011/01/25</td>
+										<td>$112,000</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--===================================================-->
+					<!-- End Striped Table -->
+
+
+
+
+
+               
+			
+
+					
+				</div>
+
+                </div>
+				<!--===================================================-->
+				<!--End page content-->
+
+
+			<!--</div>-->
+			<!--===================================================-->
+			<!--END CONTENT CONTAINER-->
+
+            </div>
+
+			
+			<!--MAIN NAVIGATION-->
+			<!--===================================================-->
+			<nav id="mainnav-container">
+				<div id="mainnav">
+
+
+
+
+					<!--Menu-->
+					<!--================================-->
+					<div id="mainnav-menu-wrap">
+						<div class="nano">
+							<div class="nano-content">
+								<ul id="mainnav-menu" class="list-group">
+						
+									<!--Navigation name-->
+									<li class="list-header">Navigation</li>
+						
+									<!--Dashboard-->
+									<li>
+										<a href="index.html">
+											<i class="fa fa-dashboard fa-lg"></i>
+											<span class="menu-title">
+												<strong>Dashboard</strong>
+                                                <!--Notifications-->
+												<span class="label label-primary pull-right">Map</span>
+											</span>
+										</a>
+									</li>
+						
+									
+                					<!--Vehicles-->
+									<li> 
+                                    <a href="vehicles.html">
+                                    <i class="fa fa-truck fa-lg"></i>
+                                    <span class="menu-title">
+									<strong>Vehicles</strong>
+									</span></a>
+                                    </li>
+
+                                    <!--Zones-->
+									<li> 
+                                    <a href="zones.html">
+                                    <i class="fa fa-globe fa-lg"></i>
+                                    <span class="menu-title">
+									<strong>Zones</strong>
+									</span></a>
+                                    </li>
+						
+						
+									<li class="list-divider"></li>
+						
+									<!--Settings-->
+									<!--<li class="list-header">Settings</li>-->
+
+                                    <!--Submenu-->
+									
+                                    
+                                    <!--Reports-->
+									<li>
+										<a href="#">
+											<i class="ti-bar-chart fa-lg"></i>
+											<span class="menu-title">Reports</span>
+											<i class="fa arrow"></i>
+										</a>
+						
+										<!--Submenu-->
+										<ul class="collapse">
+											<li><a href="#"><i class="fa fa-file fa-lg"></i><span class="menu-title"> Positions</span></a></li>
+									        <li><a href="#"><i class="fa fa-file fa-lg"></i><span class="menu-title"> Mileage</span></a></li>
+                                            <li><a href="#"><i class="fa fa-file fa-lg"></i><span class="menu-title"> Trips</span></a></li>
+										</ul>
+									</li>	
+                                    
+                                    <li class="list-divider"></li>
+
+									<li>
+										<a href="#" title="Settings">
+											<i class="fa fa-gears fa-lg"></i>
+											<span class="menu-title">Settings</span>
+											<i class="fa arrow"></i>
+										</a>
+
+                                    <ul class="active">
+						
+									<!--Companies-->
+									<li class="active-link">
+										<a href="companies.html" title="Companies Page">
+											<i class="fa fa-building-o fa-lg"></i>
+											<span class="menu-title">Companies</span>
+										</a>														
+									</li>
+						
+									<!--Users-->
+									<li>
+										<a href="users.html" title="Users Page">
+											<i class="fa fa-users fa-lg"></i>
+											<span class="menu-title">Users</span>
+										</a>
+									</li>
+						
+									<!--Device-->
+									<li>
+										<a href="devices.html" title="Devices Page">
+											<i class="fa fa-tablet fa-lg"></i>
+											<span class="menu-title">Devices</span>
+										</a>
+									</li>
+						
+									<!--Menu list item-->
+									<li>
+										<a href="alerts.html" title="Alerts Page">
+											<i class="fa fa-warning fa-lg"></i>
+											<span class="menu-title">Alerts</span>
+										</a>
+									</li>
+
+
+                                    </ul>
+									
+                                    </li>
+									</ul>							
+							</div>
+						</div>
+					</div>
+					<!--================================-->
+					<!--End menu-->
+
+				</div>
+			</nav>
+			<!--===================================================-->
+			<!--END MAIN NAVIGATION-->
+			
+			<!--ASIDE-->
+			<!--===================================================-->
+			<aside id="aside-container">
+				<div id="aside">
+					<div class="nano">
+						<div class="nano-content">
+							
+							<!--Nav tabs-->
+							<!--================================-->
+
+                            <ul class="nav nav-tabs nav-justified">
+								<li class="active">
+									<a href="#demo-asd-tab-1" data-toggle="tab">
+										<i class="fa fa-building-o"></i>
+									</a>
+								</li>
+                                    <li>
+									<a href="#demo-asd-tab-2" data-toggle="tab">
+										<i class="fa fa-info-circle"></i>
+									</a>
+								</li>
+								<li>
+									<a href="#demo-asd-tab-3" data-toggle="tab">
+										<i class="fa fa-wrench"></i>
+									</a>
+								</li>
+                                </ul>	
+                            <!--================================-->
+
+							<!--================================-->
+							<!--End nav tabs-->
+
+                           
+
+							<!-- Tabs Content -->
+							<!--================================-->
+                            <div class="tab-content">
+
+                                <!--Add Vehicle tab -->
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <div class="tab-pane fade in active" id="demo-asd-tab-1">
+
+
+                                    <!--Forms-->
+                                    <form role="form">
+
+                                        <!--===================================================-->
+                                        <!--Enable/Disable-->
+                                        <!--<div class="form-group">
+                                                <div class=".text-normal">Enable/Disable</div>
+
+                                                <select class="selectpicker" data-width="100%" data-style="btn-success">
+                                                    <option>Enable</option>
+                                                     <option>Disable</option>
+                                                 </select>
+                                                 </div>-->
+                                      
+                                        <br />
+
+                                        <p />
+
+                                        <div class=".text-normal">
+                                            Enable/Disable
+                                            <span class="form-group pull-right">
+                                                <!--<small class="text-muted">Enable/Disable </small>-->
+                                                <input data-switchery="true" style="display: none;" id="demo-panel-w-switch" checked="" type="checkbox">
+
+                                            </span>
+                                        </div>
+                                     
+                                <br />
+
+                                <p />
+                                        <!--===================================================-->
+
+                                <!--===================================================-->
+                                <!--Name-->
+                                <div class="form-group">
+                                    <div class=".text-normal">Name</div>
+                                    <input type="text" id="demo-vs-scsinput" class="form-control" placeholder="Enter Name">
+                                </div>
+
+
+                                <!--===================================================-->
+                                <!--User Limit-->
+                                <div class="form-group">
+                                    <div class=".text-normal">User Limit</div>
+                                    <input type="text" id="txtUserLimit" class="form-control" placeholder="">
+                                </div>
+
+
+                                <!--===================================================-->
+                                <!--===================================================-->
+                                <!--Zone Limit-->
+                                <div class="form-group">
+                                    <div class=".text-normal">Zone Limit</div>
+                                    <input type="text" id="txtZoneLimit" class="form-control" placeholder="">
+                                </div>
+
+
+                                <!--===================================================-->
+                                <!--===================================================-->
+                                <!--Vehicle Limit-->
+                                <div class="form-group">
+                                    <div class=".text-normal">Vehicle Limit</div>
+                                    <input type="text" id="txtVehicleLimit" class="form-control" placeholder="">
+                                </div>
+
+
+                                <!--===================================================-->
+                                <!--===================================================-->
+                                <!--SMS Limit-->
+                                <div class="form-group">
+                                    <div class=".text-normal">SMS Limit</div>
+                                    <input type="text" id="txtSMSLimit" class="form-control" placeholder="">
+                                </div>
+
+
+                                <!--===================================================-->
+
+
+                                <hr>
+
+                                <!--Submit-->
+                                <span class="pull-right"><button type="submit" class="btn btn-success">Add</button></span>
+
+
+
+                                </form>
+                                <!--End Form-->
+
+
+                            </div>
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--End Add Vehicle tab (Contact list)-->
+
+
+
+                                <!--Second tab Information (Custom layout)-->
+								<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+								<div class="tab-pane fade" id="demo-asd-tab-2">
+
+
+                               <!--===================================================-->
+
+                               <!--Cetegories-->
+                                               <div class="form-group">
+                                               <div class=".text-normal">Categories</div>                                                                                   
+                                               <select class="selectpicker" multiple title="Choose one of the following..." data-live-search="true" data-width="100%" data-style="btn-success">
+                                                   <option>Car</option>
+                                                   <option>Van</option>
+                                                   <option>Truck</option>
+                                                   <option>Motorcycle</option>
+                                                   <option>Ship</option>
+                                                   <option>Train</option>
+                                                   <option>Mixer</option>
+                                                   <option>10t</option>
+                                                   <option>6t</option>
+                                                   <option>3.5t</option>
+                                                   <option>2.5t</option>
+                                                   <option>Lorry Crane</option>
+                                                   <option>Bus</option>
+                                                   <option>Recovery Veh</option>
+                                                   <option>Prime Mover</option>
+                                                   <option>Household</option>
+                                                   <option>Trailer</option>
+                                                   <option>Flatbed Truck</option>
+                                                   <option>Hooklift Truck</option>
+                                                   <option>Vacuum Truck</option>
+                                                   <option>Crane Truck</option>
+                                                   <option>Tipper Truck</option>
+                                                   <option>Reefer Truck</option>
+                                                   <option>Lorry</option>
+                                                   <option>10 Footer Lorry</option>
+                                                   <option>14 Footer Lorry</option>
+                                                   <option>Excavator</option>
+												</select> 
+                                                </div>
+
+                                <!--===================================================-->
+
+                                <!--Panel Categories-->
+
+                                <!--===================================================-->
+
+                                 <div id="demo-panel-ref" class="panel panel-colorful panel-dark">
+					
+								                <!--Panel heading-->
+								                <div class="panel-heading">
+									                <div class="panel-control">
+										                <button class="demo-panel-ref-btn btn btn-default" data-target="#demo-panel-ref" data-toggle="panel-overlay">
+											                <i class="fa fa-rotate-right fa-fw"></i> Refresh
+										                </button>
+										                <div class="btn-group">
+											                <button aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle btn btn-info">
+												                <i class="fa fa-gear fa-lg"></i>
+											                </button>
+											                <ul class="dropdown-menu dropdown-menu-right">
+												                <li><a href="#">Action</a></li>
+												                <li><a href="#">Another action</a></li>
+												                <li><a href="#">Something else here</a></li>
+												                <li class="divider"></li>
+												                <li><a href="#">Separated link</a></li>
+											                </ul>
+										                </div>
+									                </div>
+									               <!-- <h3 class="panel-title">CELL IDS</h3>-->
+								                </div>
+					
+								                <!--Panel body-->
+								                <div class="panel-body">
+									                <p>Test</p>
+								                </div>
+							                </div>
+
+                                <!--===================================================-->
+
+                                <hr>     
+
+                                <!--===================================================-->
+                                <!--Photo-->
+                                                                             		                                      
+									<div class="form-group">                                      
+                                         <a href="#" class="thumbnail" data-style="btn-success">
+                                             <img src="img/companies.png" class="img-responsive" alt="Vehicle" width="150" height="150">
+                                         </a>
+                                                
+                                    </div> 
+													                          
+                                <!--===================================================-->
+
+                                 <hr>          				
+						
+                               </div>
+
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--End Second tab Information (Custom layout)-->
+
+
+                                <!--Third tab Settings Vehicle tab (Contact list)-->
+								<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+								<div class="tab-pane fade" id="demo-asd-tab-3">
+
+
+
+                                 <!--===================================================-->
+
+                                                                               
+                                <!--===================================================-->
+
+                               <!--Enable Reports-->
+                                               <div class="form-group">
+                                               <div class=".text-normal">Enable Report</div>                                                                                   
+                                               <select class="selectpicker" multiple title="Choose one of the following..." data-live-search="true" data-width="100%" data-style="btn-success">
+                                                   <option>Events</option>
+                                                   <option>Positions</option>
+                                                   <option>Speed</option>
+                                                   <option>Utilization (Type 2)</option>
+                                                   <option>Zone Presence</option>
+                                                   <option>Mileage</option>
+                                                   <option>Cement Mixer</option>
+                                                   <option>Activities</option>
+                                                   <option>Trips</option>
+                                                   <option>Messages</option>
+                                                   <option>Initial Ignition</option>
+                                                   <option>Utilization (Type 1)</option>
+                                                   <option>Idling</option>
+                                                   <option>Travel Summary</option>
+                                                   <option>TripsZone</option>
+                                                   <option>User Activity</option>
+                                                   <option>Temperature</option>
+                                                   <option>Raw Data</option>
+                                                   <option>RFID</option>
+                                                   <option>Jobs</option>
+												</select> 
+                                                </div>
+                         
+
+                                <!--===================================================-->
+
+
+                                 <!--===================================================-->
+
+                                 <!--Panel Enable Reports-->
+
+                                               <div id="demo-panel-ref" class="panel panel-colorful panel-dark">
+					
+								                <!--Panel heading-->
+								                <div class="panel-heading">
+									                <div class="panel-control">
+										                <button class="demo-panel-ref-btn btn btn-default" data-target="#demo-panel-ref" data-toggle="panel-overlay">
+											                <i class="fa fa-rotate-right fa-fw"></i> Refresh
+										                </button>
+										                <div class="btn-group">
+											                <button aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle btn btn-info">
+												                <i class="fa fa-gear fa-lg"></i>
+											                </button>
+											                <ul class="dropdown-menu dropdown-menu-right">
+												                <li><a href="#">Action</a></li>
+												                <li><a href="#">Another action</a></li>
+												                <li><a href="#">Something else here</a></li>
+												                <li class="divider"></li>
+												                <li><a href="#">Separated link</a></li>
+											                </ul>
+										                </div>
+									                </div>
+									               <!-- <h3 class="panel-title">CELL IDS</h3>-->
+								                </div>
+					
+								                <!--Panel body-->
+								                <div class="panel-body">
+									                <p>Test</p>
+								                </div>
+							                </div>
+
+                               
+                                 <!--===================================================-->
+
+							</div>
+
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--End Settings Vehicle tab (Contact list)-->
+
+
+						</div>
+					</div>
+				</div>
+			</aside>
+			<!--===================================================-->
+			<!--END ASIDE-->
+
+		</div>	
+
+		<!-- FOOTER -->
+		<!--===================================================-->
+  <footer id="footer">
+
+            <!-- Visible when footer positions are fixed -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right">
+                <ul class="footer-list list-inline">
+
+                    
+                    <!--===================================================-->
+                    <!-- Engine Status Start-->
+
+                    <li>
+                        <span class="lang-selected" title="Engine Status Color When Vehicle is Moving">
+                            <span class="lang-name">
+                                <button class="btn btn-sm btn-success" disabled="disabled">Move</button>                          
+                            </span>
+                        </span>
+                    </li>
+                        
+
+                    <li>
+                        <span class="lang-selected" title="Engine Status Color When Vehicle is Idle">
+                            <span class="lang-name">
+                                <button class="btn btn-sm btn-warning" disabled="disabled">&nbsp;&nbsp;Idle&nbsp;&nbsp;</button>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected" title="Engine Status Color When Vehicle is Stop">
+                            <span class="lang-name">
+                                <button class="btn btn-sm btn-primary" disabled="disabled">&nbsp;Stop&nbsp;</button>
+                            </span>
+                        </span>
+                    </li>
+
+                        <!-- Engine Status End -->
+                        <!--===================================================-->
+
+
+
+
+                        <!--===================================================-->
+                        <!-- Traffic Legend Start-->
+                    <li>
+                        <span class="lang-selected" title="Traffic Status Color When Vehicle Is Moving More Than 80 km per hour">
+                            <span class="lang-name">
+                                <p class="text-sm">More than 80 km per hour</p>
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-success"></div>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected" title="Traffic Status Color When Vehicle Is Moving 40-80 km per hour">
+                            <span class="lang-name">
+                                <p class="text-sm">40-80 km per hour</p>
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-warning"></div>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected" title="Traffic Status Color When Vehicle Is Moving Less Than 40 km per hour">
+                            <span class="lang-name">
+                                <p class="text-sm">Less than 40 km per hour</p>
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-danger"></div>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <!-- Traffic Legend End -->
+                    <!--===================================================-->
+
+                    
+                    <!--===================================================-->
+                    <!-- Server Clock Start-->
+
+                        <li>
+                            <i class="fa fa-clock-o">&nbsp;</i> <div class="show-fixed pull-right pad-rgt" id="clockbox" title="Current Time"></div>                       
+                        </li>
+                    <!-- Server Clock End -->
+                    <!--===================================================-->
+
+
+                </ul>
+                
+            </div>
+
+        
+
+
+            <!-- Visible when footer positions are static -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right pad-rgt" id="clockbox"></div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+            <p class="pad-lft">&#0169; 2015 Fleet Management System</p>
+          
+
+
+
+        </footer>	
+		<!--===================================================-->
+		<!-- END FOOTER -->
+
+
+		<!-- SCROLL TOP BUTTON -->
+		<!--===================================================-->
+		<button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+		<!--===================================================-->
+
+
+
+	</div>
+	<!--===================================================-->
+	<!-- END OF CONTAINER -->
+
+
+	
+	
+	<!-- SETTINGS -->
+	<!--===================================================-->
+		<!--<div id="demo-set" class="demo-set">
+		<div class="demo-set-body bg-dark">
+			<div id="demo-set-alert"></div>
+			<div class="demo-set-content clearfix">
+				<div class="col-xs-6 col-lg-5">
+					<h4 class="mar-btm text-thin">Animations</h4>
+					<div id="demo-anim" class="mar-btm">
+						<label class="form-checkbox form-icon active">
+							<input type="checkbox" checked=""> Enable Animations
+						</label>
+					</div>
+					<p>Transition effects</p>
+					<select id="demo-ease">
+						<option value="effect" selected>ease (Default)</option>
+						<option value="easeInQuart">easeInQuart</option>
+						<option value="easeOutQuart">easeOutQuart</option>
+						<option value="easeInBack">easeInBack</option>
+						<option value="easeOutBack">easeOutBack</option>
+						<option value="easeInOutBack">easeInOutBack</option>
+						<option value="steps">Steps</option>
+						<option value="jumping">Jumping</option>
+						<option value="rubber">Rubber</option>
+					</select>
+					<hr>
+					<h4 class="mar-btm text-thin">Navigation</h4>
+					<div class="mar-btm">
+						<label id="demo-nav-fixed" class="form-checkbox form-icon">
+							<input type="checkbox"> Fixed Position
+						</label>
+					</div>
+					<label id="demo-nav-coll" class="form-checkbox form-icon">
+						<input type="checkbox"> Collapsed
+					</label>
+					<hr>
+					<h4 class="mar-btm text-thin">Off Canvas Navigation</h4>
+					<select id="demo-nav-offcanvas">
+						<option value="none" selected disabled="disabled">-- Select Mode --</option>
+						<option value="push">Push</option>
+						<option value="slide">Slide in on top</option>
+						<option value="reveal">Reveal</option>
+					</select>
+				</div>
+				<div class="col-xs-6 col-lg-4">
+					<h4 class="mar-btm text-thin">Aside</h4>
+					<div class="form-block">
+						<label id="demo-asd-vis" class="form-checkbox form-icon">
+							<input type="checkbox"> Visible
+						</label>
+						<label id="demo-asd-fixed" class="form-checkbox form-icon">
+							<input type="checkbox"> Fixed Position
+						</label>
+						<label id="demo-asd-align" class="form-checkbox form-icon">
+							<input type="checkbox"> Aside on the left side
+						</label>
+						<label id="demo-asd-themes" class="form-checkbox form-icon">
+							<input type="checkbox"> Bright Theme
+						</label>
+					</div>
+					<hr>
+					<h4 class="mar-btm text-thin">Header / Navbar</h4>
+					<label id="demo-navbar-fixed" class="form-checkbox form-icon">
+						<input type="checkbox"> Fixed Position
+					</label>
+					<hr>
+					<h4 class="mar-btm text-thin">Footer</h4>
+					<label id="demo-footer-fixed" class="form-checkbox form-icon">
+						<input type="checkbox"> Fixed Position
+					</label>
+				</div>
+				<div class="col-xs-12 col-lg-3">
+					<div id="demo-theme">
+						<div class="demo-theme-btn">
+							<h4 class="mar-btm text-thin">Color Themes</h4>
+							<a href="#" class="demo-theme demo-a-light" data-theme="theme-light" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-navy" data-theme="theme-navy" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-ocean" data-theme="theme-ocean" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-lime" data-theme="theme-lime" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-purple" data-theme="theme-purple" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-dust" data-theme="theme-dust" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-mint" data-theme="theme-mint" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-coffee" data-theme="theme-coffee" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-a-dark" data-theme="theme-dark" data-type="navbar">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+						</div>
+						<div class="demo-theme-btn">
+							<a href="#" class="demo-theme demo-b-light" data-theme="theme-light" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-navy" data-theme="theme-navy" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-ocean" data-theme="theme-ocean" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-lime" data-theme="theme-lime" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-purple" data-theme="theme-purple" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-dust" data-theme="theme-dust" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-mint" data-theme="theme-mint" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-coffee" data-theme="theme-coffee" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-b-dark" data-theme="theme-dark" data-type="brand">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+						</div>
+						<div class="demo-theme-btn">
+							<a href="#" class="demo-theme demo-c-light" data-theme="theme-light" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-navy" data-theme="theme-navy" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-ocean" data-theme="theme-ocean" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-lime" data-theme="theme-lime" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-purple" data-theme="theme-purple" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-dust" data-theme="theme-dust" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-mint" data-theme="theme-mint" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-coffee" data-theme="theme-coffee" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+							<a href="#" class="demo-theme demo-c-dark" data-theme="theme-dark" data-type="mainnav">
+								<div class="demo-theme-brand"></div>
+								<div class="demo-theme-head"></div>
+								<div class="demo-theme-nav"></div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pad-all text-left">
+				<p class="demo-set-save-text">* All settings will be saved automatically.</p>
+				<hr class="hr-sm">
+				<button id="demo-reset-settings" class="btn btn-primary">Restore Default Settings</button>
+			</div>
+		</div>
+		<button id="demo-set-btn" class="btn btn-sm"><i class="fa fa-cog fa-2x"></i></button>
+	</div>-->
+	<!--===================================================-->
+	<!-- END SETTINGS -->
+
+	
+	<!--JAVASCRIPT-->
+	<!--=================================================-->
+
+	<!--jQuery [ REQUIRED ]-->
+	<script src="js/jquery-2.1.1.min.js"></script>
+
+
+	<!--BootstrapJS [ RECOMMENDED ]-->
+	<script src="js/bootstrap.min.js"></script>
+
+
+    <!--Fast Click [ OPTIONAL ]-->
+	<script src="plugins/fast-click/fastclick.min.js"></script>
+
+	
+    <!--Demo script [ DEMONSTRATION ]-->
+	<script src="js/demo/nifty-demo.min.js"></script>
+	
+
+	<!-- Plugins [ OPTIONAL ]-->
+	<script src="js/plugins.min.js"></script>
+
+
+   <!-- Plugins [ OPTIONAL ]-->
+   <script src="js/switchery/switchery.min.js"></script>
+
+
+	<!--Bootstrap Select [ OPTIONAL ]-->
+	<script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+
+	<!--X-editable [ OPTIONAL ]-->
+	<script src="plugins/x-editable/js/bootstrap-editable.min.js"></script>
+
+
+	<!--Bootstrap Table [ OPTIONAL ]-->
+	<script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
+
+	<!--Bootstrap Table Extension [ OPTIONAL ]-->
+	<script src="plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+
+
+    <!--DataTables [ OPTIONAL ]-->
+	<script src="plugins/datatables/media/js/jquery.dataTables.js"></script>
+	<script src="plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+	<script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+
+    <!--Bootstrap Table Sample [ SAMPLE ]-->
+	<script src="js/demo/tables-bs-table.js"></script>
+    <script src="js/demo/tables-datatables.js"></script>
+
+
+    <!--Panel [ SAMPLE ]-->
+	<script src="js/demo/ui-panels.js"></script>
+
+	
+	<!--Server Time Clock [ OPTIONAL ]-->
+    <script src="js/servertime.js"></script>
+	
+	
+	<!--
+
+	REQUIRED
+	You must include this in your project.
+
+	RECOMMENDED
+	This category must be included but you may modify which plugins or components which should be included in your project.
+
+	OPTIONAL
+	Optional plugins. You may choose whether to include it in your project or not.
+
+	DEMONSTRATION
+	This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+	SAMPLE
+	Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+	Detailed information and more samples can be found in the document.
+
+	-->
+
+</body>
+</html>
+

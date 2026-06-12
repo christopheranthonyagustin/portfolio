@@ -1,0 +1,8 @@
+Nâng cấp 1.0.2(03-03-2017)
+
+
+
+Nâng cấp 1.0.1(02-02-2017)
+
+- Xóa lọc theo ngày trong trang Scheduled Jobs
+

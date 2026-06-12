@@ -1,0 +1,1629 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+    <meta name="Content-Type" content="text/html" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jobs Overview - Pest Control Management System</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <!--Roboto Font [ OPTIONAL ]-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+
+
+    <!--Home Page Stylesheet [ REQUIRED ]-->
+    <link href="css/content.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/generics.css" rel="stylesheet">
+
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--Switchery [ OPTIONAL ]-->
+    <link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+
+    <!--X-editable [ OPTIONAL ]-->
+    <!--<link href="plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">-->
+    <!--Datetime Picker [ OPTIONAL ]-->
+    <link href="plugins/datetimepicker/jquery.datetimepicker.css" rel="stylesheet">
+
+
+    <!--<link href="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">-->
+    <!-- loading jQuery UI css -->
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/flick/jquery-ui.css" />
+
+
+    <!--JS Panel [ OPTIONAL ]-->
+    <link href="plugins/jsPanel-bootstrap/jspanel/jquery.jspanel.min.css" rel="stylesheet">
+
+    <!--Localization-->
+    <link rel="stylesheet" href="css/localization.css">
+
+    <!--Lightbox [ OPTIONAL ]-->
+    <link href="plugins/lightbox/dist/ekko-lightbox.min.css" rel="stylesheet">
+
+    <!--Full Calendar [ OPTIONAL ]-->
+    <link href="plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <!--=================================================-->
+    <!--SCRIPT-->
+    <!--=================================================-->
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <link href="plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="plugins/pace/pace.min.js"></script>
+
+
+    <!-- Needs images, font... therefore can not be part of main.css -->
+    <link rel="stylesheet" href="fonts/themify-icons/themify-icons.min.css">
+    <link rel="stylesheet" href="fonts/weather-icons/css/weather-icons.min.css">
+
+    <style>
+
+        .fc-toolbar h2 {
+            margin: 0;
+            color: #FFF;
+        }
+
+        .ui-widget-overlay.custom-overlay {
+            background-color: black;
+            background-image: none;
+            opacity: 0.9;
+            z-index: 1040;
+        }
+
+        .scheduled {
+            color: #ffffff;
+            background-color: #3A87AD !important;
+            border-color : #3A87AD !important;
+        }
+
+         .inprogress {
+            color: #ffffff;
+            background-color: #feab34 !important;
+            border-color : #feab34 !important;
+        }
+
+        .new {
+            color: #ffffff;
+            background-color: #3A87AD  !important;
+            border-color : #3A87AD  !important;
+        }
+
+        .schedinprogress {
+            color: #ffffff;
+            background-color: #feab34 !important;
+            border-color : #feab34 !important;
+        }
+
+         .transferred {
+            color: #ffffff;
+            background-color: #3A87AD !important;
+            border-color : #3A87AD !important;
+        }
+
+        .completed {
+            color: #ffffff;
+            background-color: #8CC152 !important;
+            border-color : #8CC152 !important;
+        }
+
+        .incomplete {
+            color: #ffffff;
+            background-color: #b70000 !important;
+            border-color : #b70000 !important;
+        }
+
+    </style>
+
+    <!-- end Needs images -->
+    <!--
+        
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+
+
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+
+</head>
+
+<!--TIPS-->
+
+<body>
+
+    <!-- START OF CONTAINER -->
+    <div id="container" class="effect mainnav-lg aside-in navbar-fixed footer-fixed">
+            <!--NAVBAR-->
+            <!--===================================================-->
+            <header id="navbar">
+                <div id="navbar-container" class="boxed">
+
+                    <!--Brand logo & name-->
+                    <!--================================-->
+                    <div class="navbar-header">
+                        <a href="index.html" class="navbar-brand">
+                            <!--Logo-->
+                            <img src="img/logo.png" alt="Track Logo" class="brand-icon" id="showProfileCompany"> 
+
+                            <div class="brand-title">
+                                <span class="brand-text" id="titleCompany"></span>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <!--================================-->
+                    <!--End brand logo & name-->
+                    <!--Navbar Dropdown-->
+                    <!--================================-->
+                    <div class="navbar-content clearfix">
+
+                        <ul class="nav navbar-top-links pull-left">
+
+                            <!--Navigation toogle button-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li class="tgl-menu-btn">
+                                <a class="mainnav-toggle" href="#" title="Toggle Navigation Menu" id='toggleChart'>
+                                    <i class="fa fa-navicon fa-lg"></i>
+                                </a>
+                            </li>
+
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End Navigation toogle button-->
+                            <!--Language-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li class="dropdown hidden-xs">
+                                <label class="localize localization">
+                                    <select id="load-lang" class="icon-menu" onchange="document.documentElement.lang=this.value">
+                                        <option style="background-image:url(img/flags/united-kingdom.png);" value="en" selected="selected">English</option>
+                                        <option style="background-image:url(img/flags/thailand.png);" value="th">Thai</option>
+                                        <option style="background-image:url(img/flags/vietnam.png);" value="vn">Vietnam</option>
+                                        <option style="background-image:url(img/flags/indonesia.png);" value="id">Indonesia</option>
+                                    </select>
+                                </label>
+                            </li>
+
+                            <li class="history">
+                                <a id="historyReport" href="history.html" title="History">
+                                    <i class="fa fa-calendar-o fa-lg"></i>
+                                    <span class="menu-title">
+                                        &nbsp;
+                                        <!--Notifications-->
+                                        <span data-l11n="id" class="pull-right badge badge-primary" title="sejarah Laporan">Warta Historis</span>
+                                        <span data-l11n="vn" class="pull-right badge badge-primary" title="Bảng điều khiển">Lịch Sử Báo Cáo</span>
+                                        <span data-l11n="th" class="pull-right badge badge-primary">ประวัติศาสตร์ รายงาน</span>
+                                        <span data-l11n="" class="pull-right badge badge-primary">History Report</span>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="history hidden-xs hidden-sm hidden-md hidden-lg">
+                                <a id="historyReport" href="jobs.html" title="Jobs">
+                                    <i class="fa fa-exchange fa-lg"></i>
+                                    <span class="menu-title">
+                                        &nbsp;
+                                        <!--Notifications-->
+                                    <span id="job" class="pull-right badge badge-primary hidden-xs">Jobs</span>
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+
+                        <!--Vehicle List-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <ul class="nav navbar-top-links pull-right">
+
+                            <li class="hidden-xs" data-content="Vehicle List">
+
+                                <a id="toggle-aside" class="lang-selector dropdown-toggle hidden-xs" href="#" data-toggle="dropdown" title="Search">
+                                    <span class="lang-selected hidden-xs">
+                                        <span data-l11n class="lang-name hidden-xs"><i class="fa fa-search fa-lg"></i>&nbsp;&nbsp;Generate Jobs</span>
+                                    </span>
+                                </a>
+
+                            </li>
+
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--Vehicle List-->
+                            <!--User dropdown-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li id="dropdown-user" class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right" title="Profile">
+                                    <span class="pull-right">
+                                        <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture" id="showProfile">
+                                    </span>
+                                    <div class="username hidden-xs" id="load-username"></div>
+                                </a>
+
+
+                                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+                                    <!-- Dropdown heading  -->
+                                    <div class="pad-all bord-btm">
+                                        <p class="text-lg text-muted text-thin mar-btm" id="load-email"></p>
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar" style="width: 100%;">
+                                                <span class="sr-only">70%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- User dropdown menu -->
+                                    <ul class="head-list">
+                                        <li data-l11n="th">
+                                            <a href="profile.html">
+                                                <i class="fa fa-user fa-fw fa-lg"></i> ข้อมูลส่วนตัว
+                                            </a>
+
+                                        </li>
+
+                                        <li data-l11n="vn">
+                                            <a href="profile.html">
+                                                <i class="fa fa-user fa-fw fa-lg"></i> Tiểu Sử
+                                            </a>
+
+                                        </li>
+
+                                        <li data-l11n="id">
+                                            <a href="profile.html">
+                                                <i class="fa fa-user fa-fw fa-lg"></i> Profil
+                                            </a>
+
+                                        </li>
+
+                                        <li data-l11n>
+                                            <a href="profile.html">
+                                                <i class="fa fa-user fa-fw fa-lg"></i> Profile
+                                            </a>
+
+                                        </li>
+
+                                        <li data-l11n="th" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                            <a href="faq.html">
+                                                <i class="fa fa-question-circle fa-fw fa-lg"></i> ช่วย
+                                            </a>
+                                        </li>
+
+                                        <li data-l11n="vn" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                            <a href="faq.html">
+                                                <i class="fa fa-question-circle fa-fw fa-lg"></i> Trợ Giúp
+                                            </a>
+                                        </li>
+
+                                        <li data-l11n="id" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                            <a href="faq.html">
+                                                <i class="fa fa-question-circle fa-fw fa-lg"></i> Pembantuan
+                                            </a>
+                                        </li>
+
+                                        <li data-l11n class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                            <a href="faq.html">
+                                                <i class="fa fa-question-circle fa-fw fa-lg"></i> Help
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
+
+                                    <!-- Dropdown footer -->
+                                    <div class="pad-all text-right hidden-sm hidden-md hidden-lg">
+                                        <span data-l11n="id" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                            <i class="fa fa-sign-out fa-fw"></i> Keluar
+                                        </span>
+                                        <span data-l11n="vn" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                            <i class="fa fa-sign-out fa-fw"></i> Đăng xuất
+                                        </span>
+                                        <span data-l11n="th" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                            <i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ
+                                        </span>
+
+                                        <span data-l11n class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                            <i class="fa fa-sign-out fa-fw"></i> Logout
+                                        </span>
+                                    </div>
+
+
+
+                                </div>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End user dropdown-->
+                            <li data-content="Logout">
+
+                                <a class="lang-selector dropdown-toggle hidden-xs" href="#" data-target="#sm-modal" data-toggle="modal">
+                                    <span class="lang-selected hidden-xs">
+                                        <span data-l11n="id" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="Keluar"></i></span>
+                                        <span data-l11n="vn" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="Đăng xuất"></i></span>
+                                        <span data-l11n="th" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="ออกจากระบบ"></i></span>
+                                        <span data-l11n class="lang-name hidden-xs"><i class="fa fa-sign-out  fa-lg" title="Logout"></i></span>
+
+                                    </span>
+                                </a>
+
+                            </li>
+
+
+                        </ul>
+
+
+                    </div>
+                    <!--================================-->
+                    <!--End Navbar Dropdown-->
+                </div>
+            </header>
+            <!--===================================================-->
+            <!--END NAVBAR-->
+
+            <div class="boxed">
+
+                <!--CONTENT CONTAINER-->
+                <!--===================================================-->
+                <div id="content-container">
+
+
+                    <!--Page Title-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--<div id="page-title">-->
+                    <!--Page content-->
+                    <!--===================================================-->
+                    <!--MAP-->
+
+
+                    <div id="page-content">
+
+                        <div style="width: auto;margin: auto;overflow-x: auto;">
+                            <!-- <div id="loading"> -->
+                                <!-- <label style="top: 50%; position: relative"> -->
+                                    <!-- loading events.... -->
+                                <!-- </label> -->
+                            <!-- </div> -->
+                            <!-- <div id="fullcal"></div> -->
+                            <!-- <p /> -->
+							<table id="job-area-table" border="5" border-color="black"></table>
+                        </div>
+
+                        <div style="width: auto;margin: auto;overflow-x: auto;">
+                            <!-- <div id="loading"> -->
+                                <!-- <label style="top: 50%; position: relative"> -->
+                                    <!-- loading events.... -->
+                                <!-- </label> -->
+                            <!-- </div> -->
+                            <!-- <div id="fullcal"></div> -->
+                            <!-- <p /> -->
+							<table id="job-technician-table" border="5" border-color="black"></table>
+                        </div>
+
+                        <div class="panel-body-full">
+
+                            <div class="panel panel-bordered panel-dark">
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-calendar"></i>&nbsp; Jobs Overview</h4>
+
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+
+                                    <div id="custom-jobs">
+
+                                    </div>
+
+                                    <table id="jobs-editable"
+                                           data-height="400"
+                                           data-flat="false"
+                                           class="searchable table-striped"
+                                           data-click-to-select="false"
+                                           data-single-select="true"
+                                           data-toolbar="#custom-jobs"
+                                           data-show-header="true"
+                                           data-show-export="false"
+                                           data-show-filter="false"
+                                           data-search="true"
+                                           data-show-refresh="false"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false"></table>
+
+                                    <div class="pull-left hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <button id="job-confirm-deleteEN" class="btn btn-danger btn-labeled fa fa-times" title="Delete Record" disabled="">Delete</button>&nbsp;
+                                    </div>
+
+                                    <div id="buttonNew" class="pull-left hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <button class="btn btn-mint btn-labeled fa fa-exchange add-jobEN" title="Add Record" id="add">Add Job</button>
+                                    </div>
+
+                                    <div id="buttonEdit" class="pull-left">
+                                        <button class="btn btn-mint btn-labeled fa fa-exchange edit-jobEN" title="Edit Record" id="edit">Edit Job</button>
+                                    </div>
+
+                                    <button class="btn btn-mint btn-labeled fa fa-file-word-o pull-right" title="Export to Word" id="JobExportWordEN">MS Word</button>
+
+                                    <button class="btn btn-mint btn-labeled fa fa-file-pdf-o pull-right" title="Export to PDF" id="JobExportPDFEN">PDF</button>
+
+                                    <button class="btn btn-mint btn-labeled fa fa-file-excel-o pull-right" title="Export to Excel" id="JobExportExcelEN">Excel</button>
+
+                                </div>
+
+
+                               
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                    <!--===================================================-->
+
+
+
+                </div>
+
+                <!--MAIN NAVIGATION-->
+                <!--===================================================-->
+                <nav id="mainnav-container" style="position:fixed">
+                    <div id="mainnav">
+
+                        <!--Menu-->
+                        <!--================================-->
+                        <div id="mainnav-menu-wrap">
+                            <div class="nano">
+                                <div class="nano-content">
+
+                                    <ul id="mainnav-menu" class="list-group">
+
+                                        <!--Version-->
+                                        <li data-l11n="id" class="list-header">Versi&nbsp;<span id="verNumID" class="text-muted"></span></li>
+                                        <li data-l11n="vn" class="list-header">Phiên bản&nbsp;<span id="verNumVN" class="text-muted"></span></li>
+                                        <li data-l11n="th" class="list-header">รุ่น&nbsp;<span id="verNum" class="text-muted"></span></li>
+                                        <li data-l11n class="list-header">Version&nbsp;<span id="verNumEN" class="text-muted"></span></li>
+
+
+
+                                        <!--Dashboard-->
+                                        <li class="active-link">
+                                            <a href="index.html">
+                                                <i class="fa fa-dashboard fa-lg"></i>
+                                                <span class="menu-title">
+                                                    <strong data-l11n="id" title="Dasbor">Dasbor</strong>
+                                                    <strong data-l11n="vn" title="Bảng Diều Khiển">Bảng Theo Dõi</strong>
+                                                    <strong data-l11n="th">หน้าปัด</strong>
+                                                    <strong data-l11n>Dashboard</strong>
+                                                    <!--Notifications-->
+                                                    <span data-l11n="id" class="label label-primary pull-right">Peta</span>
+                                                    <span data-l11n="vn" class="label label-primary pull-right">bản đồ</span>
+                                                    <span data-l11n="th" class="label label-primary pull-right">แผนที่</span>
+                                                    <span data-l11n class="label label-primary pull-right">Map</span>
+
+                                                </span>
+
+                                            </a>
+                                        </li>
+
+                                        <li class="callcenter">
+                                            <a href="call_center.html">
+                                                <i class="fa fa-phone fa-lg"></i>
+                                                <span class="menu-title">
+                                                    <strong data-l11n="id">Call Center</strong>
+                                                    <strong data-l11n="vn">Trung Tâm Cuộc Gọi</strong>
+                                                    <strong data-l11n="th">ศูนย์รับแจ้ง</strong>
+                                                    <strong data-l11n>Call Center</strong>
+                                                </span>
+
+                                            </a>
+                                        </li>
+
+                                        <li class="maintenance">
+                                            <a href="maintenance.html">
+                                                <i class="fa fa-cog fa-lg"></i>
+                                                <span class="menu-title">
+                                                    <strong data-l11n="id">pemeliharaan</strong>
+                                                    <strong data-l11n="vn">bảo trì</strong>
+                                                    <strong data-l11n="th">ซ่อมบำรุง</strong>
+                                                    <strong data-l11n>Maintenance</strong>
+                                                </span>
+
+                                            </a>
+                                        </li>
+
+                                        <li class="inventory">
+                                            <a href="inventory.html">
+                                                <i class="fa fa-archive fa-lg"></i>
+                                                <span class="menu-title">
+                                                    <strong>Inventory</strong>
+                                                </span>
+                                            </a>
+                                        </li>
+
+                                        <li class="drivers">
+                                            <a href="drivers.html">
+                                                <i class="fa fa-user-plus fa-lg"></i>
+                                                <span class="menu-title">
+                                                    <strong data-l11n="id" title="Pengguna Telepon">Pengguna Telepon</strong>
+                                                    <strong data-l11n="vn" title="Người Sử Dụng Diện Thoại">ĐT Người Dùng</strong>
+                                                    <strong data-l11n="th">ไดร์เวอร์</strong>
+                                                    <strong data-l11n>Phone Users</strong>
+                                                </span>
+                                            </a>
+                                        </li>
+
+                                        <!--Vehicles-->
+                                        <li class="vehicles">
+                                            <a href="vehicles.html">
+                                                <i class="fa fa-mobile-phone fa-2x"></i>
+                                                <span class="menu-title">
+                                                    <strong data-l11n="id" title="Ponsel">Ponsel</strong>
+                                                    <strong data-l11n="vn" title="Điện thoại">Điện Thoại</strong>
+                                                    <strong data-l11n="th">ยานพาหนะ</strong>
+                                                    <strong data-l11n>Phones</strong>
+                                                </span>
+
+
+                                            </a>
+                                        </li>
+
+                                        <!--Zones-->
+                                        <li class="zones">
+                                            <a href="zones.html">
+                                                <i class="fa fa-globe fa-lg"></i>
+                                                <span class="menu-title">
+                                                    <strong data-l11n="id" title="Zona">Zona</strong>
+                                                    <strong data-l11n="vn" title="Vùng trang">Vùng</strong>
+                                                    <strong data-l11n="th">โซน</strong>
+                                                    <strong data-l11n>Zones</strong>
+                                                </span>
+
+                                            </a>
+                                        </li>
+
+                                        <li class="jobs">
+                                            <a href="jobs.html">
+                                                <i class="fa fa-exchange fa-lg"></i>
+                                                <span class="menu-title">
+                                                    <strong data-l11n="id">Tugas</strong>
+                                                    <strong data-l11n="vn">Lịch Trình Công Việc</strong>
+                                                    <strong data-l11n="th">โซน</strong>
+                                                    <strong data-l11n>Scheduled Jobs</strong>
+                                                </span>
+
+                                            </a>
+                                        </li>
+
+
+                                        <!--Settings-->
+                                        <!--<li class="list-header">Settings</li>-->
+
+
+                                        <li class="list-divider"></li>
+
+                                        <li data-l11n="th" class="settings">
+                                            <a href="#" title="การตั้งค่า">
+                                                <i class="fa fa-gears fa-lg"></i>
+                                                <span data-l11n="th" class="menu-title">การตั้งค่า</span>
+
+
+                                                <i class="fa arrow"></i>
+                                            </a>
+
+                                            <ul class="collapse">
+
+                                                <!--Companies-->
+                                                <li class="companies">
+                                                    <a href="companies.html" title="Companies Page">
+                                                        <i class="fa fa-building-o fa-lg"></i>
+                                                        <span data-l11n="th" class="menu-title">บริษัท</span>
+
+                                                    </a>
+                                                </li>
+
+                                                <!--Users-->
+                                                <li class="users">
+                                                    <a href="users.html" title="Users Page">
+                                                        <i class="fa fa-users fa-lg"></i>
+                                                        <span data-l11n="th" class="menu-title">ผู้ใช้</span>
+
+                                                    </a>
+                                                </li>
+
+
+                                                <!--Device-->
+                                                <li class="devices">
+                                                    <a href="devices.html" title="Devices Page">
+                                                        <i class="fa fa-tablet fa-lg"></i>
+                                                        <span data-l11n="th" class="menu-title">อุปกรณ์</span>
+
+                                                    </a>
+                                                </li>
+                                                <li class="reseller">
+                                                    <a href="reseller.html" title="Reseller Page">
+                                                        <i class="fa fa-user-secret fa-lg"></i>
+                                                        <span data-l11n="th" class="menu-title">ผู้ค้าปลีก</span>
+
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+                                        </li>
+
+                                        <li data-l11n class="settings">
+                                            <a href="#" title="Settings">
+                                                <i class="fa fa-gears fa-lg"></i>
+
+                                                <span data-l11n class="menu-title">Settings</span>
+
+
+                                                <i class="fa arrow"></i>
+                                            </a>
+
+                                            <ul class="collapse">
+
+                                                <!--Companies-->
+                                                <li class="companies">
+                                                    <a href="companies.html" title="Companies Page">
+                                                        <i class="fa fa-building-o fa-lg"></i>
+
+                                                        <span data-l11n class="menu-title">Companies</span>
+
+                                                    </a>
+                                                </li>
+
+                                                <!--Users-->
+                                                <li class="users">
+                                                    <a href="users.html" title="Users Page">
+                                                        <i class="fa fa-users fa-lg"></i>
+
+                                                        <span data-l11n class="menu-title">Users</span>
+
+                                                    </a>
+                                                </li>
+
+
+                                                <!--Device-->
+                                                <li class="devices">
+                                                    <a href="devices.html" title="Devices Page">
+                                                        <i class="fa fa-tablet fa-lg"></i>
+
+                                                        <span data-l11n class="menu-title">Devices</span>
+                                                    </a>
+                                                </li>
+                                                <li class="reseller">
+                                                    <a href="reseller.html" title="Reseller Page">
+                                                        <i class="fa fa-user-secret fa-lg"></i>
+
+                                                        <span data-l11n class="menu-title">Reseller</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+                                        </li>
+                                        <li data-l11n="vn" class="settings">
+                                            <a href="#" title="Cài đặt">
+                                                <i class="fa fa-gears fa-lg"></i>
+                                                <span data-l11n="vn" class="menu-title">Cài đặt</span>
+
+
+                                                <i class="fa arrow"></i>
+                                            </a>
+
+                                            <ul class="collapse">
+
+                                                <!--Companies-->
+                                                <li class="companies">
+                                                    <a href="companies.html" title="công ty trang">
+                                                        <i class="fa fa-building-o fa-lg"></i>
+                                                        <span data-l11n="vn" class="menu-title">Công Ty</span>
+
+                                                    </a>
+                                                </li>
+
+                                                <!--Users-->
+                                                <li class="users">
+                                                    <a href="users.html" title="người dùng trang">
+                                                        <i class="fa fa-users fa-lg"></i>
+                                                        <span data-l11n="vn" class="menu-title">Người Sử Dụng</span>
+
+                                                    </a>
+                                                </li>
+
+
+                                                <!--Device-->
+                                                <li class="devices">
+                                                    <a href="devices.html" title="trang thiết bị">
+                                                        <i class="fa fa-tablet fa-lg"></i>
+                                                        <span data-l11n="vn" class="menu-title">Thiết Bị</span>
+
+                                                    </a>
+                                                </li>
+                                                <li class="reseller">
+                                                    <a href="reseller.html" title="Đại lý bán lẻ trang">
+                                                        <i class="fa fa-user-secret fa-lg"></i>
+                                                        <span data-l11n="vn" class="menu-title">Người Bán Lại</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+
+                                        <li data-l11n="id" class="settings">
+                                            <a href="#" title="Pengaturan">
+                                                <i class="fa fa-gears fa-lg"></i>
+                                                <span data-l11n="id" class="menu-title">Pengaturan</span>
+
+
+                                                <i class="fa arrow"></i>
+                                            </a>
+
+                                            <ul class="collapse">
+
+                                                <!--Companies-->
+                                                <li class="companies">
+                                                    <a href="companies.html" title="Perusahaan">
+                                                        <i class="fa fa-building-o fa-lg"></i>
+                                                        <span data-l11n="id" class="menu-title">Perusahaan</span>
+
+                                                    </a>
+                                                </li>
+
+                                                <!--Users-->
+                                                <li class="users">
+                                                    <a href="users.html" title="Pengguna">
+                                                        <i class="fa fa-users fa-lg"></i>
+                                                        <span data-l11n="id" class="menu-title">Pengguna</span>
+
+                                                    </a>
+                                                </li>
+
+
+                                                <!--Device-->
+                                                <li class="devices">
+                                                    <a href="devices.html" title="Perangkat">
+                                                        <i class="fa fa-tablet fa-lg"></i>
+                                                        <span data-l11n="id" class="menu-title">Perangkat</span>
+
+                                                    </a>
+                                                </li>
+                                                <li class="reseller">
+                                                    <a href="reseller.html" title="Pengecer">
+                                                        <i class="fa fa-user-secret fa-lg"></i>
+                                                        <span data-l11n="id" class="menu-title">Pengecer</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                    </ul>
+
+                                    <br />
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <!--================================-->
+                        <!--End menu-->
+
+                    </div>
+                </nav>
+
+
+
+                <!--===================================================-->
+                <!--END MAIN NAVIGATION-->
+                <!--ASIDE-->
+                <!--===================================================-->
+                <aside id="aside-container">
+                    <div id="aside">
+                        <div class="nano">
+                            <div class="nano-content">
+
+                                <!--Navigation Tabs Turnoff-->
+                                <!--Nav tabs-->
+                                <!--================================-->
+                                <!--<ul class="nav nav-tabs nav-justified">
+                                <li class="active">
+                                    <a href="#vehicle-list" data-toggle="tab">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                </li>	-->
+                                <!--================================-->
+
+                                <br />
+                                <!--================================-->
+                                <!--End nav tabs-->
+                                <!--<form>-->
+                                <!-- Tabs Content -->
+                                <!--================================-->
+                                <div class="tab-content">
+
+                                    <!--First tab (Contact list)-->
+                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                    <div class="tab-pane fade in active" id="vehicle-list">
+
+                                        <!--Company-->
+                                        <!-- Bootstrap Select with Search Input -->
+                                        <!--===================================================-->
+
+                                        <div class="form-group" id="formsReseller">
+                                            <div data-l11n="id" class=".text-normal">Pengecer</div>
+                                            <div data-l11n="vn" class=".text-normal">Người Bán Lại</div>
+                                            <div data-l11n="th" class=".text-normal">ผู้ค้าปลีก</div>
+                                            <div data-l11n class=".text-normal">Reseller</div>
+                                            <select class="selectpicker SelectResellerFilter" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="load-reseller" name="load-reseller"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <div data-l11n="vn" class=".text-normal">Công Ty</div>
+                                            <div data-l11n="id" class=".text-normal">Perusahaan</div>
+                                            <div data-l11n="th" class=".text-normal">บริษัท</div>
+                                            <div data-l11n class=".text-normal">Company</div>
+                                            <select class="selectpicker SelectCompanyFilter" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="load-company" name="load-company"></select>
+                                        </div>
+
+                                        <!--===================================================-->
+                                        <!--Vehicle-->
+
+                                        <div class="form-group vehicle" id="historyAssets">
+                                            <div data-l11n="id" class=".text-normal">Ponsel</div>
+                                            <div data-l11n="vn" class=".text-normal">Điện Thoại</div>
+                                            <div data-l11n="th" class=".text-normal">โทรศัพท์</div>
+                                            <div data-l11n class=".text-normal">Phones</div>
+                                            <!--<select class="selectpicker select-vehicle-filter" data-live-search="true" data-width="100%" data-style="btn-success" id="load-assets" name="load-assets" data-table="searchable"></select>-->
+                                            <select class="selectpicker SelectAsset" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="load-assets" name="load-assets" data-table="searchable">
+                                                <!--<option value="" selected="selected">ALL</option>-->
+                                            </select>
+                                            <!--<small class="text-muted">Auto close on select</small>-->
+                                        </div>
+
+                                        <div class="form-group vehicle" id="categoryDiv">
+                                            <div class=".text-normal">Category</div>
+                                            <!--<select class="selectpicker select-vehicle-filter" data-live-search="true" data-width="100%" data-style="btn-success" id="load-assets" name="load-assets" data-table="searchable"></select>-->
+                                            <select class="selectpicker SelectCategory" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="load-category" name="load-category" data-table="searchable">
+                                                <option value="0" selected="selected">No Category Selected</option>
+                                                <option value="1" selected="selected">Area</option>
+                                                <option value="2" selected="selected">Technician</option>
+                                            </select>
+                                            <!--<small class="text-muted">Au to close on select</small>-->
+                                        </div>
+
+
+                                        <hr />
+                                        <!--===================================================-->
+                                        <!--Date Filter-->
+                                        <!--===================================================-->
+                                        <!--Date Time Alert-->
+
+
+                                        <div>
+                                            <div class="input-group date">
+                                                <input id="dateFrom" type="text" class="form-control" placeholder="DD-MMM-YYYY HH:MM">
+                                                <span class="input-group-addon btn-asiacomDateFilter"><i class="fa fa-calendar fa-xs"></i></span>
+                                            </div>
+                                            <small data-l11n="vn" class="text-muted pull-left">Từ</small>
+                                            <small data-l11n="id" class="text-muted pull-left">Dari</small>
+                                            <small data-l11n="th" class="text-muted pull-left">จาก</small>
+                                            <small data-l11n class="text-muted pull-left">From</small>
+                                        </div>
+                                        <br />
+
+
+
+                                        <!--===================================================-->
+
+                                        <div class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                            <div class="input-group date">
+                                                <input id="dateTo" type="text" class="form-control" placeholder="DD-MMM-YYYY HH:MM">
+                                                <span class="input-group-addon btn-asiacomDateFilter"><i class="fa fa-calendar fa-xs"></i></span>
+                                            </div>
+                                            <small data-l11n="vn" class="text-muted pull-left">Đến</small>
+                                            <small data-l11n="id" class="text-muted pull-left">Ke</small>
+                                            <small data-l11n="th" class="text-muted pull-left">ไปยัง</small>
+                                            <small data-l11n class="text-muted pull-left">To</small>
+                                        </div>
+                                        <!--===================================================-->
+                                        <br />
+
+                                        <hr>
+
+                                        <div class="pull-right">
+
+                                            <button class="btn btn-primary" title="Refresh" id="clickGenerateEN" value="clickGenerateEN" onclick="GenerateEN();">
+                                                <i class="fa fa-refresh fa-fw"></i> Refresh
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                    <!--End first tab (Contact list)-->
+
+
+                                </div>
+
+
+                                <!--</form>-->
+
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                <!--===================================================-->
+                <!--END ASIDE-->
+
+            </div>
+
+            <!-- FOOTER -->
+            <!--===================================================-->
+            <footer id="footer">
+
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!-- Visible when footer positions are fixed -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <div class="show-fixed pull-right">
+                    <ul class="footer-list list-inline">
+                        <li>
+                            <div class="lang-selected">
+                                <div class="lang-name">
+                                    <p id="new" class="text-sm" title="New Jobs">New Jobs</p>
+                                    <div class="progress progress-sm progress-light-base">
+                                        <div style="width: 100%; background-color:#3A87AD" class="progress-bar progress-bar-success"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lang-selected">
+                                <div class="lang-name">
+                                    <p id="inprogress" class="text-sm" title="In Progress">In Progress</p>
+                                    <div class="progress progress-sm progress-light-base">
+                                        <div style="width: 100%; background-color:#feab34" class="progress-bar progress-bar-warning"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lang-selected">
+                                <div class="lang-name">
+                                    <p id="completed" class="text-sm" title="Completed">Completed</p>
+                                    <div class="progress progress-sm progress-light-base">
+                                        <div style="width: 100%; background-color:#8CC152" class="progress-bar progress-bar-logout"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+
+                            <i class="fa fa-clock-o hidden-xs">&nbsp;</i> <div class="show-fixed pull-right pad-rgt hidden-xs" id="clockbox" title="Current Time"></div>
+
+                        </li>
+                        <!-- Server Clock End -->
+                        <!--===================================================-->
+
+                    </ul>
+
+                </div>
+
+               
+
+                <!-- Visible when footer positions are static -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <div class="show-fixed pull-right pad-rgt" id="clockbox"></div>
+
+
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                <span data-l11n="vn" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - Hệ Thống Quản Lý Phương Tiện</span>
+                <span data-l11n="id" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - Sistem Manajemen Armada</span>
+                <span data-l11n="th" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - ระบบการจัดการ กองทัพเรือ</span>
+                <span data-l11n class="pad-lft hidden-xs hidden-md"><span id="softwareEN"></span>&nbsp;&#0169; 2017 - Pest Control Management System</span>
+
+            </footer>
+            <!--===================================================-->
+            <!-- END FOOTER -->
+            <!-- SCROLL TOP BUTTON -->
+            <!--===================================================-->
+            <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+            <!--===================================================-->
+
+        </div>
+        <!--===================================================-->
+        <!-- END OF CONTAINER -->
+        <!-- BOOTSTRAP MODALS-->
+        <!--====================================================-->
+        <!--Logout Small Bootstrap Modal-->
+        <!--===================================================-->
+    <div id="sm-modal" class="modal fade" tabindex="-1" style="color: #2F343B;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <div data-l11n="th" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;ระบบการจัดการ กองทัพเรือ</i></div>
+                    <div data-l11n="vn" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Hệ Thống Quản Lý Dội Tàu</i></div>
+                    <div data-l11n="id" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Sistem Manajemen Armada</i></div>
+                    <div data-l11n class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Pest Control Management System</i></div>
+                </div>
+                <div class="modal-body">
+                    <p data-l11n="th" class=".text-normal">ดำเนินการ ออกจากระบบ ?</p>
+                    <p data-l11n="id" class=".text-normal">Lanjutkan Keluar?</p>
+                    <p data-l11n="vn" class=".text-normal">Tiếp Tục Đăng Xuất ?</p>
+                    <p data-l11n class=".text-normal">Proceed to Logout?</p>
+
+                    <button class="btn btn-success btn-labeled fa fa-check fa-lg pull-right" title="Submit" onclick="LogoutEN();" id="clickLogoutEN">Ok</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+        <!--===================================================-->
+        <!-- Logout End Small Bootstrap Modal-->
+
+
+        <div class="modal fade darker" id="TableFormNew" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background: rgba(0, 0, 0, 0.68) none repeat scroll 0 0;">
+                    <div class="modal-header">
+                        <h2 id="addform" class="modal-title" style="color:white;"><i class="fa fa-exchange"></i>&nbsp;Add Job</h2>
+                        <h2 id="editform" style="display: none; color: white;" class="modal-title"><i class="fa fa-exchange"></i>&nbsp;Edit Job</h2>
+                    </div>
+                    <div class="modal-body m-l-20 m-r-20">
+                        <div id="formnew" class="row form-columned">
+                            <div class="data">
+								<div class="col-md-6 p-t-15" style="margin-top:5px;">
+                                    <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control hidden-xs hidden-sm hidden-md hidden-lg" id="jobid" name="jobid" placeholder="Job id">
+                                    <label for="date" id="scheduletime">Scheduled Time</label>
+                                    <input type="text" autocomplete="off" class="datetimepicker input-focused m-b-10 m-t-10 input-sm form-control" id="date" name="date" placeholder="DD/MM/YYYY">
+                                </div>
+
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="case" id="jobNumber">Job Number</label>
+                                    <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="case" name="case" placeholder="Case Number" disabled="disabled">
+                                </div>
+
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="destination" id="addressName">Address</label>
+                                    <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="destination" name="destination" placeholder="Destination">
+                                </div>
+
+                                <div class="col-md-3 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="unit" id="unitName">Unit</label>
+                                    <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="unit" name="unit" placeholder="Unit">
+                                </div>
+
+                                <div class="col-md-3 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="unit" id="postalCode">Postal</label>
+                                    <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="postal" name="postal" placeholder="Postal">
+                                </div>
+
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="company-destination" id="companyName">Company</label>
+                                    <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="company-destination" name="company-destination" placeholder="Company">
+                                </div>
+
+                                <div class="col-md-3 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="pic" id="picName">Person In Charge</label>
+                                    <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="pic" name="pic" placeholder="Customer Name">
+                                </div>
+
+                                <div class="col-md-3 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="phone" id="contactNumber">Contact Number</label>
+                                    <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="phone" name="phone" placeholder="Customer Contact">
+                                </div>
+
+
+                                <div class="col-md-12 m-b-10 p-t-15" style="margin-top:5px;">
+                                  
+                                </div>
+
+
+                                <div class="col-md-12 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="remarks" id="remarksCo">Remarks</label>
+                                    <div class="form-group">
+                                        <textarea rows="4" class="form-control" placeholder="Remarks" name="remarks" id="remarks" data-by-field="remarks"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="driver" id="phoneUser">Phone User</label>
+                                    <div class="form-group">
+                                        <select title="Select Phone User..." style="display: none;" class="selectpicker" data-dropup-auto="false" data-live-search="true" data-width="100%" data-style="btn-dark" id="driver"></select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                    <label for="amount" id="jobAmount">Amount</label>
+                                    <div class="form-group">
+                                        <input id="amount" type="text" placeholder="" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modalReseller">
+                                    <label for="jobReseller" id="resellerName">Reseller:</label>
+                                    <select class="selectpicker SelectResellerFilter" data-live-search="true" data-width="100%" data-style="btn-dark" id="jobReseller" name="jobReseller"></select>
+                                </div>
+                                <br  />
+                                <div class="col-md-6 m-b-10 p-t-15 hidden-lg hidden-md hidden-sm hidden-xs" style="margin-top:5px;">
+                                    <label for="jobCompany">Company:</label>
+                                    <select class="selectpicker MobileSelectCompanyFilter" data-live-search="true" data-width="100%" data-style="btn-dark" id="jobCompany" name="jobCompany"></select>
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15 hidden-lg hidden-md hidden-sm hidden-xs" style="margin-top:5px;">
+                                    <label for="jobAssets">Vehicle:</label>
+                                    <select class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-dark" id="jobAssets" name="jobAssets" disabled="disabled"></select>
+                                </div>
+
+
+
+
+                                <div class="col-md-12"></div>
+                                <div class="pull-right m-t-20" style="margin-right:7px;">
+                                    <button type="submit" data-backdrop="static" class="create btn btn-md btn-success" id="submit-job"><i class="fa fa-check fa-fw"></i>Save</button>
+                                    <button data-dismiss="modal" class="btn btn-md btn-danger" id="cancel-job"><i class="fa fa-times fa-fw"></i>Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="modal fade darker" id="TableFormCalender" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: rgba(0, 0, 0, 0.68) none repeat scroll 0 0;">
+                <div class="modal-header">
+                    <h2 id="cal-editform" class="modal-title" style="color:white;"><i class="fa fa-exchange"></i>&nbsp;Edit Job</h2>
+                </div>
+                <div class="modal-body m-l-20 m-r-20">
+                    <div id="formnew" class="row form-columned">
+                        <div class="data">
+                            <div class="col-md-6 p-t-15" style="margin-top:5px;">
+                                <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control hidden-xs hidden-sm hidden-md hidden-lg" id="cal-jobid" name="cal-jobid" placeholder="Job id">
+                                <label for="cal-date" id="scheduletime">Scheduled Time</label>
+                                <input type="text" autocomplete="off" class="datetimepicker input-focused m-b-10 m-t-10 input-sm form-control" id="cal-date" name="date" placeholder="DD/MM/YYYY">
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="cal-case" id="jobNumber">Job Number</label>
+                                <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="cal-case" name="case" placeholder="Case Number" disabled="disabled">
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="cal-destination" id="addressName">Address</label>
+                                <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="cal-destination" name="destination" placeholder="Destination">
+                            </div>
+
+                            <div class="col-md-3 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="cal-unit" id="unitName">Unit</label>
+                                <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="cal-unit" name="unit" placeholder="Unit">
+                            </div>
+
+                            <div class="col-md-3 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="cal-postal" id="postalCode">Postal</label>
+                                <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="cal-postal" name="postal" placeholder="Postal">
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="cal-company-destination" id="companyName">Company</label>
+                                <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="cal-company-destination" name="company-destination" placeholder="Company">
+                            </div>
+
+                            <div class="col-md-3 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="cal-pic" id="picName">Person In Charge</label>
+                                <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="cal-pic" name="pic" placeholder="Customer Name">
+                            </div>
+
+                            <div class="col-md-3 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="cal-phone" id="contactNumber">Contact Number</label>
+                                <input type="text" autocomplete="off" class="input-focused m-b-10 m-t-10 input-sm form-control" id="cal-phone" name="phone" placeholder="Customer Contact">
+                            </div>
+
+
+                            <div class="col-md-12 m-b-10 p-t-15" style="margin-top:5px;">
+
+                            </div>
+
+
+                            <div class="col-md-12 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="cal-remarks" id="remarksCo">Remarks</label>
+                                <div class="form-group">
+                                    <textarea rows="4" class="form-control" placeholder="Remarks" name="remarks" id="cal-remarks" data-by-field="remarks"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="cal-driver" id="phoneUser">Phone User</label>
+                                <div class="form-group">
+                                    <select title="Select Phone User..." style="display: none;" class="selectpicker" data-dropup-auto="false" data-live-search="true" data-width="100%" data-style="btn-dark" id="cal-driver"></select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="cal-amount" id="jobAmount">Amount</label>
+                                <div class="form-group">
+                                    <input id="cal-amount" type="text" placeholder="" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="cal-modalReseller">
+                                <label for="cal-jobReseller" id="resellerName">Reseller:</label>
+                                <select class="selectpicker SelectResellerFilter" data-live-search="true" data-width="100%" data-style="btn-dark" id="cal-jobReseller" name="cal-jobReseller"></select>
+                            </div>
+                            <br />
+                            <div class="col-md-6 m-b-10 p-t-15 hidden-lg hidden-md hidden-sm hidden-xs" style="margin-top:5px;">
+                                <label for="cal-jobCompany">Company:</label>
+                                <select class="selectpicker MobileSelectCompanyFilter" data-live-search="true" data-width="100%" data-style="btn-dark" id="cal-jobCompany" name="cal-jobCompany"></select>
+                            </div>
+                            <div class="col-md-6 m-b-10 p-t-15 hidden-lg hidden-md hidden-sm hidden-xs" style="margin-top:5px;">
+                                <label for="cal-jobAssets">Vehicle:</label>
+                                <select class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-dark" id="cal-jobAssets" name="cal-jobAssets" disabled="disabled"></select>
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15 hidden-lg hidden-md hidden-sm hidden-xs" style="margin-top:5px;">
+                                <label for="cal-jobStatus">Job Status:</label>
+                                <input id="cal-jobStatus" type="text" placeholder="JobStatus" class="form-control">
+                            </div>
+
+
+                            <div class="col-md-12"></div>
+                            <div class="pull-right m-t-20" style="margin-right:7px;">
+                                <button type="submit" data-backdrop="static" class="create btn btn-md btn-success" id="cal-submit-job"><i class="fa fa-check fa-fw"></i>Save</button>
+                                <button data-dismiss="modal" class="btn btn-md btn-danger" id="cal-cancel-job"><i class="fa fa-times fa-fw"></i>Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--JAVASCRIPT-->
+        <!--=================================================-->
+        <!--jQuery [ REQUIRED ]-->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+        <script src="js/jquery/jquery-2.1.3.min.js"></script>
+
+        <!--custom Javascript by King-->
+        <script src="js/logout.js"></script>
+        <script src="js/load-scheduledjobs.js"></script>
+        <script src="js/security.js"></script>
+        <script src="js/profile.js"></script>
+        <script src="js/export.js"></script>
+        <!--<script src="js/load-status.js"></script>-->
+
+
+        <!--BootstrapJS [ RECOMMENDED ]-->
+        <script src="js/bootstrap.min.js"></script>
+
+
+        <!-- Plugins [ OPTIONAL ]-->
+        <script src="js/plugins.min.js"></script>
+
+
+        <!--Demo script [ DEMONSTRATION ]-->
+        <script src="js/demo/nifty-demo.min.js"></script>
+
+
+        <!--Server Time Clock [ OPTIONAL ]-->
+        <script src="js/servertime.js"></script>
+
+        <!--Bootstrap Table [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-table/bootstrap-table.js"></script>
+
+
+        <!--Download Plugins [ OPTIONAL ]-->
+        <script src="plugins/table-export/bootstrap-table-export.js"></script>
+        <script src="plugins/table-export/tableExport.js"></script> <!--@*Main file which does export feature *@-->
+        <script src="plugins/table-export/libs/FileSaver/FileSaver.min.js"></script>
+        <script src="plugins/table-export/libs/html2canvas/html2canvas.min.js"></script>
+        <script src="plugins/table-export/libs/jsPDF/jspdf.min.js"></script>
+        <script src="plugins/table-export/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+
+        <!--Datetime Picker [ OPTIONAL ]-->
+        <script src="plugins/datetimepicker/jquery.datetimepicker.js"></script>
+
+        <!--<script src="plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+        <script type="text/javascript" src="plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.th.js" charset="UTF-8"></script>-->
+        <!--Hide Elements-->
+        <script src="plugins/jquery-visibly/jquery-visibly.min.js"></script>
+
+
+        <!--Modernizr  [ OPTIONAL ]-->
+        <script src="plugins/modernizr/modernizr.custom.js"></script>
+
+
+        <!--Flat JSON-->
+        <script src="plugins/flatJSON/bootstrap-table-flatJSON.min.js"></script>
+
+
+        <!--Date Format-->
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/moment-timezone/moment-timezone.js"></script>
+        <!--<script src="plugins/moment-timezone/moment-timezone-with-data.js"></script>-->
+        <!--Panel-->
+        <script src="plugins/jsPanel-bootstrap/jspanel/jquery.jspanel.min.js"></script>
+
+        <!-- loading jQuery UI javascript -->
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+        <!--Localization-->
+        <!--<script src="plugins/bootstrap-table/locale/bootstrap-table-locale.js"></script>-->
+        <script src="plugins/mobile-detect/mobile-detect.js"></script>
+
+
+        <script src="js/modal-forms.js"></script>
+        <script src="js/ui-modals.js"></script>
+
+        <!--Lightbox [ OPTIONAL ]-->
+        <script src="plugins/lightbox/dist/ekko-lightbox.min.js"></script>
+	   
+        <!--Full Calendar-->
+        <script src="plugins/fullcalendar/fullcalendar.js"></script>
+        <script src="plugins/fullcalendar/locale-all.js"></script>
+
+        <!--Bootstrap-table-locale-->
+        <script src="plugins/bootstrap-table/locale/bootstrap-table-locale.js"></script>
+
+    <script>
+
+        Date.parseDate = function (input, format) {
+            return moment(input, format).toDate();
+        };
+        Date.prototype.dateFormat = function (format) {
+            return moment(this).format(format);
+        };
+
+        var dateToday = new Date();
+
+        jQuery('#date').datetimepicker({
+            format: 'DD-MMM-YYYY, HH:mm',
+            formatTime: 'HH:mm',
+            formatDate: 'DD-MMM-YYYY',
+            theme: 'dark',
+            minDate: dateToday,
+            autoclose: true,
+            mask: false,
+            onChangeDateTime: function (dp, $input) {
+
+                $('#date').datetimepicker();
+            }
+        });
+
+
+    </script>
+
+
+        <script>
+
+
+            //OnLoad Calendar Language
+            $(document).ready(function () {
+
+                //Then retrieve
+                var getSessionstorageValueLanguage = sessionStorage.getItem('setSessionstorageValueLanguage');
+
+                var dateFormat = "D-MMM-YYYY HH:mm A";
+                var d1 = new Date();
+                d1.setHours(0);
+                d1.setMinutes(0);
+                var dateFrom = moment(d1).format(dateFormat);
+
+                var d2 = new Date();
+                d2.setDate(d2.getDate() + 1);
+                d2.setHours(0);
+                d2.setMinutes(0);
+                var dateTo = moment(d2).format(dateFormat);
+
+                Date.parseDate = function (input, format) {
+                    return moment(input, format).toDate();
+                };
+                Date.prototype.dateFormat = function (format) {
+                    return moment(this).format(format);
+                };
+
+                jQuery('#dateFrom').datetimepicker({
+                    format: 'DD-MMM-YYYY',
+                    formatTime: 'hh:mm a',
+                    formatDate: 'DD-MMM-YYYY',
+                    theme: 'dark',
+                    value: dateFrom
+                });
+
+                jQuery('#dateTo').datetimepicker({
+                    format: 'DD-MMM-YYYY hh:mm A',
+                    formatTime: 'hh:mm a',
+                    formatDate: 'DD-MMM-YYYY',
+                    theme: 'dark',
+                    value: dateTo
+                });
+
+                jQuery('#deliveryDate').datetimepicker({
+                    format: 'DD-MMM-YYYY, HH:mm A',
+                    formatTime: 'hh:mm a',
+                    formatDate: 'DD-MMM-YYYY',
+                    theme: 'dark'
+                });
+
+
+            });
+
+
+        </script>
+
+    <script>
+
+
+        //callback function
+        function getAmount() {
+
+            var getSessionstorageValueLanguage = sessionStorage.getItem('setSessionstorageValueLanguage');
+
+            var titleTotalAmount;
+
+            if (getSessionstorageValueLanguage == "en")
+            {
+                titleTotalAmount = "Total Amount"
+
+            }
+            else if (getSessionstorageValueLanguage == "th")
+            {
+                titleTotalAmount = "จำนวนเงินทั้งหมด";
+
+            }
+            else if (getSessionstorageValueLanguage == "vn")
+            {
+                titleTotalAmount = "Tổng Cộng";
+
+            }
+            else if (getSessionstorageValueLanguage == "id")
+            {
+                titleTotalAmount = "Jumlah total";
+
+            }
+
+            //Then retrieve
+            var localObj = JSON.parse(sessionStorage.getItem("setSessionstorageValueData"));
+
+            if (localObj != null) {
+
+                $('table thead th').each(function (i) {
+
+                    var title = $(this).text();
+                    if (title == "Amount") {
+                        calculateColumnAmount(i);
+                    }
+
+                    
+                });
+
+                var totalAmount;
+                var totalNewAmount;
+
+                function calculateColumnAmount(index) {
+
+                    totalAmount = 0;
+
+                    $('table tr').each(function () {
+
+                        var value = parseInt($('td', this).eq(index).text());
+                        if (!isNaN(value)) {
+                            totalAmount += value;
+                        }
+
+                    });
+                }
+
+                function calculateColumnNewAmount(index) {
+
+                    totalNewAmount = 0;
+
+                    $('table tr').each(function () {
+
+                        var value = parseInt($('td', this).eq(index).text());
+                        if (!isNaN(value)) {
+                            totalNewAmount += value;
+                        }
+
+                    });
+                }
+
+
+                // $('table tfoot td').text('Total Amount: $SGD ' + totalAmount + totalNewAmount);
+                var getTotal = totalAmount ;
+                var finalTotal = parseFloat(Math.round(getTotal * 100) / 100).toFixed(2);
+
+
+                var tableRef = document.getElementById('jobs-editable').getElementsByTagName('tbody')[0];
+
+                // Insert a row in the table at the last row
+                var newRow = tableRef.insertRow(tableRef.rows.length);
+
+                // Insert a cell in the row at index 0
+                var newCell = newRow.insertCell(0);
+
+                // Append a text node to the cell
+                var newText = document.createTextNode(titleTotalAmount + ': $ ' + finalTotal);
+                newCell.appendChild(newText);
+
+            }
+        }
+
+
+    </script>
+
+
+        <!--
+
+        REQUIRED
+        You must include this in your project.
+
+        RECOMMENDED
+        This category must be included but you may modify which plugins or components which should be included in your project.
+
+        OPTIONAL
+        Optional plugins. You may choose whether to include it in your project or not.
+
+        DEMONSTRATION
+        This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+        SAMPLE
+        Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+        Detailed information and more samples can be found in the document.
+
+        -->
+        <!--Datetime Picker Script [ OPTIONAL ]-->
+
+
+
+</body>
+
+</html>
+

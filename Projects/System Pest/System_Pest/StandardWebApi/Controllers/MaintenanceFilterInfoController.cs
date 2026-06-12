@@ -1,0 +1,70 @@
+﻿using FMSWebApi.Models;
+using FMSWebApi.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+
+namespace FMSWebApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class MaintenanceFilterInfoController : ApiController
+    {
+        private static readonly IMaintenanceRepository repository = new MaintenanceRepository();
+
+        public IEnumerable<MaintenanceInfo> GetMaintenanceFilter([FromUri]MaintenanceInfo param)
+        {           
+            if((param.CompanyID > 0 && !string.IsNullOrEmpty(param.CusCompany) || !string.IsNullOrEmpty(param.PIC) || !string.IsNullOrEmpty(param.Postal) || !string.IsNullOrEmpty(param.Address)))
+            {
+                return repository.GetMaintenanceFilter(param);
+            }
+            else
+            {
+                return repository.GetAllEx();
+            }
+        }
+		
+        // GET: api/MaintenanceInfo
+        public MaintenanceInfo Get(int id)
+        {
+            MaintenanceInfo currMaintenance = repository.Get(id);
+            if (currMaintenance == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return currMaintenance;
+        }
+
+
+        public MaintenanceInfo PostMaintenance([FromBody]MaintenanceInfo currMaintenance)
+        {
+            currMaintenance = repository.Add(currMaintenance);
+            return currMaintenance;
+        }
+
+        public bool PutMaintenance(int id, [FromBody]MaintenanceInfo currMaintenance)
+        {
+
+            currMaintenance.MaintenanceID = id;
+            if (!repository.Update(currMaintenance))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void DeleteMaintenance(int id)
+        {
+            MaintenanceInfo currMaintenance = repository.Get(id);
+            if (currMaintenance == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            repository.Remove(id);
+        }
+
+    }
+}

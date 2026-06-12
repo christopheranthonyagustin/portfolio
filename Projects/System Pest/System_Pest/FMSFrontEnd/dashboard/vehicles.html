@@ -1,0 +1,1606 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phones - Pest Control Management System</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <!--Roboto Font [ OPTIONAL ]-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
+
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+
+
+    <!--Content Page Stylesheet [ REQUIRED ]-->
+    <link href="css/content.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!--Animate.css [ OPTIONAL ]-->
+    <!--<link href="plugins/animate-css/animate.min.css" rel="stylesheet">-->
+
+
+    <!--Switchery [ OPTIONAL ]-->
+    <link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Tags Input [ OPTIONAL ]-->
+    <!--<link href="plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">-->
+
+
+    <!--Chosen [ OPTIONAL ]-->
+    <!--<link href="plugins/chosen/chosen.min.css" rel="stylesheet">-->
+
+	<!--Localization-->
+    <link rel="stylesheet" href="css/localization.css">
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+
+
+    <!--Datetime Picker [ OPTIONAL ]-->
+     <!--<link href="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">-->
+    <link href="plugins/datetimepicker/jquery.datetimepicker.css" rel="stylesheet">
+
+
+
+    <!--SCRIPT-->
+    <!--=================================================-->
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <link href="plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="plugins/pace/pace.min.js"></script>
+
+
+    <!-- Needs images, font... therefore can not be part of main.css -->
+    <link rel="stylesheet" href="fonts/themify-icons/themify-icons.min.css">
+    <link rel="stylesheet" href="fonts/weather-icons/css/weather-icons.min.css">
+    <!-- end Needs images -->
+
+	<!--Lightbox [ OPTIONAL ]-->
+    <link href="plugins/lightbox/dist/ekko-lightbox.min.css" rel="stylesheet">
+
+    <!--
+
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+
+
+
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+
+<body>
+    <div id="container" class="effect mainnav-lg navbar-fixed footer-fixed">
+
+        <!--NAVBAR-->
+        <!--===================================================-->
+        <header id="navbar">
+            <div id="navbar-container" class="boxed">
+
+                <!--Brand logo & name-->
+                <!--================================-->
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand">
+                        <!--Logo-->
+                        <img src="img/logo.png" alt="Track Logo" class="brand-icon" id="showProfileCompany">
+                               
+                        <div class="brand-title">
+                            <span class="brand-text" id="titleCompany"></span>
+                        </div>
+                    </a>
+                </div>
+                <!--================================-->
+                <!--End brand logo & name-->
+                <!--Navbar Dropdown-->
+                <!--================================-->
+                <div class="navbar-content clearfix">
+                    <ul class="nav navbar-top-links pull-left">
+
+                        <!--Navigation toogle button-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="tgl-menu-btn">
+                            <a class="mainnav-toggle" href="#" title="Toggle Navigation Menu">
+                                <i class="fa fa-navicon fa-lg"></i>
+                            </a>
+                        </li>
+
+						<!--Language-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="dropdown hidden-xs">
+                            <label class="localize localization">
+                                <select id="load-lang" class="icon-menu" onchange="document.documentElement.lang=this.value">
+                                    <option style="background-image:url(img/flags/united-kingdom.png);" value="en" selected="selected">English</option>
+                                    <option style="background-image:url(img/flags/thailand.png);" value="th">Thai</option>
+                                    <option style="background-image:url(img/flags/vietnam.png);" value="vn">Vietnam</option>
+                                    <option style="background-image:url(img/flags/indonesia.png);" value="id">Indonesia</option>
+                                </select>
+                            </label>
+                        </li>
+                        <!--History-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--Start History-->
+
+                        <li class="history">
+                            <a id="historyreport" href="history.html" title="History">
+                                <i class="fa fa-calendar-o fa-lg"></i>
+                                <span class="menu-title">
+                                    &nbsp;
+                                    <!--Notifications-->
+                                    <span data-l11n="id" class="pull-right badge badge-primary" title="sejarah Laporan">Warta Historis</span>
+                                    <span data-l11n="vn" class="pull-right badge badge-primary" title="Bảng điều khiển">Lịch Sử Báo Cáo</span>
+                                    <span data-l11n="th" class="pull-right badge badge-primary">ประวัติศาสตร์ รายงาน</span>
+                                    <span data-l11n class="pull-right badge badge-primary hidden-xs">History Report</span>
+                                    <span data-l11n class="pull-right badge badge-primary hidden-sm hidden-md hidden-lg">Report</span>
+                                </span>
+                            </a>
+                        </li>
+
+                        <!--End History-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+
+
+
+
+                    </ul>
+                    <ul class="nav navbar-top-links pull-right">
+
+
+                        <!--Vehicle List-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+                        <!--<li class="hidden-xs" data-content="Vehicle List" id="add-toggle-button">
+
+                            <a id="toggle-aside" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                                <span class="lang-selected hidden-xs">
+                                 
+                                    <span data-l11n="th" class="lang-name hidden-xs"><i class="fa fa-bus fa-lg"></i>&nbsp;&nbsp;เพิ่มยานพาหนะ</span>
+                                            <span data-l11n class="lang-name hidden-xs"><i class="fa fa-bus fa-lg"></i>&nbsp;&nbsp;Add Vehicle</span>
+                                   
+                                </span>
+                            </a>
+
+
+                        </li>-->
+
+
+                        <!--<li class="hidden-xs" data-content="Vehicle List" id="edit-toggle-button">
+
+                            <a id="toggle-aside2" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                                <span class="lang-selected hidden-xs">
+                                   
+                                    <span data-l11n="th" class="lang-name hidden-xs"><i class="fa fa-bus fa-lg"></i>&nbsp;&nbsp;แก้ไข ยานพาหนะ</span>
+                                    <span data-l11n class="lang-name hidden-xs"><i class="fa fa-bus fa-lg"></i>&nbsp;&nbsp;Edit Vehicle</span>
+                                </span>
+                            </a>
+
+
+                        </li>-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--Vehicle List-->
+
+                        <!--User dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li id="dropdown-user" class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right" title="Profile">
+                                <span class="pull-right">
+                                    <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture" id="showProfile">
+                                </span>
+                                <div class="username hidden-xs" id="load-username"></div>
+                            </a>
+
+
+                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+                                <!-- Dropdown heading  -->
+                                <div class="pad-all bord-btm">
+                                    <p class="text-lg text-muted text-thin mar-btm" id="load-email"></p>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar" style="width: 100%;">
+                                            <span class="sr-only">70%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- User dropdown menu -->
+                                <ul class="head-list">
+                                    <li data-l11n="th">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> ข้อมูลส่วนตัว
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n="vn">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> Tiểu Sử
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n="id">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> Profil
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n>
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> Profile
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n="th" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> ช่วย
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n="vn" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Trợ Giúp
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n="id" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Pembantuan
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Help
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+                                <!-- Dropdown footer -->
+                                <div class="pad-all text-right hidden-sm hidden-md hidden-lg">
+                                    <span data-l11n="id" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> Keluar
+                                    </span>
+                                    <span data-l11n="vn" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> Đăng xuất
+                                    </span>
+                                    <span data-l11n="th" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ
+                                    </span>
+
+                                    <span data-l11n class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> Logout
+                                    </span>
+                                </div>
+
+
+
+                            </div>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End user dropdown-->
+                        <li data-content="Logout">
+
+                            <a class="lang-selector dropdown-toggle hidden-xs" href="#" data-target="#sm-modal" data-toggle="modal">
+                                <span class="lang-selected hidden-xs">
+                                    <span data-l11n="id" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="Keluar"></i></span>
+                                    <span data-l11n="vn" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="Đăng xuất"></i></span>
+                                    <span data-l11n="th" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="ออกจากระบบ"></i></span>
+                                    <span data-l11n class="lang-name hidden-xs"><i class="fa fa-sign-out  fa-lg" title="Logout"></i></span>
+
+                                </span>
+                            </a>
+
+                        </li>
+
+                    </ul>
+                </div>
+                <!--================================-->
+                <!--End Navbar Dropdown-->
+
+            </div>
+        </header>
+        <!--===================================================-->
+        <!--END NAVBAR-->
+
+        <div class="boxed">
+
+            <!--CONTENT CONTAINER-->
+            <!--===================================================-->
+            <div id="content-container">
+
+                <!--Page Title-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--<div id="page-title">-->
+                <!--Page content-->
+                <!--===================================================-->
+                <div id="page-content">
+
+        
+                    <div class="panel-body-full">
+
+                        <div class="panel panel-bordered panel-dark">
+                            <div class="panel-heading" style="background-color: #1B1B1B">
+                                <h4 data-l11n="th" class="panel-title"><i class="fa fa-mobile-phone"></i>&nbsp;ยานพาหนะ:&nbsp;<span class="badge badge-success" id="total-vehicles"></span>  </h4>
+                                <h4 data-l11n="vn" class="panel-title"><i class="fa fa-mobile-phone"></i>&nbsp;Số ĐT Người Dùng :&nbsp;<span class="badge badge-success" id="total-vehicles"></span>  </h4>
+                                <h4 data-l11n="id" class="panel-title"><i class="fa fa-mobile-phone"></i>&nbsp;Ponsel :&nbsp;<span class="badge badge-success" id="total-vehicles"></span>  </h4>
+                                <h4 data-l11n class="panel-title"><i class="fa fa-mobile-phone"></i>&nbsp;Phones&nbsp;<span class="badge badge-success" id="total-vehicles"></span>  </h4>
+
+                               
+
+                            </div>
+                            
+                            <div class="panel-body" style="background-color: #2A2F35">
+
+                                <div id="custom-vehicles">
+                                    <div class="form-inline pull-left reseller-filter" role="form">
+                                        <select class="selectpicker select-reseller-filter" data-live-search="true" data-width="100%" data-style="btn-mint" id="load-reseller" name="load-reseller" data-table="searchable"></select>
+                                    </div>
+                                    <div class="form-inline pull-left">&nbsp;</div>
+                                    <div class="form-inline pull-left" role="form">
+                                        <select class="selectpicker select-company-filter" data-live-search="true" data-width="100%" data-style="btn-mint" id="load-company" name="load-company" data-table="searchable"></select>
+                                    </div>
+                                    <div class="form-inline pull-left">&nbsp;</div>
+                                    <div class="form-inline pull-left">
+                                        <button id="submit-filter" class="btn btn-primary btn-icon icon-lg fa fa-refresh"></button>
+                                    </div>
+
+                                </div>
+
+                                <table id="vehicles-editable"
+								       data-height="400"
+                                       data-flat="false"
+                                       class="searchable table-striped"
+                                       data-click-to-select="false"
+                                       data-single-select="true"
+                                       data-toolbar="#custom-vehicles"
+                                       data-show-header="true"
+                                       data-show-export="false"
+                                       data-show-filter="false"
+                                       data-search="true"
+                                       data-show-refresh="false"
+                                       data-show-toggle="true"
+                                       data-show-columns="true"
+                                        data-page-list="[10, 25, 50, 100, All]"
+                                       data-page-size="10"
+                                       data-pagination="true" data-show-pagination-switch="false"></table>
+
+
+								<div class="pull-left">
+                                        <button id="vehicle-confirm-deleteEN" class="btn btn-danger btn-labeled fa fa-times" title="Delete Record" disabled="">Delete</button>&nbsp;
+                                    </div>
+
+                                    <div id="toggle-aside" class="pull-left">
+                                        <button data-l11n="th" class="btn btn-mint btn-labeled fa fa-mobile-phone add-vehicle" title="เพิ่ม ยานพาหนะ">เพิ่ม ยานพาหนะ</button>
+                                        <button data-l11n="vn" class="btn btn-mint btn-labeled fa fa-mobile-phone add-vehicle" title="Thêm Thoại">Thêm Điện Thoại</button>
+                                        <button data-l11n="id" class="btn btn-mint btn-labeled fa fa-mobile-phone add-vehicle" title="Penambahan Telepon">Penambahan Telepon</button>
+                                        <button data-l11n class="hidden-xs btn btn-mint btn-labeled fa fa-mobile-phone add-vehicleEN" title="Add Record">Add Phone</button>
+                                        <button data-l11n id="vehicle-modal" class="hidden-sm hidden-md hidden-lg btn btn-mint btn-labeled fa fa-mobile-phone add-vehicleEN" title="Add Record">Add Phone</button>
+                                    </div>
+
+                                    <div id="toggle-aside2" class="pull-left">
+                                        <button data-l11n="th" class="btn btn-mint btn-labeled fa fa-mobile-phone edit-vehicle" title="แก้ไข ยานพาหนะ">แก้ไข ยานพาหนะ</button>
+                                        <button data-l11n="vn" class="btn btn-mint btn-labeled fa fa-mobile-phone edit-vehicle" title="Sửa Ghi">Chỉnh Sửa</button>
+                                        <button data-l11n="id" class="btn btn-mint btn-labeled fa fa-mobile-phone edit-vehicle" title="Edit Ponsel">Edit Ponsel</button>
+                                        <button data-l11n class="btn btn-mint btn-labeled fa fa-mobile-phone edit-vehicleEN" title="Edit Record">Edit Phone</button>
+                                    </div>
+
+
+
+                                <button class="btn btn-mint btn-labeled fa fa-file-word-o pull-right" title="Export to Word" id="VehicleExportWordEN">MS Word</button>
+
+                                <button class="btn btn-mint btn-labeled fa fa-file-pdf-o pull-right" title="Export to PDF" id="VehicleExportPDFEN">PDF</button>
+
+                                <button class="hidden-xs btn btn-mint btn-labeled fa fa-file-excel-o pull-right" title="Export to Excel" id="VehicleExportExcelEN">Excel</button>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                   
+                    <!--===================================================-->
+                    <!--End page content-->
+                    <!--===================================================-->
+                    <!--END CONTENT CONTAINER-->
+                </div>
+            </div>
+            <!--===================================================-->
+            <!--END CONTENT CONTAINER-->
+            <!--MAIN NAVIGATION-->
+            <!--===================================================-->
+            <nav id="mainnav-container" style="position:fixed">
+                <div id="mainnav">
+
+                    <!--Menu-->
+                    <!--================================-->
+                    <div id="mainnav-menu-wrap">
+                        <div class="nano">
+                            <div class="nano-content">
+
+                                <ul id="mainnav-menu" class="list-group">
+
+                                    <!--Version-->
+                                    <li data-l11n="id" class="list-header">Versi&nbsp;<span id="verNumID" class="text-muted"></span></li>
+                                    <li data-l11n="vn" class="list-header">Phiên bản&nbsp;<span id="verNumVN" class="text-muted"></span></li>
+                                    <li data-l11n="th" class="list-header">รุ่น&nbsp;<span id="verNum" class="text-muted"></span></li>
+                                    <li data-l11n class="list-header">Version&nbsp;<span id="verNumEN" class="text-muted"></span></li>
+
+
+
+                                    <!--Dashboard-->
+                                    <li class="dashboard">
+                                        <a href="index.html">
+                                            <i class="fa fa-dashboard fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Dasbor">Dasbor</strong>
+                                                <strong data-l11n="vn" title="Bảng Diều Khiển">Bảng Theo Dõi    </strong>
+                                                <strong data-l11n="th">หน้าปัด</strong>
+                                                <strong data-l11n>Dashboard</strong>
+                                                <!--Notifications-->
+                                                <span data-l11n="id" class="label label-primary pull-right">Peta</span>
+                                                <span data-l11n="vn" class="label label-primary pull-right">bản đồ</span>
+                                                <span data-l11n="th" class="label label-primary pull-right">แผนที่</span>
+                                                <span data-l11n class="label label-primary pull-right">Map</span>
+
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="callcenter">
+                                        <a href="call_center.html">
+                                            <i class="fa fa-phone fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id">Call Center</strong>
+                                                <strong data-l11n="vn">Trung Tâm Cuộc Gọi</strong>
+                                                <strong data-l11n="th">ศูนย์รับแจ้ง</strong>
+                                                <strong data-l11n>Call Center</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="maintenance">
+                                        <a href="maintenance.html">
+                                            <i class="fa fa-cog fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id">pemeliharaan</strong>
+                                                <strong data-l11n="vn">bảo trì</strong>
+                                                <strong data-l11n="th">ซ่อมบำรุง</strong>
+                                                <strong data-l11n>Maintenance</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="inventory">
+                                        <a href="inventory.html">
+                                            <i class="fa fa-archive fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong>Inventory</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="drivers">
+                                        <a href="drivers.html">
+                                            <i class="fa fa-user-plus fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Pengguna Telepon">Pengguna Telepon</strong>
+                                                <strong data-l11n="vn" title="Người Sử Dụng Diện Thoại">ĐT Người Dùng</strong>
+                                                <strong data-l11n="th">ไดร์เวอร์</strong>
+                                                <strong data-l11n>Phone Users</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <!--Vehicles-->
+                                    <li class="vehicles active-link">
+                                        <a href="vehicles.html">
+                                            <i class="fa fa-mobile-phone fa-2x"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Ponsel">Ponsel</strong>
+                                                <strong data-l11n="vn" title="Điện thoại">Điện Thoại</strong>
+                                                <strong data-l11n="th">ยานพาหนะ</strong>
+                                                <strong data-l11n>Phones</strong>
+                                            </span>
+
+
+                                        </a>
+                                    </li>
+
+                                    <!--Zones-->
+                                    <li class="zones">
+                                        <a href="zones.html">
+                                            <i class="fa fa-globe fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Zona">Zona</strong>
+                                                <strong data-l11n="vn" title="Vùng trang">Vùng</strong>
+                                                <strong data-l11n="th">โซน</strong>
+                                                <strong data-l11n>Zones</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="jobs">
+                                        <a href="jobs.html">
+                                            <i class="fa fa-exchange fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id">Tugas</strong>
+                                                <strong data-l11n="vn">Lịch Trình Công Việc</strong>
+                                                <strong data-l11n="th">โซน</strong>
+                                                <strong data-l11n>Scheduled Jobs</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+
+                                    <!--Settings-->
+                                    <!--<li class="list-header">Settings</li>-->
+
+
+                                    <li class="list-divider"></li>
+
+                                    <li data-l11n="th" class="settings">
+                                        <a href="#" title="การตั้งค่า">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="th" class="menu-title">การตั้งค่า</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Companies Page">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">บริษัท</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Users Page">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">ผู้ใช้</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Devices Page">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">อุปกรณ์</span>
+
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Reseller Page">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">ผู้ค้าปลีก</span>
+
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li data-l11n class="settings">
+                                        <a href="#" title="Settings">
+                                            <i class="fa fa-gears fa-lg"></i>
+
+                                            <span data-l11n class="menu-title">Settings</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Companies Page">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Companies</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Users Page">
+                                                    <i class="fa fa-users fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Users</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Devices Page">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Devices</span>
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Reseller Page">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Reseller</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li data-l11n="vn" class="settings">
+                                        <a href="#" title="Cài đặt">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="vn" class="menu-title">Cài đặt</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="công ty trang">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Công Ty</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="người dùng trang">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Người Sử Dụng</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="trang thiết bị">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Thiết Bị</span>
+
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Đại lý bán lẻ trang">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Người Bán Lại</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+
+                                    <li data-l11n="id" class="settings">
+                                        <a href="#" title="Pengaturan">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="id" class="menu-title">Pengaturan</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Perusahaan">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Perusahaan</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Pengguna">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Pengguna</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Perangkat">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Perangkat</span>
+
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Pengecer">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Pengecer</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+
+                                <br />
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <!--================================-->
+                    <!--End menu-->
+
+                </div>
+            </nav>
+            <!--===================================================-->
+            <!--END MAIN NAVIGATION-->
+            <!--ASIDE-->
+            <!--===================================================-->
+            <aside id="aside-container" style="position:fixed">
+                <div id="aside">
+                    <div class="nano">
+                        <div class="nano-content">
+
+
+                            <!--Forms-->
+                            <!--<form id="bv-bsc-tabs" action="#" method="post" class="form-horizontal">-->
+                            <form id="bv-wz-form-vehicle" class="form-horizontal">
+
+                                <!-- Main Form Wizard -->
+                                <!--===================================================-->
+                                <div id="main-wz-vehicle">
+
+                                    <!--nav-->
+                                    <ul class="row wz-step wz-icon-bw wz-nav-off mar-top">
+                                        <li class="col-xs-3">
+                                            <a data-toggle="tab" href="#main-tab1">
+                                                <span class="icon-wrap icon-wrap-xs bg-warning">
+                                                    <i class="wz-icon fa fa-mobile-phone"></i>
+                                                    <i class="wz-icon-done fa fa-check"></i>
+                                                </span>
+                                                <p class="text-thin"></p>
+                                            </a>
+                                        </li>
+                                        <li class="col-xs-3">
+                                            <a data-toggle="tab" href="#main-tab2">
+                                                <span class="icon-wrap icon-wrap-xs bg-danger">
+                                                    <i class="wz-icon fa fa-info-circle"></i>
+                                                    <i class="wz-icon-done fa fa-check"></i>
+                                                </span>
+                                                <p class="text-thin"></p>
+                                            </a>
+                                        </li>
+                                        <li class="col-xs-3">
+                                            <a data-toggle="tab" href="#main-tab3">
+                                                <span class="icon-wrap icon-wrap-xs bg-info">
+                                                    <i class="wz-icon fa fa-wrench"></i>
+                                                    <i class="wz-icon-done fa fa-check"></i>
+                                                </span>
+                                                <p class="text-thin"></p>
+                                            </a>
+                                        </li>
+                                        <li class="col-xs-3">
+                                            <a data-toggle="tab" href="#main-tab4">
+                                                <span class="icon-wrap icon-wrap-xs bg-success"><i class="fa fa-bell-o"></i></span>
+                                                <p class="text-thin"></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <!--progress bar-->
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar progress-bar-primary"></div>
+                                    </div>
+
+
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+
+                                            <!--First tab-->
+                                            <div id="main-tab1" class="tab-pane">
+
+          
+                                                <div class="form-group hidden-xs hidden-sm hidden-md hidden-lg">
+                                                
+                                                    <input type="text" class="form-control" placeholder="Enter Vehicle ID" id="assetID" name="assetID">
+                                                    <small class="text-muted">Vehicle ID</small>
+                                                </div>
+
+                                                <!--===================================================-->
+                                                <!--Name-->
+
+                                               
+                                                <div class="form-group">
+                                                    <!--<input data-l11n="th" type="text" class="form-control" placeholder="กรุณาใส่ชื่อ ยานพาหนะ" id="assetName" name="assetName">-->
+                                                    <input type="text" class="form-control" placeholder="Enter Phone Name" id="assetNameEN" name="assetNameEN">
+                                                    <!--<small data-l11n="th" class="text-muted">ชื่อ ยานพาหนะ</small>-->
+                                                    <small id="phoneName" class="text-muted">Phone Name</small>
+                                                </div>
+
+
+                                                <!--===================================================-->
+                                                <!--Category-->
+                                                <div class="form-group">
+                                                    <!--<div data-l11n="th" class=".text-normal">หมวดหมู่</div>-->
+                                                    <div id="categoryname" class=".text-normal">Category</div>                                       
+                                                    <select class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="assetCategory" name="assetCategory"></select>
+                                                </div>
+
+                                                <!--===================================================-->
+                                                <!--Reseller-->
+                                                <!--===================================================-->
+                                                <div class="form-group" id="formsReseller">
+                                                    <!--<div data-l11n="th" class=".text-normal">ผู้ค้าปลีก</div>-->
+                                                    <div id="resellername" class=".text-normal">Reseller</div>
+                                                    <select class="selectpicker SelectFormResellerFilter" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="assetReseller" name="assetReseller"></select>
+                                                </div>
+                                                <!--===================================================-->
+                                                <!--Company-->
+                                                <!--===================================================-->
+                                                <div class="form-group">
+                                                    <!--<div data-l11n="th" class=".text-normal">บริษัท</div>-->
+                                                    <div id="companyname" class=".text-normal">Company</div>
+                                                    <select class="selectpicker SelectFormCompanyFilter" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="assetCompany" name="assetCompany"></select>
+
+
+                                                </div>
+
+                                                <!--===================================================-->
+                                                <!--===================================================-->
+                                                <!--Device-->
+                                                <div class="form-group assetDevices">
+                                                    <!--<div data-l11n="th" class=".text-normal">เครื่อง</div>-->
+                                                    <div id="activationkey" class=".text-normal">Activation Key</div>
+                                                    <select class="selectpicker getInstallDateDevice" name="getInstallDateDevice" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="assetDevice" data-dropup-auto="false">
+                                                        <option value="0" selected="selected" class="noDevice">No Activation Key</option>
+                                                    </select>
+                                                </div>
+                                                <!--===================================================-->
+
+
+                                            </div>
+
+                                            <!--Second tab-->
+                                            <div id="main-tab2" class="tab-pane fade">
+                                              
+                                                <!--===================================================-->
+                                                <!--Man Power Name-->
+
+                                               <div class="form-group">
+                                                   <select class="selectpicker SelectDriverFilter" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="assetDriver" name="assetDriver" onchange="setImage(this);">
+                                                       <option value="" selected="selected">--------</option>
+                                                   </select>
+                                                    <!--<small data-l11n="th" class="text-muted">ชื่อ ของ ไดร์เวอร์</small>-->
+                                                    <small id="phoneUser" class="text-muted">Phone User</small>
+                                                </div>
+
+                                                <div class="form-group" id="displayDriver">
+                                                    <a class="thumbnail" data-style="btn-success">
+                                                        <img src="img/av1.png" name="image-swap" class="img-responsive" alt="Driver Preview" width="110" height="110" id="showDriver">
+                                                    </a>
+                                                </div>
+
+
+
+                                                <!--===================================================-->
+                                                <!--Phone Number-->
+
+                                                <div class="form-group" id="PhoneNumber">
+                                                    <input data-l11n="th" type="text" class="form-control" placeholder="หมายเลข โทรศัพท์" id="assetPhone" name="assetPhone" disabled="disabled">
+                                                    <input data-l11n type="text" class="form-control" placeholder="Phone Number" id="assetPhoneEN" name="assetPhoneEN" disabled="disabled">
+                                                    <small data-l11n="th" class="text-muted">หมายเลข โทรศัพท์</small>
+                                                    <small data-l11n class="text-muted">Phone Number</small>
+                                                </div>
+
+
+
+                                                <!--===================================================-->
+                                                <!--Email Address-->
+
+                                                <div class="form-group" id="EmailAddress">
+                                                    <input data-l11n="th" type="text" class="form-control" placeholder="ที่อยู่อีเมล์" id="assetEmail" name="assetEmail" disabled="disabled">
+                                                    <input data-l11n="" type="text" class="form-control" placeholder="Email" id="assetEmailEN" name="assetEmailEN" disabled="disabled">
+                                                    <small data-l11n="th" class="text-muted">อีเมล์</small>
+                                                    <small data-l11n class="text-muted">Email</small>
+                                                </div>
+                                                <!--===================================================-->
+
+
+                                                <!--===================================================-->
+                                                <!--Photo-->
+
+                                                <!--<div class="form-group">
+                                                    <a href="#" class="thumbnail" data-style="btn-success">
+                                                        <img src="img/vehicle.png" class="img-responsive" alt="พาหนะ" width="110" height="110">
+                                                    </a>
+
+                                                    <span data-l11n="th" class="pull-right btn btn-success btn-file">
+                                                        อัปโหลด <input type="file" id="assetImage" name="assetImage">
+                                                    </span>
+
+                                                    <span data-l11n class="pull-right btn btn-success btn-file">
+                                                        Upload <input type="file" id="assetImage" name="assetImage">
+                                                    </span>
+
+                                                </div>-->
+
+                                                <!--===================================================-->
+
+
+                                            </div>
+
+                                            <!--Third tab-->
+                                            <div id="main-tab3" class="tab-pane">
+
+                                                <!--===================================================-->
+                                                <!--Settings-->
+                                            
+                                                    <div class="form-group">
+                                                        <div data-l11n="th" class=".text-normal">การตั้งค่า</div>
+                                                        <div data-l11n="vn" class=".text-normal">Cài đặt</div>
+                                                        <div data-l11n="id" class=".text-normal">Pengaturan</div>
+                                                        <div data-l11n class=".text-normal">Settings</div>
+                                                        <!--Dropdown Settings-->
+                                                        <select id="vehicle" class="selectpicker" data-width="100%" data-style="btn-asiacomDropdown">
+                                                            <option value="zones" class="alertZones">Alert Zones</option> <!--Alert Zones-->
+                                                            <option value="mileage" class="hidden-xs hidden-sm hidden-md hidden-lg">Mileage</option> <!--Mileage-->
+                                                            <option value="limits" class="speedLimits">Speed Limits</option> <!--Speed Limits-->
+                                                        </select>
+                                                    </div>
+                                         
+
+
+                                                <hr>
+
+                                                <!--===================================================-->
+
+
+                                                <!--===================================================-->
+                                                <!--Mileage Start-->
+
+
+                                                <!--<div visibly="vehicle:mileage" class="form-group">
+                                                    <input class="form-control" placeholder="0" type="text">
+                                                    <small class="text-muted">Idling Limit (min)</small>
+                                                </div>-->
+
+
+                                                    <div visibly="vehicle:mileage" class="form-group">
+                                                        <input class="form-control optional mileage" type="text" name="assetMileage" id="assetMileage">
+                                                        <small data-l11n="th" class="text-muted">สะสมไมล์ ปัจจุบัน</small>
+                                                        <small data-l11n class="text-muted">Current Mileage</small>
+                                                    </div>
+
+                                                    <div visibly="vehicle:mileage" class="form-group optional mileage">
+                                                        <input class="form-control optional mileage" type="text" name="assetDistanceAlert" id="assetDistanceAlert">
+                                                        <small data-l11n="th" class="text-muted" id="distanceAlert">แจ้งเตือน ระยะทาง</small>
+                                                        <small data-l11n class="text-muted" id="distanceAlert">Distance Alert</small>
+                                                    </div>
+
+
+                                                <!--===================================================-->
+                                                <!--Date Time Alert-->
+
+                                                
+                                                    <div visibly="vehicle:mileage" class="form-group">
+                                                        <div class="input-group date">
+                                                            <input id="assetDateAlert" type="text" class="form-control" placeholder="DD-MMM-YYYY HH:MM" name="assetDateAlert">
+                                                            <span class="input-group-addon btn-asiacomDateFilter"><i class="fa fa-calendar fa-xs"></i></span>
+                                                        </div>
+                                                        <small data-l11n="th" class="text-muted">การแจ้งเตือน วันที่</small>
+                                                        <small data-l11n class="text-muted">Date Alert</small>
+                                                    </div>
+                                              
+                                                <!--===================================================-->
+                                                
+
+
+                                                <!--Mileage Ends-->
+
+
+                                                <!--===================================================-->
+                                                <!--Driving Limits Start-->
+
+
+
+                                                <div visibly="vehicle:limits" class="form-group hidden-xs hidden-sm hidden-md hidden-lg">
+                                                    <input type="text" class="form-control" placeholder="Idling Limit" name="assetIdlingLimitEN" id="assetIdlingLimitEN" data-by-field="assetIdlingLimitEN">
+                                                    <small data-l11n="th" class="text-muted">ที่ไม่ทำงาน จำกัด (ขั้นต่ำ)</small>
+                                                    <small data-l11n class="text-muted">Idling Limit (min)</small>
+                                                </div>
+
+
+
+                                                <div visibly="vehicle:limits" class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Speed Limit" name="assetSpeedLimitEN" id="assetSpeedLimitEN" data-by-field="assetSpeedLimitEN">
+                                                    <small data-l11n="th" class="text-muted">ความเร็ว จำกัด (ขั้นต่ำ)</small>
+                                                    <small data-l11n class="text-muted">Speed Limit (min)</small>
+                                                </div>
+
+
+
+
+                                                <!--Driving Limits Ends-->
+                                                <!--===================================================-->
+
+                                                <!--===================================================-->
+                                                <!--Alert Zones Start-->
+
+
+                                                <div visibly="vehicle:zones" class="form-group">
+                                                    <label id="zoneName" class="control-label pull-left">Select Zone</label>
+
+
+                                                    <select data-l11n="th" class="selectpicker SelectZoneFilter" multiple title="Choose one of the following ..." data-selected-text-format="count" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown optional zones" style="display:none;" id="assetZoneEN" name="assetZoneEN" data-dropup-auto="false"></select>
+
+                                                    <!--Choose one of the following...-->
+                                                    <small class="help-block">&nbsp;</small>
+
+                                                </div>
+
+
+
+
+
+                                                <!--Alert Zones Ends-->
+                                                <!--===================================================-->
+
+
+
+                                            </div>
+
+                                            <!--Fourth tab-->
+                                            <div id="main-tab4" class="tab-pane">
+                                                
+
+                                                <!--===================================================-->
+                                                <!--Install Date-->
+
+                                                <div class="form-group">
+                                                    <div class="input-group date">
+                                                        <input id="assetInstallDate" type="text" class="form-control" placeholder="DD-MMM-YYYY" name="assetInstallDate">
+                                                        <span class="input-group-addon btn-asiacomDateFilter"><i class="fa fa-calendar fa-xs"></i></span>
+                                                    </div>
+                                                    <small id ="installDate" class="text-muted">Install Date</small>
+                                                </div>
+
+                                                    <!--===================================================-->
+
+
+                                                </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!--Footer button-->
+                                    <!--<div data-l11n="th" class="pull-right">
+                                       
+                                                                                
+                                        <span id="previous" class="previous btn btn-primary" title="ก่อน"><i class="fa fa-chevron-left fa-fw"></i> ก่อน</span>
+                                        
+
+                                        <span id="next" class="next btn btn-primary" title="ถัดไป">&nbsp;ถัดไป&nbsp;<i class=" fa fa-chevron-right fa-fw">
+                                            </i>
+                                        </span>
+                                       
+                                        
+                                        <button id="submit-vehicle" class="btn btn-success btn-labeled fa fa-check finish" title="เสนอ">เสนอ</button>
+                             
+
+                                    </div>-->
+
+                                    <div class="pull-right">
+
+
+                                        <span id="previous" class="previous btn btn-primary" title="ก่อน"><i class="fa fa-chevron-left fa-fw"></i> Previous</span>
+
+
+                                        <span id="next" class="next btn btn-primary" title="ถัดไป">
+                                            &nbsp;Next&nbsp;<i class=" fa fa-chevron-right fa-fw">
+                                            </i>
+                                        </span>
+
+
+                                        <button id="submit-vehicleEN" class="btn btn-success btn-labeled fa fa-check finish" title="Submit">Submit</button>
+
+
+                                    </div>
+
+
+                                </div>
+                                <!--===================================================-->
+                                <!-- End of Main Form Wizard -->
+
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!--===================================================-->
+                    <!--END ASIDE-->
+
+                </div>
+
+            </aside>
+
+
+            
+                <!--===================================================-->
+                <!-- FOOTER -->
+                <!--===================================================-->
+                <footer id="footer">
+
+                    <!-- Visible when footer positions are fixed -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="show-fixed pull-right">
+                        <ul class="footer-list list-inline">
+
+
+                            <li>
+                                <i class="fa fa-clock-o">&nbsp;</i> <div class="show-fixed pull-right pad-rgt" id="clockbox" title=""></div>
+                            </li>
+                            <!-- Server Clock End -->
+                            <!--===================================================-->
+
+
+                        </ul>
+
+                    </div>
+
+
+
+
+                    <!-- Visible when footer positions are static -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="show-fixed pull-right pad-rgt" id="clockbox"></div>
+
+
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <span data-l11n="vn" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - Hệ Thống Quản Lý Phương Tiện</span>
+                    <span data-l11n="id" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - Sistem Manajemen Armada</span>
+                    <span data-l11n="th" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - ระบบการ จัดส่ง รถพยาบาล</span>
+                    <span data-l11n class="pad-lft hidden-xs hidden-md"><span id="softwareEN"></span>&nbsp;&#0169; 2017 - Pest Control Management System</span>
+                    
+
+
+
+
+                </footer>
+                <!--===================================================-->
+                <!-- END FOOTER -->
+                <!-- SCROLL TOP BUTTON -->
+                <!--===================================================-->
+                <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+                <!--===================================================-->
+
+
+
+</div>
+        <!--===================================================-->
+        <!-- END OF CONTAINER -->
+        <!-- BOOTSTRAP MODALS-->
+        <!--====================================================-->
+        <!--Default Bootstrap Modal-->
+        <!--===================================================-->
+        <div class="modal fade" id="default-modal" role="dialog" tabindex="-1" aria-labelledby="default-modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!--Modal header-->
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Modal Heading</h4>
+                    </div>
+
+                    <!--Modal body-->
+                    <div class="modal-body">
+                        <h4 class="text-thin">Bootstrap Modal Vertical Alignment Center</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                        <hr>
+                        <h4 class="text-thin">Popover in a modal</h4>
+                        <p>
+                            This
+                            <button class="btn btn-sm btn-warning modal-popover add-popover" data-toggle="popover" data-trigger="focus" data-content="And here\'s some amazing content. It\'s very engaging. right?" data-original-title="Popover Title">button</button>
+                            should trigger a popover on click.
+                        </p>
+                        <hr>
+                        <h4 class="text-thin">Tooltips in a modal</h4>
+                        <p>
+                            <a class="btn-link add-tooltip" href="#" data-original-title="Tooltip">This link</a> and
+                            <a class="btn-link add-tooltip" href="#" data-original-title="Tooltip">that link</a> should have tooltips on hover.
+                        </p>
+                    </div>
+
+                    <!--Modal footer-->
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                        <button class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--===================================================-->
+        <!--End Default Bootstrap Modal-->
+        <!--Logout Small Bootstrap Modal-->
+        <!--===================================================-->
+        <div id="sm-modal" class="modal fade" tabindex="-1" style="color: #2F343B;">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <div data-l11n="th" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;ระบบการจัดการ กองทัพเรือ</i></div>
+                        <div data-l11n="vn" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Hệ Thống Quản Lý Dội Tàu</i></div>
+                        <div data-l11n="id" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Sistem Manajemen Armada</i></div>
+                        <div data-l11n class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Pest Control Management System</i></div>
+                    </div>
+                    <div class="modal-body">
+                        <p data-l11n="th" class=".text-normal">ดำเนินการ ออกจากระบบ ?</p>
+                        <p data-l11n="id" class=".text-normal">Lanjutkan Keluar?</p>
+                        <p data-l11n="vn" class=".text-normal">Tiếp Tục Đăng Xuất ?</p>
+                        <p data-l11n class=".text-normal">Proceed to Logout?</p>
+
+                        <button class="btn btn-success btn-labeled fa fa-check fa-lg pull-right" title="Submit" onclick="LogoutEN();" id="clickLogoutEN">Ok</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--===================================================-->
+        <!-- Logout End Small Bootstrap Modal-->
+
+        <div class="modal fade darker hidden-sm hidden-md hidden-lg" id="VehicleForm" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background: rgba(0, 0, 0, 0.68) none repeat scroll 0 0;">
+                    <div class="modal-header">
+                        <h2 id="mobileform" class="modal-title" style="color:white;"><i class="fa fa-truck"></i>&nbsp;Add Vehicle</h2>
+                    </div>
+                    <div class="modal-body m-l-20 m-r-20">
+                        <div id="formnew" class="row form-columned">
+                            <div class="data">
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-assetNameEN">
+                                    <label for="mobile-assetNameEN">Phone Name:</label>
+                                    <input data-l11n="" type="text" class="form-control" placeholder="Enter Phone Name" id="mobile-assetNameEN" name="mobile-assetNameEN">
+                                </div>
+
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-assetCategory">
+                                    <label for="mobile-assetCategory">Category:</label>
+                                    <select class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-dark" id="mobile-assetCategory" name="mobile-assetCategory"></select>
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-assetDevice">
+                                    <label for="mobile-load-assets">Device:</label>
+                                    <select class="selectpicker getInstallDateDevice" name="mobile-assetDevice" data-live-search="true" data-width="100%" data-style="btn-dark" id="mobile-assetDevice" data-dropup-auto="false">
+                                        <option value="0" selected="selected">No Device</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-assetReseller">
+                                    <label for="mobile-assetReseller">Reseller:</label>
+                                    <select data-l11n class="selectpicker MobileSelectResellerFilter" data-live-search="true" data-width="100%" data-style="btn-dark" id="mobile-assetReseller" name="mobile-assetReseller"></select>
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-load-company">
+                                    <label for="mobile-load-company">Company:</label>
+                                    <select class="selectpicker MobileSelectCompanyFilter" data-live-search="true" data-width="100%" data-style="btn-dark" id="mobile-load-company" name="mobile-load-company" data-table="searchable"></select>
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-assetDriver">
+                                    <label for="mobile-assetDriver">Driver:</label>
+                                    <select data-l11n class="selectpicker MobileSelectDriverFilter" data-live-search="true" data-width="100%" data-style="btn-dark" id="mobile-assetDriver" name="mobile-assetDriver" onchange="setImage(this);">
+                                        <option value="" selected="selected">--------</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-vehicle">
+                                    <label for="mobile-vehicle">Settings:</label>
+                                    <select id="mobile-vehicle" class="selectpicker" data-width="100%" data-style="btn-dark">
+                                        <option value="mobile-zones">Alert Zones</option> <!--Alert Zones-->
+                                        <option value="mobile-mileage" class="hidden-xs hidden-sm hidden-md hidden-lg">Mileage</option> <!--Mileage-->
+                                        <option value="mobile-limits">Speed Limits</option> <!--Speed Limits-->
+                                    </select>
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-assetZoneEN" visibly="mobile-vehicle:mobile-zones">
+                                    <label for="mobile-assetZoneEN">Select Zone:</label>
+                                    <select class="selectpicker MobileSelectZoneFilter" multiple title="Choose one of the following ..." data-selected-text-format="count" data-live-search="true" data-width="100%" data-style="btn-dark optional zones" style="display:none;" id="mobile-assetZoneEN" name="mobile-assetZoneEN" data-dropup-auto="false"></select>
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-assetSpeedLimit" visibly="mobile-vehicle:mobile-limits">
+                                    <label for="mobile-assetSpeedLimit">Speed Limit:</label>
+                                    <input id="mobile-assetSpeedLimit" type="text" class="form-control" placeholder="Speed Limit" name="mobile-assetSpeedLimit">
+                                </div>
+                                <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modal-assetInstallDate">
+                                    <label for="mobile-assetInstallDate">Install Date:</label>
+                                    <input id="mobile-assetInstallDate" type="text" class="form-control" placeholder="DD-MMM-YYYY" name="mobile-assetInstallDate">
+                                </div>
+                                <br />
+                                <div class="col-md-12"></div>
+                                <div class="pull-right m-t-20" style="margin-right:7px;">
+                                    <button type="submit" data-backdrop="static" class="create btn btn-md btn-success" id="submit-jobEN"><i class="fa fa-check fa-fw"></i>Save</button>
+                                    <button data-dismiss="modal" class="btn btn-md btn-danger"><i class="fa fa-times fa-fw"></i>Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--JAVASCRIPT-->
+        <!--=================================================-->
+        <!--jQuery [ REQUIRED ]-->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+        <script src="js/jquery/jquery-2.1.3.min.js"></script>
+
+
+        <!--custom Javascript by King-->
+        <script src="js/load-vehicles.js"></script>
+        <script src="js/logout.js"></script>
+        <script src="js/export.js"></script>
+		<script src="js/security.js"></script>
+        <script src="js/profile.js"></script>
+        <script src="js/modal-forms.js"></script>
+
+        <!--BootstrapJS [ RECOMMENDED ]-->
+        <script src="js/bootstrap.min.js"></script>
+
+
+        <!--Fast Click [ OPTIONAL ]-->
+        <script src="plugins/fast-click/fastclick.min.js"></script>
+
+
+        <!--Demo script [ DEMONSTRATION ]-->
+        <script src="js/demo/nifty-demo.min.js"></script>
+        
+
+
+        <!-- Plugins [ OPTIONAL ]-->
+        <!--<script src="js/plugins.min.js"></script>-->
+        <script src="js/nifty.min.js"></script>
+
+
+        <!--Switchery [ OPTIONAL ]-->
+        <script src="plugins/switchery/switchery.min.js"></script>
+
+
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+
+        <!--Bootstrap Tags Input [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+
+
+        <!--Chosen [ OPTIONAL ]-->
+        <script src="plugins/chosen/chosen.jquery.min.js"></script>
+
+
+        <!--noUiSlider [ OPTIONAL ]-->
+        <script src="plugins/noUiSlider/jquery.nouislider.all.min.js"></script>
+
+
+        <!--Bootstrap Datepicker [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+
+        <!--Dropzone [ OPTIONAL ]-->
+        <script src="plugins/dropzone/dropzone.min.js"></script>
+
+
+
+        <!--Bootstrap Table [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-table/bootstrap-table.js"></script>
+
+
+
+
+        <!--Panel [ SAMPLE ]-->
+        <script src="js/demo/ui-panels.js"></script>
+
+
+        <!--Server Time Clock [ OPTIONAL ]-->
+        <script src="js/servertime.js"></script>
+
+
+        <!--Download Plugins [ OPTIONAL ]-->
+        <script src="plugins/table-export/tableExport.min.js"></script> <!--@*Main file which does export feature *@-->
+        <script src="plugins/table-export/libs/FileSaver/FileSaver.min.js"></script>
+        <script src="plugins/table-export/libs/html2canvas/html2canvas.min.js"></script>
+        <script src="plugins/table-export/libs/jsPDF/jspdf.min.js"></script>
+        <script src="plugins/table-export/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+
+
+        <!--Bootbox Modals [ OPTIONAL ]-->
+        <script src="plugins/bootbox/bootbox.min.js"></script>
+
+
+        <!--Modals [ OPTIONAL ]-->
+        <script src="js/ui-modals.js"></script>
+
+
+        <!--Change Vehicle Settings [ OPTIONAL ]-->
+        <!--<script src="js/changedropdown.js"></script>-->
+        <script src="plugins/jquery-visibly/jquery-visibly.min.js"></script>
+		<!--Flat JSON-->
+        <script src="plugins/flatJSON/bootstrap-table-flatJSON.min.js"></script>
+
+
+        <!--Bootstrap Validator [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+
+
+        <!--Masked Input [ OPTIONAL ]-->
+        <script src="plugins/masked-input/jquery.maskedinput.min.js"></script>
+
+
+        <!--Form validation [ OPTIONAL ]-->
+        <script src="js/form-validation.js"></script>
+
+		<!--Bootstrap-table-locale-->
+   <script src="plugins/bootstrap-table/locale/bootstrap-table-locale.js"></script>
+
+        <!--Modernizr  [ OPTIONAL ]-->
+        <script src="plugins/modernizr/modernizr.custom.js"></script>
+
+
+        <!--Bootstrap Wizard [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+
+
+        <!--Form Wizard [ OPTIONAL ]-->
+        <script src="js/form-wizard.js"></script>
+
+
+        <!--Datetime Picker [ OPTIONAL ]-->
+        <script src="plugins/datetimepicker/jquery.datetimepicker.js"></script>
+
+        <!--Date Format-->
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/moment-timezone/moment-timezone.js"></script>   
+	    <script src="plugins/mobile-detect/mobile-detect.js"></script>
+
+        <!--Lightbox [ OPTIONAL ]-->
+        <script src="plugins/lightbox/dist/ekko-lightbox.min.js"></script>
+
+        <!--
+
+        REQUIRED
+        You must include this in your project.
+
+        RECOMMENDED
+        This category must be included but you may modify which plugins or components which should be included in your project.
+
+        OPTIONAL
+        Optional plugins. You may choose whether to include it in your project or not.
+
+        DEMONSTRATION
+        This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+        SAMPLE
+        Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+        Detailed information and more samples can be found in the document.
+
+        -->
+
+
+        <!--Datetime Picker Script [ OPTIONAL ]-->
+        <script>
+
+		 Date.parseDate = function (input, format) {
+                return moment(input, format).toDate();
+            };
+            Date.prototype.dateFormat = function (format) {
+                return moment(this).format(format);
+            };
+
+            jQuery('#assetInstallDate').datetimepicker({
+                format: 'DD-MMM-YYYY, hh:mm A',
+                formatTime: 'hh:mm a',
+                formatDate: 'DD-MMM-YYYY',
+                theme: 'dark'
+            });
+
+            jQuery('#assetDateAlert').datetimepicker({
+                format: 'DD-MMM-YYYY, hh:mm A',
+                formatTime: 'hh:mm a',
+                formatDate: 'DD-MMM-YYYY',
+                theme: 'dark'
+            });
+
+            jQuery('#assetDateAlertEN').datetimepicker({
+                format: 'DD-MMM-YYYY, hh:mm A',
+                formatTime: 'hh:mm a',
+                formatDate: 'DD-MMM-YYYY',
+                theme: 'dark'
+            });
+
+            jQuery('#mobile-assetInstallDate').datetimepicker({
+                format: 'DD-MMM-YYYY, hh:mm A',
+                formatTime: 'hh:mm a',
+                formatDate: 'DD-MMM-YYYY',
+                theme: 'dark'
+            });
+
+
+        </script>
+
+
+
+    </div>
+</body>
+</html>
+

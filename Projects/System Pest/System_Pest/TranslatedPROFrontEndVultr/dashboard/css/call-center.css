@@ -1,0 +1,297 @@
+/*==========================================================================*/
+/*Map Start*/
+html, body {
+        /*width: 100%;*/
+        /*height: 768px;*/
+        width: 100%;
+        /*height: 968px;*/
+        height: 100%;
+        margin: 0;
+        padding: 0;
+       	/*position: relative;
+        margin: 0 auto 0;   
+        padding: 0px 0px 0;*/
+        /*overflow: hidden;*/
+        max-width: none !important;
+        box-shadow: none !important;
+      }
+
+
+img, object, embed {    
+    max-width: none !important;
+    box-shadow: none !important; 
+}
+
+.gm-style img {
+    max-width: none;
+  }
+
+  .gm-style label {
+    width: auto; display:inline;
+  }
+
+
+
+.gmnoprint img {
+    max-width: none; 
+}
+
+/*Map End*/
+/*==========================================================================*/
+
+
+/*==========================================================================*/
+/*Traffic Button Start*/
+     .gmap-control-container {
+	margin: 5.3px;
+    margin-left: -6px;
+    margin-top: 10px;
+}
+.gmap-control {
+    cursor: pointer;
+    background-color: -moz-linear-gradient(center top , #FEFEFE, #F3F3F3);
+    background-color: #FEFEFE;
+    border: 1px solid #A9BBDF;
+    border-radius: 2px;
+    padding: 0 6px;
+    line-height: 160%;
+    font-size: 11px;
+    font-family: Arial,sans-serif;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.gmap-control:hover {
+    border: 1px solid #678AC7;
+}
+.gmap-control-active {
+    background-color: -moz-linear-gradient(center top , #6D8ACC, #7B98D9);
+    background-color: #6D8ACC;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #678AC7;
+}
+.gmap-control-legend {
+    position: absolute;
+    text-align: left;
+    z-index: -1;
+    top: 20px;
+    left: 0;
+    width: 150px;
+    height: 86px;
+    font-size: 10px;
+    background: #FEFEFE;
+    border: 1px solid #A9BBDF;
+    padding: 10px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+}
+.gmap-control-legend ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.gmap-control-legend li {
+    line-height: 160%;
+}
+/*Traffic Button End*/
+/*==========================================================================*/
+
+
+
+.infobox-wrapper {
+    display:none;
+}
+#infobox {
+    border:1px solid black;
+    margin-top: 8px;
+    background:#333;
+    color:#FFF;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    padding: .2em 1em;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-shadow:0 -1px #000000;
+    -webkit-box-shadow: 0 0  8px #000;
+    box-shadow: 0 0 8px #000;
+}
+
+  .labels {
+     color: white;
+     background-color: transparent;
+     font-family: "Lucida Grande", "Arial", sans-serif;
+     font-size: 10px;
+     text-align: center;
+     width: 100px;
+     white-space: nowrap;
+   }
+
+
+
+
+/* your custom CSS \*/
+
+    /* your custom CSS \*/
+	@-moz-keyframes pulsate {
+		from {
+			-moz-transform: scale(0.25);
+			opacity: 1.0;
+		}
+		95% {
+			-moz-transform: scale(1.3);
+			opacity: 0;
+		}
+		to {
+			-moz-transform: scale(0.3);
+			opacity: 0;
+		}
+	}
+	@-webkit-keyframes pulsate {
+		from {
+			-webkit-transform: scale(0.25);
+			opacity: 1.0;
+		}
+		95% {
+			-webkit-transform: scale(1.3);
+			opacity: 0;
+		}
+		to {
+			-webkit-transform: scale(0.3);
+			opacity: 0;
+		}
+	}
+
+
+    #map-canvas div.gmnoprint[title="Barlight is on"] {
+		-moz-animation: pulsate 1.5s ease-in-out infinite;
+		-webkit-animation: pulsate 1.5s ease-in-out infinite;
+		border:1pt solid #fff;
+		/* make a circle */
+		-moz-border-radius:51px;
+		-webkit-border-radius:51px;
+		border-radius:51px;
+		/* multiply the shadows, inside and outside the circle */
+		/*-moz-box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
+		-webkit-box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
+		box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;*/
+
+        -moz-box-shadow:inset 0 0 5px #feab34, inset 0 0 5px #feab34, inset 0 0 5px #feab34, 0 0 5px #feab34, 0 0 5px #feab34, 0 0 5px #feab34;
+		-webkit-box-shadow:inset 0 0 5px #feab34, inset 0 0 5px #feab34, inset 0 0 5px #feab34, 0 0 5px #feab34, 0 0 5px #feab34, 0 0 5px #feab34;
+		box-shadow:inset 0 0 5px #feab34, inset 0 0 5px #feab34, inset 0 0 5px #feab34, 0 0 5px #feab34, 0 0 5px #feab34, 0 0 5px #feab34;
+
+		/* set the ring's new dimension and re-center it */
+		height:51px!important;
+		margin:-18px 0 0 -18px;
+		width:51px!important;
+	}
+	/* hide the superfluous marker image since it would expand and shrink with its containing element */
+    #map-canvas div.gmnoprint[title="Barlight is on"] img {
+		display:none;
+	}
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (device-width: 768px) {
+		#map-canvas div.gmnoprint[title="Barlight is on"] {
+			margin:-10px 0 0 -10px;
+		}
+	}
+      
+/*==========================================================================*/
+ .controls {
+  margin-top: 7px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+ #pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+
+}
+
+  #pac-inputEN {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+
+}
+
+
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+
+#pac-inputEN:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+
+ #pac-input:focus {
+  border-color: #4d90fe;
+}
+
+ #target {
+  width: 345px;
+}
+
+#showDetails {
+    cursor: pointer;
+}
+
+#hideDetails {
+  cursor: pointer;
+}
+
+/*Floating Button End*/
+/*==========================================================================*/
+
+
+ #panel {
+position: absolute;
+top: 10px;
+right: 1%;
+margin-left: 0px;
+z-index: 5;
+/*background-color: #fff;*/
+padding: 0px;
+border: 0px solid #999;
+}
+

@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WlocateWeb" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WlocateWeb" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfRFIDInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RFIDInfo" nillable="true" type="tns:RFIDInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRFIDInfo" nillable="true" type="tns:ArrayOfRFIDInfo" />
+  <xs:complexType name="RFIDInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="Created_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Created_UserID" type="xs:int" />
+      <xs:element minOccurs="0" name="DateAdded" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Modified_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Modified_UserID" type="xs:int" />
+      <xs:element minOccurs="0" name="RFID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RfidID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RFIDInfo" nillable="true" type="tns:RFIDInfo" />
+  <xs:complexType name="ArrayOfDriverInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverInfo" nillable="true" type="tns:DriverInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriverInfo" nillable="true" type="tns:ArrayOfDriverInfo" />
+  <xs:complexType name="DriverInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BloodType" type="xs:int" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DriverID" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageFill" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastTap" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LoginLocal" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RFID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelativeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelativePhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DriverInfo" nillable="true" type="tns:DriverInfo" />
+  <xs:complexType name="ArrayOfFeatureInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FeatureInfo" nillable="true" type="tns:FeatureInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFeatureInfo" nillable="true" type="tns:ArrayOfFeatureInfo" />
+  <xs:complexType name="FeatureInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FeatureID" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleID" type="xs:int" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FeatureInfo" nillable="true" type="tns:FeatureInfo" />
+  <xs:complexType name="ArrayOfNameInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NameInfo" nillable="true" type="tns:NameInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNameInfo" nillable="true" type="tns:ArrayOfNameInfo" />
+  <xs:complexType name="NameInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NameInfo" nillable="true" type="tns:NameInfo" />
+  <xs:complexType name="ArrayOfCompanyInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompanyInfo" nillable="true" type="tns:CompanyInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompanyInfo" nillable="true" type="tns:ArrayOfCompanyInfo" />
+  <xs:complexType name="CompanyInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetLimit" type="xs:int" />
+      <xs:element minOccurs="0" name="Categories" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="Flag" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageFill" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reports" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SmsLimit" type="xs:int" />
+      <xs:element minOccurs="0" name="UserLimit" type="xs:int" />
+      <xs:element minOccurs="0" name="ZoneLimit" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompanyInfo" nillable="true" type="tns:CompanyInfo" />
+  <xs:complexType name="ArrayOfUserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserInfo" nillable="true" type="tns:UserInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserInfo" nillable="true" type="tns:ArrayOfUserInfo" />
+  <xs:complexType name="UserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApiKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Assets" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="Culture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageFill" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Language" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LanguageID" type="xs:int" />
+      <xs:element minOccurs="0" name="Menus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notifications" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reports" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserInfo" nillable="true" type="tns:UserInfo" />
+  <xs:complexType name="Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrMessage" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ErrorCode" type="xs:long">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Response" nillable="true" type="tns:Response" />
+  <xs:complexType name="GenUserActivityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="LoginFreq" type="xs:int" />
+      <xs:element minOccurs="0" name="Month" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MonthNum" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalHours" type="xs:double" />
+      <xs:element minOccurs="0" name="UserActivityID" type="xs:int" />
+      <xs:element minOccurs="0" name="Year" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenUserActivityInfo" nillable="true" type="tns:GenUserActivityInfo" />
+  <xs:complexType name="ArrayOfGenUserActivityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GenUserActivityInfo" nillable="true" type="tns:GenUserActivityInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGenUserActivityInfo" nillable="true" type="tns:ArrayOfGenUserActivityInfo" />
+  <xs:complexType name="AssetInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activities" nillable="true" type="tns:ArrayOfActivityInfo" />
+      <xs:element minOccurs="0" name="AlertLevel" type="xs:int" />
+      <xs:element minOccurs="0" name="AlertZones" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetID" type="xs:int" />
+      <xs:element minOccurs="0" name="BaseMileage" type="xs:double" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="CurfewEnd" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CurfewStart" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gprs" type="xs:int" />
+      <xs:element minOccurs="0" name="Gps" type="xs:int" />
+      <xs:element minOccurs="0" name="Home" type="xs:int" />
+      <xs:element minOccurs="0" name="IdleLimit" type="xs:double" />
+      <xs:element minOccurs="0" name="Ignition" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageFill" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InstallDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InstallRemarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastEnterID" type="xs:long" />
+      <xs:element minOccurs="0" name="LastEventID" type="xs:long" />
+      <xs:element minOccurs="0" name="LastExitID" type="xs:long" />
+      <xs:element minOccurs="0" name="LastFixID" type="xs:long" />
+      <xs:element minOccurs="0" name="LastGps" nillable="true" type="tns:PosInfo" />
+      <xs:element minOccurs="0" name="LastGpsID" type="xs:long" />
+      <xs:element minOccurs="0" name="LastIdle" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastMove" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastPos" nillable="true" type="tns:PosInfo" />
+      <xs:element minOccurs="0" name="LastPosID" type="xs:long" />
+      <xs:element minOccurs="0" name="Mileage" type="xs:double" />
+      <xs:element minOccurs="0" name="MileageDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MileageDist" type="xs:double" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notifications" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RFID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RFID_Status" type="xs:int" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpeedLimit" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TagID" type="xs:int" />
+      <xs:element minOccurs="0" name="TagPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Temperature" type="xs:double" />
+      <xs:element minOccurs="0" name="Temperature2" type="xs:double" />
+      <xs:element minOccurs="0" name="Trips" nillable="true" type="tns:ArrayOfTripInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetInfo" nillable="true" type="tns:AssetInfo" />
+  <xs:complexType name="ArrayOfActivityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivityInfo" nillable="true" type="tns:ActivityInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActivityInfo" nillable="true" type="tns:ArrayOfActivityInfo" />
+  <xs:complexType name="ActivityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountNum" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityID" type="xs:long" />
+      <xs:element minOccurs="0" name="ActivityNum" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArriveTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ArriveTimeEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetID" type="xs:int" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="DepartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DepartTimeEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Distance" type="xs:double" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndOffset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Order" type="xs:int" />
+      <xs:element minOccurs="0" name="StartOffset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZoneID" type="xs:int" />
+      <xs:element minOccurs="0" name="ZoneInfo" nillable="true" type="tns:ZoneInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityInfo" nillable="true" type="tns:ActivityInfo" />
+  <xs:complexType name="ZoneInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CellIds" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageFill" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Perimeter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TagID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZoneID" type="xs:int" />
+      <xs:element minOccurs="0" name="ZoneTapInfo" nillable="true" type="tns:ArrayOfZoneTap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZoneInfo" nillable="true" type="tns:ZoneInfo" />
+  <xs:complexType name="ArrayOfZoneTap">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZoneTap" nillable="true" type="tns:ZoneTap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZoneTap" nillable="true" type="tns:ArrayOfZoneTap" />
+  <xs:complexType name="ZoneTap">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployeeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployeeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RFID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TagID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TapIn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TapOut" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ZoneIn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZoneOut" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZoneTapID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZoneTap" nillable="true" type="tns:ZoneTap" />
+  <xs:complexType name="PosInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActualTemp" type="xs:double" />
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetID" type="xs:int" />
+      <xs:element minOccurs="0" name="Battery" type="xs:double" />
+      <xs:element minOccurs="0" name="Course" type="xs:double" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Engine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FixID" type="xs:int" />
+      <xs:element minOccurs="0" name="Fuel" type="xs:double" />
+      <xs:element minOccurs="0" name="FuelLevel" type="xs:double" />
+      <xs:element minOccurs="0" name="HDOP" type="xs:double" />
+      <xs:element minOccurs="0" name="Ignition" type="xs:int" />
+      <xs:element minOccurs="0" name="IsBuffer" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LocID" type="xs:long" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mileage" type="xs:double" />
+      <xs:element minOccurs="0" name="PosID" type="xs:long" />
+      <xs:element minOccurs="0" name="PosX" type="xs:double" />
+      <xs:element minOccurs="0" name="PosY" type="xs:double" />
+      <xs:element minOccurs="0" name="PosZ" type="xs:double" />
+      <xs:element minOccurs="0" name="RFID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RxTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Satellites" type="xs:int" />
+      <xs:element minOccurs="0" name="Speed" type="xs:double" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TagID" type="xs:int" />
+      <xs:element minOccurs="0" name="Temperature" type="xs:double" />
+      <xs:element minOccurs="0" name="Temperature2" type="xs:double" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Zone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZoneID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PosInfo" nillable="true" type="tns:PosInfo" />
+  <xs:complexType name="ArrayOfTripInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TripInfo" nillable="true" type="tns:TripInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTripInfo" nillable="true" type="tns:ArrayOfTripInfo" />
+  <xs:complexType name="TripInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetID" type="xs:int" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DestinationDuration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DestinationEnter" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DestinationExit" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DestinationID" type="xs:int" />
+      <xs:element minOccurs="0" name="Diesel" type="xs:double" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mileage" type="xs:double" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OriginDuration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OriginEnter" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OriginExit" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OriginID" type="xs:int" />
+      <xs:element minOccurs="0" name="PlanID" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TravelDuration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TripID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TripInfo" nillable="true" type="tns:TripInfo" />
+  <xs:complexType name="ArrayOfZoneInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZoneInfo" nillable="true" type="tns:ZoneInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZoneInfo" nillable="true" type="tns:ArrayOfZoneInfo" />
+  <xs:complexType name="ArrayOfTagInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TagInfo" nillable="true" type="tns:TagInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTagInfo" nillable="true" type="tns:ArrayOfTagInfo" />
+  <xs:complexType name="TagInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageFill" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Imei" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InstallDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InstallRemarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Interval" type="xs:int" />
+      <xs:element minOccurs="0" name="IsSentOut" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServerIP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServerPort" type="xs:int" />
+      <xs:element minOccurs="0" name="TagID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TagInfo" nillable="true" type="tns:TagInfo" />
+  <xs:complexType name="ArrayOfAssetInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetInfo" nillable="true" type="tns:AssetInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetInfo" nillable="true" type="tns:ArrayOfAssetInfo" />
+  <xs:complexType name="ArrayOfDownAssetsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DownAssetsInfo" nillable="true" type="tns:DownAssetsInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDownAssetsInfo" nillable="true" type="tns:ArrayOfDownAssetsInfo" />
+  <xs:complexType name="DownAssetsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="asset_id" type="xs:int" />
+      <xs:element minOccurs="0" name="company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="company_id" type="xs:int" />
+      <xs:element minOccurs="0" name="lastupdate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="notified" type="xs:int" />
+      <xs:element minOccurs="0" name="tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tagphone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DownAssetsInfo" nillable="true" type="tns:DownAssetsInfo" />
+  <xs:complexType name="ArrayOfPosInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PosInfo" nillable="true" type="tns:PosInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPosInfo" nillable="true" type="tns:ArrayOfPosInfo" />
+  <xs:complexType name="ArrayOfPlanInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlanInfo" nillable="true" type="tns:PlanInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlanInfo" nillable="true" type="tns:ArrayOfPlanInfo" />
+  <xs:complexType name="PlanInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DestinationID" type="xs:int" />
+      <xs:element minOccurs="0" name="Duration" type="xs:double" />
+      <xs:element minOccurs="0" name="DurationEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastTrip" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OriginID" type="xs:int" />
+      <xs:element minOccurs="0" name="PlanID" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanInfo" nillable="true" type="tns:PlanInfo" />
+  <xs:complexType name="EventInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AckTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AckUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AckUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="AlertLevel" type="xs:int" />
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Event" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventID" type="xs:long" />
+      <xs:element minOccurs="0" name="Flag" type="xs:int" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PosID" type="xs:long" />
+      <xs:element minOccurs="0" name="Position" nillable="true" type="tns:PosInfo" />
+      <xs:element minOccurs="0" name="RFID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RxTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TagID" type="xs:int" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Zone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventInfo" nillable="true" type="tns:EventInfo" />
+  <xs:complexType name="TripZoneInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetID" type="xs:int" />
+      <xs:element minOccurs="0" name="AssetName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RxTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TripID" type="xs:int" />
+      <xs:element minOccurs="0" name="TripsZoneID" type="xs:long" />
+      <xs:element minOccurs="0" name="ZoneID" type="xs:int" />
+      <xs:element minOccurs="0" name="ZoneName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TripZoneInfo" nillable="true" type="tns:TripZoneInfo" />
+  <xs:complexType name="ArrayOfTripZoneInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TripZoneInfo" nillable="true" type="tns:TripZoneInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTripZoneInfo" nillable="true" type="tns:ArrayOfTripZoneInfo" />
+  <xs:complexType name="ArrayOfEventInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EventInfo" nillable="true" type="tns:EventInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEventInfo" nillable="true" type="tns:ArrayOfEventInfo" />
+  <xs:complexType name="ArrayOfZoneReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZoneReport" nillable="true" type="tns:ZoneReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZoneReport" nillable="true" type="tns:ArrayOfZoneReport" />
+  <xs:complexType name="ZoneReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EnterID" type="xs:long" />
+      <xs:element minOccurs="0" name="EntryTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ExitTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExitTimeEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZoneReport" nillable="true" type="tns:ZoneReport" />
+  <xs:complexType name="ArrayOfSpeedReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpeedReport" nillable="true" type="tns:SpeedReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpeedReport" nillable="true" type="tns:ArrayOfSpeedReport" />
+  <xs:complexType name="SpeedReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PosID" type="xs:long" />
+      <xs:element minOccurs="0" name="Speed" type="xs:double" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpeedReport" nillable="true" type="tns:SpeedReport" />
+  <xs:complexType name="UtilizeReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetID" type="xs:int" />
+      <xs:element minOccurs="0" name="AveIdle1ExMins" type="xs:double" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndTimeEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Idle" type="xs:double" />
+      <xs:element minOccurs="0" name="Idle1Ex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Idle1ExMins" type="xs:double" />
+      <xs:element minOccurs="0" name="Idle2Ex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastIgnition" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mileage" type="xs:double" />
+      <xs:element minOccurs="0" name="Move" type="xs:double" />
+      <xs:element minOccurs="0" name="Move1Ex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Move2Ex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartTimeEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Stop1" type="xs:double" />
+      <xs:element minOccurs="0" name="Stop1Ex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Stop2" type="xs:double" />
+      <xs:element minOccurs="0" name="Stop2Ex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StopCount" type="xs:int" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UtilID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UtilizeReport" nillable="true" type="tns:UtilizeReport" />
+  <xs:complexType name="ArrayOfUtilizeReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UtilizeReport" nillable="true" type="tns:UtilizeReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUtilizeReport" nillable="true" type="tns:ArrayOfUtilizeReport" />
+  <xs:complexType name="MileageReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetID" type="xs:int" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndTimeEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mileage" type="xs:double" />
+      <xs:element minOccurs="0" name="MileageID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartTimeEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MileageReport" nillable="true" type="tns:MileageReport" />
+  <xs:complexType name="ArrayOfMileageReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MileageReport" nillable="true" type="tns:MileageReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMileageReport" nillable="true" type="tns:ArrayOfMileageReport" />
+  <xs:complexType name="ArrayOfMixerReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MixerReport" nillable="true" type="tns:MixerReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMixerReport" nillable="true" type="tns:ArrayOfMixerReport" />
+  <xs:complexType name="MixerReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Event" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventID" type="xs:long" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Zone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MixerReport" nillable="true" type="tns:MixerReport" />
+  <xs:complexType name="ArrayOfPhoneInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PhoneInfo" nillable="true" type="tns:PhoneInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPhoneInfo" nillable="true" type="tns:ArrayOfPhoneInfo" />
+  <xs:complexType name="PhoneInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageFill" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Selected" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhoneInfo" nillable="true" type="tns:PhoneInfo" />
+  <xs:complexType name="MessageInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetID" type="xs:int" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageID" type="xs:int" />
+      <xs:element minOccurs="0" name="Recipients" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageInfo" nillable="true" type="tns:MessageInfo" />
+  <xs:complexType name="ArrayOfMessageInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessageInfo" nillable="true" type="tns:MessageInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessageInfo" nillable="true" type="tns:ArrayOfMessageInfo" />
+  <xs:complexType name="RawData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataID" type="xs:long" />
+      <xs:element minOccurs="0" name="RxTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ServerIP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServerPort" type="xs:int" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TagID" type="xs:int" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RawData" nillable="true" type="tns:RawData" />
+  <xs:complexType name="ArrayOfRawData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RawData" nillable="true" type="tns:RawData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRawData" nillable="true" type="tns:ArrayOfRawData" />
+  <xs:complexType name="FileUpload">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileData" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FileUpload" nillable="true" type="tns:FileUpload" />
+  <xs:complexType name="CellID">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ControlNo" type="xs:long" />
+      <xs:element minOccurs="0" name="cid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lac" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lat" type="xs:double" />
+      <xs:element minOccurs="0" name="lon" type="xs:double" />
+      <xs:element minOccurs="0" name="mcc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="mnc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CellID" nillable="true" type="tns:CellID" />
+  <xs:complexType name="ArrayOfCellID">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CellID" nillable="true" type="tns:CellID" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCellID" nillable="true" type="tns:ArrayOfCellID" />
+  <xs:complexType name="ArrayOfOTACommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OTACommand" nillable="true" type="tns:OTACommand" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOTACommand" nillable="true" type="tns:ArrayOfOTACommand" />
+  <xs:complexType name="OTACommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommandID" type="xs:int" />
+      <xs:element minOccurs="0" name="CommandName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CommandString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParamCount" type="xs:int" />
+      <xs:element minOccurs="0" name="TagTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="TagTypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OTACommand" nillable="true" type="tns:OTACommand" />
+</xs:schema>

@@ -1,0 +1,130 @@
+
+#languageTH {
+    display: none;
+}
+
+#languageEN {
+    display: none;
+}
+
+.language {
+    display: none;
+}
+
+#showPieChartUtilization {
+    display: none;
+}
+
+#clickRefresh {
+    display: none;
+}
+
+#clickRefreshEN {
+    display: none;
+}
+
+#distanceAlert {
+    display: none;
+}
+
+#distanceAlertEN {
+    display: none;
+}
+
+#assetDistanceAlert {
+    display: none;
+}
+
+#showColumnChartPosition {
+    display: none;
+}
+
+#showGeoChartSpeed {
+    display: none;
+}
+
+.vehicles {
+    display: none;
+}
+
+
+.zones {
+    display: none;
+}
+
+.companies {
+    display: none;
+}
+
+.settings {
+    display: none;
+}
+
+
+.users {
+    display: none;
+}
+
+
+.devices {
+    display: none;
+}
+
+#load-ver {
+    display: none;
+}
+
+.userRoleDesc {
+    display: none;
+}
+
+.reseller {
+    display: none;
+}
+
+.userFormReseller {
+    display: none;
+}
+
+.companyReseller {
+    display: none;
+}
+
+.userResellerColumn {
+    display: none;
+}
+
+.companyResellerColumn{
+    display: none;
+}
+
+.companyReseller {
+    display: none;
+}
+.assetDevices {
+    display: none;
+}
+
+.drivers {
+    display: none;
+}
+
+.select-reseller-filter {
+    display: none;
+}
+
+.markerVideoEN {
+    display: none;
+}
+
+.help {
+    display: none;
+}
+
+.zones {
+    display: none;
+}
+
+.jobs {
+    display: none;
+}

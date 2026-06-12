@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="A clean login and registration template based on Bootstrap framework">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>Fleet Management System</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link media="screen" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,300italic">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="mainWrap">
+        <div id="loggit">
+            <h1><i class="fa fa-lock"></i> FMS</h1>
+            <!--<h3>Please <strong>Login</strong><strong></strong></h3>-->
+
+            <form action="Dashboard" id="logForm" method="get" class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                            <input type="text" class="form-control input-lg" placeholder="Email" autocomplete="off" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                            <input type="password" class="form-control input-lg" placeholder="Password" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group formSubmit">
+                    <div class="col-sm-7">
+                        <!--<div class="checkbox">
+                            <label>
+                                <input type="checkbox" checked autocomplete="off"> Keep me logged in
+                            </label>
+                        </div>-->
+                    </div>
+                    <div class="col-sm-5 submitWrap">
+                        <button type="submit" class="btn btn-primary btn-lg">Log In</button>
+                    </div>
+                </div>
+                <!--<div class="form-group formNotice">
+                    <div class="col-xs-12">
+                        <p class="text-center">Forgot your password? <span>Click Here</span></p>
+                    </div>
+                </div>-->
+            </form>
+            <form action="#" id="regForm" method="post" class="form-horizontal">
+                <p class="text-center">Please provide both username and email address to get a new password.<span></span></p>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                            <input type="text" class="form-control input-lg" placeholder="Username" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                            <input type="text" class="form-control input-lg" placeholder="Email" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group formSubmit">
+                    <div class="col-sm-7">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" autocomplete="off"> I agree to the Terms &amp; Conditions
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 submitWrap">
+                        <button type="submit" class="btn btn-success btn-lg">Reset Password</button>
+                    </div>
+                </div>
+                <div class="form-group formNotice">
+                    <div class="col-xs-12">
+                        <p class="hasAccount text-center">Already have an account? <span>Log in here</span></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <footer class="clearfix">
+        <p>Copyright &copy; 2015 FMS. All Rights Reserved</p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.formNotice span').click(function () {
+                $("#logForm").toggle();
+                $("#regForm").toggle();
+            });
+
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+/*==========================================================================*/
+/*Map Start*/
+html, body, #map-canvas {
+        width: 100%;
+        height: 768px;
+        position: relative;
+        margin: 0 auto 0;   
+        padding: 0px 0px 0;
+        overflow: hidden
+      }
+/*Map End*/
+/*==========================================================================*/
+
+
+
+/*==========================================================================*/
+/*Floating button Button Start*/
+
+
+
+      #panel {
+        position: absolute;
+        top: 540px;
+        left: 50%;
+        margin-left: -130px;
+        z-index: 5;
+        /*background-color: #fff;*/
+        background-color: #404040;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+
+
+        #savedata {
+        position: absolute;
+        top: 500px;
+        left: 50%;
+        margin-left: -190px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+
+
+/*Floating Button End*/
+/*==========================================================================*/
+
+div[title="Stop drawing"] { 
+    display: none !important; 
+}
+
+

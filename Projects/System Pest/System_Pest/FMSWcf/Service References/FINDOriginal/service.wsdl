@@ -1,0 +1,1408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Wlocate" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WlocateWeb" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWlocate_GetMileageReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMileageReport" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetMileageReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMileageReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetMixerReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMixerReport" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetMixerReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMixerReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetPhones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhones" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetPhones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessages" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetMessagesEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesEx" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetMessagesEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessagesExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_FlagMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlagMessages" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_FlagMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlagMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveMessage" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMessage" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetRawData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRawData" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetRawData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRawDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveRawData_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRawData" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveRawData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRawDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_UploadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_UploadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFile" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_LocateCellID_InputMessage">
+    <wsdl:part name="parameters" element="tns:LocateCellID" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_LocateCellID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LocateCellIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetCellIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCellIds" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetCellIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCellIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetZoneCellIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetZoneCellIds" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetZoneCellIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetZoneCellIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetCidParams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCidParams" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetCidParams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCidParamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveCellIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCellIds" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveCellIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCellIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetAssetsEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsEx" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetAssetsEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveAsset_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAsset" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveAsset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAssetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteAsset_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAsset" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteAsset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAssetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetAssetsApi_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsApi" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetAssetsApi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsApiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_FindAssets_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAssets" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_FindAssets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAssetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_FindAsset_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAsset" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_FindAsset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAssetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetActivities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivities" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetActivities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveActivity" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveActivities_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveActivities" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveActivities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveActivitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_UpdateActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateActivity" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_UpdateActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActivity" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteActivities_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActivities" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteActivities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActivitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetPlans_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlans" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetPlans_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SavePlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlan" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SavePlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SavePlans_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlans" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SavePlans_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeletePlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePlan" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeletePlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetTrips_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrips" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetTrips_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTripsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteTrip_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTrip" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteTrip_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTripResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GenerateTrips_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateTrips" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GenerateTrips_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateTripsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEvents" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveEvent" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_CancelEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelEvent" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_CancelEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_FlagEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlagEvent" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_FlagEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlagEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetPositions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPositions" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetPositions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPositionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SavePosition_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePosition" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SavePosition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetZoneReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetZoneReport" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetZoneReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetZoneReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetSpeedReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpeedReport" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetSpeedReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpeedReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetUtilizeReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilizeReport" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetUtilizeReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilizeReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_CheckLicense_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckLicense" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_CheckLicense_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckLicenseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetAppKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppKey" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetAppKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetServerTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerTime" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetServerTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetFeatures_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFeatures" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetFeatures_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFeaturesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNames" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetStrings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStrings" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetStrings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStringsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetApiKeys_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApiKeys" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetApiKeys_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApiKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetServerNoticeMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerNoticeMessage" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetServerNoticeMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerNoticeMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetCompanies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanies" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetCompanies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCompany" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompany" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUser" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_LogInUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogInUser" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_LogInUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogInUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_UnlockUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnlockUser" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_UnlockUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnlockUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_ResetPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPassword" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_ResetPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_Geocode_InputMessage">
+    <wsdl:part name="parameters" element="tns:Geocode" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_Geocode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GeocodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_ReverseGeocode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReverseGeocode" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_ReverseGeocode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReverseGeocodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetZones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetZones" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetZones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetZonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetActiveZones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveZones" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetActiveZones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveZonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveZone_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveZone" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveZone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveZoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteZone_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteZone" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteZone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteZoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTags" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTag" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_SaveTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTag" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_DeleteTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetAssets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssets" />
+  </wsdl:message>
+  <wsdl:message name="IWlocate_GetAssets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssetsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWlocate">
+    <wsdl:operation name="GetMileageReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetMileageReport" message="tns:IWlocate_GetMileageReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetMileageReportResponse" message="tns:IWlocate_GetMileageReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMixerReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetMixerReport" message="tns:IWlocate_GetMixerReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetMixerReportResponse" message="tns:IWlocate_GetMixerReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPhones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetPhones" message="tns:IWlocate_GetPhones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetPhonesResponse" message="tns:IWlocate_GetPhones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetMessages" message="tns:IWlocate_GetMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetMessagesResponse" message="tns:IWlocate_GetMessages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesEx">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetMessagesEx" message="tns:IWlocate_GetMessagesEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetMessagesExResponse" message="tns:IWlocate_GetMessagesEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlagMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/FlagMessages" message="tns:IWlocate_FlagMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/FlagMessagesResponse" message="tns:IWlocate_FlagMessages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveMessage" message="tns:IWlocate_SaveMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveMessageResponse" message="tns:IWlocate_SaveMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/DeleteMessage" message="tns:IWlocate_DeleteMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/DeleteMessageResponse" message="tns:IWlocate_DeleteMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRawData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetRawData" message="tns:IWlocate_GetRawData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetRawDataResponse" message="tns:IWlocate_GetRawData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRawData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveRawData" message="tns:IWlocate_SaveRawData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveRawDataResponse" message="tns:IWlocate_SaveRawData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/UploadFile" message="tns:IWlocate_UploadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/UploadFileResponse" message="tns:IWlocate_UploadFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetFile" message="tns:IWlocate_GetFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetFileResponse" message="tns:IWlocate_GetFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LocateCellID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/LocateCellID" message="tns:IWlocate_LocateCellID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/LocateCellIDResponse" message="tns:IWlocate_LocateCellID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCellIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetCellIds" message="tns:IWlocate_GetCellIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetCellIdsResponse" message="tns:IWlocate_GetCellIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZoneCellIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetZoneCellIds" message="tns:IWlocate_GetZoneCellIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetZoneCellIdsResponse" message="tns:IWlocate_GetZoneCellIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCidParams">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetCidParams" message="tns:IWlocate_GetCidParams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetCidParamsResponse" message="tns:IWlocate_GetCidParams_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCellIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveCellIds" message="tns:IWlocate_SaveCellIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveCellIdsResponse" message="tns:IWlocate_SaveCellIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsEx">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetAssetsEx" message="tns:IWlocate_GetAssetsEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetAssetsExResponse" message="tns:IWlocate_GetAssetsEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAsset">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveAsset" message="tns:IWlocate_SaveAsset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveAssetResponse" message="tns:IWlocate_SaveAsset_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAsset">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/DeleteAsset" message="tns:IWlocate_DeleteAsset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/DeleteAssetResponse" message="tns:IWlocate_DeleteAsset_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsApi">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetAssetsApi" message="tns:IWlocate_GetAssetsApi_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetAssetsApiResponse" message="tns:IWlocate_GetAssetsApi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAssets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/FindAssets" message="tns:IWlocate_FindAssets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/FindAssetsResponse" message="tns:IWlocate_FindAssets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAsset">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/FindAsset" message="tns:IWlocate_FindAsset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/FindAssetResponse" message="tns:IWlocate_FindAsset_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetActivities" message="tns:IWlocate_GetActivities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetActivitiesResponse" message="tns:IWlocate_GetActivities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveActivity" message="tns:IWlocate_SaveActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveActivityResponse" message="tns:IWlocate_SaveActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveActivities" message="tns:IWlocate_SaveActivities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveActivitiesResponse" message="tns:IWlocate_SaveActivities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/UpdateActivity" message="tns:IWlocate_UpdateActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/UpdateActivityResponse" message="tns:IWlocate_UpdateActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/DeleteActivity" message="tns:IWlocate_DeleteActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/DeleteActivityResponse" message="tns:IWlocate_DeleteActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/DeleteActivities" message="tns:IWlocate_DeleteActivities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/DeleteActivitiesResponse" message="tns:IWlocate_DeleteActivities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlans">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetPlans" message="tns:IWlocate_GetPlans_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetPlansResponse" message="tns:IWlocate_GetPlans_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SavePlan" message="tns:IWlocate_SavePlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SavePlanResponse" message="tns:IWlocate_SavePlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePlans">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SavePlans" message="tns:IWlocate_SavePlans_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SavePlansResponse" message="tns:IWlocate_SavePlans_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/DeletePlan" message="tns:IWlocate_DeletePlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/DeletePlanResponse" message="tns:IWlocate_DeletePlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrips">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetTrips" message="tns:IWlocate_GetTrips_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetTripsResponse" message="tns:IWlocate_GetTrips_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTrip">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/DeleteTrip" message="tns:IWlocate_DeleteTrip_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/DeleteTripResponse" message="tns:IWlocate_DeleteTrip_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateTrips">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GenerateTrips" message="tns:IWlocate_GenerateTrips_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GenerateTripsResponse" message="tns:IWlocate_GenerateTrips_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetEvents" message="tns:IWlocate_GetEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetEventsResponse" message="tns:IWlocate_GetEvents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveEvent" message="tns:IWlocate_SaveEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveEventResponse" message="tns:IWlocate_SaveEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/CancelEvent" message="tns:IWlocate_CancelEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/CancelEventResponse" message="tns:IWlocate_CancelEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlagEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/FlagEvent" message="tns:IWlocate_FlagEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/FlagEventResponse" message="tns:IWlocate_FlagEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPositions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetPositions" message="tns:IWlocate_GetPositions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetPositionsResponse" message="tns:IWlocate_GetPositions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePosition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SavePosition" message="tns:IWlocate_SavePosition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SavePositionResponse" message="tns:IWlocate_SavePosition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZoneReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetZoneReport" message="tns:IWlocate_GetZoneReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetZoneReportResponse" message="tns:IWlocate_GetZoneReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpeedReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetSpeedReport" message="tns:IWlocate_GetSpeedReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetSpeedReportResponse" message="tns:IWlocate_GetSpeedReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUtilizeReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetUtilizeReport" message="tns:IWlocate_GetUtilizeReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetUtilizeReportResponse" message="tns:IWlocate_GetUtilizeReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckLicense">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/CheckLicense" message="tns:IWlocate_CheckLicense_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/CheckLicenseResponse" message="tns:IWlocate_CheckLicense_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppKey">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetAppKey" message="tns:IWlocate_GetAppKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetAppKeyResponse" message="tns:IWlocate_GetAppKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetServerTime" message="tns:IWlocate_GetServerTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetServerTimeResponse" message="tns:IWlocate_GetServerTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFeatures">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetFeatures" message="tns:IWlocate_GetFeatures_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetFeaturesResponse" message="tns:IWlocate_GetFeatures_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetNames" message="tns:IWlocate_GetNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetNamesResponse" message="tns:IWlocate_GetNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStrings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetStrings" message="tns:IWlocate_GetStrings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetStringsResponse" message="tns:IWlocate_GetStrings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApiKeys">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetApiKeys" message="tns:IWlocate_GetApiKeys_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetApiKeysResponse" message="tns:IWlocate_GetApiKeys_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerNoticeMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetServerNoticeMessage" message="tns:IWlocate_GetServerNoticeMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetServerNoticeMessageResponse" message="tns:IWlocate_GetServerNoticeMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetCompanies" message="tns:IWlocate_GetCompanies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetCompaniesResponse" message="tns:IWlocate_GetCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveCompany" message="tns:IWlocate_SaveCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveCompanyResponse" message="tns:IWlocate_SaveCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/DeleteCompany" message="tns:IWlocate_DeleteCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/DeleteCompanyResponse" message="tns:IWlocate_DeleteCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetUsers" message="tns:IWlocate_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetUsersResponse" message="tns:IWlocate_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveUser" message="tns:IWlocate_SaveUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveUserResponse" message="tns:IWlocate_SaveUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/DeleteUser" message="tns:IWlocate_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/DeleteUserResponse" message="tns:IWlocate_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogInUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/LogInUser" message="tns:IWlocate_LogInUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/LogInUserResponse" message="tns:IWlocate_LogInUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetUser" message="tns:IWlocate_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetUserResponse" message="tns:IWlocate_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/UnlockUser" message="tns:IWlocate_UnlockUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/UnlockUserResponse" message="tns:IWlocate_UnlockUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/ResetPassword" message="tns:IWlocate_ResetPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/ResetPasswordResponse" message="tns:IWlocate_ResetPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Geocode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/Geocode" message="tns:IWlocate_Geocode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GeocodeResponse" message="tns:IWlocate_Geocode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReverseGeocode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/ReverseGeocode" message="tns:IWlocate_ReverseGeocode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/ReverseGeocodeResponse" message="tns:IWlocate_ReverseGeocode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetZones" message="tns:IWlocate_GetZones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetZonesResponse" message="tns:IWlocate_GetZones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveZones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetActiveZones" message="tns:IWlocate_GetActiveZones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetActiveZonesResponse" message="tns:IWlocate_GetActiveZones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveZone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveZone" message="tns:IWlocate_SaveZone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveZoneResponse" message="tns:IWlocate_SaveZone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteZone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/DeleteZone" message="tns:IWlocate_DeleteZone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/DeleteZoneResponse" message="tns:IWlocate_DeleteZone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTags">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetTags" message="tns:IWlocate_GetTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetTagsResponse" message="tns:IWlocate_GetTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTag">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/SaveTag" message="tns:IWlocate_SaveTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/SaveTagResponse" message="tns:IWlocate_SaveTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTag">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/DeleteTag" message="tns:IWlocate_DeleteTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/DeleteTagResponse" message="tns:IWlocate_DeleteTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWlocate/GetAssets" message="tns:IWlocate_GetAssets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWlocate/GetAssetsResponse" message="tns:IWlocate_GetAssets_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWlocate" type="tns:IWlocate">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMileageReport">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetMileageReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMixerReport">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetMixerReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPhones">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetPhones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesEx">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetMessagesEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlagMessages">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/FlagMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveMessage">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/DeleteMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRawData">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetRawData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRawData">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveRawData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LocateCellID">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/LocateCellID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCellIds">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetCellIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZoneCellIds">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetZoneCellIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCidParams">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetCidParams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCellIds">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveCellIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsEx">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetAssetsEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAsset">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAsset">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/DeleteAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsApi">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetAssetsApi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAssets">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/FindAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAsset">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/FindAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivities">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetActivities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivity">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivities">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveActivities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActivity">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/UpdateActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivity">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/DeleteActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivities">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/DeleteActivities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlans">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetPlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePlan">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SavePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePlans">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SavePlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePlan">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/DeletePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrips">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetTrips" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTrip">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/DeleteTrip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateTrips">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GenerateTrips" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEvent">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelEvent">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/CancelEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlagEvent">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/FlagEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPositions">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetPositions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePosition">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SavePosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZoneReport">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetZoneReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpeedReport">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetSpeedReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUtilizeReport">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetUtilizeReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLicense">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/CheckLicense" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppKey">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetAppKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetServerTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFeatures">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetFeatures" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNames">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStrings">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetStrings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApiKeys">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetApiKeys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerNoticeMessage">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetServerNoticeMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetCompanies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCompany">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/DeleteCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogInUser">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/LogInUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockUser">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/UnlockUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Geocode">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/Geocode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReverseGeocode">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/ReverseGeocode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZones">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetZones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveZones">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetActiveZones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveZone">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteZone">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/DeleteZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTags">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTag">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/SaveTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTag">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/DeleteTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssets">
+      <soap:operation soapAction="http://tempuri.org/IWlocate/GetAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Wlocate">
+    <wsdl:port name="BasicHttpBinding_IWlocate" binding="tns:BasicHttpBinding_IWlocate">
+      <soap:address location="http://wlocate-webserv/WlocateWeb/Wlocate.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

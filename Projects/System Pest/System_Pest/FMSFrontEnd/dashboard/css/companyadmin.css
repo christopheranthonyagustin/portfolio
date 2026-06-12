@@ -1,0 +1,97 @@
+
+#languageTH {
+    display: none;
+}
+
+#languageEN {
+    display: none;
+}
+
+.language {
+    display: none;
+}
+
+#showPieChartUtilization {
+    display: none;
+}
+
+#clickRefresh {
+    display: none;
+}
+
+#clickRefreshEN {
+    display: none;
+}
+
+#distanceAlert {
+    display: none;
+}
+
+#distanceAlertEN {
+    display: none;
+}
+
+#assetDistanceAlert {
+    display: none;
+}
+
+#showColumnChartPosition {
+    display: none;
+}
+
+#showGeoChartSpeed {
+    display: none;
+}
+
+.devices {
+    display: none;
+}
+
+.companies {
+    display: none;
+}
+
+.reseller {
+    display: none;
+}
+
+.userFormReseller {
+    display: none;
+}
+
+.companyReseller {
+    display: none;
+}
+
+.userResellerColumn {
+    display: none;
+}
+
+.companyResellerColumn{
+    display: none;
+}
+
+.companyReseller {
+    display: none;
+}
+
+
+.assetDevices {
+    display: none;
+}
+
+.select-reseller-filter {
+    display: none;
+}
+
+.markerVideoEN {
+    display: none;
+}
+
+.zones {
+    display: none;
+}
+
+.jobs {
+    display: none;
+}

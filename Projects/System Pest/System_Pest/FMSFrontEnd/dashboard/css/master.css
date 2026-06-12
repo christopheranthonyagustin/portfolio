@@ -1,0 +1,78 @@
+
+#languageTH {
+    display: none;
+}
+
+#languageEN {
+    display: none;
+}
+
+.language {
+    display: none;
+}
+
+.devices {
+    display: none;
+}
+
+.reseller {
+    display: none;
+}
+
+.userFormReseller {
+    display: none;
+}
+
+.companyReseller {
+    display: none;
+}
+
+#company-confirm-deleteEN {
+    display: none;
+}
+
+#company-confirm-delete {
+    display: none;
+}
+
+
+/*#add-toggle-button-company {
+    display: none;
+}*/
+
+.userResellerColumn {
+    display: none;
+}
+
+.companyResellerColumn{
+    display: none;
+}
+
+.companyReseller {
+    display: none;
+}
+
+.assetDevices {
+    display: none;
+}
+
+.select-reseller-filter {
+    display: none;
+}
+
+
+.markerVideoEN {
+    display: none;
+}
+
+.help {
+    display: none;
+}
+
+.zones {
+    display: none;
+}
+
+.jobs {
+    display: none;
+}

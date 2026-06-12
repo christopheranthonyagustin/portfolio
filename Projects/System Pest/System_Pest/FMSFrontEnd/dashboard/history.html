@@ -1,0 +1,3940 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+	<meta name="Content-Type" content="text/html" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Pest Control Management System</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <!--Roboto Font [ OPTIONAL ]-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Home Page Stylesheet [ REQUIRED ]-->
+    <link href="css/content.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+    <!--Datetime Picker [ OPTIONAL ]-->
+    <link href="plugins/datetimepicker/jquery.datetimepicker.css" rel="stylesheet">
+
+    <!-- loading jQuery UI css -->
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/flick/jquery-ui.css" />
+
+    <!--JS Panel [ OPTIONAL ]-->
+    <link href="plugins/jsPanel-bootstrap/jspanel/jquery.jspanel.min.css" rel="stylesheet">
+
+    <!--Localization-->
+    <link rel="stylesheet" href="css/localization.css">
+
+    <!--=================================================-->
+    <!--SCRIPT-->
+    <!--=================================================-->
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <link href="plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="plugins/pace/pace.min.js"></script>
+
+    <!-- Needs images, font... therefore can not be part of main.css -->
+    <link rel="stylesheet" href="fonts/themify-icons/themify-icons.min.css">
+    <link rel="stylesheet" href="fonts/weather-icons/css/weather-icons.min.css">
+
+    <!--Lightbox [ OPTIONAL ]-->
+    <link href="plugins/lightbox/dist/ekko-lightbox.min.css" rel="stylesheet">
+
+    <style>
+
+        .page {
+            padding: 15px 0px 0px;
+        }
+
+
+    </style>
+
+
+    <!-- end Needs images -->
+    <!--
+
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+
+
+    <!--<script type="text/javascript" src="http://www.google.com/jsapi"></script>-->
+
+
+</head>
+
+<!--TIPS-->
+
+<body>
+
+    <!-- START OF CONTAINER -->
+    <!-- <div id="container" class="effect mainnav-lg aside-in navbar-fixed">-->
+    <div id="container" class="effect mainnav-lg navbar-fixed aside-in">
+        <!--NAVBAR-->
+        <!--===================================================-->
+        <header id="navbar">
+            <div id="navbar-container" class="boxed">
+
+                <!--Brand logo & name-->
+                <!--================================-->
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand">
+                        <!--Logo-->
+                        <img src="img/logo.png" alt="Track Logo" class="brand-icon" id="showProfileCompany">
+
+                        <div class="brand-title">
+                            <span class="brand-text" id="titleCompany"></span>
+                        </div>
+                    </a>
+                </div>
+
+
+                <!--================================-->
+                <!--End brand logo & name-->
+                <!--Navbar Dropdown-->
+                <!--================================-->
+                <div class="navbar-content clearfix">
+
+                    <ul class="nav navbar-top-links pull-left">
+
+                        <!--Navigation toogle button-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="tgl-menu-btn">
+                            <a class="mainnav-toggle" href="#" title="Toggle Navigation Menu" id='toggleChart'>
+                                <i class="fa fa-navicon fa-lg"></i>
+                            </a>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End Navigation toogle button-->
+                        <!--Language-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="dropdown hidden-xs">
+                            <label class="localize localization">
+                                <select id="load-lang" class="icon-menu" onchange="document.documentElement.lang=this.value">
+                                    <option style="background-image:url(img/flags/united-kingdom.png);" value="en" selected="selected">English</option>
+                                    <option style="background-image:url(img/flags/thailand.png);" value="th">Thai</option>
+                                    <option style="background-image:url(img/flags/vietnam.png);" value="vn">Vietnam</option>
+                                    <option style="background-image:url(img/flags/indonesia.png);" value="id">Indonesia</option>
+                                </select>
+                            </label>
+                        </li>
+
+
+
+                        <!--Language-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                       
+                        <li id="playback" class="">
+                            <a href="playback.html" title="Playback" target="_blank">
+                                <i class="fa fa-map-marker fa-lg"></i>
+                                <span class="menu-title">
+                                    &nbsp;
+                                    <!--Notifications-->
+                                    <span data-l11n="vn" class="pull-right badge badge-primary">Phát Lại</span>
+                                    <span data-l11n="id" class="pull-right badge badge-primary">Pemutaran Peta</span>
+                                    <span data-l11n="th" class="pull-right badge badge-primary">การเล่น</span>
+                                    <span data-l11n class="pull-right badge badge-primary">Playback</span>
+
+
+                                </span>
+                            </a>
+                        </li>
+
+                        <li id="viewLocation" class="hidden-xs">
+                            <a href="history_location.html" title="View Location" target="_blank">
+                                <i class="fa fa-location-arrow fa-lg"></i>
+                                <span class="menu-title">
+                                    &nbsp;
+                                    <!--Notifications-->
+                                    <span data-l11n="vn" class="pull-right badge badge-primary">Xem Vị Trí</span>
+                                    <span data-l11n="id" class="pull-right badge badge-primary">Lihat Lokasi</span>
+                                    <span data-l11n="th" class="pull-right badge badge-primary">ดูสถานที่ตั้ง</span>
+                                    <span data-l11n class="pull-right badge badge-primary">View Location</span>
+
+
+                                </span>
+                            </a>
+                        </li>
+
+                        <!--Vehicle Status-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+                        <li class="dropdown hidden-sm hidden-md hidden-lg">
+                            <a id="history-modal" href="#" title="Search Report">
+                                <i class="fa fa-search fa-lg"></i>
+                                <span class="menu-title">
+                                    &nbsp;
+                                    <!--Notifications-->
+                                    <span data-l11n class="pull-right hidden-xs">Search Report</span>
+                                    <span data-l11n class="pull-right hidden-sm hidden-md hidden-lg">Search</span>
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+                    </ul>
+
+
+                    <!--Vehicle List-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <ul class="nav navbar-top-links pull-right">
+
+                        <li class="hidden-xs" data-content="Vehicle List">
+
+                            <a id="toggle-aside" class="lang-selector dropdown-toggle hidden-xs" href="#" data-toggle="dropdown" title="Search">
+                                <span class="lang-selected hidden-xs">
+                                    <!--<img class="lang-flag" src="img/vechlist.png" alt="Vehicle Lists">-->
+                                    <span data-l11n="th" class="lang-name hidden-xs"><i class="fa fa-search fa-lg"></i>&nbsp;&nbsp;รายงานการค้นหา</span>
+                                    <span data-l11n class="lang-name hidden-xs"><i class="fa fa-search fa-lg"></i>&nbsp;&nbsp;Search Report</span>
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--Vehicle List-->
+                        <!--User dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li id="dropdown-user" class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right" title="Profile">
+                                <span class="pull-right">
+                                    <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture" id="showProfile">
+                                </span>
+                                <div class="username hidden-xs" id="load-username"></div>
+                            </a>
+
+
+                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+                                <!-- Dropdown heading  -->
+                                <div class="pad-all bord-btm">
+                                    <p class="text-lg text-muted text-thin mar-btm" id="load-email"></p>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar" style="width: 100%;">
+                                            <span class="sr-only">70%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- User dropdown menu -->
+                                <ul class="head-list">
+                                    <li data-l11n="th">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> ข้อมูลส่วนตัว
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n="vn">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> Tiểu Sử
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n="id">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> Profil
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n>
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> Profile
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n="th" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> ช่วย
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n="vn" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Trợ Giúp
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n="id" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Pembantuan
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Help
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+                                <!-- Dropdown footer -->
+                                <div class="pad-all text-right hidden-sm hidden-md hidden-lg">
+                                    <span data-l11n="id" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> Keluar
+                                    </span>
+                                    <span data-l11n="vn" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> Đăng xuất
+                                    </span>
+                                    <span data-l11n="th" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ
+                                    </span>
+
+                                    <span data-l11n class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> Logout
+                                    </span>
+                                </div>
+
+
+
+                            </div>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End user dropdown-->
+                        <li data-content="Logout">
+
+                            <a class="lang-selector dropdown-toggle hidden-xs" href="#" data-target="#sm-modal" data-toggle="modal">
+                                <span class="lang-selected hidden-xs">
+                                    <span data-l11n="id" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="Keluar"></i></span>
+                                    <span data-l11n="vn" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="Đăng xuất"></i></span>
+                                    <span data-l11n="th" class="lang-name hidden-xs"><i class="fa fa-sign-out fa-lg" title="ออกจากระบบ"></i></span>
+                                    <span data-l11n class="lang-name hidden-xs"><i class="fa fa-sign-out  fa-lg" title="Logout"></i></span>
+
+                                </span>
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+                <!--================================-->
+                <!--End Navbar Dropdown-->
+            </div>
+        </header>
+        <!--===================================================-->
+        <!--END NAVBAR-->
+
+        <div class="boxed">
+            <!--CONTENT CONTAINER-->
+            <!--===================================================-->
+            <div id="content-container">
+
+
+                <!--Page Title-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--<div id="page-title">-->
+                <!--Page content-->
+                <!--===================================================-->
+                <!--MAP-->
+
+                <div id="page-content">
+
+                     <div id="report-canvas">
+
+                        <div class="panel-body-full" id="event-report" visibly="load-report:Events">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="vn" class="panel-title"><i class="fa fa-table"></i>&nbsp;Sự Kiện</h4>
+                                    <h4 data-l11n="id" class="panel-title"><i class="fa fa-table"></i>&nbsp;Peristiwa</h4>
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;รายงานเหตุการณ์</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-table"></i>&nbsp;Events</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-events">
+                                        <div class="form-inline" role="form">
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <!--Events Report-->
+                                    <table id="reports-events"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-zoneEnter"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false"></table>
+                                    <div id="timeIntervalEvents" class="text-dark"></div>
+
+                                </div>
+
+                            </div>
+                            <!--===================================================-->
+
+
+
+                        </div>
+
+                        <div class="panel-body-full" id="position-report" visibly="load-report:Positions">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;รายงาน ตำแหน่ง</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-table"></i>&nbsp;Position Report</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-positions">
+                                        <div class="form-inline" role="form">
+
+                                            <div id="chartPositionStatus" class="col-md-6"></div>
+                                            <div id="chartPositionIgnition" class="col-md-6"></div>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Positions Report-->
+                                    <table id="reports-positions"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-show-filter="true"
+                                           data-toolbar="custom-positions"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-search="true"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="true"></table>
+                                        <div id="timeIntervalPosition" class="text-dark pull-left"></div>
+                                                                   
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="panel-body-full" id="speed-report" visibly="load-report:Speed">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="vn" class="panel-title"><i class="fa fa-table"></i>&nbsp;Báo Cáo Tốc Độ</h4>
+                                    <h4 data-l11n="id" class="panel-title"><i class="fa fa-table"></i>&nbsp;Laporan Kecepatan</h4>
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;รายงาน ความเร็ว</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-table"></i>&nbsp;Speeding Report</h4>
+
+
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+
+
+
+                                    <div id="custom-speed">
+                                        <div class="form-inline" role="form">
+
+                                            <!--<button class="btn btn-block btn-mint" id="showGeoChartSpeed" name="showGeoChartSpeed">ดู แผนภูมิ</button>-->
+
+                                            <div id="chartSpeed" class="col-md-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Speed Report-->
+                                    <table id="reports-speed"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-speed"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false"></table>
+                                    <div id="timeIntervalSpeed" class="text-dark"></div>
+                                </div>
+
+
+                            </div>
+                            <!--===================================================-->
+
+
+
+                        </div>
+
+                        <div class="panel-body-full" id="mileage-report" visibly="load-report:Mileage">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;รายงาน การสะสมไมล์</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-table"></i>&nbsp;Mileage Report</h4>
+
+
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+
+
+
+                                    <div id="custom-mileage">
+                                        <div class="form-inline" role="form">
+
+
+                                            <div id="chartMileage" class="col-md-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Mileage Report-->
+                                    <table id="reports-mileage"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-mileage"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false"></table>
+                                    <div id="timeIntervalMileage" class="text-dark"></div>
+
+                                </div>
+
+
+
+
+                            </div>
+                            <!--===================================================-->
+
+
+
+                        </div>
+
+                        <div class="panel-body-full" id="utilization-report" visibly="load-report:Utilization (Type 1)">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;รายงาน การใช้ประโยชน์</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-table"></i>&nbsp;Utilization Report</h4>
+
+
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+
+
+
+                                    <div id="custom-utilization">
+                                        <div class="form-inline" role="form">
+
+
+                                        </div>
+                                    </div>
+
+                                    <!--Utilization Report-->
+                                    <table id="reports-utilization"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="#custom-utilization"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false"></table>
+                                    <div id="timeIntervalUtilization" class="text-dark"></div>
+
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!--===================================================-->
+
+
+
+                        </div>
+
+                        <div class="panel-body-full" id="messages-report" visibly="load-report:Messages">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-table"></i>&nbsp;Messages</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-messages">
+                                        <div class="form-inline" role="form">
+
+
+                                        </div>
+                                    </div>
+
+                                    <!--Messages Report-->
+                                    <table id="reports-messages"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-messages"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false"></table>
+                                    <div id="timeIntervalMessages" class="text-dark"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="panel-body-full" id="jobs-report" visibly="load-report:Jobs">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="vn" class="panel-title"><i class="fa fa-table"></i>&nbsp;Công Việc</h4>
+                                    <h4 data-l11n="id" class="panel-title"><i class="fa fa-table"></i>&nbsp;Kerja</h4>
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Jobs</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-jobs">
+                                        <div class="form-inline" role="form">
+
+                                            <div id="chartJobs" class="col-md-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Jobs Report-->
+                                    <table id="reports-jobs"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-jobs"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false">
+                                        <tfoot>
+                                            <tr>                                           
+                                                <td colspan="0" align="right"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div id="timeIntervalJobs" class="text-dark pull-left"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="panel-body-full" id="jobstatus-report" visibly="load-report:Job Status">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="vn" class="panel-title"><i class="fa fa-table"></i>&nbsp;Trạng Thái Công Việc</h4>
+                                    <h4 data-l11n="id" class="panel-title"><i class="fa fa-table"></i>&nbsp;Status Kerja</h4>
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Job Status</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-jobstatus">
+                                        <div class="form-inline" role="form">
+
+                                            <div id="chartJobStatus" class="col-md-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Job Status Report-->
+                                    <table id="reports-jobstatus"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-jobstatus"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false">
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="0" align="right"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div id="timeIntervalJobStatus" class="text-dark pull-left"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="panel-body-full" id="callcenter-report" visibly="load-report:Call Center">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="vn" class="panel-title"><i class="fa fa-table"></i>&nbsp;Trung Tâm Cuộc Gọi</h4>
+                                    <h4 data-l11n="id" class="panel-title"><i class="fa fa-table"></i>&nbsp;Call Center</h4>
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Call Center</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-callcenter">
+                                        <div class="form-inline" role="form">
+
+                                            <div id="chartCallCenter" class="col-md-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Call Center Report-->
+                                    <table id="reports-callcenter"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-callcenter"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false">
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="0" align="right"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div id="timeIntervalCallCenter" class="text-dark pull-left"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="panel-body-full" id="trip-report" visibly="load-report:Trip">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Trip</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-trip">
+                                        <div class="form-inline" role="form">
+
+                                            <div id="chartTrip" class="col-md-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Trip Report-->
+                                    <table id="reports-trip"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-trip"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false">
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="0" align="right"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div id="timeIntervalTrip" class="text-dark pull-left"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="panel-body-full" id="payment-report" visibly="load-report:Payment">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Payment</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-payment">
+                                        <div class="form-inline" role="form">
+
+                                            <div id="chartPayment" class="col-md-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Payment Report-->
+                                    <table id="reports-payment"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-payment"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false">
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="0" align="right"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div id="timeIntervalPayment" class="text-dark pull-left"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="panel-body-full" id="paramedic-report" visibly="load-report:Paramedic">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Paramedic</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-paramedic">
+                                        <div class="form-inline" role="form">
+
+                                            <div id="chartParamedic" class="col-md-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Paramedic Report-->
+                                    <table id="reports-paramedic"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-paramedic"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false">
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="0" align="right"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div id="timeIntervalParamedic" class="text-dark pull-left"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="panel-body-full" id="driver-report" visibly="load-report:Phone User">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 data-l11n="vn" class="panel-title"><i class="fa fa-table"></i>&nbsp;Điện Thoại Người Dùng</h4>
+                                    <h4 data-l11n="id" class="panel-title"><i class="fa fa-table"></i>&nbsp;Ponsel</h4>
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Phone User</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-driver">
+                                        <div class="form-inline" role="form">
+
+                                            <div id="chartDriver" class="col-md-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Driver Report-->
+                                    <table id="reports-driver"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-driver"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false">
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="0" align="right"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div id="timeIntervalDriver" class="text-dark pull-left"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+						<div class="panel-body-full" id="type-report" visibly="load-report:Type">
+
+                             <div class="panel panel-bordered panel-dark">
+
+                                 <div class="panel-heading" style="background-color: #1B1B1B">
+                                     <h4 data-l11n="vn" class="panel-title"><i class="fa fa-table"></i>&nbsp;Loại Công Việc</h4>
+                                     <h4 data-l11n="id" class="panel-title"><i class="fa fa-table"></i>&nbsp;Jenis Kerja</h4>
+                                     <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                     <h4 data-l11n class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Job Type</h4>
+                                 </div>
+
+                                 <div class="panel-body" style="background-color: #2A2F35">
+                                     <div id="custom-type">
+                                         <div class="form-inline" role="form">
+
+                                             <div id="chartType" class="col-md-12"></div>
+                                         </div>
+                                     </div>
+
+                                     <!--Type Report-->
+                                     <table id="reports-type"
+                                            class="searchable"
+                                            data-resizable="false"
+                                            data-sort-name="Timestamp"
+                                            data-sort-order="asc"
+                                            data-click-to-select="true"
+                                            data-single-select="true"
+                                            data-toolbar="custom-type"
+                                            data-show-header="true"
+                                            data-show-export="true"
+                                            data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                            data-search="true"
+                                            data-show-refresh="true"
+                                            data-show-toggle="true"
+                                            data-show-columns="true"
+                                            data-page-list="[10, 25, 50, 100, All]"
+                                            data-page-size="10"
+                                            data-pagination="true" data-show-pagination-switch="false">
+                                         <tfoot>
+                                             <tr>
+                                                 <td colspan="0" align="right"></td>
+                                             </tr>
+                                         </tfoot>
+                                     </table>
+                                     <div id="timeIntervalType" class="text-dark pull-left"></div>
+
+                                 </div>
+
+                             </div>
+                         </div>
+
+                         <div class="panel-body-full" id="barlight-report" visibly="load-report:Comprehensive Report">
+
+                             <div class="panel panel-bordered panel-dark">
+
+                                 <div class="panel-heading" style="background-color: #1B1B1B">
+                                     <h4 data-l11n="vn" class="panel-title"><i class="fa fa-table"></i>&nbsp;Báo Cáo Toàn Diện</h4>
+                                     <h4 data-l11n="id" class="panel-title"><i class="fa fa-table"></i>&nbsp;Laporan Komprehensif</h4>
+                                     <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                     <h4 data-l11n class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Comprehensive Report</h4>
+                                 </div>
+
+                                 <div class="panel-body" style="background-color: #2A2F35">
+                                     <div id="custom-cvr">
+                                         <div class="form-inline" role="form">
+
+                                             <div id="chartCVRStatus" class="col-md-6"></div>
+                                             <div id="chartCVRIgnition" class="col-md-6"></div>
+                                         </div>
+                                     </div>
+
+                                     <!--Comprehensive Vehicle Report-->
+                                     <table id="reports-cvr"
+                                            class="searchable"
+                                            data-resizable="false"
+                                            data-sort-name="Timestamp"
+                                            data-sort-order="asc"
+                                            data-click-to-select="true"
+                                            data-single-select="true"
+                                            data-toolbar="custom-cvr"
+                                            data-show-header="true"
+                                            data-show-export="true"
+                                            data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                            data-search="true"
+                                            data-show-refresh="true"
+                                            data-show-toggle="true"
+                                            data-show-columns="true"
+                                            data-page-list="[10, 25, 50, 100, All]"
+                                            data-page-size="10"
+                                            data-pagination="true" data-show-pagination-switch="false">
+                                         <tfoot>
+                                             <tr>
+                                                 <td colspan="0" align="right"></td>
+                                             </tr>
+                                         </tfoot>
+                                     </table>
+                                     <div id="timeIntervalCVR" class="text-dark pull-left"></div>
+
+                                 </div>
+
+                             </div>
+                         </div>
+
+                         <div class="panel-body-full" id="barlight-report" visibly="load-report:Barlight">
+
+                             <div class="panel panel-bordered panel-dark">
+
+                                 <div class="panel-heading" style="background-color: #1B1B1B">
+                                     <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;ข้อความ</h4>
+                                     <h4 data-l11n class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Bar Light</h4>
+                                 </div>
+
+                                 <div class="panel-body" style="background-color: #2A2F35">
+                                     <div id="custom-barlight">
+                                         <div class="form-inline" role="form">
+
+                                             <div id="chartBarlight" class="col-md-12"></div>
+                                         </div>
+                                     </div>
+
+                                     <!--Barlight Report-->
+                                     <table id="reports-barlight"
+                                            class="searchable"
+                                            data-resizable="false"
+                                            data-sort-name="Timestamp"
+                                            data-sort-order="asc"
+                                            data-click-to-select="true"
+                                            data-single-select="true"
+                                            data-toolbar="custom-barlight"
+                                            data-show-header="true"
+                                            data-show-export="true"
+                                            data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                            data-search="true"
+                                            data-show-refresh="true"
+                                            data-show-toggle="true"
+                                            data-show-columns="true"
+                                            data-page-list="[10, 25, 50, 100, All]"
+                                            data-page-size="10"
+                                            data-pagination="true" data-show-pagination-switch="false">
+                                         <tfoot>
+                                             <tr>
+                                                 <td colspan="0" align="right"></td>
+                                             </tr>
+                                         </tfoot>
+                                     </table>
+                                     <div id="timeIntervalBarlight" class="text-dark pull-left"></div>
+
+                                 </div>
+
+                             </div>
+                         </div>
+
+                         <div class="panel-body-full" id="inventory-report" visibly="load-report:Inventory">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading" style="background-color: #1B1B1B">
+                                    <h4 class="panel-title"><i class="fa fa-exchange"></i>&nbsp;Inventory</h4>
+                                </div>
+
+                                <div class="panel-body" style="background-color: #2A2F35">
+                                    <div id="custom-type">
+                                        <div class="form-inline" role="form">
+
+                                            <div id="chartType" class="col-md-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <!--Type Report-->
+                                    <table id="reports-inventory"
+                                           class="searchable"
+                                           data-resizable="false"
+                                           data-sort-name="Timestamp"
+                                           data-sort-order="asc"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="custom-type"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'csv', 'pdf', 'doc', 'excel', 'png'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 25, 50, 100, All]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="false">
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="0" align="right"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div id="timeIntervalType" class="text-dark pull-left"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+                <!--===================================================-->
+
+
+
+            </div>
+
+            <!--MAIN NAVIGATION-->
+            <!--===================================================-->
+            <nav id="mainnav-container" style="position:fixed">
+                <div id="mainnav">
+
+                    <!--Menu-->
+                    <!--================================-->
+                    <div id="mainnav-menu-wrap">
+                        <div class="nano">
+                            <div class="nano-content">
+
+                                <ul id="mainnav-menu" class="list-group">
+
+                                    <!--Version-->
+                                    <li data-l11n="id" class="list-header">Versi&nbsp;<span id="verNumID" class="text-muted"></span></li>
+                                    <li data-l11n="vn" class="list-header">Phiên bản&nbsp;<span id="verNumVN" class="text-muted"></span></li>
+                                    <li data-l11n="th" class="list-header">รุ่น&nbsp;<span id="verNum" class="text-muted"></span></li>
+                                    <li data-l11n class="list-header">Version&nbsp;<span id="verNumEN" class="text-muted"></span></li>
+
+
+
+                                    <!--Dashboard-->
+                                    <li class="active-link">
+                                        <a href="index.html">
+                                            <i class="fa fa-dashboard fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Dasbor">Dasbor</strong>
+                                                <strong data-l11n="vn" title="Bảng Diều Khiển">Bảng Theo Dõi</strong>
+                                                <strong data-l11n="th">หน้าปัด</strong>
+                                                <strong data-l11n>Dashboard</strong>
+                                                <!--Notifications-->
+                                                <span data-l11n="id" class="label label-primary pull-right">Peta</span>
+                                                <span data-l11n="vn" class="label label-primary pull-right">bản đồ</span>
+                                                <span data-l11n="th" class="label label-primary pull-right">แผนที่</span>
+                                                <span data-l11n class="label label-primary pull-right">Map</span>
+
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="callcenter">
+                                        <a href="call_center.html">
+                                            <i class="fa fa-phone fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id">Call Center</strong>
+                                                <strong data-l11n="vn">Trung Tâm Cuộc Gọi</strong>
+                                                <strong data-l11n="th">ศูนย์รับแจ้ง</strong>
+                                                <strong data-l11n>Call Center</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="maintenance">
+                                        <a href="maintenance.html">
+                                            <i class="fa fa-cog fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id">pemeliharaan</strong>
+                                                <strong data-l11n="vn">bảo trì</strong>
+                                                <strong data-l11n="th">ซ่อมบำรุง</strong>
+                                                <strong data-l11n>Maintenance</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="inventory">
+                                        <a href="inventory.html">
+                                            <i class="fa fa-archive fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong>Inventory</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="drivers">
+                                        <a href="drivers.html">
+                                            <i class="fa fa-user-plus fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Pengguna Telepon">Pengguna Telepon</strong>
+                                                <strong data-l11n="vn" title="Người Sử Dụng Diện Thoại">ĐT Người Dùng</strong>
+                                                <strong data-l11n="th">ไดร์เวอร์</strong>
+                                                <strong data-l11n>Phone Users</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <!--Vehicles-->
+                                    <li class="vehicles">
+                                        <a href="vehicles.html">
+                                            <i class="fa fa-mobile-phone fa-2x"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Ponsel">Ponsel</strong>
+                                                <strong data-l11n="vn" title="Điện thoại">Điện Thoại</strong>
+                                                <strong data-l11n="th">ยานพาหนะ</strong>
+                                                <strong data-l11n>Phones</strong>
+                                            </span>
+
+
+                                        </a>
+                                    </li>
+
+                                    <!--Zones-->
+                                    <li class="zones">
+                                        <a href="zones.html">
+                                            <i class="fa fa-globe fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id" title="Zona">Zona</strong>
+                                                <strong data-l11n="vn" title="Vùng trang">Vùng</strong>
+                                                <strong data-l11n="th">โซน</strong>
+                                                <strong data-l11n>Zones</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="jobs">
+                                        <a href="jobs.html">
+                                            <i class="fa fa-exchange fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="id">Tugas</strong>
+                                                <strong data-l11n="vn">Lịch Trình Công Việc</strong>
+                                                <strong data-l11n="th">โซน</strong>
+                                                <strong data-l11n>Scheduled Jobs</strong>
+                                            </span>
+
+                                        </a>
+                                    </li>
+
+
+                                    <!--Settings-->
+                                    <!--<li class="list-header">Settings</li>-->
+
+
+                                    <li class="list-divider"></li>
+
+                                    <li data-l11n="th" class="settings">
+                                        <a href="#" title="การตั้งค่า">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="th" class="menu-title">การตั้งค่า</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Companies Page">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">บริษัท</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Users Page">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">ผู้ใช้</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Devices Page">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">อุปกรณ์</span>
+
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Reseller Page">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">ผู้ค้าปลีก</span>
+
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li data-l11n class="settings">
+                                        <a href="#" title="Settings">
+                                            <i class="fa fa-gears fa-lg"></i>
+
+                                            <span data-l11n class="menu-title">Settings</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Companies Page">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Companies</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Users Page">
+                                                    <i class="fa fa-users fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Users</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Devices Page">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Devices</span>
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Reseller Page">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Reseller</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li data-l11n="vn" class="settings">
+                                        <a href="#" title="Cài đặt">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="vn" class="menu-title">Cài đặt</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="công ty trang">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Công Ty</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="người dùng trang">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Người Sử Dụng</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="trang thiết bị">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Thiết Bị</span>
+
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Đại lý bán lẻ trang">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+                                                    <span data-l11n="vn" class="menu-title">Người Bán Lại</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+
+                                    <li data-l11n="id" class="settings">
+                                        <a href="#" title="Pengaturan">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="id" class="menu-title">Pengaturan</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Perusahaan">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Perusahaan</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Pengguna">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Pengguna</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Perangkat">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Perangkat</span>
+
+                                                </a>
+                                            </li>
+                                            <li class="reseller">
+                                                <a href="reseller.html" title="Pengecer">
+                                                    <i class="fa fa-user-secret fa-lg"></i>
+                                                    <span data-l11n="id" class="menu-title">Pengecer</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+
+                                <br />
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <!--================================-->
+                    <!--End menu-->
+
+                </div>
+            </nav>
+
+
+
+            <!--===================================================-->
+            <!--END MAIN NAVIGATION-->
+            <!--ASIDE-->
+            <!--===================================================-->
+            <aside id="aside-container">
+                <div id="aside">
+                    <div class="nano">
+                        <div class="nano-content">
+
+                            <!--Navigation Tabs Turnoff-->
+                            <!--Nav tabs-->
+                            <!--================================-->
+                            <!--<ul class="nav nav-tabs nav-justified">
+                            <li class="active">
+                                <a href="#vehicle-list" data-toggle="tab">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                            </li>	-->
+                            <!--================================-->
+
+                            <br />
+                            <!--================================-->
+                            <!--End nav tabs-->
+                            <!--<form>-->
+                            <!-- Tabs Content -->
+                            <!--================================-->
+                            <div class="tab-content">
+
+                                <!--First tab (Contact list)-->
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <div class="tab-pane fade in active" id="vehicle-list">
+
+                                    <!--Company-->
+                                    <!-- Bootstrap Select with Search Input -->
+                                    <!--===================================================-->
+
+                                    <div class="form-group" id="formsReseller">
+                                        <div data-l11n="id" class=".text-normal">Pengecer</div>
+                                        <div data-l11n="vn" class=".text-normal">Người Bán Lại</div>
+                                        <div data-l11n="th" class=".text-normal">ผู้ค้าปลีก</div>
+                                        <div data-l11n class=".text-normal">Reseller</div>
+                                        <select class="selectpicker SelectResellerFilter" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="load-reseller" name="load-reseller"></select>
+                                    </div>
+                                    <div class="form-group" id="selectCompany">
+                                        <div data-l11n="vn" class=".text-normal">Công Ty</div>
+                                        <div data-l11n="id" class=".text-normal">Perusahaan</div>
+                                        <div data-l11n="th" class=".text-normal">บริษัท</div>
+                                        <div data-l11n class=".text-normal">Company</div>
+                                        <select class="selectpicker SelectCompanyFilter" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="load-company" name="load-company"></select>
+                                    </div>
+
+                                    <!--===================================================-->
+                                    <!--Report-->
+
+                                    <div class="form-group">
+                                        <div data-l11n="vn" class=".text-normal">Báo Cáo</div>
+                                        <div data-l11n="id" class=".text-normal">Laporan</div>
+                                        <div data-l11n="th" class=".text-normal">รายงาน</div>
+                                        <div data-l11n class=".text-normal">Report</div>
+                                        <select class="selectpicker SelectReport" data-width="100%" data-style="btn-asiacomDropdown" id="load-report" name="load-report">
+                                            <option value="" selected="selected" class="report">Choose one of the following...</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group" visibly="load-report:Events">
+                                        <div data-l11n="vn" class=".text-normal">Sự Kiện</div>
+                                        <div data-l11n="id" class=".text-normal">Peristiwa</div>
+                                        <div data-l11n="th" class=".text-normal">เหตุการณ์</div>
+                                        <div data-l11n class=".text-normal">Event</div>
+                                        <select class="selectpicker" data-width="100%" data-style="btn-asiacomDropdown" id="load-events" name="load-events">
+                                            <option value="" selected="selected" class="report2">Choose one of the following...</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group" visibly="load-report:Messages">
+                                        <div data-l11n="th" class=".text-normal">เหตุการณ์</div>
+                                        <div data-l11n class=".text-normal">Messages</div>
+                                        <select class="selectpicker" data-width="100%" data-style="btn-asiacomDropdown" id="load-messages" name="load-messages">
+                                            <option value="" selected="selected" >ALL</option>
+                                            <option value="0">Sent</option>
+                                            <option value="1">Pending</option>
+                                        </select>
+                                    </div>
+
+
+
+                                    <!--===================================================-->
+                                    <!--===================================================-->
+                                    <!--Vehicle-->
+
+                                    <div class="form-group vehicle" style="display:none" id="historyAssets">
+                                        <div data-l11n="vn" class=".text-normal">Điện Thoại</div>
+                                        <div data-l11n="id" class=".text-normal">Ponsel</div>
+                                        <div data-l11n="th" class=".text-normal">พาหนะ</div>
+                                        <div data-l11n class=".text-normal">Phone</div>
+                                        <!--<select class="selectpicker select-vehicle-filter" data-live-search="true" data-width="100%" data-style="btn-success" id="load-assets" name="load-assets" data-table="searchable"></select>-->
+                                        <select class="selectpicker SelectVechsFilter" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="load-assets" name="load-assets" data-table="searchable">
+                                            <!--<option value="" selected="selected">ALL</option>-->
+                                        </select>
+                                        <!--<small class="text-muted">Auto close on select</small>-->
+                                    </div>
+
+                                    <div class="form-group payment" style="display:none" id="historyPayment">
+                                        <div data-l11n="th" class=".text-normal">พาหนะ</div>
+                                        <div data-l11n class=".text-normal">Payment</div>
+                                        <select title="Select Payment..." style="display: none;" class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="payment">
+                                            <option value="0" data-icon="" selected="selected">ALL</option>
+                                            <option value="1" data-icon="">Cash</option>
+                                            <option value="2" data-icon="">Billing</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group reference" style="display:none" id="historyReference">
+                                        <div class=".text-normal">Reference</div>
+                                        <!--<select class="selectpicker select-vehicle-filter" data-live-search="true" data-width="100%" data-style="btn-success" id="load-assets" name="load-assets" data-table="searchable"></select>-->
+                                        <select class="selectpicker SelectReferenceFilter" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="load-reference" name="load-reference" data-table="searchable">
+                                            <!--<option value="" selected="selected">ALL</option>-->
+                                        </select>
+                                        <!--<small class="text-muted">Auto close on select</small>-->
+                                    </div>
+
+                                    <div class="form-group jobStatus" style="display:none" id="historyStatus">
+                                        <div data-l11n="vn" class=".text-normal">Trạng Thái Công Việc</div>
+                                        <div data-l11n="id" class=".text-normal">Status Kerja</div>
+                                        <div data-l11n="th" class=".text-normal">พาหนะ</div>
+                                        <div data-l11n class=".text-normal">Job Status</div>
+                                        <select title="Select Job Status..." style="display: none;" class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="jobStatus">
+                                            <option value="" data-icon="" selected="selected" class="jobStatusAll">ALL</option>
+                                            <option value="Completed" data-icon="" class="completed">Completed</option>
+                                            <option value="In Progress" data-icon="" class="inProgress">In Progress</option>
+                                            <option value="Transferred" data-icon="" class="transferred">Transferred</option>
+                                            <option value="New" data-icon="" class="new">New</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group jobcallcenter" style="display:none" id="historyCallCenter">
+                                        <div data-l11n="vn" class=".text-normal">Trung Tâm Cuộc Gọi</div>
+                                        <div data-l11n="id" class=".text-normal">Call Center</div>
+                                        <div data-l11n="th" class=".text-normal">พาหนะ</div>
+                                        <div data-l11n class=".text-normal">Call Center</div>
+                                        <select title="Select Call Center..." style="display: none;" class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="agent">
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group trip" style="display:none" id="historyTrip">
+                                        <div data-l11n="th" class=".text-normal">พาหนะ</div>
+                                        <div data-l11n class=".text-normal">Trip</div>
+                                        <select title="Select Payment..." style="display: none;" class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="trip">
+                                            <option value="0" data-icon="" selected="selected">ALL</option>
+                                            <option value="1" data-icon="">One Way</option>
+                                            <option value="2" data-icon="">Two Way</option>
+                                        </select>
+                                    </div>
+									
+									<div class="form-group trip" style="display:none" id="historyDriver">
+                                        <div data-l11n="th" class=".text-normal">ผู้ใช้โทรศัพท์</div>
+                                        <div data-l11n="id" class=".text-normal">Pengguna Ponsel</div>
+                                        <div data-l11n="vn" class=".text-normal">Điện Thoại Người Dùng</div>
+                                        <div data-l11n class=".text-normal">Phone User</div>
+                                        <div class="form-group">
+                                            <select title="Select Phone User..." style="display: none;" class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="driver">
+                                                <option value="" selected="selected" class ="driverAll">ALL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group trip" style="display:none" id="historyType">
+                                        <div data-l11n="th" class=".text-normal">พาหนะ</div>
+                                        <div data-l11n="vn" class=".text-normal">Kiểu</div>
+                                        <div data-l11n="id" class=".text-normal">Jenis</div>
+                                        <div data-l11n class=".text-normal">Type</div>
+                                        <select title="Select Payment..." style="display: none;" class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="type">
+                                            <option value="" data-icon="" selected="selected">
+                                            </option>
+                                            <option value="Normal" data-icon="" class="normal">Normal</option>
+                                            <option value="Scheduled" data-icon="" class="schedule">Scheduled</option>
+                                        </select>
+                                    </div>
+
+                                    <hr />
+                                    <!--===================================================-->
+                                    <!--Date Filter-->
+                                    <!--===================================================-->
+                                    <!--Date Time Alert-->
+
+
+
+                                    <div>
+                                        <input id="dateFrom" type="text" class="form-control" placeholder="DD-MMM-YYYY HH:MM">
+             
+                                    </div>
+                                    <small data-l11n="vn" class="text-muted pull-left">Từ</small>
+                                    <small data-l11n="id" class="text-muted pull-left">Dari</small>
+                                    <small data-l11n="th" class="text-muted pull-left">จาก</small>
+                                    <small data-l11n class="text-muted pull-left">From</small>
+
+                                    <br />
+
+
+
+                                    <!--===================================================-->
+
+
+                                    <div>
+                                        <input id="dateTo" type="text" class="form-control" placeholder="DD-MMM-YYYY HH:MM">
+                    
+                                    </div>
+                                    <small data-l11n="vn" class="text-muted pull-left">Đến</small>
+                                    <small data-l11n="id" class="text-muted pull-left">Ke</small>
+                                    <small data-l11n="th" class="text-muted pull-left">ไปยัง</small>
+                                    <small data-l11n class="text-muted pull-left">To</small>
+
+                                    <!--===================================================-->
+
+                                    <br />
+                                    <div visibly="load-report:Speed" id="speedForm">
+                                        <div data-l11n="vn" class=".text-normal">Giới Hạn</div>
+                                        <div data-l11n="id" class=".text-normal">Batas</div>
+                                        <div data-l11n="th" class=".text-normal">จำกัด</div>
+                                        <div data-l11n class=".text-normal">Limit</div>
+                                        <div class="form-group">
+                                            <input id="speedLimit" type="text" class="form-control" placeholder="" name="speedLimit" data-by-field="speedLimit">
+                                        </div>
+                                    </div>
+
+                                    <!--===================================================-->
+                                    <!--Category-->
+                                    <div visibly="load-report:Mileage" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <div class="form-group">
+                                            <div data-l11n="vn" class=".text-normal">Thể Loại</div>
+                                            <div data-l11n="id" class=".text-normal">Kategori</div>
+                                            <div data-l11n="th" class=".text-normal">หมวดหมู่</div>
+                                            <div data-l11n class=".text-normal">Category</div>
+                                            <select class="selectpicker" data-live-search="true" data-dropup-auto="false" data-width="100%" data-style="btn-asiacomDropdown" id="load-category" name="load-category"></select>
+                                        </div>
+                                    </div>
+
+                                    <!--===================================================-->
+
+
+                                    <div visibly="load-report:Mileage" class="hidden-xs hidden-sm hidden-md hidden-lg">
+                                        <div data-l11n="vn" class=".text-normal">Người Lái Xe</div>
+                                        <div data-l11n="id" class=".text-normal">Sopir</div>
+                                        <div data-l11n="th" class=".text-normal">คนขับรถ</div>
+                                        <div data-l11n class=".text-normal">Driver</div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="" name="driver" data-by-field="driver">
+                                        </div>
+
+                                    </div>
+
+
+
+
+
+                                    <!--===================================================-->
+                                    <hr>
+
+                                    <div class="pull-right">
+
+
+                                        <button class="btn btn-success hidden-xs hidden-sm hidden-md hidden-lg" title="รีเฟรช" id="clickRefreshEN" value="clickRefreshEN" onclick="RefreshEN();">
+                                            <i class="fa fa-refresh fa-fw"></i> Reset
+                                        </button>
+                                        <button class="btn btn-primary" title="Generate" id="clickGenerateEN" value="clickGenerateEN" onclick="GenerateEN();">
+                                            <i class="fa fa-table fa-fw"></i> Generate
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--End first tab (Contact list)-->
+
+
+                            </div>
+
+
+                            <!--</form>-->
+
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!--===================================================-->
+            <!--END ASIDE-->
+
+        </div>
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer">
+
+
+            <!--Test List-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <div class="show-fixed pull-right">
+                <ul class="footer-list list-inline">
+
+                    <li data-content="Company List">
+
+                        <span class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span class="lang-selected">
+                                <span class="lang-id">
+
+                                    <!--Company-->
+                                    <!--===================================================-->
+                                    <select class="selectpicker dropup" data-live-search="true" data-width="100%" data-style="btn-success" id="load-company2" name="load-company2"></select>
+                                    <!--===================================================-->
+
+                                </span>
+                            </span>
+                        </span>
+
+                    </li>
+
+
+                    <li data-content="Vehicle List">
+                        <span class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span class="lang-selected">
+                                <span class="lang-id">
+
+                                    <!--Vehicle-->
+                                    <!--===================================================-->
+                                    <select class="selectpicker dropup" data-live-search="true" data-width="100%" data-style="btn-success" id="load-assets2" name="load-assets2"></select>
+                                    <!--===================================================-->
+
+                                </span>
+                            </span>
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!-- Visible when footer positions are fixed -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right">
+                <ul class="footer-list list-inline">
+
+
+                    <!--===================================================-->
+                    <!-- Engine Status Start-->
+
+                    <li>
+                        <span class="lang-selected" title="Engine Status Color When Vehicle is Moving">
+                            <span data-l11n="th" class="lang-name">
+                                <button class="btn btn-sm btn-success">ย้าย</button>
+                            </span>
+
+                            <span data-l11n class="lang-name">
+                                <button class="btn btn-sm btn-success">Move</button>
+                            </span>
+                        </span>
+                    </li>
+
+
+                    <li>
+                        <span class="lang-selected" title="Engine Status Color When Vehicle is Idle">
+                            <span data-l11n="th" class="lang-name">
+                                <button class="btn btn-sm btn-warning">&nbsp;&nbsp;ว่าง&nbsp;&nbsp;</button>
+                            </span>
+
+                            <span data-l11n class="lang-name">
+                                <button class="btn btn-sm btn-warning">&nbsp;&nbsp;Idle&nbsp;&nbsp;</button>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected" title="Engine Status Color When Vehicle is Stop">
+                            <span data-l11n="th" class="lang-name">
+                                <button class="btn btn-sm btn-danger">&nbsp;หยุด&nbsp;</button>
+                            </span>
+
+                            <span data-l11n class="lang-name">
+                                <button class="btn btn-sm btn-danger">&nbsp;Stop&nbsp;</button>
+                            </span>
+                        </span>
+                    </li>
+
+                    <!-- Engine Status End -->
+                    <!--===================================================-->
+                    <!--===================================================-->
+                    <!-- Traffic Legend Start-->
+                    <li>
+                        <span class="lang-selected" title="Smooth Traffic">
+                            <span class="lang-name">
+                                <p data-l11n="th" class="text-sm">การจราจรได้อย่างราบรื่น</p>
+                                <p data-l11n class="text-sm">Smooth Traffic</p>
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-success"></div>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected" title="Slow Moving Traffic">
+                            <span class="lang-name">
+                                <p data-l11n="th" class="text-sm">การจราจรย้ายช้า</p>
+                                <p data-l11n class="text-sm">Slow Moving Traffic</p>
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-warning"></div>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected" title="Heavy Traffic">
+                            <span class="lang-name">
+                                <p data-l11n="th" class="text-sm">จราจรหนาแน่น</p>
+                                <p data-l11n class="text-sm">Heavy Traffic</p>
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-danger"></div>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <!-- Traffic Legend End -->
+                    <!--===================================================-->
+                    <!--===================================================-->
+                    <!-- Server Clock Start-->
+
+                    <li>
+
+                        <i class="fa fa-clock-o hidden-xs">&nbsp;</i> <div class="show-fixed pull-right pad-rgt hidden-xs" id="clockbox" title="Current Time"></div>
+
+                    </li>
+                    <!-- Server Clock End -->
+                    <!--===================================================-->
+
+
+
+                </ul>
+
+            </div>
+
+
+
+
+            <!-- Visible when footer positions are static -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right pad-rgt" id="clockbox"></div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+            <span data-l11n="vn" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - Hệ Thống Quản Lý Phương Tiện</span>
+            <span data-l11n="id" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - Sistem Manajemen Armada</span>
+            <span data-l11n="th" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2017 - ระบบการจัดการ กองทัพเรือ</span>
+            <span data-l11n class="pad-lft hidden-xs hidden-md"><span id="softwareEN"></span>&nbsp;&#0169; 2017 - Pest Control Management System</span>
+
+
+
+
+
+        </footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+        <!-- SCROLL TOP BUTTON -->
+        <!--===================================================-->
+        <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+        <!--===================================================-->
+
+
+
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+    <!-- BOOTSTRAP MODALS-->
+    <!--====================================================-->
+    <!--Logout Small Bootstrap Modal-->
+    <!--===================================================-->
+    <div id="sm-modal" class="modal fade" tabindex="-1" style="color: #2F343B;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <div data-l11n="th" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;ระบบการจัดการ กองทัพเรือ</i></div>
+                    <div data-l11n="vn" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Hệ Thống Quản Lý Dội Tàu</i></div>
+                    <div data-l11n="id" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Sistem Manajemen Armada</i></div>
+                    <div data-l11n class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Pest Control Management System</i></div>
+                </div>
+                <div class="modal-body">
+                    <p data-l11n="th" class=".text-normal">ดำเนินการ ออกจากระบบ ?</p>
+                    <p data-l11n="id" class=".text-normal">Lanjutkan Keluar?</p>
+                    <p data-l11n="vn" class=".text-normal">Tiếp Tục Đăng Xuất ?</p>
+                    <p data-l11n class=".text-normal">Proceed to Logout?</p>
+
+                    <button class="btn btn-success btn-labeled fa fa-check fa-lg pull-right" title="Submit" onclick="LogoutEN();" id="clickLogoutEN">Ok</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--===================================================-->
+    <!-- Logout End Small Bootstrap Modal-->
+
+    <div class="modal fade darker hidden-sm hidden-md hidden-lg" id="HistoryForm" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: rgba(0, 0, 0, 0.68) none repeat scroll 0 0;">
+                <div class="modal-header">
+                    <h2 id="mobileform" class="modal-title" style="color:white;"><i class="fa fa-search"></i>&nbsp;Search Report</h2>
+                </div>
+                <div class="modal-body m-l-20 m-r-20">
+                    <div id="formnew" class="row form-columned">
+                        <div class="data">
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="modalReseller">
+                                <label for="mobile-load-reseller">Reseller:</label>
+                                <select class="selectpicker MobileSelectResellerFilter" data-live-search="true" data-width="100%" data-style="btn-dark" id="mobile-load-reseller" name="mobile-load-reseller"></select>
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="mobile-load-company">Company:</label>
+                                <select class="selectpicker MobileSelectCompanyFilter" data-live-search="true" data-width="100%" data-style="btn-dark" id="mobile-load-company" name="mobile-load-company"></select>
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="mobile-load-report">Report:</label>
+                                <select class="selectpicker SelectReportMobile" data-width="100%" data-style="btn-dark" id="mobile-load-report" name="mobile-load-report">
+                                    <option value="" selected="selected" >Choose one of the following...</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="mobile-events">
+                                <label for="mobile-load-events">Event:</label>
+                                <select class="selectpicker SelectEventMobile" data-width="100%" data-style="btn-dark" id="mobile-load-events" name="mobile-load-events">
+                                    <option value="" selected="selected" >Choose one of the following...</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="mobile-assets">
+                                <label for="mobile-load-assets">Vehicle:</label>
+                                <select class="selectpicker MobileSelectVechsFilter" data-live-search="true" data-width="100%" data-style="btn-dark" id="mobile-load-assets" name="mobile-load-assets"></select>
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="mobile-speed">
+                                <label for="mobile-load-speed">Speed:</label>
+                                <input id="mobile-load-speed" type="text" class="form-control MobileSpeed" placeholder="Speed">
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;" id="mobile-messages">
+                                <label for="mobile-load-messages">Messages:</label>
+                                <select class="selectpicker" data-width="100%" data-style="btn-dark" id="mobile-load-messages" name="mobile-load-messages">
+                                    <option value="" selected="selected">ALL</option>
+                                    <option value="0">Sent</option>
+                                    <option value="1">Pending</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="display:none" id="mobile-payment">
+                                <div data-l11n="th" class=".text-normal">พาหนะ</div>
+                                <div data-l11n class=".text-normal">Payment</div>
+                                <select title="Select Payment..." style="display: none;" class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-dark" id="mobile-load-payment">
+                                    <option value="0" data-icon="" selected="selected">
+                                    </option>
+                                    <option value="1" data-icon="">Cash</option>
+                                    <option value="2" data-icon="">Billing</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="mobile-dateFrom">Date From:</label>
+                                <input id="mobile-dateFrom" type="text" class="form-control" placeholder="DD-MMM-YYYY HH:MM">
+                            </div>
+
+                            <div class="col-md-6 m-b-10 p-t-15" style="margin-top:5px;">
+                                <label for="mobile-dateTo">Date To:</label>
+                                <input id="mobile-dateTo" type="text" class="form-control" placeholder="DD-MMM-YYYY HH:MM">
+                            </div>
+
+                            <div class="col-md-12">&nbsp;</div>
+                            <div class="pull-right m-t-20" style="margin-right:7px;">
+                                <button type="submit" data-backdrop="static" class="create btn btn-md btn-success" id="generatemobile"><i class="fa fa-check fa-fw"></i>Generate</button>
+                                <button data-dismiss="modal" class="btn btn-md btn-danger"><i class="fa fa-times fa-fw"></i>Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog" style=" color: #FFF !important;">
+            <div class="modal-content" style="box-shadow: none; background-color: transparent; border: 0; ">
+
+                <div class="modal-body">
+
+                    <div class="close-button" style="overflow: hidden; color: #FFF !important; ">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 30px; line-height: 30px; padding: 7px 4px 7px 13px; color: #FFF !important; opacity: 1 !important; "><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="embed-responsive embed-responsive-16by9" style="height: 460px !important;">
+                        <iframe class="embed-responsive-item" frameborder="0"></iframe>
+                    </div>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+    <!--jQuery [ REQUIRED ]-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+    <script src="js/jquery/jquery-2.1.3.min.js"></script>
+
+    <!--custom Javascript by King-->
+	<script src="js/logout.js"></script>
+    <script src="js/load-history.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/modal-forms.js"></script>
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugins [ OPTIONAL ]-->
+    <script src="js/plugins.min.js"></script>
+
+    <!--Demo script [ DEMONSTRATION ]-->
+    <script src="js/demo/nifty-demo.min.js"></script>
+
+    <!--Server Time Clock [ OPTIONAL ]-->
+    <script src="js/servertime.js"></script>
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <!--<script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>-->
+    <script src="plugins/bootstrap-table/bootstrap-table.js"></script>
+    <script src="plugins/bootstrap-table/extensions/resizable/bootstrap-table-resizable.js"></script>
+    <script src="plugins/colResizable/colResizable-1.5.min.js"></script>
+
+
+    <!--Download Plugins [ OPTIONAL ]-->
+    <script src="plugins/table-export/bootstrap-table-export.js"></script>
+    <script src="plugins/table-export/tableExport.js"></script> <!--@*Main file which does export feature *@-->
+    <script src="plugins/table-export/libs/FileSaver/FileSaver.min.js"></script>
+    <script src="plugins/table-export/libs/html2canvas/html2canvas.min.js"></script>
+    <script src="plugins/table-export/libs/jsPDF/jspdf.min.js"></script>
+    <script src="plugins/table-export/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+
+    <!--Datetime Picker [ OPTIONAL ]-->
+    <script src="plugins/datetimepicker/jquery.datetimepicker.js"></script>
+
+    <!--<script src="plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.th.js" charset="UTF-8"></script>-->
+    <!--Hide Elements-->
+    <script src="plugins/jquery-visibly/jquery-visibly.min.js"></script>
+
+
+    <!--Modernizr  [ OPTIONAL ]-->
+    <script src="plugins/modernizr/modernizr.custom.js"></script>
+
+
+    <!--Flat JSON-->
+    <script src="plugins/flatJSON/bootstrap-table-flatJSON.min.js"></script>
+
+    <!--Date Format-->
+    <script src="plugins/moment/moment.js"></script>
+    <script src="plugins/moment-timezone/moment-timezone.js"></script>
+    <script src="plugins/moment-timezone/moment-timezone-with-data.js"></script>
+
+
+    <!--Panel-->
+    <script src="plugins/jsPanel-bootstrap/jspanel/jquery.jspanel.min.js"></script>
+
+    <!-- loading jQuery UI javascript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!--Localization-->
+    <!--<script src="plugins/bootstrap-table/locale/bootstrap-table-locale.js"></script>-->
+	<script src="plugins/mobile-detect/mobile-detect.js"></script>
+
+    <!--Lightbox [ OPTIONAL ]-->
+    <script src="plugins/lightbox/dist/ekko-lightbox.min.js"></script>
+
+    <script src="plugins/highchart/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <!--<script src="plugins/highchart/theme.js"></script>-->
+
+    <!--Bootstrap-table-locale-->
+    <script src="plugins/bootstrap-table/locale/bootstrap-table-locale.js"></script>
+
+    <!--
+
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+    <!--Datetime Picker Script [ OPTIONAL ]-->
+
+
+    <script>
+
+
+        //OnLoad Calendar Language
+        $(document).ready(function () {
+
+            var dateFormat = "D-MMM-YYYY HH:mm";
+            var d1 = new Date();
+            d1.setHours(0);
+            d1.setMinutes(0);
+            var dateFrom = moment(d1).format(dateFormat);
+
+            var d2 = new Date();
+            d2.setDate(d2.getDate() + 1);
+            d2.setHours(0);
+            d2.setMinutes(0);
+            var dateTo = moment(d2).format(dateFormat);
+
+            Date.parseDate = function (input, format) {
+                return moment(input, format).toDate();
+            };
+            Date.prototype.dateFormat = function (format) {
+                return moment(this).format(format);
+            };
+
+            jQuery('#dateFrom').datetimepicker({
+                format: 'DD-MMM-YYYY HH:mm',
+                formatTime: 'HH:mm',
+                formatDate: 'DD-MMM-YYYY',
+                theme: 'dark',
+                value: dateFrom
+            });
+
+            jQuery('#dateTo').datetimepicker({
+                format: 'DD-MMM-YYYY HH:mm',
+                formatTime: 'HH:mm',
+                formatDate: 'DD-MMM-YYYY',
+                theme: 'dark',
+                value: dateTo
+            });
+
+            jQuery('#mobile-dateFrom').datetimepicker({
+                format: 'DD-MMM-YYYY, HH:mm',
+                formatTime: 'HH:mm a',
+                formatDate: 'DD-MMM-YYYY',
+                theme: 'dark'
+            });
+
+            jQuery('#mobile-dateTo').datetimepicker({
+                format: 'DD-MMM-YYYY, HH:mm',
+                formatTime: 'HH:mm',
+                formatDate: 'DD-MMM-YYYY',
+                theme: 'dark'
+            });
+
+
+        });
+
+
+    </script>
+
+
+    <script>
+
+        var toggle = document.getElementById('toggleChart');
+
+        toggle.onclick = function () {
+            var div = document.getElementById('chartdiv');
+            if (div.style.display !== 'none') {
+                div.style.display = 'none';
+            }
+            else {
+                div.style.display = 'block';
+            }
+        };
+
+    </script>
+
+
+    <script>
+
+
+        //callback function
+        function drawPositionChartStatus(data) {
+
+            //Then retrieve
+            var localObj = data;
+            var xTimestamp = [];
+            var xSpeed = [];
+            var xMileage = [];
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            var move = 0;
+            var idle = 0;
+            var stop = 0;
+
+
+            if (localObj != null) {
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getDate = localObj[i].Timestamp;
+                    var dateFormat = "D/MM/YY hh:mm:ss A";
+                    var timestamp = moment(getDate).subtract('hours', 8).format(dateFormat);
+
+                    xTimestamp.push(timestamp);
+
+                }
+
+
+                for (var k = 0; k < localObj.length; ++k) {
+                    if (localObj[k].Engine == "MOVE") {
+                        move++;
+                    } else if (localObj[k].Engine == "IDLE") {
+                        idle++;
+                    } else if (localObj[k].Engine == "STOP") {
+                        stop++;
+                    }
+
+                }
+
+         
+                // draw chart
+                $('#chartPositionStatus').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Engine Status' 
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    xAxis: {
+                        categories: xTimestamp,
+                        crosshair: true
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Engine Status',
+                        data: [{
+                            name: 'Move',
+                            y: move,
+                            color: '#7FB842'
+                        }, {
+                            name: 'Idle',
+                            y: idle,
+                            color: '#FEA01B'
+                        }, {
+                            name: 'Stop',
+                            y: stop,
+                            color: '#E7472D'
+                        }],
+                        size: 150,
+                        showInLegend: true,
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        },
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                    }]
+
+                });//end of chart
+               
+            }
+        }
+
+        function drawPositionChartIgnition(data) {
+
+            //Then retrieve
+            var localObj = data;
+
+            var xTimestamp = [];
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+
+            var on = 0;
+            var off = 0;
+
+            if (localObj != null) {
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getDate = localObj[i].Timestamp;
+                    var dateFormat = "D/MM/YY hh:mm:ss A";
+                    var timestamp = moment(getDate).subtract('hours', 8).format(dateFormat);
+
+                    xTimestamp.push(timestamp);
+
+                }
+
+
+                for (var k = 0; k < localObj.length; ++k) {
+                    if (localObj[k].Ignition == 1) {
+                        on++;
+                    } else if (localObj[k].Ignition == 0) {
+                        off++;
+                    }
+
+                }
+
+
+                // draw chart
+                $('#chartPositionIgnition').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Ignition'
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    xAxis: {
+                        categories: xTimestamp,
+                        crosshair: true
+                    },
+
+                    series: [{
+                        type: 'pie',
+                        name: 'Ignition',
+                        data: [{
+                            name: 'On',
+                            y: on,
+                            color: '#8CC152'
+                        }, {
+                            name: 'Off',
+                            y: off,
+                            color: '#3B3E46'
+                        }, ],
+                        size: 150,
+                        showInLegend: true,
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        },
+                        allowPointSelect: true,
+                        cursor: 'pointer'
+                    }]
+
+                });//end of chart
+
+            }
+        }
+
+
+    </script>
+
+    <script>
+
+
+        //callback function
+        function drawCVRChartStatus(data) {
+
+            //Then retrieve
+            var localObj = data;
+            var xTimestamp = [];
+            var xSpeed = [];
+            var xMileage = [];
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            var move = 0;
+            var idle = 0;
+            var stop = 0;
+            var titlePhoneStatus = "";
+            var titleMove = "";
+            var titleIdle = "";
+            var titleStop = "";
+
+            if (getSessionstorageValueLanguage == "en")
+            {
+                titlePhoneStatus = "Phone Status"
+                titleMove = "MOVE";
+                titleIdle = "IDLE";
+                titleStop = "STOP";
+            } 
+            else if (getSessionstorageValueLanguage == "th")
+            {
+                titlePhoneStatus = "สถานะโทรศัพท์";
+                titleMove = "ย้าย";
+                titleIdle = "ว่าง";
+                titleStop = "หยุด";
+
+            }
+            else if (getSessionstorageValueLanguage == "vn")
+            {
+                titlePhoneStatus = "Trạng Thái Diện Thoại";
+                titleMove = "CHO MAY CHAY";
+                titleIdle = "RANH RANG";
+                titleStop = "DỪNG LẠI";
+            }
+            else if (getSessionstorageValueLanguage == "id")
+            {
+                titlePhoneStatus = "Status Telepon";
+                titleMove = "GERAK";
+                titleIdle = "TAK JALAN";
+                titleStop = "HENTI";
+            }
+
+            if (localObj != null) {
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getDate = localObj[i].Timestamp;
+                    var dateFormat = "D/MM/YY hh:mm:ss A";
+                    var timestamp = moment(getDate).subtract('hours', 8).format(dateFormat);
+
+                    xTimestamp.push(timestamp);
+
+                }
+
+
+                for (var k = 0; k < localObj.length; ++k) {
+                    if (localObj[k].Engine == "MOVE") {
+                        move++;
+                    } else if (localObj[k].Engine == "IDLE") {
+                        idle++;
+                    } else if (localObj[k].Engine == "STOP") {
+                        stop++;
+                    }
+
+                }
+
+
+                // draw chart
+                $('#chartCVRStatus').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: titlePhoneStatus
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    xAxis: {
+                        categories: xTimestamp,
+                        crosshair: true
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: titlePhoneStatus,
+                        data: [{
+                            name: titleMove,
+                            y: move,
+                            color: '#7FB842'
+                        }, {
+                            name: titleIdle,
+                            y: idle,
+                            color: '#FEA01B'
+                        }, {
+                            name: titleStop,
+                            y: stop,
+                            color: '#E7472D'
+                        }],
+                        size: 150,
+                        showInLegend: true,
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        },
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                    }]
+
+                });//end of chart
+
+            }
+        }
+
+        function drawCVRChartIgnition(data) {
+
+            //Then retrieve
+            var localObj = data;
+            var xTimestamp = [];
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            var on = 0;
+            var off = 0;
+            var titlePhonePower = ""
+            var titleOn = "";
+            var titleOff = "";
+            if (getSessionstorageValueLanguage == "en") {
+                titlePhonePower = "Phone Power"
+                titleOn = "ON";
+                titleOff = "OFF";
+
+            }
+            else if (getSessionstorageValueLanguage == "th") {
+                titlePhonePower = "โทรศัพท์มือถือ"
+                titleOn = "เปิด";
+                titleOff = "ปิด";
+            }
+            else if (getSessionstorageValueLanguage == "vn") {
+                titlePhonePower = "Điện Thoại"
+                titleOn = "BAT";
+                titleOff = "TẮT";
+            }
+            else if (getSessionstorageValueLanguage == "id") {
+                titlePhonePower = "Tenaga Telepon"
+                titleOn = "HIDUP";
+                titleOff = "MATI";
+            }
+
+            if (localObj != null) {
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getDate = localObj[i].Timestamp;
+                    var dateFormat = "D/MM/YY hh:mm:ss A";
+                    var timestamp = moment(getDate).subtract('hours', 8).format(dateFormat);
+
+                    xTimestamp.push(timestamp);
+
+                }
+
+
+                for (var k = 0; k < localObj.length; ++k) {
+                    if (localObj[k].Ignition == 1) {
+                        on++;
+                    } else if (localObj[k].Ignition == 0) {
+                        off++;
+                    }
+
+                }
+
+
+                // draw chart
+                $('#chartCVRIgnition').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: titlePhonePower
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    xAxis: {
+                        categories: xTimestamp,
+                        crosshair: true
+                    },
+
+                    series: [{
+                        type: 'pie',
+                        name: titlePhonePower,
+                        data: [{
+                            name: titleOn,
+                            y: on,
+                            color: '#8CC152'
+                        }, {
+                            name: titleOff,
+                            y: off,
+                            color: '#3B3E46'
+                        }, ],
+                        size: 150,
+                        showInLegend: true,
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        },
+                        allowPointSelect: true,
+                        cursor: 'pointer'
+                    }]
+
+                });//end of chart
+
+            }
+        }
+
+
+    </script>
+
+    <script>
+
+
+        //callback function
+        function drawSpeedChart(data) {
+
+            //Then retrieve
+            var localObj = data;
+
+            var xTimestamp = [];
+            var xSpeed = [];
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            if (localObj != null) {
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getDate = localObj[i].Timestamp;
+                    var dateFormat = "D-MMM HH:mm:ss";
+                    var timestamp = moment(getDate).subtract('hours', 8).format(dateFormat);
+
+                    xTimestamp.push(timestamp);
+                    xSpeed.push(speedFormatter(localObj[i].Speed));
+
+                }
+
+                function speedFormatter(value) {
+
+                    var convertKmPerHour = value * 1.60934;
+                    var roundoff = Math.round(convertKmPerHour * 100) / 100;
+
+                    return roundoff;
+                }
+
+
+                // draw chart
+                $('#chartSpeed').highcharts({
+                    title: {
+                        text: 'Speed Chart'
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    xAxis: {
+                        categories: xTimestamp,
+                    },
+                    yAxis: [{ // Primary yAxis
+                        gridLineWidth: 0,
+                        title: {
+                            text: 'Speed',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        labels: {
+                            format: '{value} Km/h',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        opposite: true
+
+                    }],
+                    tooltip: {
+                        shared: true
+                    },
+                    series: [{
+                        type: 'spline',
+                        name: 'Speed',
+                        data: xSpeed,
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: Highcharts.getOptions().colors[3],
+                            fillColor: 'white'
+                        }
+                    }]
+
+                });//end of chart
+
+            }
+        }
+
+
+    </script>
+
+    <script>
+
+
+        //callback function
+        function drawMileageChart(data) {
+
+            //Then retrieve
+            var localObj = data;
+
+            var xTimestamp = [];
+            var xSpeed = [];
+            var xDriver = [];
+            var xMileage = [];
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+
+            if (localObj != null) {
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getDate = localObj[i].Timestamp;
+                    var dateFormat = "D/MM/YY hh:mm:ss A";
+                    var timestamp = moment(getDate).subtract('hours', 8).format(dateFormat);
+
+                    xTimestamp.push(timestamp);
+                    xSpeed.push(localObj[i].Speed);
+                    xDriver.push(localObj[i].Driver);
+                    xMileage.push(localObj[i].Mileage);
+
+                }
+
+
+                // draw chart
+                $('#chartMileage').highcharts({
+                    chart: {
+                        zoomType: 'xy'
+                    },
+                    title: {
+                        text: 'Mileage Chart'
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    xAxis: {
+                        categories: xTimestamp,
+                        crosshair: true
+                    },
+                    yAxis: [ { // Primary yAxis
+                        gridLineWidth: 0,
+                        labels: {
+                            format: '{value} KM',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        title: {
+                            text: 'Mileage',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        opposite: true
+                    }],
+                    series: [{
+                        type: 'spline',
+                        name: 'Mileage',
+                        data: xMileage,
+                        tooltip: {
+                            valueSuffix: ' KM'
+                        }
+                    }]
+
+                });//end of chart
+
+            }
+        }
+
+
+    </script>
+
+    <script>
+
+
+        //callback function
+        function drawJobChart(data) {
+
+            //Then retrieve
+            var localObj = data;
+            var xAmount = [];
+            var xNewAmount = [];
+            var xTotalAmount = [];
+            var xTimestamp = [];
+
+            var cash = 0;
+            var billing = 0;
+            var oneway = 0;
+            var twoway = 0;
+            var oxygen = 0;
+            var wheelchair = 0;
+            var stairchair = 0;
+            var stretches = 0;
+            var total = 0;
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            var titleJob = ""
+            var titleAmount = "";
+            var titleTotalAmount = "";
+
+            if (getSessionstorageValueLanguage == "en") {
+                titleJob = "Jobs"
+                titleAmount = "Amount";
+                titleTotalAmount = "Total Amount: $ ";
+            }
+            else if (getSessionstorageValueLanguage == "th") {
+                titleJob = "งาน"
+                titleAmount = "จำนวนเงิน";
+                titleTotalAmount = "จำนวนเงินทั้งหมด: $ ";
+
+            }
+            else if (getSessionstorageValueLanguage == "vn") {
+                titleJob = "Công Việc"
+                titleAmount = "Số Tiền";
+                titleTotalAmount = "Tổng Cộng: $ ";
+
+            }
+            else if (getSessionstorageValueLanguage == "id") {
+                titleJob = "Kerja"
+                titleAmount = "Jumlah";
+                titleTotalAmount = "Jumlah total: $ ";
+            }
+
+            if (localObj != null) {
+
+                $('table thead th').each(function (i) {
+
+                    var title = $(this).text();
+                    if (title == "Amount") {
+                        calculateColumnAmount(i);
+                    }
+
+                    if (title == "New Amount") {
+                        calculateColumnNewAmount(i);
+                    }
+                });
+
+                var totalAmount;
+                var totalNewAmount;
+
+                function calculateColumnAmount(index) {
+
+                    totalAmount = 0;
+
+                    $('table tr').each(function () {
+
+                        var value = parseInt($('td', this).eq(index).text());
+                        if (!isNaN(value)) {
+                            totalAmount += value;
+                        }
+
+                    });
+                }
+
+                function calculateColumnNewAmount(index) {
+
+                    totalNewAmount = 0;
+
+                    $('table tr').each(function () {
+
+                        var value = parseInt($('td', this).eq(index).text());
+                        if (!isNaN(value)) {
+                            totalNewAmount += value;
+                        }
+
+                    });
+                }
+
+
+                // $('table tfoot td').text('Total Amount: $SGD ' + totalAmount + totalNewAmount);
+                var getTotal = totalAmount;
+                var finalTotal = parseFloat(Math.round(getTotal * 100) / 100).toFixed(2);
+
+                var tableRef = document.getElementById('reports-jobs').getElementsByTagName('tbody')[0];
+
+                // Insert a row in the table at the last row
+                var newRow = tableRef.insertRow(tableRef.rows.length);
+
+                // Insert a cell in the row at index 0
+                var newCell = newRow.insertCell(0);
+
+                // Append a text node to the cell
+                var newText = document.createTextNode(titleTotalAmount + finalTotal);
+                newCell.appendChild(newText);
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getDate = localObj[i].Timestamp;
+                    var dateFormat = "D/MM/YY hh:mm:ss A";
+                    var timestamp = moment(getDate).subtract('hours', 8).format(dateFormat);
+                    var getTotal = localObj[i].Amount + localObj[i].NewAmount;
+                    var roundoffTotal = Math.round(getTotal * 100) / 100;
+
+                    xTimestamp.push(timestamp);
+                    xAmount.push(localObj[i].Amount);
+                    xNewAmount.push(localObj[i].NewAmount);
+                    xTotalAmount.push(roundoffTotal);
+
+                }
+
+                for (var n = 0; n < localObj.length; ++n) {
+                    if (localObj[n].Payment == 1) {
+                        cash++;
+                    } else if (localObj[n].Payment == 2) {
+                        billing++;
+                    }
+
+                }
+
+                for (var m = 0; m < localObj.length; ++m) {
+                    if (localObj[m].Trip == 1) {
+                        oneway++;
+                    } else if (localObj[m].Trip == 2) {
+                        twoway++;
+                    }
+
+                }
+
+
+                $('#chartJobs').highcharts({
+                        title: {
+                            text: titleJob
+                        },
+                        subtitle: {
+                            text: getStart + " - " + getEnd + '<br>' + titleTotalAmount + finalTotal
+                        },
+                        xAxis: {
+                            //categories: ['Amount', 'New Amount']
+                            categories: xTimestamp,
+                           
+                        },
+                        yAxis: [{ // Primary yAxis
+                            labels: {
+                                title: {
+                                    text: '$'
+                                },
+                                style: {
+                                    color: Highcharts.getOptions().colors[1]
+                                }
+                            },
+                            title: {
+                                text: '$',
+                                style: {
+                                    color: Highcharts.getOptions().colors[1]
+                                }
+                            },
+                            opposite: true
+
+                        }],
+                        tooltip: {
+                            shared: true
+                        },
+                        series: [{
+                            type: 'column',
+                            name: titleAmount,
+                            data: xAmount
+                        }]
+                    });
+            }
+        }
+
+
+    </script>
+
+    <script>
+        //callback function
+        function drawJobStatusChart(data) {
+
+            //Then retrieve
+            var localObj = data;
+            var xTimestamp = [];
+            var xCompleted = [];
+            var xInProgress = [];
+            var xTransferred = [];
+            var xNewJob = [];
+
+            var completed = 0;
+            var inprogress = 0;
+            var transferred = 0;
+            var newjob = 0;
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            var titleJobStatus = ""
+            var titleCompleted = "";
+            var titleInProgress = "";
+            var titleTransferred = "";
+            var titleNew = "";
+            var titleNoOfJob = "";
+
+            if (getSessionstorageValueLanguage == "en") {
+                titleJobStatus = "Job Status"
+                titleCompleted = "Completed";
+                titleInProgress = "In Progress";
+                titleTransferred = "Transferred";
+                titleNew = "New";
+                titleNoOfJob = "No of Jobs";
+            }
+            else if (getSessionstorageValueLanguage == "th") {
+                titleJobStatus = "สถานะงาน"
+                titleCompleted = "เสร็จ";
+                titleInProgress = "กำลังดำเนินการ";
+                titleTransferred = "โอนแล้ว";
+                titleNew = "ใหม่";
+                titleNoOfJob = "จำนวนงาน";
+
+            }
+            else if (getSessionstorageValueLanguage == "vn") {
+                titleJobStatus = "Trạng Thái Công Việc"
+                titleCompleted = "Đã Hoàn Thành";
+                titleInProgress = "Trong Tiến Trình";
+                titleTransferred = "Chuyển";
+                titleNew = "Mới";
+                titleNoOfJob = "Số Lượng Việc Làm";
+
+            }
+            else if (getSessionstorageValueLanguage == "id") {
+                titleJobStatus = "Status Kerja"
+                titleCompleted = "Selesai";
+                titleInProgress = "Sedang Berlangsung";
+                titleTransferred = "Dialih";
+                titleNew = "Baru";
+                titleNoOfJob = "Jumlah Kerja";
+            }
+
+
+            if (localObj != null) {
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getDate = localObj[i].Timestamp;
+                    var dateFormat = "D/MM/YY hh:mm:ss A";
+                    var timestamp = moment(getDate).subtract('hours', 8).format(dateFormat);
+
+                    xTimestamp.push(timestamp);
+
+                }
+
+                for (var n = 0; n < localObj.length; ++n) {
+                    if (localObj[n].JobStatus == "Completed") {
+                        completed++;
+                    } else if (localObj[n].JobStatus == "In progress") {
+                        inprogress++;
+                    } else if (localObj[n].JobStatus == "Transferred") {
+                        transferred++;
+                    } else if (localObj[n].JobStatus == "New") {
+                        newjob++;
+                    }
+
+                    xCompleted.push(completed);
+                    xInProgress.push(inprogress);
+                    xTransferred.push(transferred);
+                    xNewJob.push(newjob);
+
+                }
+
+
+                $('#chartJobStatus').highcharts({
+                    title: {
+                        text: titleJobStatus
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    xAxis: {
+                        //categories: ['Amount', 'New Amount']
+                        categories: xTimestamp,
+                        crosshair: true
+                    },
+                    yAxis: [{ // Primary yAxis
+                        labels: {
+                            title: {
+                                text: titleNoOfJob
+                            },
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        title: {
+                            text: titleNoOfJob,
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        opposite: true
+
+                    }],
+                    labels: {
+                        items: [{
+                            html: titleJobStatus,
+                            style: {
+                                left: '50px',
+                                top: '14px',
+                                color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                            }
+                        }]
+                    },
+                    tooltip: {
+                        shared: true
+                    },
+                    series: [{
+                        type: 'column',
+                        name: titleCompleted,
+                        data: xCompleted
+                    }, {
+                        type: 'column',
+                        name: titleInProgress,
+                        data: xInProgress
+                    }, {
+                        type: 'column',
+                        name: titleTransferred,
+                        data: xTransferred
+                    }, {
+                        type: 'column',
+                        name: titleNew,
+                        data: xNewJob
+                    }, {
+                        type: 'pie',
+                        name: titleJobStatus,
+                        data: [{
+                            name: titleCompleted,
+                            y: completed,
+                            color: Highcharts.getOptions().colors[0]
+                        }, {
+                            name: titleInProgress,
+                            y: inprogress,
+                            color: Highcharts.getOptions().colors[1]
+                        }, {
+                            name: titleTransferred,
+                            y: transferred,
+                            color: Highcharts.getOptions().colors[2]
+                        }, {
+                            name: titleNew,
+                            y: newjob,
+                            color: Highcharts.getOptions().colors[3]
+                        }],
+                        center: [100, 70],
+                        size: 100,
+                        showInLegend: false,
+                        dataLabels: {
+                            enabled: false
+                        }
+                    }]
+                });
+            }
+        }
+
+
+    </script>
+
+    <script>
+
+
+        //callback function
+        function drawCallCenterChart(data) {
+
+            //Then retrieve
+            var localObj = data;
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            var xCallcenter = [];
+            var finalCallCenter = [];
+            var chartData = [];
+            var titleCallCenter = "";
+            var titleJobCreated = "";
+            if (getSessionstorageValueLanguage == "en") {
+                titleCallCenter = "No of Jobs created by Call Center";
+                titleJobCreated = "Jobs Created";
+            }
+            else if (getSessionstorageValueLanguage == "th") {
+                titleCallCenter = "งานที่สร้างโดยศูนย์บริการทางโทรศัพท์";
+                titleJobCreated = "สร้างงานแล้ว";
+
+            }
+            else if (getSessionstorageValueLanguage == "vn") {
+                titleCallCenter = "Các Công Việc Tạo Bởi Trung Tâm Cuộc Gọi";
+                titleJobCreated = "Công Việc Dã Tạo";
+            }
+            else if (getSessionstorageValueLanguage == "id") {
+                titleCallCenter = "No Kerja yang diciptakan oleh Call Center";
+                titleJobCreated = "Kerja Dicipta";
+            }
+
+            if (localObj != null) {
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getCallCenter = localObj[i].Agent;
+                    xCallcenter.push(getCallCenter);
+                                
+                }
+
+                xCallcenter.sort();
+                var current = null;
+                var cnt = 0;
+                for (var i = 0; i < xCallcenter.length; i++) {
+                    if (xCallcenter[i] != current) {
+                        if (cnt > 0) {
+                            //document.write(current + ' comes --> ' + cnt + ' times<br>');
+                            if (current == "") { current = "No Call Center"; }
+                            finalCallCenter.push(current, cnt);
+                            // Build the data arrays
+
+                                // add browser data
+                                chartData.push({
+                                    name: current,
+                                    y: cnt
+                                });
+
+                            
+                        }
+                        current = xCallcenter[i];
+                        cnt = 1;
+                    } else {
+                        cnt++;
+                    }
+                }
+
+                if (cnt > 0) {
+                    //document.write(current + ' comes --> ' + cnt + ' times');
+                   
+                        // add data
+                        chartData.push({
+                            name: current,
+                            y: cnt
+                        });
+                   
+                }
+
+
+                $('#chartCallCenter').highcharts({
+                    chart: {
+                        type: 'pie',
+                        options3d: {
+                            enabled: true,
+                            alpha: 45
+                        }
+                    },
+                    title: {
+                        text: titleCallCenter
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            innerSize: 100,
+                            depth: 45,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}'
+                            }
+                        },
+                        showInLegend: true
+                    },
+                    series: [{
+                        name: titleJobCreated,
+                        data: chartData,
+                        showInLegend: true,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }]
+                });
+            }
+        }
+
+    </script>
+
+    <script>
+
+
+        //callback function
+        function drawTripChart(data) {
+
+            //Then retrieve
+            var localObj = data;
+
+            var oneway = 0;
+            var twoway = 0;
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            if (localObj != null) {
+
+                for (var n = 0; n < localObj.length; ++n) {
+                    if (localObj[n].Trip == 1) {
+                        oneway++;
+                    } else if (localObj[n].Trip == 2) {
+                        twoway++;
+                    } 
+
+                }
+
+
+                $('#chartTrip').highcharts({
+                    chart: {
+                        type: 'pie',
+                        options3d: {
+                            enabled: true,
+                            alpha: 45
+                        }
+                    },
+                    title: {
+                        text: 'Trips'
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            innerSize: 100,
+                            depth: 45,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}'
+                            }
+                        },
+                        showInLegend: true
+                    },
+                    series: [{
+                        name: 'Trip',
+                        data: [{
+                            name: 'One Way',
+                            y: oneway,
+                            color: Highcharts.getOptions().colors[0]
+                        }, {
+                            name: 'Two Way',
+                            y: twoway,
+                            color: Highcharts.getOptions().colors[1]
+                        }],
+                        showInLegend: true,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }]
+                });
+            }
+        }
+
+
+    </script>
+
+    <script>
+
+
+        //callback function
+        function drawPaymentChart(data) {
+
+            //Then retrieve
+            var localObj = data;
+            var xTimestamp = [];
+
+            var cash = 0;
+            var billing = 0;
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            if (localObj != null) {
+
+                $('table thead th').each(function (i) {
+
+                    var title = $(this).text();
+                    if (title == "Amount") {
+                        calculateColumnAmount(i);
+                    }
+
+                    if (title == "New Amount") {
+                        calculateColumnNewAmount(i);
+                    }
+                });
+
+                var totalAmount;
+                var totalNewAmount;
+
+                function calculateColumnAmount(index) {
+
+                    totalAmount = 0;
+
+                    $('table tr').each(function () {
+
+                        var value = parseInt($('td', this).eq(index).text());
+                        if (!isNaN(value)) {
+                            totalAmount += value;
+                        }
+
+                    });
+                }
+
+                function calculateColumnNewAmount(index) {
+
+                    totalNewAmount = 0;
+
+                    $('table tr').each(function () {
+
+                        var value = parseInt($('td', this).eq(index).text());
+                        if (!isNaN(value)) {
+                            totalNewAmount += value;
+                        }
+
+                    });
+                }
+
+
+                // $('table tfoot td').text('Total Amount: $SGD ' + totalAmount + totalNewAmount);
+                var getTotal = totalAmount + totalNewAmount;
+                var finalTotal = parseFloat(Math.round(getTotal * 100) / 100).toFixed(2);
+
+                var tableRef = document.getElementById('reports-payment').getElementsByTagName('tbody')[0];
+
+                // Insert a row in the table at the last row
+                var newRow = tableRef.insertRow(tableRef.rows.length);
+
+                // Insert a cell in the row at index 0
+                var newCell = newRow.insertCell(0);
+
+                // Append a text node to the cell
+                var newText = document.createTextNode('Total Amount: $ ' + finalTotal);
+                newCell.appendChild(newText);
+
+
+                for (var n = 0; n < localObj.length; ++n) {
+                    if (localObj[n].Payment == 1) {
+                        cash++;
+                    } else if (localObj[n].Payment == 2) {
+                        billing++;
+                    }
+
+                }
+
+
+                $('#chartPayment').highcharts({
+                    chart: {
+                        type: 'pie',
+                        options3d: {
+                            enabled: true,
+                            alpha: 45
+                        }
+                    },
+                    title: {
+                        text: 'Payments'
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd + '<br>' + 'Total Amount: $ ' + finalTotal
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            innerSize: 100,
+                            depth: 45,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}'
+                            }
+                        },
+                        showInLegend: true
+                    },
+                    series: [{
+                        name: 'Payment',
+                        data: [{
+                            name: 'Cash',
+                            y: cash,
+                            color: Highcharts.getOptions().colors[0]
+                        }, {
+                            name: 'Billing',
+                            y: billing,
+                            color: Highcharts.getOptions().colors[1]
+                        }],
+                        showInLegend: true,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }]
+                });
+            }
+        }
+
+
+    </script>
+
+    <script>
+
+
+        //callback function
+        function drawParamedicChart(data) {
+
+            //Then retrieve
+            var localObj = data;
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            var xParamedic = [];
+            var finalParamedic = [];
+            var chartData = [];
+
+            if (localObj != null) {
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getParamedic = localObj[i].Paramedic;
+                    xParamedic.push(getParamedic);
+
+                }
+
+                xParamedic.sort();
+                var current = null;
+                var cnt = 0;
+                for (var i = 0; i < xParamedic.length; i++) {
+                    if (xParamedic[i] != current) {
+                        if (cnt > 0) {
+                            //document.write(current + ' comes --> ' + cnt + ' times<br>');
+
+                            if (current == "") { current = "No Paramedic"; }
+                            finalParamedic.push(current, cnt);
+                            // Build the data arrays
+
+                            // add browser data
+                            chartData.push({
+                                name: current,
+                                y: cnt
+                            });
+
+
+                        }
+                        current = xParamedic[i];
+                        cnt = 1;
+                    } else {
+                        cnt++;
+                    }
+                }
+
+                if (cnt > 0) {
+                    //document.write(current + ' comes --> ' + cnt + ' times');
+
+                    // add data
+                    chartData.push({
+                        name: current,
+                        y: cnt
+                    });
+
+                }
+
+
+                $('#chartParamedic').highcharts({
+                    chart: {
+                        type: 'pie',
+                        options3d: {
+                            enabled: true,
+                            alpha: 45
+                        }
+                    },
+                    title: {
+                        text: 'No. of Jobs Assisted by Paramedic'
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            innerSize: 100,
+                            depth: 45,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}'
+                            }
+                        },
+                        showInLegend: true
+                    },
+                    series: [{
+                        name: 'Jobs of Paramedic',
+                        data: chartData,
+                        showInLegend: true,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }]
+                });
+            }
+        }
+
+    </script>
+
+    <script>
+
+
+        //callback function
+        function drawDriverChart(data) {
+
+            //Then retrieve
+            var localObj = data;
+
+            var getStart = $('#dateFrom').val();
+            var getEnd = $('#dateTo').val();
+
+            var xDriver = [];
+            var finalDriver = [];
+            var chartData = [];
+
+            var titleJobAssist = ""
+            var titleJobsOf = "";
+            var titleNoPhone = "";
+
+            if (getSessionstorageValueLanguage == "en") {
+                titleJobAssist = "No of Jobs Assisted by Phone User";
+                titleJobsOf = "Jobs of Phone User";
+                titleNoPhone = "No Phone User";
+            }
+            else if (getSessionstorageValueLanguage == "th") {
+                titleJobAssist = "งานที่ได้รับความช่วยเหลือจากผู้ใช้โทรศัพท์";
+                titleJobsOf = "งานของผู้ใช้โทรศัพท์";
+                titleNoPhone = "ไม่มีผู้ใช้โทรศัพท์";
+
+            }
+            else if (getSessionstorageValueLanguage == "vn") {
+                titleJobAssist = "Sự Trợ Giúp Của Người Sử Dụng Diện Thoại";
+                titleJobsOf = "Việc Làm Của Người Sử Dụng Diện Thoại";
+                titleNoPhone = "Không Có Người Sử Dung Diện Thoại";
+
+            }
+            else if (getSessionstorageValueLanguage == "id") {
+                titleJobAssist = "Jobs Disiap oleh Pengguna Telepon";
+                titleJobsOf = "Kerja Pengguna Telepon";
+                titleNoPhone = "Tidak Pengguna Telepon";
+
+            }
+
+            if (localObj != null) {
+
+                for (var i = 0; i < localObj.length; ++i) {
+
+                    var getDriver = localObj[i].JobUser;
+                    xDriver.push(getDriver);
+
+                }
+
+                xDriver.sort();
+                var current = null;
+                var cnt = 0;
+                for (var i = 0; i < xDriver.length; i++) {
+                    if (xDriver[i] != current) {
+                        if (cnt > 0) {
+                            //document.write(current + ' comes --> ' + cnt + ' times<br>');
+
+                            if (current == "") { current = titleNoPhone; }
+                            finalDriver.push(current, cnt);
+                            // Build the data arrays
+
+                            // add browser data
+                            chartData.push({
+                                name: current,
+                                y: cnt
+                            });
+
+
+                        }
+                        current = xDriver[i];
+                        cnt = 1;
+                    } else {
+                        cnt++;
+                    }
+                }
+
+                if (cnt > 0) {
+                    //document.write(current + ' comes --> ' + cnt + ' times');
+
+                    // add data
+                    chartData.push({
+                        name: current,
+                        y: cnt
+                    });
+
+                }
+
+
+                $('#chartDriver').highcharts({
+                    chart: {
+                        type: 'pie',
+                        options3d: {
+                            enabled: true,
+                            alpha: 45
+                        }
+                    },
+                    title: {
+                        text: titleJobAssist
+                    },
+                    subtitle: {
+                        text: getStart + " - " + getEnd
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            innerSize: 100,
+                            depth: 45,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}'
+                            }
+                        },
+                        showInLegend: true
+                    },
+                    series: [{
+                        name: titleJobsOf,
+                        data: chartData,
+                        showInLegend: true,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }]
+                });
+            }
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Call Center - Pest Control Management System</title>
+    <script src="https://maps.googleapis.com/maps/api/js?client=gme-acecomtechnologies&v=3.22&libraries=geometry,places&ext=.js"></script>
+    <!--Map [ REQUIRED ]-->
+    <link rel="stylesheet" type="text/css" href="css/call-center.css" />
+
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>
+                <div id="map-canvas" style="height: 600px; width:800px;"></div>
+            </td>
+            <td>
+                <div id="side_bar"></div>
+            </td>
+        </tr>
+    </table>
+    <input id="address" type="text" value="Pasir Ris">
+    <input id="numberResults" type="text" value="10" />
+    <input type="button" value="Search" onclick="codeAddress();">
+    <div id="info"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <!--Map [REQUIRED] -->
+    <script type="text/javascript" src="js/call-center.js"></script>
+    <!--Marker with label-->
+    <script type="text/javascript" src="plugins/marker-with-label/markerwithlabel.js"></script>
+    <!--Style Marker-->
+    <script type="text/javascript" src="plugins/StyledMarker/StyledMarker.js"></script>
+    <!--Info Bubble-->
+    <script src="plugins/infobubble/infobubble.js"></script>
+</body>
+</html>

@@ -1,0 +1,1549 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>History - Fleet Management System</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <!--Roboto Font [ OPTIONAL ]-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300,500" rel="stylesheet" type="text/css">
+
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+
+
+    <!--Home Page Stylesheet [ REQUIRED ]-->
+    <link href="css/home.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="css/reports.css" />
+
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <!--<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
+    <!--Switchery [ OPTIONAL ]-->
+    <link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+
+    <!--X-editable [ OPTIONAL ]-->
+    <!--<link href="plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">-->
+    <!--Datetime Picker [ OPTIONAL ]-->
+    <!--<link href="plugins/datetimepicker/jquery.datetimepicker.css" rel="stylesheet">-->
+
+
+    <link href="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+
+    <!-- loading jQuery UI css -->
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/flick/jquery-ui.css" />
+
+
+    <!--JS Panel [ OPTIONAL ]-->
+    <link href="plugins/jsPanel-bootstrap/jspanel/jquery.jspanel.min.css" rel="stylesheet">
+
+    <!--Localization-->
+    <link rel="stylesheet" href="css/localization.css">
+
+    <!--=================================================-->
+    <!--SCRIPT-->
+    <!--=================================================-->
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <link href="plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="plugins/pace/pace.min.js"></script>
+
+
+    <!-- Needs images, font... therefore can not be part of main.css -->
+    <link rel="stylesheet" href="fonts/themify-icons/themify-icons.min.css">
+    <link rel="stylesheet" href="fonts/weather-icons/css/weather-icons.min.css">
+    <!-- end Needs images -->
+    <!--
+
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+
+
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+
+</head>
+
+<!--TIPS-->
+
+<body>
+
+    <!-- START OF CONTAINER -->
+    <div id="container" class="effect mainnav-lg aside-in navbar-fixed">
+
+        <!--NAVBAR-->
+        <!--===================================================-->
+        <header id="navbar">
+            <div id="navbar-container" class="boxed">
+
+                <!--Brand logo & name-->
+                <!--================================-->
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand">
+                        <!--Logo-->
+                        <img src="img/logo.png" alt="TRACK Logo" class="brand-icon">
+
+                        <div class="brand-title">
+                            <span class="brand-text">TRACK</span>
+                        </div>
+                    </a>
+                </div>
+
+
+                <!--================================-->
+                <!--End brand logo & name-->
+                <!--Navbar Dropdown-->
+                <!--================================-->
+                <div class="navbar-content clearfix">
+
+                    <ul class="nav navbar-top-links pull-left">
+
+                        <!--Navigation toogle button-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="tgl-menu-btn">
+                            <a class="mainnav-toggle" href="#" title="Toggle Navigation Menu" id='toggleChart'>
+                                <i class="fa fa-navicon fa-lg"></i>
+                            </a>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End Navigation toogle button-->
+                        <!--Language-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="dropdown">
+                            <label class="localize localization">
+                                <select id="load-lang" class="icon-menu" onchange="document.documentElement.lang=this.value">
+                                    <option style="background-image:url(img/flags/thailand.png);" value="th">Thai</option>
+                                    <option style="background-image:url(img/flags/united-kingdom.png);" value="en">English</option>
+                                </select>
+                            </label>
+                        </li>
+
+
+
+                        <!--Language-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+                        <li>
+                            <a href="history_map.html" title="Playback">
+                                <i class="fa fa-map-marker fa-lg"></i>
+                                <span class="menu-title">
+                                    &nbsp;
+                                    <!--Notifications-->
+                                    <span data-l11n="th" class="pull-right badge badge-primary">การเล่น</span>
+                                    <span data-l11n class="pull-right badge badge-primary">Playback</span>
+
+
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="history_location.html" title="View Location">
+                                <i class="fa fa-location-arrow fa-lg"></i>
+                                <span class="menu-title">
+                                    &nbsp;
+                                    <!--Notifications-->
+                                    <span data-l11n="th" class="pull-right badge badge-primary">ดูสถานที่ตั้ง</span>
+                                    <span data-l11n class="pull-right badge badge-primary">View Location</span>
+
+
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+
+                    <!--Vehicle List-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <ul class="nav navbar-top-links pull-right">
+
+                        <li class="hidden-xs" data-content="Vehicle List">
+
+                            <a id="toggle-aside" class="lang-selector dropdown-toggle hidden-xs" href="#" data-toggle="dropdown" title="Search">
+                                <span class="lang-selected hidden-xs">
+                                    <!--<img class="lang-flag" src="img/vechlist.png" alt="Vehicle Lists">-->
+                                    <span data-l11n="th" class="lang-name hidden-xs"><i class="fa fa-search fa-lg"></i>&nbsp;&nbsp;รายงานการค้นหา</span>
+                                    <span data-l11n class="lang-name hidden-xs"><i class="fa fa-search fa-lg"></i>&nbsp;&nbsp;Search Report</span>
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--Vehicle List-->
+                        <!--User dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li id="dropdown-user" class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right" title="Profile">
+                                <span class="pull-right">
+                                    <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture">
+                                </span>
+                                <div class="username hidden-xs" id="load-username"></div>
+                            </a>
+
+
+                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+                                <!-- Dropdown heading  -->
+                                <div class="pad-all bord-btm">
+                                    <p class="text-lg text-muted text-thin mar-btm" id="load-email"></p>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar" style="width: 100%;">
+                                            <span class="sr-only">70%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- User dropdown menu -->
+                                <ul class="head-list">
+                                    <li data-l11n="th">
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> ข้อมูลส่วนตัว
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n>
+                                        <a href="profile.html">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> Profile
+                                        </a>
+
+                                    </li>
+
+                                    <li data-l11n="th">
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> ช่วย
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n>
+                                        <a href="faq.html">
+                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Help
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n="th">
+                                        <a href="http://track.asiacom.co.th/litepro/lock-screen.html">
+                                            <i class="fa fa-lock fa-fw fa-lg"></i> ล็อคหน้าจอ
+                                        </a>
+                                    </li>
+
+                                    <li data-l11n>
+                                        <a href="http://track.asiacom.co.th/litepro/lock-screen.html">
+                                            <i class="fa fa-lock fa-fw fa-lg"></i> Lock screen
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                                <!-- Dropdown footer -->
+                                <div class="pad-all text-right">
+                                    <span data-l11n="th" class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ
+                                    </span>
+
+                                    <span data-l11n class="btn btn-primary" data-target="#sm-modal" data-toggle="modal">
+                                        <i class="fa fa-sign-out fa-fw"></i> Logout
+                                    </span>
+
+                                </div>
+
+
+
+                            </div>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End user dropdown-->
+
+
+                    </ul>
+
+
+                </div>
+                <!--================================-->
+                <!--End Navbar Dropdown-->
+            </div>
+        </header>
+        <!--===================================================-->
+        <!--END NAVBAR-->
+
+        <div class="boxed">
+
+            <!--CONTENT CONTAINER-->
+            <!--===================================================-->
+            <div id="content-container">
+
+
+                <!--Page Title-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--<div id="page-title">-->
+                <!--Page content-->
+                <!--===================================================-->
+                <!--MAP-->
+
+
+                <div id="page-content">
+
+                    <div id="report-canvas">
+
+                        <div class="panel-body-full" id="report-body-full" visibly="load-report:Positions">
+
+
+                            <!--===================================================-->
+                            <div class="panel panel-bordered panel-dark">
+
+
+                                <div class="panel-heading">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;รายงาน ตำแหน่ง</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-table"></i>&nbsp;Position Report</h4>
+
+                                </div>
+
+                                <div class="panel-body">
+
+                                    <div id="custom-positions">
+                                        <div class="form-inline" role="form">
+
+                                            <button data-l11n="th" class="btn btn-block btn-mint" id="showColumnChartPosition" name="showColumnChartPosition">ดู แผนภูมิ</button>
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <!--Positions Report-->
+                                    <table id="reports-positions"
+                                           class="searchable"
+                                           data-show-filter="true"
+                                           data-toolbar="#custom-positions"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-search="true"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'png', 'doc', 'excel', 'powerpoint', 'pdf'"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 20, 50, 100]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="true"></table>
+
+                                    <div id="timeIntervalPosition" class="text-dark"></div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+
+                        <div class="panel-body-full" id="report-body-full" visibly="load-report:Speed">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;รายงาน ความเร็ว</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-table"></i>&nbsp;Speed Report</h4>
+
+
+                                </div>
+
+                                <div class="panel-body">
+
+
+
+                                    <div id="custom-speed">
+                                        <div class="form-inline" role="form">
+
+                                            <button class="btn btn-block btn-mint" id="showGeoChartSpeed" name="showGeoChartSpeed">ดู แผนภูมิ</button>
+
+
+                                        </div>
+                                    </div>
+
+                                    <!--Speed Report-->
+                                    <table id="reports-speed"
+                                           class="searchable"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="#custom-speed"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'png', 'doc', 'excel', 'powerpoint', 'pdf'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 20, 50, 100]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="true"></table>
+                                    <div id="timeIntervalSpeed" class="text-dark"></div>
+                                </div>
+
+
+                            </div>
+                            <!--===================================================-->
+
+
+
+                        </div>
+
+                        <div class="panel-body-full" id="report-body-full" visibly="load-report:Mileage">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;รายงาน การสะสมไมล์</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-table"></i>&nbsp;Mileage Report</h4>
+
+
+                                </div>
+
+                                <div class="panel-body">
+
+
+
+                                    <div id="custom-mileage">
+                                        <div class="form-inline" role="form">
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <!--Mileage Report-->
+                                    <table id="reports-mileage"
+                                           class="searchable"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="#custom-mileage"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'png', 'doc', 'excel', 'powerpoint', 'pdf'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 20, 50, 100]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="true"></table>
+                                    <div id="timeIntervalMileage" class="text-dark"></div>
+
+                                </div>
+
+
+
+
+                            </div>
+                            <!--===================================================-->
+
+
+
+                        </div>
+
+                        <div class="panel-body-full" id="report-body-full" visibly="load-report:Utilization (Type 1)">
+
+                            <div class="panel panel-bordered panel-dark">
+
+                                <div class="panel-heading">
+                                    <h4 data-l11n="th" class="panel-title"><i class="fa fa-table"></i>&nbsp;รายงาน การใช้ประโยชน์</h4>
+                                    <h4 data-l11n class="panel-title"><i class="fa fa-table"></i>&nbsp;Utilization Report</h4>
+
+
+                                </div>
+
+                                <div class="panel-body">
+
+
+
+                                    <div id="custom-utilization">
+                                        <div class="form-inline" role="form">
+
+                                            <button class="btn btn-block btn-mint" id="showPieChartUtilization" name="showPieChartUtilization">ดู แผนภูมิ</button>
+
+                                        </div>
+                                    </div>
+
+                                    <!--Utilization Report-->
+                                    <table id="reports-utilization"
+                                           class="searchable"
+                                           data-click-to-select="true"
+                                           data-single-select="true"
+                                           data-toolbar="#custom-utilization"
+                                           data-show-header="true"
+                                           data-show-export="true"
+                                           data-export-types="'png', 'csv', 'txt', 'doc', 'excel', 'powerpoint', 'pdf'"
+                                           data-search="true"
+                                           data-show-refresh="true"
+                                           data-show-toggle="true"
+                                           data-show-columns="true"
+                                           data-page-list="[10, 20, 50, 100]"
+                                           data-page-size="10"
+                                           data-pagination="true" data-show-pagination-switch="true"></table>
+                                    <div id="timeIntervalUtilization" class="text-dark"></div>
+
+                                </div>
+
+
+
+
+                            </div>
+                            <!--===================================================-->
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+                <!--===================================================-->
+
+
+
+            </div>
+
+            <!--MAIN NAVIGATION-->
+            <!--===================================================-->
+            <nav id="mainnav-container" style="position:fixed">
+                <div id="mainnav">
+
+
+                    <!--Menu-->
+                    <!--================================-->
+                    <div id="mainnav-menu-wrap">
+
+                        <div class="nano">
+                            <div class="nano-content">
+
+                                <ul id="mainnav-menu" class="list-group">
+
+
+                                    <!--Version-->
+                                    <li data-l11n="th" class="list-header">รุ่น&nbsp;<span id="verNum" class="text-muted"></span></li>
+
+                                    <li data-l11n class="list-header">Version&nbsp;<span id="verNumEN" class="text-muted"></span></li>
+
+                                    <!--Dashboard-->
+                                    <li>
+                                        <a href="index.html">
+                                            <i class="fa fa-dashboard fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="th">หน้าปัด</strong>
+                                                <strong data-l11n>Dashboard</strong>
+                                                <!--Notifications-->
+                                                <span data-l11n="th" class="label label-primary pull-right">แผนที่</span>
+                                                <span data-l11n class="label label-primary pull-right">Map</span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+
+                                    <!--Vehicles-->
+                                    <li class="vehicles">
+                                        <a href="vehicles.html">
+                                            <i class="fa fa-mobile-phone fa-2x"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="th">ยานพาหนะ</strong>
+                                                <strong data-l11n>Phones</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <!--Zones-->
+                                    <li class="zones">
+                                        <a href="zones.html">
+                                            <i class="fa fa-globe fa-lg"></i>
+                                            <span class="menu-title">
+                                                <strong data-l11n="th">โซน</strong>
+                                                <strong data-l11n>Zones</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+
+
+
+                                    <!--Settings-->
+                                    <!--<li class="list-header">Settings</li>-->
+                                    <!--Submenu-->
+
+                                    <li class="list-divider"></li>
+
+                                    <li data-l11n="th" class="settings">
+                                        <a href="#" title="การตั้งค่า">
+                                            <i class="fa fa-gears fa-lg"></i>
+                                            <span data-l11n="th" class="menu-title">การตั้งค่า</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Companies Page">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">บริษัท</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Users Page">
+                                                    <i class="fa fa-users fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">ผู้ใช้</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Devices Page">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+                                                    <span data-l11n="th" class="menu-title">อุปกรณ์</span>
+
+                                                </a>
+                                            </li>
+                                            <!--Menu list item-->
+                                            <!--<li>
+                        <a href="alerts.html" title="Alerts Page">
+                            <i class="fa fa-warning fa-lg"></i>
+                            <span class="menu-title">Alerts</span>
+                        </a>
+                    </li>-->
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li data-l11n class="settings">
+                                        <a href="#" title="Settings">
+                                            <i class="fa fa-gears fa-lg"></i>
+
+                                            <span data-l11n class="menu-title">Settings</span>
+
+
+                                            <i class="fa arrow"></i>
+                                        </a>
+
+                                        <ul class="collapse">
+
+                                            <!--Companies-->
+                                            <li class="companies">
+                                                <a href="companies.html" title="Companies Page">
+                                                    <i class="fa fa-building-o fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Companies</span>
+
+                                                </a>
+                                            </li>
+
+                                            <!--Users-->
+                                            <li class="users">
+                                                <a href="users.html" title="Users Page">
+                                                    <i class="fa fa-users fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Users</span>
+
+                                                </a>
+                                            </li>
+
+
+                                            <!--Device-->
+                                            <li class="devices">
+                                                <a href="devices.html" title="Devices Page">
+                                                    <i class="fa fa-tablet fa-lg"></i>
+
+                                                    <span data-l11n class="menu-title">Devices</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                </ul>
+
+
+                                <br />
+                                <br />
+
+                                <div id="chartdiv"></div>
+                                <div id="chartdivIgnition"></div>
+
+                                
+
+                           
+                                </div>
+
+
+                                </div>
+                                <!--================================-->
+                                <!--End menu-->
+
+
+                            </div>
+            </nav>
+
+
+
+            <!--===================================================-->
+            <!--END MAIN NAVIGATION-->
+            <!--ASIDE-->
+            <!--===================================================-->
+            <aside id="aside-container" style="position:fixed">
+                <div id="aside">
+                    <div class="nano">
+                        <div class="nano-content">
+
+                            <!--Navigation Tabs Turnoff-->
+                            <!--Nav tabs-->
+                            <!--================================-->
+                            <!--<ul class="nav nav-tabs nav-justified">
+                                <li class="active">
+                                    <a href="#vehicle-list" data-toggle="tab">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                </li>	-->
+                            <!--================================-->
+
+                            <br />
+                            <!--================================-->
+                            <!--End nav tabs-->
+                            <!--<form>-->
+                            <!-- Tabs Content -->
+                            <!--================================-->
+                            <div class="tab-content">
+
+                                <!--First tab (Contact list)-->
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <div class="tab-pane fade in active" id="vehicle-list">
+
+                                    <!--Company-->
+                                    <!-- Bootstrap Select with Search Input -->
+                                    <!--===================================================-->
+
+                                    <div class="form-group">
+                                        <div data-l11n="th" class=".text-normal">บริษัท</div>
+                                        <div data-l11n class=".text-normal">Company</div>
+                                        <select class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="load-company" name="load-company"></select>
+                                    </div>
+
+                                    <!--===================================================-->
+                                    <!--Report-->
+
+                                    <div class="form-group">
+                                        <div data-l11n="th" class=".text-normal">รายงาน</div>
+                                        <div data-l11n class=".text-normal">Report</div>
+                                        <select class="selectpicker SelectReport" data-width="100%" data-style="btn-asiacomDropdown" id="load-report" name="load-report"></select>
+                                    </div>
+
+
+
+                                    <!--===================================================-->
+                                    <!--===================================================-->
+                                    <!--Vehicle-->
+
+                                    <div class="form-group">
+                                        <div data-l11n="th" class=".text-normal">พาหนะ</div>
+                                        <div data-l11n class=".text-normal">Vehicle</div>
+                                        <!--<select class="selectpicker select-vehicle-filter" data-live-search="true" data-width="100%" data-style="btn-success" id="load-assets" name="load-assets" data-table="searchable"></select>-->
+                                        <select class="selectpicker" data-live-search="true" data-width="100%" data-style="btn-asiacomDropdown" id="load-assets" name="load-assets" data-table="searchable"></select>
+                                        <!--<small class="text-muted">Auto close on select</small>-->
+                                    </div>
+
+
+                                    <hr />
+                                    <!--===================================================-->
+                                    <!--Date Filter-->
+                                    <!--===================================================-->
+                                    <!--Date Time Alert-->
+
+
+
+                                    <div class="input-group date">
+                                        <input id="dateFrom" type="text" class="form-control" placeholder="DD-MMM-YYYY HH:MM">
+                                        <span class="input-group-addon btn-asiacomDateFilter"><i class="fa fa-calendar fa-xs"></i></span>
+                                    </div>
+                                    <small data-l11n="th" class="text-muted pull-left">จาก</small>
+                                    <small data-l11n class="text-muted pull-left">From</small>
+
+                                    <br />
+
+
+
+                                    <!--===================================================-->
+
+
+                                    <div class="input-group date">
+                                        <input id="dateTo" type="text" class="form-control" placeholder="DD-MMM-YYYY HH:MM">
+                                        <span class="input-group-addon btn-asiacomDateFilter"><i class="fa fa-calendar fa-xs"></i></span>
+                                    </div>
+                                    <small data-l11n="th" class="text-muted pull-left">ไปยัง</small>
+                                    <small data-l11n class="text-muted pull-left">To</small>
+
+                                    <!--===================================================-->
+
+                                    <br />
+                                    <div visibly="load-report:Speed">
+                                        <div data-l11n="th" class=".text-normal">จำกัด</div>
+                                        <div data-l11n class=".text-normal">Limit</div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="" name="limit" data-by-field="limit">
+                                        </div>
+
+                                    </div>
+
+
+                                    <!--===================================================-->
+                                    <!--Category-->
+                                    <div visibly="load-report:Mileage">
+                                        <div class="form-group">
+                                            <div data-l11n="th" class=".text-normal">หมวดหมู่</div>
+                                            <div data-l11n class=".text-normal">Category</div>
+                                            <select class="selectpicker" data-live-search="true" data-dropup-auto="false" data-width="100%" data-style="btn-asiacomDropdown" id="load-category" name="load-category"></select>
+                                        </div>
+                                    </div>
+
+                                    <!--===================================================-->
+
+
+                                    <div visibly="load-report:Mileage">
+                                        <div data-l11n="th" class=".text-normal">คนขับรถ</div>
+                                        <div data-l11n class=".text-normal">Driver</div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="" name="driver" data-by-field="driver">
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                    <!--===================================================-->
+                                    <hr>
+
+                                    <div class="pull-right">
+
+
+                                        <button data-l11n="th" class="btn btn-success hidden-xs hidden-sm hidden-md hidden-lg" title="โหลด" id="clickRefresh" value="clickRefresh" onclick="Refresh();">
+                                            <i class="fa fa-refresh fa-fw"></i> ตั้งใหม่
+                                        </button>
+                                        <button data-l11n class="btn btn-success hidden-xs hidden-sm hidden-md hidden-lg" title="รีเฟรช" id="clickRefreshEN" value="clickRefreshEN" onclick="RefreshEN();">
+                                            <i class="fa fa-refresh fa-fw"></i> Reset
+                                        </button>
+                                        <button data-l11n="th" class="btn btn-primary" title="ผลิต" id="clickGenerate" value="clickGenerate" onclick="Generate();">
+                                            <i class="fa fa-table fa-fw"></i> ผลิต
+                                        </button>
+                                        <button data-l11n class="btn btn-primary" title="Generate" id="clickGenerateEN" value="clickGenerateEN" onclick="GenerateEN();">
+                                            <i class="fa fa-table fa-fw"></i> Generate
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--End first tab (Contact list)-->
+
+
+                            </div>
+
+
+                            <!--</form>-->
+
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!--===================================================-->
+            <!--END ASIDE-->
+
+        </div>
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer">
+
+
+            <!--Test List-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <div class="show-fixed pull-right">
+                <ul class="footer-list list-inline">
+
+                    <li data-content="Company List">
+
+                        <span class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span class="lang-selected">
+                                <span class="lang-id">
+
+                                    <!--Company-->
+                                    <!--===================================================-->
+                                    <select class="selectpicker dropup" data-live-search="true" data-width="100%" data-style="btn-success" id="load-company2" name="load-company2"></select>
+                                    <!--===================================================-->
+
+                                </span>
+                            </span>
+                        </span>
+
+                    </li>
+
+
+                    <li data-content="Vehicle List">
+                        <span class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span class="lang-selected">
+                                <span class="lang-id">
+
+                                    <!--Vehicle-->
+                                    <!--===================================================-->
+                                    <select class="selectpicker dropup" data-live-search="true" data-width="100%" data-style="btn-success" id="load-assets2" name="load-assets2"></select>
+                                    <!--===================================================-->
+
+                                </span>
+                            </span>
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!-- Visible when footer positions are fixed -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right">
+                <ul class="footer-list list-inline">
+
+
+                    <!--===================================================-->
+                    <!-- Engine Status Start-->
+
+                    <li>
+                        <span class="lang-selected" title="Engine Status Color When Vehicle is Moving">
+                            <span data-l11n="th" class="lang-name">
+                                <button class="btn btn-sm btn-success">ย้าย</button>
+                            </span>
+
+                            <span data-l11n class="lang-name">
+                                <button class="btn btn-sm btn-success">Move</button>
+                            </span>
+                        </span>
+                    </li>
+
+
+                    <li>
+                        <span class="lang-selected" title="Engine Status Color When Vehicle is Idle">
+                            <span data-l11n="th" class="lang-name">
+                                <button class="btn btn-sm btn-warning">&nbsp;&nbsp;ว่าง&nbsp;&nbsp;</button>
+                            </span>
+
+                            <span data-l11n class="lang-name">
+                                <button class="btn btn-sm btn-warning">&nbsp;&nbsp;Idle&nbsp;&nbsp;</button>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected" title="Engine Status Color When Vehicle is Stop">
+                            <span data-l11n="th" class="lang-name">
+                                <button class="btn btn-sm btn-danger">&nbsp;หยุด&nbsp;</button>
+                            </span>
+
+                            <span data-l11n class="lang-name">
+                                <button class="btn btn-sm btn-danger">&nbsp;Stop&nbsp;</button>
+                            </span>
+                        </span>
+                    </li>
+
+                    <!-- Engine Status End -->
+                    <!--===================================================-->
+                    <!--===================================================-->
+                    <!-- Traffic Legend Start-->
+                    <li>
+                        <span class="lang-selected" title="Smooth Traffic">
+                            <span class="lang-name">
+                                <p data-l11n="th" class="text-sm">การจราจรได้อย่างราบรื่น</p>
+                                <p data-l11n class="text-sm">Smooth Traffic</p>
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-success"></div>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected" title="Slow Moving Traffic">
+                            <span class="lang-name">
+                                <p data-l11n="th" class="text-sm">การจราจรย้ายช้า</p>
+                                <p data-l11n class="text-sm">Slow Moving Traffic</p>
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-warning"></div>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="lang-selected" title="Heavy Traffic">
+                            <span class="lang-name">
+                                <p data-l11n="th" class="text-sm">จราจรหนาแน่น</p>
+                                <p data-l11n class="text-sm">Heavy Traffic</p>
+                                <div class="progress progress-sm progress-light-base">
+                                    <div style="width: 100%" class="progress-bar progress-bar-danger"></div>
+                                </div>
+                            </span>
+                        </span>
+                    </li>
+
+                    <!-- Traffic Legend End -->
+                    <!--===================================================-->
+                    <!--===================================================-->
+                    <!-- Server Clock Start-->
+
+                    <li>
+
+                        <i class="fa fa-clock-o hidden-xs">&nbsp;</i> <div class="show-fixed pull-right pad-rgt hidden-xs" id="clockbox" title="Current Time"></div>
+
+                    </li>
+                    <!-- Server Clock End -->
+                    <!--===================================================-->
+
+
+
+                </ul>
+
+            </div>
+
+
+
+
+            <!-- Visible when footer positions are static -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right pad-rgt" id="clockbox"></div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+            <span data-l11n="th" class="pad-lft hidden-xs hidden-md"><span id="software"></span>&nbsp;&#0169; 2015 - ระบบการจัดการ กองทัพเรือ</span>
+            <span data-l11n class="pad-lft hidden-xs hidden-md"><span id="softwareEN"></span>&nbsp;&#0169; 2017 - Fleet Management System</span>
+
+
+
+
+
+        </footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+        <!-- SCROLL TOP BUTTON -->
+        <!--===================================================-->
+        <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+        <!--===================================================-->
+
+
+
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+    <!-- BOOTSTRAP MODALS-->
+    <!--====================================================-->
+    <!--Logout Small Bootstrap Modal-->
+    <!--===================================================-->
+    <div id="sm-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <div data-l11n="th" class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;ระบบการจัดการ กองทัพเรือ</i></div>
+                    <div data-l11n class=".text-normal"><i class="fa fa-warning fa-lg">&nbsp;&nbsp;Fleet Management System</i></div>
+                </div>
+                <div class="modal-body">
+                    <p data-l11n="th" class=".text-normal">ดำเนินการ ออกจากระบบ ?</p>
+                    <p data-l11n class=".text-normal">Proceed to Logout?</p>
+                    <button data-l11n="th" type="submit" class="btn btn-success btn-labeled fa fa-check fa-lg pull-right" title="Submit" onclick="Logout();" id="clickLogout">ตกลง</button>
+                    <button data-l11n type="submit" class="btn btn-success btn-labeled fa fa-check fa-lg pull-right" title="Submit" onclick="LogoutEN();" id="clickLogoutEN">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--===================================================-->
+    <!-- Logout End Small Bootstrap Modal-->
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+    <!--jQuery [ REQUIRED ]-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+    <script src="js/jquery/jquery-2.1.3.min.js"></script>
+
+    <!--custom Javascript by King-->
+    <script src="js/test.js"></script>
+    <script src="js/logout.js"></script>
+
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!-- Plugins [ OPTIONAL ]-->
+    <script src="js/plugins.min.js"></script>
+
+
+    <!--Demo script [ DEMONSTRATION ]-->
+    <script src="js/demo/nifty-demo.min.js"></script>
+
+
+    <!--Server Time Clock [ OPTIONAL ]-->
+    <script src="js/servertime.js"></script>
+
+
+    <!--Download Plugins [ OPTIONAL ]-->
+    <script src="plugins/table-export/bootstrap-table-export.js"></script>
+    <script src="plugins/table-export/tableExport.js"></script> <!--@*Main file which does export feature *@-->
+    <script src="plugins/table-export/jquery.base64.js"></script> <!--@*Main file which does convert the content to base64  *@-->
+    <script src="plugins/table-export/html2canvas.js"></script> <!--@*Main file which does export to image feature *@-->
+    <script src="plugins/table-export/jspdf/libs/base64.js"></script> <!--@*Main file which does  convert the content to base64 for pdf *@-->
+    <script src="plugins/table-export/jspdf/libs/sprintf.js"></script> <!--@*Main file which does export feature for pdf *@-->
+    <script src="plugins/table-export/jspdf/jspdf.js"></script> <!--@*Main file which does export feature for pdf *@-->
+    <!--Datetime Picker [ OPTIONAL ]-->
+    <!--<script src="plugins/datetimepicker/jquery.datetimepicker.js"></script>-->
+
+    <script src="plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.th.js" charset="UTF-8"></script>
+
+    <!--Hide Elements-->
+    <script src="plugins/jquery-visibly/jquery-visibly.min.js"></script>
+
+
+    <!--Modernizr  [ OPTIONAL ]-->
+    <script src="plugins/modernizr/modernizr.custom.js"></script>
+
+
+    <!--Flat JSON-->
+    <script src="plugins/flatJSON/bootstrap-table-flatJSON.min.js"></script>
+
+
+    <!--Date Format-->
+    <script src="plugins/moment/moment.js"></script>
+    <script src="plugins/moment-timezone/moment-timezone.js"></script>
+    <script src="plugins/moment-timezone/moment-timezone-with-data.js"></script>
+
+
+
+    <!--Panel-->
+    <script src="plugins/jsPanel-bootstrap/jspanel/jquery.jspanel.min.js"></script>
+
+    <!-- loading jQuery UI javascript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!--Localization-->
+    <script src="plugins/bootstrap-table/locale/bootstrap-table-th.js"></script>
+
+
+    <!--
+
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+    <!--Datetime Picker Script [ OPTIONAL ]-->
+
+
+    <script>
+
+        $.fn.datetimepicker.dates['th'] = {
+            days: ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์", "อาทิตย์"],
+            daysShort: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส", "อา"],
+            daysMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส", "อา"],
+            months: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
+            monthsShort: ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."],
+            today: "วันนี้",
+            suffix: [],
+            meridiem: []
+        };
+
+
+        //OnLoad Calendar Language
+        $(document).ready(function () {
+
+            //Then retrieve
+            var getSessionstorageValueLanguage = sessionStorage.getItem('setSessionstorageValueLanguage');
+
+
+            $('#dateFrom').datetimepicker({
+                format: 'dd-M-yyyy hh:ii:ss P',
+                autoclose: 'true',
+                todayBtn: 'true',
+                todayHighlight: 'true',
+                keyboardNavigation: 'true',
+                showMeridian: true,
+                minuteStep: 10,
+                language: 'en'
+
+            });
+
+
+            $('#dateTo').datetimepicker({
+                format: 'dd-M-yyyy hh:ii:ss P',
+                autoclose: 'true',
+                todayBtn: 'true',
+                todayHighlight: 'true',
+                keyboardNavigation: 'true',
+                showMeridian: true,
+                minuteStep: 10,
+                language: 'en'
+
+            });
+
+
+        });
+
+        //OnChange Calendar Language
+        $(document).ready(function () {
+
+            $('#load-lang').change(function () {
+
+
+                var lang = $("#load-lang").val();
+
+                //Change
+                $('#dateFrom').datetimepicker('remove');
+
+
+                $('#dateFrom').datetimepicker({
+                    format: 'dd-M-yyyy hh:ii:ss P',
+                    autoclose: 'true',
+                    todayBtn: 'true',
+                    todayHighlight: 'true',
+                    keyboardNavigation: 'true',
+                    showMeridian: true,
+                    minuteStep: 10,
+                    language: 'en'
+
+                });
+
+
+                $('#dateTo').datetimepicker('remove');
+
+                $('#dateTo').datetimepicker({
+                    format: 'dd-M-yyyy hh:ii:ss P',
+                    autoclose: 'true',
+                    todayBtn: 'true',
+                    todayHighlight: 'true',
+                    keyboardNavigation: 'true',
+                    showMeridian: true,
+                    minuteStep: 10,
+                    language: 'en'
+
+                });
+
+
+            });
+
+
+        });
+
+    </script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            $('#showGeoChartSpeed').click(function () {
+
+
+                var panel1 = $.jsPanel({
+                    iframe: {
+                        src: "report_speed.html",
+                        id: "myFrame",
+                        style: { "display": "none", "border": "10px solid transparent" },
+                        width: '100%',
+                        height: '100%'
+                    },
+
+                    callback: function () {
+                        document.getElementById("myFrame").onload = function () {
+                            $("#myFrame").fadeIn(1000);
+                        }
+                    },
+                    size: { width: 740, height: 520 },
+                    position: { left: "center", top: 30 },
+                    title: 'GEO แผนภูมิ',
+                    theme: "black"
+                });
+
+                window.setTimeout(function () {
+                    // call .title() on the variable representing the jsPanel (delayed in order to see the title change)
+                    panel1.title('GEO แผนภูมิ - ความเร็ว<small id="latlng"></small>');
+                }, 3000);
+
+
+
+            });
+        });
+
+    </script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            $('#showColumnChartPosition').click(function () {
+
+
+                var panel1 = $.jsPanel({
+                    iframe: {
+                        src: "report_position.html",
+                        id: "myFrame",
+                        style: { "display": "none", "border": "10px solid transparent" },
+                        width: '100%',
+                        height: '100%'
+                    },
+
+                    callback: function () {
+                        document.getElementById("myFrame").onload = function () {
+                            $("#myFrame").fadeIn(1000);
+                        }
+                    },
+                    size: { width: 740, height: 520 },
+                    position: { left: "center", top: 30 },
+                    title: 'คอลัมน์ แผนภูมิ',
+                    theme: "black"
+                });
+
+                window.setTimeout(function () {
+                    // call .title() on the variable representing the jsPanel (delayed in order to see the title change)
+                    panel1.title('คอลัมน์ แผนภูมิ<small id="latlng"></small>');
+                }, 3000);
+
+
+
+            });
+        });
+
+    </script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            $('#showPieChartUtilization').click(function () {
+
+
+                var panel1 = $.jsPanel({
+                    iframe: {
+                        src: "report_utilization.html",
+                        id: "myFrame",
+                        style: { "display": "none", "border": "10px solid transparent" },
+                        width: '100%',
+                        height: '100%'
+                    },
+
+                    callback: function () {
+                        document.getElementById("myFrame").onload = function () {
+                            $("#myFrame").fadeIn(1000);
+                        }
+                    },
+                    size: { width: 740, height: 520 },
+                    position: { left: "center", top: 30 },
+                    title: 'แผนภูมิวงกลม',
+                    theme: "black"
+                });
+
+                window.setTimeout(function () {
+                    // call .title() on the variable representing the jsPanel (delayed in order to see the title change)
+                    panel1.title('แผนภูมิวงกลม<small id="latlng"></small>');
+                }, 3000);
+
+
+
+            });
+        });
+
+    </script>
+
+
+
+
+    <script>
+
+        var toggle = document.getElementById('toggleChart');
+
+        toggle.onclick = function () {
+            var div = document.getElementById('chartdiv');
+            if (div.style.display !== 'none') {
+                div.style.display = 'none';
+            }
+            else {
+                div.style.display = 'block';
+            }
+
+            var div2 = document.getElementById('chartdivIgnition');
+            if (div2.style.display !== 'none') {
+                div2.style.display = 'none';
+            }
+            else {
+                div2.style.display = 'block';
+            }
+
+        };
+
+
+
+    </script>
+
+    <script>
+
+
+
+
+        google.load('visualization', '1', { packages: ['corechart'] });
+        google.setOnLoadCallback(drawChart);
+
+
+        //callback function
+        function drawChart() {
+
+            //Then retrieve
+            var localObj = JSON.parse(sessionStorage.getItem("setSessionstorageValueEngine"));
+
+            var move = localObj.Move;
+            var idle = localObj.Idle;
+            var stop = localObj.Stop;
+
+            var data = google.visualization.arrayToDataTable([
+                  ['Engine Status', 'Percentage'],
+                  ['MOVE', move],
+                  ['IDLE', idle],
+                  ['STOP', stop],
+            ]);
+
+
+            var options = {
+                title: 'Engine Status',
+                titleTextStyle: { color: 'white', fontSize: '12', bold: 'true' },
+                tooltip: { showColorCode: true },
+                is3D: true,
+                region: 'TH',
+                displayMode: 'Engine Status',
+                backgroundColor: '#2F343B',
+                legend: { position: 'bottom', textStyle: { color: 'white', fontSize: 12 }, maxLines: 3 },
+                //chartArea: { left: 50, top: 0, width: '50%', height: '75%' },
+                chartArea: { left: 10, top: 20, width: '100%' },
+                colors: ['#00CC00', '#FFA500', '#FF0000']
+
+
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chartdiv'));
+            chart.draw(data, options);
+        }
+
+
+        function drawIgnitionChart() {
+
+            //Then retrieve
+            var localObj = JSON.parse(sessionStorage.getItem("setSessionstorageValueIgnition"));
+
+            var on = localObj.On;
+            var off = localObj.Off;
+
+
+            var data = google.visualization.arrayToDataTable([
+                  ['Ignition', 'Percentage'],
+                  ['On', on],
+                  ['Off', off]
+            ]);
+
+
+            var options = {
+                title: 'Ignition',
+                titleTextStyle: { color: 'white', fontSize: '12', bold: 'true' },
+                tooltip: { showColorCode: true },
+                is3D: true,
+                region: 'TH',
+                displayMode: 'Ignition',
+                backgroundColor: '#2F343B',
+                legend: { position: 'bottom', textStyle: { color: 'white', fontSize: 12 }, maxLines: 3 },
+                //chartArea: { left: 50, top: 0, width: '50%', height: '75%' },
+                chartArea: { left: 10, top: 20, width: '100%' },
+                colors: ['#4169E1', 'red']
+
+
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chartdivIgnition'));
+            chart.draw(data, options);
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
+
