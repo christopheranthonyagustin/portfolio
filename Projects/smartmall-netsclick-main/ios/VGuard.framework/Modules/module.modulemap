@@ -1,0 +1,6 @@
+framework module VGuard {
+  umbrella header "VGuard.h"
+
+  export *
+  module * { export * }
+}

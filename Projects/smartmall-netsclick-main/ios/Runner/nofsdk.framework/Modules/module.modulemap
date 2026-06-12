@@ -1,0 +1,6 @@
+framework module nofsdk {
+  umbrella header "nofsdk.h"
+
+  export *
+  module * { export * }
+}
