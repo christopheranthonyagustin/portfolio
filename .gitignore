@@ -1,0 +1,9 @@
+*.pbix
+**/bin/
+**/obj/
+**/#backup/
+**/Debug/
+**/Release/
+*.exe
+*.dll
+*.pdb
