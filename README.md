@@ -38,10 +38,10 @@ Total Certifications and Credentials: 25+
 
 In addition to these certifications, I have experience delivering projects involving:
 
-* Order Management Systems (OMS)
-* Warehouse Management Systems (WMS)
+* [Order Management Systems (OMS)](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/ShopifyLarkTracker)
+* [Warehouse Management Systems (WMS)](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/AceCom%20System/iLOGON_ACE)
 * [API and Webhook Integrations](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/smartmall-netsclick-main)
-* E-commerce Platforms (Shopify)
+* [E-commerce Platforms (Shopify)](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/SalesDataConverterApp%20v.1.7.8)
 * [Logistics and Shipment Tracking Solutions](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Track)
 * [Healthcare Technology and Medical Software](https://github.com/christopheranthonyagustin/portfolio/blob/main/Projects/VSynC%20App/medsol-software-vsync_web_app-da4e4eceadf3/README.md)
 * [Cloud-Based Applications](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/System%20Pest) and Middleware Solutions
