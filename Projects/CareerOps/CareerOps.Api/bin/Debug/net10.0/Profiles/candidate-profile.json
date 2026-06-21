@@ -1,0 +1,209 @@
+{
+  "name": "Christopher Anthony Agustin",
+  "yearsOfExperience": 16,
+  "educationLevel": "Bachelor Degree",
+  "englishLevel": "Professional",
+  "preferredSeniority": [
+    "Senior",
+    "Lead",
+    "Manager"
+  ],
+  "projectManagementYears": 5,
+  "softwareEngineeringYears": 12,
+  "resumeVersions": [
+    "PM_V1",
+    "TPM_V1",
+    "DEV_V1"
+  ],
+  "rolePreferences": [
+    {
+      "role": "Technical Project Manager",
+      "weight": 100
+    },
+    {
+      "role": "IT Project Manager",
+      "weight": 95
+    },
+    {
+      "role": "Technical Program Manager",
+      "weight": 90
+    },
+    {
+      "role": "Delivery Manager",
+      "weight": 85
+    },
+    {
+      "role": "Engineering Manager",
+      "weight": 75
+    },
+    {
+      "role": "Senior .NET Developer",
+      "weight": 70
+    }
+  ],
+  "skills": [
+    "Technical Project Management",
+    "Technical Program Management",
+    "Product Ownership",
+    ".NET",
+    ".NET Core",
+    ".NET 8",
+    ".NET Framework",
+    "C#",
+    "ASP.NET Core",
+    "REST API",
+    "SQL Server",
+    "MySQL",
+    "Microsoft Azure",
+    "Google Cloud Platform",
+    "Amazon Web Services",
+    "Firebase",
+    "Firestore",
+    "Cloud Functions",
+    "Python",
+    "Flutter",
+    "Git",
+    "Agile",
+    "Scrum",
+    "JIRA",
+    "Confluence",
+    "Stakeholder Management",
+    "Vendor Management",
+    "Business Analysis",
+    "Technical Documentation",
+    "Release Management",
+    "Requirements Analysis",
+    "UAT",
+    "Shopify",
+    "Shopee",
+    "Lazada",
+    "TikTok Shop",
+    "Enterprise Systems",
+    "Order Management System",
+    "Warehouse Management System",
+    "Transport Management System",
+    "Electronic Data Interchange (EDI)",
+    "API Integration",
+    "ISO 13485",
+    "IEC 62304",
+    "ISO 14971",
+    "ERP Integration",
+    "Middleware Integration"
+  ],
+  "industries": [
+    "Healthcare",
+    "Medical Devices",
+    "ECommerce",
+    "Logistics",
+    "Supply Chain",
+    "Enterprise Software",
+    "SaaS"
+  ],
+  "targetIndustries": [
+    "Healthcare",
+    "Medical Devices",
+    "Software",
+    "SaaS",
+    "ECommerce",
+    "Logistics",
+    "Supply Chain",
+    "Technology Consulting"
+  ],
+  "domainExperience": [
+    "Order Management System",
+    "Warehouse Management System",
+    "Transport Management System",
+    "Fleet Management System",
+    "Job Dispatch System",
+    "Marketplace Integration",
+    "Medical Monitoring Systems",
+    "Wearable Devices"
+  ],
+  "projectManagementSkills": [
+    "Project Planning",
+    "Sprint Planning",
+    "Backlog Management",
+    "Stakeholder Communication",
+    "Risk Management",
+    "Resource Planning",
+    "Team Leadership",
+    "Agile Delivery",
+    "Scrum Master"
+  ],
+  "technicalStrengths": [
+    "Solution Architecture",
+    "System Integration",
+    "Cloud Architecture",
+    "Backend Development",
+    "API Design",
+    "Database Design",
+    "Technical Leadership"
+  ],
+  "preferredLocations": [
+    "Singapore",
+    "Philippines",
+    "Remote"
+  ],
+  "certifications": [
+    "Google Project Management",
+    "Scrum Foundation Professional",
+    "Certified Associate in Scrum Fundamentals",
+    "ISO 9001 Associate",
+    "ISO/IEC 20000 Associate",
+    "ISO/IEC 27001 Associate",
+    "AWS Fundamentals",
+    "Android Enterprise Professional",
+    "Six Sigma Yellow Belt",
+    "NSE3 Network Security Associate"
+  ],
+  "strengths": [
+    "Technical Project Management",
+    "System Integration",
+    "Enterprise Applications",
+    "Order Management Systems",
+    "Warehouse Management Systems",
+    "API Integration",
+    "ECommerce Platforms",
+    "Medical Device Software",
+    "Cross-Functional Team Leadership"
+  ],
+  "knownGaps": [
+    "SAFe",
+    "Jira Align",
+    "PMP",
+    "PRINCE2",
+    "Scaled Agile",
+    "Enterprise Portfolio Management"
+  ],
+  "salaryTargets": {
+    "Singapore": {
+      "minimumMonthlySGD": 7000,
+      "targetMonthlySGD": 8500
+    },
+    "Philippines": {
+      "minimumMonthlyPHP": 120000
+    }
+  },
+  "keywords": [
+    "Technical Project Manager",
+    "Project Manager",
+    "Program Manager",
+    "Technical Program Manager",
+    "Delivery Manager",
+    "System Integration",
+    "OMS",
+    "WMS",
+    "EDI",
+    "API Integration",
+    "Medical Device Software"
+  ],
+  "targetCompanies": [
+    "Atlassian",
+    "ShopBack",
+    "Grab",
+    "Shopee",
+    "Lazada",
+    "Google",
+    "Microsoft"
+  ]
+}

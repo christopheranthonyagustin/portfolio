@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "CareerOps.Api.Controllers.JobsController",
+    "Method": "Analyze",
+    "RelativePath": "api/jobs/analyze",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CareerOps.Api.Models.AnalyzeJobRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
