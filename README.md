@@ -44,7 +44,8 @@ In addition to these certifications, I have experience delivering projects invol
 * [EDI & File-Based Integrations](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/SalesDataConverterApp%20v.1.7.8)
 * [Logistics and Shipment Tracking Solutions](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Track)
 * [Healthcare Technology and Medical Software](https://github.com/christopheranthonyagustin/portfolio/blob/main/Projects/VSynC%20App/medsol-software-vsync_web_app-da4e4eceadf3/README.md)
-* [Cloud-Based Applications](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/System%20Pest) 
+* [Cloud-Based Applications](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/System%20Pest)
+* [AI-Powered Career Analysis Platform](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/CareerOps/CareerOps.Api)
 
 Project case studies and portfolio repositories are available on my GitHub profile.
 
