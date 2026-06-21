@@ -1,0 +1,280 @@
+/* ======================================
+   GLOBAL
+====================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 16px;
+    background: #f1f5f9;
+    font-family: Arial, sans-serif;
+}
+
+/* ======================================
+   LAYOUT
+====================================== */
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+    .header h1 {
+        margin: 0;
+        font-size: 32px;
+    }
+
+    .header span {
+        font-size: 14px;
+        color: #64748b;
+    }
+
+/* ======================================
+   TOOLBAR
+====================================== */
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.btn {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+    .btn:hover {
+        opacity: .9;
+    }
+
+.btn-primary {
+    background: #2563eb;
+}
+
+.btn-warning {
+    background: #f59e0b;
+}
+
+.btn-success {
+    background: #16a34a;
+}
+
+.btn-danger {
+    background: #dc2626;
+}
+
+.btn-secondary {
+    background: #64748b;
+}
+
+/* ======================================
+   CARD
+====================================== */
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #dbe2ea;
+}
+
+    .card h2 {
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-size: 20px;
+    }
+
+.card-step1 {
+    background: #eff6ff;
+}
+
+.card-step2 {
+    background: #fefce8;
+}
+
+.card-step3 {
+    background: #f0fdf4;
+}
+
+/* ======================================
+   FORM
+====================================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 14px 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 13px;
+    background: white;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* ======================================
+   JSON VIEWER
+====================================== */
+
+pre {
+    margin: 0;
+    padding: 12px;
+    border-radius: 6px;
+    background: rgba(255,255,255,.8);
+    border: 1px solid #dbe2ea;
+    overflow: auto;
+    max-height: 300px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* ======================================
+   RESPONSIVE
+====================================== */
+
+@media (max-width: 900px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+}
+
+#rememberResume, #enableCareerOps {
+    width: 12px !important;
+    height: 12px !important;
+    margin-bottom: 8px !important;
+    padding: 0 !important;
+    display: block !important;
+}
+
+.careerops-card {
+    background: #ffffff;
+    border: 1px solid #dfe1e6;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.careerops-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+    .careerops-header h3 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+.careerops-toggle {
+    font-size: 12px;
+}
+
+.careerops-score {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.score-label {
+    font-size: 12px;
+    color: #6b778c;
+}
+
+.score-value {
+    font-size: 42px;
+    font-weight: 700;
+    color: #0052cc;
+}
+
+.careerops-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.careerops-item {
+    background: #f4f5f7;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+    .careerops-item .label {
+        font-size: 11px;
+        color: #6b778c;
+        margin-bottom: 4px;
+    }
+
+    .careerops-item .value {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+.careerops-section {
+    margin-top: 16px;
+}
+
+    .careerops-section h4 {
+        margin: 0 0 8px;
+        font-size: 13px;
+    }
+
+.skill-list {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.analysis-text {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #344563;
+}

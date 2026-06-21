@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>
+        Job Tracker
+    </title>
+
+    <link rel="stylesheet"
+          href="styles.css">
+
+</head>
+
+<body>
+
+    <div class="header">
+
+        <h1>
+            Job Tracker
+        </h1>
+
+        <span>
+            v2.0
+        </span>
+
+    </div>
+
+    <div class="toolbar">
+
+        <button id="btnAnalyzeWebsite"
+                class="btn btn-primary">
+
+            Analyze Website
+
+        </button>
+
+        <button id="btnSend"
+                class="btn btn-success">
+
+            Send To Google Sheet
+
+        </button>
+
+        <button id="btnClearStorage"
+                class="btn btn-danger">
+
+            Clear Storage
+
+        </button>
+
+        <button id="btnOpenTracker"
+                class="btn btn-secondary">
+
+            Manual Entry
+
+        </button>
+
+    </div>
+
+
+
+
+    <!-- ===================================== -->
+    <!-- STEP 1 -->
+    <!-- ===================================== -->
+
+    <div id="aiAnalysisCard" class="careerops-card">
+
+        <div class="careerops-header">
+
+            <h3>
+                🤖 CareerOps AI Analysis
+            </h3>
+
+            <label class="careerops-toggle">
+                <input type="checkbox"
+                       id="enableCareerOps"
+                       checked />
+                Enable AI
+            </label>
+
+        </div>
+
+        <div class="careerops-score">
+
+            <div class="score-label">
+                Match Score
+            </div>
+
+            <div id="aiMatchPercentage"
+                 class="score-value">
+                -
+            </div>
+
+        </div>
+
+        <div class="careerops-grid">
+
+            <div class="careerops-item">
+
+                <div class="label">
+                    Market Fit
+                </div>
+
+                <div id="aiMarketFit"
+                     class="value">
+                    -
+                </div>
+
+            </div>
+
+            <div class="careerops-item">
+
+                <div class="label">
+                    Industry
+                </div>
+
+                <div id="aiCompanyIndustry"
+                     class="value">
+                    -
+                </div>
+
+            </div>
+
+            <div class="careerops-item">
+
+                <div class="label">
+                    Job Level
+                </div>
+
+                <div id="aiJobLevel"
+                     class="value">
+                    -
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="careerops-section">
+
+            <h4>Skills Required</h4>
+
+            <div id="aiSkillsRequired"
+                 class="skill-list">
+                -
+            </div>
+
+        </div>
+
+        <div class="careerops-section">
+
+            <h4>Missing Skills</h4>
+
+            <div id="aiMissingSkills"
+                 class="skill-list missing">
+                -
+            </div>
+
+        </div>
+
+        <div class="careerops-section">
+
+            <h4>Analysis</h4>
+
+            <div id="aiMarketFitReason"
+                 class="analysis-text">
+                -
+            </div>
+
+        </div>
+
+    </div>
+
+    <section class="card card-step1">
+
+        <h2>
+            Step 1 - Job Posting
+        </h2>
+
+        <pre id="jobPosting"></pre>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- STEP 2 -->
+    <!-- ===================================== -->
+
+    <section class="card card-step2">
+
+        <h2>
+            Step 2 - Application Details
+        </h2>
+
+        <pre id="applicationDetails"></pre>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- STEP 3 -->
+    <!-- ===================================== -->
+
+    <section class="card card-step3">
+
+        <h2>
+            Step 3 - Final Application
+        </h2>
+
+        <pre id="finalApplication"></pre>
+
+    </section>
+
+    <script src="popup.js"></script>
+    <script src="tracker.js"></script>
+</body>
+
+</html>

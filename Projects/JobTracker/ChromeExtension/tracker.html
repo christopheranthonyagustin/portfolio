@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>
+        Job Tracker
+    </title>
+
+    <link rel="stylesheet"
+          href="styles.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="toolbar">
+
+            <button id="btnBuildFinal"
+                    class="btn btn-success">
+                Build Final
+            </button>
+
+            <button id="btnClearStorage"
+                    class="btn btn-danger">
+                Clear Storage
+            </button>
+
+        </div>
+
+
+        <section class="card">
+
+            <h2>Job Tracker</h2>
+
+            <div class="form-grid">
+
+                <div class="form-field">
+                    <label>Company</label>
+                    <input id="company">
+                </div>
+
+                <div class="form-field">
+                    <label>Position</label>
+                    <input id="position">
+                </div>
+
+                <div class="form-field">
+                    <label>Location</label>
+                    <input id="location">
+                </div>
+
+                <div class="form-field">
+                    <label>Salary</label>
+                    <input id="salary">
+                </div>
+
+                <div class="form-field">
+                    <label>Setup</label>
+                    <select id="setup">
+                        <option>WFH</option>
+                        <option>Hybrid</option>
+                        <option>Onsite</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label>Employment Type</label>
+                    <select id="employmentType">
+                        <option>Full Time</option>
+                        <option>Part Time</option>
+                        <option>Contract</option>
+                        <option>Freelance</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label>Job ID</label>
+                    <input id="jobId">
+                </div>
+
+                <div class="form-field">
+                    <label>Posted Date</label>
+                    <input id="postedDate">
+                </div>
+
+                <div class="form-field">
+                    <label>Application Volume</label>
+                    <input id="applicationVolume">
+                </div>
+
+                <div class="form-field">
+                    <label>Applicant Status</label>
+                    <input id="applicantStatus">
+                </div>
+
+                <div class="form-field">
+                    <label>Priority</label>
+                    <select id="priority">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label>Source</label>
+                    <input id="source">
+                </div>
+
+                <div class="form-field">
+                    <label>Status</label>
+                    <input id="status">
+                </div>
+
+                <div class="form-field">
+                    <label>Market Fit</label>
+                    <select id="marketFit">
+                        <option>Excellent</option>
+                        <option>Strong</option>
+                        <option>Good</option>
+                        <option>Moderate</option>
+                        <option>Weak</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label>CV Version</label>
+                    <input id="cvVersion">
+                </div>
+
+                <div class="form-field">
+                    <label>Cover Letter</label>
+                    <select id="coverLetter">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+
+                <div class="form-field full-width">
+
+                    <label>
+                        Last Resume
+                    </label>
+
+                    <input id="lastResumeFile"
+                           readonly>
+
+                </div>
+
+                <div class="form-field full-width">
+                    <label>Resume File</label>
+                    <input type="file"
+                           id="resumeFile"
+                           accept=".pdf,.doc,.docx" />
+                </div>
+
+                <div class="form-field full-width">
+                    <input type="checkbox"
+                           id="rememberResume">
+                    <label for="rememberResume">
+                        Remember Resume & CV Version
+                    </label>
+                </div>
+
+                <div class="form-field full-width">
+                    <label>Notes</label>
+                    <textarea id="notes"
+                              rows="3"></textarea>
+                </div>
+
+                <div class="form-field full-width">
+                    <label>URL</label>
+                    <textarea id="url"
+                              rows="2"></textarea>
+                </div>
+
+            </div>
+
+</section>
+
+    </div>
+    <script src="popup.js"></script>
+    <script src="tracker.js"></script>
+</body>
+
+</html>
