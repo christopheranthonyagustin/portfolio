@@ -66,8 +66,6 @@ Stores data automatically in Google Sheets.
 
 ---
 
-## Screenshots
-
 ### Job Analysis
 
 ```text
