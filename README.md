@@ -1,4 +1,6 @@
-# Professional Certifications & Digital Credentials Portfolio
+# Professional Portfolio
+
+### Project Case Studies, Certifications & Technical Expertise
 
 ## Christopher Anthony Agustin
 
@@ -34,9 +36,63 @@ Highlights include certifications in:
 
 Total Certifications and Credentials: 25+
 
-## Project Portfolio
+# Professional Services
 
-In addition to these certifications, I have experience delivering projects involving:
+In addition to enterprise software delivery, I provide technical consulting and software development services for startups and small businesses.
+
+## Shopify Development & Consulting
+
+- Shopify Development
+- Store Customization
+- API Integration
+- Business Automation
+- Technical Consulting
+
+## Software Development
+
+- ASP.NET
+- .NET Core
+- REST APIs
+- SQL Server
+- Desktop Applications
+- Web Applications
+
+## Technical Project Management
+
+- Discovery Workshops
+- Requirements Gathering
+- Agile Delivery
+- UAT
+- Stakeholder Management
+- Solution Design
+
+## Cloud & Infrastructure
+
+- Google Cloud Platform
+- IIS Administration
+- Windows Server
+- Firebase
+- Cloud SQL
+
+# Project Portfolio
+
+## Shopify Portfolio
+
+I have delivered Shopify solutions for businesses in the consumer electronics, home appliances, and health & wellness industries, covering store development, theme customization, technical consulting, and systems integration.
+
+### Featured Projects
+
+| Project | Industry | My Role |
+|----------|----------|---------|
+| [Roborock Singapore](Projects/Shopify/Roborock%20Singapore/README.md) | Consumer Electronics | Singapore | IT Specialist |
+| [W Network Singapore](Projects/Shopify/W%20Network%20Singapore/README.md) | Retail & Distribution | Singapore | IT Specialist |
+| [Laifen Singapore](Projects/Shopify/Laifen%20Singapore/README.md) | Consumer Electronics | Singapore | IT Specialist |
+| [Robam Singapore](Projects/Shopify/Robam%20Singapore/README.md) | Kitchen Appliances | Singapore | Technical Consultant |
+| [Elisir](Projects/Shopify/Elisir/README.md) | Health & Wellness | Singapore | IT Project Manager |
+
+## Enterprise Software Portfolio
+
+My project experience also includes enterprise software delivery across logistics, healthcare, cloud platforms, systems integration, and AI-powered applications.
 
 * [Order Management Systems (OMS)](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/ShopifyLarkTracker)
 * [Warehouse Management Systems (WMS)](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/AceCom%20System/iLOGON_ACE)
@@ -47,7 +103,7 @@ In addition to these certifications, I have experience delivering projects invol
 * [Cloud-Based Applications](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/System%20Pest)
 * [AI-Powered Career Analysis Platform](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/CareerOps/CareerOps.Api)
 
-Project case studies and portfolio repositories are available on my GitHub profile.
+Project case studies and portfolio repositories are available throughout this GitHub repository.
 
 ## Professional Certifications
 
