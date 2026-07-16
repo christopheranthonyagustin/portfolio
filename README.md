@@ -1,14 +1,113 @@
-# Professional Portfolio
+# Christopher Anthony Agustin
+
+## Enterprise Technology Portfolio
 
 ### Project Case Studies, Certifications & Technical Expertise
 
-## Christopher Anthony Agustin
+**Technical Project Manager | Enterprise Applications | Infrastructure & Cloud | Systems Integration**
 
-Project Manager | Product Owner | Systems Integration Specialist
+---
 
-Experienced in API integrations, e-commerce platforms, logistics systems, healthcare technology, cloud solutions, and enterprise software delivery.
+## Professional Summary
 
-This repository contains certificates earned through professional training programs and industry-recognized courses related to Project Management, Product Ownership, API Design, Systems Integration, Software Development, E-commerce, Logistics, and Healthcare Technology.
+Technical Project Manager with 15+ years of experience delivering enterprise software, infrastructure, cloud platforms, and systems integration projects across logistics, healthcare, e-commerce, transportation, and manufacturing industries.
+
+My career has evolved from software engineering into enterprise technology delivery, combining technical expertise with project management, infrastructure operations, cloud platforms, business applications, and vendor management.
+
+I have successfully delivered projects involving enterprise applications, fleet management systems, warehouse management systems, healthcare platforms, cloud-native applications, Shopify e-commerce solutions, and API integrations while coordinating cross-functional teams and third-party technology partners.
+
+---
+
+# Core Competencies
+
+## Enterprise Project Delivery
+
+- Technical Project Management
+- Agile & Scrum Delivery
+- SDLC Management
+- Requirements Analysis
+- Stakeholder Management
+- Vendor Management
+- Risk Management
+- UAT Planning
+- Release Management
+
+---
+
+## Enterprise Applications
+
+- Order Management System (OMS)
+- Warehouse Management System (WMS)
+- Fleet Management System
+- Job Dispatch System
+- Healthcare Information Systems
+- Microsoft Dynamics NAV
+- Shopify
+- Enterprise Desktop Applications
+
+---
+
+## Infrastructure & Cloud
+
+- Google Cloud Platform
+- Firebase
+- Cloud SQL
+- Windows Server
+- Active Directory
+- IIS Administration
+- SQL Server
+- Infrastructure Operations
+- Disaster Recovery
+- Business Continuity
+- Infrastructure Documentation
+- IT Governance
+
+---
+
+## Systems Integration
+
+- REST APIs
+- Webhooks
+- EDI
+- File-based Integration
+- Third-party APIs
+- Shopify Integration
+- Lark Base
+- MQTT
+- JSON
+- XML
+
+---
+
+## Software Engineering
+
+- ASP.NET
+- .NET Framework
+- .NET Core
+- C#
+- Flutter
+- Android
+- SQL Server
+- MySQL
+- Python
+
+---
+
+# Career Journey
+
+Software Engineer
+↓
+Solution Designer
+↓
+Enterprise Applications
+↓
+Infrastructure Operations
+↓
+Cloud Platforms
+↓
+Technical Project Management
+
+---
 
 ## Digital Badge Verification
 
@@ -29,50 +128,16 @@ Highlights include certifications in:
 - Information Security (ISO 27001)
 - IT Service Management (ISO 20000)
 - Lean & Six Sigma
-- Cloud & Infrastructure
+- Infrastructure
+- Cloud Computing
+- IT Service Management
 - Cybersecurity
 - Software Architecture
 - Healthcare Technology
 
 Total Certifications and Credentials: 25+
 
-# Professional Services
-
-In addition to enterprise software delivery, I provide technical consulting and software development services for startups and small businesses.
-
-## Shopify Development & Consulting
-
-- Shopify Development
-- Store Customization
-- API Integration
-- Business Automation
-- Technical Consulting
-
-## Software Development
-
-- ASP.NET
-- .NET Core
-- REST APIs
-- SQL Server
-- Desktop Applications
-- Web Applications
-
-## Technical Project Management
-
-- Discovery Workshops
-- Requirements Gathering
-- Agile Delivery
-- UAT
-- Stakeholder Management
-- Solution Design
-
-## Cloud & Infrastructure
-
-- Google Cloud Platform
-- IIS Administration
-- Windows Server
-- Firebase
-- Cloud SQL
+---
 
 # Project Portfolio
 
@@ -89,6 +154,19 @@ I have delivered Shopify solutions for businesses in the consumer electronics, h
 | [Laifen Singapore](Projects/Shopify/Laifen%20Singapore/README.md) | Consumer Electronics | Singapore | IT Specialist |
 | [Robam Singapore](Projects/Shopify/Robam%20Singapore/README.md) | Kitchen Appliances | Singapore | Technical Consultant |
 | [Elisir](Projects/Shopify/Elisir/README.md) | Health & Wellness | Singapore | IT Project Manager |
+
+## Cloud & Infrastructure Portfolio
+
+My experience includes enterprise IT infrastructure operations, cloud platform delivery, disaster recovery planning, infrastructure governance, and vendor management across logistics and healthcare environments.
+
+## Cloud & Infrastructure Portfolio
+
+| Project | Infrastructure Highlights |
+|----------|---------------------------|
+| [WLocate – Enterprise Infrastructure & Cloud Foundation](Projects/Infra/WLocate/README.md) | On-Premises to Windows Azure migration, Hyper-V virtualization, SDLC environment management, High Availability (HA), Disaster Recovery (DR), Windows Server, SQL Server |
+| [BUCLocate – Azure Fleet Management Platform](Projects/BUC/README.md) | Microsoft Azure, Azure Virtual Machines, Azure SQL Database Migration, IIS, Windows Services, GPS/UDP Communication, OTA Device Management |
+| [Comfort Ambulance – Job Dispatch System](Projects/Comfort/README.md) | Enterprise Solution Deployment, Customer Environment Provisioning, Job Dispatch Workflow, Android MDT Integration, MySQL, Production Deployment, UAT & Go-Live |
+| [AceCom – Enterprise IT Infrastructure Operations & Governance](Projects/AceCom/README.md) | Active Directory, Windows Server, SQL Server, Disaster Recovery, IT Governance, Vendor Management |
 
 ## Enterprise Software Portfolio
 
