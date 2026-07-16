@@ -164,9 +164,9 @@ My experience includes enterprise IT infrastructure operations, cloud platform d
 | Project | Infrastructure Highlights |
 |----------|---------------------------|
 | [WLocate – Enterprise Infrastructure & Cloud Foundation](Projects/Infra/WLocate/README.md) | On-Premises to Windows Azure migration, Hyper-V virtualization, SDLC environment management, High Availability (HA), Disaster Recovery (DR), Windows Server, SQL Server |
-| [BUCLocate – Azure Fleet Management Platform](Projects/BUC/README.md) | Microsoft Azure, Azure Virtual Machines, Azure SQL Database Migration, IIS, Windows Services, GPS/UDP Communication, OTA Device Management |
-| [Comfort Ambulance – Job Dispatch System](Projects/Comfort/README.md) | Enterprise Solution Deployment, Customer Environment Provisioning, Job Dispatch Workflow, Android MDT Integration, MySQL, Production Deployment, UAT & Go-Live |
-| [AceCom – Enterprise IT Infrastructure Operations & Governance](Projects/AceCom/README.md) | Active Directory, Windows Server, SQL Server, Disaster Recovery, IT Governance, Vendor Management |
+| [BUCLocate – Azure Fleet Management Platform](Projects/Infra/BUC/README.md) | Microsoft Azure, Azure Virtual Machines, Azure SQL Database Migration, IIS, Windows Services, GPS/UDP Communication, OTA Device Management |
+| [Comfort Ambulance – Job Dispatch System](Projects/Infra/Comfort/README.md) | Enterprise Solution Deployment, Customer Environment Provisioning, Job Dispatch Workflow, Android MDT Integration, MySQL, Production Deployment, UAT & Go-Live |
+| [AceCom – Enterprise IT Infrastructure Operations & Governance](Projects/Infra/AceCom/README.md) | Active Directory, Windows Server, SQL Server, Disaster Recovery, IT Governance, Vendor Management |
 
 ## Enterprise Software Portfolio
 
