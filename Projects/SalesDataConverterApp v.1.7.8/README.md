@@ -1,8 +1,50 @@
 # SalesDataConverterApp
 
-A Windows Forms-based enterprise integration utility that transforms raw POS sales data (Report Pundit / Shopify exports) into a validated, standardized financial reporting format and delivers it through **SFTP and EDI-ready output pipelines**.
+An enterprise Windows desktop application that transforms raw Point-of-Sale (POS) sales data into standardized financial reporting files for secure SFTP delivery and EDI-ready integration.
 
-This system was designed to solve real-world retail integration challenges involving inconsistent vendor data, missing fields, and multi-system data exchange requirements.
+---
+
+## Project Summary
+
+| Category | Details |
+|----------|---------|
+| **Project Type** | Enterprise Data Transformation & Integration |
+| **Platform** | Windows Desktop (WinForms) |
+| **Industry** | Retail & Distribution |
+| **Country** | Singapore |
+| **Role** | Software Engineer |
+| **Project Duration** | 2024 |
+| **Status** | Completed |
+| **Technology Stack** | C#, .NET Framework, WinForms, SFTP, CSV Processing, File I/O |
+| **Services Provided** | Data Transformation, ETL Processing, SFTP Integration, EDI Preparation, Business Process Automation |
+
+---
+
+## Overview
+
+SalesDataConverterApp is an enterprise integration utility developed to automate the transformation of raw Point-of-Sale (POS) sales data into standardized financial reporting files.
+
+The application eliminates manual data processing by converting inconsistent sales exports into validated, business-ready output files that can be securely transmitted to downstream finance and ERP systems through SFTP.
+
+Designed with EDI compatibility in mind, the solution serves as a pre-processing layer for enterprise retail integrations.
+
+---
+
+## Screenshots
+
+### Main Application Dashboard
+
+![Main Dashboard](images/main-dashboard.png)
+
+*Main application interface providing a guided workflow for selecting source files, configuring processing options, previewing converted output, and initiating secure SFTP file transfers.*
+
+---
+
+### Processing Logs & Operational Monitoring
+
+![Processing Logs](images/logs.png)
+
+*Real-time processing logs displaying the conversion lifecycle, validation results, SFTP connection status, upload progress, retry attempts, and operational messages to support monitoring, troubleshooting, and auditability.*
 
 ---
 
