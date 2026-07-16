@@ -1,5 +1,18 @@
 # CareerOps AI – Intelligent Job Application Assistant
 
+## Project Summary
+
+| Category | Details |
+|----------|---------|
+| **Project Type** | AI-Powered Career Platform |
+| **Platform** | Chrome Extension & Cloud-Native Web API |
+| **Status** | Active Development |
+| **Role** | Product Owner, Technical Project Manager & Full-Stack Developer |
+| **Duration** | 2026 – Present |
+| **Technologies** | ASP.NET Core 9, C#, Google Gemini AI, Google Cloud Run, Docker, Google Sheets API, JavaScript |
+| **Architecture** | Cloud-Native, REST API, AI Integration |
+| **Deployment** | Google Cloud Platform |
+
 ## Overview
 
 CareerOps AI is a Chrome Extension and Cloud-Native AI Platform designed to help job seekers analyze job opportunities, measure career fit, and make data-driven application decisions.
@@ -7,6 +20,40 @@ CareerOps AI is a Chrome Extension and Cloud-Native AI Platform designed to help
 Instead of manually reviewing every job posting, CareerOps automatically extracts job information from recruitment websites, analyzes the role using Generative AI, compares it against a candidate profile, and generates an AI-powered match score with actionable insights.
 
 The platform was built to solve a common problem faced by professionals applying to hundreds of jobs: **"Is this role worth applying for?"**
+
+---
+
+## Screenshots
+
+### AI-Powered Job Analysis
+
+![AI-Powered Job Analysis](images/analyze-website.png)
+
+*Analyze job postings directly from supported recruitment websites using AI. The extension evaluates job requirements, calculates the candidate-to-job match percentage, identifies missing skills, and provides actionable career recommendations.*
+
+---
+
+### Automated Job Tracking
+
+![Automated Job Tracking](images/google-sheet.png)
+
+*Automatically capture and synchronize job application details, including company, position, salary, work setup, application status, and resume version to Google Sheets for centralized tracking.*
+
+---
+
+### Clear Application Data
+
+![Clear Application Data](images/clear-storage.png)
+
+*Reset locally stored job analysis and application data, allowing users to start a new analysis session while maintaining a clean and organized workspace.*
+
+---
+
+### Manual Job Entry
+
+![Manual Job Entry](images/manual-entry.png)
+
+*Manually enter job details for analysis when automatic extraction is unavailable, enabling CareerOps AI to generate match scores and recommendations for any job opportunity.*
 
 ---
 
