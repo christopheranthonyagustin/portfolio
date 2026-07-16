@@ -82,7 +82,7 @@ I have delivered Shopify solutions for businesses in the consumer electronics, h
 
 ### Featured Projects
 
-| Project | Industry | My Role |
+| Project | Industry | Country |
 |----------|----------|---------|
 | [Roborock Singapore](Projects/Shopify/Roborock%20Singapore/README.md) | Consumer Electronics | Singapore | IT Specialist |
 | [W Network Singapore](Projects/Shopify/W%20Network%20Singapore/README.md) | Retail & Distribution | Singapore | IT Specialist |
