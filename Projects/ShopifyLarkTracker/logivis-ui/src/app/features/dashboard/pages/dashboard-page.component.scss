@@ -534,3 +534,52 @@
   font-weight: 700;
   color: #111827;
 }
+
+
+.operation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.operation-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fafafa;
+  transition: all .2s ease;
+}
+
+  .operation-item:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  }
+
+  .operation-item h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .operation-item p {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+
+  .operation-item .btn {
+    margin-top: auto;
+    width: fit-content;
+  }
+
+  .operation-item input {
+    margin-top: .5rem;
+  }
+
+.operation-center-card {
+  padding: 2rem;
+}
