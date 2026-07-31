@@ -51,11 +51,11 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithLark(): void {
-    window.location.href = `${environment.apiUrl}/auth/lark/login`;
+    `${environment.apiUrl}/api/auth/lark/login?frontend=${encodeURIComponent(window.location.origin)}`;
   }
 
   loginWithGoogle(): void {
-    window.location.href = `${environment.apiUrl}/auth/google/login`;
+    `${environment.apiUrl}/api/auth/google/login?frontend=${encodeURIComponent(window.location.origin)}`;
   }
 
   closeAlert(): void {
