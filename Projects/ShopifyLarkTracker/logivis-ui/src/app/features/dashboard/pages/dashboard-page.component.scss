@@ -538,9 +538,13 @@
 
 .operation-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-top: 1.5rem;
+}
+
+.operation-item:last-child {
+  grid-column: 1 / -1;
 }
 
 .operation-item {
@@ -582,4 +586,8 @@
 
 .operation-center-card {
   padding: 2rem;
+}
+
+.operation-center {
+  margin-bottom: 2rem;
 }
