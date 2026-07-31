@@ -1,0 +1,212 @@
+<aside class="sidebar" [class.collapsed]="collapsed()">
+
+  <div class="logo">
+
+    <button class="menu-button"
+            (click)="toggleSidebar()">
+
+      ☰
+
+    </button>
+
+    @if (!collapsed()) {
+
+    <span class="logo-text">
+      LogiVis
+    </span>
+
+    }
+
+  </div>
+
+
+  <nav>
+
+    @if (permissionService.has('DASHBOARD.READ')) {
+
+    <span class="section-title" *ngIf="!collapsed()">
+      Dashboard
+    </span>
+
+    <a routerLink="/dashboard"
+       routerLinkActive="active">
+
+      🏠
+
+      @if (!collapsed()) {
+      <span>Dashboard</span>
+      }
+
+    </a>
+
+    }
+
+    @if (permissionService.has('SHIPMENTS.READ')) {
+
+    <span class="section-title" *ngIf="!collapsed()">
+      Operations
+    </span>
+
+    <a routerLink="/shipments"
+       routerLinkActive="active">
+
+      📦
+
+      @if (!collapsed()) {
+      <span>Shipments</span>
+      }
+
+    </a>
+
+    }
+
+    @if (
+    permissionService.has('USERS.READ') ||
+    permissionService.has('COMPANIES.READ') ||
+    permissionService.has('ROLES.READ')
+    ) {
+
+    <span class="section-title" *ngIf="!collapsed()">
+      Administration
+    </span>
+
+    @if (permissionService.has('USERS.READ')) {
+    <a routerLink="/users"
+       routerLinkActive="active">
+
+      👤
+
+      @if (!collapsed()) {
+      <span>Users</span>
+      }
+
+    </a>
+    }
+
+    @if (permissionService.has('COMPANIES.READ')) {
+    <a routerLink="/companies"
+       routerLinkActive="active">
+
+      🏢
+
+      @if (!collapsed()) {
+      <span>Companies</span>
+      }
+
+    </a>
+    }
+
+    @if (permissionService.has('ROLES.READ')) {
+    <a routerLink="/roles"
+       routerLinkActive="active">
+
+      🔐
+
+      @if (!collapsed()) {
+      <span>Roles & Permissions</span>
+      }
+
+    </a>
+    }
+
+    }
+
+    @if (
+    permissionService.has('REPORTS.READ') ||
+    permissionService.has('AUDIT_LOGS.READ')
+    ) {
+
+    <span class="section-title" *ngIf="!collapsed()">
+      Reports
+    </span>
+
+    @if (permissionService.has('REPORTS.READ')) {
+    <a routerLink="/reports"
+       routerLinkActive="active">
+
+      📊
+
+      @if (!collapsed()) {
+      <span>Reports</span>
+      }
+
+    </a>
+    }
+
+    @if (permissionService.has('AUDIT_LOGS.READ')) {
+    <a routerLink="/audit-logs"
+       routerLinkActive="active">
+
+      📝
+
+      @if (!collapsed()) {
+      <span>Audit Logs</span>
+      }
+
+    </a>
+    }
+
+    }
+
+    @if (permissionService.has('SETTINGS.READ')) {
+
+    <span class="section-title" *ngIf="!collapsed()">
+      System
+    </span>
+
+    <a routerLink="/settings"
+       routerLinkActive="active">
+
+      ⚙️
+
+      @if (!collapsed()) {
+      <span>Settings</span>
+      }
+
+    </a>
+
+    }
+
+  </nav>
+
+  
+
+  <div class="profile">
+
+    <div class="avatar">
+
+      {{ userInitials }}
+
+    </div>
+
+    @if (!collapsed()) {
+
+    <div class="user-info">
+
+      <strong>
+        {{ currentUser?.DisplayName }}
+      </strong>
+
+      <small>
+        {{ displayRole }}
+      </small>
+
+      @if (currentUser?.IsSuperUser) {
+
+      <small class="debug">
+        User ID: {{ currentUser?.UserId }}
+      </small>
+
+      <small class="debug">
+        Provider: {{ currentUser?.ProviderUserId }}
+      </small>
+
+      }
+
+    </div>
+
+    }
+
+  </div>
+
+</aside>

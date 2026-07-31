@@ -1,0 +1,76 @@
+<main class="login-page">
+
+  <section class="login-card">
+
+    <img src="/images/logo.svg"
+         class="logo"
+         alt="LogiVis Logo">
+
+    <h1>LogiVis</h1>
+
+    <p class="subtitle">
+      Logistics Visibility Platform
+    </p>
+
+    <p class="description">
+      Sign in to continue
+    </p>
+
+    @if (showAlert) {
+
+    <div class="login-alert"
+         [class.warning]="authCode === 'PENDING'"
+         [class.error]="authCode !== 'PENDING'">
+
+      <div class="alert-header">
+
+        <h3>{{ authTitle }}</h3>
+
+        <button type="button"
+                class="close-button"
+                aria-label="Close"
+                (click)="closeAlert()">
+
+          <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+      </div>
+
+      <p>{{ authError }}</p>
+
+    </div>
+
+    }
+
+    <button type="button"
+            class="login-button lark"
+            (click)="loginWithLark()">
+
+      <i class="fa-solid fa-feather-pointed provider-icon"></i>
+
+      <span>Continue with Lark</span>
+
+    </button>
+
+    <button type="button"
+            class="login-button google"
+            (click)="loginWithGoogle()">
+
+      <i class="fa-brands fa-google provider-icon"></i>
+
+      <span>Continue with Google</span>
+
+    </button>
+
+    <div class="footer">
+
+      <div>Version {{ version }}</div>
+
+      <div>© 2026 LogiVis</div>
+
+    </div>
+
+  </section>
+
+</main>

@@ -1,0 +1,31 @@
+<div class="shipment-page">
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>Shipments</h1>
+
+      <p class="subtitle">
+
+        Total Shipments:
+        <strong>{{ shipments.length }}</strong>
+
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="ag-theme-quartz grid-container">
+
+    <ag-grid-angular class="shipment-grid"
+                     theme="legacy"
+                     (gridReady)="onGridReady($event)"
+                     [columnDefs]="columnDefs"
+                     [defaultColDef]="defaultColDef">
+    </ag-grid-angular>
+
+  </div>
+
+</div>

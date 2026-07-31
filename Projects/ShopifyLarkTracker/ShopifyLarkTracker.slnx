@@ -1,3 +1,74 @@
 <Solution>
-  <Project Path="ShopifyLarkTracker/ShopifyLarkTracker.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/LogiVis.Application/LogiVis.Application.csproj" Id="90cf8c71-7250-427a-90b6-770261f9bb38" />
+    <Project Path="src/LogiVis.Domain/LogiVis.Domain.csproj" Id="babd5624-7291-44ba-acc0-163ba9327b2d" />
+    <Project Path="src/LogiVis.Infrastructure/LogiVis.Infrastructure.csproj" Id="07c632a1-7b6d-4e1f-905d-ed52d9e60db3" />
+    <Project Path="src/LogiVis.Shared/LogiVis.Shared.csproj" Id="caee9139-1bbe-4050-93bb-16c09ac107d1" />
+    <Project Path="src/LogiVis.WebApi/LogiVis.WebApi.csproj" Id="c60cb37f-e113-49b3-a45c-096e00ce2fec" />
+    <Project Path="src/ShopifyLarkTracker/LogiVis.API.csproj" />
+  </Folder>
+  <Project Path="logivis-data-worker/" Type="Website" DisplayName="logivis-data-worker">
+    <BuildType Project="Debug" />
+    <Properties Name="WebsiteProperties">
+      <Property Name="Debug.AspNetCompiler.Debug" Value="&quot;True&quot;" />
+      <Property Name="Debug.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+      <Property Name="Debug.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+      <Property Name="Debug.AspNetCompiler.PhysicalPath" Value="&quot;logivis-data-worker\&quot;" />
+      <Property Name="Debug.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_57250\&quot;" />
+      <Property Name="Debug.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+      <Property Name="Debug.AspNetCompiler.VirtualPath" Value="&quot;/localhost_57250&quot;" />
+      <Property Name="Release.AspNetCompiler.Debug" Value="&quot;False&quot;" />
+      <Property Name="Release.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+      <Property Name="Release.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+      <Property Name="Release.AspNetCompiler.PhysicalPath" Value="&quot;logivis-data-worker\&quot;" />
+      <Property Name="Release.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_57250\&quot;" />
+      <Property Name="Release.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+      <Property Name="Release.AspNetCompiler.VirtualPath" Value="&quot;/localhost_57250&quot;" />
+      <Property Name="TargetFrameworkMoniker" Value="&quot;.NETFramework,Version%3Dv4.8&quot;" />
+      <Property Name="VWDPort" Value="&quot;57250&quot;" />
+    </Properties>
+  </Project>
+  <Project Path="logivis-spxtester/SpxTester/SpxTester.csproj" Id="732b608b-6705-4c5e-8e52-e7903f5946e4" />
+  <Project Path="logivis-ui/" Type="Website" DisplayName="logivis-ui">
+    <BuildType Project="Debug" />
+    <Properties Name="WebsiteProperties">
+      <Property Name="Debug.AspNetCompiler.Debug" Value="&quot;True&quot;" />
+      <Property Name="Debug.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+      <Property Name="Debug.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+      <Property Name="Debug.AspNetCompiler.PhysicalPath" Value="&quot;logivis-ui\&quot;" />
+      <Property Name="Debug.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_49201\&quot;" />
+      <Property Name="Debug.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+      <Property Name="Debug.AspNetCompiler.VirtualPath" Value="&quot;/localhost_49201&quot;" />
+      <Property Name="Release.AspNetCompiler.Debug" Value="&quot;False&quot;" />
+      <Property Name="Release.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+      <Property Name="Release.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+      <Property Name="Release.AspNetCompiler.PhysicalPath" Value="&quot;logivis-ui\&quot;" />
+      <Property Name="Release.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_49201\&quot;" />
+      <Property Name="Release.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+      <Property Name="Release.AspNetCompiler.VirtualPath" Value="&quot;/localhost_49201&quot;" />
+      <Property Name="TargetFrameworkMoniker" Value="&quot;.NETFramework,Version%3Dv4.8&quot;" />
+      <Property Name="VWDPort" Value="&quot;49201&quot;" />
+    </Properties>
+  </Project>
+  <Project Path="logivis-worker/" Type="Website" DisplayName="logivis-worker">
+    <BuildType Project="Debug" />
+    <Properties Name="WebsiteProperties">
+      <Property Name="Debug.AspNetCompiler.Debug" Value="&quot;True&quot;" />
+      <Property Name="Debug.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+      <Property Name="Debug.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+      <Property Name="Debug.AspNetCompiler.PhysicalPath" Value="&quot;logivis-worker\&quot;" />
+      <Property Name="Debug.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_59408\&quot;" />
+      <Property Name="Debug.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+      <Property Name="Debug.AspNetCompiler.VirtualPath" Value="&quot;/localhost_59408&quot;" />
+      <Property Name="Release.AspNetCompiler.Debug" Value="&quot;False&quot;" />
+      <Property Name="Release.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+      <Property Name="Release.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+      <Property Name="Release.AspNetCompiler.PhysicalPath" Value="&quot;logivis-worker\&quot;" />
+      <Property Name="Release.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_59408\&quot;" />
+      <Property Name="Release.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+      <Property Name="Release.AspNetCompiler.VirtualPath" Value="&quot;/localhost_59408&quot;" />
+      <Property Name="TargetFrameworkMoniker" Value="&quot;.NETFramework,Version%3Dv4.8&quot;" />
+      <Property Name="VWDPort" Value="&quot;59408&quot;" />
+    </Properties>
+  </Project>
 </Solution>

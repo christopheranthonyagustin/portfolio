@@ -1,0 +1,94 @@
+<div class="app-layout">
+
+  <app-sidebar></app-sidebar>
+
+  <div class="main-content">
+
+    <app-header></app-header>
+
+    <div class="content">
+
+      <div class="page">
+
+        <div class="page-header">
+
+          <div>
+            <h1>Users</h1>
+            <p class="subtitle">{{ totalUsers }} Users</p>
+          </div>
+
+          <button class="primary-button"
+                  (click)="inviteUser()">
+            + Invite User
+          </button>
+
+        </div>
+
+        <div class="summary-cards">
+
+          <div class="summary-card">
+            <div class="label">Active</div>
+            <div class="value">{{ activeCount }}</div>
+          </div>
+
+          <div class="summary-card">
+            <div class="label">Pending</div>
+            <div class="value">{{ pendingCount }}</div>
+          </div>
+
+          <div class="summary-card">
+            <div class="label">Suspended</div>
+            <div class="value">{{ suspendedCount }}</div>
+          </div>
+
+          <div class="summary-card">
+            <div class="label">Rejected</div>
+            <div class="value">{{ rejectedCount }}</div>
+          </div>
+
+        </div>
+
+        <div class="toolbar">
+
+          <input type="text"
+                 placeholder="Search users">
+
+          <div class="toolbar-filters">
+
+            <select>
+              <option>All Companies</option>
+            </select>
+
+            <select>
+              <option>All Status</option>
+              <option>Pending</option>
+              <option>Active</option>
+              <option>Suspended</option>
+              <option>Rejected</option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="ag-theme-quartz grid-container">
+
+          <ag-grid-angular class="data-grid"
+                           theme="legacy"
+                           [columnDefs]="columnDefs"
+                           [defaultColDef]="defaultColDef"
+                           [rowData]="users"
+                           (gridReady)="onGridReady($event)">
+          </ag-grid-angular>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <app-footer></app-footer>
+
+  </div>
+
+</div>

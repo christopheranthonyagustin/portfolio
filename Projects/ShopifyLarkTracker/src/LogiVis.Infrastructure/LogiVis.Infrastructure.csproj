@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LogiVis.Application\LogiVis.Application.csproj" />
+    <ProjectReference Include="..\LogiVis.Domain\LogiVis.Domain.csproj" />
+    <ProjectReference Include="..\LogiVis.Shared\LogiVis.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

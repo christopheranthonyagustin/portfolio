@@ -1,0 +1,360 @@
+<div class="app-layout">
+
+  <app-sidebar />
+
+  <div class="main-content">
+
+    <app-header title="Dashboard"
+                subtitle="Overview of logistics operations">
+    </app-header>
+
+    @if (hasPermissions) {
+
+    <!-- Dashboard Toast -->
+    <div *ngIf="showNotification"
+         class="notification">
+
+      <div class="notification-icon">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+
+      <div class="notification-content">
+
+        <div class="notification-title">
+          {{ notificationTitle }}
+        </div>
+
+        <div class="notification-message">
+          {{ notificationMessage }}
+        </div>
+
+      </div>
+
+      <button type="button"
+              class="notification-close"
+              aria-label="Close notification"
+              (click)="showNotification = false">
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+    </div>
+
+    <main class="content">
+
+      <!-- Dashboard Toolbar -->
+      <section class="toolbar">
+
+        <div class="toolbar-filters">
+
+          <!-- Super User Only -->
+          <div class="form-group"
+               *ngIf="isSuperUser">
+
+            <label for="parentCompany">
+              Parent Company
+            </label>
+
+            <select id="parentCompany">
+
+              <option value="">
+                Coming Soon...
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- Administrator / Super User -->
+          <div class="form-group">
+
+            <label for="company">
+              Company
+            </label>
+
+            <select id="company">
+
+              <option *ngFor="let company of companies"
+                      [value]="company.CompanyId">
+                {{ company.Name }}
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Date Range</label>
+
+            <select [(ngModel)]="selectedDateRange"
+                    (change)="onDateRangeChanged()">
+
+              <option value="today">Today</option>
+              <option value="yesterday">Yesterday</option>
+              <option value="last7">Last 7 Days</option>
+              <option value="last30">Last 30 Days</option>
+              <option value="thisMonth">This Month</option>
+              <option value="lastMonth">Last Month</option>
+              <option value="all">All Time</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- KPI Cards -->
+      <section class="kpi-grid">
+
+        <div class="card card-warning">
+
+          <h3>Pending Pickup</h3>
+
+          <h1>{{ pendingPickup }}</h1>
+
+        </div>
+
+        <div class="card card-info">
+
+          <h3>In Transit</h3>
+
+          <h1>{{ inTransit }}</h1>
+
+        </div>
+
+        <div class="card card-success">
+
+          <h3>Delivered</h3>
+
+          <h1>{{ delivered }}</h1>
+
+        </div>
+
+        <div class="card card-danger">
+
+          <h3>Exceptions</h3>
+
+          <h1>{{ exceptions }}</h1>
+
+        </div>
+
+      </section>
+
+      <!-- Charts -->
+
+      <section class="chart-grid">
+
+        <div class="card chart">
+
+          <h2>Shipment by Channel</h2>
+
+          <!-- Pie Chart Here -->
+          <div class="placeholder">
+            <div class="chart-container">
+              <canvas baseChart
+                      [data]="channelChartData"
+                      [options]="channelChartOptions"
+                      type="doughnut">
+              </canvas>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="chart-grid">
+
+        <div class="card chart">
+
+          <h2>Other Statuses</h2>
+
+          <div class="placeholder">
+            <canvas baseChart
+                    [data]="statusChartData"
+                    [options]="statusChartOptions"
+                    type="bar">
+            </canvas>
+          </div>
+
+        </div>
+
+        <div class="card chart">
+
+          <h2>Shipment Trend</h2>
+
+          <div class="placeholder">
+            <canvas baseChart
+                    [data]="trendChartData"
+                    [options]="trendChartOptions"
+                    type="line">
+            </canvas>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Operation Center -->
+      <section class="operation-center">
+
+        <div class="card operation-center-card">
+
+          <div class="table-header">
+
+            <div>
+
+              <h2>Operations Center</h2>
+
+              <p class="section-description">
+                Manage order synchronization and shipment operations.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="operation-grid">
+
+            <!-- Import Shopify Orders -->
+            <div class="operation-item">
+
+              <h3>Shopify Orders</h3>
+
+              <p>
+                Import newly created Shopify orders into LogiVis.
+              </p>
+
+              <button class="btn btn-success"
+                      (click)="importShopifyOrders()"
+                      [disabled]="isImportingShopify">
+
+                <i class="fa-brands fa-shopify"></i>
+
+                <span *ngIf="!isImportingShopify">
+                  Import Shopify Orders
+                </span>
+
+                <span *ngIf="isImportingShopify">
+                  ⏳ Importing...
+                </span>
+
+              </button>
+
+            </div>
+
+            <!-- Bulk Update -->
+            <div class="operation-item">
+
+              <h3>Delivery Status</h3>
+
+              <p>
+                Synchronize delivery status for recent shipments.
+              </p>
+
+              <button class="btn btn-primary"
+                      (click)="bulkUpdate()"
+                      [disabled]="isBulkUpdating">
+
+                <span *ngIf="!isBulkUpdating">
+                  Bulk Update Delivery Status
+                </span>
+
+                <span *ngIf="isBulkUpdating">
+                  ⏳ Synchronizing...
+                </span>
+
+              </button>
+
+            </div>
+
+            <!-- Manual Order Update -->
+            <div class="operation-item">
+
+              <h3>Manual Order Update</h3>
+
+              <p>
+                Update a specific order including split shipments.
+              </p>
+
+              <input type="text"
+                     class="search-box"
+                     placeholder="Master Order No."
+                     [(ngModel)]="masterOrderNo" />
+
+              <button class="btn btn-primary mt-2"
+                      (click)="updateOrder()">
+
+                Update Order
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Recent Shipments -->
+      <section class="recent-shipments">
+
+        <div class="card recent-shipments-card">
+
+          <div class="table-header">
+
+            <h2>Recent Shipments</h2>
+
+            <div class="table-actions">
+
+              <input type="text"
+                     class="search-box"
+                     placeholder="Search shipments..."
+                     (input)="onQuickFilterChanged($event)" />
+
+              <button class="btn-secondary"
+                      (click)="exportCsv()">
+                Export
+              </button>
+
+             
+
+            </div>
+
+          </div>
+
+          <div class="ag-theme-quartz grid-container">
+
+            <ag-grid-angular class="dashboard-grid"
+                             theme="legacy"
+                             domLayout="autoHeight"
+                             [columnDefs]="dashboardColumnDefs"
+                             [defaultColDef]="defaultColDef"
+                             [rowData]="filteredShipments"
+                             [pagination]="true"
+                             [paginationPageSize]="20"
+                             (gridReady)="onGridReady($event)">
+            </ag-grid-angular>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    }
+
+    <app-footer />
+
+  </div>
+
+</div>

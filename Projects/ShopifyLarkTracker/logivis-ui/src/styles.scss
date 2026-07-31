@@ -1,0 +1,325 @@
+@use '@angular/material' as mat;
+
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-quartz.css";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+/* ==========================================================================
+   Theme
+   ========================================================================== */
+
+html {
+  height: 100%;
+
+  @include mat.theme(( color: ( primary: mat.$azure-palette, tertiary: mat.$blue-palette, ), typography: Roboto, density: 0, ));
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  color-scheme: light;
+  background: #f5f7fb;
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+}
+
+/* ==========================================================================
+   Application Layout
+   ========================================================================== */
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  background: #f5f7fb;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+/* ==========================================================================
+   Shared Page Layout
+   ========================================================================== */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.page-title {
+  display: flex;
+  flex-direction: column;
+}
+
+  .page-title h1 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 700;
+    color: #111827;
+  }
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.primary-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+}
+
+  .primary-button:hover {
+    background: #1d4ed8;
+  }
+
+/* ==========================================================================
+   Summary Cards
+   ========================================================================== */
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.summary-card {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+  .summary-card .label {
+    color: #6b7280;
+    font-size: 14px;
+  }
+
+  .summary-card .value {
+    margin-top: 10px;
+    font-size: 36px;
+    font-weight: 700;
+    color: #2563eb;
+  }
+
+/* ==========================================================================
+   Toolbar
+   ========================================================================== */
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+.toolbar-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+}
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  .form-group textarea {
+    height: auto;
+    min-height: 120px;
+    padding: 12px;
+  }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,.10);
+    }
+
+/* ==========================================================================
+   Grid
+   ========================================================================== */
+
+.grid-container {
+  flex: 1;
+  min-height: 600px;
+}
+
+.data-grid {
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Dashboard Components
+   ========================================================================== */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+
+  .card h1 {
+    margin: 12px 0 0;
+    font-size: 36px;
+    font-weight: 700;
+    color: #2563eb;
+  }
+
+  .card h2 {
+    margin: 0 0 16px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  .card h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+  }
+
+.chart {
+  min-height: 320px;
+}
+
+.placeholder {
+  flex: 1;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+  .placeholder.large {
+    min-height: 300px;
+  }
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+.debug {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #6b7280;
+  opacity: .7;
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+
+  .summary-cards,
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .content {
+    padding: 16px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-filters {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .form-group {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .summary-cards,
+  .kpi-grid,
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+}
