@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Injectable, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -6,6 +6,7 @@ import { AuthService } from '../../features/auth/services/auth.service';
 import { PermissionService } from '../../features/auth/services/permission';
 
 import { User } from '../../core/models/User';
+import { SidebarService } from './sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -22,10 +23,9 @@ export class SidebarComponent {
 
   constructor(
     private readonly authService: AuthService,
-    public readonly permissionService: PermissionService
+    public readonly permissionService: PermissionService,
+    public readonly sidebarService: SidebarService
   ) { }
-
-  collapsed = signal(false);
 
   get currentUser(): User | null {
     return this.authService.getCurrentUser();
@@ -65,7 +65,7 @@ export class SidebarComponent {
   }
 
   toggleSidebar(): void {
-    this.collapsed.update(v => !v);
+    this.sidebarService.toggle();
   }
 
 }

@@ -1,20 +1,26 @@
 :host {
   display: block;
+  height: 100%;
 }
 
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 270px;
   height: 100vh;
-  background: #0f172a;
-  color: white;
   display: flex;
   flex-direction: column;
-  transition: width .25s;
+  background: #0f172a;
+  color: #fff;
+  transition: width .25s ease;
+  z-index: 1000;
 }
 
   .sidebar.collapsed {
     width: 80px;
   }
+
 
 .logo {
   height: 64px;
@@ -44,6 +50,15 @@ nav {
   padding: 20px 12px;
 }
 
+.profile {
+  margin-top: auto;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .section-title {
   display: block;
   margin: 24px 12px 10px;
@@ -71,14 +86,6 @@ nav a {
   nav a.active {
     background: #2563eb;
   }
-
-.profile {
-  border-top: 1px solid rgba(255,255,255,.08);
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
 
 .avatar {
   width: 42px;

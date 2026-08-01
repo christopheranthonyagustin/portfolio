@@ -12,6 +12,7 @@ import {
 import { SidebarComponent } from '../../../layout/sidebar/sidebar.component';
 import { HeaderComponent } from '../../../layout/header/header.component';
 import { FooterComponent } from '../../../layout/footer/footer.component';
+import { SidebarService } from '../../../layout/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-users-page',
@@ -26,6 +27,10 @@ import { FooterComponent } from '../../../layout/footer/footer.component';
   templateUrl: './users-page.component.html'
 })
 export class UsersPageComponent {
+
+  constructor(
+    public readonly sidebarService: SidebarService
+  ) { }
 
   private gridApi!: GridApi;
   users: any[] = [];

@@ -35,7 +35,14 @@ import { finalize } from 'rxjs/operators';
 import { getShipmentStatus } from '../../../shared/utils/shipment-status.util';
 
 import { FormsModule } from '@angular/forms';
-
+import { SidebarService } from '../../../layout/sidebar/sidebar.service';
+import { dateTimeFormatter } from '../../../shared/utils/date-utils';
+import { CellClassParams, CellStyle} from 'ag-grid-community';
+import { ShipmentActionRendererComponent } from '../../../features/shipments/components/shipment-action-renderer/shipment-action-renderer.component';
+import { ShipmentVerificationDialogComponent } from '../../../features/shipments/components/shipment-verification-dialog/shipment-verification-dialog.component';
+import { TrackOrderResponse } from '../../../core/models/track-order-response';
+import { ViewChild } from '@angular/core';
+import { ShipmentHistoryDialogComponent } from '../../../features/shipments/components/shipment-history-dialog/shipment-history-dialog.component';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -47,12 +54,30 @@ import { FormsModule } from '@angular/forms';
     BaseChartDirective,
     SidebarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ShipmentActionRendererComponent,
+    ShipmentVerificationDialogComponent,
+    ShipmentHistoryDialogComponent
   ],
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss']
 })
+
 export class DashboardPageComponent implements OnInit {
+
+  components = {
+    shipmentActionRenderer: ShipmentActionRendererComponent
+  };
+
+  @ViewChild(ShipmentVerificationDialogComponent)
+  private shipmentDialog!: ShipmentVerificationDialogComponent;
+
+  @ViewChild(ShipmentHistoryDialogComponent)
+  private shipmentHistoryDialog!: ShipmentHistoryDialogComponent;
+
+  constructor(
+    public readonly sidebarService: SidebarService
+  ) { }
 
   private readonly destroyRef =
     inject(DestroyRef);
@@ -94,28 +119,153 @@ export class DashboardPageComponent implements OnInit {
 
     {
       field: 'orderNo',
-      headerName: 'Order No'
-    },
-
-    {
-      field: 'customerName',
-      headerName: 'Customer'
+      headerName: 'Order No',
+      pinned: 'left',
+      width: 120
     },
 
     {
       field: 'trackingNumber',
-      headerName: 'Tracking No'
+      headerName: 'Tracking No',
+      minWidth: 120
+    },
+
+    {
+      field: 'customerName',
+      headerName: 'Customer',
+      minWidth: 220
+    },
+
+    {
+      field: 'courier',
+      headerName: 'Courier',
+      width: 120
     },
 
     {
       field: 'status',
       headerName: 'Status',
-      valueFormatter: params => getShipmentStatus(params.value)
+      width: 170,
+
+      valueFormatter: params => getShipmentStatus(params.value),
+
+      cellStyle: (params: CellClassParams): CellStyle | null => {
+
+        const status = getShipmentStatus(params.value);
+
+        switch (status) {
+
+          case 'Pending Pickup':
+            return {
+              backgroundColor: '#FEF3C7',
+              color: '#92400E',
+              fontWeight: '600'
+            };
+
+          case 'Picked Up':
+            return {
+              backgroundColor: '#DBEAFE',
+              color: '#1E40AF',
+              fontWeight: '600'
+            };
+
+          case 'In Transit':
+            return {
+              backgroundColor: '#E0F2FE',
+              color: '#0369A1',
+              fontWeight: '600'
+            };
+
+          case 'Out for Delivery':
+            return {
+              backgroundColor: '#EDE9FE',
+              color: '#6D28D9',
+              fontWeight: '600'
+            };
+
+          case 'Delivered':
+            return {
+              backgroundColor: '#DCFCE7',
+              color: '#166534',
+              fontWeight: '600'
+            };
+
+          case 'Failed Delivery':
+          case 'Lost':
+          case 'Exception':
+            return {
+              backgroundColor: '#FEE2E2',
+              color: '#991B1B',
+              fontWeight: '600'
+            };
+
+          case 'Returned':
+          case 'Canceled':
+            return {
+              backgroundColor: '#F3F4F6',
+              color: '#4B5563',
+              fontWeight: '600'
+            };
+
+          default:
+            return null;
+
+        }
+
+      }
+
     },
 
     {
       field: 'channel',
-      headerName: 'Channel'
+      headerName: 'Channel',
+      width: 120
+    },
+
+    {
+      field: 'awbCreatedTime',
+      headerName: 'AWB Created',
+      minWidth: 170,
+      valueFormatter: params => dateTimeFormatter(params.value),
+      filter: 'agDateColumnFilter',
+      filterParams: {
+        includeTime: false
+      }
+    },
+
+    {
+      field: 'shipmentDate',
+      headerName: 'Shipment Date',
+      minWidth: 170,
+      valueFormatter: params => dateTimeFormatter(params.value),
+      filter: 'agDateColumnFilter',
+      filterParams: {
+        includeTime: false
+      }
+    },
+
+    {
+      field: 'lastUpdated',
+      headerName: 'Last Updated',
+      minWidth: 170,
+      valueFormatter: params => dateTimeFormatter(params.value),
+      filter: 'agDateColumnFilter',
+      filterParams: {
+        includeTime: false
+      }
+    },
+
+    {
+      field: 'remarks',
+      headerName: 'Remarks',
+      minWidth: 220
+    },
+
+    {
+      field: 'hasException',
+      headerName: 'Exception',
+      width: 110,
+      valueFormatter: params => params.value ? '⚠ Yes' : ''
     },
 
     {
@@ -123,18 +273,12 @@ export class DashboardPageComponent implements OnInit {
       sortable: false,
       filter: false,
       width: 180,
-
-      cellRenderer: () => {
-
-        return `
-          <button title="View">👁</button>
-          <button title="Refresh">🔄</button>
-          <button title="History">📜</button>
-          <button title="Copy">📋</button>
-        `;
-
+      pinned: 'right',
+      cellRenderer: ShipmentActionRendererComponent,
+      cellRendererParams: {
+        onView: (shipment: Shipment) => this.viewShipment(shipment),
+        onHistory: (shipment: Shipment) => this.historyShipment(shipment)
       }
-
     }
 
   ];
@@ -388,6 +532,9 @@ export class DashboardPageComponent implements OnInit {
 
     }
 
+    start.setHours(0, 0, 0, 0);
+    end.setHours(0, 0, 0, 0);
+
     return shipments.filter(shipment => {
 
       if (!shipment.shipmentDate) {
@@ -395,6 +542,7 @@ export class DashboardPageComponent implements OnInit {
       }
 
       const shipmentDate = new Date(shipment.shipmentDate);
+      shipmentDate.setHours(0, 0, 0, 0);
 
       return shipmentDate >= start &&
         shipmentDate < end;
@@ -443,7 +591,6 @@ export class DashboardPageComponent implements OnInit {
       user.Permissions.length > 0;
 
   }
-
 
   ngOnInit(): void {
 
@@ -503,7 +650,11 @@ export class DashboardPageComponent implements OnInit {
 
   exportCsv(): void {
 
-    this.dashboardGridApi?.exportDataAsCsv();
+    this.dashboardGridApi?.exportDataAsCsv({
+
+      fileName: this.getExportFileName()
+
+    });
 
   }
 
@@ -582,6 +733,7 @@ export class DashboardPageComponent implements OnInit {
 
   }
 
+
   private refreshDashboard(): void {
 
     this.buildKpiCards();
@@ -613,6 +765,29 @@ export class DashboardPageComponent implements OnInit {
     }
 
     this.refreshDashboard();
+
+  }
+
+  private getExportFileName(): string {
+
+    const now = new Date();
+
+    const day = String(now.getDate()).padStart(2, '0');
+
+    const month = now.toLocaleString('en-SG', {
+      month: 'short'
+    });
+
+    const year = now.getFullYear();
+
+    const time = now.toLocaleTimeString('en-SG', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+
+    return `Shipments_${day}-${month}-${year} ${time}.csv`;
 
   }
 
@@ -1006,6 +1181,84 @@ export class DashboardPageComponent implements OnInit {
             'Failed to synchronize shipments.';
 
           this.showNotification = true;
+
+        }
+
+      });
+
+  }
+
+  viewShipment(shipment: Shipment): void {
+
+    if (!shipment.trackingNumber) {
+
+      alert('Tracking number not available.');
+
+      return;
+
+    }
+
+    this.shipmentService
+      .getShipmentDetails(shipment.trackingNumber)
+      .subscribe({
+
+        next: (response: TrackOrderResponse) => {
+
+          if (response.data.orders.length === 0) {
+
+            alert('Shipment not found.');
+
+            return;
+
+          }
+
+          const order = response.data.orders[0];
+          console.log('shipmentDialog =', this.shipmentDialog);
+          this.shipmentDialog.open(order);
+
+        },
+
+        error: err => {
+
+          console.error(err);
+
+        }
+
+      });
+
+  }
+
+  historyShipment(shipment: Shipment): void {
+
+    if (!shipment.trackingNumber) {
+
+      return;
+
+    }
+
+    this.shipmentService
+      .getShipmentDetails(shipment.trackingNumber)
+      .subscribe({
+
+        next: (response: TrackOrderResponse) => {
+
+          if (response.data.orders.length === 0) {
+
+            alert('Shipment not found.');
+
+            return;
+
+          }
+
+          const order = response.data.orders[0];
+          console.log('shipmentDialog =', this.shipmentHistoryDialog);
+          this.shipmentHistoryDialog.open(order);
+
+        },
+
+        error: err => {
+
+          console.error(err);
 
         }
 

@@ -154,9 +154,9 @@
    Dashboard Content
    ========================================================================== */
 
-.content {
+/*.content {
   padding: 0 24px 24px;
-}
+} */
 
 .kpi-grid {
   display: grid;
@@ -167,20 +167,40 @@
 
 .chart-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
   margin-bottom: 24px;
 }
+
+.trend-card {
+  grid-column: 1 / -1;
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 320px;
+}
+
+  .chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
 
 .card {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  padding: 24px;
+/*  padding: 24px;*/
   box-shadow: 0 2px 8px rgba(15, 23, 42, .04);
 }
 
-  .card h1 {
+ .card h1 {
     margin: 12px 0 0;
     font-size: 32px;
     font-weight: 700;
@@ -201,7 +221,18 @@
     color: #6b7280;
   }
 
-.placeholder {
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 320px;
+}
+
+  .chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+/*.placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,7 +245,11 @@
 
   .placeholder.large {
     min-height: 300px;
-  }
+  } */
+
+
+
+
 
 /* ==========================================================================
    Responsive
@@ -238,7 +273,41 @@
   .chart-grid {
     grid-template-columns: 1fr;
   }
+
+  .content {
+    padding: 16px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-filters {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .form-group {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .summary-cards,
+  .kpi-grid,
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
 }
+
+@media (max-width: 1200px) {
+
+  .summary-cards,
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 
 /* ==========================================================================
    Dashboard Filters
@@ -591,3 +660,5 @@
 .operation-center {
   margin-bottom: 2rem;
 }
+
+

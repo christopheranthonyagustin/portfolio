@@ -39,4 +39,19 @@ export class ShipmentService {
 
   }
 
+  getShipmentDetails(
+    trackingNumber: string
+  ): Observable<any> {
+
+    return this.http.get(
+      `${environment.workerApi}/spx/orders`,
+      {
+        params: {
+          trackingNos: trackingNumber
+        }
+      }
+    );
+
+  }
+
 }

@@ -1,0 +1,429 @@
+<dialog #dialog class="shipment-dialog">
+
+  @if (order; as o) {
+
+  <div class="dialog-header">
+
+    <div>
+
+      <h2>Delivery Order Verification</h2>
+
+      <div class="header-meta">
+
+        <div class="meta-card">
+
+          <span>Order No</span>
+          <strong>{{ o.order_id }}</strong>
+
+        </div>
+
+        <div class="meta-card">
+
+          <span>Tracking No</span>
+          <strong>{{ o.tracking_no }}</strong>
+
+        </div>
+
+        <div class="meta-card">
+
+          <span>Status</span>
+          <strong class="status-badge">
+            {{ o.status }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="close-button"
+            (click)="close()">
+      ✕
+    </button>
+
+  </div>
+
+  <div class="dialog-body">
+
+    <!-- ======================== -->
+    <!-- Shopify vs SPX -->
+    <!-- ======================== -->
+
+    <section class="comparison">
+
+      <!-- Shopify -->
+
+      <div class="panel">
+
+        <div class="panel-title">
+
+          Shopify Customer
+
+          <span class="coming-soon">
+            Coming Soon
+          </span>
+
+        </div>
+
+        <table>
+
+          <tr>
+
+            <td>Customer</td>
+            <td>-</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Phone</td>
+            <td>-</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Address</td>
+            <td>-</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Delivery Status</td>
+            <td>-</td>
+
+          </tr>
+
+          <tr>
+
+            <td>AWB Created</td>
+            <td>-</td>
+
+          </tr>
+
+        </table>
+
+      </div>
+
+      <!-- SPX -->
+
+      <div class="panel">
+
+        <div class="panel-title">
+
+          SPX Customer
+
+        </div>
+
+        <table>
+
+          <tr>
+
+            <td>Customer</td>
+            <td>{{ o.deliver_info.deliver_name }}</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Phone</td>
+            <td>{{ o.deliver_info.deliver_phone }}</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Address</td>
+
+            <td>
+
+              {{ o.deliver_info.deliver_detail_address }}
+
+              {{ o.deliver_info.deliver_unit_no }}
+
+              Singapore {{ o.deliver_info.deliver_post_code }}
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Status</td>
+            <td>{{ o.status }}</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Pickup Date</td>
+
+            <td>
+
+              {{ o.fulfillment_info.pickup_time * 1000 | date:'dd-MMM-yyyy' }}
+
+            </td>
+
+          </tr>
+
+        </table>
+
+      </div>
+
+    </section>
+
+    <!-- ======================== -->
+    <!-- Parcel -->
+    <!-- ======================== -->
+
+    <section class="comparison">
+
+      <div class="panel">
+
+        <div class="panel-title">
+
+          Shopify Parcel
+
+          <span class="coming-soon">
+            Coming Soon
+          </span>
+
+        </div>
+
+        <table>
+
+          <tr><td>Products</td><td>-</td></tr>
+
+          <tr><td>Quantity</td><td>-</td></tr>
+
+          <tr><td>Weight</td><td>-</td></tr>
+
+          <tr><td>Insurance</td><td>-</td></tr>
+
+        </table>
+
+      </div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+
+          SPX Parcel
+
+        </div>
+
+        <table>
+
+          <tr>
+
+            <td>Products</td>
+
+            <td>
+
+              {{ o.parcel_info.parcel_item_name }}
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Quantity</td>
+
+            <td>
+
+              {{ o.parcel_info.parcel_item_quantity }}
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Weight</td>
+
+            <td>
+
+              {{ o.parcel_info.parcel_weight }} kg
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Insurance</td>
+
+            <td>
+
+              SGD {{ o.parcel_info.express_insured_value | number }}
+
+            </td>
+
+          </tr>
+
+        </table>
+
+      </div>
+
+    </section>
+
+    <!-- ======================== -->
+    <!-- Address -->
+    <!-- ======================== -->
+
+    <section class="comparison">
+
+      <div class="panel">
+
+        <div class="panel-title">
+
+          Shopify Sender
+
+          <span class="coming-soon">
+            Coming Soon
+          </span>
+
+        </div>
+
+        <table>
+
+          <tr><td>Company</td><td>-</td></tr>
+
+          <tr><td>Phone</td><td>-</td></tr>
+
+          <tr><td>Address</td><td>-</td></tr>
+
+        </table>
+
+      </div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+
+          SPX Sender
+
+        </div>
+
+        <table>
+
+          <tr>
+
+            <td>Company</td>
+
+            <td>{{ o.sender_info.sender_name }}</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Phone</td>
+
+            <td>{{ o.sender_info.sender_phone }}</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Address</td>
+
+            <td>
+
+              {{ o.sender_info.sender_detail_address }}
+
+              {{ o.sender_info.sender_unit_no }}
+
+              Singapore {{ o.sender_info.sender_post_code }}
+
+            </td>
+
+          </tr>
+
+        </table>
+
+      </div>
+
+    </section>
+
+    <section class="comparison">
+
+      <div class="panel">
+
+        <div class="panel-title">
+
+          Shopify Receiver
+
+          <span class="coming-soon">
+            Coming Soon
+          </span>
+
+        </div>
+
+        <table>
+
+          <tr><td>Customer</td><td>-</td></tr>
+
+          <tr><td>Phone</td><td>-</td></tr>
+
+          <tr><td>Address</td><td>-</td></tr>
+
+        </table>
+
+      </div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+
+          SPX Receiver
+
+        </div>
+
+        <table>
+
+          <tr>
+
+            <td>Customer</td>
+
+            <td>{{ o.deliver_info.deliver_name }}</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Phone</td>
+
+            <td>{{ o.deliver_info.deliver_phone }}</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Address</td>
+
+            <td>
+
+              {{ o.deliver_info.deliver_detail_address }}
+
+              {{ o.deliver_info.deliver_unit_no }}
+
+              Singapore {{ o.deliver_info.deliver_post_code }}
+
+            </td>
+
+          </tr>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  }
+
+</dialog>

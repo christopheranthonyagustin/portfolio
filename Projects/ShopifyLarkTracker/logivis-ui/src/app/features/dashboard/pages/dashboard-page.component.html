@@ -1,5 +1,5 @@
-<div class="app-layout">
-
+<div class="app-layout"
+     [class.sidebar-collapsed]="sidebarService.collapsed()">
   <app-sidebar />
 
   <div class="main-content">
@@ -153,29 +153,21 @@
 
           <h2>Shipment by Channel</h2>
 
-          <!-- Pie Chart Here -->
-          <div class="placeholder">
-            <div class="chart-container">
-              <canvas baseChart
-                      [data]="channelChartData"
-                      [options]="channelChartOptions"
-                      type="doughnut">
-              </canvas>
-            </div>
+          <div class="chart-container">
+            <canvas baseChart
+                    [data]="channelChartData"
+                    [options]="channelChartOptions"
+                    type="doughnut">
+            </canvas>
           </div>
 
         </div>
-
-      </section>
-
-
-      <section class="chart-grid">
 
         <div class="card chart">
 
           <h2>Other Statuses</h2>
 
-          <div class="placeholder">
+          <div class="chart-container">
             <canvas baseChart
                     [data]="statusChartData"
                     [options]="statusChartOptions"
@@ -185,11 +177,11 @@
 
         </div>
 
-        <div class="card chart">
+        <div class="card chart trend-card">
 
           <h2>Shipment Trend</h2>
 
-          <div class="placeholder">
+          <div class="chart-container">
             <canvas baseChart
                     [data]="trendChartData"
                     [options]="trendChartOptions"
@@ -200,6 +192,7 @@
         </div>
 
       </section>
+
 
       <!-- Operation Center -->
       <section class="operation-center">
@@ -324,8 +317,6 @@
                 Export
               </button>
 
-             
-
             </div>
 
           </div>
@@ -340,7 +331,8 @@
                              [rowData]="filteredShipments"
                              [pagination]="true"
                              [paginationPageSize]="20"
-                             (gridReady)="onGridReady($event)">
+                             (gridReady)="onGridReady($event)"
+                             [components]="components">
             </ag-grid-angular>
 
           </div>
@@ -358,3 +350,7 @@
   </div>
 
 </div>
+<app-shipment-verification-dialog>
+</app-shipment-verification-dialog>
+<app-shipment-history-dialog>
+</app-shipment-history-dialog>

@@ -27,7 +27,7 @@ body {
    Application Layout
    ========================================================================== */
 
-.app-layout {
+/*.app-layout {
   display: flex;
   height: 100vh;
   background: #f5f7fb;
@@ -44,7 +44,44 @@ body {
   flex: 1;
   overflow-y: auto;
   padding: 24px;
+}*/
+
+:root {
+  --sidebar-width: 270px;
 }
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+.main-content {
+  margin-left: 270px;
+  width: calc(100vw - 270px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left .25s ease, width .25s ease;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  min-height: 0;
+}
+
+.app-layout.sidebar-collapsed .main-content {
+  margin-left: 80px;
+  width: calc(100vw - 80px);
+}
+
+.app-layout.sidebar-expanded .main-content {
+  margin-left: 270px;
+}
+
+
 
 /* ==========================================================================
    Shared Page Layout
@@ -206,7 +243,7 @@ body {
    Dashboard Components
    ========================================================================== */
 
-.kpi-grid {
+/*.kpi-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -269,7 +306,7 @@ body {
 
   .placeholder.large {
     min-height: 300px;
-  }
+  }*/
 
 /* ==========================================================================
    Utilities
@@ -282,44 +319,4 @@ body {
   color: #6b7280;
   opacity: .7;
   word-break: break-word;
-}
-
-/* ==========================================================================
-   Responsive
-   ========================================================================== */
-
-@media (max-width: 1200px) {
-
-  .summary-cards,
-  .kpi-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-
-  .content {
-    padding: 16px;
-  }
-
-  .toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .toolbar-filters {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .form-group {
-    width: 100%;
-    min-width: unset;
-  }
-
-  .summary-cards,
-  .kpi-grid,
-  .chart-grid {
-    grid-template-columns: 1fr;
-  }
 }

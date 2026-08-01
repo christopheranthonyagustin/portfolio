@@ -31,18 +31,35 @@ logivis-data-worker   logivis-worker
 
 ---
 
+# Core Capabilities
+
+- Operations Dashboard
+- Shipment Monitoring
+- Delivery Order Verification
+- Shopify Order Comparison
+- Courier Integration
+- Delivery Cost Estimation
+- Shipment History
+- Operational Analytics
+- Export & Reporting
+- Role-Based Access Control
+
 # Responsibilities
 
 The frontend is responsible for:
 
 - User Authentication
 - Session Management
-- Dashboard Visualization
+- Operational Dashboard
 - Shipment Monitoring
+- Shipment Verification
+- Delivery Order Verification
+- Delivery Cost Estimation
+- Shipment Comparison (Shopify vs Courier)
+- Operational KPIs
 - Route Visualization
-- Reports
 - Search and Filtering
-- Data Presentation
+- Reports and Export
 - User Management
 - Company Management
 - Role Management
@@ -252,18 +269,38 @@ If any validation fails, the user is automatically signed out.
 ## Dashboard
 
 - Operational Overview
-- KPI Cards
-- Shipment Statistics
-- Summary Reports
+- Shipment KPIs
+- Courier Distribution
+- Shipment Status Distribution
+- Delivery Performance
+- Operational Alerts
+- Export Dashboard
 
 ---
 
 ## Shipment Management
 
 - Shipment List
+- Shipment Search
 - Shipment Details
+- Shipment Verification
+- Shipment History
 - Shipment Tracking
-- Delivery Status
+- Courier Information
+- Delivery Status Monitoring
+
+---
+
+## Delivery Order Management
+
+- Delivery Order Verification
+- Customer Verification
+- Receiver Verification
+- Product Verification
+- Shopify vs Courier Comparison
+- Delivery Cost Estimation
+- Delivery Order Creation
+- Delivery Order Validation
 
 ---
 
@@ -286,9 +323,11 @@ If any validation fails, the user is automatically signed out.
 
 ## Reporting
 
+- Shipment Export
 - Operational Reports
-- Export Functions
-- Analytics Dashboard
+- Courier Performance
+- Delivery Analytics
+- Shipment Audit
 
 ---
 
@@ -300,6 +339,13 @@ If any validation fails, the user is automatically signed out.
 - Notification-Based Error Handling
 
 ---
+
+## Design Principles
+
+- Operations-First User Experience
+- Data Verification Before Action
+- Single Source of Truth Through API Gateway
+- Progressive Feature Integration
 
 # Security
 
@@ -380,15 +426,16 @@ Users without valid permissions cannot access secured application features.
 
 Planned improvements include:
 
+- Shopify Order Comparison
+- Delivery Cost Estimation
+- Delivery Order Creation
+- Multi-Courier Integration
+- Real-Time Shipment Tracking
+- AI-Powered Operational Insights
+- Predictive Delivery Analytics
 - Dark Mode
-- Multi-language Support
-- Real-time Dashboard Updates
 - Push Notifications
-- Advanced Analytics
-- Offline Support
 - Progressive Web App (PWA)
-- Theme Customization
-- Dashboard Personalization
 
 ---
 
@@ -412,10 +459,12 @@ Planned improvements include:
 
 # Philosophy
 
-**LogiVis.UI** is designed as a lightweight presentation layer that remains independent of backend implementation details.
+LogiVis.UI is designed as an operations platform rather than a traditional shipment tracking application.
 
-The application communicates exclusively with **LogiVis.WebApi**, which serves as the single entry point for all backend services. Authentication is performed using JWT Bearer tokens, while authorization is validated using the latest user profile retrieved from backend services.
+The system enables Operations teams to monitor shipments, verify delivery information, compare order data across multiple systems, and make informed decisions before delivery orders are created.
 
-This approach allows administrators to immediately enforce permission changes without waiting for JWT expiration while keeping the frontend decoupled from data storage and external integrations.
+By centralizing operational information into a single interface, LogiVis reduces manual verification effort, improves shipment visibility, and minimizes costly delivery errors.
 
-The architecture promotes maintainability, scalability, security, and a clear separation of responsibilities across the LogiVis platform.
+The frontend communicates exclusively with **LogiVis.WebApi**, ensuring that all business logic, authorization, and external integrations remain centralized within backend services.
+
+This architecture promotes maintainability, scalability, security, and a clear separation of responsibilities while allowing the platform to evolve into a unified logistics operations center.

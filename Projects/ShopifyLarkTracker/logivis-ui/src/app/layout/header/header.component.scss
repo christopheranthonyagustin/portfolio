@@ -1,20 +1,28 @@
 :host {
   display: block;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-shrink: 0;
 }
 
 .header {
   height: 72px;
-  background: white;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 0 30px;
+  background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
 }
 
 .header-left {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
   .header-left h1 {
@@ -22,31 +30,38 @@
     font-size: 24px;
     font-weight: 700;
     color: #111827;
+    line-height: 1.2;
   }
 
   .header-left p {
     margin: 4px 0 0;
+    font-size: 14px;
     color: #6b7280;
   }
 
 .header-right {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .icon-button {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #e5e7eb;
-  background: white;
+  border-radius: 50%;
+  background: #ffffff;
   cursor: pointer;
-  transition: .2s;
+  transition: all .2s ease;
 }
 
   .icon-button:hover {
     background: #f3f4f6;
+    border-color: #d1d5db;
   }
 
 .profile {
@@ -58,12 +73,13 @@
 .avatar {
   width: 42px;
   height: 42px;
-  border-radius: 50%;
-  background: #2563eb;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -77,15 +93,48 @@
   }
 
 .logout-button {
-  background: #ef4444;
-  color: white;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
   border: none;
   border-radius: 8px;
-  padding: 10px 18px;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  transition: .2s;
+  transition: all .2s ease;
 }
 
   .logout-button:hover {
     background: #dc2626;
   }
+
+@media (max-width: 768px) {
+
+  .header {
+    padding: 0 16px;
+  }
+
+  .header-left h1 {
+    font-size: 20px;
+  }
+
+  .header-left p {
+    display: none;
+  }
+
+  .header-right {
+    gap: 8px;
+  }
+
+  .logout-button {
+    padding: 0 12px;
+  }
+}
+
+app-header {
+  flex-shrink: 0;
+}
