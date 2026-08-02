@@ -1,6 +1,6 @@
 <dialog #dialog class="shipment-dialog">
 
-  @if (order; as o) {
+  @if (order || shopifyOrder) {
 
   <div class="dialog-header">
 
@@ -11,26 +11,24 @@
       <div class="header-meta">
 
         <div class="meta-card">
-
           <span>Order No</span>
-          <strong>{{ o.order_id }}</strong>
-
+          <strong>
+            {{ order?.order_id || ('#' + shopifyOrder?.orderNumber) }}
+          </strong>
         </div>
 
         <div class="meta-card">
-
           <span>Tracking No</span>
-          <strong>{{ o.tracking_no }}</strong>
-
+          <strong>
+            {{ order?.tracking_no || shopifyOrder?.fulfillments?.[0]?.trackingNumber || '-' }}
+          </strong>
         </div>
 
         <div class="meta-card">
-
           <span>Status</span>
           <strong class="status-badge">
-            {{ o.status }}
+            {{ order?.status || shopifyOrder?.status || '-' }}
           </strong>
-
         </div>
 
       </div>
@@ -46,358 +44,102 @@
 
   <div class="dialog-body">
 
-    <!-- ======================== -->
-    <!-- Shopify vs SPX -->
-    <!-- ======================== -->
+    <!-- ================================================= -->
+    <!-- CUSTOMER -->
+    <!-- ================================================= -->
 
     <section class="comparison">
-
-      <!-- Shopify -->
 
       <div class="panel">
 
         <div class="panel-title">
-
           Shopify Customer
-
-          <span class="coming-soon">
-            Coming Soon
-          </span>
-
         </div>
+
+        @if (shopifyOrder) {
 
         <table>
 
           <tr>
-
             <td>Customer</td>
-            <td>-</td>
-
+            <td>
+              {{ shopifyOrder.customer?.firstName }}
+              {{ shopifyOrder.customer?.lastName }}
+            </td>
           </tr>
 
           <tr>
-
             <td>Phone</td>
-            <td>-</td>
-
+            <td>{{ shopifyOrder.shippingAddress?.phone || '-' }}</td>
           </tr>
 
           <tr>
-
-            <td>Address</td>
-            <td>-</td>
-
-          </tr>
-
-          <tr>
-
-            <td>Delivery Status</td>
-            <td>-</td>
-
-          </tr>
-
-          <tr>
-
-            <td>AWB Created</td>
-            <td>-</td>
-
-          </tr>
-
-        </table>
-
-      </div>
-
-      <!-- SPX -->
-
-      <div class="panel">
-
-        <div class="panel-title">
-
-          SPX Customer
-
-        </div>
-
-        <table>
-
-          <tr>
-
-            <td>Customer</td>
-            <td>{{ o.deliver_info.deliver_name }}</td>
-
-          </tr>
-
-          <tr>
-
-            <td>Phone</td>
-            <td>{{ o.deliver_info.deliver_phone }}</td>
-
-          </tr>
-
-          <tr>
-
             <td>Address</td>
 
             <td>
 
-              {{ o.deliver_info.deliver_detail_address }}
+              {{ shopifyOrder.shippingAddress?.address1 }}
 
-              {{ o.deliver_info.deliver_unit_no }}
+              @if (shopifyOrder.shippingAddress?.address2) {
 
-              Singapore {{ o.deliver_info.deliver_post_code }}
+              <br>
+
+              {{ shopifyOrder.shippingAddress?.address2 }}
+
+              }
+
+              <br>
+
+              {{ shopifyOrder.shippingAddress?.city }}
+              {{ shopifyOrder.shippingAddress?.province }}
+              {{ shopifyOrder.shippingAddress?.zip }}
 
             </td>
 
           </tr>
 
           <tr>
-
             <td>Status</td>
-            <td>{{ o.status }}</td>
-
+            <td>{{ shopifyOrder.status }}</td>
           </tr>
 
           <tr>
-
-            <td>Pickup Date</td>
-
+            <td>Tracking</td>
             <td>
-
-              {{ o.fulfillment_info.pickup_time * 1000 | date:'dd-MMM-yyyy' }}
-
+              {{ shopifyOrder.fulfillments?.[0]?.trackingNumber || '-' }}
             </td>
-
           </tr>
 
         </table>
 
-      </div>
+        } @else {
 
-    </section>
-
-    <!-- ======================== -->
-    <!-- Parcel -->
-    <!-- ======================== -->
-
-    <section class="comparison">
-
-      <div class="panel">
-
-        <div class="panel-title">
-
-          Shopify Parcel
-
-          <span class="coming-soon">
-            Coming Soon
-          </span>
-
+        <div class="coming-soon">
+          Shopify Order Not Found
         </div>
 
-        <table>
-
-          <tr><td>Products</td><td>-</td></tr>
-
-          <tr><td>Quantity</td><td>-</td></tr>
-
-          <tr><td>Weight</td><td>-</td></tr>
-
-          <tr><td>Insurance</td><td>-</td></tr>
-
-        </table>
+        }
 
       </div>
 
       <div class="panel">
 
         <div class="panel-title">
-
-          SPX Parcel
-
+          SPX Customer
         </div>
+
+        @if (order) {
 
         <table>
 
           <tr>
-
-            <td>Products</td>
-
-            <td>
-
-              {{ o.parcel_info.parcel_item_name }}
-
-            </td>
-
-          </tr>
-
-          <tr>
-
-            <td>Quantity</td>
-
-            <td>
-
-              {{ o.parcel_info.parcel_item_quantity }}
-
-            </td>
-
-          </tr>
-
-          <tr>
-
-            <td>Weight</td>
-
-            <td>
-
-              {{ o.parcel_info.parcel_weight }} kg
-
-            </td>
-
-          </tr>
-
-          <tr>
-
-            <td>Insurance</td>
-
-            <td>
-
-              SGD {{ o.parcel_info.express_insured_value | number }}
-
-            </td>
-
-          </tr>
-
-        </table>
-
-      </div>
-
-    </section>
-
-    <!-- ======================== -->
-    <!-- Address -->
-    <!-- ======================== -->
-
-    <section class="comparison">
-
-      <div class="panel">
-
-        <div class="panel-title">
-
-          Shopify Sender
-
-          <span class="coming-soon">
-            Coming Soon
-          </span>
-
-        </div>
-
-        <table>
-
-          <tr><td>Company</td><td>-</td></tr>
-
-          <tr><td>Phone</td><td>-</td></tr>
-
-          <tr><td>Address</td><td>-</td></tr>
-
-        </table>
-
-      </div>
-
-      <div class="panel">
-
-        <div class="panel-title">
-
-          SPX Sender
-
-        </div>
-
-        <table>
-
-          <tr>
-
-            <td>Company</td>
-
-            <td>{{ o.sender_info.sender_name }}</td>
-
-          </tr>
-
-          <tr>
-
-            <td>Phone</td>
-
-            <td>{{ o.sender_info.sender_phone }}</td>
-
-          </tr>
-
-          <tr>
-
-            <td>Address</td>
-
-            <td>
-
-              {{ o.sender_info.sender_detail_address }}
-
-              {{ o.sender_info.sender_unit_no }}
-
-              Singapore {{ o.sender_info.sender_post_code }}
-
-            </td>
-
-          </tr>
-
-        </table>
-
-      </div>
-
-    </section>
-
-    <section class="comparison">
-
-      <div class="panel">
-
-        <div class="panel-title">
-
-          Shopify Receiver
-
-          <span class="coming-soon">
-            Coming Soon
-          </span>
-
-        </div>
-
-        <table>
-
-          <tr><td>Customer</td><td>-</td></tr>
-
-          <tr><td>Phone</td><td>-</td></tr>
-
-          <tr><td>Address</td><td>-</td></tr>
-
-        </table>
-
-      </div>
-
-      <div class="panel">
-
-        <div class="panel-title">
-
-          SPX Receiver
-
-        </div>
-
-        <table>
-
-          <tr>
-
             <td>Customer</td>
-
-            <td>{{ o.deliver_info.deliver_name }}</td>
-
+            <td>{{ order.deliver_info.deliver_name }}</td>
           </tr>
 
           <tr>
-
             <td>Phone</td>
-
-            <td>{{ o.deliver_info.deliver_phone }}</td>
-
+            <td>{{ order.deliver_info.deliver_phone }}</td>
           </tr>
 
           <tr>
@@ -406,17 +148,422 @@
 
             <td>
 
-              {{ o.deliver_info.deliver_detail_address }}
+              {{ order.deliver_info.deliver_detail_address }}
 
-              {{ o.deliver_info.deliver_unit_no }}
+              {{ order.deliver_info.deliver_unit_no }}
 
-              Singapore {{ o.deliver_info.deliver_post_code }}
+              Singapore {{ order.deliver_info.deliver_post_code }}
+
+            </td>
+
+          </tr>
+
+          <tr>
+            <td>Status</td>
+            <td>{{ order.status }}</td>
+          </tr>
+
+          <tr>
+            <td>Pickup Date</td>
+            <td>
+              {{ order.fulfillment_info.pickup_time * 1000 | date:'dd-MMM-yyyy' }}
+            </td>
+          </tr>
+
+        </table>
+
+        } @else {
+
+        <div class="coming-soon">
+          SPX Shipment Not Found
+        </div>
+
+        }
+
+      </div>
+
+    </section>
+
+    <!-- ================================================= -->
+    <!-- PARCEL -->
+    <!-- ================================================= -->
+
+    <section class="comparison">
+
+      <div class="panel">
+
+        <div class="panel-title">
+          Shopify Products
+        </div>
+
+        @if (shopifyOrder) {
+
+        <table>
+
+          @for(item of shopifyOrder.lineItems; track $index){
+
+          <tr>
+
+            <td>
+
+              <strong>{{ item.title }}</strong>
+
+              <br>
+
+              <small>{{ item.sku }}</small>
+
+            </td>
+
+            <td class="text-right">
+
+              Qty {{ item.quantity }}
+
+              <br>
+
+              <small>
+
+                {{ (item.grams * item.quantity) / 1000 | number:'1.2-2' }} kg
+
+              </small>
+
+            </td>
+
+          </tr>
+
+          }
+
+          <tr>
+
+            <td>
+
+              <strong>Total Quantity</strong>
+
+            </td>
+
+            <td class="text-right">
+
+         
+
+                {{ shopifyOrder.lineItems.reduce((sum, item) => sum + item.quantity, 0) }}
+
+           
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>
+
+              <strong>Estimated Weight</strong>
+
+            </td>
+
+            <td class="text-right">
+
+          
+
+                {{
+            shopifyOrder.lineItems
+              .reduce((sum, item) => sum + (item.grams * item.quantity), 0) / 1000
+            | number:'1.2-2'
+                }} kg
+
+           
 
             </td>
 
           </tr>
 
         </table>
+
+        } @else {
+
+        <div class="coming-soon">
+          Shopify Order Not Found
+        </div>
+
+        }
+
+      </div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+          SPX Parcel
+        </div>
+
+        @if (order) {
+
+        <table>
+
+          @for(product of order.parcel_info.parcel_item_name.split(','); track $index){
+
+          <tr>
+
+            <td>
+
+              {{ product.trim() }}
+
+            </td>
+
+            <td class="text-right">
+
+              Qty {{ getProductQuantity(product.trim()) }}
+
+            </td>
+
+          </tr>
+
+          }
+
+          <tr>
+
+            <td><strong>Total Items</strong></td>
+
+            <td class="text-right">
+
+              {{ order.parcel_info.parcel_item_quantity }}
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td><strong>Weight</strong></td>
+
+            <td>
+
+              {{ order.parcel_info.parcel_weight }} kg
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td><strong>Insurance</strong></td>
+
+            <td>
+
+              SGD {{ order.parcel_info.express_insured_value | number }}
+
+            </td>
+
+          </tr>
+
+        </table>
+
+        } @else {
+
+        <div class="coming-soon">
+          SPX Shipment Not Found
+        </div>
+
+        }
+
+      </div>
+
+    </section>
+
+    <!-- ================================================= -->
+    <!-- SENDER -->
+    <!-- ================================================= -->
+
+    <section class="comparison">
+
+      <div class="panel">
+
+        <div class="panel-title">
+          Store Information
+        </div>
+
+        <table>
+
+          <tr>
+            <td>Store</td>
+            <td>Coming Soon</td>
+          </tr>
+
+          <tr>
+            <td>Warehouse</td>
+            <td>Coming Soon</td>
+          </tr>
+
+          <tr>
+            <td>Address</td>
+            <td>Coming Soon</td>
+          </tr>
+
+        </table>
+
+      </div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+          SPX Sender
+        </div>
+
+        @if (order) {
+
+        <table>
+
+          <tr>
+            <td>Company</td>
+            <td>{{ order.sender_info.sender_name }}</td>
+          </tr>
+
+          <tr>
+            <td>Phone</td>
+            <td>{{ order.sender_info.sender_phone }}</td>
+          </tr>
+
+          <tr>
+
+            <td>Address</td>
+
+            <td>
+
+              {{ order.sender_info.sender_detail_address }}
+
+              {{ order.sender_info.sender_unit_no }}
+
+              Singapore {{ order.sender_info.sender_post_code }}
+
+            </td>
+
+          </tr>
+
+        </table>
+
+        }
+
+      </div>
+
+    </section>
+
+    <!-- ================================================= -->
+    <!-- RECEIVER -->
+    <!-- ================================================= -->
+
+    <section class="comparison">
+
+      <!-- Shopify Receiver -->
+
+      <div class="panel">
+
+        <div class="panel-title">
+          Shopify Receiver
+        </div>
+
+        @if (shopifyOrder) {
+
+        <table>
+
+          <tr>
+            <td>Customer</td>
+            <td>
+              {{ shopifyOrder.customer?.firstName }}
+              {{ shopifyOrder.customer?.lastName }}
+            </td>
+          </tr>
+
+          <tr>
+            <td>Phone</td>
+            <td>
+              {{ shopifyOrder.shippingAddress?.phone || '-' }}
+            </td>
+          </tr>
+
+          <tr>
+            <td>Address</td>
+
+            <td>
+
+              {{ shopifyOrder.shippingAddress?.address1 }}
+
+              @if (shopifyOrder.shippingAddress?.address2) {
+
+              <br>
+
+              {{ shopifyOrder.shippingAddress?.address2 }}
+
+              }
+
+              <br>
+
+              {{ shopifyOrder.shippingAddress?.city }}
+              {{ shopifyOrder.shippingAddress?.province }}
+              {{ shopifyOrder.shippingAddress?.zip }}
+
+            </td>
+
+          </tr>
+
+        </table>
+
+        } @else {
+
+        <div class="coming-soon">
+          Shopify Order Not Found
+        </div>
+
+        }
+
+      </div>
+
+      <!-- SPX Receiver -->
+
+      <div class="panel">
+
+        <div class="panel-title">
+          SPX Receiver
+        </div>
+
+        @if (order) {
+
+        <table>
+
+          <tr>
+            <td>Customer</td>
+            <td>{{ order.deliver_info.deliver_name }}</td>
+          </tr>
+
+          <tr>
+            <td>Phone</td>
+            <td>{{ order.deliver_info.deliver_phone }}</td>
+          </tr>
+
+          <tr>
+
+            <td>Address</td>
+
+            <td>
+
+              {{ order.deliver_info.deliver_detail_address }}
+
+              {{ order.deliver_info.deliver_unit_no }}
+
+              <br>
+
+              Singapore {{ order.deliver_info.deliver_post_code }}
+
+            </td>
+
+          </tr>
+
+        </table>
+
+        } @else {
+
+        <div class="coming-soon">
+          SPX Shipment Not Found
+        </div>
+
+        }
 
       </div>
 

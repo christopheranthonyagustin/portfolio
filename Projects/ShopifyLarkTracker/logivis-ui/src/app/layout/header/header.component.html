@@ -10,11 +10,17 @@
 
   <div class="header-right">
 
+    <div class="user-email">
+
+      <span>{{ currentUser?.Email }}</span>
+
+    </div>
+
     <button class="icon-button">
       🔔
     </button>
 
-    
+
 
     <button class="logout-button"
             (click)="logout()">

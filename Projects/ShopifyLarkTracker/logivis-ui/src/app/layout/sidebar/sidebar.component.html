@@ -43,11 +43,12 @@
 
     @if (permissionService.has('SHIPMENTS.READ')) {
 
-    <span class="section-title" *ngIf="!sidebarService.collapsed()">
+    <span class="section-title menu-admin" *ngIf="!sidebarService.collapsed()">
       Operations
     </span>
 
-    <a routerLink="/shipments"
+    <a class="menu-admin"
+       routerLink="/shipments"
        routerLinkActive="active">
 
       📦
@@ -66,12 +67,13 @@
     permissionService.has('ROLES.READ')
     ) {
 
-    <span class="section-title" *ngIf="!sidebarService.collapsed()">
+    <span class="section-title menu-admin" *ngIf="!sidebarService.collapsed()">
       Administration
     </span>
 
     @if (permissionService.has('USERS.READ')) {
-    <a routerLink="/users"
+    <a class="menu-admin"
+       routerLink="/users"
        routerLinkActive="active">
 
       👤
@@ -84,7 +86,8 @@
     }
 
     @if (permissionService.has('COMPANIES.READ')) {
-    <a routerLink="/companies"
+    <a class="menu-admin"
+       routerLink="/companies"
        routerLinkActive="active">
 
       🏢
@@ -97,7 +100,8 @@
     }
 
     @if (permissionService.has('ROLES.READ')) {
-    <a routerLink="/roles"
+    <a class="menu-admin"
+       routerLink="/roles"
        routerLinkActive="active">
 
       🔐

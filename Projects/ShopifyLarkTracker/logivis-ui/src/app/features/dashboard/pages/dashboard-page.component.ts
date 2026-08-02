@@ -43,6 +43,7 @@ import { ShipmentVerificationDialogComponent } from '../../../features/shipments
 import { TrackOrderResponse } from '../../../core/models/track-order-response';
 import { ViewChild } from '@angular/core';
 import { ShipmentHistoryDialogComponent } from '../../../features/shipments/components/shipment-history-dialog/shipment-history-dialog.component';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -1198,33 +1199,51 @@ export class DashboardPageComponent implements OnInit {
 
     }
 
-    this.shipmentService
-      .getShipmentDetails(shipment.trackingNumber)
-      .subscribe({
+    forkJoin({
 
-        next: (response: TrackOrderResponse) => {
+      spx: this.shipmentService.getShipmentDetails(
+        shipment.trackingNumber
+      ),
 
-          if (response.data.orders.length === 0) {
+      shopify: this.shipmentService.getShopifyOrder(
+        shipment.orderNo
+      )
 
-            alert('Shipment not found.');
+    }).subscribe({
 
-            return;
+      next: ({ spx, shopify }) => {
 
-          }
+        const spxOrder =
+          spx.data.orders.length > 0
+            ? spx.data.orders[0]
+            : null;
 
-          const order = response.data.orders[0];
-          console.log('shipmentDialog =', this.shipmentDialog);
-          this.shipmentDialog.open(order);
+        const shopifyOrder =
+          shopify ?? null;
 
-        },
+        // Nothing found anywhere
+        if (!spxOrder && !shopifyOrder) {
 
-        error: err => {
+          alert("Order not found.");
 
-          console.error(err);
+          return;
 
         }
 
-      });
+        this.shipmentDialog.open(
+          spxOrder,
+          shopifyOrder
+        );
+
+      },
+
+      error: err => {
+
+        console.error(err);
+
+      }
+
+    });
 
   }
 

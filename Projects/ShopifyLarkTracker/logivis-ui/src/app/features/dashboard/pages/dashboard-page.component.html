@@ -67,7 +67,7 @@
           </div>
 
           <!-- Administrator / Super User -->
-          <div class="form-group">
+          <div class="form-group" *ngIf="false">
 
             <label for="company">
               Company
@@ -113,7 +113,12 @@
 
         <div class="card card-warning">
 
-          <h3>Pending Pickup</h3>
+          <div class="kpi-header">
+            <h3>Pending Pickup</h3>
+            <div class="kpi-icon warning">
+              <i class="fa-solid fa-box"></i>
+            </div>
+          </div>
 
           <h1>{{ pendingPickup }}</h1>
 
@@ -121,7 +126,12 @@
 
         <div class="card card-info">
 
-          <h3>In Transit</h3>
+          <div class="kpi-header">
+            <h3>In Transit</h3>
+            <div class="kpi-icon info">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+          </div>
 
           <h1>{{ inTransit }}</h1>
 
@@ -129,7 +139,12 @@
 
         <div class="card card-success">
 
-          <h3>Delivered</h3>
+          <div class="kpi-header">
+            <h3>Delivered</h3>
+            <div class="kpi-icon success">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+          </div>
 
           <h1>{{ delivered }}</h1>
 
@@ -137,7 +152,12 @@
 
         <div class="card card-danger">
 
-          <h3>Exceptions</h3>
+          <div class="kpi-header">
+            <h3>Exceptions</h3>
+            <div class="kpi-icon danger">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+          </div>
 
           <h1>{{ exceptions }}</h1>
 
@@ -218,11 +238,20 @@
             <!-- Import Shopify Orders -->
             <div class="operation-item">
 
-              <h3>Shopify Orders</h3>
+              <div class="operation-header">
 
-              <p>
-                Import newly created Shopify orders into LogiVis.
-              </p>
+                <div class="operation-icon success">
+                  <i class="fa-brands fa-shopify"></i>
+                </div>
+
+                <div>
+                  <h3>Shopify Orders</h3>
+                  <p>
+                    Import newly created Shopify orders into LogiVis.
+                  </p>
+                </div>
+
+              </div>
 
               <button class="btn btn-success"
                       (click)="importShopifyOrders()"
@@ -245,15 +274,27 @@
             <!-- Bulk Update -->
             <div class="operation-item">
 
-              <h3>Delivery Status</h3>
+              <div class="operation-header">
 
-              <p>
-                Synchronize delivery status for recent shipments.
-              </p>
+                <div class="operation-icon primary">
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+
+                <div>
+                  <h3>Delivery Status</h3>
+
+                  <p>
+                    Synchronize delivery status for recent shipments.
+                  </p>
+                </div>
+
+              </div>
 
               <button class="btn btn-primary"
                       (click)="bulkUpdate()"
                       [disabled]="isBulkUpdating">
+
+                <i class="fa-solid fa-arrows-rotate"></i>
 
                 <span *ngIf="!isBulkUpdating">
                   Bulk Update Delivery Status
@@ -270,19 +311,33 @@
             <!-- Manual Order Update -->
             <div class="operation-item">
 
-              <h3>Manual Order Update</h3>
+              <div class="operation-header">
 
-              <p>
-                Update a specific order including split shipments.
-              </p>
+                <div class="operation-icon warning">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+
+                <div>
+
+                  <h3>Manual Order Update</h3>
+
+                  <p>
+                    Update a specific order including split shipments.
+                  </p>
+
+                </div>
+
+              </div>
 
               <input type="text"
                      class="search-box"
                      placeholder="Master Order No."
                      [(ngModel)]="masterOrderNo" />
 
-              <button class="btn btn-primary mt-2"
+              <button class="btn btn-warning mt-2"
                       (click)="updateOrder()">
+
+                <i class="fa-solid fa-pen"></i>
 
                 Update Order
 

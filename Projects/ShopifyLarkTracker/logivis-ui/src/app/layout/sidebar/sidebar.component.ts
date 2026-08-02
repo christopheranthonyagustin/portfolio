@@ -1,4 +1,4 @@
-import { Injectable, Component, signal } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -21,11 +21,15 @@ import { SidebarService } from './sidebar.service';
 })
 export class SidebarComponent {
 
+  private readonly mobileBreakpoint = 768;
+
   constructor(
     private readonly authService: AuthService,
     public readonly permissionService: PermissionService,
     public readonly sidebarService: SidebarService
-  ) { }
+  ) {
+    //this.updateSidebarState();
+  }
 
   get currentUser(): User | null {
     return this.authService.getCurrentUser();
@@ -43,7 +47,6 @@ export class SidebarComponent {
     const last = user.LastName?.trim().charAt(0).toUpperCase() ?? '';
 
     return `${first}${last}`;
-
   }
 
   get displayRole(): string {
@@ -57,7 +60,6 @@ export class SidebarComponent {
     return user.IsSuperUser
       ? 'Super Admin'
       : user.Role?.Name ?? '';
-
   }
 
   get isSuperUser(): boolean {
@@ -65,7 +67,34 @@ export class SidebarComponent {
   }
 
   toggleSidebar(): void {
+
+    console.log('Before:', this.sidebarService.collapsed());
+
     this.sidebarService.toggle();
+
+    console.log('After:', this.sidebarService.collapsed());
+
+  }
+
+  // @HostListener('window:resize')
+  // onResize(): void {
+  //   this.updateSidebarState();
+  // }
+
+  private updateSidebarState(): void {
+
+    if (window.innerWidth <= this.mobileBreakpoint) {
+
+      // Always start collapsed on mobile
+      this.sidebarService.collapse();
+
+    } else {
+
+      // Always start expanded on desktop
+      this.sidebarService.expand();
+
+    }
+
   }
 
 }

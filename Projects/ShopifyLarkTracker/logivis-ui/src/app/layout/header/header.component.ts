@@ -1,6 +1,8 @@
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { AuthService } from '../../features/auth/services/auth.service';
+import { User } from '../../core/models/User';
 
 @Component({
   selector: 'app-header',
@@ -15,12 +17,14 @@ export class HeaderComponent {
 
   @Input() subtitle = 'Overview';
 
-  private authService = inject(AuthService);
+  private readonly authService = inject(AuthService);
+
+  get currentUser(): User | null {
+    return this.authService.getCurrentUser();
+  }
 
   logout(): void {
-
     this.authService.logout();
-
   }
 
 }

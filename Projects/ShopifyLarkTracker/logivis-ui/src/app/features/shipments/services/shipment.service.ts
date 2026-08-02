@@ -6,6 +6,7 @@ import { Shipment } from '../../../models/shipment';
 import { environment } from '../../../../environments/environment';
 import { BulkUpdateResponse } from '../../../core/models/BulkUpdateResponse';
 import { ImportShopifyResponse } from '../../../core/models/ImportShopifyResponse';
+import { ShopifyOrder } from '../../../core/models/shopify/ShopifyOrder';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,21 @@ export class ShipmentService {
       {
         params: {
           trackingNos: trackingNumber
+        }
+      }
+    );
+
+  }
+
+  getShopifyOrder(
+    orderNo: string
+  ): Observable<ShopifyOrder> {
+
+    return this.http.get<ShopifyOrder>(
+      `${environment.workerApi}/shopify/orders`,
+      {
+        params: {
+          orderIds: orderNo
         }
       }
     );
