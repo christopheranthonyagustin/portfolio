@@ -145,6 +145,13 @@ Total Certifications and Credentials: 25+
 
 I have delivered Shopify solutions for businesses in the consumer electronics, home appliances, and health & wellness industries, covering store development, theme customization, technical consulting, and systems integration.
 
+## Hire Me
+
+If you're looking for Shopify development or technical consulting services, you can hire me on Fiverr:
+
+**Fiverr Profile:**  
+https://www.fiverr.com/s/DBDxrKD
+
 ### Featured Projects
 
 | Project | Industry | Country |
