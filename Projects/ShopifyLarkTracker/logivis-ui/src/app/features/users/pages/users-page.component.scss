@@ -1,0 +1,265 @@
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 24px 0;
+}
+
+.summary-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  border-top: 4px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+  .summary-card .label {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .summary-card .value {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* Pending Approval */
+  .summary-card.pending {
+    border-top-color: #f59e0b;
+  }
+
+    .summary-card.pending .value {
+      color: #d97706;
+    }
+
+  /* Active */
+  .summary-card.active {
+    border-top-color: #22c55e;
+  }
+
+    .summary-card.active .value {
+      color: #16a34a;
+    }
+
+  /* Inactive */
+  .summary-card.inactive {
+    border-top-color: #6b7280;
+  }
+
+    .summary-card.inactive .value {
+      color: #4b5563;
+    }
+
+  /* Total Users */
+  .summary-card.total {
+    border-top-color: #2563eb;
+  }
+
+    .summary-card.total .value {
+      color: #2563eb;
+    }
+
+.toolbar {
+  margin: 32px 0;
+}
+
+.toolbar-filters {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+}
+
+  .form-group label {
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+  }
+
+  .form-group select {
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 14px;
+  }
+
+
+.page-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+  .page-toolbar .form-group {
+    width: 260px;
+    margin: 0;
+  }
+
+  .page-toolbar .primary-button {
+    margin: 0;
+  }
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+}
+
+  .toolbar input {
+    width: 350px;
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+
+
+.grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px 0 16px;
+}
+
+  .grid-header h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+.grid-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+  .grid-actions input {
+    width: 320px;
+  }
+
+.dashboard-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+  .card-header h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+  .card-actions input {
+    width: 320px;
+  }
+
+
+/* ==========================================================================
+   Users Table Card
+   ========================================================================== */
+
+.users-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+  margin-top: 32px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+  /* ==========================================================================
+   Table Header
+   ========================================================================== */
+
+  .users-card .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+    .users-card .table-header h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+  /* ==========================================================================
+   Search + Export
+   ========================================================================== */
+
+  .users-card .table-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .users-card .search-box {
+    width: 320px;
+    height: 42px;
+    padding: 0 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 14px;
+  }
+
+    .users-card .search-box:focus {
+      outline: none;
+      border-color: #2563eb;
+    }
+
+  .users-card .btn-secondary {
+    height: 42px;
+    padding: 0 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: #fff;
+    color: #111827;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+    .users-card .btn-secondary:hover {
+      background: #f9fafb;
+    }
+
+  /* ==========================================================================
+   Grid
+   ========================================================================== */
+
+  .users-card .grid-container {
+    margin-top: 8px;
+  }
+
+

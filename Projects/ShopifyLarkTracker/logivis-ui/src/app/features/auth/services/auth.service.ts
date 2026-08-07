@@ -28,7 +28,7 @@ export class AuthService {
 
     const userId = this.validateToken();
 
-    console.log('Current User: ', userId);
+    console.log('Angular Current User ID: ', userId);
 
     if (!userId) {
 
@@ -154,17 +154,41 @@ export class AuthService {
       )
     );
 
-    console.log('Current User: ', user);
+    console.log('Angular Current User: ', user);
 
     // Account Status
-    if (user.Status !== 'Active') {
+    switch (user.Status) {
 
-      this.logout({
-        title: 'Account Pending Approval',
-        message: 'Your account has not yet been approved by an administrator.'
-      });
+      case 'Active':
+        break;
 
-      return;
+      case 'PendingApproval':
+        this.logout({
+          title: 'Account Pending Approval',
+          message: 'Your account has not yet been approved by an administrator.'
+        });
+        return;
+
+      case 'Suspended':
+        this.logout({
+          title: 'Account Suspended',
+          message: 'Your account has been suspended by an administrator. Please contact your administrator.'
+        });
+        return;
+
+      case 'Inactive':
+        this.logout({
+          title: 'Account Deactivated',
+          message: 'Your account has been deactivated. Please contact your administrator.'
+        });
+        return;
+
+      default:
+        this.logout({
+          title: 'Access Denied',
+          message: 'Your account is not authorized to access LogiVis.'
+        });
+        return;
 
     }
 

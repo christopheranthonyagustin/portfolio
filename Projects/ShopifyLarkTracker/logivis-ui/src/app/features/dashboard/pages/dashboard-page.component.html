@@ -48,34 +48,41 @@
 
         <div class="toolbar-filters">
 
+          <!-- Administrator / Operator / Viewer -->
           <!-- Super User Only -->
-          <div class="form-group"
-               *ngIf="isSuperUser">
+          <div class="form-group" *ngIf="isSuperUser">
 
             <label for="parentCompany">
               Parent Company
             </label>
 
-            <select id="parentCompany">
+            <select id="parentCompany"
+                    [(ngModel)]="parentCompanyId"
+                    (change)="onParentCompanyChanged()">
 
-              <option value="">
-                Coming Soon...
+              <option *ngFor="let company of parentCompanies"
+                      [value]="company.CompanyId">
+
+                {{ company.Name }}
+
               </option>
 
             </select>
 
           </div>
 
-          <!-- Administrator / Super User -->
-          <div class="form-group" *ngIf="false">
+          <!-- Company -->
+          <div class="form-group">
 
             <label for="company">
               Company
             </label>
 
-            <select id="company">
+            <select id="company"
+                    [(ngModel)]="activeCompanyId"
+                    (change)="onCompanyChanged()">
 
-              <option *ngFor="let company of companies"
+              <option *ngFor="let company of companyOptions"
                       [value]="company.CompanyId">
                 {{ company.Name }}
               </option>
@@ -213,7 +220,7 @@
 
       </section>
 
-
+      @if (currentUser?.Role?.Code !== 'VIEWER') {
       <!-- Operation Center -->
       <section class="operation-center">
 
@@ -351,6 +358,8 @@
 
       </section>
 
+      }
+
       <!-- Recent Shipments -->
       <section class="recent-shipments">
 
@@ -366,12 +375,12 @@
                      class="search-box"
                      placeholder="Search shipments..."
                      (input)="onQuickFilterChanged($event)" />
-
+              @if (currentUser?.Role?.Code !== 'VIEWER') {
               <button class="btn-secondary"
                       (click)="exportCsv()">
                 Export
               </button>
-
+              }
             </div>
 
           </div>

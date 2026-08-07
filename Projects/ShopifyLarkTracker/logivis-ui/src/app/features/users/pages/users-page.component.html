@@ -5,17 +5,62 @@
 
   <div class="main-content">
 
-    <app-header></app-header>
+    <app-header title="Users"
+                subtitle="User Administration">
+    </app-header>
 
     <div class="content">
 
       <div class="page">
 
-        <div class="page-header">
+        <!-- Company Filter -->
+        <!-- Page Toolbar -->
+        <section class="page-toolbar">
 
-          <div>
-            <h1>Users</h1>
-            <p class="subtitle">{{ totalUsers }} Users</p>
+          <div class="form-group">
+
+            <label for="parentCompany">
+              Parent Company
+            </label>
+
+            <select id="parentCompany"
+                    [(ngModel)]="parentCompanyId"
+                    (ngModelChange)="onParentCompanyChanged()"
+                    [disabled]="!isSuperUser">
+
+              <!-- Administrator -->
+              <option *ngIf="!isSuperUser"
+                      [ngValue]="currentUser?.CompanyId">
+                {{ currentUser?.CompanyName }}
+              </option>
+
+              <!-- Super User -->
+              <option *ngFor="let company of parentCompanies"
+                      [ngValue]="company.CompanyId">
+                {{ company.Name }}
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="company">
+              Company
+            </label>
+
+            <select id="company"
+                    [(ngModel)]="activeCompanyId"
+                    (ngModelChange)="onCompanyChanged()">
+
+              <option *ngFor="let company of companyOptions"
+                      [ngValue]="company.CompanyId">
+                {{ company.Name }}
+              </option>
+
+            </select>
+
           </div>
 
           <button class="primary-button"
@@ -23,64 +68,68 @@
             + Invite User
           </button>
 
-        </div>
+        </section>
 
+        <!-- Summary Cards -->
         <div class="summary-cards">
 
-          <div class="summary-card">
+          <div class="summary-card pending">
+            <div class="label">Pending Approval</div>
+            <div class="value">{{ pendingApprovalCount }}</div>
+          </div>
+
+          <div class="summary-card active">
             <div class="label">Active</div>
             <div class="value">{{ activeCount }}</div>
           </div>
 
-          <div class="summary-card">
-            <div class="label">Pending</div>
-            <div class="value">{{ pendingCount }}</div>
+          <div class="summary-card inactive">
+            <div class="label">Inactive</div>
+            <div class="value">{{ inactiveCount }}</div>
           </div>
 
-          <div class="summary-card">
-            <div class="label">Suspended</div>
-            <div class="value">{{ suspendedCount }}</div>
-          </div>
-
-          <div class="summary-card">
-            <div class="label">Rejected</div>
-            <div class="value">{{ rejectedCount }}</div>
+          <div class="summary-card total">
+            <div class="label">Total Users</div>
+            <div class="value">{{ totalUsers }}</div>
           </div>
 
         </div>
 
-        <div class="toolbar">
+        <!-- Users Card -->
+        <div class="users-card">
 
-          <input type="text"
-                 placeholder="Search users">
+          <div class="table-header">
 
-          <div class="toolbar-filters">
+            <h2>Users</h2>
 
-            <select>
-              <option>All Companies</option>
-            </select>
+            <div class="table-actions">
 
-            <select>
-              <option>All Status</option>
-              <option>Pending</option>
-              <option>Active</option>
-              <option>Suspended</option>
-              <option>Rejected</option>
-            </select>
+              <input class="search-box"
+                     type="text"
+                     placeholder="Search users...">
+
+              <button class="btn-secondary">
+                Export
+              </button>
+
+            </div>
 
           </div>
 
-        </div>
+          <div class="ag-theme-quartz grid-container">
 
-        <div class="ag-theme-quartz grid-container">
+            <ag-grid-angular class="dashboard-grid"
+                             theme="legacy"
+                             domLayout="autoHeight"
+                             [columnDefs]="columnDefs"
+                             [defaultColDef]="defaultColDef"
+                             [rowData]="users"
+                             [pagination]="true"
+                             [paginationPageSize]="20"
+                             (gridReady)="onGridReady($event)">
+            </ag-grid-angular>
 
-          <ag-grid-angular class="data-grid"
-                           theme="legacy"
-                           [columnDefs]="columnDefs"
-                           [defaultColDef]="defaultColDef"
-                           [rowData]="users"
-                           (gridReady)="onGridReady($event)">
-          </ag-grid-angular>
+          </div>
 
         </div>
 
@@ -93,3 +142,4 @@
   </div>
 
 </div>
+<app-user-edit-dialog></app-user-edit-dialog>

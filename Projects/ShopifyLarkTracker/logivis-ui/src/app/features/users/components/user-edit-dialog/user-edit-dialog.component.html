@@ -1,0 +1,166 @@
+<dialog #dialog class="user-dialog">
+
+  <div class="dialog-header">
+
+    <div class="header-content">
+
+      <h2>Edit User</h2>
+
+      <div class="header-meta">
+
+        <div class="meta-card">
+
+          <span>User ID</span>
+          <strong>{{ user?.UserId }}</strong>
+
+        </div>
+
+        <div class="meta-card">
+
+          <span>Role</span>
+          <strong>{{ user?.RoleName }}</strong>
+
+        </div>
+
+        <div class="meta-card">
+
+          <span>Status</span>
+          <strong class="status-badge">
+            {{ user?.Status }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <button type="button"
+            class="close-button"
+            (click)="close()">
+      ✕
+    </button>
+
+  </div>
+
+  <div class="dialog-body">
+
+    <section class="section">
+
+      <h3>User Information</h3>
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label>Display Name</label>
+          <input [value]="user?.DisplayName"
+                 readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input [value]="user?.Email"
+                 readonly>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section">
+
+      <h3>Access Control</h3>
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label>Parent Company</label>
+
+          <select id="parentCompany"
+                  [(ngModel)]="parentCompanyId"
+                  (ngModelChange)="onParentCompanyChanged()"
+                  [disabled]="!(currentUser?.IsSuperUser || currentUser?.UserId === 1)">
+
+            <option *ngFor="let company of parentCompanies"
+                    [ngValue]="company.CompanyId">
+
+              {{ company.Name }}
+
+            </option>
+
+          </select>
+        </div>
+
+        <div class="form-group">
+
+          <label>Company</label>
+
+          <select [(ngModel)]="companyId">
+
+            <option *ngFor="let company of companies"
+                    [ngValue]="company.CompanyId">
+
+              {{ company.Name }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Role</label>
+
+          <select [(ngModel)]="roleId"
+                  (ngModelChange)="onRoleChanged()">
+
+            <option *ngFor="let role of roles"
+                    [ngValue]="role.RoleId">
+
+              {{ role.Name }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Status</label>
+
+          <select [(ngModel)]="status">
+
+            <option *ngFor="let item of statuses"
+                    [ngValue]="item">
+
+              {{ item }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section action-bar">
+
+      <button class="secondary-button"
+              (click)="close()">
+        Cancel
+      </button>
+
+      <button class="primary-button"
+              (click)="save()">
+        Save Changes
+      </button>
+
+    </section>
+
+  </div>
+
+</dialog>

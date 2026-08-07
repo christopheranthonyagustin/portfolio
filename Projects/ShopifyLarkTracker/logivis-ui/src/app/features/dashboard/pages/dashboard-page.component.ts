@@ -44,6 +44,10 @@ import { TrackOrderResponse } from '../../../core/models/track-order-response';
 import { ViewChild } from '@angular/core';
 import { ShipmentHistoryDialogComponent } from '../../../features/shipments/components/shipment-history-dialog/shipment-history-dialog.component';
 import { forkJoin } from 'rxjs';
+import { Companies } from '../../../core/models/Companies';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+
 
 @Component({
   selector: 'app-dashboard-page',
@@ -104,6 +108,12 @@ export class DashboardPageComponent implements OnInit {
   allShipments: Shipment[] = [];
   filteredShipments: Shipment[] = [];
   masterOrderNo: string = '';
+  activeCompanyId = 0;
+  parentCompanyId = 0;
+  companyOptions: Companies[] = [];
+  private readonly ALL_COMPANIES_ID = 0;
+  private readonly http = inject(HttpClient);
+  parentCompanies: Companies[] = [];
 
   readonly defaultColDef: ColDef = {
 
@@ -595,6 +605,37 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (!this.currentUser) {
+      return;
+    }
+
+    // Default parent company comes from the logged-in user
+    this.parentCompanyId = this.currentUser.CompanyId;
+
+    this.companyOptions = [
+      {
+        CompanyId: this.ALL_COMPANIES_ID,
+        Name: '---'
+      },
+      ...this.companies
+    ];
+
+    if (this.isSuperUser) {
+
+      // Load all parent companies
+      this.loadParentCompanies();
+
+      // Default selected company = Super User's company
+      this.activeCompanyId = this.currentUser.CompanyId;
+
+    }
+    else {
+
+      // Tenant users
+      this.activeCompanyId = this.ALL_COMPANIES_ID;
+
+    }
+
     this.loadRecentShipments();
 
     const notification = history.state?.notification;
@@ -608,10 +649,8 @@ export class DashboardPageComponent implements OnInit {
     this.showNotification = true;
 
     const timer = window.setTimeout(() => {
-
       this.showNotification = false;
       this.cdr.detectChanges();
-
     }, 3000);
 
     this.destroyRef.onDestroy(() => clearTimeout(timer));
@@ -632,6 +671,13 @@ export class DashboardPageComponent implements OnInit {
       );
 
     }
+
+  }
+
+  onCompanyChanged(): void {
+
+    // We will use this later for dashboard filtering.
+    this.loadRecentShipments();
 
   }
 
@@ -734,6 +780,76 @@ export class DashboardPageComponent implements OnInit {
 
   }
 
+  onParentCompanyChanged(): void {
+
+    if (!this.isSuperUser) {
+      return;
+    }
+
+    this.loadChildCompanies(this.parentCompanyId);
+
+  }
+
+  loadParentCompanies(): void {
+
+    this.http
+      .get<Companies[]>(
+        `${environment.workerDataApi}/internal/companies/parents`
+      )
+      .subscribe({
+
+        next: (companies: Companies[]) => {
+
+          this.parentCompanies = companies;
+
+          this.parentCompanyId = this.currentUser!.CompanyId;
+
+          this.loadChildCompanies(this.parentCompanyId);
+
+
+        },
+
+        error: (error: any) => {
+
+          console.error(error);
+
+        }
+
+      });
+
+  }
+
+  loadChildCompanies(parentCompanyId: number): void {
+
+    this.http
+      .get<Companies[]>(
+        `${environment.workerDataApi}/internal/companies?parent_company_id=${parentCompanyId}`
+      )
+      .subscribe({
+
+        next: (companies: Companies[]) => {
+
+          this.companyOptions = [
+            {
+              CompanyId: this.ALL_COMPANIES_ID,
+              Name: '---'
+            },
+            ...companies
+          ];
+
+          this.activeCompanyId = this.ALL_COMPANIES_ID;
+
+        },
+
+        error: (error: any) => {
+
+          console.error(error);
+
+        }
+
+      });
+
+  }
 
   private refreshDashboard(): void {
 

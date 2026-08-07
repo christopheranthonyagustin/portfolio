@@ -20,34 +20,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const state = history.state;
+    const notification = history.state?.notification;
 
-    if (!state?.code) {
+    if (!notification) {
       return;
     }
 
     this.showAlert = true;
-    this.authCode = state.code;
-    this.authError = state.message ?? '';
-
-    switch (this.authCode) {
-
-      case 'PENDING':
-        this.authTitle = 'Account Pending Approval';
-        break;
-
-      case 'UNAUTHORIZED':
-        this.authTitle = 'Access Denied';
-        break;
-
-      case 'SUSPENDED':
-        this.authTitle = 'Account Suspended';
-        break;
-
-      default:
-        this.authTitle = 'Authentication Failed';
-        break;
-    }
+    this.authTitle = notification.title;
+    this.authError = notification.message;
   }
 
   loginWithLark(): void {

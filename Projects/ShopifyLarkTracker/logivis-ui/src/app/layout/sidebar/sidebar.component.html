@@ -67,12 +67,12 @@
     permissionService.has('ROLES.READ')
     ) {
 
-    <span class="section-title menu-admin" *ngIf="!sidebarService.collapsed()">
+    <span class="section-title" *ngIf="!sidebarService.collapsed()">
       Administration
     </span>
 
     @if (permissionService.has('USERS.READ')) {
-    <a class="menu-admin"
+    <a 
        routerLink="/users"
        routerLinkActive="active">
 
