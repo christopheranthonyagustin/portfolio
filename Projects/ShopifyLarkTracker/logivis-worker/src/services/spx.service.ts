@@ -6,7 +6,10 @@ import { TrackOrderResponse } from "../models/track-order-response";
 import { larkBaseService } from "./lark-base.service";
 import { larkAuthService } from "./lark-auth.service";
 import type { BatchUpdateRecord } from "../models/lark-batch";
+import type { BatchCreateRecord } from "../models/lark-create-batch";
 import type { Shipment } from "../models/shipments";
+import type { TrackOrder } from "../models/track-order-response";
+// import type { SpxShipment } from "../models/spx-shipments";
 
 export interface BulkUpdateResponse {
 	success: boolean;
@@ -18,6 +21,7 @@ export interface BulkUpdateResponse {
 }
 export class SpxService {
 
+	private readonly maxSplitOrders = 5;
 	constructor(
 		private readonly env: Env,
 		private readonly auth = new SpxAuthService()
@@ -43,20 +47,51 @@ export class SpxService {
 		orderIds: string[]
 	): Promise<TrackOrderResponse> {
 
+		console.log("================================");
+		console.log("findShipmentByOrderIds()");
+		console.log("Order IDs:", orderIds);
+
 		const request: TrackOrderRequest = {
 			user_id: Number(this.env.SPX_USER_ID),
 			user_secret: this.env.SPX_USER_SECRET,
 			tracking_no_list: [],
-			order_id_list: orderIds
+			order_id_list: orderIds.map(id => this.normalizeSpxOrderId(id))
 		};
 
-		return this.post<
+		console.log("SPX Request:");
+		console.log(JSON.stringify(request, null, 2));
+
+		const response = await this.post<
 			TrackOrderRequest,
 			TrackOrderResponse
 		>(
 			"/open/api/v1/order/batch_search_order",
 			request
 		);
+
+		console.log("SPX Response:");
+		console.log(JSON.stringify(response, null, 2));
+
+		return response;
+	}
+
+	private normalizeSpxOrderId(orderId: string): string {
+
+		orderId = orderId.trim();
+
+		const hasSplitSuffix = orderId.includes("-");
+
+		if (hasSplitSuffix) {
+
+			// SPX expects 15324-1
+			return orderId.replace(/^#/, "");
+
+		}
+
+		// SPX expects #15324
+		return orderId.startsWith("#")
+			? orderId
+			: `#${orderId}`;
 	}
 
 	public async findShipmentByTrackNos(
@@ -143,12 +178,12 @@ export class SpxService {
 
 				const newTracking = spxShipment.tracking_no ?? "";
 
-				console.log(
-					`[COMPARE] ${shipment.orderNo} | ` +
-					`Current=${shipment.status} | ` +
-					`Latest=${newStatus} (Raw=${rawStatus}) | ` +
-					`Tracking=${shipment.trackingNumber} -> ${newTracking}`
-				);
+				// console.log(
+				// 	`[COMPARE] ${shipment.orderNo} | ` +
+				// 	`Current=${shipment.status} | ` +
+				// 	`Latest=${newStatus} (Raw=${rawStatus}) | ` +
+				// 	`Tracking=${shipment.trackingNumber} -> ${newTracking}`
+				// );
 
 				// Skip if nothing changed
 
@@ -212,18 +247,6 @@ export class SpxService {
 
 		const records = await larkBaseService.listRecords(this.env);
 
-		console.log(
-			JSON.stringify(records.data.items[0], null, 2)
-		);
-		const sample =
-			records.data.items.find(r =>
-				this.text(r.fields["订单号"]).includes("14811")
-			);
-
-		console.log(
-			JSON.stringify(sample, null, 2)
-		);
-
 		const larkRecords = records.data.items;
 
 		const orderIds = this.extractOrderIds(larkRecords);
@@ -246,38 +269,96 @@ export class SpxService {
 
 	}
 
-
 	private extractOrderIds(records: any[]): string[] {
 
 		return records
 			.map(record => this.text(record.fields["订单号"]).trim())
 			.filter(orderNo => orderNo.length > 0)
-			.map(orderNo => {
+			.flatMap(orderNo => {
 
-				// SPX order IDs: #11358-1 -> 11358-1
+				// Already a split shipment
 				if (/^#?\d+-\d+$/.test(orderNo)) {
-					return orderNo.replace(/^#/, "");
+					return [orderNo.replace(/^#/, "")];
 				}
 
-				// Shopify order IDs: 14811 -> #14811
-				return orderNo.startsWith("#")
-					? orderNo
-					: `#${orderNo}`;
+				// Shopify order
+				const base = orderNo.replace(/^#/, "");
+
+				return [
+					base,
+					...Array.from(
+						{ length: this.maxSplitOrders },
+						(_, i) => `${base}-${i + 1}`
+					)
+				];
+
 			});
 
 	}
+
+
+	// private extractOrderIds(records: any[]): string[] {
+
+	// 	return records
+	// 		.map(record => this.text(record.fields["订单号"]).trim())
+	// 		.filter(orderNo => orderNo.length > 0)
+	// 		.map(orderNo => {
+
+	// 			// SPX order IDs: #11358-1 -> 11358-1
+	// 			if (/^#?\d+-\d+$/.test(orderNo)) {
+	// 				return orderNo.replace(/^#/, "");
+	// 			}
+
+	// 			// Shopify order IDs: 14811 -> #14811
+	// 			return orderNo.startsWith("#")
+	// 				? orderNo
+	// 				: `#${orderNo}`;
+	// 		});
+
+	// }
+
+	// private normalizeOrderId(orderNo: string): string {
+
+	// 	const value = orderNo.trim();
+
+	// 	if (/^#?\d+-\d+$/.test(value)) {
+	// 		return value.replace(/^#/, "");
+	// 	}
+
+	// 	return value.startsWith("#")
+	// 		? value
+	// 		: `#${value}`;
+
+	// }
 
 	private normalizeOrderId(orderNo: string): string {
 
 		const value = orderNo.trim();
 
+		if (!value) {
+			return "";
+		}
+
+		// Split Order
+		// 15324-1 -> 15324-1
+		// #15324-1 -> 15324-1
 		if (/^#?\d+-\d+$/.test(value)) {
 			return value.replace(/^#/, "");
 		}
 
-		return value.startsWith("#")
-			? value
-			: `#${value}`;
+		// Master Order
+		// 15324 -> #15324
+		if (/^\d+$/.test(value)) {
+			return `#${value}`;
+		}
+
+		// Already normalized Master
+		// #15324 -> #15324
+		if (/^#\d+$/.test(value)) {
+			return value;
+		}
+
+		return value;
 
 	}
 
@@ -288,6 +369,7 @@ export class SpxService {
 
 		const results: TrackOrderResponse[] = [];
 		const updates: BatchUpdateRecord[] = [];
+		const inserts: BatchCreateRecord[] = [];
 
 		const token =
 			await larkAuthService.getTenantAccessToken(this.env);
@@ -300,17 +382,18 @@ export class SpxService {
 					batches.length,
 					batch,
 					records,
-					updates
+					updates,
+					inserts
 				);
 
 			results.push(response);
 
 		}
 
-		await this.retryByTracking(
-			records,
-			updates
-		);
+		// await this.retryByTracking(
+		// 	records,
+		// 	updates
+		// );
 
 		console.log(
 			`Preparing to batch update ${updates.length} record(s)...`
@@ -330,6 +413,14 @@ export class SpxService {
 
 		}
 
+		if (inserts.length > 0) {
+			await larkBaseService.batchCreateRecords(
+				this.env,
+				token,
+				inserts
+			);
+		}
+
 		return results;
 
 	}
@@ -339,7 +430,8 @@ export class SpxService {
 		totalBatches: number,
 		batch: string[],
 		records: any[],
-		updates: BatchUpdateRecord[]
+		updates: BatchUpdateRecord[],
+		inserts: BatchCreateRecord[]
 	): Promise<TrackOrderResponse> {
 
 		console.log(
@@ -382,15 +474,26 @@ export class SpxService {
 					normalizeOrderId(shipment.order_id)
 				);
 
+			// -----------------------------------------------------------------
+			// Insert new Lark record
+			// -----------------------------------------------------------------
 			if (!record) {
 
 				console.warn(
-					`[LARK NOT FOUND] ${shipment.order_id}`
+					`[LARK INSERT] ${shipment.order_id}`
 				);
+
+				inserts.push({
+					fields: this.buildLarkFields(shipment)
+				});
 
 				continue;
 
 			}
+
+			// -----------------------------------------------------------------
+			// Update existing Lark record
+			// -----------------------------------------------------------------
 
 			const currentStatus =
 				this.text(record.fields["签收状态"]);
@@ -401,19 +504,19 @@ export class SpxService {
 			const newStatus =
 				this.mapShipmentStatus(shipment.status);
 
-			console.log(
-				`[MATCH] ${shipment.order_id} | ` +
-				`LarkStatus=${currentStatus} | ` +
-				`SPXStatus=${shipment.status} | ` +
-				`LarkTracking=${currentTracking} | ` +
-				`SPXTracking=${shipment.tracking_no}`
-			);
+			// console.log(
+			// 	`[MATCH] ${shipment.order_id} | ` +
+			// 	`LarkStatus=${currentStatus} | ` +
+			// 	`SPXStatus=${shipment.status} | ` +
+			// 	`LarkTracking=${currentTracking} | ` +
+			// 	`SPXTracking=${shipment.tracking_no}`
+			// );
 
-			console.log(
-				`[QUEUE] ${shipment.order_id} -> ` +
-				`Status=${newStatus}, ` +
-				`Tracking=${shipment.tracking_no}`
-			);
+			// console.log(
+			// 	`[QUEUE] ${shipment.order_id} -> ` +
+			// 	`Status=${newStatus}, ` +
+			// 	`Tracking=${shipment.tracking_no}`
+			// );
 
 			updates.push({
 				record_id: record.record_id,
@@ -427,15 +530,31 @@ export class SpxService {
 
 		}
 
-		for (const failed of failedOrders) {
+		// for (const failed of failedOrders) {
 
-			console.warn(
-				`[SPX NOT FOUND] ${failed.order_id} | ${failed.message}`
-			);
+		// 	console.warn(
+		// 		`[SPX NOT FOUND] ${failed.order_id} | ${failed.message}`
+		// 	);
 
-		}
+		// }
+
 
 		return response;
+
+	}
+
+	private buildLarkFields(shipment: TrackOrder): Record<string, any> {
+
+		return {
+			"订单号": this.normalizeOrderId(shipment.order_id),
+			"客户名称": shipment.deliver_info?.deliver_name ?? "",
+			"发货日期": this.toDate(shipment.fulfillment_info?.pickup_time),
+			"快递单号": shipment.tracking_no ?? "",
+			"运单号": shipment.tracking_no ?? "",
+			"物流公司": "SPX",
+			"签收状态": this.mapShipmentStatus(shipment.status),
+			"更新时间": this.now()
+		};
 
 	}
 
@@ -449,9 +568,9 @@ export class SpxService {
 				.map(r => this.text(r.fields["快递单号"]))
 				.filter(trackingNo => trackingNo.length > 0);
 
-		console.log(
-			`Retrying ${retryTrackingNos.length} shipment(s) by tracking number...`
-		);
+		// console.log(
+		// 	`Retrying ${retryTrackingNos.length} shipment(s) by tracking number...`
+		// );
 
 		if (retryTrackingNos.length === 0) {
 
@@ -466,10 +585,10 @@ export class SpxService {
 			const trackingBatch =
 				retryTrackingNos.slice(i, i + batchSize);
 
-			console.log(
-				`Retrying tracking batch ${Math.floor(i / batchSize) + 1} ` +
-				`(${trackingBatch.length} shipment(s))...`
-			);
+			// console.log(
+			// 	`Retrying tracking batch ${Math.floor(i / batchSize) + 1} ` +
+			// 	`(${trackingBatch.length} shipment(s))...`
+			// );
 
 			const retryResponse =
 				await this.findShipmentByTrackNos(trackingBatch);
@@ -518,19 +637,19 @@ export class SpxService {
 				const newStatus =
 					this.mapShipmentStatus(shipment.status);
 
-				console.log(
-					`[MATCH BY TRACKING] ${shipment.tracking_no} | ` +
-					`LarkStatus=${currentStatus} | ` +
-					`SPXStatus=${shipment.status} | ` +
-					`LarkTracking=${currentTracking} | ` +
-					`SPXTracking=${shipment.tracking_no}`
-				);
+				// console.log(
+				// 	`[MATCH BY TRACKING] ${shipment.tracking_no} | ` +
+				// 	`LarkStatus=${currentStatus} | ` +
+				// 	`SPXStatus=${shipment.status} | ` +
+				// 	`LarkTracking=${currentTracking} | ` +
+				// 	`SPXTracking=${shipment.tracking_no}`
+				// );
 
-				console.log(
-					`[QUEUE] ${shipment.tracking_no} -> ` +
-					`Status=${newStatus}, ` +
-					`Tracking=${shipment.tracking_no}`
-				);
+				// console.log(
+				// 	`[QUEUE] ${shipment.tracking_no} -> ` +
+				// 	`Status=${newStatus}, ` +
+				// 	`Tracking=${shipment.tracking_no}`
+				// );
 
 				updates.push({
 					record_id: record.record_id,
@@ -617,7 +736,19 @@ export class SpxService {
 
 	}
 
+	private toDate(unixTime?: number | null): string {
 
+		if (!unixTime) {
+			return "";
+		}
+
+		return new Date(unixTime * 1000).toISOString();
+
+	}
+
+	private now(): string {
+		return new Date().toISOString();
+	}
 
 	private async post<TRequest, TResponse>(
 		path: string,

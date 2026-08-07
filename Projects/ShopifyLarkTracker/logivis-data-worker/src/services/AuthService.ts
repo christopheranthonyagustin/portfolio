@@ -46,7 +46,7 @@ export class AuthService {
 
 			console.log("User not found. Creating Pending user...");
 
-			await userRepository.createPendingLarkUser(request);
+			await userRepository.createPendingExternalUser(request);
 
 			return null;
 		}
@@ -62,7 +62,7 @@ export class AuthService {
 			request.providerUserId
 		);
 
-		console.log("Current User:", JSON.stringify(user, null, 2));
+		console.log("Auth Service Current User:", JSON.stringify(user, null, 2));
 
 		return user;
 

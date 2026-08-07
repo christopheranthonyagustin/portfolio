@@ -19,7 +19,9 @@ export class UserService {
 		if (!user) {
 			return null;
 		}
+
 		console.log("User ID:", user.UserId);
+
 		if (user.UserId === 1) {
 
 			return {
@@ -37,7 +39,7 @@ export class UserService {
 			? await repositories.permissions.getByRoleId(role.RoleId)
 			: [];
 
-		const companies = await repositories.users.getByCompanyId(id);
+		const companies = await repositories.users.getByCompanyId(user.CompanyId);
 
 		return {
 			...user,
@@ -46,6 +48,40 @@ export class UserService {
 			Role: role,
 			Permissions: permissions
 		};
+
+	}
+
+	static async getUsersByCompanyId(
+		env: Env,
+		companyId: number
+	) {
+
+		const repositories = new RepositoryFactory(env);
+
+		return await repositories.users.getUsersByCompanyId(
+			companyId
+		);
+
+	}
+
+	static async updateUser(
+		env: Env,
+		user: {
+			UserId: number;
+			CompanyId: number;
+			RoleId: number;
+			Status: string;
+		}
+	): Promise<void> {
+
+		const repositories = new RepositoryFactory(env);
+
+		await repositories.users.updateUser(user);
+
+		await repositories.users.updateUserRole({
+			UserId: user.UserId,
+			RoleId: user.RoleId
+		});
 
 	}
 

@@ -93,7 +93,13 @@ export default {
 								.split(",")
 								.map(x => x.trim())
 								.filter(Boolean)
-								.map(x => x.startsWith("#") ? x : `#${x}`)
+								.map(x => {
+									if (x.startsWith("#")) {
+										return x.substring(1);
+									}
+
+									return x;
+								})
 						);
 
 						return Response.json(result, {
@@ -248,6 +254,53 @@ export default {
 						headers: corsHeaders
 					}
 				);
+			}
+
+			case "/api/shopify/orders": {
+
+				try {
+
+					const service = new ShopifyService(env);
+
+					const orderNo = url.searchParams.get("orderIds");
+
+					if (!orderNo) {
+
+						return Response.json(
+							{
+								error: "'orderIds' query parameter is required."
+							},
+							{
+								status: 400,
+								headers: corsHeaders
+							}
+						);
+
+					}
+
+					const result =
+						await service.getOrderByOrderNo(orderNo);
+
+					return Response.json(result, {
+						headers: corsHeaders
+					});
+
+				} catch (error) {
+
+					return Response.json(
+						{
+							error: error instanceof Error
+								? error.message
+								: "Unknown error"
+						},
+						{
+							status: 500,
+							headers: corsHeaders
+						}
+					);
+
+				}
+
 			}
 
 			default:

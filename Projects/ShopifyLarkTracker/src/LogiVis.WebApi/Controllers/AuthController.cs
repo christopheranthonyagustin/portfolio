@@ -4,6 +4,7 @@ using LogiVis.WebApi.Services;
 using LogiVis.WebApi.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System.Text;
 
 namespace LogiVis.WebApi.Controllers;
 
@@ -34,9 +35,13 @@ public class AuthController : ControllerBase
     #region Google
 
     [HttpGet("google/login")]
-    public IActionResult GoogleLogin()
+    public IActionResult GoogleLogin([FromQuery] string? frontend)
     {
-        var state = Guid.NewGuid().ToString();
+        frontend ??= _applicationOptions.FrontendUrl;
+
+        var state = Convert.ToBase64String(
+            Encoding.UTF8.GetBytes(frontend));
+
         var url = _google.GetAuthorizationUrl(state);
 
         return Redirect(url);
@@ -44,12 +49,13 @@ public class AuthController : ControllerBase
 
     [HttpGet("google/callback")]
     public async Task<IActionResult> GoogleCallback(
-        [FromQuery] string code,
-        [FromQuery] string state)
+    [FromQuery] string code,
+    [FromQuery] string state)
     {
-
         try
         {
+            var frontendUrl = GetFrontendUrl(state);
+
             var googleUser = await _google.ExchangeCodeAsync(code);
 
             var request = new ExternalAuthRequest
@@ -64,30 +70,30 @@ public class AuthController : ControllerBase
 
             var workerUser = await _worker.ExternalLoginAsync(request);
 
-
             if (workerUser is null)
             {
                 return Redirect(
-                    $"{_applicationOptions.FrontendUrl}/auth/callback?error=authentication_failed");
+                    $"{frontendUrl}/auth/callback?error=authentication_failed");
             }
 
-            ExternalAuthResponse worker = new ExternalAuthResponse();
-            worker.UserId = Guid.NewGuid();
-            worker.Email = workerUser.User.Email;
-            worker.FirstName = workerUser.User.FirstName;
-            worker.LastName = workerUser.User.LastName;
+            var worker = new ExternalAuthResponse
+            {
+                UserId = Guid.NewGuid(),
+                Email = workerUser.User.Email,
+                FirstName = workerUser.User.FirstName,
+                LastName = workerUser.User.LastName
+            };
 
             var token = _jwt.GenerateToken(worker);
 
             return Redirect(
-                $"{_applicationOptions.FrontendUrl}/auth/callback?token={Uri.EscapeDataString(token)}&userId={workerUser.User.Id}");
-
+                $"{frontendUrl}/auth/callback?token={Uri.EscapeDataString(token)}&userId={workerUser.User.Id}");
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.ToString());
+            Console.WriteLine(ex);
             return StatusCode(500, ex.ToString());
-        }       
+        }
     }
 
     #endregion
@@ -95,9 +101,13 @@ public class AuthController : ControllerBase
     #region Lark
 
     [HttpGet("lark/login")]
-    public IActionResult LarkLogin()
+    public IActionResult LarkLogin([FromQuery] string? frontend)
     {
-        var state = Guid.NewGuid().ToString();
+        frontend ??= _applicationOptions.FrontendUrl;
+
+        var state = Convert.ToBase64String(
+            Encoding.UTF8.GetBytes(frontend));
+
         var url = _lark.GetAuthorizationUrl(state);
 
         return Redirect(url);
@@ -110,6 +120,7 @@ public class AuthController : ControllerBase
     {
         try
         {
+            var frontendUrl = GetFrontendUrl(state);
             var larkUser = await _lark.ExchangeCodeAsync(code);
 
             Console.WriteLine("========== LARK USER ==========");
@@ -156,7 +167,7 @@ public class AuthController : ControllerBase
             if (workerUser is null)
             {
                 return Redirect(
-                    $"{_applicationOptions.FrontendUrl}/auth/callback?error=authentication_failed");
+                    $"{frontendUrl}/auth/callback?error=authentication_failed");
             }
 
 
@@ -169,7 +180,7 @@ public class AuthController : ControllerBase
             var token = _jwt.GenerateToken(worker);
 
             return Redirect(
-                $"{_applicationOptions.FrontendUrl}/auth/callback?token={Uri.EscapeDataString(token)}&userId={workerUser.User.Id}");
+                $"{frontendUrl}/auth/callback?token={Uri.EscapeDataString(token)}&userId={workerUser.User.Id}");
         }
         catch (Exception ex)
         {
@@ -180,6 +191,42 @@ public class AuthController : ControllerBase
     }
 
     #endregion
+
+    private string GetFrontendUrl(string? state)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(state))
+                return _applicationOptions.FrontendUrl;
+
+            var bytes = Convert.FromBase64String(state);
+            var frontend = Encoding.UTF8.GetString(bytes);
+
+            if (!Uri.TryCreate(frontend, UriKind.Absolute, out var uri))
+                return _applicationOptions.FrontendUrl;
+
+            // Local development
+            if (uri.Host.Equals("localhost", StringComparison.OrdinalIgnoreCase))
+                return frontend;
+
+            // Cloudflare Pages (production and preview deployments)
+            if (uri.Host.EndsWith(".pages.dev", StringComparison.OrdinalIgnoreCase))
+                return frontend;
+
+            // Future production domain
+            if (uri.Host.Equals("logivis.com", StringComparison.OrdinalIgnoreCase) ||
+                uri.Host.EndsWith(".logivis.com", StringComparison.OrdinalIgnoreCase))
+                return frontend;
+
+            Console.WriteLine($"Blocked frontend redirect: {frontend}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Invalid OAuth state: {ex.Message}");
+        }
+
+        return _applicationOptions.FrontendUrl;
+    }
 
     [HttpGet("health")]
     public IActionResult Health()

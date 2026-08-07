@@ -1,6 +1,7 @@
 import { ShopifyCustomer } from "./ShopifyCustomer";
 import { ShopifyShippingAddress } from "./ShopifyShippingAddress";
 import { ShopifyFulfillment } from "./ShopifyFulfillment";
+import { ShopifyLineItem } from "./ShopifyLineItem";
 
 export interface ShopifyOrder {
 
@@ -17,6 +18,8 @@ export interface ShopifyOrder {
 	customer: ShopifyCustomer | null;
 
 	shippingAddress: ShopifyShippingAddress | null;
+
+	lineItems: ShopifyLineItem[];
 
 	fulfillments: ShopifyFulfillment[];
 }
