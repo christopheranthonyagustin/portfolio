@@ -39,7 +39,31 @@ export class UserService {
 			? await repositories.permissions.getByRoleId(role.RoleId)
 			: [];
 
-		const companies = await repositories.users.getByCompanyId(user.CompanyId);
+		let companies = [];
+
+		if (role?.RoleId === 2) {
+
+			// Administrator: all child companies under the parent company
+			companies = await repositories.users.getByCompanyId(user.CompanyId);
+
+		}
+		else {
+
+			// Operator / Viewer: only the assigned company
+			companies = [
+				{
+					CompanyId: user.AssignedCompanyId,
+					Name: user.AssignedCompanyName
+				}
+			];
+
+		}
+
+		console.log("========================================");
+		console.log("UserService.getById()");
+		console.log("RoleId:", role?.RoleId);
+		console.log("Companies:", JSON.stringify(companies, null, 2));
+		console.log("========================================");
 
 		return {
 			...user,

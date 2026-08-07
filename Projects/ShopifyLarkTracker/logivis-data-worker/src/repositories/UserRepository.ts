@@ -22,31 +22,35 @@ export class UserRepository extends BaseRepository {
 
 		const user = await this.db
 			.prepare(`
-			SELECT
+			  SELECT
 				u.*,
+				-- Preserve the user's actual assigned company
+				assigned.CompanyId AS AssignedCompanyId,
+				assigned.Name AS AssignedCompanyName,
 
+				-- Expose the parent company separately
 				CASE
-					WHEN assigned.ParentCompanyId IS NULL
-						THEN assigned.CompanyId
-					ELSE parent.CompanyId
+				  WHEN assigned.ParentCompanyId IS NULL
+					THEN assigned.CompanyId
+				  ELSE parent.CompanyId
 				END AS CompanyId,
 
 				CASE
-					WHEN assigned.ParentCompanyId IS NULL
-						THEN assigned.Name
-					ELSE parent.Name
+				  WHEN assigned.ParentCompanyId IS NULL
+					THEN assigned.Name
+				  ELSE parent.Name
 				END AS CompanyName
 
-			FROM Users u
+			  FROM Users u
 
-			INNER JOIN Companies assigned
+			  INNER JOIN Companies assigned
 				ON assigned.CompanyId = u.CompanyId
 
-			LEFT JOIN Companies parent
+			  LEFT JOIN Companies parent
 				ON parent.CompanyId = assigned.ParentCompanyId
 
-			WHERE u.UserId = ?
-		`)
+			  WHERE u.UserId = ?
+			`)
 			.bind(id)
 			.first<any>();
 

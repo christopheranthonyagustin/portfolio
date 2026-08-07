@@ -609,30 +609,37 @@ export class DashboardPageComponent implements OnInit {
       return;
     }
 
-    // Default parent company comes from the logged-in user
+    // Default parent company
     this.parentCompanyId = this.currentUser.CompanyId;
-
-    this.companyOptions = [
-      {
-        CompanyId: this.ALL_COMPANIES_ID,
-        Name: '---'
-      },
-      ...this.companies
-    ];
 
     if (this.isSuperUser) {
 
-      // Load all parent companies
+      // Super User
       this.loadParentCompanies();
 
-      // Default selected company = Super User's company
       this.activeCompanyId = this.currentUser.CompanyId;
+
+    }
+    else if (this.currentUser.Role?.RoleId === 2) {
+
+      // Administrator
+      this.companyOptions = [
+        {
+          CompanyId: this.ALL_COMPANIES_ID,
+          Name: '---'
+        },
+        ...this.companies
+      ];
+
+      this.activeCompanyId = this.ALL_COMPANIES_ID;
 
     }
     else {
 
-      // Tenant users
-      this.activeCompanyId = this.ALL_COMPANIES_ID;
+      // Operator / Viewer
+      this.companyOptions = [...this.companies];
+
+      this.activeCompanyId = this.companies[0]?.CompanyId ?? 0;
 
     }
 
