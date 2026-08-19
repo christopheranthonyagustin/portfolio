@@ -6,7 +6,7 @@
 
     <div>
 
-      <h2>Delivery Order Verification</h2>
+      <h2>Delivery Order Estimation</h2>
 
       <div class="header-meta">
 
@@ -249,11 +249,11 @@
 
             <td class="text-right">
 
-         
 
-                {{ shopifyOrder.lineItems.reduce((sum, item) => sum + item.quantity, 0) }}
 
-           
+              {{ shopifyOrder.lineItems.reduce((sum, item) => sum + item.quantity, 0) }}
+
+
 
             </td>
 
@@ -269,15 +269,15 @@
 
             <td class="text-right">
 
-          
 
-                {{
+
+              {{
             shopifyOrder.lineItems
               .reduce((sum, item) => sum + (item.grams * item.quantity), 0) / 1000
             | number:'1.2-2'
-                }} kg
+              }} kg
 
-           
+
 
             </td>
 
@@ -376,10 +376,132 @@
     </section>
 
     <!-- ================================================= -->
+    <!-- ESTIMATED SHIPPING FEE -->
+    <!-- ================================================= -->
+
+    <section class="estimate-section">
+
+      <div class="panel estimate-panel">
+
+        <div class="panel-title">
+          Estimated Shipping Fee
+        </div>
+
+        <table class="estimate-table">
+
+          <!-- Status -->
+
+          <tr>
+            <td>Status</td>
+
+            <td>
+
+              @if (loading) {
+
+              <span class="estimate-status">
+                Calculating...
+              </span>
+
+              } @else if (shippingFeeError) {
+
+              <span class="estimate-status error">
+                Failed
+              </span>
+
+              } @else if (shippingFee) {
+
+              <span class="estimate-status">
+                Success
+              </span>
+
+              } @else {
+
+              <span class="estimate-status">
+                Pending
+              </span>
+
+              }
+
+            </td>
+          </tr>
+
+
+          <!-- Quantity -->
+
+          <tr>
+            <td>Quantity</td>
+
+            <td>
+              {{ totalQuantity }}
+            </td>
+          </tr>
+
+
+          <!-- Weight -->
+
+          <tr>
+            <td>Estimated Weight</td>
+
+            <td>
+              {{ estimatedWeight | number:'1.2-2' }} kg
+            </td>
+          </tr>
+
+
+          <!-- Estimated Fee -->
+          @if (shippingFee) {
+
+          <tr>
+
+            <td>
+              <strong>Estimated Fee</strong>
+            </td>
+
+            <td>
+              <strong>
+                SGD
+                {{ shippingFee.estimated_shipping_fee | number:'1.2-2' }}
+              </strong>
+            </td>
+
+          </tr>
+
+          }
+
+
+          <!-- Error -->
+          @if (shippingFeeError) {
+
+          <tr>
+
+            <td colspan="2">
+
+              <span class="estimate-error">
+                {{ shippingFeeError }}
+              </span>
+
+            </td>
+
+          </tr>
+
+          }
+
+        </table>
+
+      </div>
+
+    </section>
+
+    <!-- ================================================= -->
+    <!-- SENDER -->
+    <!-- ================================================= -->
+    <!-- ================================================= -->
     <!-- SENDER -->
     <!-- ================================================= -->
 
     <section class="comparison">
+
+      <!-- Store Information -->
 
       <div class="panel">
 
@@ -391,22 +513,36 @@
 
           <tr>
             <td>Store</td>
-            <td>Coming Soon</td>
+
+            <td>
+              W Network Private Limited
+            </td>
           </tr>
 
           <tr>
-            <td>Warehouse</td>
-            <td>Coming Soon</td>
+            <td>Phone</td>
+
+            <td>
+              +65 80475798
+            </td>
           </tr>
 
           <tr>
             <td>Address</td>
-            <td>Coming Soon</td>
+
+            <td>
+              35 TAMPINES STREET 92, #03-01
+              <br>
+              Singapore 528880
+            </td>
           </tr>
 
         </table>
 
       </div>
+
+
+      <!-- SPX Sender -->
 
       <div class="panel">
 
@@ -414,39 +550,43 @@
           SPX Sender
         </div>
 
-        @if (order) {
-
         <table>
 
           <tr>
             <td>Company</td>
-            <td>{{ order.sender_info.sender_name }}</td>
+
+            <td>
+              W Network Private Limited
+            </td>
           </tr>
 
           <tr>
             <td>Phone</td>
-            <td>{{ order.sender_info.sender_phone }}</td>
+
+            <td>
+              +65 80475798
+            </td>
           </tr>
 
           <tr>
+            <td>Postal Code</td>
 
+            <td>
+              528880
+            </td>
+          </tr>
+
+          <tr>
             <td>Address</td>
 
             <td>
-
-              {{ order.sender_info.sender_detail_address }}
-
-              {{ order.sender_info.sender_unit_no }}
-
-              Singapore {{ order.sender_info.sender_post_code }}
-
+              35 TAMPINES STREET 92, #03-01
+              <br>
+              Singapore 528880
             </td>
-
           </tr>
 
         </table>
-
-        }
 
       </div>
 
@@ -536,16 +676,19 @@
 
           <tr>
             <td>Customer</td>
-            <td>{{ order.deliver_info.deliver_name }}</td>
+            <td>
+              {{ order.deliver_info.deliver_name }}
+            </td>
           </tr>
 
           <tr>
             <td>Phone</td>
-            <td>{{ order.deliver_info.deliver_phone }}</td>
+            <td>
+              {{ order.deliver_info.deliver_phone }}
+            </td>
           </tr>
 
           <tr>
-
             <td>Address</td>
 
             <td>
@@ -556,10 +699,10 @@
 
               <br>
 
-              Singapore {{ order.deliver_info.deliver_post_code }}
+              Singapore
+              {{ order.deliver_info.deliver_post_code }}
 
             </td>
-
           </tr>
 
         </table>
@@ -567,7 +710,7 @@
         } @else {
 
         <div class="coming-soon">
-          SPX Shipment Not Found
+          SPX Shipment Not Created
         </div>
 
         }

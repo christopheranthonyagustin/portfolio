@@ -2,6 +2,8 @@ export interface ShopifyLineItem {
 
   id: number;
 
+  variantId: number | null;
+
   title: string;
 
   sku: string;
@@ -13,5 +15,15 @@ export interface ShopifyLineItem {
   grams: number;
 
   requiresShipping: boolean;
+
+  weight: number;
+
+  weightUnit: string;
+
+  length: number;
+
+  width: number;
+
+  height: number;
 
 }

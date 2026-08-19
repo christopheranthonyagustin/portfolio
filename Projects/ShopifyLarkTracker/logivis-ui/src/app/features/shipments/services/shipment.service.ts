@@ -70,4 +70,52 @@ export class ShipmentService {
 
   }
 
+  getOrderFee(
+    trackingNumber: string
+  ): Observable<any> {
+
+    return this.http.get(
+      `${this.api}/spx/order-fee`,
+      {
+        params: {
+          trackingNos: trackingNumber
+        }
+      }
+    );
+
+  }
+
+  getShippingFee(
+    request: {
+      senderPostCode: string;
+      deliverPostCode: string;
+      parcelWeight: number;
+      parcelLength?: number;
+      parcelWidth?: number;
+      parcelHeight?: number;
+    }
+  ): Observable<any> {
+
+    return this.http.post(
+      `${this.api}/spx/shipping-fee`,
+      request
+    );
+
+  }
+
+  getAwbLabel(
+    trackingNumber: string
+  ): Observable<any> {
+
+    return this.http.get(
+      `${this.api}/spx/awb`,
+      {
+        params: {
+          trackingNos: trackingNumber
+        }
+      }
+    );
+
+  }
+
 }

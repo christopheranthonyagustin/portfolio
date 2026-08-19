@@ -1,6 +1,8 @@
 export interface ShopifyFulfillment {
 
-	trackingNumber: string;
+  trackingNumber: string;
+
+  trackingCompany: string;
 
 	createdAt: Date;
 

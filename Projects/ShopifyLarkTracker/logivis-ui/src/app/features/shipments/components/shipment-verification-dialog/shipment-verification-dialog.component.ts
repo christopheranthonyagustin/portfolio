@@ -36,15 +36,14 @@ export class ShipmentVerificationDialogComponent {
     order: TrackOrder | null,
     shopifyOrder: ShopifyOrder | null
       ): void {
-    console.log('dialog open =', this.dialog.nativeElement.open);
-    console.log('order =', this.order);
+  
     console.log('[SPX DIALOG] open()', order);
     console.log('[SHOPIFY DIALOG] open()', shopifyOrder);
     this.order = order;
     this.shopifyOrder = shopifyOrder;
     this.cdr.detectChanges();
     this.dialog.nativeElement.showModal();
-    console.log('[OPEN]', this.dialog.nativeElement.open);
+
 
   }
 

@@ -30,6 +30,18 @@ export const ShipmentStatusMap: Record<string, ShipmentStatusStyle> = {
     color: "#6D28D9"
   },
 
+  "On Hold": {
+    label: "On Hold",
+    background: "#FEF3C7",
+    color: "#92400E"
+  },
+
+  "Self Collect": {
+    label: "Self Collect",
+    background: "#E0E7FF",
+    color: "#3730A3"
+  },
+
   "已签收": {
     label: "Delivered",
     background: "#DCFCE7",

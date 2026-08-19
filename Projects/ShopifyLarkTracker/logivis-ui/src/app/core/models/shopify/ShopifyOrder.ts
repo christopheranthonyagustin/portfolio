@@ -9,7 +9,9 @@ export interface ShopifyOrder {
 
 	orderNumber: string;
 
-	sourceName: string;
+  sourceName: string;
+
+  tags?: string;
 
 	status: string;
 
@@ -22,6 +24,9 @@ export interface ShopifyOrder {
 	lineItems: ShopifyLineItem[];
 
 	fulfillments: ShopifyFulfillment[];
+
+  deliveryMethod: string;
+
 }
 
 

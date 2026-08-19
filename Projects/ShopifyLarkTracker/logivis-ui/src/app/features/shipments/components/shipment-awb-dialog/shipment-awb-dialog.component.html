@@ -1,0 +1,151 @@
+<dialog #dialog class="shipment-dialog">
+
+  @if (order) {
+
+  <div class="dialog-header">
+
+    <div>
+
+      <h2>AWB Preview</h2>
+
+      <div class="header-meta">
+
+        <div class="meta-card">
+          <span>Order No</span>
+          <strong>{{ order.order_id }}</strong>
+        </div>
+
+        <div class="meta-card">
+          <span>Tracking No</span>
+          <strong>{{ order.tracking_no }}</strong>
+        </div>
+
+
+        <div class="meta-card">
+          <span>Status</span>
+          <strong class="status-badge" [class]="getStatusClass(order.status)">
+            {{ order.status }}
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="close-button" (click)="close()">
+      ✕
+    </button>
+
+  </div>
+
+  <div class="dialog-body">
+
+    <section class="comparison">
+
+      <div class="panel awb-panel">
+
+        <div class="panel-title">
+          AWB Preview
+        </div>
+
+        <div class="awb-preview">
+
+          @if (safeAwbPreviewUrl) {
+
+          <iframe *ngIf="safeAwbPreviewUrl"
+                  [src]="safeAwbPreviewUrl"
+                  title="SPX AWB Preview"
+                  class="awb-frame"
+                  (error)="onAwbPreviewError()">
+          </iframe>
+
+          } @else if (awbError) {
+
+          <div class="awb-error">
+
+            <div class="awb-error-icon">
+              📄
+            </div>
+
+            <h3>AWB Preview Not Available</h3>
+
+            <p>{{ awbError }}</p>
+
+            <button class="btn" (click)="downloadAwb()">
+              Try Download AWB
+            </button>
+
+          </div>
+
+          } @else {
+
+          <div class="awb-placeholder">
+
+            <div class="spinner"></div>
+
+            <p>Loading AWB preview...</p>
+
+          </div>
+
+          }
+
+        </div>
+
+      </div>
+
+      <div class="panel fee-panel">
+
+        <div class="panel-title">
+          Order Fee
+        </div>
+
+        <table>
+
+          <tr>
+            <td>Basic Shipping Fee</td>
+            <td>SGD {{ orderFee?.fee_info?.basic_shipping_fee ?? 0 | number:'1.2-2' }}</td>
+          </tr>
+
+          <tr>
+            <td>COD Fee</td>
+            <td>SGD {{ orderFee?.fee_info?.cod_service_fee ?? 0 | number:'1.2-2' }}</td>
+          </tr>
+
+          <tr>
+            <td>Insurance Fee</td>
+            <td>SGD {{ orderFee?.fee_info?.insurance_service_fee ?? 0 | number:'1.2-2' }}</td>
+          </tr>
+
+          <tr>
+            <td>Remote Area Fee</td>
+            <td>SGD {{ orderFee?.fee_info?.remote_area_fee ?? 0 | number:'1.2-2' }}</td>
+          </tr>
+
+          <tr>
+            <td><strong>Total Charged</strong></td>
+            <td><strong>SGD {{ orderFee?.fee_info?.actual_shipping_fee ?? 0 | number:'1.2-2' }}</strong></td>
+          </tr>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="dialog-footer">
+
+    <div class="footer-actions">
+
+      <button class="btn" (click)="close()">
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+  }
+
+</dialog>

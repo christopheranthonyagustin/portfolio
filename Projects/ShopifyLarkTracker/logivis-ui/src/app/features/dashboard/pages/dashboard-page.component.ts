@@ -5,11 +5,9 @@ import {
   OnInit,
   inject
 } from '@angular/core';
-
+import { forkJoin, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
-
 import { AgGridAngular } from 'ag-grid-angular';
-
 import type {
   ColDef,
   GridApi,
@@ -43,11 +41,11 @@ import { ShipmentVerificationDialogComponent } from '../../../features/shipments
 import { TrackOrderResponse } from '../../../core/models/track-order-response';
 import { ViewChild } from '@angular/core';
 import { ShipmentHistoryDialogComponent } from '../../../features/shipments/components/shipment-history-dialog/shipment-history-dialog.component';
-import { forkJoin } from 'rxjs';
+import { ShipmentAwbDialogComponent } from '../../../features/shipments/components/shipment-awb-dialog/shipment-awb-dialog.component';
 import { Companies } from '../../../core/models/Companies';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
-
+import { ShipmentEstDialogComponent } from '../../../features/shipments/components/shipment-est-dialog/shipment-est-dialog.component';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -62,7 +60,9 @@ import { environment } from '../../../../environments/environment';
     FooterComponent,
     ShipmentActionRendererComponent,
     ShipmentVerificationDialogComponent,
-    ShipmentHistoryDialogComponent
+    ShipmentHistoryDialogComponent,
+    ShipmentAwbDialogComponent,
+    ShipmentEstDialogComponent
   ],
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss']
@@ -79,6 +79,12 @@ export class DashboardPageComponent implements OnInit {
 
   @ViewChild(ShipmentHistoryDialogComponent)
   private shipmentHistoryDialog!: ShipmentHistoryDialogComponent;
+
+  @ViewChild(ShipmentAwbDialogComponent)
+  private shipmentAwbDialog!: ShipmentAwbDialogComponent;
+
+  @ViewChild(ShipmentEstDialogComponent)
+  private shipmentEstDialog!: ShipmentEstDialogComponent;
 
   constructor(
     public readonly sidebarService: SidebarService
@@ -114,6 +120,12 @@ export class DashboardPageComponent implements OnInit {
   private readonly ALL_COMPANIES_ID = 0;
   private readonly http = inject(HttpClient);
   parentCompanies: Companies[] = [];
+  private currentRoleId = 0;
+
+    private get isOperatorRole(): boolean {
+    return this.currentRoleId > 2;
+  }
+
 
   readonly defaultColDef: ColDef = {
 
@@ -157,12 +169,11 @@ export class DashboardPageComponent implements OnInit {
       field: 'status',
       headerName: 'Status',
       width: 170,
-
       valueFormatter: params => getShipmentStatus(params.value),
-
       cellStyle: (params: CellClassParams): CellStyle | null => {
 
-        const status = getShipmentStatus(params.value);
+        const status =
+          getShipmentStatus(params.value);
 
         switch (status) {
 
@@ -194,6 +205,20 @@ export class DashboardPageComponent implements OnInit {
               fontWeight: '600'
             };
 
+          case 'On Hold':
+            return {
+              backgroundColor: '#FEF3C7',
+              color: '#92400E',
+              fontWeight: '600'
+            };
+
+          case 'Self Collect':
+            return {
+              backgroundColor: '#E0E7FF',
+              color: '#3730A3',
+              fontWeight: '600'
+            };
+
           case 'Delivered':
             return {
               backgroundColor: '#DCFCE7',
@@ -220,11 +245,9 @@ export class DashboardPageComponent implements OnInit {
 
           default:
             return null;
-
         }
-
       }
-
+     
     },
 
     {
@@ -288,11 +311,34 @@ export class DashboardPageComponent implements OnInit {
       cellRenderer: ShipmentActionRendererComponent,
       cellRendererParams: {
         onView: (shipment: Shipment) => this.viewShipment(shipment),
-        onHistory: (shipment: Shipment) => this.historyShipment(shipment)
+        onHistory: (shipment: Shipment) => this.historyShipment(shipment),
+        onAwb: (shipment: Shipment) => this.awbShipment(shipment),
+        onEstimate: (shipment: Shipment) => this.estimateShipment(shipment)
       }
     }
 
   ];
+
+  private updateRoleColumnVisibility(): void {
+
+    if (!this.dashboardGridApi) {
+      return;
+    }
+
+    const hideOperatorColumns =
+      this.isOperatorRole;
+
+    this.dashboardGridApi.setColumnsVisible(
+      [
+        'awbCreatedTime',
+        'shipmentDate',
+        'lastUpdated',
+        'remarks'
+      ],
+      !hideOperatorColumns
+    );
+
+  }
 
   private readonly statusOrder = [
     'Pending Pickup',
@@ -302,6 +348,8 @@ export class DashboardPageComponent implements OnInit {
     'Returned',
     'Lost',
     'Canceled',
+    'On Hold',
+    'Self Collect',
     'Unknown'
   ];
 
@@ -609,6 +657,9 @@ export class DashboardPageComponent implements OnInit {
       return;
     }
 
+    this.currentRoleId =
+      this.currentUser.Role?.RoleId ?? 0;
+
     // Default parent company
     this.parentCompanyId = this.currentUser.CompanyId;
 
@@ -668,7 +719,8 @@ export class DashboardPageComponent implements OnInit {
     event: GridReadyEvent
   ): void {
 
-    this.dashboardGridApi = event.api;
+    this.dashboardGridApi =
+      event.api;
 
     if (this.allShipments.length > 0) {
 
@@ -678,6 +730,8 @@ export class DashboardPageComponent implements OnInit {
       );
 
     }
+
+    this.updateRoleColumnVisibility();
 
   }
 
@@ -1314,30 +1368,29 @@ export class DashboardPageComponent implements OnInit {
 
   viewShipment(shipment: Shipment): void {
 
-    if (!shipment.trackingNumber) {
-
-      alert('Tracking number not available.');
-
-      return;
-
-    }
+    const trackingNumber =
+      shipment.trackingNumber?.trim() ?? '';
 
     forkJoin({
 
-      spx: this.shipmentService.getShipmentDetails(
-        shipment.trackingNumber
-      ),
+      spx:
+        trackingNumber
+          ? this.shipmentService.getShipmentDetails(
+            trackingNumber
+          )
+          : of(null),
 
-      shopify: this.shipmentService.getShopifyOrder(
-        shipment.orderNo
-      )
+      shopify:
+        this.shipmentService.getShopifyOrder(
+          shipment.orderNo
+        )
 
     }).subscribe({
 
       next: ({ spx, shopify }) => {
 
         const spxOrder =
-          spx.data.orders.length > 0
+          spx?.data?.orders?.length > 0
             ? spx.data.orders[0]
             : null;
 
@@ -1372,14 +1425,20 @@ export class DashboardPageComponent implements OnInit {
 
   historyShipment(shipment: Shipment): void {
 
-    if (!shipment.trackingNumber) {
+    const trackingNumber =
+      shipment.trackingNumber?.trim() ?? '';
+
+    if (!trackingNumber) {
+
+      alert(
+        'Shipment history is not available because there is no delivery order yet.'
+      );
 
       return;
-
     }
 
     this.shipmentService
-      .getShipmentDetails(shipment.trackingNumber)
+      .getShipmentDetails(trackingNumber)
       .subscribe({
 
         next: (response: TrackOrderResponse) => {
@@ -1389,11 +1448,11 @@ export class DashboardPageComponent implements OnInit {
             alert('Shipment not found.');
 
             return;
-
           }
 
-          const order = response.data.orders[0];
-          console.log('shipmentDialog =', this.shipmentHistoryDialog);
+          const order =
+            response.data.orders[0];
+
           this.shipmentHistoryDialog.open(order);
 
         },
@@ -1405,6 +1464,111 @@ export class DashboardPageComponent implements OnInit {
         }
 
       });
+
+  }
+
+
+  awbShipment(shipment: Shipment): void {
+
+    const trackingNumber =
+      shipment.trackingNumber?.trim() ?? '';
+
+    if (!trackingNumber) {
+
+      alert(
+        'AWB is not available because there is no delivery order yet.'
+      );
+
+      return;
+    }
+
+    this.shipmentService
+      .getShipmentDetails(trackingNumber)
+      .subscribe({
+
+        next: (response: TrackOrderResponse) => {
+
+          if (response.data.orders.length === 0) {
+
+            alert('Shipment not found.');
+
+            return;
+          }
+
+          const order =
+            response.data.orders[0];
+
+          this.shipmentAwbDialog.open(order);
+
+        },
+
+        error: err => {
+
+          console.error(err);
+
+        }
+
+      });
+
+  }
+
+
+  estimateShipment(shipment: Shipment): void {
+
+    const isSelfCollect =
+      shipment.status?.trim().toLowerCase() === 'self collect';
+
+    if (isSelfCollect) {
+      alert('Estimate is not applicable for Self Collect orders.');
+      return;
+    }
+
+    const trackingNumber =
+      shipment.trackingNumber?.trim() ?? '';
+
+    forkJoin({
+
+      spx:
+        trackingNumber
+          ? this.shipmentService.getShipmentDetails(
+            trackingNumber
+          )
+          : of(null),
+
+      shopify:
+        this.shipmentService.getShopifyOrder(
+          shipment.orderNo
+        )
+
+    }).subscribe({
+
+      next: ({ spx, shopify }) => {
+
+        const spxOrder =
+          spx?.data?.orders?.length > 0
+            ? spx.data.orders[0]
+            : null;
+
+        const shopifyOrder =
+          shopify ?? null;
+
+        if (!spxOrder && !shopifyOrder) {
+          alert('Order not found.');
+          return;
+        }
+
+        this.shipmentEstDialog.open(
+          spxOrder,
+          shopifyOrder
+        );
+
+      },
+
+      error: err => {
+        console.error(err);
+      }
+
+    });
 
   }
 

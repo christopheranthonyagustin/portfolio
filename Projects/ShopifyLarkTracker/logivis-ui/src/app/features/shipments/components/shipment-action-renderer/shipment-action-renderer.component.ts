@@ -34,15 +34,6 @@ export class ShipmentActionRendererComponent
 
   }
 
-  refreshShipment(): void {
-
-    console.log(
-      'Refresh',
-      this.params.data
-    );
-
-  }
-
   history(): void {
 
     if (this.params.onHistory) {
@@ -53,10 +44,31 @@ export class ShipmentActionRendererComponent
 
   }
 
-  copy(): void {
+  estimate(): void {
 
-    navigator.clipboard.writeText(
-      this.params.data.trackingNumber ?? ''
+    if (this.params.onEstimate) {
+
+      this.params.onEstimate(this.params.data);
+
+    }
+
+  }
+
+  awb(): void {
+
+    if (this.params.onAwb) {
+
+      this.params.onAwb(this.params.data);
+
+    }
+
+  }
+
+  refreshShipment(): void {
+
+    console.log(
+      'Refresh',
+      this.params.data
     );
 
   }

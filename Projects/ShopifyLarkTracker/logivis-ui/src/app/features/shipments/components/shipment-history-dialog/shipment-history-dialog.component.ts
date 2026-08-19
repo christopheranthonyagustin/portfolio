@@ -39,10 +39,10 @@ export class ShipmentHistoryDialogComponent
 
   ngAfterViewInit(): void {
 
-    console.log(
-      '[History] ViewChild =',
-      this.dialog
-    );
+    // console.log(
+    //   '[History] ViewChild =',
+    //   this.dialog
+    // );
 
   }
 
