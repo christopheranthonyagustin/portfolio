@@ -8,9 +8,10 @@ import {
 import { CommonModule, DatePipe, DecimalPipe } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { environment } from '../../../../../environments/environment';
-
+import { forkJoin } from 'rxjs';
 import { TrackOrder } from '../../../../core/models/track-order-response';
 import { ShipmentService } from '../../services/shipment.service';
+import { Shipment } from '../../../../models/shipment';
 
 @Component({
   selector: 'app-shipment-awb-dialog',
@@ -31,6 +32,7 @@ export class ShipmentAwbDialogComponent {
   dialog!: ElementRef<HTMLDialogElement>;
 
   order: TrackOrder | null = null;
+  orders: TrackOrder[] = [];
   orderFee: any = null;
 
   awbLink: string | null = null;

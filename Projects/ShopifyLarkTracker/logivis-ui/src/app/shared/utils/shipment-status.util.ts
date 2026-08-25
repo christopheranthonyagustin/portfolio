@@ -6,6 +6,38 @@ export interface ShipmentStatusStyle {
 
 export const ShipmentStatusMap: Record<string, ShipmentStatusStyle> = {
 
+  // ==========================================================
+  // Shopify Fulfillment Status
+  // ==========================================================
+
+  "unfulfilled": {
+    label: "Unfulfilled",
+    background: "#FEF3C7",
+    color: "#92400E"
+  },
+
+  "partial": {
+    label: "Partial",
+    background: "#FEF3C7",
+    color: "#92400E"
+  },
+
+  "fulfilled": {
+    label: "Fulfilled",
+    background: "#DCFCE7",
+    color: "#166534"
+  },
+
+  "restocked": {
+    label: "Restocked",
+    background: "#F3F4F6",
+    color: "#4B5563"
+  },
+
+  // ==========================================================
+  // SPX Status
+  // ==========================================================
+
   "待揽收": {
     label: "Pending Pickup",
     background: "#FEF3C7",

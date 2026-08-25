@@ -1,0 +1,196 @@
+<dialog #dialog class="shipment-dialog">
+
+  <div class="dialog-header">
+
+    <div>
+
+      <h2>Multiple AWB Preview</h2>
+
+      <div class="header-meta">
+
+        <div class="meta-card">
+          <span>Selected Shipments</span>
+          <strong>{{ shipments.length }}</strong>
+        </div>
+
+        <div class="meta-card">
+          <span>AWB Labels</span>
+          <strong>{{ shipments.length }}</strong>
+        </div>
+
+        <div class="meta-card">
+          <span>Status</span>
+
+          <strong class="status-badge"
+                  [class.status-badge]="true">
+
+            @if (loading) {
+            Loading...
+            }
+            @else if (awbLink) {
+            Ready
+            }
+            @else {
+            Unavailable
+            }
+
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="close-button"
+            type="button"
+            (click)="close()">
+
+      ✕
+
+    </button>
+
+  </div>
+
+
+  <div class="dialog-body">
+
+    <section class="comparison">
+
+      <!-- =====================================================
+           AWB PREVIEW
+      ====================================================== -->
+
+      <div class="panel awb-panel">
+
+        <div class="panel-title">
+          AWB Preview
+        </div>
+
+        <div class="awb-preview">
+
+          @if (safeAwbPreviewUrl) {
+
+          <iframe [src]="safeAwbPreviewUrl"
+                  title="SPX Multiple AWB Preview"
+                  class="awb-frame"
+                  (error)="onAwbPreviewError()">
+          </iframe>
+
+          }
+          @else if (awbError) {
+
+          <div class="awb-error">
+
+            <div class="awb-error-icon">
+              📄
+            </div>
+
+            <h3>AWB Preview Not Available</h3>
+
+            <p>
+              {{ awbError }}
+            </p>
+
+
+          </div>
+
+          }
+          @else {
+
+          <div class="awb-placeholder">
+
+            <div class="spinner"></div>
+
+            <p>
+              Loading AWB preview...
+            </p>
+
+          </div>
+
+          }
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           SELECTED AWBS
+      ====================================================== -->
+
+      <div class="panel fee-panel">
+
+        <div class="panel-title">
+          Selected AWBs
+        </div>
+
+        <div class="selected-awbs-list">
+
+          <table class="selected-awbs-table">
+
+            <tbody>
+
+              @for (
+              shipment of shipments;
+              track shipment.recordId
+              ) {
+
+              <tr>
+
+                <td>
+                  <strong>
+                    {{ shipment.orderNo }}
+                  </strong>
+                </td>
+
+                <td>
+
+                  <div class="selected-awb-tracking">
+                    {{ shipment.trackingNumber }}
+                  </div>
+
+                  @if (shipment.customerName) {
+
+                  <div class="selected-awb-customer">
+                    {{ shipment.customerName }}
+                  </div>
+
+                  }
+
+                </td>
+
+              </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <div class="dialog-footer">
+
+    <div class="footer-actions">
+
+      <button class="btn"
+              type="button"
+              (click)="close()">
+
+        Close
+
+      </button>
+
+    </div>
+
+  </div>
+
+</dialog>

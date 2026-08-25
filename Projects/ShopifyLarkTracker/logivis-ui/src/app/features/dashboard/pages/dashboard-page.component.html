@@ -221,6 +221,7 @@
       </section>
 
       @if (currentUser?.Role?.Code !== 'VIEWER') {
+
       <!-- Operation Center -->
       <section class="operation-center">
 
@@ -240,9 +241,14 @@
 
           </div>
 
+
           <div class="operation-grid">
 
-            <!-- Import Shopify Orders -->
+
+            <!-- ======================================================
+   Shopify Orders
+  ======================================================= -->
+
             <div class="operation-item">
 
               <div class="operation-header">
@@ -252,13 +258,35 @@
                 </div>
 
                 <div>
+
                   <h3>Shopify Orders</h3>
+
                   <p>
-                    Import newly created Shopify orders into LogiVis.
+                    <strong>When:</strong>
+                    New Shopify orders are available and you don't want
+                    to wait for the scheduled synchronization.
                   </p>
+
+                  <div class="operation-steps">
+
+                    <strong>Steps:</strong>
+
+                    <ol>
+                      <li>
+                        Click <b>Import Shopify Orders</b>.
+                      </li>
+
+                      <li>
+                        Verify the imported orders in LogiVis.
+                      </li>
+                    </ol>
+
+                  </div>
+
                 </div>
 
               </div>
+
 
               <button class="btn btn-success"
                       (click)="importShopifyOrders()"
@@ -278,7 +306,11 @@
 
             </div>
 
-            <!-- Bulk Update -->
+
+            <!-- ======================================================
+   Delivery Status
+  ======================================================= -->
+
             <div class="operation-item">
 
               <div class="operation-header">
@@ -288,14 +320,35 @@
                 </div>
 
                 <div>
+
                   <h3>Delivery Status</h3>
 
                   <p>
-                    Synchronize delivery status for recent shipments.
+                    <strong>When:</strong>
+                    You need the latest shipment status now and don't want
+                    to wait for the scheduled update.
                   </p>
+
+                  <div class="operation-steps">
+
+                    <strong>Steps:</strong>
+
+                    <ol>
+                      <li>
+                        Click <b>Bulk Update Delivery Status</b>.
+                      </li>
+
+                      <li>
+                        Review the updated shipment statuses.
+                      </li>
+                    </ol>
+
+                  </div>
+
                 </div>
 
               </div>
+
 
               <button class="btn btn-primary"
                       (click)="bulkUpdate()"
@@ -315,38 +368,167 @@
 
             </div>
 
-            <!-- Manual Order Update -->
+
+            <!-- ======================================================
+   Download Multiple AWB
+  ======================================================= -->
+
             <div class="operation-item">
 
               <div class="operation-header">
 
                 <div class="operation-icon warning">
-                  <i class="fa-solid fa-pen-to-square"></i>
+                  <i class="fa-solid fa-file-arrow-down"></i>
                 </div>
 
                 <div>
 
-                  <h3>Manual Order Update</h3>
+                  <h3>Download Multiple AWB</h3>
 
                   <p>
-                    Update a specific order including split shipments.
+                    <strong>When:</strong>
+                    You need AWBs for multiple shipments.
                   </p>
+
+                  <div class="operation-steps">
+
+                    <strong>Steps:</strong>
+
+                    <ol>
+                      <li>
+                        Select <b>1–5 eligible shipments</b>.
+                      </li>
+
+                      <li>
+                        Each shipment must have an
+                        <b>SPX tracking number</b>
+                        and must not be <b>Unfulfilled</b>.
+                      </li>
+
+                      <li>
+                        Click <b>Download Multiple AWB</b>.
+                      </li>
+
+                      <li>
+                        Review the consolidated PDF and use the
+                        PDF viewer's <b>Download</b> button.
+                      </li>
+                    </ol>
+
+                  </div>
 
                 </div>
 
               </div>
 
-              <input type="text"
-                     class="search-box"
-                     placeholder="Master Order No."
-                     [(ngModel)]="masterOrderNo" />
 
-              <button class="btn btn-warning mt-2"
-                      (click)="updateOrder()">
+              <button class="btn btn-warning"
+                      (click)="downloadMultipleAwb()"
+                      [disabled]="isDownloadingAwb">
 
-                <i class="fa-solid fa-pen"></i>
+                <i class="fa-solid fa-download"></i>
 
-                Update Order
+                <span *ngIf="!isDownloadingAwb">
+                  Download Multiple AWB
+                </span>
+
+                <span *ngIf="isDownloadingAwb">
+                  ⏳ Preparing AWBs...
+                </span>
+
+              </button>
+
+            </div>
+
+
+            <!-- ======================================================
+                 Quick Create SPX Order
+            ======================================================= -->
+
+
+            <div class="operation-item">
+
+              <div class="operation-header">
+
+                <div class="operation-icon spx">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+
+                <div>
+                  <h3>Quick Create SPX Order</h3>
+
+                  <p>
+                    Create SPX orders immediately for the selected shipments
+                    without waiting for the normal synchronization process.
+                  </p>
+                </div>
+
+              </div>
+
+
+              <!-- Weight -->
+              <div class="spx-order-controls">
+
+                <div class="spx-field">
+
+                  <label for="spxWeightMode">
+                    Weight
+                  </label>
+
+                  <select id="spxWeightMode"
+                          [(ngModel)]="spxWeightMode">
+
+                    <option value="small">
+                      Small Item (3 kg)
+                    </option>
+
+                    <option value="big">
+                      Big Item (15 kg)
+                    </option>
+
+                    <option value="custom">
+                      Custom Weight
+                    </option>
+
+                  </select>
+
+                  <span class="spx-weight-note">
+                    Maximum 5 shipments. All selected shipments will use the same weight.
+                  </span>
+
+                </div>
+
+
+                @if (spxWeightMode === 'custom') {
+
+                <div class="spx-field">
+
+                  <label for="spxWeight">
+                    Parcel Weight (kg)
+                  </label>
+
+                  <input id="spxWeight"
+                         type="number"
+                         min="0.01"
+                         step="0.01"
+                         [(ngModel)]="spxWeight"
+                         placeholder="Enter weight" />
+
+                </div>
+
+                }
+
+              </div>
+
+
+              <!-- Action -->
+              <button type="button"
+                      class="btn btn-spx"
+                      (click)="createSpxOrder()">
+
+                <i class="fa-solid fa-box"></i>
+
+                Create SPX Order
 
               </button>
 
@@ -393,9 +575,11 @@
                              [columnDefs]="dashboardColumnDefs"
                              [defaultColDef]="defaultColDef"
                              [rowData]="filteredShipments"
+                             [rowSelection]="rowSelection"
                              [pagination]="true"
                              [paginationPageSize]="20"
                              (gridReady)="onGridReady($event)"
+                             (gridSizeChanged)="onGridSizeChanged($event)"
                              [components]="components">
             </ag-grid-angular>
 
@@ -420,5 +604,7 @@
 </app-shipment-history-dialog>
 <app-shipment-awb-dialog>
 </app-shipment-awb-dialog>
+<app-shipment-multiple-awb-dialog>
+</app-shipment-multiple-awb-dialog>
 <app-shipment-est-dialog>
 </app-shipment-est-dialog>

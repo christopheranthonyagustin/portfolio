@@ -8,10 +8,15 @@ import {
 import { forkJoin, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { AgGridAngular } from 'ag-grid-angular';
-import type {
-  ColDef,
+import {
   GridApi,
-  GridReadyEvent
+  GridReadyEvent,
+  GridSizeChangedEvent,
+  ColDef,
+  CellClassParams,
+  CellStyle,
+  RowSelectionOptions,
+  themeQuartz
 } from 'ag-grid-community';
 
 import { SidebarComponent } from '../../../layout/sidebar/sidebar.component';
@@ -27,7 +32,6 @@ import { Shipment } from '../../../models/shipment';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration } from 'chart.js';
 
-import { themeQuartz } from 'ag-grid-community';
 import { finalize } from 'rxjs/operators';
 
 import { getShipmentStatus } from '../../../shared/utils/shipment-status.util';
@@ -35,13 +39,13 @@ import { getShipmentStatus } from '../../../shared/utils/shipment-status.util';
 import { FormsModule } from '@angular/forms';
 import { SidebarService } from '../../../layout/sidebar/sidebar.service';
 import { dateTimeFormatter } from '../../../shared/utils/date-utils';
-import { CellClassParams, CellStyle} from 'ag-grid-community';
 import { ShipmentActionRendererComponent } from '../../../features/shipments/components/shipment-action-renderer/shipment-action-renderer.component';
 import { ShipmentVerificationDialogComponent } from '../../../features/shipments/components/shipment-verification-dialog/shipment-verification-dialog.component';
 import { TrackOrderResponse } from '../../../core/models/track-order-response';
 import { ViewChild } from '@angular/core';
 import { ShipmentHistoryDialogComponent } from '../../../features/shipments/components/shipment-history-dialog/shipment-history-dialog.component';
 import { ShipmentAwbDialogComponent } from '../../../features/shipments/components/shipment-awb-dialog/shipment-awb-dialog.component';
+import { ShipmentMultipleAwbDialogComponent } from '../../../features/shipments/components/shipment-multiple-awb-dialog/shipment-multiple-awb-dialog.component';
 import { Companies } from '../../../core/models/Companies';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
@@ -62,6 +66,7 @@ import { ShipmentEstDialogComponent } from '../../../features/shipments/componen
     ShipmentVerificationDialogComponent,
     ShipmentHistoryDialogComponent,
     ShipmentAwbDialogComponent,
+    ShipmentMultipleAwbDialogComponent,
     ShipmentEstDialogComponent
   ],
   templateUrl: './dashboard-page.component.html',
@@ -83,6 +88,9 @@ export class DashboardPageComponent implements OnInit {
   @ViewChild(ShipmentAwbDialogComponent)
   private shipmentAwbDialog!: ShipmentAwbDialogComponent;
 
+  @ViewChild(ShipmentMultipleAwbDialogComponent)
+  private shipmentMultipleAwbDialog!: ShipmentMultipleAwbDialogComponent;
+
   @ViewChild(ShipmentEstDialogComponent)
   private shipmentEstDialog!: ShipmentEstDialogComponent;
 
@@ -101,6 +109,12 @@ export class DashboardPageComponent implements OnInit {
 
   private readonly shipmentService =
     inject(ShipmentService);
+
+  rowSelection: RowSelectionOptions = {
+    mode: 'multiRow',
+    checkboxes: true,
+    headerCheckbox: true
+  };
 
   private dashboardGridApi?: GridApi;
   theme = themeQuartz;
@@ -121,6 +135,10 @@ export class DashboardPageComponent implements OnInit {
   private readonly http = inject(HttpClient);
   parentCompanies: Companies[] = [];
   private currentRoleId = 0;
+  isDownloadingAwb = false;
+  spxOrderNo = '';
+  spxWeightMode: 'small' | 'big' | 'custom' = 'small';
+  spxWeight: number | null = null;
 
     private get isOperatorRole(): boolean {
     return this.currentRoleId > 2;
@@ -141,16 +159,15 @@ export class DashboardPageComponent implements OnInit {
   readonly dashboardColumnDefs: ColDef[] = [
 
     {
-      field: 'orderNo',
-      headerName: 'Order No',
-      pinned: 'left',
-      width: 120
-    },
-
-    {
       field: 'trackingNumber',
       headerName: 'Tracking No',
       minWidth: 120
+    },
+
+    {
+      field: 'orderNo',
+      headerName: 'Order No',
+      width: 120
     },
 
     {
@@ -160,16 +177,13 @@ export class DashboardPageComponent implements OnInit {
     },
 
     {
-      field: 'courier',
-      headerName: 'Courier',
-      width: 120
-    },
-
-    {
       field: 'status',
       headerName: 'Status',
       width: 170,
-      valueFormatter: params => getShipmentStatus(params.value),
+
+      valueFormatter: params =>
+        getShipmentStatus(params.value),
+
       cellStyle: (params: CellClassParams): CellStyle | null => {
 
         const status =
@@ -177,6 +191,8 @@ export class DashboardPageComponent implements OnInit {
 
         switch (status) {
 
+          case 'Unfulfilled':
+          case 'Partial':
           case 'Pending Pickup':
             return {
               backgroundColor: '#FEF3C7',
@@ -237,6 +253,7 @@ export class DashboardPageComponent implements OnInit {
 
           case 'Returned':
           case 'Canceled':
+          case 'Restocked':
             return {
               backgroundColor: '#F3F4F6',
               color: '#4B5563',
@@ -247,7 +264,12 @@ export class DashboardPageComponent implements OnInit {
             return null;
         }
       }
-     
+    },
+
+    {
+      field: 'courier',
+      headerName: 'Courier',
+      width: 120
     },
 
     {
@@ -260,7 +282,8 @@ export class DashboardPageComponent implements OnInit {
       field: 'awbCreatedTime',
       headerName: 'AWB Created',
       minWidth: 170,
-      valueFormatter: params => dateTimeFormatter(params.value),
+      valueFormatter: params =>
+        dateTimeFormatter(params.value),
       filter: 'agDateColumnFilter',
       filterParams: {
         includeTime: false
@@ -271,7 +294,8 @@ export class DashboardPageComponent implements OnInit {
       field: 'shipmentDate',
       headerName: 'Shipment Date',
       minWidth: 170,
-      valueFormatter: params => dateTimeFormatter(params.value),
+      valueFormatter: params =>
+        dateTimeFormatter(params.value),
       filter: 'agDateColumnFilter',
       filterParams: {
         includeTime: false
@@ -282,7 +306,8 @@ export class DashboardPageComponent implements OnInit {
       field: 'lastUpdated',
       headerName: 'Last Updated',
       minWidth: 170,
-      valueFormatter: params => dateTimeFormatter(params.value),
+      valueFormatter: params =>
+        dateTimeFormatter(params.value),
       filter: 'agDateColumnFilter',
       filterParams: {
         includeTime: false
@@ -299,7 +324,8 @@ export class DashboardPageComponent implements OnInit {
       field: 'hasException',
       headerName: 'Exception',
       width: 110,
-      valueFormatter: params => params.value ? '⚠ Yes' : ''
+      valueFormatter: params =>
+        params.value ? '⚠ Yes' : ''
     },
 
     {
@@ -310,10 +336,17 @@ export class DashboardPageComponent implements OnInit {
       pinned: 'right',
       cellRenderer: ShipmentActionRendererComponent,
       cellRendererParams: {
-        onView: (shipment: Shipment) => this.viewShipment(shipment),
-        onHistory: (shipment: Shipment) => this.historyShipment(shipment),
-        onAwb: (shipment: Shipment) => this.awbShipment(shipment),
-        onEstimate: (shipment: Shipment) => this.estimateShipment(shipment)
+        onView: (shipment: Shipment) =>
+          this.viewShipment(shipment),
+
+        onHistory: (shipment: Shipment) =>
+          this.historyShipment(shipment),
+
+        onAwb: (shipment: Shipment) =>
+          this.awbShipment(shipment),
+
+        onEstimate: (shipment: Shipment) =>
+          this.estimateShipment(shipment)
       }
     }
 
@@ -333,7 +366,10 @@ export class DashboardPageComponent implements OnInit {
         'awbCreatedTime',
         'shipmentDate',
         'lastUpdated',
-        'remarks'
+        'remarks',
+        'courier',
+        'channel',
+        'hasException'
       ],
       !hideOperatorColumns
     );
@@ -341,6 +377,8 @@ export class DashboardPageComponent implements OnInit {
   }
 
   private readonly statusOrder = [
+    'Unfulfilled',
+    'Partial',
     'Pending Pickup',
     'In Transit',
     'Out for Delivery',
@@ -348,9 +386,9 @@ export class DashboardPageComponent implements OnInit {
     'Returned',
     'Lost',
     'Canceled',
+    'Restocked',
     'On Hold',
-    'Self Collect',
-    'Unknown'
+    'Self Collect'
   ];
 
   // ------------------------------------------------------------------
@@ -731,6 +769,12 @@ export class DashboardPageComponent implements OnInit {
 
     }
 
+    // Force the center columns to occupy the available width.
+    setTimeout(() => {
+      this.dashboardGridApi?.sizeColumnsToFit();
+    });
+
+
     this.updateRoleColumnVisibility();
 
   }
@@ -739,6 +783,14 @@ export class DashboardPageComponent implements OnInit {
 
     // We will use this later for dashboard filtering.
     this.loadRecentShipments();
+
+  }
+
+  onGridSizeChanged(
+    event: GridSizeChangedEvent
+  ): void {
+
+    event.api.sizeColumnsToFit();
 
   }
 
@@ -1366,56 +1418,166 @@ export class DashboardPageComponent implements OnInit {
 
   }
 
+  downloadMultipleAwb(): void {
+
+    const selectedShipments =
+      this.dashboardGridApi?.getSelectedRows() ?? [];
+
+    // ----------------------------------------------------------
+    // Minimum 1 selection
+    // ----------------------------------------------------------
+
+    if (selectedShipments.length === 0) {
+
+      alert(
+        'Please select at least one shipment.'
+      );
+
+      return;
+    }
+
+    // ----------------------------------------------------------
+    // Maximum 5 selections
+    // ----------------------------------------------------------
+
+    if (selectedShipments.length > 5) {
+
+      alert(
+        'You can select a maximum of 5 shipments at a time.'
+      );
+
+      return;
+    }
+
+    console.log(
+      '[AWB] Selected shipments:',
+      selectedShipments
+    );
+
+    // ----------------------------------------------------------
+    // Open existing AWB Preview
+    // ----------------------------------------------------------
+
+    this.shipmentMultipleAwbDialog.openMultiple(
+      selectedShipments
+    );
+
+
+
+  }
+
   viewShipment(shipment: Shipment): void {
 
     const trackingNumber =
       shipment.trackingNumber?.trim() ?? '';
 
     forkJoin({
-
-      spx:
-        trackingNumber
-          ? this.shipmentService.getShipmentDetails(
-            trackingNumber
-          )
-          : of(null),
-
       shopify:
         this.shipmentService.getShopifyOrder(
           shipment.orderNo
         )
-
     }).subscribe({
 
-      next: ({ spx, shopify }) => {
-
-        const spxOrder =
-          spx?.data?.orders?.length > 0
-            ? spx.data.orders[0]
-            : null;
+      next: ({ shopify }) => {
 
         const shopifyOrder =
           shopify ?? null;
 
-        // Nothing found anywhere
-        if (!spxOrder && !shopifyOrder) {
+        // ----------------------------------------------------------
+        // Determine SPX tracking number
+        // ----------------------------------------------------------
 
-          alert("Order not found.");
+        const shopifyTrackingNumber =
+          shopifyOrder?.fulfillments?.[0]
+            ?.trackingNumber
+            ?.trim() ?? '';
 
-          return;
+        const spxTrackingNumber =
+          trackingNumber ||
+          shopifyTrackingNumber;
 
-        }
-
-        this.shipmentDialog.open(
-          spxOrder,
-          shopifyOrder
+        console.log(
+          '[VERIFY] Lark Tracking:',
+          trackingNumber
         );
+
+        console.log(
+          '[VERIFY] Shopify Tracking:',
+          shopifyTrackingNumber
+        );
+
+        console.log(
+          '[VERIFY] SPX Tracking Used:',
+          spxTrackingNumber
+        );
+
+        // ----------------------------------------------------------
+        // Get SPX shipment
+        // ----------------------------------------------------------
+
+        const spxRequest =
+          spxTrackingNumber
+            ? this.shipmentService.getShipmentDetails(
+              spxTrackingNumber
+            )
+            : of(null);
+
+        spxRequest.subscribe({
+
+          next: spx => {
+
+            const spxOrder =
+              spx?.data?.orders?.length > 0
+                ? spx.data.orders[0]
+                : null;
+
+            // ------------------------------------------------------
+            // Nothing found anywhere
+            // ------------------------------------------------------
+
+            if (!spxOrder && !shopifyOrder) {
+
+              alert(
+                "Order not found."
+              );
+
+              return;
+            }
+
+            this.shipmentDialog.open(
+              spxOrder,
+              shopifyOrder
+            );
+
+          },
+
+          error: err => {
+
+            console.error(
+              '[SPX VERIFY ERROR]',
+              err
+            );
+
+            // Still show Shopify information
+            // even if SPX lookup fails.
+
+            this.shipmentDialog.open(
+              null,
+              shopifyOrder
+            );
+
+          }
+
+        });
 
       },
 
       error: err => {
 
-        console.error(err);
+        console.error(
+          '[SHOPIFY VERIFY ERROR]',
+          err
+        );
 
       }
 
@@ -1428,38 +1590,128 @@ export class DashboardPageComponent implements OnInit {
     const trackingNumber =
       shipment.trackingNumber?.trim() ?? '';
 
-    if (!trackingNumber) {
+    // ----------------------------------------------------------
+    // Tracking number already exists
+    // ----------------------------------------------------------
 
-      alert(
-        'Shipment history is not available because there is no delivery order yet.'
-      );
+    if (trackingNumber) {
+
+      this.shipmentService
+        .getShipmentDetails(trackingNumber)
+        .subscribe({
+
+          next: (response: TrackOrderResponse) => {
+
+            if (
+              response.data.orders.length === 0
+            ) {
+
+              alert(
+                'Shipment not found.'
+              );
+
+              return;
+            }
+
+            const order =
+              response.data.orders[0];
+
+            this.shipmentHistoryDialog.open(
+              order
+            );
+
+          },
+
+          error: err => {
+
+            console.error(
+              '[HISTORY] Failed to load SPX history',
+              err
+            );
+
+          }
+
+        });
 
       return;
     }
 
+    // ----------------------------------------------------------
+    // No tracking number in Lark
+    // Get Shopify order first
+    // ----------------------------------------------------------
+
     this.shipmentService
-      .getShipmentDetails(trackingNumber)
+      .getShopifyOrder(
+        shipment.orderNo
+      )
       .subscribe({
 
-        next: (response: TrackOrderResponse) => {
+        next: shopifyOrder => {
 
-          if (response.data.orders.length === 0) {
+          const shopifyTracking =
+            shopifyOrder?.fulfillments?.[0]
+              ?.trackingNumber
+              ?.trim() ?? '';
 
-            alert('Shipment not found.');
+          if (!shopifyTracking) {
+
+            alert(
+              'Shipment history is not available because there is no delivery tracking number.'
+            );
 
             return;
           }
 
-          const order =
-            response.data.orders[0];
+          this.shipmentService
+            .getShipmentDetails(
+              shopifyTracking
+            )
+            .subscribe({
 
-          this.shipmentHistoryDialog.open(order);
+              next: (
+                response: TrackOrderResponse
+              ) => {
+
+                if (
+                  response.data.orders.length === 0
+                ) {
+
+                  alert(
+                    'Shipment not found.'
+                  );
+
+                  return;
+                }
+
+                const order =
+                  response.data.orders[0];
+
+                this.shipmentHistoryDialog.open(
+                  order
+                );
+
+              },
+
+              error: err => {
+
+                console.error(
+                  '[HISTORY] Failed to load SPX history',
+                  err
+                );
+
+              }
+
+            });
 
         },
 
         error: err => {
 
-          console.error(err);
+          console.error(
+            '[HISTORY] Failed to load Shopify order',
+            err
+          );
 
         }
 
@@ -1470,41 +1722,105 @@ export class DashboardPageComponent implements OnInit {
 
   awbShipment(shipment: Shipment): void {
 
-    const trackingNumber =
+    const larkTrackingNumber =
       shipment.trackingNumber?.trim() ?? '';
 
-    if (!trackingNumber) {
-
-      alert(
-        'AWB is not available because there is no delivery order yet.'
-      );
-
-      return;
-    }
-
     this.shipmentService
-      .getShipmentDetails(trackingNumber)
+      .getShopifyOrder(shipment.orderNo)
       .subscribe({
 
-        next: (response: TrackOrderResponse) => {
+        next: shopify => {
 
-          if (response.data.orders.length === 0) {
+          const shopifyOrder =
+            shopify ?? null;
 
-            alert('Shipment not found.');
+          // ----------------------------------------------------------
+          // Determine tracking number
+          // ----------------------------------------------------------
+
+          const shopifyTrackingNumber =
+            shopifyOrder?.fulfillments?.[0]
+              ?.trackingNumber
+              ?.trim() ?? '';
+
+          const trackingNumber =
+            larkTrackingNumber ||
+            shopifyTrackingNumber;
+
+          console.log(
+            '[AWB] Lark Tracking:',
+            larkTrackingNumber
+          );
+
+          console.log(
+            '[AWB] Shopify Tracking:',
+            shopifyTrackingNumber
+          );
+
+          console.log(
+            '[AWB] Tracking Used:',
+            trackingNumber
+          );
+
+          // ----------------------------------------------------------
+          // No tracking number anywhere
+          // ----------------------------------------------------------
+
+          if (!trackingNumber) {
+
+            alert(
+              'AWB is not available because there is no delivery order yet.'
+            );
 
             return;
           }
 
-          const order =
-            response.data.orders[0];
+          // ----------------------------------------------------------
+          // Get SPX shipment
+          // ----------------------------------------------------------
 
-          this.shipmentAwbDialog.open(order);
+          this.shipmentService
+            .getShipmentDetails(trackingNumber)
+            .subscribe({
+
+              next: (response: TrackOrderResponse) => {
+
+                if (
+                  !response.data.orders ||
+                  response.data.orders.length === 0
+                ) {
+
+                  alert('Shipment not found.');
+
+                  return;
+                }
+
+                const order =
+                  response.data.orders[0];
+
+                this.shipmentAwbDialog.open(order);
+
+              },
+
+              error: err => {
+
+                console.error(
+                  '[AWB ERROR]',
+                  err
+                );
+
+              }
+
+            });
 
         },
 
         error: err => {
 
-          console.error(err);
+          console.error(
+            '[SHOPIFY AWB ERROR]',
+            err
+          );
 
         }
 
@@ -1523,53 +1839,828 @@ export class DashboardPageComponent implements OnInit {
       return;
     }
 
-    const trackingNumber =
-      shipment.trackingNumber?.trim() ?? '';
+    this.shipmentService
+      .getShopifyOrder(shipment.orderNo)
+      .subscribe({
 
-    forkJoin({
+        next: shopify => {
 
-      spx:
-        trackingNumber
-          ? this.shipmentService.getShipmentDetails(
-            trackingNumber
-          )
-          : of(null),
+          const shopifyOrder =
+            shopify ?? null;
 
-      shopify:
+          // ----------------------------------------------------------
+          // Determine SPX tracking number
+          // ----------------------------------------------------------
+
+          const larkTrackingNumber =
+            shipment.trackingNumber?.trim() ?? '';
+
+          const shopifyTrackingNumber =
+            shopifyOrder?.fulfillments?.[0]
+              ?.trackingNumber
+              ?.trim() ?? '';
+
+          const spxTrackingNumber =
+            larkTrackingNumber ||
+            shopifyTrackingNumber;
+
+          console.log(
+            '[ESTIMATE] Lark Tracking:',
+            larkTrackingNumber
+          );
+
+          console.log(
+            '[ESTIMATE] Shopify Tracking:',
+            shopifyTrackingNumber
+          );
+
+          console.log(
+            '[ESTIMATE] SPX Tracking Used:',
+            spxTrackingNumber
+          );
+
+          // ----------------------------------------------------------
+          // Get SPX shipment
+          // ----------------------------------------------------------
+
+          const spxRequest =
+            spxTrackingNumber
+              ? this.shipmentService.getShipmentDetails(
+                spxTrackingNumber
+              )
+              : of(null);
+
+          spxRequest.subscribe({
+
+            next: spx => {
+
+              const spxOrder =
+                spx?.data?.orders?.length > 0
+                  ? spx.data.orders[0]
+                  : null;
+
+              if (!spxOrder && !shopifyOrder) {
+                alert('Order not found.');
+                return;
+              }
+
+              this.shipmentEstDialog.open(
+                spxOrder,
+                shopifyOrder
+              );
+
+            },
+
+            error: err => {
+
+              console.error(
+                '[SPX ESTIMATE ERROR]',
+                err
+              );
+
+              // Still allow the dialog to use Shopify data
+              this.shipmentEstDialog.open(
+                null,
+                shopifyOrder
+              );
+
+            }
+
+          });
+
+        },
+
+        error: err => {
+
+          console.error(
+            '[SHOPIFY ESTIMATE ERROR]',
+            err
+          );
+
+        }
+
+      });
+
+  }
+
+  createSpxOrder(): void {
+
+    const selectedShipments =
+      this.dashboardGridApi?.getSelectedRows() ?? [];
+
+    // ----------------------------------------------------------
+    // Validate selection
+    // ----------------------------------------------------------
+
+    if (selectedShipments.length === 0) {
+
+      alert(
+        'Please select at least one shipment.'
+      );
+
+      return;
+    }
+
+    if (selectedShipments.length > 5) {
+
+      alert(
+        'You can select a maximum of 5 shipments.'
+      );
+
+      return;
+    }
+
+    // ----------------------------------------------------------
+    // Determine weight
+    // ----------------------------------------------------------
+
+    let weight: number | null = null;
+
+    switch (this.spxWeightMode) {
+
+      case 'small':
+        weight = 3;
+        break;
+
+      case 'big':
+        weight = 15;
+        break;
+
+      case 'custom':
+        weight = this.spxWeight;
+        break;
+
+    }
+
+    // ----------------------------------------------------------
+    // Validate weight
+    // ----------------------------------------------------------
+
+    if (
+      weight === null ||
+      !Number.isFinite(weight) ||
+      weight <= 0
+    ) {
+
+      alert(
+        'Please enter a valid custom weight.'
+      );
+
+      return;
+    }
+
+    // ----------------------------------------------------------
+    // Pickup date = today + 3 days
+    // ----------------------------------------------------------
+
+    const pickupDate = new Date();
+
+    pickupDate.setHours(0, 0, 0, 0);
+    pickupDate.setDate(
+      pickupDate.getDate() + 3
+    );
+
+    const targetDate =
+      this.formatSpxPickupDate(pickupDate);
+
+    console.log(
+      '[SPX] Quick Create Order:',
+      {
+        shipments: selectedShipments,
+        weight,
+        weightMode: this.spxWeightMode,
+        targetPickupDate: targetDate
+      }
+    );
+
+    // ----------------------------------------------------------
+    // Get available SPX pickup times
+    // ----------------------------------------------------------
+
+    this.shipmentService
+      .getPickupTime()
+      .subscribe({
+
+        next: (response: any) => {
+
+          console.log(
+            '[SPX] Pickup Time Response:',
+            response
+          );
+
+          if (
+            response?.ret_code !== 0 ||
+            !Array.isArray(response?.data)
+          ) {
+
+            alert(
+              response?.message ||
+              'Unable to get available SPX pickup times.'
+            );
+
+            return;
+          }
+
+          // ----------------------------------------------------
+          // Find the requested pickup date
+          // ----------------------------------------------------
+
+          const pickup =
+            response.data.find(
+              (item: any) =>
+                item?.date === targetDate
+            );
+
+          if (!pickup) {
+
+            console.error(
+              '[SPX] Pickup date not available:',
+              targetDate
+            );
+
+            alert(
+              `SPX pickup is not available for ${targetDate}.`
+            );
+
+            return;
+          }
+
+          if (
+            !Array.isArray(pickup.slots) ||
+            pickup.slots.length === 0
+          ) {
+
+            alert(
+              `No SPX pickup slot is available for ${targetDate}.`
+            );
+
+            return;
+          }
+
+          // ----------------------------------------------------
+          // Use the first available slot
+          // ----------------------------------------------------
+
+          const slot =
+            pickup.slots[0];
+
+          console.log(
+            '[SPX] Selected Pickup Slot:',
+            {
+              date: pickup.date,
+              pickupTime: pickup.pickup_time,
+              pickupTimeRangeId:
+                slot.pickup_time_range_id,
+              pickupTimeRange:
+                slot.pickup_time_range
+            }
+          );
+
+          // ----------------------------------------------------
+          // Next step:
+          // Build batch_create_order request
+          // ----------------------------------------------------
+
+          this.createSpxOrders(
+            selectedShipments,
+            weight!,
+            pickup,
+            slot
+          );
+
+        },
+
+        error: (err: any) => {
+
+          console.error(
+            '[SPX] Get Pickup Time Error:',
+            err
+          );
+
+          alert(
+            'Unable to get available SPX pickup times.'
+          );
+
+        }
+
+      });
+
+  }
+
+  private formatSpxPickupDate(date: Date): string {
+
+    const year =
+      date.getFullYear();
+
+    const month =
+      String(date.getMonth() + 1).padStart(2, '0');
+
+    const day =
+      String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+
+  }
+
+  private createSpxOrders(
+    shipments: Shipment[],
+    weight: number,
+    pickup: any,
+    slot: any
+  ): void {
+
+    // ----------------------------------------------------------
+    // Get Shopify orders
+    // ----------------------------------------------------------
+
+    forkJoin(
+      shipments.map(shipment =>
         this.shipmentService.getShopifyOrder(
           shipment.orderNo
         )
+      )
+    ).subscribe({
 
-    }).subscribe({
+      next: (shopifyOrders) => {
 
-      next: ({ spx, shopify }) => {
-
-        const spxOrder =
-          spx?.data?.orders?.length > 0
-            ? spx.data.orders[0]
-            : null;
-
-        const shopifyOrder =
-          shopify ?? null;
-
-        if (!spxOrder && !shopifyOrder) {
-          alert('Order not found.');
-          return;
-        }
-
-        this.shipmentEstDialog.open(
-          spxOrder,
-          shopifyOrder
+        console.log(
+          '[SPX] Shopify Orders:',
+          shopifyOrders
         );
+
+        // --------------------------------------------------------
+        // Build SPX orders
+        // --------------------------------------------------------
+
+        const orders = shipments.map(
+          (shipment, index) => {
+
+            const shopifyOrder =
+              shopifyOrders[index];
+
+            const shippingAddress =
+              shopifyOrder?.shippingAddress;
+
+            console.log(
+              `[SPX] Shopify Order ${shipment.orderNo}:`,
+              shopifyOrder
+            );
+
+            console.log(
+              `[SPX] Shipping Address ${shipment.orderNo}:`,
+              shippingAddress
+            );
+
+            // ----------------------------------------------------
+            // Validate receiver
+            // ----------------------------------------------------
+
+            if (!shippingAddress) {
+
+              throw new Error(
+                `Shipping address is not available for Shopify Order ${shipment.orderNo}.`
+              );
+
+            }
+
+            if (!shippingAddress.zip) {
+
+              throw new Error(
+                `Receiver postal code is missing for Shopify Order ${shipment.orderNo}.`
+              );
+
+            }
+
+            if (!shippingAddress.name) {
+
+              throw new Error(
+                `Receiver name is missing for Shopify Order ${shipment.orderNo}.`
+              );
+
+            }
+
+            if (!shippingAddress.phone) {
+
+              throw new Error(
+                `Receiver phone number is missing for Shopify Order ${shipment.orderNo}.`
+              );
+
+            }
+
+            if (!shippingAddress.address1) {
+
+              throw new Error(
+                `Receiver address is missing for Shopify Order ${shipment.orderNo}.`
+              );
+
+            }
+
+            // ----------------------------------------------------
+            // Build receiver address
+            // ----------------------------------------------------
+
+            const deliverDetailAddress = [
+              shippingAddress.address1,
+              shippingAddress.address2
+            ]
+              .filter(value => !!value?.trim())
+              .join(' ');
+
+            // ----------------------------------------------------
+            // Build SPX Order
+            // ----------------------------------------------------
+
+            return {
+
+              order_id:
+                shipment.orderNo,
+
+              base_info: {
+
+                service_type: 1
+
+              },
+
+              sender_info: {
+
+                sender_post_code:
+                  '528880',
+
+                sender_name:
+                  'W Network Private Limited',
+
+                sender_phone:
+                  this.normalizeSpxPhone(
+                    '80475798'
+                  ),
+
+                sender_detail_address:
+                  '35 TAMPINES STREET 92',
+
+                sender_unit_no:
+                  '#03-01'
+
+              },
+
+              fulfillment_info: {
+
+                payment_role: 1,
+
+                collect_type: 1,
+
+                pickup_time:
+                  pickup.pickup_time,
+
+                pickup_time_range_id:
+                  slot.pickup_time_range_id,
+
+                pickup_time_range:
+                  slot.pickup_time_range
+
+              },
+
+              deliver_info: {
+
+                deliver_post_code:
+                  shippingAddress.zip,
+
+                deliver_name:
+                  shippingAddress.name,
+
+                deliver_phone:
+                  this.normalizeSpxPhone(
+                    shippingAddress.phone
+                  ),
+
+                deliver_detail_address:
+                  deliverDetailAddress
+
+              },
+
+              parcel_info: {
+
+                parcel_weight:
+                  weight,
+
+                parcel_item_name:
+                  'General Item',
+
+                parcel_item_quantity:
+                  1
+
+              }
+
+            };
+
+          }
+        );
+
+        const request = {
+          orders
+        };
+
+        console.log(
+          '[SPX] Create Order Request:',
+          JSON.stringify(
+            request,
+            null,
+            2
+          )
+        );
+
+        // --------------------------------------------------------
+        // Create SPX orders
+        // --------------------------------------------------------
+
+        this.shipmentService
+          .createSpxOrders(request)
+          .subscribe({
+
+            next: (response: any) => {
+
+              console.log(
+                '[SPX] Create Order Response:',
+                response
+              );
+
+              // --------------------------------------------------
+              // SPX API failure
+              // --------------------------------------------------
+
+              if (response?.ret_code !== 0) {
+
+                console.error(
+                  '[SPX] Create Order Failed:',
+                  response
+                );
+
+                const message =
+                  response?.message ||
+                  response?.data?.fail_list?.[0]?.message ||
+                  'Unable to create the SPX order.';
+
+                alert(message);
+
+                return;
+              }
+
+              // --------------------------------------------------
+              // Results
+              // --------------------------------------------------
+
+              const createdOrders =
+                response?.data?.orders ?? [];
+
+              const failedOrders =
+                response?.data?.fail_list ?? [];
+
+              console.log(
+                '[SPX] Created Orders:',
+                createdOrders
+              );
+
+              console.log(
+                '[SPX] Failed Orders:',
+                failedOrders
+              );
+
+              // --------------------------------------------------
+              // No successful orders
+              // --------------------------------------------------
+
+              if (createdOrders.length === 0) {
+
+                const message =
+                  failedOrders
+                    .map(
+                      (failed: any) =>
+                        `${failed.order_id}: ${failed.message}`
+                    )
+                    .join('\n') ||
+                  'No SPX orders were created.';
+
+                alert(message);
+
+                return;
+              }
+
+              // --------------------------------------------------
+              // Process created orders
+              // --------------------------------------------------
+
+              createdOrders.forEach(
+                (createdOrder: any) => {
+
+                  const orderId =
+                    String(
+                      createdOrder.order_id ?? ''
+                    ).trim();
+
+                  const trackingNumber =
+                    String(
+                      createdOrder.tracking_no ?? ''
+                    ).trim();
+
+                  console.log(
+                    '[SPX] Created Order ID:',
+                    orderId
+                  );
+
+                  console.log(
+                    '[SPX] Created Tracking Number:',
+                    trackingNumber
+                  );
+
+                  // ------------------------------------------------
+                  // Tracking number is required
+                  // ------------------------------------------------
+
+                  if (!trackingNumber) {
+
+                    console.error(
+                      '[SPX] Created order has no tracking number:',
+                      createdOrder
+                    );
+
+                    return;
+                  }
+
+                  // ------------------------------------------------
+                  // Find original Lark shipment
+                  //
+                  // IMPORTANT:
+                  // Use the original shipment/order ID.
+                  // Do NOT search SPX again.
+                  // ------------------------------------------------
+
+                  const shipment =
+                    shipments.find(
+                      s =>
+                        String(s.orderNo).trim() ===
+                        orderId
+                    );
+
+                  if (!shipment) {
+
+                    console.error(
+                      `[SPX] Cannot find original shipment for order ${orderId}.`
+                    );
+
+                    return;
+                  }
+
+                  console.log(
+                    '[SPX] Shipment matched:',
+                    shipment
+                  );
+
+                  // ------------------------------------------------
+                  // Ready to update Lark
+                  // ------------------------------------------------
+
+                  console.log(
+                    '[SPX] Ready to update Lark:',
+                    {
+                      recordId:
+                        shipment.recordId,
+
+                      orderId,
+
+                      trackingNumber,
+
+                      courier:
+                        'SPX'
+                    }
+                  );
+
+                  // ------------------------------------------------
+                  // NEXT:
+                  // Update Lark record here.
+                  // ------------------------------------------------
+
+                }
+              );
+
+              // --------------------------------------------------
+              // Partial failures
+              // --------------------------------------------------
+
+              if (failedOrders.length > 0) {
+
+                console.warn(
+                  '[SPX] Some orders failed:',
+                  failedOrders
+                );
+
+              }
+
+              // --------------------------------------------------
+              // Result message
+              // --------------------------------------------------
+
+              if (
+                createdOrders.length > 0 &&
+                failedOrders.length === 0
+              ) {
+
+                alert(
+                  `${createdOrders.length} SPX order(s) created successfully.`
+                );
+
+              }
+              else {
+
+                alert(
+                  `${createdOrders.length} SPX order(s) created successfully, ` +
+                  `${failedOrders.length} order(s) failed.`
+                );
+
+              }
+
+            },
+
+            // ----------------------------------------------------
+            // HTTP / Network error
+            // ----------------------------------------------------
+
+            error: (err: any) => {
+
+              console.error(
+                '[SPX] Create Order HTTP Error:',
+                err
+              );
+
+              console.error(
+                '[SPX] Error Status:',
+                err?.status
+              );
+
+              console.error(
+                '[SPX] Error Body:',
+                err?.error
+              );
+
+              const message =
+                err?.error?.message ||
+                err?.error?.error ||
+                err?.message ||
+                'Unable to create the SPX order.';
+
+              alert(message);
+
+            }
+
+          });
 
       },
 
-      error: err => {
-        console.error(err);
+      // ----------------------------------------------------------
+      // Shopify lookup error
+      // ----------------------------------------------------------
+
+      error: (err: any) => {
+
+        console.error(
+          '[SHOPIFY SPX] Unable to retrieve Shopify orders:',
+          err
+        );
+
+        alert(
+          'Unable to retrieve the Shopify order details.'
+        );
+
       }
 
     });
 
+  }
+  
+
+  private normalizeSpxPhone(phone: string | null | undefined): string {
+
+    const digits =
+      String(phone ?? '')
+        .replace(/\D/g, '');
+
+    // Singapore number with country code
+    if (digits.startsWith('65')) {
+
+      if (digits.length !== 10) {
+        throw new Error(
+          `Invalid Singapore phone number: ${phone}. SPX requires 10 digits including country code 65.`
+        );
+      }
+
+      return digits;
+    }
+
+    // Singapore local 8-digit number
+    if (digits.length === 8) {
+      return `65${digits}`;
+    }
+
+    // Other country numbers
+    return digits;
   }
 
 }

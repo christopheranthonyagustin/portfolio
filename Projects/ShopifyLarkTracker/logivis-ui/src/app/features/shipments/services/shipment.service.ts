@@ -16,25 +16,57 @@ export class ShipmentService {
   private readonly http = inject(HttpClient);
   private readonly api = environment.workerApi;
 
+
+  // ==========================================================
+  // Shipments
+  // ==========================================================
+
   public getShipments(): Observable<Shipment[]> {
+
     return this.http.get<Shipment[]>(
       `${this.api}/shipments`
     );
+
   }
 
-  bulkUpdate(): Observable<BulkUpdateResponse> {
 
-    return this.http.put<BulkUpdateResponse>(
-      `${environment.workerApi}/spx/bulk-update`,
+  // ==========================================================
+  // Shopify
+  // ==========================================================
+
+  importShopifyOrders(): Observable<ImportShopifyResponse> {
+
+    return this.http.post<ImportShopifyResponse>(
+      `${this.api}/shopify/import`,
       {}
     );
 
   }
 
-  importShopifyOrders(): Observable<ImportShopifyResponse> {
+  getShopifyOrder(
+    orderNo: string
+  ): Observable<ShopifyOrder> {
 
-    return this.http.post<ImportShopifyResponse>(
-      `${environment.workerApi}/shopify/import`,
+    return this.http.get<ShopifyOrder>(
+      `${this.api}/shopify/orders`,
+      {
+        params: {
+          orderIds: orderNo
+        }
+      }
+    );
+
+  }
+
+
+  // ==========================================================
+  // Shipment / SPX
+  // ==========================================================
+
+  bulkUpdate(): Observable<BulkUpdateResponse> {
+
+    return this.http.put<BulkUpdateResponse>(
+      `${this.api}/spx/bulk-update`,
       {}
     );
 
@@ -45,7 +77,7 @@ export class ShipmentService {
   ): Observable<any> {
 
     return this.http.get(
-      `${environment.workerApi}/spx/orders`,
+      `${this.api}/spx/orders`,
       {
         params: {
           trackingNos: trackingNumber
@@ -55,15 +87,15 @@ export class ShipmentService {
 
   }
 
-  getShopifyOrder(
-    orderNo: string
-  ): Observable<ShopifyOrder> {
+  getShipmentDetailsByOrderId(
+    orderId: string
+  ): Observable<any> {
 
-    return this.http.get<ShopifyOrder>(
-      `${environment.workerApi}/shopify/orders`,
+    return this.http.get(
+      `${this.api}/spx/orders`,
       {
         params: {
-          orderIds: orderNo
+          orderIds: orderId
         }
       }
     );
@@ -103,6 +135,11 @@ export class ShipmentService {
 
   }
 
+
+  // ==========================================================
+  // AWB
+  // ==========================================================
+
   getAwbLabel(
     trackingNumber: string
   ): Observable<any> {
@@ -114,6 +151,46 @@ export class ShipmentService {
           trackingNos: trackingNumber
         }
       }
+    );
+
+  }
+
+  getAwbLabelBatch(
+    trackingNumbers: string[]
+  ): Observable<any> {
+
+    return this.http.post<any>(
+      `${this.api}/spx/get-awb-label`,
+      {
+        tracking_no_list: trackingNumbers
+      }
+    );
+
+  }
+
+
+  // ==========================================================
+  // Quick Create SPX
+  // ==========================================================
+
+  getPickupTime(): Observable<any> {
+
+    return this.http.post<any>(
+      `${this.api}/spx/pickup-time`,
+      {
+        service_type: 1
+      }
+    );
+
+  }
+
+  createSpxOrders(
+    request: any
+  ): Observable<any> {
+
+    return this.http.post<any>(
+      `${this.api}/spx/create-order`,
+      request
     );
 
   }
