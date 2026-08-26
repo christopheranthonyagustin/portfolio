@@ -94,4 +94,62 @@ export class ShipmentVerificationDialogComponent {
 
   }
 
+  public formatOrderCreated(
+    value: Date | string | null | undefined
+  ): string {
+
+    if (!value) {
+      return '-';
+    }
+
+    const date =
+      value instanceof Date
+        ? value
+        : new Date(value);
+
+    if (isNaN(date.getTime())) {
+      return '-';
+    }
+
+    const day =
+      String(date.getDate()).padStart(2, '0');
+
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ];
+
+    const month =
+      months[date.getMonth()];
+
+    const year =
+      date.getFullYear();
+
+    let hours =
+      date.getHours();
+
+    const minutes =
+      String(date.getMinutes()).padStart(2, '0');
+
+    const amPm =
+      hours >= 12
+        ? 'PM'
+        : 'AM';
+
+    hours =
+      hours % 12 || 12;
+
+    return `${day}-${month}-${year} ${hours}:${minutes} ${amPm}`;
+  }
+
 }

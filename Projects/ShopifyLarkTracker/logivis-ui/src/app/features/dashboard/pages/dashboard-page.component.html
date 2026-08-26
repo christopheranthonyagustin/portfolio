@@ -493,12 +493,13 @@
 
               <button type="button"
                       class="btn btn-danger"
-                      (click)="cancelSpxOrder()">
-
-                <i class="fa-solid fa-ban"></i>
-
-                Cancel SPX Order
-
+                      (click)="cancelSpxOrder()"
+                      [disabled]="isCancellingSpx">
+                @if (isCancellingSpx) {
+                <span>⏳ Cancelling...</span>
+                } @else {
+                <span>Cancel SPX Order</span>
+                }
               </button>
 
             </div>
@@ -587,12 +588,14 @@
               <!-- Action -->
               <button type="button"
                       class="btn btn-spx"
-                      (click)="createSpxOrder()">
-
+                      (click)="createSpxOrder()"
+                      [disabled]="isCreationSpx">
                 <i class="fa-solid fa-box"></i>
-
-                Create SPX Order
-
+                @if (isCreationSpx) {
+                <span>⏳ Creating...</span>
+                } @else {
+                <span>Create SPX Order</span>
+                }
               </button>
 
             </div>

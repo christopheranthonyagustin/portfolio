@@ -16,6 +16,12 @@ export const ShipmentStatusMap: Record<string, ShipmentStatusStyle> = {
     color: "#92400E"
   },
 
+  "未发货": {
+    label: "Unfulfilled",
+    background: "#FEF3C7",
+    color: "#92400E"
+  },
+
   "partial": {
     label: "Partial",
     background: "#FEF3C7",
@@ -126,7 +132,13 @@ export function getShipmentStatus(
     return "Unknown";
   }
 
-  return ShipmentStatusMap[status]?.label ?? status;
+  const normalizedStatus =
+    status.trim();
+
+  return (
+    ShipmentStatusMap[normalizedStatus]?.label ??
+    normalizedStatus
+  );
 
 }
 
@@ -138,10 +150,15 @@ export function getShipmentStatusStyle(
     return ShipmentStatusMap["未知"];
   }
 
-  return ShipmentStatusMap[status] ?? {
-    label: status,
-    background: "#F3F4F6",
-    color: "#6B7280"
-  };
+  const normalizedStatus =
+    status.trim();
+
+  return (
+    ShipmentStatusMap[normalizedStatus] ?? {
+      label: normalizedStatus,
+      background: "#F3F4F6",
+      color: "#6B7280"
+    }
+  );
 
 }

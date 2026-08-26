@@ -4,7 +4,7 @@
 
   <div class="dialog-header">
 
-    <div>
+    <div class="dialog-header-content">
 
       <h2>Delivery Order Verification</h2>
 
@@ -32,6 +32,13 @@
         </div>
 
         <div class="meta-card">
+          <span>Order Created</span>
+          <strong>
+            {{ formatOrderCreated(shopifyOrder?.createdAt) }}
+          </strong>
+        </div>
+
+        <div class="meta-card">
           <span>Status</span>
           <strong class="status-badge">
             {{ order?.status || shopifyOrder?.status || '-' }}
@@ -42,8 +49,10 @@
 
     </div>
 
-    <button class="close-button"
-            (click)="close()">
+    <button type="button"
+            class="close-button"
+            (click)="close()"
+            aria-label="Close">
       ✕
     </button>
 

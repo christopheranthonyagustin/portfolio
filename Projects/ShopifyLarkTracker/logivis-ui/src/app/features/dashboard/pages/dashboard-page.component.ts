@@ -139,6 +139,8 @@ export class DashboardPageComponent implements OnInit {
   spxOrderNo = '';
   spxWeightMode: 'small' | 'big' | 'custom' = 'small';
   spxWeight: number | null = null;
+  public isCancellingSpx = false;
+  public isCreationSpx = false;
 
     private get isOperatorRole(): boolean {
     return this.currentRoleId > 2;
@@ -1949,6 +1951,14 @@ export class DashboardPageComponent implements OnInit {
       this.dashboardGridApi?.getSelectedRows() ?? [];
 
     // ----------------------------------------------------------
+    // Prevent multiple clicks
+    // ----------------------------------------------------------
+
+    if (this.isCreationSpx) {
+      return;
+    }
+
+    // ----------------------------------------------------------
     // Validate selection
     // ----------------------------------------------------------
 
@@ -2009,6 +2019,16 @@ export class DashboardPageComponent implements OnInit {
       return;
     }
 
+    // ==========================================================
+    // START SPX CREATION
+    // ==========================================================
+
+    this.isCreationSpx = true;
+
+    console.log(
+      '[SPX] Creation started.'
+    );
+
     // ----------------------------------------------------------
     // Pickup date = today + 3 days
     // ----------------------------------------------------------
@@ -2016,6 +2036,7 @@ export class DashboardPageComponent implements OnInit {
     const pickupDate = new Date();
 
     pickupDate.setHours(0, 0, 0, 0);
+
     pickupDate.setDate(
       pickupDate.getDate() + 3
     );
@@ -2058,11 +2079,13 @@ export class DashboardPageComponent implements OnInit {
               'Unable to get available SPX pickup times.'
             );
 
+            this.isCreationSpx = false;
+
             return;
           }
 
           // ----------------------------------------------------
-          // Find the requested pickup date
+          // Find requested pickup date
           // ----------------------------------------------------
 
           const pickup =
@@ -2082,6 +2105,8 @@ export class DashboardPageComponent implements OnInit {
               `SPX pickup is not available for ${targetDate}.`
             );
 
+            this.isCreationSpx = false;
+
             return;
           }
 
@@ -2094,11 +2119,13 @@ export class DashboardPageComponent implements OnInit {
               `No SPX pickup slot is available for ${targetDate}.`
             );
 
+            this.isCreationSpx = false;
+
             return;
           }
 
           // ----------------------------------------------------
-          // Use the first available slot
+          // Use first available slot
           // ----------------------------------------------------
 
           const slot =
@@ -2117,8 +2144,7 @@ export class DashboardPageComponent implements OnInit {
           );
 
           // ----------------------------------------------------
-          // Next step:
-          // Build batch_create_order request
+          // Create SPX orders
           // ----------------------------------------------------
 
           this.createSpxOrders(
@@ -2140,6 +2166,8 @@ export class DashboardPageComponent implements OnInit {
           alert(
             'Unable to get available SPX pickup times.'
           );
+
+          this.isCreationSpx = false;
 
         }
 
@@ -2168,6 +2196,7 @@ export class DashboardPageComponent implements OnInit {
     pickup: any,
     slot: any
   ): void {
+
 
     // ----------------------------------------------------------
     // Get Shopify orders
@@ -2358,15 +2387,6 @@ export class DashboardPageComponent implements OnInit {
         const request = {
           orders
         };
-
-        console.log(
-          '[SPX] Create Order Request:',
-          JSON.stringify(
-            request,
-            null,
-            2
-          )
-        );
 
         // --------------------------------------------------------
         // Create SPX orders
@@ -2570,6 +2590,8 @@ export class DashboardPageComponent implements OnInit {
                   `${createdOrders.length} SPX order(s) created successfully.`
                 );
 
+                this.isCreationSpx = false;
+
               }
               else {
 
@@ -2577,6 +2599,8 @@ export class DashboardPageComponent implements OnInit {
                   `${createdOrders.length} SPX order(s) created successfully, ` +
                   `${failedOrders.length} order(s) failed.`
                 );
+
+                this.isCreationSpx = false;
 
               }
 
@@ -2611,6 +2635,8 @@ export class DashboardPageComponent implements OnInit {
 
               alert(message);
 
+              this.isCreationSpx = false;
+
             }
 
           });
@@ -2631,6 +2657,8 @@ export class DashboardPageComponent implements OnInit {
         alert(
           'Unable to retrieve the Shopify order details.'
         );
+
+        this.isCreationSpx = false;
 
       }
 
@@ -2668,9 +2696,233 @@ export class DashboardPageComponent implements OnInit {
 
   public cancelSpxOrder(): void {
 
+    // ==========================================================
+    // Prevent multiple clicks
+    // ==========================================================
+
+    if (this.isCancellingSpx) {
+      return;
+    }
+
     console.log(
       "[SPX] Cancel SPX Order clicked."
     );
+
+    const selectedShipments =
+      this.dashboardGridApi?.getSelectedRows() ?? [];
+
+    console.log(
+      "[SPX] Selected Shipments:",
+      selectedShipments
+    );
+
+    // ==========================================================
+    // Validate selection
+    // ==========================================================
+
+    if (selectedShipments.length === 0) {
+
+      alert(
+        "Please select at least one shipment."
+      );
+
+      return;
+    }
+
+    const spxShipments =
+      selectedShipments.filter(
+        (shipment: Shipment) =>
+          !!shipment.trackingNumber?.trim()
+      );
+
+    if (spxShipments.length === 0) {
+
+      alert(
+        "Please select a shipment with an SPX tracking number."
+      );
+
+      return;
+    }
+
+    const trackingNumbers =
+      spxShipments.map(
+        (shipment: Shipment) =>
+          shipment.trackingNumber.trim()
+      );
+
+    console.log(
+      "[SPX] Tracking Numbers:",
+      trackingNumbers
+    );
+
+    // ==========================================================
+    // Confirmation
+    // ==========================================================
+
+    const confirmed =
+      confirm(
+        `Cancel ${trackingNumbers.length} SPX order(s)?`
+      );
+
+    if (!confirmed) {
+
+      console.log(
+        "[SPX] Cancellation cancelled by user."
+      );
+
+      return;
+    }
+
+    // ==========================================================
+    // START LOADING
+    // ==========================================================
+
+    this.isCancellingSpx = true;
+
+    console.log(
+      "[SPX] Cancellation started."
+    );
+
+    console.log(
+      "[SPX] Sending cancellation request..."
+    );
+
+    // ==========================================================
+    // Cancel SPX orders
+    // ==========================================================
+
+    this.shipmentService
+      .cancelSpxOrders({
+        tracking_no_list:
+          trackingNumbers
+      })
+      .pipe(
+        finalize(() => {
+
+          // Always stop hourglass / re-enable button
+          this.isCancellingSpx = false;
+
+          console.log(
+            "[SPX] Cancellation finished."
+          );
+
+        })
+      )
+      .subscribe({
+
+        next: (response: any) => {
+
+          console.log(
+            "[SPX] Cancel Order Response:",
+            response
+          );
+
+          const cancelled =
+            response?.data?.tracking_no_list ?? [];
+
+          const failed =
+            response?.data?.fail_list ?? [];
+
+          // ======================================================
+          // All successful
+          // ======================================================
+
+          if (
+            cancelled.length > 0 &&
+            failed.length === 0
+          ) {
+
+            alert(
+              `${cancelled.length} SPX order(s) cancelled successfully.`
+            );
+
+            this.loadRecentShipments();
+
+            return;
+          }
+
+          // ======================================================
+          // Partial success
+          // ======================================================
+
+          if (
+            cancelled.length > 0 &&
+            failed.length > 0
+          ) {
+
+            const failedNumbers =
+              failed
+                .map(
+                  (item: any) =>
+                    item.tracking_no
+                )
+                .filter(Boolean)
+                .join("\n");
+
+            alert(
+              `SPX cancellation partially completed.\n\n` +
+              `Successfully cancelled: ${cancelled.length}\n` +
+              `Failed: ${failed.length}\n\n` +
+              `Failed tracking number(s):\n${failedNumbers}`
+            );
+
+            this.loadRecentShipments();
+
+            return;
+          }
+
+          // ======================================================
+          // All failed
+          // ======================================================
+
+          if (
+            cancelled.length === 0 &&
+            failed.length > 0
+          ) {
+
+            const failedNumbers =
+              failed
+                .map(
+                  (item: any) =>
+                    item.tracking_no
+                )
+                .filter(Boolean)
+                .join("\n");
+
+            alert(
+              `Failed to cancel ${failed.length} SPX order(s).\n\n` +
+              `Tracking number(s):\n${failedNumbers}`
+            );
+
+            return;
+          }
+
+          // ======================================================
+          // Unexpected response
+          // ======================================================
+
+          alert(
+            "SPX cancellation completed, but no cancellation result was returned."
+          );
+
+        },
+
+        error: (error: any) => {
+
+          console.error(
+            "[SPX] Cancel Order Error:",
+            error
+          );
+
+          alert(
+            error?.error?.message ??
+            error?.message ??
+            "Unable to cancel the SPX order."
+          );
+
+        }
+
+      });
 
   }
 
