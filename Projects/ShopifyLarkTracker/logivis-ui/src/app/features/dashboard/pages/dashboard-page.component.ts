@@ -2563,6 +2563,9 @@ export class DashboardPageComponent implements OnInit {
                 failedOrders.length === 0
               ) {
 
+                // Refresh dashboard with latest Lark data
+                this.loadRecentShipments();
+     
                 alert(
                   `${createdOrders.length} SPX order(s) created successfully.`
                 );
@@ -2661,6 +2664,14 @@ export class DashboardPageComponent implements OnInit {
 
     // Other country numbers
     return digits;
+  }
+
+  public cancelSpxOrder(): void {
+
+    console.log(
+      "[SPX] Cancel SPX Order clicked."
+    );
+
   }
 
 }

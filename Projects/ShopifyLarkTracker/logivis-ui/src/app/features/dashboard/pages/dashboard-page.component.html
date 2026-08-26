@@ -442,11 +442,74 @@
 
 
             <!-- ======================================================
+                 Cancel SPX Order
+            ======================================================= -->
+
+            <div class="operation-item operation-item-danger">
+
+              <div class="operation-header">
+
+                <div class="operation-icon danger">
+                  <i class="fa-solid fa-ban"></i>
+                </div>
+
+                <div>
+
+                  <h3>Cancel SPX Order</h3>
+
+                  <p>
+                    Cancel an existing SPX delivery order when the shipment
+                    needs to be changed or recreated.
+                  </p>
+
+                  <div class="operation-steps">
+
+                    <strong>Steps:</strong>
+
+                    <ol>
+                      <li>
+                        Select an <b>existing SPX shipment</b>.
+                      </li>
+
+                      <li>
+                        The shipment must have an
+                        <b>SPX tracking number</b>.
+                      </li>
+
+                      <li>
+                        Click <b>Cancel SPX Order</b>.
+                      </li>
+
+                      <li>
+                        Confirm the cancellation before recreating the AWB.
+                      </li>
+                    </ol>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <button type="button"
+                      class="btn btn-danger"
+                      (click)="cancelSpxOrder()">
+
+                <i class="fa-solid fa-ban"></i>
+
+                Cancel SPX Order
+
+              </button>
+
+            </div>
+
+
+            <!-- ======================================================
                  Quick Create SPX Order
             ======================================================= -->
 
 
-            <div class="operation-item">
+            <div class="operation-item operation-item-full-width">
 
               <div class="operation-header">
 
