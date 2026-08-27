@@ -20,6 +20,12 @@ import {
 import { routes } from './app.routes';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { AuthService } from './features/auth/services/auth.service';
+import {
+  provideTranslateService
+} from '@ngx-translate/core';
+import {
+  provideTranslateHttpLoader
+} from '@ngx-translate/http-loader';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,6 +39,15 @@ export const appConfig: ApplicationConfig = {
         authInterceptor
       ])
     ),
+
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: '/assets/i18n/',
+        suffix: '.json'
+      }),
+      fallbackLang: 'en',
+      lang: 'en'
+    }),
 
     provideCharts(
       withDefaultRegisterables()

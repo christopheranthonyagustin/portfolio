@@ -4,8 +4,8 @@
 
   <div class="main-content">
 
-    <app-header title="Dashboard"
-                subtitle="Overview of logistics operations 🚀">
+    <app-header title="header.dashboard.title"
+                subtitle="header.dashboard.subtitle">
     </app-header>
 
     @if (hasPermissions) {
@@ -48,12 +48,12 @@
 
         <div class="toolbar-filters">
 
-          <!-- Administrator / Operator / Viewer -->
-          <!-- Super User Only -->
-          <div class="form-group" *ngIf="isSuperUser">
+          <!-- Parent Company -->
+          <div class="form-group"
+               *ngIf="isSuperUser">
 
             <label for="parentCompany">
-              Parent Company
+              {{ 'dashboard.filters.parentCompany' | translate }}
             </label>
 
             <select id="parentCompany"
@@ -71,11 +71,12 @@
 
           </div>
 
+
           <!-- Company -->
           <div class="form-group">
 
             <label for="company">
-              Company
+              {{ 'dashboard.filters.company' | translate }}
             </label>
 
             <select id="company"
@@ -84,7 +85,9 @@
 
               <option *ngFor="let company of companyOptions"
                       [value]="company.CompanyId">
+
                 {{ company.Name }}
+
               </option>
 
             </select>
@@ -92,107 +95,202 @@
           </div>
 
 
+          <!-- Date Range -->
           <div class="form-group">
 
-            <label>Date Range</label>
+            <label for="dateRange">
+              {{ 'dashboard.filters.dateRange' | translate }}
+            </label>
 
-            <select [(ngModel)]="selectedDateRange"
+            <select id="dateRange"
+                    [(ngModel)]="selectedDateRange"
                     (change)="onDateRangeChanged()">
 
-              <option value="today">Today</option>
-              <option value="yesterday">Yesterday</option>
-              <option value="last7">Last 7 Days</option>
-              <option value="last30">Last 30 Days</option>
-              <option value="thisMonth">This Month</option>
-              <option value="lastMonth">Last Month</option>
-              <option value="all">All Time</option>
+              <option value="today">
+                {{ 'dashboard.filters.today' | translate }}
+              </option>
+
+              <option value="yesterday">
+                {{ 'dashboard.filters.yesterday' | translate }}
+              </option>
+
+              <option value="last7">
+                {{ 'dashboard.filters.last7' | translate }}
+              </option>
+
+              <option value="last30">
+                {{ 'dashboard.filters.last30' | translate }}
+              </option>
+
+              <option value="thisMonth">
+                {{ 'dashboard.filters.thisMonth' | translate }}
+              </option>
+
+              <option value="lastMonth">
+                {{ 'dashboard.filters.lastMonth' | translate }}
+              </option>
+
+              <option value="all">
+                {{ 'dashboard.filters.all' | translate }}
+              </option>
 
             </select>
 
           </div>
 
+          <!-- Display Options -->
+          <div class="display-options">
+
+            <span class="display-label">
+              {{ 'dashboard.display.title' | translate }}
+            </span>
+
+            <div class="display-switches">
+
+              <button type="button"
+                      class="display-switch"
+                      [class.active]="showKpiCards"
+                      (click)="toggleKpiCards()">
+
+                <span class="switch-indicator">
+                  {{ showKpiCards ? '✓' : '' }}
+                </span>
+
+                <span>
+                  {{ 'dashboard.display.kpiCards' | translate }}
+                </span>
+
+              </button>
+
+              <button type="button"
+                      class="display-switch"
+                      [class.active]="showCharts"
+                      (click)="toggleCharts()">
+
+                <span class="switch-indicator">
+                  {{ showCharts ? '✓' : '' }}
+                </span>
+
+                <span>
+                  {{ 'dashboard.display.charts' | translate }}
+                </span>
+
+              </button>
+
+            </div>
+
+          </div>
+
         </div>
 
       </section>
+
+      @if (showKpiCards) {
 
       <!-- KPI Cards -->
       <section class="kpi-grid">
 
+        <!-- Pending Pickup -->
         <div class="card card-warning">
 
           <div class="kpi-header">
-            <h3>Pending Pickup</h3>
+
+            <h3>
+              {{ 'dashboard.kpi.pendingPickup' | translate }}
+            </h3>
+
             <div class="kpi-icon warning">
               <i class="fa-solid fa-box"></i>
             </div>
+
           </div>
 
-          <h1>{{ pendingPickup }}</h1>
+          <h1>
+            {{ pendingPickup }}
+          </h1>
 
         </div>
 
+
+        <!-- In Transit -->
         <div class="card card-info">
 
           <div class="kpi-header">
-            <h3>In Transit</h3>
+
+            <h3>
+              {{ 'dashboard.kpi.inTransit' | translate }}
+            </h3>
+
             <div class="kpi-icon info">
               <i class="fa-solid fa-truck-fast"></i>
             </div>
+
           </div>
 
-          <h1>{{ inTransit }}</h1>
+          <h1>
+            {{ inTransit }}
+          </h1>
 
         </div>
 
+
+        <!-- Delivered -->
         <div class="card card-success">
 
           <div class="kpi-header">
-            <h3>Delivered</h3>
+
+            <h3>
+              {{ 'dashboard.kpi.delivered' | translate }}
+            </h3>
+
             <div class="kpi-icon success">
               <i class="fa-solid fa-circle-check"></i>
             </div>
+
           </div>
 
-          <h1>{{ delivered }}</h1>
+          <h1>
+            {{ delivered }}
+          </h1>
 
         </div>
 
+
+        <!-- Exceptions -->
         <div class="card card-danger">
 
           <div class="kpi-header">
-            <h3>Exceptions</h3>
+
+            <h3>
+              {{ 'dashboard.kpi.exceptions' | translate }}
+            </h3>
+
             <div class="kpi-icon danger">
               <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
+
           </div>
 
-          <h1>{{ exceptions }}</h1>
+          <h1>
+            {{ exceptions }}
+          </h1>
 
         </div>
 
       </section>
 
-      <!-- Charts -->
+      }
 
+      @if (showCharts) {
+
+      <!-- Charts -->
       <section class="chart-grid">
 
         <div class="card chart">
 
-          <h2>Shipment by Channel</h2>
-
-          <div class="chart-container">
-            <canvas baseChart
-                    [data]="channelChartData"
-                    [options]="channelChartOptions"
-                    type="doughnut">
-            </canvas>
-          </div>
-
-        </div>
-
-        <div class="card chart">
-
-          <h2>Other Statuses</h2>
+          <h2>
+            {{ 'dashboard.charts.otherStatuses.title' | translate }}
+          </h2>
 
           <div class="chart-container">
             <canvas baseChart
@@ -204,9 +302,27 @@
 
         </div>
 
-        <div class="card chart trend-card">
+        <div class="card chart">
 
-          <h2>Shipment Trend</h2>
+          <h2>
+            {{ 'dashboard.charts.shipmentByChannel.title' | translate }}
+          </h2>
+
+          <div class="chart-container">
+            <canvas baseChart
+                    [data]="channelChartData"
+                    [options]="channelChartOptions"
+                    type="doughnut">
+            </canvas>
+          </div>
+
+        </div>
+
+        <div class="card chart trend-card shipment-trend">
+
+          <h2>
+            {{ 'dashboard.charts.shipmentTrend.title' | translate }}
+          </h2>
 
           <div class="chart-container">
             <canvas baseChart
@@ -218,11 +334,18 @@
 
         </div>
 
+
+
       </section>
+
+      }
 
       @if (currentUser?.Role?.Code !== 'VIEWER') {
 
-      <!-- Operation Center -->
+      <!-- ==========================================================
+       Operation Center
+  ========================================================== -->
+
       <section class="operation-center">
 
         <div class="card operation-center-card">
@@ -231,10 +354,12 @@
 
             <div>
 
-              <h2>Operations Center</h2>
+              <h2>
+                {{ 'dashboard.operations.title' | translate }}
+              </h2>
 
               <p class="section-description">
-                Manage order synchronization and shipment operations.
+                {{ 'dashboard.operations.description' | translate }}
               </p>
 
             </div>
@@ -246,8 +371,8 @@
 
 
             <!-- ======================================================
-   Shopify Orders
-  ======================================================= -->
+             Shopify Orders
+        ======================================================= -->
 
             <div class="operation-item">
 
@@ -259,26 +384,37 @@
 
                 <div>
 
-                  <h3>Shopify Orders</h3>
+                  <h3>
+                    {{ 'dashboard.operations.shopifyOrders.title' | translate }}
+                  </h3>
 
                   <p>
-                    <strong>When:</strong>
-                    New Shopify orders are available and you don't want
-                    to wait for the scheduled synchronization.
+                    <strong>
+                      {{ 'dashboard.operations.shopifyOrders.when' | translate }}
+                    </strong>
+
+                    {{ 'dashboard.operations.shopifyOrders.whenDescription' | translate }}
                   </p>
 
                   <div class="operation-steps">
 
-                    <strong>Steps:</strong>
+                    <strong>
+                      {{ 'dashboard.operations.shopifyOrders.steps' | translate }}
+                    </strong>
 
                     <ol>
+
                       <li>
-                        Click <b>Import Shopify Orders</b>.
+                        {{ 'dashboard.operations.shopifyOrders.step1' | translate }}
+                        <b>
+                          {{ 'dashboard.operations.shopifyOrders.step1Action' | translate }}
+                        </b>.
                       </li>
 
                       <li>
-                        Verify the imported orders in LogiVis.
+                        {{ 'dashboard.operations.shopifyOrders.step2' | translate }}
                       </li>
+
                     </ol>
 
                   </div>
@@ -295,11 +431,11 @@
                 <i class="fa-brands fa-shopify"></i>
 
                 <span *ngIf="!isImportingShopify">
-                  Import Shopify Orders
+                  {{ 'dashboard.operations.shopifyOrders.button' | translate }}
                 </span>
 
                 <span *ngIf="isImportingShopify">
-                  ⏳ Importing...
+                  ⏳ {{ 'dashboard.operations.shopifyOrders.importing' | translate }}
                 </span>
 
               </button>
@@ -308,8 +444,8 @@
 
 
             <!-- ======================================================
-   Delivery Status
-  ======================================================= -->
+             Delivery Status
+        ======================================================= -->
 
             <div class="operation-item">
 
@@ -321,26 +457,38 @@
 
                 <div>
 
-                  <h3>Delivery Status</h3>
+                  <h3>
+                    {{ 'dashboard.operations.deliveryStatus.title' | translate }}
+                  </h3>
 
                   <p>
-                    <strong>When:</strong>
-                    You need the latest shipment status now and don't want
-                    to wait for the scheduled update.
+                    <strong>
+                      {{ 'dashboard.operations.deliveryStatus.when' | translate }}
+                    </strong>
+
+                    {{ 'dashboard.operations.deliveryStatus.whenDescription' | translate }}
                   </p>
 
                   <div class="operation-steps">
 
-                    <strong>Steps:</strong>
+                    <strong>
+                      {{ 'dashboard.operations.deliveryStatus.steps' | translate }}
+                    </strong>
 
                     <ol>
+
                       <li>
-                        Click <b>Bulk Update Delivery Status</b>.
+                        {{ 'dashboard.operations.deliveryStatus.step1' | translate }}
+
+                        <b>
+                          {{ 'dashboard.operations.deliveryStatus.step1Action' | translate }}
+                        </b>.
                       </li>
 
                       <li>
-                        Review the updated shipment statuses.
+                        {{ 'dashboard.operations.deliveryStatus.step2' | translate }}
                       </li>
+
                     </ol>
 
                   </div>
@@ -357,11 +505,11 @@
                 <i class="fa-solid fa-arrows-rotate"></i>
 
                 <span *ngIf="!isBulkUpdating">
-                  Bulk Update Delivery Status
+                  {{ 'dashboard.operations.deliveryStatus.button' | translate }}
                 </span>
 
                 <span *ngIf="isBulkUpdating">
-                  ⏳ Synchronizing...
+                  ⏳ {{ 'dashboard.operations.deliveryStatus.updating' | translate }}
                 </span>
 
               </button>
@@ -370,8 +518,8 @@
 
 
             <!-- ======================================================
-   Download Multiple AWB
-  ======================================================= -->
+             Download Multiple AWB
+        ======================================================= -->
 
             <div class="operation-item">
 
@@ -383,36 +531,46 @@
 
                 <div>
 
-                  <h3>Download Multiple AWB</h3>
+                  <h3>
+                    {{ 'dashboard.operations.downloadAwb.title' | translate }}
+                  </h3>
 
                   <p>
-                    <strong>When:</strong>
-                    You need AWBs for multiple shipments.
+                    <strong>
+                      {{ 'dashboard.operations.downloadAwb.when' | translate }}
+                    </strong>
+
+                    {{ 'dashboard.operations.downloadAwb.whenDescription' | translate }}
                   </p>
 
                   <div class="operation-steps">
 
-                    <strong>Steps:</strong>
+                    <strong>
+                      {{ 'dashboard.operations.downloadAwb.steps' | translate }}
+                    </strong>
 
                     <ol>
+
                       <li>
-                        Select <b>1–5 eligible shipments</b>.
+                        {{ 'dashboard.operations.downloadAwb.step1' | translate }}
                       </li>
 
                       <li>
-                        Each shipment must have an
-                        <b>SPX tracking number</b>
-                        and must not be <b>Unfulfilled</b>.
+                        {{ 'dashboard.operations.downloadAwb.step2' | translate }}
                       </li>
 
                       <li>
-                        Click <b>Download Multiple AWB</b>.
+                        {{ 'dashboard.operations.downloadAwb.step3' | translate }}
+
+                        <b>
+                          {{ 'dashboard.operations.downloadAwb.step3Action' | translate }}
+                        </b>.
                       </li>
 
                       <li>
-                        Review the consolidated PDF and use the
-                        PDF viewer's <b>Download</b> button.
+                        {{ 'dashboard.operations.downloadAwb.step4' | translate }}
                       </li>
+
                     </ol>
 
                   </div>
@@ -429,11 +587,11 @@
                 <i class="fa-solid fa-download"></i>
 
                 <span *ngIf="!isDownloadingAwb">
-                  Download Multiple AWB
+                  {{ 'dashboard.operations.downloadAwb.button' | translate }}
                 </span>
 
                 <span *ngIf="isDownloadingAwb">
-                  ⏳ Preparing AWBs...
+                  ⏳ {{ 'dashboard.operations.downloadAwb.preparing' | translate }}
                 </span>
 
               </button>
@@ -442,8 +600,8 @@
 
 
             <!-- ======================================================
-                 Cancel SPX Order
-            ======================================================= -->
+             Cancel SPX Order
+        ======================================================= -->
 
             <div class="operation-item operation-item-danger">
 
@@ -455,34 +613,42 @@
 
                 <div>
 
-                  <h3>Cancel SPX Order</h3>
+                  <h3>
+                    {{ 'dashboard.operations.cancelSpxOrder.title' | translate }}
+                  </h3>
 
                   <p>
-                    Cancel an existing SPX delivery order when the shipment
-                    needs to be changed or recreated.
+                    {{ 'dashboard.operations.cancelSpxOrder.whenDescription' | translate }}
                   </p>
 
                   <div class="operation-steps">
 
-                    <strong>Steps:</strong>
+                    <strong>
+                      {{ 'dashboard.operations.cancelSpxOrder.steps' | translate }}
+                    </strong>
 
                     <ol>
+
                       <li>
-                        Select an <b>existing SPX shipment</b>.
+                        {{ 'dashboard.operations.cancelSpxOrder.step1' | translate }}
                       </li>
 
                       <li>
-                        The shipment must have an
-                        <b>SPX tracking number</b>.
+                        {{ 'dashboard.operations.cancelSpxOrder.step2' | translate }}
                       </li>
 
                       <li>
-                        Click <b>Cancel SPX Order</b>.
+                        {{ 'dashboard.operations.cancelSpxOrder.step3' | translate }}
+
+                        <b>
+                          {{ 'dashboard.operations.cancelSpxOrder.step3Action' | translate }}
+                        </b>.
                       </li>
 
                       <li>
-                        Confirm the cancellation before recreating the AWB.
+                        {{ 'dashboard.operations.cancelSpxOrder.step4' | translate }}
                       </li>
+
                     </ol>
 
                   </div>
@@ -491,24 +657,36 @@
 
               </div>
 
+
               <button type="button"
                       class="btn btn-danger"
                       (click)="cancelSpxOrder()"
                       [disabled]="isCancellingSpx">
+
+                <i class="fa-solid fa-ban"></i>
+
                 @if (isCancellingSpx) {
-                <span>⏳ Cancelling...</span>
+
+                <span>
+                  ⏳ {{ 'dashboard.operations.cancelSpxOrder.cancelling' | translate }}
+                </span>
+
                 } @else {
-                <span>Cancel SPX Order</span>
+
+                <span>
+                  {{ 'dashboard.operations.cancelSpxOrder.button' | translate }}
+                </span>
+
                 }
+
               </button>
 
             </div>
 
 
             <!-- ======================================================
-                 Quick Create SPX Order
-            ======================================================= -->
-
+             Quick Create SPX Order
+        ======================================================= -->
 
             <div class="operation-item operation-item-full-width">
 
@@ -519,45 +697,51 @@
                 </div>
 
                 <div>
-                  <h3>Quick Create SPX Order</h3>
+
+                  <h3>
+                    {{ 'dashboard.operations.quickCreateSpxOrder.title' | translate }}
+                  </h3>
 
                   <p>
-                    Create SPX orders immediately for the selected shipments
-                    without waiting for the normal synchronization process.
+                    {{ 'dashboard.operations.quickCreateSpxOrder.description' | translate }}
                   </p>
+
                 </div>
 
               </div>
 
 
-              <!-- Weight -->
+              <!-- ====================================================
+               Weight
+          ===================================================== -->
+
               <div class="spx-order-controls">
 
                 <div class="spx-field">
 
                   <label for="spxWeightMode">
-                    Weight
+                    {{ 'dashboard.operations.quickCreateSpxOrder.weight' | translate }}
                   </label>
 
                   <select id="spxWeightMode"
                           [(ngModel)]="spxWeightMode">
 
                     <option value="small">
-                      Small Item (3 kg)
+                      {{ 'dashboard.operations.quickCreateSpxOrder.small' | translate }}
                     </option>
 
                     <option value="big">
-                      Big Item (15 kg)
+                      {{ 'dashboard.operations.quickCreateSpxOrder.big' | translate }}
                     </option>
 
                     <option value="custom">
-                      Custom Weight
+                      {{ 'dashboard.operations.quickCreateSpxOrder.custom' | translate }}
                     </option>
 
                   </select>
 
                   <span class="spx-weight-note">
-                    Maximum 5 shipments. All selected shipments will use the same weight.
+                    {{ 'dashboard.operations.quickCreateSpxOrder.maximum' | translate }}
                   </span>
 
                 </div>
@@ -568,7 +752,7 @@
                 <div class="spx-field">
 
                   <label for="spxWeight">
-                    Parcel Weight (kg)
+                    {{ 'dashboard.operations.quickCreateSpxOrder.parcelWeight' | translate }}
                   </label>
 
                   <input id="spxWeight"
@@ -576,7 +760,7 @@
                          min="0.01"
                          step="0.01"
                          [(ngModel)]="spxWeight"
-                         placeholder="Enter weight" />
+                         [placeholder]="'dashboard.operations.quickCreateSpxOrder.enterWeight' | translate" />
 
                 </div>
 
@@ -585,17 +769,31 @@
               </div>
 
 
-              <!-- Action -->
+              <!-- ====================================================
+               Action
+          ===================================================== -->
+
               <button type="button"
                       class="btn btn-spx"
                       (click)="createSpxOrder()"
                       [disabled]="isCreationSpx">
+
                 <i class="fa-solid fa-box"></i>
+
                 @if (isCreationSpx) {
-                <span>⏳ Creating...</span>
+
+                <span>
+                  ⏳ {{ 'dashboard.operations.quickCreateSpxOrder.creating' | translate }}
+                </span>
+
                 } @else {
-                <span>Create SPX Order</span>
+
+                <span>
+                  {{ 'dashboard.operations.quickCreateSpxOrder.button' | translate }}
+                </span>
+
                 }
+
               </button>
 
             </div>
@@ -615,24 +813,163 @@
 
           <div class="table-header">
 
-            <h2>Recent Shipments</h2>
+            <h2>{{ 'dashboard.recentShipments.title' | translate }}</h2>
 
             <div class="table-actions">
 
               <input type="text"
                      class="search-box"
-                     placeholder="Search shipments..."
+                     [placeholder]="'dashboard.recentShipments.searchPlaceholder' | translate"
                      (input)="onQuickFilterChanged($event)" />
+
               @if (currentUser?.Role?.Code !== 'VIEWER') {
-              <button class="btn-secondary"
+
+              <div class="column-selector-wrapper">
+
+                <button type="button"
+                        class="btn btn-secondary column-selector-button"
+                        (click)="showColumnSelector = !showColumnSelector">
+
+                  ⚙ {{ 'dashboard.recentShipments.columns' | translate }}
+
+                </button>
+
+                @if (showColumnSelector) {
+
+                <div class="column-selector-panel">
+
+                  <div class="column-selector-header">
+
+                    <strong>
+                      {{ 'dashboard.recentShipments.showColumns' | translate }}
+                    </strong>
+
+                    <button type="button"
+                            class="column-selector-close"
+                            (click)="showColumnSelector = false">
+                      ×
+                    </button>
+
+                  </div>
+
+                  <div class="column-selector-options">
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('trackingNumber')"
+                             (change)="toggleColumnVisibility('trackingNumber', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.trackingNumber' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('orderNo')"
+                             (change)="toggleColumnVisibility('orderNo', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.orderNo' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('customerName')"
+                             (change)="toggleColumnVisibility('customerName', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.customer' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('status')"
+                             (change)="toggleColumnVisibility('status', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.status' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('courier')"
+                             (change)="toggleColumnVisibility('courier', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.courier' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('channel')"
+                             (change)="toggleColumnVisibility('channel', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.channel' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('awbCreatedTime')"
+                             (change)="toggleColumnVisibility('awbCreatedTime', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.awbCreated' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('shipmentDate')"
+                             (change)="toggleColumnVisibility('shipmentDate', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.shipmentDate' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('lastUpdated')"
+                             (change)="toggleColumnVisibility('lastUpdated', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.lastUpdated' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('remarks')"
+                             (change)="toggleColumnVisibility('remarks', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.remarks' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('hasException')"
+                             (change)="toggleColumnVisibility('hasException', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.exception' | translate }}
+                    </label>
+
+                    <label>
+                      <input type="checkbox"
+                             [checked]="isColumnVisible('actions')"
+                             (change)="toggleColumnVisibility('actions', $event)" />
+                      {{ 'dashboard.recentShipments.columnsList.actions' | translate }}
+                    </label>
+
+                  </div>
+
+                  <button type="button"
+                          class="btn btn-secondary column-selector-show-all"
+                          (click)="showAllColumns()">
+
+                    {{ 'dashboard.recentShipments.showAll' | translate }}
+
+                  </button>
+
+                </div>
+
+                }
+
+              </div>
+
+              <button type="button"
+                      class="btn btn-secondary"
                       (click)="exportCsv()">
-                Export
+
+                {{ 'dashboard.recentShipments.export' | translate }}
+
               </button>
+
               }
+
             </div>
 
           </div>
 
+
+          <!-- AG Grid -->
           <div class="ag-theme-quartz grid-container">
 
             <ag-grid-angular class="dashboard-grid"
@@ -644,9 +981,11 @@
                              [rowSelection]="rowSelection"
                              [pagination]="true"
                              [paginationPageSize]="20"
+                             [getLocaleText]="getGridLocaleText"
                              (gridReady)="onGridReady($event)"
                              (gridSizeChanged)="onGridSizeChanged($event)"
                              [components]="components">
+
             </ag-grid-angular>
 
           </div>

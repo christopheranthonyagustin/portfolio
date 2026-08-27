@@ -8,9 +8,49 @@
 
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
   margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   KPI Responsive
+   ========================================================================== */
+
+@media (max-width: 1100px) {
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+    .kpi-grid > .card {
+      min-height: 140px;
+      padding: 20px;
+    }
+
+  .kpi-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 20px;
+  }
+
+  .kpi-grid > .card h3 {
+    font-size: 15px;
+  }
+
+  .kpi-grid > .card h1 {
+    margin-top: 12px;
+    font-size: 2.5rem;
+  }
 }
 
 .chart-grid {
@@ -20,9 +60,9 @@
   margin-bottom: 24px;
 }
 
-.trend-card {
+/*.trend-card {
   grid-column: 1 / -1;
-}
+}*/
 
 .operation-center {
   margin-bottom: 24px;
@@ -32,6 +72,25 @@
   margin-bottom: 24px;
 }
 
+.trend-card {
+
+  .chart-container {
+    position: relative;
+    width: 100%;
+    height: 360px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .trend-card {
+
+    .chart-container {
+      height: 300px;
+    }
+  }
+}
 
 /* ==========================================================================
    Dashboard Card
@@ -495,13 +554,23 @@
 
 .recent-shipments-card .grid-container {
   width: 100%;
+  min-width: 0;
   overflow-x: auto;
   overflow-y: hidden;
   border-radius: 12px;
 }
 
+/*
+ * IMPORTANT:
+ * Do NOT force the AG Grid host itself to 1200px.
+ *
+ * AG Grid needs to own the horizontal scrolling so that
+ * pinned columns (especially Actions) remain visible.
+ */
 .dashboard-grid {
-  min-width: 1200px;
+  width: 100%;
+  min-width: 0;
+  display: block;
 }
 
 
@@ -925,17 +994,649 @@
   }
 
 
-/* ==========================================================================
-   Operation Grid
-   ========================================================================== */
+/* ==========================================================
+   Operations Center - Tablet / Desktop
+   ========================================================== */
 
 .operation-grid {
   display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  align-items: stretch;
 }
 
+.operation-item {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+/* The content area takes all available space */
+.operation-header {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Button is always pushed to the bottom */
+.operation-item > .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* ==========================================================
+   Operations Center - Tablet
+   601px - 768px
+   ========================================================== */
+
+@media (min-width: 601px) and (max-width: 768px) {
+
+  .operation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .operation-item {
+    height: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+  }
+
+  .operation-header {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .operation-item > .btn,
+  .operation-item .btn {
+    width: 100%;
+    margin-top: auto;
+    flex-shrink: 0;
+  }
+}
+
+/* ==========================================================================
+   Dashboard Toolbar
+   ========================================================================== */
+
+.toolbar {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.toolbar-filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  width: 100%;
+}
+
+.toolbar .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 216px;
+  flex-shrink: 0;
+}
+
+  .toolbar .form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text);
+  }
+
+  .toolbar .form-group select {
+    width: 100%;
+    height: 44px;
+    padding: 0 40px 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+    .toolbar .form-group select:hover {
+      border-color: #cbd5e1;
+    }
+
+    .toolbar .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+
+/* ==========================================================================
+   Display Options
+   ========================================================================== */
+
+.display-options {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-left: auto;
+}
+
+.display-label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.display-switches {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.display-switch {
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+  .display-switch:hover {
+    border-color: #cbd5e1;
+  }
+
+  .display-switch.active {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--primary);
+  }
+
+.switch-indicator {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.display-switch.active .switch-indicator {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+
+
+/* ==========================================================================
+   Tablet
+   ========================================================================== */
+
+@media (max-width: 900px) {
+
+  .toolbar-filters {
+    display: grid;
+    grid-template-columns: minmax(0, 216px) minmax(0, 216px) 1fr;
+    align-items: end;
+    gap: 16px;
+  }
+
+  .toolbar .form-group {
+    width: 100%;
+  }
+
+  .display-options {
+    margin-left: auto;
+    width: auto;
+  }
+
+  .display-switches {
+    justify-content: flex-end;
+  }
+}
+
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 600px) {
+
+  .toolbar-filters {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .toolbar .form-group {
+    width: 100%;
+  }
+
+    .toolbar .form-group select {
+      height: 46px;
+    }
+
+  .display-options {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .display-switches {
+    width: 100%;
+  }
+
+  .display-switch {
+    flex: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .toolbar-filters {
+    flex-wrap: wrap;
+  }
+
+  .display-options {
+    margin-left: 0;
+  }
+}
+
+/* ==========================================================
+   OPERATIONS CENTER
+   Mobile: <= 768px
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+  .operation-center {
+    width: 100%;
+  }
+
+  .operation-center-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .operation-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .operation-item {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .operation-item-full-width {
+    grid-column: auto;
+  }
+}
+
+
+/* ==========================================================
+   COMPACT OPERATION CARDS
+   Only <= 600px
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+  .operation-item {
+    /* --------------------------------------------------------
+       Card
+       -------------------------------------------------------- */
+
+    padding: 18px !important;
+    gap: 14px;
+    min-width: 0;
+    width: 100%;
+    /* --------------------------------------------------------
+       Hide card icon
+       -------------------------------------------------------- */
+
+    .operation-icon {
+      display: none !important;
+    }
+    /* --------------------------------------------------------
+       Header
+       -------------------------------------------------------- */
+
+    .operation-header {
+      display: block !important;
+      width: 100%;
+      min-width: 0;
+    }
+
+      .operation-header > div:last-child {
+        display: block;
+        width: 100%;
+        min-width: 0;
+      }
+    /* --------------------------------------------------------
+       Title
+       -------------------------------------------------------- */
+
+    h3 {
+      margin: 0 !important;
+      font-size: 16px !important;
+      line-height: 1.25 !important;
+      width: 100%;
+    }
+    /* --------------------------------------------------------
+       Hide When
+       -------------------------------------------------------- */
+
+    .operation-header p {
+      display: none !important;
+    }
+    /* --------------------------------------------------------
+       Hide Steps
+       -------------------------------------------------------- */
+
+    .operation-steps {
+      display: none !important;
+    }
+    /* ========================================================
+       BUTTON
+       ======================================================== */
+
+    .btn,
+    .btn-primary,
+    .btn-success,
+    .btn-warning,
+    .btn-danger {
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      min-height: 40px !important;
+      height: auto !important;
+      margin-top: auto !important;
+      padding: 8px 10px !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-family: inherit !important;
+      /*
+       * This is the actual button font size.
+       */
+      font-size: 11px !important;
+      line-height: 1.2 !important;
+      font-weight: 600 !important;
+      text-align: center !important;
+      white-space: normal !important;
+      overflow: hidden !important;
+      word-break: normal !important;
+      overflow-wrap: anywhere !important;
+    }
+      /* --------------------------------------------------------
+       REMOVE BUTTON ICON
+       -------------------------------------------------------- */
+
+      .btn i,
+      .btn svg,
+      .btn mat-icon,
+      .btn .material-icons,
+      .btn .fa,
+      .btn .fas,
+      .btn .far,
+      .btn .fab {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      /* --------------------------------------------------------
+       Button text
+       -------------------------------------------------------- */
+
+      .btn span {
+        display: inline !important;
+        width: auto !important;
+        font-family: inherit !important;
+        font-size: 11px !important;
+        line-height: 1.2 !important;
+        font-weight: 600 !important;
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+      }
+  }
+}
+
+/* ==========================================================
+   Shipment Trend
+   Full Width
+   ========================================================== */
+
+.shipment-trend {
+  width: 100%;
+  max-width: none;
+  grid-column: 1 / -1;
+  box-sizing: border-box;
+}
+
+  .shipment-trend .card,
+  .shipment-trend-card {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+  }
+
+  .shipment-trend canvas {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+/* ==========================================================
+   Quick Create SPX Order - Full Width
+   ========================================================== */
 
 .operation-item-full-width {
   grid-column: 1 / -1;
+  width: 100%;
 }
+
+
+/* ==========================================================
+   Recent Shipments - Table Actions
+   ========================================================== */
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+
+/* ==========================================================
+   Column Selector
+   ========================================================== */
+
+.column-selector-wrapper {
+  position: relative;
+}
+
+
+/* Columns button */
+
+.column-selector-button {
+  white-space: nowrap;
+}
+
+
+/* ==========================================================
+   Column Selector Floating Panel
+   ========================================================== */
+
+.column-selector-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 280px;
+  max-width: calc(100vw - 32px);
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid #d9dee7;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   Panel Header
+   ========================================================== */
+
+.column-selector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #111827;
+}
+
+
+.column-selector-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #374151;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+
+  .column-selector-close:hover {
+    background: #f3f4f6;
+  }
+
+
+/* ==========================================================
+   Column Options
+   ========================================================== */
+
+.column-selector-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 14px;
+}
+
+
+  .column-selector-options label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.3;
+    color: #374151;
+    cursor: pointer;
+  }
+
+
+  .column-selector-options input[type="checkbox"] {
+    flex: 0 0 auto;
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    cursor: pointer;
+  }
+
+
+/* ==========================================================
+   Show All
+   ========================================================== */
+
+.column-selector-show-all {
+  width: 100%;
+}
+
+
+/* ==========================================================
+   Mobile
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+  .table-actions {
+    flex-wrap: wrap;
+  }
+
+  .column-selector-panel {
+    left: 0;
+    right: auto;
+    width: 280px;
+  }
+
+  .column-selector-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   Table Action Buttons
+   ========================================================== */
+
+.column-selector-button {
+  background: #eef2ff !important;
+  border: 1px solid #c7d2fe !important;
+  color: #3730a3 !important;
+}
+
+  .column-selector-button:hover {
+    background: #e0e7ff !important;
+    border-color: #a5b4fc !important;
+  }
+
+.table-actions .btn-secondary:not(.column-selector-button) {
+  background: #f0fdf4 !important;
+  border: 1px solid #bbf7d0 !important;
+  color: #166534 !important;
+}
+
+  .table-actions .btn-secondary:not(.column-selector-button):hover {
+    background: #dcfce7 !important;
+    border-color: #86efac !important;
+  }
+
+

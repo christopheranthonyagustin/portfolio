@@ -1,0 +1,315 @@
+{
+  "login": {
+    "subtitle": "物流可视化平台",
+    "signIn": "登录以继续",
+    "continueWithLark": "使用飞书登录",
+    "continueWithGoogle": "使用 Google 登录",
+    "language": "语言",
+    "english": "English",
+    "chinese": "中文",
+    "close": "关闭",
+    "version": "版本"
+  },
+
+  "auth": {
+    "signingIn": "正在登录...",
+    "signingInMessage": "请稍候，我们正在安全地验证您的账户。",
+
+    "authorizationCancelled": {
+      "title": "授权已取消",
+      "message": "您已取消授权。如果您想登录，请重新尝试。"
+    },
+
+    "authenticationFailed": {
+      "title": "身份验证失败",
+      "message": "无法验证您的账户。请再试一次。"
+    },
+
+    "invalidAuthentication": {
+      "title": "身份验证无效",
+      "message": "身份验证响应无效。"
+    },
+
+    "welcome": {
+      "title": "欢迎",
+      "message": "欢迎回来，{{name}}！"
+    },
+
+    "accountNotFound": {
+      "title": "找不到账户",
+      "message": "无法找到您的账户。请联系管理员。"
+    },
+
+    "unableToLoadAccount": {
+      "title": "无法加载账户",
+      "message": "我们无法获取您的账户信息。请稍后再试。"
+    }
+  },
+
+  "sidebar": {
+    "sections": {
+      "dashboard": "仪表板",
+      "operations": "运营",
+      "administration": "管理",
+      "reports": "报表",
+      "system": "系统"
+    },
+
+    "menu": {
+      "dashboard": "仪表板",
+      "shipments": "货件",
+      "users": "用户",
+      "companies": "公司",
+      "rolesPermissions": "角色与权限",
+      "reports": "报表",
+      "auditLogs": "审计日志",
+      "settings": "设置"
+    },
+
+    "roles": {
+      "superAdmin": "超级管理员",
+      "administrator": "管理员",
+      "operationsManager": "运营经理",
+      "operator": "操作员",
+      "viewer": "查看者",
+      "3plUser": "第三方物流用户"
+    }
+  },
+
+  "header": {
+    "dashboard": {
+      "title": "仪表板",
+      "subtitle": "物流运营概览 🚀"
+    },
+    "logout": "退出登录"
+  },
+
+  "footer": {
+    "allRightsReserved": "版权所有。",
+    "version": "版本"
+  },
+
+  "dashboard": {
+    "filters": {
+      "parentCompany": "母公司",
+      "company": "公司",
+      "dateRange": "日期范围",
+      "today": "今天",
+      "yesterday": "昨天",
+      "last7": "最近 7 天",
+      "last30": "最近 30 天",
+      "thisMonth": "本月",
+      "lastMonth": "上月",
+      "all": "全部时间"
+    },
+
+    "display": {
+      "title": "显示",
+      "kpiCards": "数据卡片",
+      "charts": "图表"
+    },
+
+    "kpi": {
+      "pendingPickup": "待取件",
+      "inTransit": "运输中",
+      "delivered": "已送达",
+      "exceptions": "异常"
+    },
+
+    "charts": {
+      "otherStatuses": {
+        "title": "其他状态",
+        "datasetLabel": "异常货件",
+
+        "statuses": {
+          "pending": "待处理",
+          "unfulfilled": "未完成",
+          "fulfilled": "已完成",
+          "partial": "部分完成",
+          "pendingPickup": "待取件",
+          "pickedUp": "已取件",
+          "inTransit": "运输中",
+          "outForDelivery": "派送中",
+          "onHold": "暂缓",
+          "selfCollect": "自取",
+          "delivered": "已送达",
+          "failedDelivery": "配送失败",
+          "lost": "丢失",
+          "exception": "异常",
+          "returned": "已退回",
+          "canceled": "已取消",
+          "restocked": "已重新入库",
+          "unknown": "未知"
+        }
+      },
+
+      "shipmentByChannel": {
+        "title": "按渠道统计货件",
+
+        "channels": {
+          "onlineStore": "在线商店",
+          "onlineStorePosOfflineOrderQr": "在线商店：POS、线下订单、二维码来源",
+          "shopifyDraft": "Shopify 草稿订单",
+          "pos": "POS",
+          "unknown": "未知"
+        }
+      },
+
+      "shipmentTrend": {
+        "title": "货件趋势",
+        "datasetLabel": "货件"
+      }
+    },
+
+    "operations": {
+      "title": "运营中心",
+      "description": "管理订单同步和货件运营。",
+
+      "shopifyOrders": {
+        "title": "Shopify 订单",
+        "when": "适用情况：",
+        "whenDescription": "有新的 Shopify 订单，但您不想等待系统的定时同步。",
+        "steps": "操作步骤：",
+        "step1": "点击",
+        "step1Action": "导入 Shopify 订单",
+        "step2": "在 LogiVis 中确认已导入的订单。",
+        "button": "导入 Shopify 订单",
+        "importing": "正在导入..."
+      },
+
+      "deliveryStatus": {
+        "title": "配送状态",
+        "when": "适用情况：",
+        "whenDescription": "您需要立即获取最新的货件状态，而不想等待系统的定时更新。",
+        "steps": "操作步骤：",
+        "step1": "点击",
+        "step1Action": "批量更新配送状态",
+        "step2": "检查更新后的货件状态。",
+        "button": "批量更新配送状态",
+        "updating": "正在同步..."
+      },
+
+      "downloadAwb": {
+        "title": "下载多个 AWB",
+        "when": "适用情况：",
+        "whenDescription": "您需要下载多个货件的 AWB。",
+        "steps": "操作步骤：",
+        "step1": "选择 1–5 个符合条件的货件。",
+        "step2": "每个货件必须有 SPX 跟踪号码，并且不能处于未履行（Unfulfilled）状态。",
+        "step3": "点击",
+        "step3Action": "下载多个 AWB",
+        "step4": "查看合并后的 PDF，并使用 PDF 查看器中的“下载”按钮。",
+        "button": "下载多个 AWB",
+        "preparing": "正在准备 AWB..."
+      },
+
+      "cancelSpxOrder": {
+        "title": "取消 SPX 订单",
+        "when": "适用情况：",
+        "whenDescription": "当货件需要修改或重新创建时，取消现有的 SPX 配送订单。",
+        "steps": "操作步骤：",
+        "step1": "选择一个现有的 SPX 货件。",
+        "step2": "该货件必须有 SPX 跟踪号码。",
+        "step3": "点击",
+        "step3Action": "取消 SPX 订单",
+        "step4": "重新创建 AWB 前，请确认取消操作。",
+        "button": "取消 SPX 订单",
+        "cancelling": "正在取消..."
+      },
+
+      "quickCreateSpxOrder": {
+        "title": "快速创建 SPX 订单",
+        "description": "立即为选中的货件创建 SPX 订单，无需等待正常的同步流程。",
+        "weight": "重量",
+        "small": "小件（3 公斤）",
+        "big": "大件（5 公斤）",
+        "custom": "自定义重量",
+        "maximum": "最多选择 5 个货件。所有选中的货件将使用相同的重量。",
+        "parcelWeight": "包裹重量（公斤）",
+        "enterWeight": "请输入重量",
+        "button": "创建 SPX 订单",
+        "creating": "正在创建..."
+      }
+    },
+
+    "recentShipments": {
+      "title": "最近货件",
+      "searchPlaceholder": "搜索货件...",
+      "columns": "列",
+      "showColumns": "显示列",
+      "showAll": "显示全部",
+      "export": "导出",
+
+      "statusFilter": {
+        "all": "全部状态",
+
+        "statuses": {
+          "pending": "待处理",
+          "unfulfilled": "未完成",
+          "fulfilled": "已完成",
+          "partial": "部分完成",
+          "pendingPickup": "待取件",
+          "pickedUp": "已取件",
+          "inTransit": "运输中",
+          "outForDelivery": "派送中",
+          "onHold": "暂缓",
+          "selfCollect": "自取",
+          "delivered": "已送达",
+          "failedDelivery": "配送失败",
+          "lost": "丢失",
+          "exception": "异常",
+          "returned": "已退回",
+          "canceled": "已取消",
+          "restocked": "已重新入库",
+          "unknown": "未知"
+        }
+      },
+
+      "courier": {
+        "toShip": "待发货"
+      },
+
+      "channel": {
+        "facebookInstagram": "Facebook 和 Instagram",
+        "googleYoutube": "Google 和 YouTube",
+        "shopifyInbox": "Shopify Inbox",
+        "marketplaceConnect": "Marketplace Connect",
+        "onlineStore": "在线商店",
+        "pinterest": "Pinterest",
+        "pointOfSale": "销售点",
+        "shop": "Shop",
+        "tiktok": "TikTok"
+      },
+
+      "columnsList": {
+        "trackingNumber": "跟踪号码",
+        "orderNo": "订单号",
+        "customer": "客户",
+        "status": "状态",
+        "courier": "快递公司",
+        "channel": "渠道",
+        "awbCreated": "AWB 创建时间",
+        "shipmentDate": "货件日期",
+        "lastUpdated": "最后更新",
+        "remarks": "备注",
+        "exception": "异常",
+        "actions": "操作"
+      }
+    },
+
+    "grid": {
+      "contains": "包含",
+      "notContains": "不包含",
+      "equals": "等于",
+      "notEqual": "不等于",
+      "lessThan": "之前",
+      "greaterThan": "之后",
+      "inRange": "介于",
+      "startsWith": "开头为",
+      "endsWith": "结尾为",
+      "blank": "为空",
+      "notBlank": "不为空",
+      "filterOoo": "筛选..."
+    }
+  }
+}

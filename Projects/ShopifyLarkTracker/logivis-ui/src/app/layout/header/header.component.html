@@ -2,29 +2,35 @@
 
   <div class="header-left">
 
-    <h1>{{ title }}</h1>
+    <h1>
+      {{ translatedTitle }}
+    </h1>
 
-    <p>{{ subtitle }}</p>
+    <p>
+      {{ translatedSubtitle }}
+    </p>
 
   </div>
 
   <div class="header-right">
 
     <div class="user-email">
-
-      <span>{{ currentUser?.Email }}</span>
-
+      <span>
+        {{ currentUser?.Email }}
+      </span>
     </div>
 
-    <button class="icon-button">
+    <button type="button"
+            class="icon-button">
       🔔
     </button>
 
-
-
-    <button class="logout-button"
+    <button type="button"
+            class="logout-button"
             (click)="logout()">
-      🚪 Logout
+
+      🚪 {{ 'header.logout' | translate }}
+
     </button>
 
   </div>

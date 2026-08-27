@@ -1,0 +1,15 @@
+<select class="status-filter-select"
+        [value]="selectedStatus"
+        (change)="onStatusChanged($event)">
+
+  <option value="">
+    {{ getAllStatusesLabel() }}
+  </option>
+
+  @for (status of statuses; track status) {
+  <option [value]="status">
+    {{ getStatusLabel(status) }}
+  </option>
+  }
+
+</select>

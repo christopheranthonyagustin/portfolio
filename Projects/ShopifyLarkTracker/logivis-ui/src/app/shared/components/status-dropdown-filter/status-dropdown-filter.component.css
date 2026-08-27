@@ -1,0 +1,26 @@
+.status-filter-select {
+  display: block;
+  width: 100%;
+  height: 34px;
+  box-sizing: border-box;
+  padding: 0 28px 0 10px;
+  border: 1px solid #d9dee7;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #111827;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  outline: none;
+  cursor: pointer;
+  appearance: auto;
+}
+
+  .status-filter-select:hover {
+    border-color: #9ca3af;
+  }
+
+  .status-filter-select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.12);
+  }

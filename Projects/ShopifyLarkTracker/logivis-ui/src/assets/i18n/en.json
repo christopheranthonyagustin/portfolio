@@ -1,0 +1,319 @@
+{
+  "login": {
+    "subtitle": "Logistics Visibility Platform",
+    "signIn": "Sign in to continue",
+    "continueWithLark": "Continue with Lark",
+    "continueWithGoogle": "Continue with Google",
+    "language": "Language",
+    "english": "English",
+    "chinese": "中文",
+    "close": "Close",
+    "version": "Version"
+  },
+
+  "auth": {
+    "signingIn": "Signing in...",
+    "signingInMessage": "Please wait while we securely authenticate your account.",
+
+    "authorizationCancelled": {
+      "title": "Authorization Cancelled",
+      "message": "You cancelled the authorization. Please try again if you want to sign in."
+    },
+
+    "authenticationFailed": {
+      "title": "Authentication Failed",
+      "message": "Unable to authenticate your account. Please try again."
+    },
+
+    "invalidAuthentication": {
+      "title": "Invalid Authentication",
+      "message": "Authentication response is invalid."
+    },
+
+    "welcome": {
+      "title": "Welcome",
+      "message": "Welcome back, {{name}}!"
+    },
+
+    "accountNotFound": {
+      "title": "Account Not Found",
+      "message": "Your account could not be found. Please contact your administrator."
+    },
+
+    "unableToLoadAccount": {
+      "title": "Unable to Load Account",
+      "message": "We could not retrieve your account information. Please try again later."
+    }
+  },
+
+  "sidebar": {
+    "sections": {
+      "dashboard": "Dashboard",
+      "operations": "Operations",
+      "administration": "Administration",
+      "reports": "Reports",
+      "system": "System"
+    },
+
+    "menu": {
+      "dashboard": "Dashboard",
+      "shipments": "Shipments",
+      "users": "Users",
+      "companies": "Companies",
+      "rolesPermissions": "Roles & Permissions",
+      "reports": "Reports",
+      "auditLogs": "Audit Logs",
+      "settings": "Settings"
+    },
+
+    "roles": {
+      "superAdmin": "Super Admin",
+      "administrator": "Administrator",
+      "operationsManager": "Operations Manager",
+      "operator": "Operator",
+      "viewer": "Viewer",
+      "3plUser": "3PL User"
+    }
+  },
+
+  "header": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Overview of logistics operations 🚀"
+    },
+    "logout": "Logout"
+  },
+
+  "footer": {
+    "allRightsReserved": "All rights reserved.",
+    "version": "Version"
+  },
+
+  "dashboard": {
+    "filters": {
+      "parentCompany": "Parent Company",
+      "company": "Company",
+      "dateRange": "Date Range",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "last7": "Last 7 Days",
+      "last30": "Last 30 Days",
+      "thisMonth": "This Month",
+      "lastMonth": "Last Month",
+      "all": "All Time"
+    },
+
+    "display": {
+      "title": "Display",
+      "kpiCards": "KPI Cards",
+      "charts": "Charts"
+    },
+
+    "kpi": {
+      "pendingPickup": "Pending Pickup",
+      "inTransit": "In Transit",
+      "delivered": "Delivered",
+      "exceptions": "Exceptions"
+    },
+
+    "charts": {
+      "otherStatuses": {
+        "title": "Other Statuses",
+        "datasetLabel": "Exception Shipments",
+
+        "statuses": {
+          "pending": "Pending",
+          "unfulfilled": "Unfulfilled",
+          "fulfilled": "Fulfilled",
+          "partial": "Partial",
+          "pendingPickup": "Pending Pickup",
+          "pickedUp": "Picked Up",
+          "inTransit": "In Transit",
+          "outForDelivery": "Out for Delivery",
+          "onHold": "On Hold",
+          "selfCollect": "Self Collect",
+          "delivered": "Delivered",
+          "failedDelivery": "Failed Delivery",
+          "lost": "Lost",
+          "exception": "Exception",
+          "returned": "Returned",
+          "canceled": "Canceled",
+          "restocked": "Restocked",
+          "unknown": "Unknown"
+        }
+      },
+
+      "shipmentByChannel": {
+        "title": "Shipment by Channel",
+
+        "channels": {
+          "onlineStore": "Online Store",
+          "onlineStorePosOfflineOrderQr": "Online Store: POS, Offline Order, QR Source",
+          "shopifyDraft": "Shopify Draft",
+          "pos": "POS",
+          "unknown": "Unknown"
+        }
+      },
+
+      "shipmentTrend": {
+        "title": "Shipment Trend",
+        "datasetLabel": "Shipments"
+      }
+    },
+
+    "operations": {
+      "title": "Operations Center",
+      "description": "Manage order synchronization and shipment operations.",
+
+      "shopifyOrders": {
+        "title": "Shopify Orders",
+        "when": "When:",
+        "whenDescription": "New Shopify orders are available and you don't want to wait for the scheduled synchronization.",
+        "steps": "Steps:",
+        "step1": "Click",
+        "step1Action": "Import Shopify Orders",
+        "step2": "Verify the imported orders in LogiVis.",
+        "button": "Import Shopify Orders",
+        "importing": "Importing..."
+      },
+
+      "deliveryStatus": {
+        "title": "Delivery Status",
+        "when": "When:",
+        "whenDescription": "You need the latest shipment status now and don't want to wait for the scheduled update.",
+        "steps": "Steps:",
+        "step1": "Click",
+        "step1Action": "Bulk Update Delivery Status",
+        "step2": "Review the updated shipment statuses.",
+        "button": "Bulk Update Delivery Status",
+        "updating": "Synchronizing..."
+      },
+
+      "downloadAwb": {
+        "title": "Download Multiple AWB",
+        "when": "When:",
+        "whenDescription": "You need AWBs for multiple shipments.",
+        "steps": "Steps:",
+        "step1": "Select 1–5 eligible shipments.",
+        "step2": "Each shipment must have an SPX tracking number and must not be Unfulfilled.",
+        "step3": "Click",
+        "step3Action": "Download Multiple AWB",
+        "step4": "Review the consolidated PDF and use the PDF viewer's Download button.",
+        "button": "Download Multiple AWB",
+        "preparing": "Preparing AWBs..."
+      },
+
+      "cancelSpxOrder": {
+        "title": "Cancel SPX Order",
+        "when": "When:",
+        "whenDescription": "Cancel an existing SPX delivery order when the shipment needs to be changed or recreated.",
+        "steps": "Steps:",
+        "step1": "Select an existing SPX shipment.",
+        "step2": "The shipment must have an SPX tracking number.",
+        "step3": "Click",
+        "step3Action": "Cancel SPX Order",
+        "step4": "Confirm the cancellation before recreating the AWB.",
+        "button": "Cancel SPX Order",
+        "cancelling": "Cancelling..."
+      },
+
+      "quickCreateSpxOrder": {
+        "title": "Quick Create SPX Order",
+        "description": "Create SPX orders immediately for the selected shipments without waiting for the normal synchronization process.",
+        "weight": "Weight",
+        "small": "Small Item (3 kg)",
+        "big": "Big Item (5 kg)",
+        "custom": "Custom Weight",
+        "maximum": "Maximum 5 shipments. All selected shipments will use the same weight.",
+        "parcelWeight": "Parcel Weight (kg)",
+        "enterWeight": "Enter weight",
+        "button": "Create SPX Order",
+        "creating": "Creating..."
+      }
+    },
+
+    "recentShipments": {
+      "title": "Recent Shipments",
+      "searchPlaceholder": "Search shipments...",
+      "columns": "Columns",
+      "showColumns": "Show Columns",
+      "showAll": "Show All",
+      "export": "Export",
+
+      "statusFilter": {
+        "all": "All Statuses",
+
+        "statuses": {
+          "pending": "Pending",
+          "unfulfilled": "Unfulfilled",
+          "fulfilled": "Fulfilled",
+          "partial": "Partial",
+          "pendingPickup": "Pending Pickup",
+          "pickedUp": "Picked Up",
+          "inTransit": "In Transit",
+          "outForDelivery": "Out for Delivery",
+          "onHold": "On Hold",
+          "selfCollect": "Self Collect",
+          "delivered": "Delivered",
+          "failedDelivery": "Failed Delivery",
+          "lost": "Lost",
+          "exception": "Exception",
+          "returned": "Returned",
+          "canceled": "Canceled",
+          "restocked": "Restocked",
+          "unknown": "Unknown"
+        }
+      },
+
+      "courier": {
+        "toShip": "To Ship"
+      },
+
+      "channel": {
+        "facebookInstagram": "Facebook & Instagram",
+        "googleYoutube": "Google & YouTube",
+        "shopifyInbox": "Shopify Inbox",
+        "marketplaceConnect": "Marketplace Connect",
+        "onlineStore": "Online Store",
+        "pinterest": "Pinterest",
+        "pointOfSale": "Point of Sale",
+        "shop": "Shop",
+        "tiktok": "TikTok"
+      },
+
+      "columnsList": {
+        "trackingNumber": "Tracking No",
+        "orderNo": "Order No",
+        "customer": "Customer",
+        "status": "Status",
+        "courier": "Courier",
+        "channel": "Channel",
+        "awbCreated": "AWB Created",
+        "shipmentDate": "Shipment Date",
+        "lastUpdated": "Last Updated",
+        "remarks": "Remarks",
+        "exception": "Exception",
+        "actions": "Actions"
+      }
+    },
+
+    "grid": {
+      "contains": "Contains",
+      "notContains": "Does not contain",
+      "equals": "Equals",
+      "notEqual": "Does not equal",
+
+      "lessThan": "Before",
+      "greaterThan": "After",
+      "inRange": "Between",
+
+      "startsWith": "Begins with",
+      "endsWith": "Ends with",
+      "blank": "Blank",
+      "notBlank": "Not blank",
+
+      "filterOoo": "Filter...",
+      "dateFormatOoo": "mm/dd/yyyy"
+    }
+  }
+}

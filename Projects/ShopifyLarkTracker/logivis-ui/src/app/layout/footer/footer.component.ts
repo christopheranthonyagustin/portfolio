@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 import { AuthService } from '../../features/auth/services/auth.service';
 import { User } from '../../core/models/User';
@@ -8,6 +8,10 @@ import { User } from '../../core/models/User';
 @Component({
   selector: 'app-footer',
   standalone: true,
+  imports: [
+    CommonModule,
+    TranslatePipe
+  ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
@@ -40,9 +44,6 @@ export class FooterComponent {
     }
 
     return (words[0][0] + words[1][0]).toUpperCase();
-
   }
-
-
 
 }

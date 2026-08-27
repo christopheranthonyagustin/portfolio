@@ -24,8 +24,11 @@
 
     @if (permissionService.has('DASHBOARD.READ')) {
 
-    <span class="section-title" *ngIf="!sidebarService.collapsed()">
-      Dashboard
+    <span class="section-title"
+          *ngIf="!sidebarService.collapsed()">
+
+      {{ 'sidebar.sections.dashboard' | translate }}
+
     </span>
 
     <a routerLink="/dashboard"
@@ -34,17 +37,25 @@
       🏠
 
       @if (!sidebarService.collapsed()) {
-      <span>Dashboard</span>
+
+      <span>
+        {{ 'sidebar.menu.dashboard' | translate }}
+      </span>
+
       }
 
     </a>
 
     }
 
+
     @if (permissionService.has('SHIPMENTS.READ')) {
 
-    <span class="section-title menu-admin" *ngIf="!sidebarService.collapsed()">
-      Operations
+    <span class="section-title menu-admin"
+          *ngIf="!sidebarService.collapsed()">
+
+      {{ 'sidebar.sections.operations' | translate }}
+
     </span>
 
     <a class="menu-admin"
@@ -54,12 +65,17 @@
       📦
 
       @if (!sidebarService.collapsed()) {
-      <span>Shipments</span>
+
+      <span>
+        {{ 'sidebar.menu.shipments' | translate }}
+      </span>
+
       }
 
     </a>
 
     }
+
 
     @if (
     permissionService.has('USERS.READ') ||
@@ -67,25 +83,36 @@
     permissionService.has('ROLES.READ')
     ) {
 
-    <span class="section-title" *ngIf="!sidebarService.collapsed()">
-      Administration
+    <span class="section-title"
+          *ngIf="!sidebarService.collapsed()">
+
+      {{ 'sidebar.sections.administration' | translate }}
+
     </span>
 
+
     @if (permissionService.has('USERS.READ')) {
-    <a 
-       routerLink="/users"
+
+    <a routerLink="/users"
        routerLinkActive="active">
 
       👤
 
       @if (!sidebarService.collapsed()) {
-      <span>Users</span>
+
+      <span>
+        {{ 'sidebar.menu.users' | translate }}
+      </span>
+
       }
 
     </a>
+
     }
 
+
     @if (permissionService.has('COMPANIES.READ')) {
+
     <a class="menu-admin"
        routerLink="/companies"
        routerLinkActive="active">
@@ -93,13 +120,20 @@
       🏢
 
       @if (!sidebarService.collapsed()) {
-      <span>Companies</span>
+
+      <span>
+        {{ 'sidebar.menu.companies' | translate }}
+      </span>
+
       }
 
     </a>
+
     }
 
+
     @if (permissionService.has('ROLES.READ')) {
+
     <a class="menu-admin"
        routerLink="/roles"
        routerLinkActive="active">
@@ -107,55 +141,82 @@
       🔐
 
       @if (!sidebarService.collapsed()) {
-      <span>Roles & Permissions</span>
+
+      <span>
+        {{ 'sidebar.menu.rolesPermissions' | translate }}
+      </span>
+
       }
 
     </a>
+
     }
 
     }
+
 
     @if (
     permissionService.has('REPORTS.READ') ||
     permissionService.has('AUDIT_LOGS.READ')
     ) {
 
-    <span class="section-title" *ngIf="!sidebarService.collapsed()">
-      Reports
+    <span class="section-title"
+          *ngIf="!sidebarService.collapsed()">
+
+      {{ 'sidebar.sections.reports' | translate }}
+
     </span>
 
+
     @if (permissionService.has('REPORTS.READ')) {
+
     <a routerLink="/reports"
        routerLinkActive="active">
 
       📊
 
       @if (!sidebarService.collapsed()) {
-      <span>Reports</span>
+
+      <span>
+        {{ 'sidebar.menu.reports' | translate }}
+      </span>
+
       }
 
     </a>
+
     }
 
+
     @if (permissionService.has('AUDIT_LOGS.READ')) {
+
     <a routerLink="/audit-logs"
        routerLinkActive="active">
 
       📝
 
       @if (!sidebarService.collapsed()) {
-      <span>Audit Logs</span>
+
+      <span>
+        {{ 'sidebar.menu.auditLogs' | translate }}
+      </span>
+
       }
 
     </a>
+
     }
 
     }
+
 
     @if (permissionService.has('SETTINGS.READ')) {
 
-    <span class="section-title" *ngIf="!sidebarService.collapsed()">
-      System
+    <span class="section-title"
+          *ngIf="!sidebarService.collapsed()">
+
+      {{ 'sidebar.sections.system' | translate }}
+
     </span>
 
     <a routerLink="/settings"
@@ -164,7 +225,11 @@
       ⚙️
 
       @if (!sidebarService.collapsed()) {
-      <span>Settings</span>
+
+      <span>
+        {{ 'sidebar.menu.settings' | translate }}
+      </span>
+
       }
 
     </a>
@@ -173,7 +238,6 @@
 
   </nav>
 
-  
 
   <div class="profile">
 
@@ -192,7 +256,7 @@
       </strong>
 
       <small>
-        {{ displayRole }}
+        {{ displayRole | translate }}
       </small>
 
       @if (currentUser?.IsSuperUser) {

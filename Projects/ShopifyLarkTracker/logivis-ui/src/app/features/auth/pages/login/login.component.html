@@ -9,12 +9,13 @@
     <h1>LogiVis</h1>
 
     <p class="subtitle">
-      Logistics Visibility Platform
+      {{ 'login.subtitle' | translate }}
     </p>
 
     <p class="description">
-      Sign in to continue
+      {{ 'login.signIn' | translate }}
     </p>
+
 
     @if (showAlert) {
 
@@ -28,7 +29,7 @@
 
         <button type="button"
                 class="close-button"
-                aria-label="Close"
+                [attr.aria-label]="'login.close' | translate"
                 (click)="closeAlert()">
 
           <i class="fa-solid fa-xmark"></i>
@@ -43,15 +44,23 @@
 
     }
 
+
+    <!-- =====================================================
+         Login Buttons
+         ===================================================== -->
+
     <button type="button"
             class="login-button lark"
             (click)="loginWithLark()">
 
       <i class="fa-solid fa-feather-pointed provider-icon"></i>
 
-      <span>Continue with Lark</span>
+      <span>
+        {{ 'login.continueWithLark' | translate }}
+      </span>
 
     </button>
+
 
     <button type="button"
             class="login-button google"
@@ -59,15 +68,59 @@
 
       <i class="fa-brands fa-google provider-icon"></i>
 
-      <span>Continue with Google</span>
+      <span>
+        {{ 'login.continueWithGoogle' | translate }}
+      </span>
 
     </button>
 
+
+    <!-- =====================================================
+         Language Switcher
+         ===================================================== -->
+
+    <div class="language-switcher">
+
+      <span class="language-label">
+        {{ 'login.language' | translate }}
+      </span>
+
+      <div class="language-toggle">
+
+        <button type="button"
+                [class.active]="language === 'en'"
+                (click)="switchLanguage('en')">
+
+          EN
+
+        </button>
+
+        <button type="button"
+                [class.active]="language === 'zh'"
+                (click)="switchLanguage('zh')">
+
+          中文
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         Footer
+         ===================================================== -->
+
     <div class="footer">
 
-      <div>Version {{ version }}</div>
+      <div>
+        {{ 'login.version' | translate }} {{ version }}
+      </div>
 
-      <div>© 2026 LogiVis</div>
+      <div>
+        © 2026 LogiVis
+      </div>
 
     </div>
 

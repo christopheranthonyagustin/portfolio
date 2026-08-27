@@ -50,6 +50,11 @@ import { Companies } from '../../../core/models/Companies';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { ShipmentEstDialogComponent } from '../../../features/shipments/components/shipment-est-dialog/shipment-est-dialog.component';
+import {
+  TranslatePipe,
+  TranslateService
+} from '@ngx-translate/core';
+import { StatusDropdownFilterComponent } from '../../../shared/components/status-dropdown-filter/status-dropdown-filter.component';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -57,6 +62,7 @@ import { ShipmentEstDialogComponent } from '../../../features/shipments/componen
   imports: [
     CommonModule,
     FormsModule,
+    TranslatePipe,
     AgGridAngular,
     BaseChartDirective,
     SidebarComponent,
@@ -141,11 +147,110 @@ export class DashboardPageComponent implements OnInit {
   spxWeight: number | null = null;
   public isCancellingSpx = false;
   public isCreationSpx = false;
+  showKpiCards = true;
+  showCharts = true;
+  showColumnSelector = false;
 
-    private get isOperatorRole(): boolean {
+  readonly columnVisibilityOptions = [
+    { field: 'trackingNumber', label: 'Tracking No' },
+    { field: 'orderNo', label: 'Order No' },
+    { field: 'customerName', label: 'Customer' },
+    { field: 'status', label: 'Status' },
+    { field: 'courier', label: 'Courier' },
+    { field: 'channel', label: 'Channel' },
+    { field: 'awbCreatedTime', label: 'AWB Created' },
+    { field: 'shipmentDate', label: 'Shipment Date' },
+    { field: 'lastUpdated', label: 'Last Updated' },
+    { field: 'remarks', label: 'Remarks' },
+    { field: 'hasException', label: 'Exception' }
+  ];
+
+
+  getGridLocaleText = (params: {
+    key: string;
+    defaultValue: string;
+  }): string => {
+
+    const keyMap: Record<string, string> = {
+
+      // Text Filter
+      contains: 'dashboard.grid.contains',
+      notContains: 'dashboard.grid.notContains',
+      equals: 'dashboard.grid.equals',
+      notEqual: 'dashboard.grid.notEqual',
+      startsWith: 'dashboard.grid.startsWith',
+      endsWith: 'dashboard.grid.endsWith',
+      blank: 'dashboard.grid.blank',
+      notBlank: 'dashboard.grid.notBlank',
+
+      // Date Filter
+      lessThan: 'dashboard.grid.lessThan',
+      greaterThan: 'dashboard.grid.greaterThan',
+      inRange: 'dashboard.grid.inRange',
+
+      // General
+      filterOoo: 'dashboard.grid.filterOoo'
+    };
+
+    const translationKey = keyMap[params.key];
+
+    if (!translationKey) {
+      return params.defaultValue;
+    }
+
+    const translated =
+      this.translate.instant(translationKey);
+
+    return translated !== translationKey
+      ? translated
+      : params.defaultValue;
+  };
+
+  private readonly translate =
+    inject(TranslateService);
+
+  private get isOperatorRole(): boolean {
     return this.currentRoleId > 2;
   }
 
+  private dateFilterComparator(
+    filterLocalDateAtMidnight: Date,
+    cellValue: any
+  ): number {
+
+    if (!cellValue) {
+      return -1;
+    }
+
+    const cellDate = new Date(cellValue);
+
+    if (isNaN(cellDate.getTime())) {
+      return -1;
+    }
+
+    // Compare date only
+    const cellDateOnly = new Date(
+      cellDate.getFullYear(),
+      cellDate.getMonth(),
+      cellDate.getDate()
+    );
+
+    const filterDateOnly = new Date(
+      filterLocalDateAtMidnight.getFullYear(),
+      filterLocalDateAtMidnight.getMonth(),
+      filterLocalDateAtMidnight.getDate()
+    );
+
+    if (cellDateOnly < filterDateOnly) {
+      return -1;
+    }
+
+    if (cellDateOnly > filterDateOnly) {
+      return 1;
+    }
+
+    return 0;
+  }
 
   readonly defaultColDef: ColDef = {
 
@@ -163,28 +268,69 @@ export class DashboardPageComponent implements OnInit {
     {
       field: 'trackingNumber',
       headerName: 'Tracking No',
-      minWidth: 120
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.trackingNumber'
+        ),
+      minWidth: 120,
+      sortable: false,
     },
 
     {
       field: 'orderNo',
       headerName: 'Order No',
-      width: 120
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.orderNo'
+        ),
+      width: 120,
+      sortable: false,
     },
 
     {
       field: 'customerName',
       headerName: 'Customer',
-      minWidth: 220
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.customer'
+        ),
+      minWidth: 220,
+      sortable: false,
     },
 
     {
       field: 'status',
       headerName: 'Status',
-      width: 170,
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.status'
+        ),
 
-      valueFormatter: params =>
-        getShipmentStatus(params.value),
+      width: 170,
+      sortable: false,
+      // Custom filter opens as a popup
+      filter: StatusDropdownFilterComponent,
+
+      // Do NOT render the dropdown directly in the filter row
+      floatingFilter: true,
+
+      // IMPORTANT for the legacy custom filter
+      floatingFilterComponentParams: {
+        suppressFilterButton: true
+      },
+
+      valueFormatter: params => {
+
+        const status =
+          getShipmentStatus(params.value);
+
+        const key =
+          this.getStatusTranslationKey(status);
+
+        return this.translate.instant(
+          `dashboard.recentShipments.statusFilter.statuses.${key}`
+        );
+      },
 
       cellStyle: (params: CellClassParams): CellStyle | null => {
 
@@ -233,7 +379,7 @@ export class DashboardPageComponent implements OnInit {
           case 'Self Collect':
             return {
               backgroundColor: '#E0E7FF',
-              color: '#3730A3',
+              color: '#3730A2',
               fontWeight: '600'
             };
 
@@ -271,67 +417,193 @@ export class DashboardPageComponent implements OnInit {
     {
       field: 'courier',
       headerName: 'Courier',
-      width: 120
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.courier'
+        ),
+      width: 120,
+      sortable: false,
+      valueFormatter: params => {
+        if (params.value === 'To Ship') {
+          return this.translate.instant(
+            'dashboard.recentShipments.courier.toShip'
+          );
+        }
+
+        return params.value || '';
+      }
     },
 
     {
       field: 'channel',
       headerName: 'Channel',
-      width: 120
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.channel'
+        ),
+      width: 120,
+      sortable: false,
+      valueFormatter: params => {
+
+        const value = String(params.value ?? '').trim();
+
+        switch (value.toLowerCase()) {
+
+          case 'facebook & instagram':
+            return this.translate.instant(
+              'dashboard.recentShipments.channel.facebookInstagram'
+            );
+
+          case 'google & youtube':
+            return this.translate.instant(
+              'dashboard.recentShipments.channel.googleYoutube'
+            );
+
+          case 'shopify inbox':
+            return this.translate.instant(
+              'dashboard.recentShipments.channel.shopifyInbox'
+            );
+
+          case 'marketplace connect':
+            return this.translate.instant(
+              'dashboard.recentShipments.channel.marketplaceConnect'
+            );
+
+          case 'online store':
+            return this.translate.instant(
+              'dashboard.recentShipments.channel.onlineStore'
+            );
+
+          case 'pinterest':
+            return this.translate.instant(
+              'dashboard.recentShipments.channel.pinterest'
+            );
+
+          case 'point of sale':
+            return this.translate.instant(
+              'dashboard.recentShipments.channel.pointOfSale'
+            );
+
+          case 'shop':
+            return this.translate.instant(
+              'dashboard.recentShipments.channel.shop'
+            );
+
+          case 'tiktok':
+            return this.translate.instant(
+              'dashboard.recentShipments.channel.tiktok'
+            );
+
+          default:
+            // Unknown channel → keep the original value
+            return value;
+        }
+      }
     },
 
     {
       field: 'awbCreatedTime',
       headerName: 'AWB Created',
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.awbCreated'
+        ),
       minWidth: 170,
       valueFormatter: params =>
         dateTimeFormatter(params.value),
       filter: 'agDateColumnFilter',
       filterParams: {
-        includeTime: false
+        includeTime: false,
+        comparator: (
+          filterLocalDateAtMidnight: Date,
+          cellValue: any
+        ) =>
+          this.dateFilterComparator(
+            filterLocalDateAtMidnight,
+            cellValue
+          )
       }
     },
 
     {
       field: 'shipmentDate',
       headerName: 'Shipment Date',
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.shipmentDate'
+        ),
       minWidth: 170,
       valueFormatter: params =>
         dateTimeFormatter(params.value),
       filter: 'agDateColumnFilter',
       filterParams: {
-        includeTime: false
+        includeTime: false,
+        comparator: (
+          filterLocalDateAtMidnight: Date,
+          cellValue: any
+        ) =>
+          this.dateFilterComparator(
+            filterLocalDateAtMidnight,
+            cellValue
+          )
       }
     },
 
     {
       field: 'lastUpdated',
       headerName: 'Last Updated',
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.lastUpdated'
+        ),
       minWidth: 170,
       valueFormatter: params =>
         dateTimeFormatter(params.value),
       filter: 'agDateColumnFilter',
       filterParams: {
-        includeTime: false
+        includeTime: false,
+        comparator: (
+          filterLocalDateAtMidnight: Date,
+          cellValue: any
+        ) =>
+          this.dateFilterComparator(
+            filterLocalDateAtMidnight,
+            cellValue
+          )
       }
     },
 
     {
       field: 'remarks',
       headerName: 'Remarks',
-      minWidth: 220
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.remarks'
+        ),
+      minWidth: 220,
+      sortable: false,
     },
 
     {
       field: 'hasException',
       headerName: 'Exception',
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.exception'
+        ),
       width: 110,
+      sortable: false,
       valueFormatter: params =>
         params.value ? '⚠ Yes' : ''
     },
 
     {
+      colId: 'actions',
       headerName: 'Actions',
+      headerValueGetter: () =>
+        this.translate.instant(
+          'dashboard.recentShipments.columnsList.actions'
+        ),
       sortable: false,
       filter: false,
       width: 180,
@@ -693,6 +965,8 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+
     if (!this.currentUser) {
       return;
     }
@@ -738,46 +1012,42 @@ export class DashboardPageComponent implements OnInit {
 
     const notification = history.state?.notification;
 
-    if (!notification) {
-      return;
+    if (notification) {
+
+      this.notificationTitle = notification.title;
+      this.notificationMessage = notification.message;
+      this.showNotification = true;
+
+      const timer = window.setTimeout(() => {
+        this.showNotification = false;
+        this.cdr.detectChanges();
+      }, 3000);
+
+      this.destroyRef.onDestroy(() =>
+        clearTimeout(timer)
+      );
     }
 
-    this.notificationTitle = notification.title;
-    this.notificationMessage = notification.message;
-    this.showNotification = true;
-
-    const timer = window.setTimeout(() => {
-      this.showNotification = false;
-      this.cdr.detectChanges();
-    }, 3000);
-
-    this.destroyRef.onDestroy(() => clearTimeout(timer));
+    this.translate.onLangChange.subscribe(() => {
+      this.dashboardGridApi?.refreshHeader();
+    });
 
   }
 
   onGridReady(
     event: GridReadyEvent
   ): void {
-
-    this.dashboardGridApi =
-      event.api;
-
+    this.dashboardGridApi = event.api;
+    
     if (this.allShipments.length > 0) {
-
       this.dashboardGridApi.setGridOption(
         'rowData',
         this.filteredShipments
       );
-
     }
 
-    // Force the center columns to occupy the available width.
-    setTimeout(() => {
-      this.dashboardGridApi?.sizeColumnsToFit();
-    });
-
-
     this.updateRoleColumnVisibility();
+    this.dashboardGridApi.refreshHeader();
 
   }
 
@@ -791,9 +1061,9 @@ export class DashboardPageComponent implements OnInit {
   onGridSizeChanged(
     event: GridSizeChangedEvent
   ): void {
-
-    event.api.sizeColumnsToFit();
-
+    // Do not call sizeColumnsToFit().
+    // Allow the grid to maintain its natural column widths
+    // and horizontal scrolling.
   }
 
   onQuickFilterChanged(
@@ -826,6 +1096,56 @@ export class DashboardPageComponent implements OnInit {
 
   }
 
+  toggleKpiCards(): void {
+    this.showKpiCards = !this.showKpiCards;
+  }
+
+  toggleCharts(): void {
+    this.showCharts = !this.showCharts;
+  }
+
+  toggleColumnSelector(): void {
+    this.showColumnSelector = !this.showColumnSelector;
+  }
+
+  toggleColumn(field: string, event: Event): void {
+    const checked = (event.target as HTMLInputElement).checked;
+
+    this.dashboardGridApi?.setColumnsVisible(
+      [field],
+      checked
+    );
+  }
+
+  isColumnVisible(field: string): boolean {
+    const column = this.dashboardGridApi?.getColumn(field);
+
+    return column?.isVisible() ?? true;
+  }
+
+  showAllColumns(): void {
+    const fields = this.columnVisibilityOptions.map(
+      column => column.field
+    );
+
+    this.dashboardGridApi?.setColumnsVisible(
+      fields,
+      true
+    );
+  }
+
+  toggleColumnVisibility(
+    columnId: string,
+    event: Event
+  ): void {
+    const checked =
+      (event.target as HTMLInputElement).checked;
+
+    this.dashboardGridApi?.setColumnsVisible(
+      [columnId],
+      checked
+    );
+  }
 
 
   importShopifyOrders(): void {
@@ -1063,15 +1383,18 @@ export class DashboardPageComponent implements OnInit {
       });
 
   }
+
   private buildChannelChart(): void {
 
-    const channelCounts = new Map<string, number>();
+    const channelCounts =
+      new Map<string, number>();
 
     for (const shipment of this.filteredShipments) {
 
-      const channel = this.getChannelName(
-        shipment.channel
-      );
+      const channel =
+        this.getChannelName(
+          shipment.channel
+        );
 
       channelCounts.set(
         channel,
@@ -1080,19 +1403,63 @@ export class DashboardPageComponent implements OnInit {
 
     }
 
+
+    const channels =
+      Array.from(channelCounts.keys());
+
+
+    const labels =
+      channels.map(
+        channel =>
+          this.translate.instant(
+            `dashboard.charts.shipmentByChannel.channels.${this.getChannelTranslationKey(channel)}`
+          )
+      );
+
+
     this.channelChartData = {
 
-      labels: Array.from(channelCounts.keys()),
+      labels,
 
       datasets: [
 
         {
-          data: Array.from(channelCounts.values())
+          data:
+            Array.from(
+              channelCounts.values()
+            )
         }
 
       ]
 
     };
+
+  }
+
+  private getChannelTranslationKey(
+    channel: string
+  ): string {
+
+    switch (channel.trim().toLowerCase()) {
+
+      case 'online store':
+        return 'onlineStore';
+
+      case 'shopify draft':
+        return 'shopifyDraft';
+
+      case 'pos':
+        return 'pos';
+
+      case 'unknown':
+        return 'unknown';
+
+      case 'online store: channel_pos, offline_order, source_qr':
+        return 'onlineStorePosOfflineOrderQr';
+
+      default:
+        return 'unknown';
+    }
 
   }
 
@@ -1103,7 +1470,8 @@ export class DashboardPageComponent implements OnInit {
 
     const exceptionStatuses = [
       'Pending',
-      'fulfilled',
+      'Unfulfilled',
+      'Fulfilled',
       'Returned',
       'Lost',
       'Canceled',
@@ -1113,7 +1481,9 @@ export class DashboardPageComponent implements OnInit {
     for (const shipment of this.filteredShipments) {
 
       const status =
-        getShipmentStatus(shipment.status ?? 'Unknown').trim();
+        getShipmentStatus(
+          shipment.status ?? 'Unknown'
+        ).trim();
 
       if (!exceptionStatuses.includes(status)) {
         continue;
@@ -1126,11 +1496,23 @@ export class DashboardPageComponent implements OnInit {
 
     }
 
+
     const sortedStatuses =
       this.sortByStatusOrder(statusCounts);
 
+
+    // ==========================================================
+    // Translate Chart Labels
+    // ==========================================================
+
     const labels =
-      sortedStatuses.map(x => x[0]);
+      sortedStatuses.map(
+        ([status]) =>
+          this.translate.instant(
+            `dashboard.charts.otherStatuses.statuses.${this.getStatusTranslationKey(status)}`
+          )
+      );
+
 
     this.statusChartData = {
 
@@ -1140,13 +1522,20 @@ export class DashboardPageComponent implements OnInit {
 
         {
 
-          label: 'Exception Shipments',
+          label: this.translate.instant(
+            'dashboard.charts.otherStatuses.datasetLabel'
+          ),
 
-          data: sortedStatuses.map(x => x[1]),
+          data:
+            sortedStatuses.map(
+              ([, count]) => count
+            ),
 
           backgroundColor:
-            labels.map(status =>
-              this.getStatusColor(status))
+            sortedStatuses.map(
+              ([status]) =>
+                this.getStatusColor(status)
+            )
 
         }
 
@@ -1154,6 +1543,71 @@ export class DashboardPageComponent implements OnInit {
 
     };
 
+  }
+
+  private getStatusTranslationKey(
+    status: string
+  ): string {
+
+    switch (status.toLowerCase()) {
+
+      case 'pending':
+        return 'pending';
+
+      case 'unfulfilled':
+        return 'unfulfilled';
+
+      case 'fulfilled':
+        return 'fulfilled';
+
+      case 'partial':
+        return 'partial';
+
+      case 'pending pickup':
+        return 'pendingPickup';
+
+      case 'picked up':
+        return 'pickedUp';
+
+      case 'in transit':
+        return 'inTransit';
+
+      case 'out for delivery':
+        return 'outForDelivery';
+
+      case 'on hold':
+        return 'onHold';
+
+      case 'self collect':
+        return 'selfCollect';
+
+      case 'delivered':
+        return 'delivered';
+
+      case 'failed delivery':
+        return 'failedDelivery';
+
+      case 'lost':
+        return 'lost';
+
+      case 'exception':
+        return 'exception';
+
+      case 'returned':
+        return 'returned';
+
+      case 'canceled':
+        return 'canceled';
+
+      case 'restocked':
+        return 'restocked';
+
+      case 'unknown':
+        return 'unknown';
+
+      default:
+        return 'unknown';
+    }
   }
 
   private buildShipmentTrend(): void {
@@ -1197,13 +1651,15 @@ export class DashboardPageComponent implements OnInit {
 
       labels:
         sorted.map(x =>
-          this.formatDate(x[0])),
+          this.formatTrendDate(x[0])),
 
       datasets: [
 
         {
 
-          label: 'Shipments',
+          label: this.translate.instant(
+            'dashboard.charts.shipmentTrend.datasetLabel'
+          ),
 
           data:
             sorted.map(x => x[1]),
@@ -1223,6 +1679,45 @@ export class DashboardPageComponent implements OnInit {
     };
 
   }
+
+  private formatTrendDate(
+    date: string
+  ): string {
+
+    const value =
+      new Date(date);
+
+    if (isNaN(value.getTime())) {
+      return date;
+    }
+
+    const language =
+      localStorage.getItem(
+        'logivis-language'
+      ) ?? 'en';
+
+    if (language === 'zh') {
+
+      return new Intl.DateTimeFormat(
+        'zh-CN',
+        {
+          month: 'short',
+          day: 'numeric'
+        }
+      ).format(value);
+
+    }
+
+    return new Intl.DateTimeFormat(
+      'en-US',
+      {
+        month: 'short',
+        day: 'numeric'
+      }
+    ).format(value);
+
+  }
+
   private getChannelName(
     channel: string | null | undefined
   ): string {
