@@ -184,8 +184,8 @@ export class DashboardPageComponent implements OnInit {
       notBlank: 'dashboard.grid.notBlank',
 
       // Date Filter
-      lessThan: 'dashboard.grid.lessThan',
-      greaterThan: 'dashboard.grid.greaterThan',
+      before: 'dashboard.grid.lessThan',
+      after: 'dashboard.grid.greaterThan',
       inRange: 'dashboard.grid.inRange',
 
       // General
@@ -582,6 +582,19 @@ export class DashboardPageComponent implements OnInit {
         ),
       minWidth: 220,
       sortable: false,
+      valueFormatter: params => {
+        if (!params.value) {
+          return '';
+        }
+
+        if (params.value === 'No AWB') {
+          return this.translate.instant(
+            'dashboard.recentShipments.remarks.noAwb'
+          );
+        }
+
+        return params.value;
+      }
     },
 
     {

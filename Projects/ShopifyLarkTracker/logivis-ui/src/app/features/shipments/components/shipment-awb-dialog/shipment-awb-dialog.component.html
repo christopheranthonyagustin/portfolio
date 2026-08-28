@@ -6,46 +6,68 @@
 
     <div>
 
-      <h2>AWB Preview</h2>
+      <h2>
+        {{ 'dashboard.awbPreview.title' | translate }}
+      </h2>
 
       <div class="header-meta">
 
         <div class="meta-card">
-          <span>Order No</span>
-          <strong>{{ order.order_id }}</strong>
+          <span>
+            {{ 'dashboard.awbPreview.orderNo' | translate }}
+          </span>
+
+          <strong>
+            {{ order.order_id }}
+          </strong>
         </div>
 
         <div class="meta-card">
-          <span>Tracking No</span>
-          <strong>{{ order.tracking_no }}</strong>
+          <span>
+            {{ 'dashboard.awbPreview.trackingNo' | translate }}
+          </span>
+
+          <strong>
+            {{ order.tracking_no }}
+          </strong>
         </div>
 
-
         <div class="meta-card">
-          <span>Status</span>
-          <strong class="status-badge" [class]="getStatusClass(order.status)">
+
+          <span>
+            {{ 'dashboard.awbPreview.status' | translate }}
+          </span>
+
+          <strong class="status-badge"
+                  [class]="getStatusClass(order.status)">
             {{ order.status }}
           </strong>
+
         </div>
 
       </div>
 
     </div>
 
-    <button class="close-button" (click)="close()">
+    <button class="close-button"
+            (click)="close()"
+            [attr.aria-label]="'dashboard.awbPreview.close' | translate">
       ✕
     </button>
 
   </div>
 
+
   <div class="dialog-body">
 
     <section class="comparison">
 
+      <!-- AWB PREVIEW -->
+
       <div class="panel awb-panel">
 
         <div class="panel-title">
-          AWB Preview
+          {{ 'dashboard.awbPreview.preview' | translate }}
         </div>
 
         <div class="awb-preview">
@@ -67,12 +89,17 @@
               📄
             </div>
 
-            <h3>AWB Preview Not Available</h3>
+            <h3>
+              {{ 'dashboard.awbPreview.previewNotAvailable' | translate }}
+            </h3>
 
-            <p>{{ awbError }}</p>
+            <p>
+              {{ awbError }}
+            </p>
 
-            <button class="btn" (click)="downloadAwb()">
-              Try Download AWB
+            <button class="btn"
+                    (click)="downloadAwb()">
+              {{ 'dashboard.awbPreview.tryDownload' | translate }}
             </button>
 
           </div>
@@ -83,7 +110,9 @@
 
             <div class="spinner"></div>
 
-            <p>Loading AWB preview...</p>
+            <p>
+              {{ 'dashboard.awbPreview.loading' | translate }}
+            </p>
 
           </div>
 
@@ -93,37 +122,99 @@
 
       </div>
 
+
+      <!-- ORDER FEE -->
+
       <div class="panel fee-panel">
 
         <div class="panel-title">
-          Order Fee
+          {{ 'dashboard.awbPreview.orderFee' | translate }}
         </div>
 
         <table>
 
           <tr>
-            <td>Basic Shipping Fee</td>
-            <td>SGD {{ orderFee?.fee_info?.basic_shipping_fee ?? 0 | number:'1.2-2' }}</td>
+
+            <td>
+              {{ 'dashboard.awbPreview.basicShippingFee' | translate }}
+            </td>
+
+            <td>
+              SGD
+              {{
+                orderFee?.fee_info?.basic_shipping_fee ?? 0
+                | number:'1.2-2'
+              }}
+            </td>
+
           </tr>
 
           <tr>
-            <td>COD Fee</td>
-            <td>SGD {{ orderFee?.fee_info?.cod_service_fee ?? 0 | number:'1.2-2' }}</td>
+
+            <td>
+              {{ 'dashboard.awbPreview.codFee' | translate }}
+            </td>
+
+            <td>
+              SGD
+              {{
+                orderFee?.fee_info?.cod_service_fee ?? 0
+                | number:'1.2-2'
+              }}
+            </td>
+
           </tr>
 
           <tr>
-            <td>Insurance Fee</td>
-            <td>SGD {{ orderFee?.fee_info?.insurance_service_fee ?? 0 | number:'1.2-2' }}</td>
+
+            <td>
+              {{ 'dashboard.awbPreview.insuranceFee' | translate }}
+            </td>
+
+            <td>
+              SGD
+              {{
+                orderFee?.fee_info?.insurance_service_fee ?? 0
+                | number:'1.2-2'
+              }}
+            </td>
+
           </tr>
 
           <tr>
-            <td>Remote Area Fee</td>
-            <td>SGD {{ orderFee?.fee_info?.remote_area_fee ?? 0 | number:'1.2-2' }}</td>
+
+            <td>
+              {{ 'dashboard.awbPreview.remoteAreaFee' | translate }}
+            </td>
+
+            <td>
+              SGD
+              {{
+                orderFee?.fee_info?.remote_area_fee ?? 0
+                | number:'1.2-2'
+              }}
+            </td>
+
           </tr>
 
           <tr>
-            <td><strong>Total Charged</strong></td>
-            <td><strong>SGD {{ orderFee?.fee_info?.actual_shipping_fee ?? 0 | number:'1.2-2' }}</strong></td>
+
+            <td>
+              <strong>
+                {{ 'dashboard.awbPreview.totalCharged' | translate }}
+              </strong>
+            </td>
+
+            <td>
+              <strong>
+                SGD
+                {{
+                  orderFee?.fee_info?.actual_shipping_fee ?? 0
+                  | number:'1.2-2'
+                }}
+              </strong>
+            </td>
+
           </tr>
 
         </table>
@@ -134,12 +225,14 @@
 
   </div>
 
+
   <div class="dialog-footer">
 
     <div class="footer-actions">
 
-      <button class="btn" (click)="close()">
-        Close
+      <button class="btn"
+              (click)="close()">
+        {{ 'dashboard.awbPreview.close' | translate }}
       </button>
 
     </div>

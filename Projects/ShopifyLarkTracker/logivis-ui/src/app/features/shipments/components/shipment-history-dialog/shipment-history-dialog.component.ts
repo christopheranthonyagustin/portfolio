@@ -12,6 +12,8 @@ import {
   DecimalPipe
 } from '@angular/common';
 
+import { TranslatePipe } from '@ngx-translate/core';
+
 import { TrackOrder } from '../../../../core/models/track-order-response';
 
 @Component({
@@ -20,7 +22,8 @@ import { TrackOrder } from '../../../../core/models/track-order-response';
   imports: [
     CommonModule,
     DatePipe,
-    DecimalPipe
+    DecimalPipe,
+    TranslatePipe
   ],
   templateUrl: './shipment-history-dialog.component.html',
   styleUrls: ['./shipment-history-dialog.component.scss']

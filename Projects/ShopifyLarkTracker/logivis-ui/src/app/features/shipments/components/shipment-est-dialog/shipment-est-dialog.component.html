@@ -6,36 +6,62 @@
 
     <div>
 
-      <h2>Delivery Order Estimation</h2>
+      <h2>
+        {{ 'dashboard.deliveryVerification.title' | translate }}
+      </h2>
 
       <div class="header-meta">
 
         <div class="meta-card">
-          <span>Order No</span>
+
+          <span>
+            {{ 'dashboard.deliveryVerification.orderNo' | translate }}
+          </span>
+
           <strong>
             {{ order?.order_id || ('#' + shopifyOrder?.orderNumber) }}
           </strong>
+
         </div>
 
         <div class="meta-card">
-          <span>Tracking No</span>
+
+          <span>
+            {{ 'dashboard.deliveryVerification.trackingNo' | translate }}
+          </span>
+
           <strong>
-            {{ order?.tracking_no || shopifyOrder?.fulfillments?.[0]?.trackingNumber || '-' }}
+            {{
+              order?.tracking_no ||
+              shopifyOrder?.fulfillments?.[0]?.trackingNumber ||
+              '-'
+            }}
           </strong>
+
         </div>
 
         <div class="meta-card">
-          <span>Delivery Method</span>
+
+          <span>
+            {{ 'dashboard.deliveryVerification.deliveryMethod' | translate }}
+          </span>
+
           <strong>
             {{ shopifyOrder?.deliveryMethod || '-' }}
           </strong>
+
         </div>
 
         <div class="meta-card">
-          <span>Status</span>
+
+          <span>
+            {{ 'dashboard.deliveryVerification.status' | translate }}
+          </span>
+
           <strong class="status-badge">
             {{ order?.status || shopifyOrder?.status || '-' }}
           </strong>
+
         </div>
 
       </div>
@@ -43,11 +69,15 @@
     </div>
 
     <button class="close-button"
-            (click)="close()">
+            (click)="close()"
+            [attr.aria-label]="
+        'dashboard.deliveryVerification.close' | translate
+      ">
       ✕
     </button>
 
   </div>
+
 
   <div class="dialog-body">
 
@@ -57,10 +87,12 @@
 
     <section class="comparison">
 
+      <!-- Shopify Customer -->
+
       <div class="panel">
 
         <div class="panel-title">
-          Shopify Customer
+          {{ 'dashboard.deliveryVerification.shopifyCustomer.title' | translate }}
         </div>
 
         @if (shopifyOrder) {
@@ -68,20 +100,35 @@
         <table>
 
           <tr>
-            <td>Customer</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.shopifyCustomer.customer' | translate }}
+            </td>
+
             <td>
               {{ shopifyOrder.customer?.firstName }}
               {{ shopifyOrder.customer?.lastName }}
             </td>
+
           </tr>
 
           <tr>
-            <td>Phone</td>
-            <td>{{ shopifyOrder.shippingAddress?.phone || '-' }}</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.shopifyCustomer.phone' | translate }}
+            </td>
+
+            <td>
+              {{ shopifyOrder.shippingAddress?.phone || '-' }}
+            </td>
+
           </tr>
 
           <tr>
-            <td>Address</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.shopifyCustomer.address' | translate }}
+            </td>
 
             <td>
 
@@ -106,15 +153,27 @@
           </tr>
 
           <tr>
-            <td>Status</td>
-            <td>{{ shopifyOrder.status }}</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.shopifyCustomer.status' | translate }}
+            </td>
+
+            <td>
+              {{ shopifyOrder.status }}
+            </td>
+
           </tr>
 
           <tr>
-            <td>Tracking</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.shopifyCustomer.tracking' | translate }}
+            </td>
+
             <td>
               {{ shopifyOrder.fulfillments?.[0]?.trackingNumber || '-' }}
             </td>
+
           </tr>
 
         </table>
@@ -122,17 +181,20 @@
         } @else {
 
         <div class="coming-soon">
-          Shopify Order Not Found
+          {{ 'dashboard.deliveryVerification.shopifyCustomer.orderNotFound' | translate }}
         </div>
 
         }
 
       </div>
 
+
+      <!-- SPX Customer -->
+
       <div class="panel">
 
         <div class="panel-title">
-          SPX Customer
+          {{ 'dashboard.deliveryVerification.spxCustomer.title' | translate }}
         </div>
 
         @if (order) {
@@ -140,18 +202,34 @@
         <table>
 
           <tr>
-            <td>Customer</td>
-            <td>{{ order.deliver_info.deliver_name }}</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxCustomer.customer' | translate }}
+            </td>
+
+            <td>
+              {{ order.deliver_info.deliver_name }}
+            </td>
+
           </tr>
 
           <tr>
-            <td>Phone</td>
-            <td>{{ order.deliver_info.deliver_phone }}</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxCustomer.phone' | translate }}
+            </td>
+
+            <td>
+              {{ order.deliver_info.deliver_phone }}
+            </td>
+
           </tr>
 
           <tr>
 
-            <td>Address</td>
+            <td>
+              {{ 'dashboard.deliveryVerification.spxCustomer.address' | translate }}
+            </td>
 
             <td>
 
@@ -166,15 +244,27 @@
           </tr>
 
           <tr>
-            <td>Status</td>
-            <td>{{ order.status }}</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxCustomer.status' | translate }}
+            </td>
+
+            <td>
+              {{ order.status }}
+            </td>
+
           </tr>
 
           <tr>
-            <td>Pickup Date</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxCustomer.pickupDate' | translate }}
+            </td>
+
             <td>
               {{ order.fulfillment_info.pickup_time * 1000 | date:'dd-MMM-yyyy' }}
             </td>
+
           </tr>
 
         </table>
@@ -182,7 +272,7 @@
         } @else {
 
         <div class="coming-soon">
-          SPX Shipment Not Found
+          {{ 'dashboard.deliveryVerification.spxCustomer.shipmentNotFound' | translate }}
         </div>
 
         }
@@ -190,46 +280,57 @@
       </div>
 
     </section>
-
     <!-- ================================================= -->
     <!-- PARCEL -->
     <!-- ================================================= -->
 
     <section class="comparison">
 
+      <!-- Shopify Products -->
+
       <div class="panel">
 
         <div class="panel-title">
-          Shopify Products
+          {{ 'dashboard.deliveryVerification.shopifyProducts.title' | translate }}
         </div>
 
         @if (shopifyOrder) {
 
         <table>
 
-          @for(item of shopifyOrder.lineItems; track $index){
+          @for(item of shopifyOrder.lineItems; track $index) {
 
           <tr>
 
             <td>
 
-              <strong>{{ item.title }}</strong>
+              <strong>
+                {{ item.title }}
+              </strong>
 
               <br>
 
-              <small>{{ item.sku }}</small>
+              <small>
+                {{ item.sku }}
+              </small>
 
             </td>
 
             <td class="text-right">
 
-              Qty {{ item.quantity }}
+              {{ 'dashboard.deliveryVerification.shopifyProducts.qty' | translate }}
+              {{ item.quantity }}
 
               <br>
 
               <small>
 
-                {{ (item.grams * item.quantity) / 1000 | number:'1.2-2' }} kg
+                {{
+                  (item.grams * item.quantity) / 1000
+                  | number:'1.2-2'
+                }}
+
+                {{ 'dashboard.deliveryVerification.shopifyProducts.kg' | translate }}
 
               </small>
 
@@ -243,17 +344,20 @@
 
             <td>
 
-              <strong>Total Quantity</strong>
+              <strong>
+                {{ 'dashboard.deliveryVerification.shopifyProducts.totalQuantity' | translate }}
+              </strong>
 
             </td>
 
             <td class="text-right">
 
-
-
-              {{ shopifyOrder.lineItems.reduce((sum, item) => sum + item.quantity, 0) }}
-
-
+              {{
+                shopifyOrder.lineItems.reduce(
+                  (sum, item) => sum + item.quantity,
+                  0
+                )
+              }}
 
             </td>
 
@@ -263,21 +367,25 @@
 
             <td>
 
-              <strong>Estimated Weight</strong>
+              <strong>
+                {{ 'dashboard.deliveryVerification.shopifyProducts.estimatedWeight' | translate }}
+              </strong>
 
             </td>
 
             <td class="text-right">
 
-
-
               {{
-            shopifyOrder.lineItems
-              .reduce((sum, item) => sum + (item.grams * item.quantity), 0) / 1000
-            | number:'1.2-2'
-              }} kg
+                shopifyOrder.lineItems
+                  .reduce(
+                    (sum, item) =>
+                      sum + (item.grams * item.quantity),
+                    0
+                  ) / 1000
+                | number:'1.2-2'
+              }}
 
-
+              {{ 'dashboard.deliveryVerification.shopifyProducts.kg' | translate }}
 
             </td>
 
@@ -288,36 +396,41 @@
         } @else {
 
         <div class="coming-soon">
-          Shopify Order Not Found
+          {{ 'dashboard.deliveryVerification.shopifyProducts.orderNotFound' | translate }}
         </div>
 
         }
 
       </div>
 
+
+      <!-- SPX Parcel -->
+
       <div class="panel">
 
         <div class="panel-title">
-          SPX Parcel
+          {{ 'dashboard.deliveryVerification.spxParcel.title' | translate }}
         </div>
 
         @if (order) {
 
         <table>
 
-          @for(product of order.parcel_info.parcel_item_name.split(','); track $index){
+          @for(
+          product of order.parcel_info.parcel_item_name.split(',');
+          track $index
+          ) {
 
           <tr>
 
             <td>
-
               {{ product.trim() }}
-
             </td>
 
             <td class="text-right">
 
-              Qty {{ getProductQuantity(product.trim()) }}
+              {{ 'dashboard.deliveryVerification.spxParcel.qty' | translate }}
+              {{ getProductQuantity(product.trim()) }}
 
             </td>
 
@@ -327,35 +440,45 @@
 
           <tr>
 
-            <td><strong>Total Items</strong></td>
+            <td>
+              <strong>
+                {{ 'dashboard.deliveryVerification.spxParcel.totalItems' | translate }}
+              </strong>
+            </td>
 
             <td class="text-right">
-
               {{ order.parcel_info.parcel_item_quantity }}
-
             </td>
 
           </tr>
 
           <tr>
 
-            <td><strong>Weight</strong></td>
+            <td>
+              <strong>
+                {{ 'dashboard.deliveryVerification.spxParcel.weight' | translate }}
+              </strong>
+            </td>
 
             <td>
-
-              {{ order.parcel_info.parcel_weight }} kg
-
+              {{ order.parcel_info.parcel_weight }}
+              {{ 'dashboard.deliveryVerification.spxParcel.kg' | translate }}
             </td>
 
           </tr>
 
           <tr>
 
-            <td><strong>Insurance</strong></td>
+            <td>
+              <strong>
+                {{ 'dashboard.deliveryVerification.spxParcel.insurance' | translate }}
+              </strong>
+            </td>
 
             <td>
 
-              SGD {{ order.parcel_info.express_insured_value | number }}
+              {{ 'dashboard.deliveryVerification.spxParcel.sgd' | translate }}
+              {{ order.parcel_info.express_insured_value | number }}
 
             </td>
 
@@ -366,7 +489,7 @@
         } @else {
 
         <div class="coming-soon">
-          SPX Shipment Not Found
+          {{ 'dashboard.deliveryVerification.spxParcel.shipmentNotFound' | translate }}
         </div>
 
         }
@@ -374,6 +497,7 @@
       </div>
 
     </section>
+
 
     <!-- ================================================= -->
     <!-- ESTIMATED SHIPPING FEE -->
@@ -384,7 +508,7 @@
       <div class="panel estimate-panel">
 
         <div class="panel-title">
-          Estimated Shipping Fee
+          {{ 'dashboard.deliveryVerification.estimatedShippingFee.title' | translate }}
         </div>
 
         <table class="estimate-table">
@@ -392,59 +516,75 @@
           <!-- Status -->
 
           <tr>
-            <td>Status</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.estimatedShippingFee.status' | translate }}
+            </td>
 
             <td>
 
               @if (loading) {
 
               <span class="estimate-status">
-                Calculating...
+                {{ 'dashboard.deliveryVerification.estimatedShippingFee.calculating' | translate }}
               </span>
 
               } @else if (shippingFeeError) {
 
               <span class="estimate-status error">
-                Failed
+                {{ 'dashboard.deliveryVerification.estimatedShippingFee.failed' | translate }}
               </span>
 
               } @else if (shippingFee) {
 
               <span class="estimate-status">
-                Success
+                {{ 'dashboard.deliveryVerification.estimatedShippingFee.success' | translate }}
               </span>
 
               } @else {
 
               <span class="estimate-status">
-                Pending
+                {{ 'dashboard.deliveryVerification.estimatedShippingFee.pending' | translate }}
               </span>
 
               }
 
             </td>
+
           </tr>
 
 
           <!-- Quantity -->
 
           <tr>
-            <td>Quantity</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.estimatedShippingFee.quantity' | translate }}
+            </td>
 
             <td>
               {{ totalQuantity }}
             </td>
+
           </tr>
 
 
           <!-- Weight -->
 
           <tr>
-            <td>Estimated Weight</td>
 
             <td>
-              {{ estimatedWeight | number:'1.2-2' }} kg
+              {{ 'dashboard.deliveryVerification.estimatedShippingFee.estimatedWeight' | translate }}
             </td>
+
+            <td>
+
+              {{ estimatedWeight | number:'1.2-2' }}
+
+              {{ 'dashboard.deliveryVerification.estimatedShippingFee.kg' | translate }}
+
+            </td>
+
           </tr>
 
 
@@ -454,14 +594,21 @@
           <tr>
 
             <td>
-              <strong>Estimated Fee</strong>
+              <strong>
+                {{ 'dashboard.deliveryVerification.estimatedShippingFee.estimatedFee' | translate }}
+              </strong>
             </td>
 
             <td>
+
               <strong>
-                SGD
+
+                {{ 'dashboard.deliveryVerification.estimatedShippingFee.sgd' | translate }}
+
                 {{ shippingFee.estimated_shipping_fee | number:'1.2-2' }}
+
               </strong>
+
             </td>
 
           </tr>
@@ -491,10 +638,6 @@
       </div>
 
     </section>
-
-    <!-- ================================================= -->
-    <!-- SENDER -->
-    <!-- ================================================= -->
     <!-- ================================================= -->
     <!-- SENDER -->
     <!-- ================================================= -->
@@ -506,35 +649,47 @@
       <div class="panel">
 
         <div class="panel-title">
-          Store Information
+          {{ 'dashboard.deliveryVerification.storeInformation.title' | translate }}
         </div>
 
         <table>
 
           <tr>
-            <td>Store</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.storeInformation.store' | translate }}
+            </td>
 
             <td>
               W Network Private Limited
             </td>
+
           </tr>
 
           <tr>
-            <td>Phone</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.storeInformation.phone' | translate }}
+            </td>
 
             <td>
               +65 80475798
             </td>
+
           </tr>
 
           <tr>
-            <td>Address</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.storeInformation.address' | translate }}
+            </td>
 
             <td>
               35 TAMPINES STREET 92, #03-01
               <br>
               Singapore 528880
             </td>
+
           </tr>
 
         </table>
@@ -547,43 +702,59 @@
       <div class="panel">
 
         <div class="panel-title">
-          SPX Sender
+          {{ 'dashboard.deliveryVerification.spxSender.title' | translate }}
         </div>
 
         <table>
 
           <tr>
-            <td>Company</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxSender.company' | translate }}
+            </td>
 
             <td>
               W Network Private Limited
             </td>
+
           </tr>
 
           <tr>
-            <td>Phone</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxSender.phone' | translate }}
+            </td>
 
             <td>
               +65 80475798
             </td>
+
           </tr>
 
           <tr>
-            <td>Postal Code</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxSender.postalCode' | translate }}
+            </td>
 
             <td>
               528880
             </td>
+
           </tr>
 
           <tr>
-            <td>Address</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxSender.address' | translate }}
+            </td>
 
             <td>
               35 TAMPINES STREET 92, #03-01
               <br>
               Singapore 528880
             </td>
+
           </tr>
 
         </table>
@@ -591,6 +762,7 @@
       </div>
 
     </section>
+
 
     <!-- ================================================= -->
     <!-- RECEIVER -->
@@ -603,7 +775,7 @@
       <div class="panel">
 
         <div class="panel-title">
-          Shopify Receiver
+          {{ 'dashboard.deliveryVerification.shopifyReceiver.title' | translate }}
         </div>
 
         @if (shopifyOrder) {
@@ -611,22 +783,35 @@
         <table>
 
           <tr>
-            <td>Customer</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.shopifyReceiver.customer' | translate }}
+            </td>
+
             <td>
               {{ shopifyOrder.customer?.firstName }}
               {{ shopifyOrder.customer?.lastName }}
             </td>
+
           </tr>
 
           <tr>
-            <td>Phone</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.shopifyReceiver.phone' | translate }}
+            </td>
+
             <td>
               {{ shopifyOrder.shippingAddress?.phone || '-' }}
             </td>
+
           </tr>
 
           <tr>
-            <td>Address</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.shopifyReceiver.address' | translate }}
+            </td>
 
             <td>
 
@@ -655,19 +840,20 @@
         } @else {
 
         <div class="coming-soon">
-          Shopify Order Not Found
+          {{ 'dashboard.deliveryVerification.shopifyReceiver.orderNotFound' | translate }}
         </div>
 
         }
 
       </div>
 
+
       <!-- SPX Receiver -->
 
       <div class="panel">
 
         <div class="panel-title">
-          SPX Receiver
+          {{ 'dashboard.deliveryVerification.spxReceiver.title' | translate }}
         </div>
 
         @if (order) {
@@ -675,21 +861,34 @@
         <table>
 
           <tr>
-            <td>Customer</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxReceiver.customer' | translate }}
+            </td>
+
             <td>
               {{ order.deliver_info.deliver_name }}
             </td>
+
           </tr>
 
           <tr>
-            <td>Phone</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxReceiver.phone' | translate }}
+            </td>
+
             <td>
               {{ order.deliver_info.deliver_phone }}
             </td>
+
           </tr>
 
           <tr>
-            <td>Address</td>
+
+            <td>
+              {{ 'dashboard.deliveryVerification.spxReceiver.address' | translate }}
+            </td>
 
             <td>
 
@@ -703,6 +902,7 @@
               {{ order.deliver_info.deliver_post_code }}
 
             </td>
+
           </tr>
 
         </table>
@@ -710,7 +910,7 @@
         } @else {
 
         <div class="coming-soon">
-          SPX Shipment Not Created
+          {{ 'dashboard.deliveryVerification.spxReceiver.shipmentNotCreated' | translate }}
         </div>
 
         }

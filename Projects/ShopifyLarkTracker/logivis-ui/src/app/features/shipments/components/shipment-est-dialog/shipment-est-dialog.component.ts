@@ -6,14 +6,18 @@ import {
 } from '@angular/core';
 
 import {
-  TrackOrder
-} from '../../../../core/models/track-order-response';
-
-import {
   CommonModule,
   DatePipe,
   DecimalPipe
 } from '@angular/common';
+
+import {
+  TranslatePipe
+} from '@ngx-translate/core';
+
+import {
+  TrackOrder
+} from '../../../../core/models/track-order-response';
 
 import {
   ShopifyOrder
@@ -30,7 +34,8 @@ import {
   imports: [
     CommonModule,
     DatePipe,
-    DecimalPipe
+    DecimalPipe,
+    TranslatePipe
   ],
   templateUrl: './shipment-est-dialog.component.html',
   styleUrls: ['./shipment-est-dialog.component.scss']

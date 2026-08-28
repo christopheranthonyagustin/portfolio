@@ -15,11 +15,14 @@ import { environment } from '../../../../../environments/environment';
 
 import { ShipmentService } from '../../services/shipment.service';
 import { Shipment } from '../../../../models/shipment';
-
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-shipment-multiple-awb-dialog',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    TranslatePipe
+  ],
   templateUrl: './shipment-multiple-awb-dialog.component.html',
   styleUrls: ['./shipment-multiple-awb-dialog.component.scss']
 })

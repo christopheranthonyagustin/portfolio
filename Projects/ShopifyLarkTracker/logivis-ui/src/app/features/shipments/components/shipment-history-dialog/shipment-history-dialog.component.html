@@ -6,13 +6,17 @@
 
     <div>
 
-      <h2>Shipment History</h2>
+      <h2>
+        {{ 'dashboard.shipmentHistory.title' | translate }}
+      </h2>
 
       <div class="header-meta">
 
         <div class="meta-card">
 
-          <span>Order No</span>
+          <span>
+            {{ 'dashboard.shipmentHistory.orderNo' | translate }}
+          </span>
 
           <strong>{{ o.order_id }}</strong>
 
@@ -20,7 +24,9 @@
 
         <div class="meta-card">
 
-          <span>Tracking No</span>
+          <span>
+            {{ 'dashboard.shipmentHistory.trackingNo' | translate }}
+          </span>
 
           <strong>{{ o.tracking_no }}</strong>
 
@@ -28,7 +34,9 @@
 
         <div class="meta-card">
 
-          <span>Current Status</span>
+          <span>
+            {{ 'dashboard.shipmentHistory.currentStatus' | translate }}
+          </span>
 
           <strong class="status-badge">
             {{ o.status }}
@@ -41,13 +49,16 @@
     </div>
 
     <button class="close-button"
-            (click)="close()">
+            (click)="close()"
+            [attr.aria-label]="'dashboard.shipmentHistory.close' | translate">
 
       ✕
 
     </button>
 
   </div>
+
+
   <div class="dialog-body">
 
     <section class="section">
@@ -98,15 +109,22 @@
 
     </section>
 
+
     <section class="section">
 
-      <h3>Shipment Information</h3>
+      <h3>
+        {{ 'dashboard.shipmentHistory.shipmentInformation.title' | translate }}
+      </h3>
 
       <table>
 
         <tr>
 
-          <td><strong>Order Link</strong></td>
+          <td>
+            <strong>
+              {{ 'dashboard.shipmentHistory.shipmentInformation.orderLink' | translate }}
+            </strong>
+          </td>
 
           <td>
 
@@ -114,7 +132,7 @@
                target="_blank"
                class="link">
 
-              Open SPX Order
+              {{ 'dashboard.shipmentHistory.shipmentInformation.openSpxOrder' | translate }}
 
             </a>
 
@@ -124,7 +142,11 @@
 
         <tr>
 
-          <td><strong>Tracking Link</strong></td>
+          <td>
+            <strong>
+              {{ 'dashboard.shipmentHistory.shipmentInformation.trackingLink' | translate }}
+            </strong>
+          </td>
 
           <td>
 
@@ -132,7 +154,7 @@
                target="_blank"
                class="link">
 
-              Track Shipment
+              {{ 'dashboard.shipmentHistory.shipmentInformation.trackShipment' | translate }}
 
             </a>
 
@@ -142,7 +164,11 @@
 
         <tr>
 
-          <td><strong>Reverse Tracking No.</strong></td>
+          <td>
+            <strong>
+              {{ 'dashboard.shipmentHistory.shipmentInformation.reverseTrackingNo' | translate }}
+            </strong>
+          </td>
 
           <td>
 
@@ -153,7 +179,9 @@
             } @else {
 
             <span class="badge success">
-              No Return Shipment
+
+              {{ 'dashboard.shipmentHistory.shipmentInformation.noReturnShipment' | translate }}
+
             </span>
 
             }
@@ -166,33 +194,54 @@
 
     </section>
 
+
     <section class="section">
 
-      <h3>Sort Codes</h3>
+      <h3>
+        {{ 'dashboard.shipmentHistory.sortCodes.title' | translate }}
+      </h3>
 
       <table>
 
         <tr>
 
-          <td><strong>First Sort Code</strong></td>
+          <td>
+            <strong>
+              {{ 'dashboard.shipmentHistory.sortCodes.firstSortCode' | translate }}
+            </strong>
+          </td>
 
-          <td>{{ o.sort_code_info.r_first_sort_code || '-' }}</td>
-
-        </tr>
-
-        <tr>
-
-          <td><strong>Third Sort Code</strong></td>
-
-          <td>{{ o.sort_code_info.r_third_sort_code || '-' }}</td>
+          <td>
+            {{ o.sort_code_info.r_first_sort_code || '-' }}
+          </td>
 
         </tr>
 
         <tr>
 
-          <td><strong>Return Sort Code</strong></td>
+          <td>
+            <strong>
+              {{ 'dashboard.shipmentHistory.sortCodes.thirdSortCode' | translate }}
+            </strong>
+          </td>
 
-          <td>{{ o.sort_code_info.return_first_sort_code || '-' }}</td>
+          <td>
+            {{ o.sort_code_info.r_third_sort_code || '-' }}
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>
+            <strong>
+              {{ 'dashboard.shipmentHistory.sortCodes.returnSortCode' | translate }}
+            </strong>
+          </td>
+
+          <td>
+            {{ o.sort_code_info.return_first_sort_code || '-' }}
+          </td>
 
         </tr>
 
@@ -200,10 +249,7 @@
 
     </section>
 
-
   </div>
-
-
 
   }
 

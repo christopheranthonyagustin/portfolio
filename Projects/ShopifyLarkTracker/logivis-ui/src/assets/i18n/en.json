@@ -281,6 +281,10 @@
         "tiktok": "TikTok"
       },
 
+      "remarks": {
+        "noAwb": "No AWB"
+      },
+
       "columnsList": {
         "trackingNumber": "Tracking No",
         "orderNo": "Order No",
@@ -314,6 +318,161 @@
 
       "filterOoo": "Filter...",
       "dateFormatOoo": "mm/dd/yyyy"
+    },
+
+    "deliveryVerification": {
+      "title": "Delivery Order Verification",
+      "orderNo": "Order No",
+      "trackingNo": "Tracking No",
+      "deliveryMethod": "Delivery Method",
+      "orderCreated": "Order Created",
+      "status": "Status",
+      "close": "Close",
+
+      "shopifyCustomer": {
+        "title": "Shopify Customer",
+        "customer": "Customer",
+        "phone": "Phone",
+        "address": "Address",
+        "status": "Status",
+        "tracking": "Tracking"
+      },
+
+      "spxCustomer": {
+        "title": "SPX Customer",
+        "customer": "Customer",
+        "phone": "Phone",
+        "address": "Address",
+        "status": "Status",
+        "pickupDate": "Pickup Date",
+        "shipmentNotFound": "SPX Shipment Not Found"
+      },
+
+      "shopifyProducts": {
+        "title": "Shopify Products",
+        "qty": "Qty",
+        "kg": "kg",
+        "totalQuantity": "Total Quantity",
+        "estimatedWeight": "Estimated Weight"
+      },
+
+      "spxParcel": {
+        "title": "SPX Parcel",
+        "qty": "Qty",
+        "totalItems": "Total Items",
+        "weight": "Weight",
+        "insurance": "Insurance",
+        "kg": "kg",
+        "sgd": "SGD",
+        "shipmentNotFound": "SPX Shipment Not Found"
+      },
+
+      "estimatedShippingFee": {
+        "title": "Estimated Shipping Fee",
+        "status": "Status",
+        "calculating": "Calculating...",
+        "failed": "Failed",
+        "success": "Success",
+        "pending": "Pending",
+        "quantity": "Quantity",
+        "estimatedWeight": "Estimated Weight",
+        "estimatedFee": "Estimated Fee",
+        "kg": "kg",
+        "sgd": "SGD"
+      },
+
+      "storeInformation": {
+        "title": "Store Information",
+        "store": "Store",
+        "phone": "Phone",
+        "address": "Address"
+      },
+
+      "spxSender": {
+        "title": "SPX Sender",
+        "company": "Company",
+        "phone": "Phone",
+        "postalCode": "Postal Code",
+        "address": "Address"
+      },
+
+      "shopifyReceiver": {
+        "title": "Shopify Receiver",
+        "customer": "Customer",
+        "phone": "Phone",
+        "address": "Address"
+      },
+
+      "spxReceiver": {
+        "title": "SPX Receiver",
+        "customer": "Customer",
+        "phone": "Phone",
+        "address": "Address",
+        "shipmentNotCreated": "SPX Shipment Not Created"
+      },
+
+      "comingSoon": "Coming Soon",
+      "shopifyOrderNotFound": "Shopify Order Not Found",
+      "spxShipmentNotFound": "SPX Shipment Not Found"
+    },
+
+    "shipmentHistory": {
+      "title": "Shipment History",
+      "orderNo": "Order No",
+      "trackingNo": "Tracking No",
+      "currentStatus": "Current Status",
+      "close": "Close",
+
+      "shipmentInformation": {
+        "title": "Shipment Information",
+        "orderLink": "Order Link",
+        "openSpxOrder": "Open SPX Order",
+        "trackingLink": "Tracking Link",
+        "trackShipment": "Track Shipment",
+        "reverseTrackingNo": "Reverse Tracking No.",
+        "noReturnShipment": "No Return Shipment"
+      },
+
+      "sortCodes": {
+        "title": "Sort Codes",
+        "firstSortCode": "First Sort Code",
+        "thirdSortCode": "Third Sort Code",
+        "returnSortCode": "Return Sort Code"
+      }
+    },
+
+    "awbPreview": {
+      "title": "AWB Preview",
+      "orderNo": "Order No",
+      "trackingNo": "Tracking No",
+      "status": "Status",
+      "preview": "AWB Preview",
+      "previewNotAvailable": "AWB Preview Not Available",
+      "tryDownload": "Try Download AWB",
+      "loading": "Loading AWB preview...",
+      "orderFee": "Order Fee",
+      "basicShippingFee": "Basic Shipping Fee",
+      "codFee": "COD Fee",
+      "insuranceFee": "Insurance Fee",
+      "remoteAreaFee": "Remote Area Fee",
+      "totalCharged": "Total Charged",
+      "close": "Close"
+    },
+
+    "multipleAwb": {
+      "title": "Multiple AWB Preview",
+      "selectedShipments": "Selected Shipments",
+      "awbLabels": "AWB Labels",
+      "status": "Status",
+      "loading": "Loading...",
+      "ready": "Ready",
+      "unavailable": "Unavailable",
+      "preview": "AWB Preview",
+      "previewNotAvailable": "AWB Preview Not Available",
+      "loadingPreview": "Loading AWB preview...",
+      "selectedAwbs": "Selected AWBs",
+      "close": "Close"
     }
+
   }
 }
