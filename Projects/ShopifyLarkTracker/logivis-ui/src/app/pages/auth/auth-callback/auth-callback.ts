@@ -70,6 +70,9 @@ export class AuthCallbackComponent implements OnInit {
     const larkUserAccessToken =
       params['larkUserAccessToken'];
 
+    const larkExpiresIn =
+      params['larkRefreshTokenExpiresIn'];
+
     const error =
       params['error'];
 
@@ -100,6 +103,13 @@ export class AuthCallbackComponent implements OnInit {
 
         larkUserAccessTokenLength:
           larkUserAccessToken?.length ?? 0,
+
+        larkExpiresIn,
+
+        larkExpiresInSeconds:
+          larkExpiresIn
+            ? Number(larkExpiresIn)
+            : null,
 
         error,
         errorCode
@@ -281,6 +291,54 @@ export class AuthCallbackComponent implements OnInit {
 
 
     // ==========================================================
+    // Save Lark User Access Token Expiry
+    // ==========================================================
+    //
+    // This is the Lark USER ACCESS TOKEN lifetime.
+    //
+    // Current Lark value:
+    //
+    //     7200 seconds = 2 hours
+    //
+    // This is NOT the refresh-token lifetime.
+    //
+    // ==========================================================
+
+    if (
+      larkExpiresIn &&
+      !Number.isNaN(Number(larkExpiresIn))
+    ) {
+
+      sessionStorage.setItem(
+        'lark_user_access_token_expires_in',
+        larkExpiresIn
+      );
+
+      console.log(
+        '[AUTH] Lark user access token expiry stored.',
+        {
+          expiresIn:
+            Number(larkExpiresIn),
+
+          expiresInHours:
+            Number(larkExpiresIn) / 3600
+        }
+      );
+
+    }
+    else {
+
+      console.warn(
+        '[AUTH] No Lark user access token expiry received.'
+      );
+
+      sessionStorage.removeItem(
+        'lark_user_access_token_expires_in'
+      );
+    }
+
+
+    // ==========================================================
     // Load Current User
     // ==========================================================
 
@@ -336,7 +394,12 @@ export class AuthCallbackComponent implements OnInit {
           larkUserAccessTokenLength:
             sessionStorage.getItem(
               'lark_user_access_token'
-            )?.length ?? 0
+            )?.length ?? 0,
+
+          larkExpiresIn:
+            sessionStorage.getItem(
+              'lark_user_access_token_expires_in'
+            )
         }
       );
 

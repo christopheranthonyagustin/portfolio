@@ -15,4 +15,7 @@ export interface AuthenticationResponse {
   // Lark OAuth user access token
   userAccessToken?: string;
 
+  // Lark OAuth refresh token lifetime in seconds
+  larkRefreshTokenExpiresIn?: number | null;
+
 }

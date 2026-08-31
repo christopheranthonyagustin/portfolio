@@ -18,8 +18,18 @@ export class AuthService {
   private readonly ACCESS_TOKEN_KEY = 'access_token';
   private readonly USER_ID_KEY = 'user_id';
 
+  private readonly LARK_USER_ACCESS_TOKEN_KEY =
+    'lark_user_access_token';
+
+  private readonly LARK_USER_ACCESS_TOKEN_EXPIRES_IN_KEY =
+    'lark_user_access_token_expires_in';
+
   private currentUser: User | null = null;
+
   private larkUserAccessToken: string | null = null;
+
+  private larkRefreshTokenExpiresIn: number | null = null;
+
 
   // ==========================================================
   // INITIALIZE
@@ -119,14 +129,25 @@ export class AuthService {
    */
   setSession(response: AuthenticationResponse): void {
 
+    // ========================================================
+    // LogiVis JWT
+    // ========================================================
+
     if (response.token) {
+
       localStorage.setItem(
         this.ACCESS_TOKEN_KEY,
         response.token
       );
     }
 
+
+    // ========================================================
+    // LogiVis User
+    // ========================================================
+
     if (response.user) {
+
       localStorage.setItem(
         this.USER_ID_KEY,
         response.user.UserId.toString()
@@ -136,20 +157,129 @@ export class AuthService {
         response.user;
     }
 
+
+    // ========================================================
+    // Lark User Access Token
+    // ========================================================
+
     if (response.userAccessToken) {
 
       this.larkUserAccessToken =
         response.userAccessToken;
 
+      sessionStorage.setItem(
+        this.LARK_USER_ACCESS_TOKEN_KEY,
+        response.userAccessToken
+      );
+
       console.log(
         '[AUTH] Lark user access token stored:',
         {
-          hasToken: true,
+          hasToken:
+            true,
+
           tokenLength:
             response.userAccessToken.length
         }
       );
     }
+
+
+    // ========================================================
+    // Lark User Access Token Expires In
+    // ========================================================
+    //
+    // This value comes from Lark OAuth.
+    //
+    // Current value:
+    //
+    //     7200 seconds = 2 hours
+    //
+    // This is the USER ACCESS TOKEN expiry.
+    //
+    // We are only carrying the value through the UI for now.
+    // Refresh implementation comes next.
+    //
+    // ========================================================
+
+    if (
+      response.larkRefreshTokenExpiresIn !== undefined &&
+      response.larkRefreshTokenExpiresIn !== null
+    ) {
+
+      this.larkRefreshTokenExpiresIn =
+        Number(
+          response.larkRefreshTokenExpiresIn
+        );
+
+      sessionStorage.setItem(
+        this.LARK_USER_ACCESS_TOKEN_EXPIRES_IN_KEY,
+        this.larkRefreshTokenExpiresIn.toString()
+      );
+
+      console.log(
+        '[AUTH] Lark user access token expiry stored:',
+        {
+          expiresIn:
+            this.larkRefreshTokenExpiresIn,
+
+          expiresInHours:
+            this.larkRefreshTokenExpiresIn / 3600
+        }
+      );
+    }
+  }
+
+
+  // ==========================================================
+  // LARK TOKEN
+  // ==========================================================
+
+  getLarkUserAccessToken(): string | null {
+
+    if (this.larkUserAccessToken) {
+      return this.larkUserAccessToken;
+    }
+
+    return sessionStorage.getItem(
+      this.LARK_USER_ACCESS_TOKEN_KEY
+    );
+  }
+
+
+  // ==========================================================
+  // LARK TOKEN EXPIRY
+  // ==========================================================
+
+  getLarkRefreshTokenExpiresIn(): number | null {
+
+    if (
+      this.larkRefreshTokenExpiresIn !== null
+    ) {
+
+      return this.larkRefreshTokenExpiresIn;
+    }
+
+    const stored =
+      sessionStorage.getItem(
+        this.LARK_USER_ACCESS_TOKEN_EXPIRES_IN_KEY
+      );
+
+    if (!stored) {
+      return null;
+    }
+
+    const value =
+      Number(stored);
+
+    if (Number.isNaN(value)) {
+      return null;
+    }
+
+    this.larkRefreshTokenExpiresIn =
+      value;
+
+    return value;
   }
 
 
@@ -239,6 +369,11 @@ export class AuthService {
           `${environment.workerDataApi}/internal/users/${userId}`
         )
       );
+
+    console.log(
+      'Angular Current User: ',
+      user
+    );
 
 
     // ========================================================
@@ -350,9 +485,6 @@ export class AuthService {
     this.setCurrentUser(
       user
     );
-
-
-   
   }
 
 
@@ -384,7 +516,6 @@ export class AuthService {
       this.ACCESS_TOKEN_KEY
     );
   }
-
 
 
   // ==========================================================
@@ -462,12 +593,26 @@ export class AuthService {
     this.currentUser =
       null;
 
+    this.larkUserAccessToken =
+      null;
+
+    this.larkRefreshTokenExpiresIn =
+      null;
+
     localStorage.removeItem(
       this.ACCESS_TOKEN_KEY
     );
 
     localStorage.removeItem(
       this.USER_ID_KEY
+    );
+
+    sessionStorage.removeItem(
+      this.LARK_USER_ACCESS_TOKEN_KEY
+    );
+
+    sessionStorage.removeItem(
+      this.LARK_USER_ACCESS_TOKEN_EXPIRES_IN_KEY
     );
 
     void this.router.navigate(
