@@ -19,6 +19,11 @@ export class AuthService {
   private readonly USER_ID_KEY = 'user_id';
 
   private currentUser: User | null = null;
+  private larkUserAccessToken: string | null = null;
+
+  // ==========================================================
+  // INITIALIZE
+  // ==========================================================
 
   async initialize(): Promise<void> {
 
@@ -26,61 +31,88 @@ export class AuthService {
       return;
     }
 
-    const userId = this.validateToken();
+    const userId =
+      this.validateToken();
 
-    console.log('Angular Current User ID: ', userId);
+    console.log(
+      'Angular Current User ID: ',
+      userId
+    );
 
     if (!userId) {
 
       this.logout({
-        title: 'Security Alert',
-        message: 'Your session appears to be invalid or has expired. Please sign in again.'
+        title:
+          'Security Alert',
+
+        message:
+          'Your session appears to be invalid or has expired. Please sign in again.'
       });
 
       return;
-
     }
 
     try {
 
-      await this.loadCurrentUser(userId);
+      await this.loadCurrentUser(
+        userId
+      );
 
     }
     catch (error: any) {
 
-      console.error('Failed to restore authenticated user.', error);
+      console.error(
+        'Failed to restore authenticated user.',
+        error
+      );
 
       if (error?.status === 404) {
 
         this.logout({
-          title: 'Account Not Found',
-          message: 'Your account could not be found. Please contact your administrator.'
+          title:
+            'Account Not Found',
+
+          message:
+            'Your account could not be found. Please contact your administrator.'
         });
 
         return;
-
       }
 
       this.logout({
-        title: 'Unable to Load Account',
-        message: 'We could not retrieve your account information. Please try again later. If the problem persists, contact your administrator.'
+        title:
+          'Unable to Load Account',
+
+        message:
+          'We could not retrieve your account information. Please try again later. If the problem persists, contact your administrator.'
       });
-
     }
-
   }
+
+
+  // ==========================================================
+  // EXTERNAL LOGIN
+  // ==========================================================
 
   /**
    * Exchange OAuth token with WebApi.
    */
-  externalLogin(token: string): Observable<AuthenticationResponse> {
+  externalLogin(
+    token: string
+  ): Observable<AuthenticationResponse> {
 
     return this.http.post<AuthenticationResponse>(
       `${environment.apiUrl}/auth/external-login`,
-      { token }
+      {
+        token
+      }
     );
-
   }
+
+
+  // ==========================================================
+  // SESSION
+  // ==========================================================
 
   /**
    * Persist authenticated session.
@@ -88,14 +120,42 @@ export class AuthService {
   setSession(response: AuthenticationResponse): void {
 
     if (response.token) {
-      localStorage.setItem(this.ACCESS_TOKEN_KEY, response.token);
+      localStorage.setItem(
+        this.ACCESS_TOKEN_KEY,
+        response.token
+      );
     }
 
     if (response.user) {
-      localStorage.setItem(this.USER_ID_KEY, response.user.UserId.toString());
+      localStorage.setItem(
+        this.USER_ID_KEY,
+        response.user.UserId.toString()
+      );
+
+      this.currentUser =
+        response.user;
     }
 
+    if (response.userAccessToken) {
+
+      this.larkUserAccessToken =
+        response.userAccessToken;
+
+      console.log(
+        '[AUTH] Lark user access token stored:',
+        {
+          hasToken: true,
+          tokenLength:
+            response.userAccessToken.length
+        }
+      );
+    }
   }
+
+
+  // ==========================================================
+  // JWT VALIDATION
+  // ==========================================================
 
   /**
    * Validate locally stored JWT.
@@ -104,7 +164,8 @@ export class AuthService {
    */
   private validateToken(): number | null {
 
-    const token = this.getToken();
+    const token =
+      this.getToken();
 
     if (!token) {
       return null;
@@ -112,24 +173,40 @@ export class AuthService {
 
     try {
 
-      const parts = token.split('.');
+      const parts =
+        token.split('.');
 
       if (parts.length !== 3) {
         return null;
       }
 
-      const payload = JSON.parse(atob(parts[1]));
+      const payload =
+        JSON.parse(
+          atob(parts[1])
+        );
 
       // Expiration
-      if (payload.exp && Date.now() >= payload.exp * 1000) {
+      if (
+        payload.exp &&
+        Date.now() >= payload.exp * 1000
+      ) {
+
         return null;
       }
 
       // Restore the LogiVis UserId from local storage.
-      // The current JWT does not yet contain the LogiVis UserId.
-      const storedUserId = Number(localStorage.getItem(this.USER_ID_KEY));
+      const storedUserId =
+        Number(
+          localStorage.getItem(
+            this.USER_ID_KEY
+          )
+        );
 
-      if (!storedUserId || Number.isNaN(storedUserId)) {
+      if (
+        !storedUserId ||
+        Number.isNaN(storedUserId)
+      ) {
+
         return null;
       }
 
@@ -138,134 +215,260 @@ export class AuthService {
     }
     catch (error) {
 
-      console.error('Invalid JWT detected.', error);
+      console.error(
+        'Invalid JWT detected.',
+        error
+      );
 
       return null;
-
     }
-
   }
 
-  async loadCurrentUser(userId: number): Promise<void> {
 
-    const user = await firstValueFrom(
-      this.http.get<User>(
-        `${environment.workerDataApi}/internal/users/${userId}`
-      )
-    );
+  // ==========================================================
+  // LOAD CURRENT USER
+  // ==========================================================
 
-    console.log('Angular Current User: ', user);
+  async loadCurrentUser(
+    userId: number
+  ): Promise<void> {
 
+    const user =
+      await firstValueFrom(
+        this.http.get<User>(
+          `${environment.workerDataApi}/internal/users/${userId}`
+        )
+      );
+
+
+    // ========================================================
     // Account Status
+    // ========================================================
+
     switch (user.Status) {
 
       case 'Active':
         break;
 
       case 'PendingApproval':
+
         this.logout({
-          title: 'Account Pending Approval',
-          message: 'Your account has not yet been approved by an administrator.'
+          title:
+            'Account Pending Approval',
+
+          message:
+            'Your account has not yet been approved by an administrator.'
         });
+
         return;
 
       case 'Suspended':
+
         this.logout({
-          title: 'Account Suspended',
-          message: 'Your account has been suspended by an administrator. Please contact your administrator.'
+          title:
+            'Account Suspended',
+
+          message:
+            'Your account has been suspended by an administrator. Please contact your administrator.'
         });
+
         return;
 
       case 'Inactive':
+
         this.logout({
-          title: 'Account Deactivated',
-          message: 'Your account has been deactivated. Please contact your administrator.'
+          title:
+            'Account Deactivated',
+
+          message:
+            'Your account has been deactivated. Please contact your administrator.'
         });
+
         return;
 
       default:
-        this.logout({
-          title: 'Access Denied',
-          message: 'Your account is not authorized to access LogiVis.'
-        });
-        return;
 
+        this.logout({
+          title:
+            'Access Denied',
+
+          message:
+            'Your account is not authorized to access LogiVis.'
+        });
+
+        return;
     }
 
-    // Super User bypass
-    const isSuperUser = user.IsSuperUser || user.UserId === 1;
 
+    // ========================================================
+    // Super User bypass
+    // ========================================================
+
+    const isSuperUser =
+      user.IsSuperUser ||
+      user.UserId === 1;
+
+
+    // ========================================================
     // Authorization
-    if (!isSuperUser && (!user.Permissions || user.Permissions.length === 0)) {
+    // ========================================================
+
+    if (
+      !isSuperUser &&
+      (
+        !user.Permissions ||
+        user.Permissions.length === 0
+      )
+    ) {
 
       this.logout({
-        title: 'Access Revoked',
-        message: 'Your account does not have permission to access LogiVis. Please contact your administrator.'
+        title:
+          'Access Revoked',
+
+        message:
+          'Your account does not have permission to access LogiVis. Please contact your administrator.'
       });
 
       return;
-
     }
 
-    localStorage.setItem(this.USER_ID_KEY, user.UserId.toString());
 
-    this.setCurrentUser(user);
+    // ========================================================
+    // Persist User ID
+    // ========================================================
 
+    localStorage.setItem(
+      this.USER_ID_KEY,
+      user.UserId.toString()
+    );
+
+
+    // ========================================================
+    // Keep complete authenticated user in memory
+    // ========================================================
+
+    this.setCurrentUser(
+      user
+    );
+
+
+   
   }
+
+
+  // ==========================================================
+  // CURRENT USER
+  // ==========================================================
 
   getCurrentUser(): User | null {
     return this.currentUser;
   }
 
-  setCurrentUser(user: User): void {
-    this.currentUser = user;
+
+  setCurrentUser(
+    user: User
+  ): void {
+
+    this.currentUser =
+      user;
   }
 
+
+  // ==========================================================
+  // TOKENS
+  // ==========================================================
+
   getToken(): string | null {
-    return localStorage.getItem(this.ACCESS_TOKEN_KEY);
+
+    return localStorage.getItem(
+      this.ACCESS_TOKEN_KEY
+    );
   }
+
+
+
+  // ==========================================================
+  // USER ID
+  // ==========================================================
 
   getUserId(): number | null {
 
-    const userId = localStorage.getItem(this.USER_ID_KEY);
+    const userId =
+      localStorage.getItem(
+        this.USER_ID_KEY
+      );
 
     return userId
       ? Number(userId)
       : null;
-
   }
 
+
+  // ==========================================================
+  // AUTHENTICATION
+  // ==========================================================
+
   isAuthenticated(): boolean {
+
     return !!this.getToken();
   }
 
+
   hasAccess(): boolean {
 
-    const user = this.currentUser;
+    const user =
+      this.currentUser;
 
     if (!user) {
       return false;
     }
 
-    if (user.IsSuperUser || user.UserId === 1) {
+    if (
+      user.IsSuperUser ||
+      user.UserId === 1
+    ) {
+
       return true;
     }
 
     return !!user.Permissions &&
       user.Permissions.length > 0;
-
   }
+
+
+  // ==========================================================
+  // CLEAR TOKEN
+  // ==========================================================
 
   clearToken(): void {
-    localStorage.removeItem(this.ACCESS_TOKEN_KEY);
+
+    localStorage.removeItem(
+      this.ACCESS_TOKEN_KEY
+    );
   }
 
-  logout(notification?: { title: string; message: string }): void {
 
-    this.currentUser = null;
+  // ==========================================================
+  // LOGOUT
+  // ==========================================================
 
-    localStorage.removeItem(this.ACCESS_TOKEN_KEY);
-    localStorage.removeItem(this.USER_ID_KEY);
+  logout(
+    notification?: {
+      title: string;
+      message: string;
+    }
+  ): void {
+
+    this.currentUser =
+      null;
+
+    localStorage.removeItem(
+      this.ACCESS_TOKEN_KEY
+    );
+
+    localStorage.removeItem(
+      this.USER_ID_KEY
+    );
 
     void this.router.navigate(
       ['/login'],
@@ -277,7 +480,5 @@ export class AuthService {
         }
         : undefined
     );
-
   }
-
 }

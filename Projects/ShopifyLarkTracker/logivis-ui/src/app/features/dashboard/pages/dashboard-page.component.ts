@@ -1,8 +1,12 @@
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
+  CUSTOM_ELEMENTS_SCHEMA,
   DestroyRef,
+  ElementRef,
   OnInit,
+  ViewChild,
   inject
 } from '@angular/core';
 import { forkJoin, of } from 'rxjs';
@@ -42,7 +46,6 @@ import { dateTimeFormatter } from '../../../shared/utils/date-utils';
 import { ShipmentActionRendererComponent } from '../../../features/shipments/components/shipment-action-renderer/shipment-action-renderer.component';
 import { ShipmentVerificationDialogComponent } from '../../../features/shipments/components/shipment-verification-dialog/shipment-verification-dialog.component';
 import { TrackOrderResponse } from '../../../core/models/track-order-response';
-import { ViewChild } from '@angular/core';
 import { ShipmentHistoryDialogComponent } from '../../../features/shipments/components/shipment-history-dialog/shipment-history-dialog.component';
 import { ShipmentAwbDialogComponent } from '../../../features/shipments/components/shipment-awb-dialog/shipment-awb-dialog.component';
 import { ShipmentMultipleAwbDialogComponent } from '../../../features/shipments/components/shipment-multiple-awb-dialog/shipment-multiple-awb-dialog.component';
@@ -56,9 +59,29 @@ import {
 } from '@ngx-translate/core';
 import { StatusDropdownFilterComponent } from '../../../shared/components/status-dropdown-filter/status-dropdown-filter.component';
 
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'universal-chat-widget': HTMLElement & {
+      user: {
+        id: string;
+        name: string;
+        email: string;
+        providerUserId: string;
+      };
+      widgetConfig: {
+        apiBaseUrl: string;
+        channel: string;
+        authenticationMode: string;
+      };
+    };
+  }
+}
+
 @Component({
   selector: 'app-dashboard-page',
   standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
     FormsModule,
@@ -79,11 +102,14 @@ import { StatusDropdownFilterComponent } from '../../../shared/components/status
   styleUrls: ['./dashboard-page.component.scss']
 })
 
-export class DashboardPageComponent implements OnInit {
+export class DashboardPageComponent implements OnInit, AfterViewInit {
 
   components = {
     shipmentActionRenderer: ShipmentActionRendererComponent
   };
+
+  @ViewChild('chatWidget')
+  private chatWidget?: ElementRef;
 
   @ViewChild(ShipmentVerificationDialogComponent)
   private shipmentDialog!: ShipmentVerificationDialogComponent;
@@ -934,6 +960,126 @@ export class DashboardPageComponent implements OnInit {
     });
 
   }
+
+  private configureChatWidget(): void {
+
+    const user = this.currentUser;
+
+    if (!user || !this.chatWidget) {
+      console.error(
+        '[Dashboard] Cannot configure chat widget.',
+        {
+          hasUser: !!user,
+          hasWidget: !!this.chatWidget
+        }
+      );
+      return;
+    }
+
+    const token =
+      this.authService.getToken();
+
+    const larkUserAccessToken =
+      sessionStorage.getItem(
+        'lark_user_access_token'
+      );
+
+    const widget =
+      this.chatWidget.nativeElement;
+
+
+    // ==========================================================
+    // Authenticated LogiVis user
+    // ==========================================================
+
+    widget.user = {
+      id:
+        String(user.UserId),
+
+      name:
+        user.DisplayName,
+
+      email:
+        user.Email ?? '',
+
+      providerUserId:
+        user.ProviderUserId
+    };
+
+
+    // ==========================================================
+    // Widget configuration
+    // ==========================================================
+
+    widget.config = {
+      apiBaseUrl:
+        environment.workerApi,
+
+      channel:
+        'LARK',
+
+      authenticationMode:
+        'HOST'
+    };
+
+
+    // ==========================================================
+    // LogiVis JWT
+    // ==========================================================
+
+    widget.token =
+      token ?? '';
+
+
+    // ==========================================================
+    // Lark USER access token
+    // ==========================================================
+    //
+    // This is the Lark OAuth user_access_token.
+    // It is different from the LogiVis JWT above.
+    //
+    // Widget will send this to logivis-worker as:
+    //
+    //     userAccessToken
+    //
+    // ==========================================================
+
+    widget.larkToken =
+      larkUserAccessToken ?? '';
+
+
+    // ==========================================================
+    // Debug
+    // ==========================================================
+
+    console.log(
+      '[Dashboard] CHAT WIDGET CONFIGURED',
+      {
+        user:
+          widget.user,
+
+        config:
+          widget.config,
+
+        hasLogiVisToken:
+          !!token,
+
+        logiVisTokenLength:
+          token?.length ?? 0,
+
+        hasLarkUserAccessToken:
+          !!larkUserAccessToken,
+
+        larkUserAccessTokenLength:
+          larkUserAccessToken?.length ?? 0,
+
+        widgetHasLarkToken:
+          !!widget.larkToken
+      }
+    );
+  }
+
+
   get currentUser(): User | null {
 
     return this.authService.getCurrentUser();
@@ -977,8 +1123,6 @@ export class DashboardPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
 
     if (!this.currentUser) {
       return;
@@ -1045,6 +1189,151 @@ export class DashboardPageComponent implements OnInit {
       this.dashboardGridApi?.refreshHeader();
     });
 
+  }
+
+  ngAfterViewInit(): void {
+
+    const user = this.currentUser;
+
+    if (!user) {
+      console.error(
+        '[Dashboard] CurrentUser is missing.'
+      );
+      return;
+    }
+
+    if (!this.chatWidget) {
+      console.error(
+        '[Dashboard] Chat widget element not found.'
+      );
+      return;
+    }
+
+    const widget =
+      this.chatWidget.nativeElement;
+
+
+    // ==========================================================
+    // Widget configuration
+    // ==========================================================
+
+    widget.config = {
+      apiBaseUrl:
+        environment.workerApi,
+
+      channel:
+        'LARK',
+
+      authenticationMode:
+        'HOST'
+    };
+
+
+    // ==========================================================
+    // Authenticated LogiVis user
+    // ==========================================================
+
+    widget.user = {
+
+      id:
+        String(user.UserId),
+
+      name:
+        user.DisplayName,
+
+      email:
+        user.Email ?? '',
+
+      providerUserId:
+        user.ProviderUserId
+    };
+
+
+    // ==========================================================
+    // LogiVis JWT
+    // ==========================================================
+
+    const token =
+      this.authService.getToken();
+
+    if (!token) {
+
+      console.error(
+        '[Dashboard] LogiVis access token is missing.'
+      );
+
+      return;
+    }
+
+    widget.token =
+      token;
+
+
+    // ==========================================================
+    // Lark USER access token
+    // ==========================================================
+    //
+    // This is separate from the LogiVis JWT above.
+    //
+    // The Universal Chat Widget will forward this token to:
+    //
+    //     logivis-worker /api/chat/messages
+    //
+    // which will call:
+    //
+    //     sendTextMessageAsUser()
+    //
+    // ==========================================================
+
+    const larkUserAccessToken =
+      sessionStorage.getItem(
+        'lark_user_access_token'
+      );
+
+    if (!larkUserAccessToken) {
+
+      console.error(
+        '[Dashboard] Lark user access token is missing.'
+      );
+
+      console.error(
+        '[Dashboard] Available sessionStorage keys:',
+        Object.keys(sessionStorage)
+      );
+
+      return;
+    }
+
+    widget.larkToken =
+      larkUserAccessToken;
+
+
+    // ==========================================================
+    // Debug
+    // ==========================================================
+
+    console.log(
+      '[Dashboard] Widget configured',
+      {
+        user:
+          widget.user,
+
+        config:
+          widget.config,
+
+        hasLogiVisToken:
+          true,
+
+        logiVisTokenLength:
+          token.length,
+
+        hasLarkUserAccessToken:
+          true,
+
+        larkUserAccessTokenLength:
+          larkUserAccessToken.length
+      }
+    );
   }
 
   onGridReady(

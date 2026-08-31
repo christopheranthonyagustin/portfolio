@@ -12,4 +12,7 @@ export interface AuthenticationResponse {
 
   user?: User;
 
+  // Lark OAuth user access token
+  userAccessToken?: string;
+
 }

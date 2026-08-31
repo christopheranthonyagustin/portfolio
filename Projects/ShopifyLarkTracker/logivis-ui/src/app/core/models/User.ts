@@ -28,4 +28,5 @@ export interface User {
 
   Permissions: Permission[];
   Companies: Companies[];
+
 }
