@@ -1,12 +1,12 @@
-const c = [
+const h = [
   { id: "GENERAL_INQUIRY", label: "General Inquiries" },
   { id: "REPORT_BUG", label: "Report Bugs" },
   { id: "NEW_REQUEST", label: "New Request" },
   { id: "ORDER_INQUIRY", label: "Order Inquiry" },
   { id: "DELIVERY_INQUIRY", label: "Delivery Inquiry" },
   { id: "OTHER", label: "Other" }
-], h = 5, p = 10 * 1024 * 1024, u = 50 * 1024 * 1024, g = 20 * 1024 * 1024, m = 20 * 1024 * 1024;
-class f extends HTMLElement {
+], p = 5, f = 10 * 1024 * 1024, v = 50 * 1024 * 1024, b = 20 * 1024 * 1024, x = 20 * 1024 * 1024;
+class U extends HTMLElement {
   shadow = this.attachShadow({ mode: "open" });
   apiBaseUrl = "";
   authToken = "";
@@ -26,17 +26,42 @@ class f extends HTMLElement {
   minimized = !0;
   maximized = !1;
   initialized = !1;
-  connectedCallback() {
-    this.initialized || (this.initialized = !0, this.apiBaseUrl = this._config.apiBaseUrl || this.getAttribute("api-base-url") || "", this.authToken = this.getAttribute("auth-token") ?? "", this.larkRefreshTokenValue = this.getAttribute("lark-refresh-token") ?? "", this.restoreConversation(), this.initializeRefreshTokenReadiness(), this.render(), this.bindEvents(), this.addWelcomeMessage(), this.updateVisibility(), this.loadConversationHistory(), console.log("[UniversalChatWidget] Initialized"), console.log("[UniversalChatWidget] User:", this.currentUser), console.log("[UniversalChatWidget] Config:", this._config), console.log("[UniversalChatWidget] API URL:", this.apiBaseUrl), console.log("[UniversalChatWidget] Authentication:", {
-      mode: this._config.authenticationMode,
-      hasToken: !!this.authToken,
-      tokenLength: this.authToken.length,
-      hasLarkUserAccessToken: !!this.larkUserAccessToken,
-      larkUserAccessTokenLength: this.larkUserAccessToken.length
-    }));
+  p2pPollingTimer = null;
+  p2pMessagesUrl = "";
+  async connectedCallback() {
+    if (this.initialized) return;
+    this.initialized = !0;
+    const e = "https://logivis-worker.christopheranthonyagustin.workers.dev/api";
+    this.p2pMessagesUrl = `${e}/lark/webhook`, console.log(
+      "[UniversalChatWidget] P2P messages URL:",
+      this.p2pMessagesUrl
+    ), this.authToken = this.getAttribute("auth-token") ?? "", this.larkRefreshTokenValue = this.getAttribute("lark-refresh-token") ?? "", this.restoreConversation(), this.initializeRefreshTokenReadiness(), this.render(), this.bindEvents(), this.updateVisibility(), this.addWelcomeMessage(), this.startP2PPolling(), console.log(
+      "[UniversalChatWidget] Initialized"
+    ), console.log(
+      "[UniversalChatWidget] User:",
+      this.currentUser
+    ), console.log(
+      "[UniversalChatWidget] Config:",
+      this._config
+    ), console.log(
+      "[UniversalChatWidget] API URL:",
+      this.apiBaseUrl
+    ), console.log(
+      "[UniversalChatWidget] Authentication:",
+      {
+        mode: this._config.authenticationMode,
+        hasToken: !!this.authToken,
+        tokenLength: this.authToken.length,
+        hasLarkUserAccessToken: !!this.larkUserAccessToken,
+        larkUserAccessTokenLength: this.larkUserAccessToken.length
+      }
+    );
   }
   set user(e) {
-    this.currentUser = e, console.log("[UniversalChatWidget] User received:", e);
+    this.currentUser = e, console.log(
+      "[UniversalChatWidget] User received:",
+      e
+    );
   }
   get user() {
     return this.currentUser;
@@ -147,10 +172,100 @@ class f extends HTMLElement {
         .sender { margin-bottom: 4px; font-size: 11px; font-weight: 600; color: #475569; }
         .time { margin-top: 4px; font-size: 10px; color: #6b7280; }
         .message-row.user .time { text-align: right; }
-        .message-attachments { margin-top: 7px; display: flex; flex-wrap: wrap; gap: 6px; }
-        .message-attachment { max-width: 180px; border-radius: 9px; overflow: hidden; background: rgba(255,255,255,.18); }
-        .message-attachment img, .message-attachment video { display: block; max-width: 180px; max-height: 130px; object-fit: cover; }
-        .message-attachment-name { padding: 5px 7px; font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .message-attachments {
+          margin-top: 7px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+          max-width: 100%;
+        }
+        .message-attachment {
+          max-width: 100%;
+          border-radius: 9px;
+          overflow: hidden;
+        }
+        .message-attachment img,
+        .message-attachment video {
+          display: block;
+          max-width: 180px;
+          max-height: 150px;
+          object-fit: contain;
+          border-radius: 8px;
+        }
+        .message-attachment-file {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          width: min(240px, 100%);
+          padding: 8px 10px;
+          border: 1px solid #e5e7eb;
+          border-radius: 9px;
+          background: #fff;
+        }
+
+        .message-text {
+            margin: 0;
+            padding: 0;
+        }
+
+        .bubble.inbound:has(.message-image) {
+            padding: 4px;
+        }
+
+        .message-image {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin: 0;
+            padding: 0;
+            line-height: normal;
+        }
+
+        .message-image img {
+            display: block;
+            width: 160px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .message-download {
+            display: block;
+            margin-top: 4px;
+            font-size: 11px;
+            line-height: normal;
+        }
+
+        .message-download:hover {
+            text-decoration: underline;
+        }
+
+        .message-attachment-icon {
+          flex: 0 0 auto;
+          font-size: 17px;
+        }
+        .message-file-info {
+          min-width: 0;
+          flex: 1 1 auto;
+        }
+        .message-attachment-name {
+          font-size: 11px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .message-download {
+          flex: 0 0 auto;
+          font-size: 11px;
+          color: #2563eb;
+          text-decoration: none;
+        }
+        .message-download:hover {
+          text-decoration: underline;
+        }
 
         .intents {
           flex: 0 0 auto; padding: 11px 13px; border-top: 1px solid #e5e7eb; background: #fff;
@@ -169,6 +284,12 @@ class f extends HTMLElement {
         .composer {
           flex: 0 0 auto; padding: 10px 13px 13px;
           border-top: 1px solid #e5e7eb; background: #fff;
+        }
+        .composer-user {
+          margin-bottom: 7px;
+          font-size: 11px;
+          font-weight: 600;
+          color: #475569;
         }
         .error { color: #b91c1c; font-size: 11px; margin-bottom: 7px; }
         .dropzone {
@@ -215,12 +336,12 @@ class f extends HTMLElement {
         }
       </style>
 
-      <button class="launcher" id="chatLauncher" type="button" aria-label="Open LogiVis Support" title="Open LogiVis Support">💬</button>
+      <button class="launcher" id="chatLauncher" type="button" aria-label="Open Chat Support" title="Open Chat Support">💬</button>
 
-      <div class="panel hidden" id="chatPanel" role="dialog" aria-label="LogiVis Support">
+      <div class="panel hidden" id="chatPanel" role="dialog" aria-label="Chat Support">
         <div class="header">
           <div class="header-info">
-            <div class="title">LogiVis Support</div>
+            <div class="title">Chat Support</div>
             <div class="subtitle">Support and service requests</div>
           </div>
           <div class="header-actions">
@@ -232,14 +353,15 @@ class f extends HTMLElement {
         <div class="messages" id="messages"></div>
 
         <div class="intents" id="intents">
-          <div class="intent-title">Select an option to begin</div>
+          <div class="intent-title hidden">Select an option to begin</div>
           <div class="intent-grid">
-            ${c.map((e) => `<button class="intent" type="button" data-intent="${e.id}">${e.label}</button>`).join("")}
+            ${h.map((e) => `<button class="intent" type="button" data-intent="${e.id}">${e.label}</button>`).join("")}
           </div>
           <div class="selected-intent hidden" id="selectedIntent"></div>
         </div>
 
         <div class="composer">
+          <div class="composer-user" id="composerUser"></div>
           <div class="error hidden" id="error"></div>
           <div class="dropzone disabled" id="dropzone">Select an option above to enable messages and attachments.</div>
           <div class="attachments" id="attachments"></div>
@@ -254,24 +376,24 @@ class f extends HTMLElement {
     `;
   }
   bindEvents() {
-    this.getElement("chatLauncher").addEventListener("click", () => this.open()), this.getElement("closeButton").addEventListener("click", () => this.close()), this.getElement("maximizeButton").addEventListener("click", () => this.toggleMaximize()), this.shadow.querySelectorAll(".intent").forEach((i) => {
-      i.addEventListener("click", () => this.selectIntent(i.dataset.intent ?? ""));
+    this.getElement("chatLauncher").addEventListener("click", () => this.open()), this.getElement("closeButton").addEventListener("click", () => this.close()), this.getElement("maximizeButton").addEventListener("click", () => this.toggleMaximize()), this.shadow.querySelectorAll(".intent").forEach((n) => {
+      n.addEventListener("click", () => this.selectIntent(n.dataset.intent ?? ""));
     });
-    const e = this.getElement("sendButton"), t = this.getElement("messageInput"), s = this.getElement("fileInput"), n = this.getElement("attachButton"), r = this.getElement("dropzone");
+    const e = this.getElement("sendButton"), t = this.getElement("messageInput"), s = this.getElement("fileInput"), i = this.getElement("attachButton"), o = this.getElement("dropzone");
     e.addEventListener("click", () => {
       this.sendMessage();
-    }), t.addEventListener("keydown", (i) => {
-      i.key === "Enter" && !i.shiftKey && (i.preventDefault(), this.sendMessage());
-    }), n.addEventListener("click", () => s.click()), s.addEventListener("change", () => {
+    }), t.addEventListener("keydown", (n) => {
+      n.key === "Enter" && !n.shiftKey && (n.preventDefault(), this.sendMessage());
+    }), i.addEventListener("click", () => s.click()), s.addEventListener("change", () => {
       s.files && this.addFiles(Array.from(s.files)), s.value = "";
-    }), r.addEventListener("dragover", (i) => {
-      this.initialIntent && (i.preventDefault(), r.classList.add("active"));
-    }), r.addEventListener("dragleave", () => r.classList.remove("active")), r.addEventListener("drop", (i) => {
-      this.initialIntent && (i.preventDefault(), r.classList.remove("active"), i.dataTransfer?.files && this.addFiles(Array.from(i.dataTransfer.files)));
-    }), this.shadow.addEventListener("click", (i) => {
-      const o = i.target?.dataset.removeAttachment;
-      if (o !== void 0) {
-        const a = this.attachments.splice(Number(o), 1)[0];
+    }), o.addEventListener("dragover", (n) => {
+      this.initialIntent && (n.preventDefault(), o.classList.add("active"));
+    }), o.addEventListener("dragleave", () => o.classList.remove("active")), o.addEventListener("drop", (n) => {
+      this.initialIntent && (n.preventDefault(), o.classList.remove("active"), n.dataTransfer?.files && this.addFiles(Array.from(n.dataTransfer.files)));
+    }), this.shadow.addEventListener("click", (n) => {
+      const r = n.target?.dataset.removeAttachment;
+      if (r !== void 0) {
+        const a = this.attachments.splice(Number(r), 1)[0];
         a?.previewUrl && URL.revokeObjectURL(a.previewUrl), this.renderAttachments();
       }
     });
@@ -292,15 +414,19 @@ class f extends HTMLElement {
     e.classList.toggle("hidden", !this.minimized), t.classList.toggle("hidden", this.minimized), t.classList.toggle("maximized", this.maximized && !this.minimized);
   }
   selectIntent(e) {
-    const t = c.find((i) => i.id === e);
+    const t = h.find((r) => r.id === e);
     if (!t || this.initialIntent) return;
-    this.initialIntent = t.id, this.persistConversation(), this.shadow.querySelectorAll(".intent").forEach((i) => i.disabled = !0);
-    const s = this.getElement("selectedIntent");
-    s.textContent = `Selected: ${t.label}`, s.classList.remove("hidden");
+    this.initialIntent = t.id, this.persistConversation();
+    const s = this.shadow.querySelector(".intent-grid");
+    s && s.classList.add("hidden");
+    const i = this.getElement("selectedIntent");
+    i.textContent = `Selected: ${t.label}`, i.classList.remove("hidden");
+    const o = this.getElement("composerUser");
+    o.textContent = `You: ${this.currentUser?.name ?? "User"}`;
     const n = this.getElement("messageInput");
     n.disabled = !1, n.placeholder = "Type your message...", this.getElement("sendButton").disabled = !1, this.getElement("attachButton").disabled = !1;
-    const r = this.getElement("dropzone");
-    r.classList.remove("disabled"), r.textContent = "Drag & drop images, audio, videos or files here, or use + to attach.", n.focus(), this.addSystemMessage(`Thanks. You selected "${t.label}". How can we help?`), this.dispatchEvent(new CustomEvent("intent-selected", {
+    const d = this.getElement("dropzone");
+    d.classList.remove("disabled"), d.textContent = "Drag & drop images, audio, videos or files here, or use + to attach.", n.focus(), this.addSystemMessage(`Thanks. You selected "${t.label}". How can we help?`), this.dispatchEvent(new CustomEvent("intent-selected", {
       detail: { initialIntent: this.initialIntent, conversationId: this.conversationId },
       bubbles: !0,
       composed: !0
@@ -309,16 +435,16 @@ class f extends HTMLElement {
   addFiles(e) {
     this.clearError();
     for (const t of e) {
-      if (this.attachments.length >= h) {
-        this.showError(`Maximum ${h} files per message.`);
+      if (this.attachments.length >= p) {
+        this.showError(`Maximum ${p} files per message.`);
         break;
       }
-      const s = t.type.toLowerCase(), n = s.startsWith("image/") ? p : s.startsWith("video/") ? u : s.startsWith("audio/") ? g : m, r = s.startsWith("image/") ? "Image" : s.startsWith("video/") ? "Video" : s.startsWith("audio/") ? "Audio" : "File";
-      if (t.size > n) {
-        this.showError(`${r} "${t.name}" exceeds the allowed size.`);
+      const s = t.type.toLowerCase(), i = s.startsWith("image/") ? f : s.startsWith("video/") ? v : s.startsWith("audio/") ? b : x, o = s.startsWith("image/") ? "Image" : s.startsWith("video/") ? "Video" : s.startsWith("audio/") ? "Audio" : "File";
+      if (t.size > i) {
+        this.showError(`${o} "${t.name}" exceeds the allowed size.`);
         continue;
       }
-      this.attachments.some((i) => i.fileName === t.name && i.size === t.size) || this.attachments.push({
+      this.attachments.some((n) => n.fileName === t.name && n.size === t.size) || this.attachments.push({
         file: t,
         fileName: t.name,
         contentType: t.type || "application/octet-stream",
@@ -332,9 +458,9 @@ class f extends HTMLElement {
   renderAttachments() {
     const e = this.getElement("attachments");
     e.innerHTML = this.attachments.map((t, s) => {
-      const n = t.contentType.toLowerCase();
+      const i = t.contentType.toLowerCase();
       return `<div class="attachment">
-        ${n.startsWith("image/") && t.previewUrl ? `<img class="attachment-preview" src="${t.previewUrl}" alt="">` : n.startsWith("video/") && t.previewUrl ? '<span class="attachment-icon">🎬</span>' : n.startsWith("audio/") ? '<span class="attachment-icon">🎵</span>' : '<span class="attachment-icon">📎</span>'}
+        ${i.startsWith("image/") && t.previewUrl ? `<img class="attachment-preview" src="${t.previewUrl}" alt="">` : i.startsWith("video/") && t.previewUrl ? '<span class="attachment-icon">🎬</span>' : i.startsWith("audio/") ? '<span class="attachment-icon">🎵</span>' : '<span class="attachment-icon">📎</span>'}
         <div>
           <div class="attachment-name" title="${this.escapeHtml(t.fileName)}">${this.escapeHtml(t.fileName)}</div>
           <div class="attachment-size">${this.formatBytes(t.size)}</div>
@@ -346,8 +472,8 @@ class f extends HTMLElement {
   }
   async fileToDataUrl(e) {
     return await new Promise((t, s) => {
-      const n = new FileReader();
-      n.onload = () => t(String(n.result)), n.onerror = () => s(n.error ?? new Error("Unable to read attachment.")), n.readAsDataURL(e);
+      const i = new FileReader();
+      i.onload = () => t(String(i.result)), i.onerror = () => s(i.error ?? new Error("Unable to read attachment.")), i.readAsDataURL(e);
     });
   }
   async sendMessage() {
@@ -372,9 +498,9 @@ class f extends HTMLElement {
           size: a.size,
           contentBase64: await this.fileToDataUrl(a.file)
         });
-      const n = t || this.attachments.map((a) => `[${a.fileName}]`).join(" ");
-      this.addUserMessage(n, this.attachments);
-      const r = {
+      const i = t || this.attachments.map((a) => `[${a.fileName}]`).join(" ");
+      this.addUserMessage(i, this.attachments);
+      const o = {
         userId: this.currentUser.id,
         providerUserId: this.currentUser.providerUserId,
         senderName: this.currentUser.name,
@@ -402,7 +528,7 @@ class f extends HTMLElement {
       }), console.log("[UniversalChatWidget] Sending message:", {
         url: this.buildMessagesUrl(),
         requestBody: {
-          ...r,
+          ...o,
           userAccessToken: this.larkUserAccessToken ? "<token-present>" : "MISSING",
           attachments: s.map((a) => ({
             fileName: a.fileName,
@@ -414,19 +540,19 @@ class f extends HTMLElement {
         },
         authorizationHeader: this.authToken ? "Bearer <token-present>" : "MISSING"
       });
-      const i = await fetch(this.buildMessagesUrl(), {
+      const n = await fetch(this.buildMessagesUrl(), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           ...this.authToken ? { Authorization: `Bearer ${this.authToken}` } : {}
         },
-        body: JSON.stringify(r)
-      }), d = i.headers.get("content-type") ?? "";
-      let o = {};
-      if (d.includes("application/json") ? o = await i.json() : o = { success: !1, error: await i.text() || `Chat API failed (${i.status}).` }, !i.ok || !o.success)
-        throw new Error(o.error ?? o.message ?? `Chat API failed (${i.status}).`);
-      o.conversationId && o.conversationId !== this.conversationId && (this.conversationId = o.conversationId, this.persistConversation()), o.reply && this.handleInboundMessage(o.reply), o.messages?.length && o.messages.forEach((a) => this.handleInboundMessage(a)), this.addSystemMessage("Your message was sent successfully."), this.setAttachmentStatus("success"), this.clearAttachments(), e.value = "", this.dispatchEvent(new CustomEvent("message-sent", {
-        detail: { response: o, conversationId: this.conversationId, initialIntent: this.initialIntent },
+        body: JSON.stringify(o)
+      }), d = n.headers.get("content-type") ?? "";
+      let r = {};
+      if (d.includes("application/json") ? r = await n.json() : r = { success: !1, error: await n.text() || `Chat API failed (${n.status}).` }, !n.ok || !r.success)
+        throw new Error(r.error ?? r.message ?? `Chat API failed (${n.status}).`);
+      r.conversationId && r.conversationId !== this.conversationId && (this.conversationId = r.conversationId, this.persistConversation()), r.reply && this.handleInboundMessage(r.reply), r.messages?.length && r.messages.forEach((a) => this.handleInboundMessage(a)), this.addSystemMessage("Your message was sent successfully."), this.setAttachmentStatus("success"), this.clearAttachments(), e.value = "", this.dispatchEvent(new CustomEvent("message-sent", {
+        detail: { response: r, conversationId: this.conversationId, initialIntent: this.initialIntent },
         bubbles: !0,
         composed: !0
       }));
@@ -437,16 +563,124 @@ class f extends HTMLElement {
     }
   }
   clearAttachments() {
+    this.attachments = [], this.renderAttachments();
+  }
+  startP2PPolling() {
+    if (this.p2pPollingTimer === null) {
+      if (!this.p2pMessagesUrl) {
+        console.warn("[UniversalChatWidget] P2P messages URL is not configured.");
+        return;
+      }
+      this.pollP2PMessages(), this.p2pPollingTimer = window.setInterval(
+        () => {
+          this.pollP2PMessages();
+        },
+        2e3
+      );
+    }
+  }
+  stopP2PPolling() {
+    this.p2pPollingTimer !== null && (window.clearInterval(this.p2pPollingTimer), this.p2pPollingTimer = null);
+  }
+  async pollP2PMessages() {
+    if (!(!this.p2pMessagesUrl || !this.currentUser))
+      try {
+        const e = new URL(
+          this.p2pMessagesUrl,
+          window.location.origin
+        );
+        e.searchParams.set(
+          "providerUserId",
+          this.currentUser.providerUserId
+        ), e.searchParams.set(
+          "conversationId",
+          this.conversationId
+        );
+        const t = await fetch(e.toString(), {
+          method: "GET",
+          headers: {
+            ...this.authToken ? {
+              Authorization: `Bearer ${this.authToken}`
+            } : {}
+          }
+        }), s = await t.text();
+        if (console.log(
+          "[UniversalChatWidget] P2P HTTP response:",
+          {
+            status: t.status,
+            url: t.url,
+            contentType: t.headers.get("content-type"),
+            body: s.substring(0, 500)
+          }
+        ), !t.ok)
+          throw new Error(
+            `P2P receive failed (${t.status}): ${s.substring(0, 200)}`
+          );
+        const i = JSON.parse(s);
+        if (i.success === !1)
+          return;
+        const o = [
+          ...i.message ? [i.message] : [],
+          ...i.messages ?? []
+        ];
+        for (const n of o)
+          this.handleP2PBrowserMessage(n);
+      } catch (e) {
+        console.warn(
+          "[UniversalChatWidget] P2P receive failed:",
+          e
+        );
+      }
+  }
+  handleP2PBrowserMessage(e) {
+    if (!e.messageId) {
+      console.warn(
+        "[UniversalChatWidget] Ignoring P2P message without messageId."
+      );
+      return;
+    }
+    if (!this.messages.some(
+      (s) => s.messageId === e.messageId
+    ) && e.direction === "INBOUND") {
+      if (e.conversationId && e.conversationId !== this.conversationId) {
+        console.log(
+          "[UniversalChatWidget] Ignoring P2P message for another conversation:",
+          {
+            activeConversationId: this.conversationId,
+            messageConversationId: e.conversationId
+          }
+        );
+        return;
+      }
+      this.messages.push({
+        ...e,
+        direction: "INBOUND"
+      }), this.renderMessages(), this.persistConversation(), this.dispatchEvent(
+        new CustomEvent("p2p-message-received", {
+          detail: {
+            message: e,
+            conversationId: this.conversationId
+          },
+          bubbles: !0,
+          composed: !0
+        })
+      );
+    }
+  }
+  disconnectedCallback() {
+    this.stopP2PPolling();
+    for (const e of this.messages)
+      for (const t of e.attachments ?? [])
+        t.previewUrl && URL.revokeObjectURL(t.previewUrl);
     for (const e of this.attachments)
       e.previewUrl && URL.revokeObjectURL(e.previewUrl);
-    this.attachments = [], this.renderAttachments();
   }
   buildMessagesUrl() {
     return `${this.apiBaseUrl.replace(/\/$/, "")}/chat/messages`;
   }
   setComposerEnabled(e) {
-    const t = this.getElement("messageInput"), s = this.getElement("sendButton"), n = this.getElement("attachButton");
-    t.disabled = !e || !this.initialIntent, s.disabled = !e || !this.initialIntent, n.disabled = !e || !this.initialIntent;
+    const t = this.getElement("messageInput"), s = this.getElement("sendButton"), i = this.getElement("attachButton");
+    t.disabled = !e || !this.initialIntent, s.disabled = !e || !this.initialIntent, i.disabled = !e || !this.initialIntent;
   }
   addUserMessage(e, t = []) {
     this.messages.push({
@@ -460,7 +694,8 @@ class f extends HTMLElement {
       attachments: t.map((s) => ({
         fileName: s.fileName,
         contentType: s.contentType,
-        size: s.size
+        size: s.size,
+        previewUrl: s.previewUrl
       }))
     }), this.renderMessages(), this.persistConversation();
   }
@@ -474,23 +709,122 @@ class f extends HTMLElement {
     }), this.renderMessages();
   }
   addWelcomeMessage() {
-    this.addSystemMessage("Welcome to LogiVis Support. Please select what you need help with to get started.");
+    this.addSystemMessage("Welcome to Chat Support. Please select what you need help with to get started.");
+  }
+  async loadImageAsBlobUrl(e) {
+    const t = await fetch(e, {
+      method: "GET",
+      headers: {
+        ...this.authToken ? {
+          Authorization: `Bearer ${this.authToken}`
+        } : {}
+      }
+    });
+    if (!t.ok)
+      throw new Error(`Unable to load image (${t.status}).`);
+    const s = await t.blob();
+    return URL.createObjectURL(s);
   }
   renderMessages() {
     const e = this.shadow.querySelector("#messages");
     e && (e.innerHTML = this.messages.map((t) => {
-      const s = t.direction === "OUTBOUND", n = t.direction === "INBOUND", r = s ? "user" : n ? "inbound" : "system", i = s ? "user" : n ? "inbound" : "system", d = n && t.senderName ? `<div class="sender">${this.escapeHtml(t.senderName)}</div>` : "", o = t.attachments?.length ? `<div class="message-attachments">${t.attachments.map((a) => {
-        const l = a.contentType.toLowerCase();
-        return `<div class="message-attachment"><div class="message-attachment-name">${l.startsWith("image/") ? "🖼️" : l.startsWith("video/") ? "🎬" : l.startsWith("audio/") ? "🎵" : "📎"} ${this.escapeHtml(a.fileName)}</div></div>`;
-      }).join("")}</div>` : "";
-      return `<div class="message-row ${r}">
-        <div class="bubble-wrap">
-          ${d}
-          <div class="bubble ${i}">${this.escapeHtml(t.text)}${o}</div>
-          <div class="time">${this.escapeHtml(this.formatMessageTime(t.createdAt))}</div>
-        </div>
-      </div>`;
-    }).join(""), e.scrollTop = e.scrollHeight);
+      const s = t.direction === "OUTBOUND", i = t.direction === "INBOUND", o = s ? "user" : i ? "inbound" : "system", n = s ? "user" : i ? "inbound" : "system", d = i && t.senderName ? `<div class="sender">${this.escapeHtml(t.senderName)}</div>` : "", r = t.messageType === "image" && t.imageUrl ? `<div class="message-image"><img src="${this.escapeHtml(t.imageUrl)}" alt="Image" loading="lazy" />${t.downloadUrl ? `<a class="message-download" href="${this.escapeHtml(t.downloadUrl)}" target="_blank" rel="noopener noreferrer">Download original</a>` : ""}</div>` : "", a = t.attachments?.length ? `<div class="message-attachments">${t.attachments.map((l) => {
+        const c = l.contentType.toLowerCase(), m = c.startsWith("image/") ? "🖼️" : c.startsWith("video/") ? "🎬" : c.startsWith("audio/") ? "🎵" : "📎";
+        if (l.previewUrl && c.startsWith("image/"))
+          return `
+                        <div class="message-attachment">
+                            <img
+                                src="${this.escapeHtml(l.previewUrl)}"
+                                alt="${this.escapeHtml(l.fileName)}"
+                            >
+                            <div class="message-attachment-name">
+                                ${this.escapeHtml(l.fileName)}
+                            </div>
+                        </div>
+                    `;
+        if (l.previewUrl && c.startsWith("video/"))
+          return `
+                        <div class="message-attachment">
+                            <video
+                                src="${this.escapeHtml(l.previewUrl)}"
+                                controls
+                                preload="metadata"
+                            ></video>
+                            <div class="message-attachment-name">
+                                ${this.escapeHtml(l.fileName)}
+                            </div>
+                        </div>
+                    `;
+        const u = l.driveUrl ? `
+                        <a
+                            class="message-download"
+                            href="${this.escapeHtml(l.driveUrl)}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            download
+                        >
+                            Download
+                        </a>
+                    ` : "";
+        return `
+                    <div class="message-attachment-file">
+                        <span class="message-attachment-icon">${m}</span>
+                        <div class="message-file-info">
+                            <div
+                                class="message-attachment-name"
+                                title="${this.escapeHtml(l.fileName)}"
+                            >
+                                ${this.escapeHtml(l.fileName)}
+                            </div>
+                        </div>
+                        ${u}
+                    </div>
+                `;
+      }).join("")}</div>` : "", g = t.messageType === "image" && t.imageUrl ? "" : `<div class="message-text">${this.escapeHtml(t.text)}</div>`;
+      return `<div class="message-row ${o}">
+                <div class="bubble-wrap">
+                    ${d}
+                    <div class="bubble ${n}">${g}${r}${a}</div>
+                    <div class="time">${this.escapeHtml(
+        this.formatMessageTime(t.createdAt)
+      )}</div>
+                </div>
+            </div>`;
+    }).join(""), this.loadProtectedImages(), e.scrollTop = e.scrollHeight);
+  }
+  async loadProtectedImages() {
+    const e = Array.from(
+      this.shadow.querySelectorAll(
+        ".message-image img[data-image-url]"
+      )
+    );
+    for (const t of e) {
+      const s = t.dataset.imageUrl;
+      if (s)
+        try {
+          const i = await fetch(s, {
+            method: "GET",
+            headers: {
+              ...this.authToken ? {
+                Authorization: `Bearer ${this.authToken}`
+              } : {}
+            }
+          });
+          if (!i.ok)
+            throw new Error(`Unable to load image (${i.status}).`);
+          const o = await i.blob(), n = URL.createObjectURL(o);
+          t.src = n, t.addEventListener(
+            "load",
+            () => URL.revokeObjectURL(n),
+            { once: !0 }
+          );
+        } catch (i) {
+          console.warn(
+            "[UniversalChatWidget] Unable to load Lark image:",
+            i
+          );
+        }
+    }
   }
   /*
    * PHASE 1 — WIDGET FIRST
@@ -545,16 +879,66 @@ class f extends HTMLElement {
       console.warn("[UniversalChatWidget] Unable to restore conversation:", t);
     }
   }
-  /*
-   * Phase 1 readiness function.
-   * Backend chat-history API is implemented later.
-   */
-  loadConversationHistory() {
-    console.log("[UniversalChatWidget] loadConversationHistory() called:", {
-      conversationId: this.conversationId,
-      userId: this.currentUser?.id ?? "NOT_AVAILABLE",
-      providerUserId: this.currentUser?.providerUserId ?? "NOT_AVAILABLE"
-    }), console.log("[UniversalChatWidget] Chat history API implementation deferred to Backend Phase.");
+  async loadConversationHistory() {
+    if (!this.conversationId) {
+      console.warn(
+        "[UniversalChatWidget] Cannot load chat history: conversationId is missing."
+      );
+      return;
+    }
+    if (!this.apiBaseUrl) {
+      console.warn(
+        "[UniversalChatWidget] Cannot load chat history: API URL is missing."
+      );
+      return;
+    }
+    try {
+      const e = `${this.apiBaseUrl.replace(/\/$/, "")}/chat/history?conversationId=${encodeURIComponent(
+        this.conversationId
+      )}`;
+      console.log(
+        "[UniversalChatWidget] Loading chat history:",
+        {
+          conversationId: this.conversationId,
+          url: e
+        }
+      );
+      const t = await fetch(e, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          ...this.authToken ? {
+            Authorization: `Bearer ${this.authToken}`
+          } : {}
+        }
+      }), s = t.headers.get(
+        "content-type"
+      ) ?? "";
+      let i = {};
+      if (s.includes(
+        "application/json"
+      ) ? i = await t.json() : i = {
+        success: !1,
+        error: await t.text() || `Chat history failed (${t.status}).`
+      }, !t.ok || !i.success)
+        throw new Error(
+          i.error ?? i.message ?? `Chat history request failed (${t.status}).`
+        );
+      const o = i.messages ?? [];
+      console.log(
+        "[UniversalChatWidget] Chat history received:",
+        {
+          conversationId: i.conversationId,
+          messageCount: o.length,
+          hasMore: i.hasMore ?? !1
+        }
+      ), this.messages = o, this.renderMessages();
+    } catch (e) {
+      console.error(
+        "[UniversalChatWidget] Failed to load chat history:",
+        e
+      );
+    }
   }
   /*
    * Prepare the widget-side attachment contract.
@@ -677,10 +1061,10 @@ class f extends HTMLElement {
   formatBytes(e) {
     if (e < 1024) return `${e} B`;
     const t = ["KB", "MB", "GB"];
-    let s = e / 1024, n = 0;
-    for (; s >= 1024 && n < t.length - 1; )
-      s /= 1024, n++;
-    return `${s.toFixed(s >= 10 ? 0 : 1)} ${t[n]}`;
+    let s = e / 1024, i = 0;
+    for (; s >= 1024 && i < t.length - 1; )
+      s /= 1024, i++;
+    return `${s.toFixed(s >= 10 ? 0 : 1)} ${t[i]}`;
   }
   formatTime(e) {
     return e.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
@@ -704,8 +1088,8 @@ class f extends HTMLElement {
     return t;
   }
 }
-customElements.get("universal-chat-widget") || customElements.define("universal-chat-widget", f);
+customElements.get("universal-chat-widget") || customElements.define("universal-chat-widget", U);
 export {
-  f as UniversalChatWidget
+  U as UniversalChatWidget
 };
 //# sourceMappingURL=universal-chat-widget.js.map

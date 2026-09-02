@@ -385,7 +385,8 @@
         "title": "Store Information",
         "store": "Store",
         "phone": "Phone",
-        "address": "Address"
+        "address": "Address",
+        "warehouse": "Warehouse"
       },
 
       "spxSender": {
