@@ -1,13 +1,19 @@
 # Delivery & Approach
 
-Hybrid Agile-Waterfall delivery model and how Scrum was coordinated with regulated lifecycle activities.
+The project used a **Hybrid Agile / Waterfall** delivery approach. Software delivery followed Agile / Scrum practices, while hardware, quality, validation, clinical, regulatory, and production activities followed planned stages, gates, and dependencies.
 
-## Related Project
+## Delivery Lifecycle
 
-[← Back to VSynC / MEWS Case Study](../README.md)
+The delivery approach covered requirements, planning, development, integration, verification and validation, UAT, readiness, transition, and follow-up activities.
 
 ## Evidence
 
-Supporting artifacts for this area will be added here.
+### Delivery Approach
 
-- [Project Evidence](./)
+![Delivery Approach](./delivery-approach.png)
+
+[View Delivery Approach](./delivery-approach.pdf)
+
+## Related Project
+
+[← Back to MEWS Case Study](../README.md)
