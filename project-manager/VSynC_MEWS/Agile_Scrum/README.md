@@ -38,4 +38,4 @@ UAT / Release Readiness
 
 ## Related Project
 
-[← Back to VSynC / MEWS Case Study](../README.md)
+[← Back to MEWS Case Study](../README.md)
