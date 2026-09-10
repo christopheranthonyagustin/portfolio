@@ -24,8 +24,8 @@ My role was to translate the broader business and product objectives into coordi
 
 ### Business Problem
 
-![Business Problem](./Business_Problem.png)
-[View PDF version](./Business_Problem.pdf)
+![Business Problem Statement](./Business_Problem.png)
+[View Business Problem Statement](./Business_Problem.pdf)
 
 ## Related Project
 
