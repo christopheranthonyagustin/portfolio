@@ -36,6 +36,12 @@ Review / Validation
 UAT / Release Readiness
 ```
 
+## Evidence
+
+### Project Planning
+
+[View Project Gantt / Delivery Plan](./gantt-2025-03-04T08_50_09.PDF)
+
 ## Related Project
 
 [← Back to MEWS Case Study](../README.md)
