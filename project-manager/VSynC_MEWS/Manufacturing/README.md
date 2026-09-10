@@ -1,13 +1,18 @@
 # Manufacturing
 
-EVT, DVT, PVT, mass-production readiness, and cross-functional manufacturing coordination.
+Manufacturing activities covered supplier coordination, product transfer, pilot builds, quality controls, production readiness, and ongoing supplier performance management.
 
-## Related Project
+## Manufacturing Approach
 
-[← Back to VSynC / MEWS Case Study](../README.md)
+The manufacturing workstream was coordinated with engineering, quality, validation, and project delivery activities to support a controlled transition from development into production.
 
 ## Evidence
 
-Supporting artifacts for this area will be added here.
+### Manufacturing & Supplier Quality
 
-- [Project Evidence](./)
+![Manufacturing & Supplier Quality](./manufacturing.png)
+[View Manufacturing & Supplier Quality Reference](./manufacturing.pdf)
+
+## Related Project
+
+[← Back to MEWS Case Study](../README.md)
