@@ -1,13 +1,15 @@
-# Executive & Overview
+# Executive Overview
 
-Executive summary of the project, role, context, scope, delivery model, and key management responsibilities.
-
-## Related Project
-
-[← Back to VSynC / MEWS Case Study](../README.md)
+A concise overview of the Medical Early Warning & Patient Monitoring Platform, covering its business objective, scope, delivery status, stakeholders, key management priorities, and overall outcome.
 
 ## Evidence
 
-Supporting artifacts for this area will be added here.
+### Executive Overview
 
-- [Project Evidence](./)
+![Executive Overview](./executive-overview.png)
+
+[View Executive Overview](./executive-overview.pdf)
+
+## Related Project
+
+[← Back to MEWS Case Study](../README.md)
