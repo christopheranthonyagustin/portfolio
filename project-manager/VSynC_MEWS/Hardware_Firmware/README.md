@@ -68,7 +68,6 @@ My role included coordinating hardware and software workstreams, making technica
 ### Hardware & Firmware Integration
 
 ![Hardware & Firmware Integration](./hardware-firmware.png)
-
 [View Hardware & Firmware Integration Reference](./hardware-firmware.pdf)
 
 ## Related Project
