@@ -40,6 +40,7 @@ UAT / Release Readiness
 
 ### Project Planning
 
+![Project Gantt / Delivery Plan](./gantt.png)
 [View Project Gantt / Delivery Plan](./gantt-2025-03-04T08_50_09.PDF)
 
 ## Related Project
