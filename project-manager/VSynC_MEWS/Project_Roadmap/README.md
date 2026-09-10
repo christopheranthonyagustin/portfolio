@@ -80,6 +80,7 @@ My role was to maintain visibility across the major workstreams, dependencies, m
 ### Project Roadmap
 
 ![Project Roadmap](./project-roadmap.png)
+[View High-Level Project Roadmap Reference](./high-level.pdf)
 [View Project Roadmap Reference](./project-roadmap.pdf)
 
 ## Related Project
