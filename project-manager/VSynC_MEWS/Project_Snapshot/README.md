@@ -61,6 +61,8 @@ Healthcare professionals can view current vital-sign information, MEWS results, 
 ### Project Snapshot
 
 ![Project Snapshot](./project-snapshot.png)
+[View Project Brochure](./brochure.pdf)
+
 [View Project Snapshot Reference](./project-snapshot.pdf)
 
 ## Related Project
