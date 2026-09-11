@@ -280,7 +280,7 @@ Integration experience across e-commerce, logistics, enterprise applications, an
 | EDI & File Integration | [Sales Data Converter](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/SalesDataConverterApp%20v.1.7.8) |
 | Logistics & Shipment Tracking | [Tracking Solutions](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/ShopifyLarkTracker) |
 | Healthcare Integration | [Healthcare Technology](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/VSynC%20App/medsol-software-vsync_web_app-da4e4eceadf3) |
-| AI / LLM Integration | [CareerOps](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/CareerOps) |
+| AI / LLM Integration | [CareerOps](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/CareerOps/CareerOps.Api) |
 
 ### Integration Technologies
 
