@@ -308,12 +308,11 @@ Typical problems I help solve:
 
 Selected project evidence:
 
-- [Roborock Singapore](Projects/Roborock%20Singapore/README.md)
-- [W Network Singapore](Projects/W%20Network%20Singapore/README.md)
-- [Laifen Singapore](Projects/Laifen%20Singapore/README.md)
-- [Robam Singapore](Projects/Robam%20Singapore/README.md)
-- [Elisir](Projects/Elisir/README.md)
-- [ShopifyLarkTracker](../ShopifyLarkTracker)
+- [Roborock Singapore](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Shopify/Roborock%20Singapore)
+- [W Network Singapore](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Shopify/W%20Network%20Singapore)
+- [Laifen Singapore](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Shopify/Laifen%20Singapore)
+- [Robam Singapore](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Shopify/Robam%20Singapore)
+- [Elisir](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Shopify/Elisir)
 
 ---
 
