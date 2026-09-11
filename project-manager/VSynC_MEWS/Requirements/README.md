@@ -51,6 +51,7 @@ The following supplied images provide visual context for the physical components
 ### Gateway
 
 ![Gateway Enclosure](./gateway-enclosure-render.png)
+
 [View Gateway Front Reference](./gateway-front.png)
 
 ## Requirements Traceability
