@@ -41,6 +41,7 @@ The following supplied images provide visual context for the physical components
 ### Wearable Device
 
 ![Wearable Device](./band-design-render.png)
+
 [View Wearable Front Reference](./band-front.png)
 
 [View Wearable Prototype Reference](./band-prototype-1.jpg)
