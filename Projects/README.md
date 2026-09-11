@@ -398,7 +398,7 @@ Certifications and professional credentials cover project management, Agile/Scru
 
 **25+ certifications and professional credentials**
 
-[View Certifications & Professional Credentials](Certifications/README.md)
+[View Certifications & Professional Credentials](https://github.com/christopheranthonyagustin/portfolio/tree/main/Certifications)
 
 ---
 
