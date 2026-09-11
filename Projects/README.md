@@ -108,7 +108,7 @@ Marketplaces
 - Microsoft Dynamics NAV integration
 - Marketplace integrations
 
-[View OMS / WMS Project Evidence](Projects/AceCom%20System/iLOGON_ACE)
+[View OMS / WMS Project Evidence](Projects/iLOGON)
 
 ---
 
