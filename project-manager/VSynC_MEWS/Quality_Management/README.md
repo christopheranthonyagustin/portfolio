@@ -82,7 +82,6 @@ This provided a practical connection between **project delivery, people capabili
 ### Quality & Management
 
 ![Quality & Management](./quality-management.png)
-
 [View Quality & Management Reference](./quality-management.pdf)
 
 ### Internal Audit Non-Conformity
