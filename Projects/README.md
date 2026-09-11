@@ -108,7 +108,7 @@ Marketplaces
 - Microsoft Dynamics NAV integration
 - Marketplace integrations
 
-[View OMS / WMS Project Evidence](Projects/iLOGON)
+[View OMS / WMS Project Evidence](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/iLOGON)
 
 ---
 
@@ -161,7 +161,7 @@ ISO 13485 • IEC 62304 • ISO 14971
 - Hardware/software integration
 - Secure healthcare data
 
-[View PM Portfolio Case Study](project-manager/VSynC_MEWS/README.md)
+[View PM Portfolio Case Study](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/VSynC%20App/medsol-software-vsync_web_app-da4e4eceadf3)
 
 ---
 
@@ -186,7 +186,7 @@ A fleet and transport management platform that evolved from fleet tracking and d
 - Operational reporting
 - Analytics
 
-[View Project Evidence](Projects/Track)
+[View Project Evidence](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Track)
 
 ---
 
@@ -210,7 +210,7 @@ A logistics operations platform designed to automate order synchronization and d
 - Order search and tracking
 - Background processing and scheduled jobs
 
-[View Project Evidence](Projects/ShopifyLarkTracker)
+[View Project Evidence](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/ShopifyLarkTracker)
 
 ---
 
@@ -232,7 +232,7 @@ A data warehousing and business intelligence initiative supporting operational r
 - Customer information masking
 - Compliance-oriented data handling
 
-[View Data Warehousing Project](Projects/Data%20Warehousing)
+[View Data Warehousing Project](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Data%20Warehousing)
 
 ---
 
@@ -244,11 +244,11 @@ Experience delivering Shopify solutions across store development, theme customiz
 
 Selected project evidence:
 
-- [Roborock Singapore](Projects/Shopify/Roborock%20Singapore/README.md)
-- [W Network Singapore](Projects/Shopify/W%20Network%20Singapore/README.md)
-- [Laifen Singapore](Projects/Shopify/Laifen%20Singapore/README.md)
-- [Robam Singapore](Projects/Shopify/Robam%20Singapore/README.md)
-- [Elisir](Projects/Shopify/Elisir/README.md)
+- [Roborock Singapore](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Shopify/Roborock%20Singapore)
+- [W Network Singapore](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Shopify/W%20Network%20Singapore)
+- [Laifen Singapore](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Shopify/Laifen%20Singapore)
+- [Robam Singapore](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Shopify/Robam%20Singapore)
+- [Elisir](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Shopify/Elisir)
 
 For commercial Shopify services:
 
@@ -262,10 +262,10 @@ My infrastructure experience includes enterprise IT operations, cloud platform d
 
 | Project | Infrastructure Experience |
 |---|---|
-| [WLocate](Projects/Infra/WLocate/README.md) | Azure migration, Hyper-V, Windows Server, SQL Server, HA, DR, environment management |
-| [BUCLocate](Projects/Infra/BUC/README.md) | Azure VMs, Azure SQL, IIS, Windows Services, GPS/UDP communication, OTA device management |
-| [Comfort Ambulance](Projects/Infra/Comfort/README.md) | Solution deployment, customer environment provisioning, Android MDT integration, MySQL, UAT and go-live |
-| [AceCom Infrastructure](Projects/Infra/AceCom/README.md) | Active Directory, Windows Server, SQL Server, DR, IT governance, vendor management |
+| [WLocate](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Infra/WLocate) | Azure migration, Hyper-V, Windows Server, SQL Server, HA, DR, environment management |
+| [BUCLocate](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Infra/BUC) | Azure VMs, Azure SQL, IIS, Windows Services, GPS/UDP communication, OTA device management |
+| [Comfort Ambulance](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Infra/Comfort) | Solution deployment, customer environment provisioning, Android MDT integration, MySQL, UAT and go-live |
+| [AceCom Infrastructure](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/Infra/AceCom) | Active Directory, Windows Server, SQL Server, DR, IT governance, vendor management |
 
 ---
 
@@ -275,12 +275,12 @@ Integration experience across e-commerce, logistics, enterprise applications, an
 
 | Integration Area | Evidence |
 |---|---|
-| OMS / WMS / ERP | [AceCom OMS / WMS](Projects/AceCom%20System/iLOGON_ACE) |
-| APIs & Webhooks | [API & Webhook Integration](Projects/smartmall-netsclick-main) |
-| EDI & File Integration | [Sales Data Converter](Projects/SalesDataConverterApp%20v.1.7.8) |
-| Logistics & Shipment Tracking | [Tracking Solutions](Projects/Track) |
-| Healthcare Integration | [Healthcare Technology](Projects/VSynC%20App/medsol-software-vsync_web_app-da4e4eceadf3/README.md) |
-| AI / LLM Integration | [CareerOps](Projects/CareerOps/CareerOps.Api) |
+| OMS / WMS / ERP | [AceCom OMS / WMS](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/AceCom%20System) |
+| APIs & Webhooks | [API & Webhook Integration](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/smartmall-netsclick-main) |
+| EDI & File Integration | [Sales Data Converter](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/SalesDataConverterApp%20v.1.7.8) |
+| Logistics & Shipment Tracking | [Tracking Solutions](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/ShopifyLarkTracker) |
+| Healthcare Integration | [Healthcare Technology](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/VSynC%20App/medsol-software-vsync_web_app-da4e4eceadf3) |
+| AI / LLM Integration | [CareerOps](https://github.com/christopheranthonyagustin/portfolio/tree/main/Projects/CareerOps) |
 
 ### Integration Technologies
 
