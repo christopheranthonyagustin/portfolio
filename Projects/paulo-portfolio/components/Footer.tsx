@@ -1,0 +1,1 @@
+export default function Footer(){return <footer className="border-t dark:border-stone-700 mt-10"><div className="mx-auto max-w-5xl px-4 py-8 text-center text-sm text-neutral-500">© {new Date().getFullYear()} Ephraim Paulo Hernandez · Electronic Security Systems</div></footer>}
