@@ -1,0 +1,58 @@
+ENV {"python": "3.12.3", "sqlite_library": "3.45.1", "platform": "Linux-6.18.44-fc-v470-x86_64-with-glibc2.39", "cpus": 1, "started": "2026-11-16T02:16:07.776Z", "finished": "2026-11-16T02:16:11.406Z", "passed": 54, "failed": 0}
+[PASS] E0.1 migration 0001 applies on an empty database and is recorded
+[PASS] E0.2 re-running the runner applies nothing (idempotent)
+[PASS] E0.3 an edited, already-applied migration is refused (checksum)
+[PASS] E0.4 a failing migration rolls back completely (no partial schema, no record)
+[PASS] E0.5 schema objects present  -- tables=15 triggers=8
+[PASS] E1.1 WAL journal mode available on a local file  -- wal
+[PASS] E1.2 foreign_keys enforced when the pragma is on
+[PASS] E1.3 integrity_check ok
+[PASS] E2.1 120 jobs, 6 competing processes: every job claimed exactly once  -- claims=120 distinct=120 in 0.7s
+[PASS] E2.2 no job has more than one execution row (no double claim)
+[PASS] E2.3 all claims carry token 1 and all jobs are running
+[PASS] E2.4 no process failed with a locked error under bounded busy timeout  -- locked errors=0
+[PASS] E2.5 contention was real: every job was attempted simultaneously by all 6 workers and more than one worker won some  -- claims per worker=[18, 22, 18, 18, 10, 34]
+[PASS] E3.1 HAZARD REPRODUCED: an early token check does not stop a stale worker publishing after the lease moved (check-then-act race)  -- early check saw token 1; owner is now token 2; stale rows persisted
+[PASS] E3.2 stale worker's commit is rejected inside the transaction; nothing it wrote persists
+[PASS] E3.3 the rejected attempt is audited as commit_fenced; the stale execution stays closed as interrupted; the current claim is untouched
+[PASS] E3.4 the current claim holder's commit succeeds and is attributed to its token
+[PASS] E3.5 results written before a failed conditional update are rolled back with it (atomicity)
+[PASS] E3.6 a duplicate publish by the same claim (state already checkpointed) is rejected
+[PASS] E4.1 a process killed mid-transaction leaves no partial rows  -- exit=-9
+[PASS] E4.2 integrity_check is ok after the kill
+[PASS] E4.3 a commit completed before the kill is durable  -- exit=-9
+[PASS] E4.4 a worker killed while holding a claim leaves the job running with a (now orphaned) claim  -- exit=-9
+[PASS] E4.5 startup recovery by a new host instance marks every orphaned claim interrupted (running and checkpointed alike)  -- {'J-c1': 'interrupted', 'J-c2': 'interrupted', 'J-c3': 'interrupted'}
+[PASS] E4.6 an interrupted job is re-claimed with a higher token and a second attempt
+[PASS] E4.7 the first execution is recorded as interrupted, the second as running
+[PASS] E4.8 the recovered job completes and its claim is cleared
+[PASS] E5.1 a deferred read transaction that later writes FAILS once another writer committed (snapshot upgrade)  -- error: database is locked
+[PASS] E5.2 BEGIN IMMEDIATE with a busy timeout waits for the current writer and then succeeds  -- waited 1.03s
+[PASS] E5.3 with busy_timeout=0 a second writer fails immediately (so the timeout must be set on every connection)  -- error: database is locked
+[PASS] E6.1 6 processes inserting the same 20 idempotency keys: each key stored exactly once  -- inserted per worker=[2, 3, 6, 0, 3, 6]
+[PASS] E6.2 deterministic candidate identity leaves exactly one candidate per key
+[PASS] E6.3 contention was real: every key was attempted simultaneously by all 6 workers and more than one worker inserted some  -- inserted per worker=[2, 3, 6, 0, 3, 6]
+[PASS] E7.1 illegal job transition planned -> completed is refused  -- illegal job state transition
+[PASS] E7.2 claim_token cannot decrease  -- claim_token must not decrease
+[PASS] E7.3 a candidate cannot become approved without a human approval record  -- candidate cannot be approved without a human approval record
+[PASS] E7.4 an approval by a non-human actor is refused  -- CHECK constraint failed: actor_kind = 'human'
+[PASS] E7.5 an approved_change without an approved human decision is refused  -- approved_change requires an approved human decision for the same candidate
+[PASS] E7.6 a hosted provider call cannot be recorded (M1-D02)  -- CHECK constraint failed: provider_kind = 'local'
+[PASS] E7.7 a candidate with an unknown status is refused  -- CHECK constraint failed: candidate_status IN ('pending_review','invalid','approved','rejected','deferred',
+                                                      'clarification_requested','correction_requested','stale','failed_retry')
+[PASS] E7.8 an evidence row for an unknown source is refused (foreign key on)  -- FOREIGN KEY constraint failed
+[PASS] E7.9 running without a claim (or a claim without running) is refused  -- CHECK constraint failed: (state IN ('running','checkpointed')) = (claim_owner IS NOT NULL AND lease_expires_at IS NOT NULL)
+[PASS] E7.10 with a human approval record the candidate is approved and an approved_change can be recorded
+[PASS] E7.11 an approved candidate is terminal (cannot be reopened)  -- approved or rejected candidates are terminal
+[PASS] E7.12 approved_change cannot skip states (approved -> applied)  -- illegal approved_change state transition
+[PASS] E7.13 the audit log cannot be updated  -- audit_event is append-only
+[PASS] E7.14 the audit log cannot be deleted from  -- audit_event is append-only
+[PASS] E7.15 NOTE: without PRAGMA foreign_keys=ON on the connection the same bad row is accepted (the pragma is mandatory per connection)  -- accepted
+[PASS] E8.1 planned -> running -> checkpointed -> running -> completed through the conditional operations  -- checkpointed,running,completed
+[PASS] E8.2 a job whose not_before is in the future is not claimable (retry backoff)
+[PASS] E8.3 it becomes claimable once not_before has passed
+[PASS] E8.4 audit rows were appended for each committed item
+[PASS] E9.1 9 provider scenarios: expected validation result and candidate count match an independent validator, and spans point at the claimed text  -- []
+[PASS] E9.2 fixtures are ASCII-only synthetic text (no personal data, no secrets pattern)
+
+SUMMARY: 54 passed, 0 failed, 54 checks
