@@ -1,0 +1,28 @@
+{
+  "package_id": "MIN-ENG-PKG-001",
+  "version": "0.1",
+  "date": "2026-11-14",
+  "status": "Draft for source validation and engineering review",
+  "files": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md",
+    "docs/00-governance/BASELINE-AND-STATUS.md",
+    "docs/00-governance/TRACEABILITY-AND-DECISIONS.md",
+    "docs/01-product/PRODUCT-VISION.md",
+    "docs/02-requirements/REQUIREMENTS-BASELINE.md",
+    "docs/03-design/SYSTEM-DESIGN-DOCUMENT.md",
+    "docs/04-engineering/AI-ASSISTED-SDLC.md",
+    "docs/04-engineering/QUALITY-GATES.md",
+    "docs/05-delivery/IMPLEMENTATION-PLAN.md",
+    "docs/05-delivery/REPOSITORY-AUDIT-PLAN.md",
+    "docs/06-operations/KNOWLEDGE-GOVERNANCE.md",
+    "docs/06-operations/SECURITY-AND-OPERATIONS.md",
+    "templates/ADR-TEMPLATE.md",
+    "templates/DECISION-TEMPLATE.md",
+    "templates/HANDOFF-TEMPLATE.md",
+    "templates/TEST-CASE-TEMPLATE.md",
+    "docs/00-governance/SOURCE-REGISTER.md",
+    "PACKAGE-MANIFEST.json"
+  ]
+}
